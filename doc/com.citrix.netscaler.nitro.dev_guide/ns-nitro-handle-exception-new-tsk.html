@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us" xml:lang="en-us">
+<head>
+<!--(c) Copyright 2009-2012 Citrix Systems, Inc. All rights reserved.-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="DC.Type" content="task"/>
+<meta name="DC.Title" content="Exception Handling"/>
+<meta name="DC.Relation" scheme="URI" content="ns-nitro-category-new-tsk.html"/>
+<meta name="DC.Date.Created" content=""/>
+<meta name="DC.Date.Modified" content="2012-03-14"/>
+<meta name="DC.Format" content="XHTML"/>
+<meta name="DC.Identifier" content="ns-nitro-handle-exception-new-tsk"/>
+<link rel="stylesheet" type="text/css" href="commonltr.css"/>
+<link rel="stylesheet" type="text/css" href="citrix-help.css"/>
+<title>Exception Handling</title>
+</head>
+<body id="ns-nitro-handle-exception-new-tsk"><a name="ns-nitro-handle-exception-new-tsk"><!-- --></a>
+
+<h1 class="topictitle1">Exception Handling</h1>
+<p style="margin-top: 12px !important">Updated: 2012-03-14</p><div><div class="section">
+
+
+
+<p>The <samp class="codeph">errorcode</samp> field indicates the status
+of the operation.</p>
+<div class="p"><ul><li>An errorcode of 0 indicates that the operation is
+successful.</li>
+<li>A non-zero errorcode indicates an error in
+processing the NITRO request.</li>
+</ul>
+
+</div>
+<p>By default, NITRO captures only error messages. You can capture warnings by specifying the warning flag while establishing a connection with the appliance.</p>
+<p>All exceptions in the execution of NITRO APIs are caught by the
+ <samp class="codeph">com.citrix.netscaler.nitro.exception.nitro_exception</samp> class. To get information about the exception,
+you must use the <samp class="codeph">getErrorCode()</samp> method.</p>
+
+
+
+
+
+
+<p>For a more detailed description of the error codes, see the API reference available in the <span class="filepath">&lt;NITRO_SDK_HOME&gt;/doc</span> folder.</p>
+</div>
+</div>
+
+<p style="font-size: 8pt !important"/>
+</body>
+</html>

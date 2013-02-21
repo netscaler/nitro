@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us" xml:lang="en-us">
+<head>
+<!--(c) Copyright 2009-2012 Citrix Systems, Inc. All rights reserved.-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="DC.Type" content="task"/>
+<meta name="DC.Title" content="Statistics"/>
+<meta name="DC.Relation" scheme="URI" content="ns-nitro-category-new-tsk.html"/>
+<meta name="DC.Date.Created" content=""/>
+<meta name="DC.Date.Modified" content="2012-03-14"/>
+<meta name="DC.Format" content="XHTML"/>
+<meta name="DC.Identifier" content="ns-nitro-stats-tsk"/>
+<link rel="stylesheet" type="text/css" href="commonltr.css"/>
+<link rel="stylesheet" type="text/css" href="citrix-help.css"/>
+<title>Statistics</title>
+</head>
+<body id="ns-nitro-stats-tsk"><a name="ns-nitro-stats-tsk"><!-- --></a>
+
+<h1 class="topictitle1">Statistics</h1>
+<p style="margin-top: 12px !important">Updated: 2012-03-14</p><div><div class="section"><p>The NetScaler appliance collects statistics about the usage of its
+features and the corresponding resources. You can retrieve these statistics by using the NITRO protocol.</p>
+<div class="p"><div class="note"><span class="notetitle">Note:</span> Not all features and resources have statistics objects
+associated with them.</div>
+ </div>
+<p>The following table describes the operations to get NetScaler statistics. For a more detailed description, see the API reference available in the <span class="filepath">&lt;NITRO_SDK_HOME&gt;/doc</span> folder.</p>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all"><tbody><tr><td class="cellrowborder" valign="top" width="50%"><strong>Description</strong></td>
+<td class="cellrowborder" valign="top" width="50%"><strong>Sample</strong></td>
+</tr>
+</tbody>
+<tbody><tr><td class="cellrowborder" valign="top" width="50%"><p>The APIs to get statistics of a feature
+are grouped into packages or namespaces that have the format
+<samp class="codeph">com.citrix.netscaler.nitro.resource.stat.&lt;feature&gt;</samp>.</p>
+<p>For
+example, the statistics of the load balancing feature can be found by using the <samp class="codeph">com.citrix.netscaler.nitro.resource.stat.lb</samp> package or namespace.</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%"><p>To get statistics of an lbvserver named "MyFirstLbVServer" and
+print some of the properties returned in the statistics object:</p>
+<pre class="codeblock">lbvserver_stats stats = lbvserver_stats.get(ns_session,"MyFirstLbVServer");
+System.out.println(stats.get_curclntconnections());
+System.out.println(stats.get_deferredreqrate());</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+ </div>
+</div>
+
+<p style="font-size: 8pt !important"/>
+</body>
+</html>

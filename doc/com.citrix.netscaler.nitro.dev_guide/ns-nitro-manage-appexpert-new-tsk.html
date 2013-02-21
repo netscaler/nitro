@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us" xml:lang="en-us">
+<head>
+<!--(c) Copyright 2009-2012 Citrix Systems, Inc. All rights reserved.-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="DC.Type" content="task"/>
+<meta name="DC.Title" content="AppExpert Application Management"/>
+<meta name="DC.Relation" scheme="URI" content="ns-nitro-category-new-tsk.html"/>
+<meta name="DC.Date.Created" content=""/>
+<meta name="DC.Date.Modified" content="2012-03-14"/>
+<meta name="DC.Format" content="XHTML"/>
+<meta name="DC.Identifier" content="ns-nitro-manage-appexpert-tsk"/>
+<link rel="stylesheet" type="text/css" href="commonltr.css"/>
+<link rel="stylesheet" type="text/css" href="citrix-help.css"/>
+<title>AppExpert Application Management</title>
+</head>
+<body id="ns-nitro-manage-appexpert-tsk"><a name="ns-nitro-manage-appexpert-tsk"><!-- --></a>
+
+<h1 class="topictitle1">AppExpert Application Management</h1>
+<p style="margin-top: 12px !important">Updated: 2012-03-14</p><div><div class="section"><p>An AppExpert application is a collection of configuration information that you set up for securing and optimizing traffic for a web application, such as Microsoft Outlook Web Access or Microsoft SharePoint, on a Citrix® NetScaler® appliance. <span>For more information, see <a href="../netscaler/ns-appexpert-con-10.html">AppExpert</a>.</span></p>
+<p>This section describes the AppExpert application operations that can be performed using NITRO.</p>
+<div class="p"><ul><li><a href="ns-nitro-manage-appexpert-new-tsk.html#ns-nitro-manage-appexpert-tsk__export">Export an AppExpert Application</a></li>
+<li><a href="ns-nitro-manage-appexpert-new-tsk.html#ns-nitro-manage-appexpert-tsk__import">Import an AppExpert Application</a></li>
+</ul>
+</div>
+<p>The following table describes the AppExpert operations. For a more detailed description, see the API reference available in the <span class="filepath">&lt;NITRO_SDK_HOME&gt;/doc</span> folder.</p>
+<p id="ns-nitro-manage-appexpert-tsk__export"><a name="ns-nitro-manage-appexpert-tsk__export"><!-- --></a><strong>Export an AppExpert Application</strong></p>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all"><div><p>When an AppExpert application is exported, the following XML files are created:</p>
+<div class="p"><ul><li id="ns-nitro-manage-appexpert-tsk__li_51E52396BFF14238942D1B557524D5A8"><a name="ns-nitro-manage-appexpert-tsk__li_51E52396BFF14238942D1B557524D5A8"><!-- --></a><strong>Application template file.</strong> Contains the AppExpert
+application's configuration information, such as application units,
+rules, and configured policies. The template file is stored in the
+<span class="filepath">/nsconfig/nstemplates/applications</span> directory of
+the NetScaler appliance.</li>
+<li><strong>Deployment file.</strong> Contains deployment-specific
+information of the AppExpert application, such as public endpoints,
+services, and configured variables. The deployment file is stored
+in the <span class="filepath">/nsconfig/nstemplates/applications/deployment_files/</span>
+directory of the NetScaler appliance.</li>
+</ul>
+</div>
+</div><tbody><tr><td class="cellrowborder" valign="top" width="50%"><strong>Description</strong></td>
+<td class="cellrowborder" valign="top" width="50%"><strong>Sample</strong></td>
+</tr>
+</tbody>
+<tbody><tr><td class="cellrowborder" valign="top" width="50%"><div class="p">To export an AppExpert application, do the following:<a name="ns-nitro-manage-appexpert-tsk__ol_45AE7F751C7144D1A7D1B647E57088D3"><!-- --></a><ol id="ns-nitro-manage-appexpert-tsk__ol_45AE7F751C7144D1A7D1B647E57088D3"><li> Set the required properties for the export operation, using the
+corresponding property names of the <samp class="codeph">application</samp> class.</li>
+<li id="ns-nitro-manage-appexpert-tsk__li_721D8FA241A246D49A126E6B7752EC0A"><a name="ns-nitro-manage-appexpert-tsk__li_721D8FA241A246D49A126E6B7752EC0A"><!-- --></a>
+Export the AppExpert application by using the static <samp class="codeph">export()</samp> method.</li>
+</ol>
+</div>
+</td>
+<td class="cellrowborder" valign="top" width="50%"><p>To export an AppExpert application named "MyApp1":</p>
+<pre class="codeblock">application myapp = new application();
+myapp.set_appname("MyApp1");
+myapp.set_apptemplatefilename("myapp_template");
+application.export(ns_session,myapp);</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p"><div class="note"><span class="notetitle">Note:</span> If the names of the files are not provided, the files
+are given the name of the AppExpert application that you are
+exporting. For example, if you export an AppExpert application
+named "MyApp1," the template file and the deployment file are named
+MyApp1.xml and MyApp1_deployment.xml, respectively.</div>
+</div>
+<p/>
+<p id="ns-nitro-manage-appexpert-tsk__import"><a name="ns-nitro-manage-appexpert-tsk__import"><!-- --></a><strong>Import an AppExpert application</strong></p>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all"><div><p>You can import either the template file only or both the
+template file and the deployment file:</p>
+<div class="p"><ul><li id="ns-nitro-manage-appexpert-tsk__li_DFABD18528E94C29B40FD59955176B30"><a name="ns-nitro-manage-appexpert-tsk__li_DFABD18528E94C29B40FD59955176B30"><!-- --></a>If you import the template file only, you can set parameters to
+configure your own deployment settings (such as public endpoints
+(VIPs), services, and variable values).</li>
+<li id="ns-nitro-manage-appexpert-tsk__li_7EA17F2642FC48C989811335D9D24BC3"><a name="ns-nitro-manage-appexpert-tsk__li_7EA17F2642FC48C989811335D9D24BC3"><!-- --></a>If you import both the files, the application's configuration
+information is imported from the template file and the
+deployment-specific information is imported from the deployment
+file.</li>
+</ul>
+</div>
+</div><tbody><tr><td class="cellrowborder" valign="top" width="50%"><strong>Description</strong></td>
+<td class="cellrowborder" valign="top" width="50%"><strong>Sample</strong></td>
+</tr>
+</tbody>
+<tbody><tr><td class="cellrowborder" valign="top" width="50%"><div class="p">To import an AppExpert application, do the following:<a name="ns-nitro-manage-appexpert-tsk__ol_C2C49FD4BBD347DF953032E34AF64DF8"><!-- --></a><ol id="ns-nitro-manage-appexpert-tsk__ol_C2C49FD4BBD347DF953032E34AF64DF8"><li id="ns-nitro-manage-appexpert-tsk__li_2337956DE9D748AA8D485CF374514AEA"><a name="ns-nitro-manage-appexpert-tsk__li_2337956DE9D748AA8D485CF374514AEA"><!-- --></a> Set the required properties for the import operation, using the
+corresponding property names of the <samp class="codeph">application</samp> class.</li>
+<li id="ns-nitro-manage-appexpert-tsk__li_8036DE825E724219AEAD3E606D42C821"><a name="ns-nitro-manage-appexpert-tsk__li_8036DE825E724219AEAD3E606D42C821"><!-- --></a>Import the AppExpert application by using the static <samp class="codeph">Import()</samp> method.</li>
+</ol>
+</div>
+</td>
+<td class="cellrowborder" valign="top" width="50%"><p>To import an AppExpert application named "MyApp1":</p>
+<pre class="codeblock">application myapp = new application();
+myapp.set_appname("MyApp1");
+myapp.set_apptemplatefilename("myapp_template");
+application.Import(ns_session,myapp);</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p"><div class="note"><span class="notetitle">Note:</span> Before you import an AppExpert application, you must
+manually upload the template and/or deployment files to the
+appropriate directories on the NetScaler appliance.</div>
+</div>
+</div>
+</div>
+
+<p style="font-size: 8pt !important"/>
+</body>
+</html>

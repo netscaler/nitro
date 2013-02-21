@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us" xml:lang="en-us">
+<head>
+<!--(c) Copyright 2009-2012 Citrix Systems, Inc. All rights reserved.-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="DC.Type" content="task"/>
+<meta name="DC.Title" content="Configurations"/>
+<meta name="DC.Relation" scheme="URI" content="ns-nitro-category-new-tsk.html"/>
+<meta name="DC.Date.Created" content=""/>
+<meta name="DC.Date.Modified" content="2012-03-14"/>
+<meta name="DC.Format" content="XHTML"/>
+<meta name="DC.Identifier" content="ns-nitro-configure-tsk"/>
+<link rel="stylesheet" type="text/css" href="commonltr.css"/>
+<link rel="stylesheet" type="text/css" href="citrix-help.css"/>
+<title>Configurations</title>
+</head>
+<body id="ns-nitro-configure-tsk"><a name="ns-nitro-configure-tsk"><!-- --></a>
+
+<h1 class="topictitle1">Configurations</h1>
+<p style="margin-top: 12px !important">Updated: 2012-03-14</p><div><div class="section"><p>A NetScaler appliance has multiple features, and each feature
+has multiple resources. The NITRO protocol can be used to configure these resources.</p>
+<div class="p"><ul><li><strong>For Java and .NET.</strong>  The APIs to configure a feature
+are grouped into packages or namespaces. Each package or namespace contains a class for every
+resource of the feature. Configuration APIs are available in
+packages or namespaces that have the format
+<samp class="codeph">com.citrix.netscaler.nitro.resource.config.&lt;feature&gt;</samp>. <p>For
+example, the load balancing feature has the <samp class="codeph">com.citrix.netscaler.nitro.resource.config.lb</samp>
+package or namespace, which contains classes to configure load balancing resources such
+as lbvserver, lbgroup, and lbmonitor.</p>
+</li>
+<li><strong>For REST.</strong> Each NetScaler resource has an unique URL associated with it, depending on the type of operation to be performed. URLs for configuration operations have the format <samp class="codeph">http://&lt;NSIP&gt;/nitro/v1/config/&lt;resource_type&gt;/&lt;resource_name&gt;</samp>. <p>For
+example, to access the lbvserver named MyFirstLbVServer on a NetScaler with IP 10.102.29.60, the URL is <samp class="codeph">http://10.102.29.60/nitro/v1/config/lbvserver/MyFirstLbVServer</samp>.</p>
+</li>
+</ul>
+</div>
+<p>This section describes the configurations that can be performed on the NetScaler appliance.</p>
+<div class="p"> <ul><li><a href="ns-nitro-configure-tsk.html#ns-nitro-configure-tsk__create">Create Resource</a></li>
+<li><a href="ns-nitro-configure-tsk.html#ns-nitro-configure-tsk__retrieve">Retrieve Resource Details</a></li>
+<li><a href="ns-nitro-configure-tsk.html#ns-nitro-configure-tsk__update">Update Resource</a></li>
+<li><a href="ns-nitro-configure-tsk.html#ns-nitro-configure-tsk__delete">Delete Resource</a></li>
+<li><a href="ns-nitro-configure-tsk.html#ns-nitro-configure-tsk__rename">Rename Resource</a></li>
+<li><a href="ns-nitro-configure-tsk.html#ns-nitro-configure-tsk__enable">Enable Resource</a></li>
+<li><a href="ns-nitro-configure-tsk.html#ns-nitro-configure-tsk__bind">Bind Resources</a></li>
+<li><a href="ns-nitro-configure-tsk.html#ns-nitro-configure-tsk__global">Globally Bind Resources</a></li>
+<li><a href="ns-nitro-configure-tsk.html#ns-nitro-configure-tsk__bulk">Bulk Operations</a></li>
+</ul>
+</div>
+<p>The following tables describe the configurations operations that can be performed. For a more detailed description of the operations, see the API reference available in the <span class="filepath">&lt;NITRO_SDK_HOME&gt;/doc</span> folder.</p>
+<p id="ns-nitro-configure-tsk__create"><a name="ns-nitro-configure-tsk__create"><!-- --></a><strong>Create Resource</strong></p>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all"><tbody><tr><td class="cellrowborder" valign="top" width="50%"><strong>Description</strong></td>
+<td class="cellrowborder" valign="top" width="50%"><strong>Sample</strong></td>
+</tr>
+</tbody>
+<tbody><tr><td class="cellrowborder" valign="top" width="50%"><div class="p"> To create a new resource on the NetScaler
+appliance, do the following:<a name="ns-nitro-configure-tsk__ol_0CD462AB700843B7848032A3777B0FFD"><!-- --></a><ol id="ns-nitro-configure-tsk__ol_0CD462AB700843B7848032A3777B0FFD"><li id="ns-nitro-configure-tsk__li_AD50397234A04DC8B6630EC028E0C8BA"><a name="ns-nitro-configure-tsk__li_AD50397234A04DC8B6630EC028E0C8BA"><!-- --></a> Set the value for the required properties of the
+resource by using the corresponding property name.  The result is a resource object that contains the details required for the resource.<div class="note"><span class="notetitle">Note:</span> These values are set locally on the client. The values are not reflected on the appliance until the object is uploaded.</div>
+</li>
+<li id="ns-nitro-configure-tsk__li_B2A352E666FF4AFAB04D4D2EF89AD9FF"><a name="ns-nitro-configure-tsk__li_B2A352E666FF4AFAB04D4D2EF89AD9FF"><!-- --></a>Upload the resource object to the appliance
+by using the static <samp class="codeph">add()</samp> method.</li>
+</ol>
+</div>
+</td>
+<td class="cellrowborder" valign="top" width="50%"><p>To create an lbvserver named "MyFirstLbVServer":</p>
+<pre class="codeblock">lbvserver new_lbvserver_obj = new lbvserver();
+//Set the properties of the resource locally
+new_lbvserver_obj.set_name("MyFirstLbVServer");
+new_lbvserver_obj.set_ipv46("10.102.29.88");
+new_lbvserver_obj.set_port(88);
+new_lbvserver_obj.set_servicetype("HTTP");
+new_lbvserver_obj.set_lbmethod("ROUNDROBIN");
+
+//Upload the resource to NetScaler
+lbvserver.add(ns_session,new_lbvserver_obj);</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p/>
+<p id="ns-nitro-configure-tsk__retrieve"><a name="ns-nitro-configure-tsk__retrieve"><!-- --></a><strong>Retrieve Resources Details</strong></p>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all"><tbody><tr><td class="cellrowborder" valign="top" width="50%"><strong>Description</strong></td>
+<td class="cellrowborder" valign="top" width="50%"><strong>Sample</strong></td>
+</tr>
+</tbody>
+<tbody><tr><td class="cellrowborder" valign="top" width="50%"><div class="p"> To retrieve the properties of a resource on the
+NetScaler appliance, do the following:<a name="ns-nitro-configure-tsk__ol_873804909F2B4DA399D7A42800C19D81"><!-- --></a><ol id="ns-nitro-configure-tsk__ol_873804909F2B4DA399D7A42800C19D81"><li id="ns-nitro-configure-tsk__li_99B15C462BAE486F8CA4755AD41E13C4"><a name="ns-nitro-configure-tsk__li_99B15C462BAE486F8CA4755AD41E13C4"><!-- --></a> Retrieve the configurations from the NetScaler by
+using the <samp class="codeph">get()</samp> method. The result is a resource object.</li>
+<li id="ns-nitro-configure-tsk__li_2973150929404102A575DC3BE318B852"><a name="ns-nitro-configure-tsk__li_2973150929404102A575DC3BE318B852"><!-- --></a>Extract the required property from the object
+by using the corresponding property name.</li>
+</ol>
+</div>
+</td>
+<td class="cellrowborder" valign="top" width="50%"><p>To retrieve the details of an lbvserver named
+"MyFirstLbVServer":</p>
+<pre class="codeblock">//Retrieve the resource object from the NetScaler
+new_lbvserver_obj = lbvserver.get(ns_session,"MyFirstLbVServer");
+
+//Extract the properties of the resource from the object locally
+System.out.println(new_lbvserver_obj.get_name());
+System.out.println(new_lbvserver_obj.get_servicetype());</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p/>
+<p id="ns-nitro-configure-tsk__update"><a name="ns-nitro-configure-tsk__update"><!-- --></a><strong>Update Resource</strong></p>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all"><tbody><tr><td class="cellrowborder" valign="top" width="50%"><strong>Description</strong></td>
+<td class="cellrowborder" valign="top" width="50%"><strong>Sample</strong></td>
+</tr>
+</tbody>
+<tbody><tr><td class="cellrowborder" valign="top" width="50%"><div class="p">To update the properties of an existing
+resource on the NetScaler appliance, do the following:<a name="ns-nitro-configure-tsk__ol_227EEB5B381D4BAAB352E981205C629E"><!-- --></a><ol id="ns-nitro-configure-tsk__ol_227EEB5B381D4BAAB352E981205C629E"><li id="ns-nitro-configure-tsk__li_A4C99FABD4124C8C9B13D06473D98106"><a name="ns-nitro-configure-tsk__li_A4C99FABD4124C8C9B13D06473D98106"><!-- --></a> Specify the name of the resource to be updated. </li>
+<li id="ns-nitro-configure-tsk__li_E9D04ACFEFA943A498524858D67C523C"><a name="ns-nitro-configure-tsk__li_E9D04ACFEFA943A498524858D67C523C"><!-- --></a>Set the value for the required properties of the
+resource by using the corresponding property name. The result is a resource object.<div class="note"><span class="notetitle">Note:</span> These values are set locally on the client. The values are not reflected on the appliance until the object is uploaded.</div>
+</li>
+<li id="ns-nitro-configure-tsk__li_714525180E144905B383C0BC86FE612C"><a name="ns-nitro-configure-tsk__li_714525180E144905B383C0BC86FE612C"><!-- --></a>Upload the resource object to the appliance by using
+the static <samp class="codeph">update()</samp> method.</li>
+</ol>
+</div>
+</td>
+<td class="cellrowborder" valign="top" width="50%"><p>To update the service type and load balancing method of an lbvserver named "MyFirstLbVServer":</p>
+<pre class="codeblock">lbvserver update_lb = new lbvserver();
+
+//Specify the name of the lbvserver to be updated
+update_lb.set_name("MyFirstLbVServer");
+
+//Specify the updated service type and lb method
+update_lb.set_servicetype("https");
+update_lb.set_lbmethod("LEASTRESPONSETIME");
+
+//Upload the resource to NetScaler
+lbvserver.update(ns_session, update_lb);</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p"><div class="note"><span class="notetitle">Note:</span> Some properties cannot be modified after
+creation. For example, the port number and service type (protocol)
+of an lbvserver. Even though the operation appears to succeed,
+these properties retain their original values on the NetScaler.  For
+more information about these properties, see the <em>Citrix
+NetScaler Command Reference Guide</em> at <a href="http://support.citrix.com/article/ctx128678" target="_blank">http://support.citrix.com/article/CTX128678</a>.</div>
+</div>
+<p/>
+<p id="ns-nitro-configure-tsk__delete"><a name="ns-nitro-configure-tsk__delete"><!-- --></a><strong>Delete Resource</strong></p>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all"><tbody><tr><td class="cellrowborder" valign="top" width="50%"><strong>Description</strong></td>
+<td class="cellrowborder" valign="top" width="50%"><strong>Sample</strong></td>
+</tr>
+</tbody>
+<tbody><tr><td class="cellrowborder" valign="top" width="50%"><p>To delete an existing resource, invoke the static <samp class="codeph">delete()</samp> method.</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%"><p>To delete an lbvserver named "MyFirstLbVServer":</p>
+<div class="p"><pre class="codeblock">lbvserver.delete(ns_session, "MyFirstLbVServer");</pre>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p/>
+<p id="ns-nitro-configure-tsk__rename"><a name="ns-nitro-configure-tsk__rename"><!-- --></a><strong>Rename Resource</strong></p>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all"><tbody><tr><td class="cellrowborder" valign="top" width="50%"><strong>Description</strong></td>
+<td class="cellrowborder" valign="top" width="50%"><strong>Sample</strong></td>
+</tr>
+</tbody>
+<tbody><tr><td class="cellrowborder" valign="top" width="50%"><p>To rename an existing resource, invoke the static <samp class="codeph">rename()</samp> method.</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%"><p>To change the name of an lbvserver from "MyFirstLbVServer" to
+"MyLB1":</p>
+<div class="p"><pre class="codeblock">lbvserver.rename(ns_session, "MyFirstLbVServer","MyLB1");</pre>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p/>
+<p id="ns-nitro-configure-tsk__enable"><a name="ns-nitro-configure-tsk__enable"><!-- --></a><strong>Enable Resource</strong></p>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all"><tbody><tr><td class="cellrowborder" valign="top" width="50%"><strong>Description</strong></td>
+<td class="cellrowborder" valign="top" width="50%"><strong>Sample</strong></td>
+</tr>
+</tbody>
+<tbody><tr><td class="cellrowborder" valign="top" width="50%"><p>To enable a resource, invoke the static <samp class="codeph">enable()</samp> method.</p>
+<p>To disable a resource, invoke the static <samp class="codeph">disable()</samp> method.</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%"><p>To disable an lbvserver named "MyFirstLbVServer":</p>
+<div class="p"><pre class="codeblock">lbvserver.disable(ns_session,"MyFirstLbVServer");</pre>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p/>
+<p id="ns-nitro-configure-tsk__bind"><a name="ns-nitro-configure-tsk__bind"><!-- --></a><strong>Bind Resources</strong></p>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all"><div><p>NetScaler resources form relationships with each other through
+the process of binding. This is how services are associated with an
+lbvserver (by binding them to it), or how various policies are
+bound to an lbvserver. </p>
+</div><tbody><tr><td class="cellrowborder" valign="top" width="50%"><strong>Description</strong></td>
+<td class="cellrowborder" valign="top" width="50%"><strong>Sample</strong></td>
+</tr>
+</tbody>
+<tbody><tr><td class="cellrowborder" valign="top" width="50%"><p>Each binding relationship is represented in
+NITRO by its own class.</p>
+<p>To bind one NetScaler resource to another in NITRO,
+you must create an instance of the appropriate binding class (for example,
+to bind a service to an lbvserver, you must instantiate the class
+lbvserver_service_binding) and add it to the NetScaler
+configuration (by using the static add method on this class).</p>
+
+<p>Binding classes have a property representing the
+name of each resource in the binding relationship. They can also
+have other properties related to that relationship (for example,
+the weight of the binding between an lbvserver resource and a
+service resource).</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%"><p>To bind a service to an lbvserver named "MyFirstLbVServer" and specify a weight for the
+binding:</p>
+<pre class="codeblock">lbvserver_service_binding bindObj = new lbvserver_service_binding();
+bindObj.set_name("MyFirstLbVServer");
+bindObj.set_servicename("svc_prod");
+bindObj.set_weight(20);
+lbvserver_service_binding.add(ns_session,bindObj);</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p/>
+<p id="ns-nitro-configure-tsk__global"><a name="ns-nitro-configure-tsk__global"><!-- --></a><strong>Globally Bind Resources</strong></p>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all"><div><p>Some NetScaler resources can be bound globally to affect the
+whole system. For example, if a compression policy is bound to an lbvserver,
+the policy affects only the traffic on that lbvserver. However, if
+bound globally, it can affect any traffic on the appliance,
+regardless of which virtual servers handle the traffic.</p>
+</div><tbody><tr><td class="cellrowborder" valign="top" width="50%"><strong>Description</strong></td>
+<td class="cellrowborder" valign="top" width="50%"><strong>Sample</strong></td>
+</tr>
+</tbody>
+<tbody><tr><td class="cellrowborder" valign="top" width="50%"><p>The NITRO classes that can be used to bind resources globally
+have names that fit the following pattern:
+&lt;featurename&gt;global_&lt;resourcetype&gt;_binding.</p>
+
+<p>For example, the class
+aaaglobal_preauthenticationpolicy_binding is used to bind
+preauthentication policies globally.</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%"><p>To create a preauthentication policy that uses a
+preauthentication action and binds the policy globally, with a
+priority of 200:</p>
+<pre class="codeblock">aaapreauthenticationaction preauth_act1;
+aaapreauthenticationpolicy preauth_pol1;
+aaaglobal_aaapreauthenticationpolicy_binding glob_binding; 
+preauth_act1 = new aaapreauthenticationaction(); 
+preauth_act1.set_name("preauth_act1");
+preauth_act1.set_preauthenticationaction("ALLOW");
+aaapreauthenticationaction.add(ns_session,preauth_act1);
+
+preauth_pol1 = new aaapreauthenticationpolicy(); 
+preauth_pol1.set_name("preauth_pol1");
+preauth_pol1.set_rule("CLIENT.APPLICATION.PROCESS(antivirus.exe) EXISTS");
+preauth_pol1.set_reqaction("preauth_act1");
+aaapreauthenticationpolicy.add(ns_session,preauth_pol1);
+
+glob_binding = new aaaglobal_aaapreauthenticationpolicy_binding();
+glob_binding.set_policy("preauth_pol1");
+glob_binding.set_priority(200);
+aaaglobal_aaapreauthenticationpolicy_binding.add(ns_session,glob_binding);</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p/>
+<p id="ns-nitro-configure-tsk__bulk"><a name="ns-nitro-configure-tsk__bulk"><!-- --></a><strong>Bulk Operations</strong></p>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all"><div><p>You can query or change the configuration of resources simultaneously by, for example, adding or updating several services or lbvservers in the same operation. This minimizes the network traffic.</p>
+<div class="p">NITRO supports the following behavior in bulk operations:<ul><li><strong>Exit.</strong> When the first error is encountered, the execution stops. The commands that were executed before the error are committed.</li>
+<li><strong>Rollback.</strong> When the first error is encountered, the execution stops. The commands that were executed before the error are rolled back. Rollback is
+only supported for add and bind commands.</li>
+<li><strong>Continue.</strong> All the commands in the list are
+executed even if some commands fail.</li>
+</ul>
+</div>
+
+</div><tbody><tr><td class="cellrowborder" valign="top" width="50%"><strong>Description</strong></td>
+<td class="cellrowborder" valign="top" width="50%"><strong>Sample</strong></td>
+</tr>
+</tbody>
+<tbody><tr><td class="cellrowborder" valign="top" width="50%"><p>Each resource class has methods that take an array of resources for adding, updating, and removing resources. To perform a bulk operation, specify the details of each operation locally and then send the details at one time to the server.</p>
+<p>You can specify the behaviour of the bulk operation while establishing a connection with the appliance by seatting the <samp class="codeph">onerror</samp> param in the <samp class="codeph">nitro_service()</samp> method.</p>
+</td>
+<td class="cellrowborder" valign="top" width="50%"><p>To add two lbvservers in one operation:</p>
+<pre class="codeblock">lbvserver[] lbs = new lbvserver[2];
+
+//Specify details of first lbvserver
+lbs[0] = new lbvserver();
+lbs[0].set_name("lbvserv1");
+lbs[0].set_servicetype("http");
+lbs[0].set_ipv46("10.70.136.5");
+lbs[0].set_port(80);
+
+//Specify details of second lbvserver
+lbs[1] = new lbvserver();
+lbs[1].set_name("lbvserv2");
+lbs[1].set_servicetype("https");
+lbs[1].set_ipv46("10.70.136.5");
+lbs[1].set_port(443);
+
+//upload the details of the lbvservers to the NITRO server
+lbvserver.add(ns_session, lbs);</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<p style="font-size: 8pt !important"/>
+</body>
+</html>

@@ -1,0 +1,214 @@
+body {color: #000000 !important;
+	background: #FFFFFF !important;
+	font-family: Verdana, Arial, "Sans Serif" !important;
+	font-size: 9pt !important; 
+	margin-left: 4pt !important;
+	margin-right: 4pt !important;
+	padding-left: 0.5em !important;
+	padding-right: 0.5em !important;
+	line-height: 127% !important;}
+
+h1 {font-weight: bold !important;
+	font-size: 9pt !important;
+    font-family: Verdana, Arial, "Sans Serif" !important;
+    margin-top: 6px !important;}
+
+h2 {font-weight: bold !important;
+	font-size: 9pt !important;
+    font-family: Verdana, Arial, "Sans Serif" !important;
+	margin-top: 16px !important;
+	margin-bottom: 4px !important;}
+
+h3 {font-weight: bold !important;
+	font-size: 9pt !important;
+    font-family: Verdana, Arial, "Sans Serif" !important;
+	margin-top: 16px !important;
+	margin-bottom: 4px !important;}
+
+li > p {font-size: 9pt !important;
+	font-family: Verdana, Arial, "Sans Serif" !important;
+	margin-top: 6px !important;
+	margin-bottom: 0px !important;
+	line-height: 127% !important;}
+
+p {font-size: 9pt !important;
+	font-family: Verdana, Arial, "Sans Serif" !important;
+	margin-top: 6px !important;
+	margin-bottom: 10px !important;
+	line-height: 127% !important;}
+
+table { }
+
+tr { 	}
+
+th {font-weight: bold !important;
+    /* Suite Solutions - RW - April 2, 2009 - make table text 9pt */
+	font-size: 9pt !important;
+	/*font-family: Verdana, Arial, "Sans Serif" !important;*/
+	text-align: left !important;
+	vertical-align: top !important;
+	border: #c0c0c0 1pt solid !important;  
+	padding: 3px !important;
+	width: auto !important; 
+	background: #c0c0c0 !important;}
+
+td {background: #f0f0f0 !important;
+    /* Suite Solutions - RW - April 2, 2009 - make table text 9pt */
+	font-size: 9pt !important;
+    /*font-family: Verdana, Arial, "Sans Serif" !important;*/
+	text-align: left !important;
+	vertical-align: top !important;
+	border: #c0c0c0 1pt solid !important; 
+	padding: 3px !important;}
+	
+.note {font-size: 9pt !important;
+	font-family: Verdana, Arial, "Sans Serif" !important;
+ 	padding-left: 1.0% !important;
+	padding-right: 1.0% !important;
+	padding-top: 0.5% !important;
+	padding-bottom: 0.5% !important;}
+
+.tip {font-size: 9pt !important;
+	font-family: Verdana, Arial, "Sans Serif" !important;
+	background-color: transparent !important;
+	padding-left: 1.0% !important;
+	padding-right: 1.0% !important;
+	padding-top: 0.5% !important;
+	padding-bottom: 0.5% !important;} 
+
+.important {font-size: 9pt !important;
+	font-family: Verdana, Arial, "Sans Serif" !important;
+	margin-top: 6px !important;
+	margin-bottom: 6px !important;
+	background-color: #FFFFCC !important;
+	padding-left: 1.0% !important;
+	padding-right: 1.0% !important;
+	padding-top: 0.5% !important;
+	padding-bottom: 0.5% !important;}
+
+.caution {font-size: 9pt !important;
+	font-weight: normal !important;
+	font-family: Verdana, Arial, "Sans Serif" !important;
+	background-color: #FFFF99 !important;
+	padding-left: 1.0% !important;
+	padding-right: 1.0% !important;
+	padding-top: 0.5% !important;
+	padding-bottom: 0.5% !important;}
+
+/* A: Links: do not change order!! */
+A:link {
+    color:  #0000FF !important; 
+    text-decoration: none !important; }
+    
+A:visited{color:  #0000FF !important; 
+    text-decoration: none !important; }
+    
+A:hover {color:  #0000FF !important; 
+    text-decoration: underline !important; }
+    
+A:active {color:  #0000FF !important; 
+    text-decoration: none !important; }
+
+/* Others in alphabetic order */
+
+cite {font-weight: normal;
+    font-style: italic!important;}
+    
+.cmdname { font-weight: bold!important;}
+
+.codeblock{font-size: 10pt !important;
+    font-family: "Courier New" !important;
+    color: #000000 !important;}
+    
+.codeph{font-family: "Courier New" !important;}
+
+dd {font-size: 9pt !important;
+	font-family: Verdana, Arial, "Sans Serif" !important;
+	margin-top: 6px !important;
+	margin-bottom: 6px !important;}
+	
+dt {font-size: 9pt !important;
+	font-family: Verdana, Arial, "Sans Serif" !important;
+	margin-top: 6px !important;
+	margin-bottom: 6px !important;}
+	
+.familylinks{margin-top: 6px !important;
+	margin-bottom: 6px !important;}
+	
+.figcap{font-weight: bold;
+    font-style: normal!important;}
+    
+.figdesc {font-weight: normal;
+    font-style: italic!important;}
+    
+.filepath {font-family: "Courier New" !important;}
+
+img { border: none}
+
+li {margin-top: 2px !important;
+	margin-bottom: 4px !important;
+	font-size: 9pt !important;
+	font-family: Verdana, Arial, "Sans Serif" !important;}
+
+ol { 	}
+
+ol.substeps { list-style-type: lower-alpha; }
+
+.option {font-weight: bold!important; }
+
+P.RelatedTopics {
+	font-weight: bold !important;
+	font-style: normal !important;
+	font-size: 9pt !important;
+	margin-top: 12px !important;}
+
+.parentlink{
+	font-size: 9pt !important;
+	font-family: Verdana, Arial, "Sans Serif" !important;
+	margin-top: 8px !important;
+	margin-bottom: 6px !important;}
+	
+.section {	
+	font-size: 9pt !important;
+	font-family: Verdana, Arial, "Sans Serif" !important;
+	margin-top: 6px !important;
+	margin-bottom: 6px !important;}
+	
+table caption{font-weight: bold;
+    font-style: normal!important;}
+    
+.tablenoborder { margin-top: 1em; margin-bottom: 1em }
+
+.term {font-weight: normal;
+    font-style: italic!important;}
+    
+.uicontrol { font-weight: bold!important; }
+
+ul {list-style-type: disc !important;
+    margin-top: 0em; margin-bottom: 2em} 
+
+ul.nomarker {list-style-type: none !important;
+	margin-left: 0.0% !important;}
+
+/* remove bullet from simple lists*/
+ul.simple {list-style-type: none !important;}
+
+.ulchildlink { margin-left: 0.0% !important; margin-top: 0em; margin-bottom: 0em; list-style-type: none !important;}
+
+.ullinks { margin-left: 0.0% !important; margin-top: 0em; margin-bottom: 0em }
+
+.userinput {font-weight: bold !important;
+    font-family: Verdana, Arial, "Sans Serif" !important;}
+
+.varname { font-style: italic!important; }
+
+.wincontrol { font-weight: bold!important;}
+
+.wintitle { font-weight: bold!important; }
+
+/* Remove borders on figures */
+.figborder { border-style: none; padding-left : 0px; border-width : 0px; padding-right : 0px; margin-top: 0em; border-color : Silver;}
+.figsides { border-left : 0px none; padding-left : 0px; border-right : 0px none; padding-right :0px; margin-top: 0em; border-color : Silver;}
+.figtop { border-top : 0px none; margin-top: 0em; border-color : Silver;}
+.figbottom { border-bottom : 0px none; border-color : Silver;}
+.figtopbot { border-top : 0px none; border-bottom : 0px none; margin-top: 0em; border-color : Silver;}

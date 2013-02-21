@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-us" xml:lang="en-us">
+<head>
+<!--(c) Copyright 2009-2012 Citrix Systems, Inc. All rights reserved.-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="DC.Type" content="task"/>
+<meta name="DC.Title" content="System Management"/>
+<meta name="DC.Relation" scheme="URI" content="ns-nitro-category-new-tsk.html"/>
+<meta name="DC.Date.Created" content=""/>
+<meta name="DC.Date.Modified" content="2012-03-14"/>
+<meta name="DC.Format" content="XHTML"/>
+<meta name="DC.Identifier" content="ns-nitro-manage-sys-new-tsk"/>
+<link rel="stylesheet" type="text/css" href="commonltr.css"/>
+<link rel="stylesheet" type="text/css" href="citrix-help.css"/>
+<title>System Management</title>
+</head>
+<body id="ns-nitro-manage-sys-new-tsk"><a name="ns-nitro-manage-sys-new-tsk"><!-- --></a>
+
+<h1 class="topictitle1">System Management</h1>
+<p style="margin-top: 12px !important">Updated: 2012-03-14</p><div><div class="section"><p>This section describes the system level operations that can be performed on the NetScaler appliance.</p>
+<div class="p"><ul><li><a href="ns-nitro-manage-sys-new-tsk.html#ns-nitro-manage-sys-new-tsk__connect">Connect to the NetScaler Appliance</a></li>
+<li><a href="ns-nitro-manage-sys-new-tsk.html#ns-nitro-manage-sys-new-tsk__features">Enable NetScaler Features</a></li>
+<li><a href="ns-nitro-manage-sys-new-tsk.html#ns-nitro-manage-sys-new-tsk__modes">Enable NetScaler Modes</a></li>
+<li><a href="ns-nitro-manage-sys-new-tsk.html#ns-nitro-manage-sys-new-tsk__saveconfig">Save Configurations</a></li>
+<li><a href="ns-nitro-manage-sys-new-tsk.html#ns-nitro-manage-sys-new-tsk__clearconfig">Clear Configurations</a></li>
+<li><a href="ns-nitro-manage-sys-new-tsk.html#ns-nitro-manage-sys-new-tsk__disconnect">Disconnect from the NetScaler Appliance</a></li>
+</ul>
+</div>
+<p>The following table describes the system level operations. For a more detailed description of the operations, see the API reference available in the <span class="filepath">&lt;NITRO_SDK_HOME&gt;/doc</span> folder.</p>
+<p id="ns-nitro-manage-sys-new-tsk__connect"><a name="ns-nitro-manage-sys-new-tsk__connect"><!-- --></a><strong>Connect to the NetScaler Appliance</strong></p>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all"><div><p>Before you perform any operation, you must authenticate and
+establish a session with the appliance.</p>
+</div><tbody><tr><td class="cellrowborder" valign="top"><strong>Description</strong></td>
+<td class="cellrowborder" valign="top"><strong>Sample</strong></td>
+</tr>
+</tbody>
+<tbody><tr><td class="cellrowborder" valign="top"><div class="p">To connect to the NetScaler appliance, do the following:
+
+<a name="ns-nitro-manage-sys-new-tsk__ol_2D5F50A451FE451C83EE70FF78F925F0"><!-- --></a><ol id="ns-nitro-manage-sys-new-tsk__ol_2D5F50A451FE451C83EE70FF78F925F0"><li> Establish a connection to the appliance by using a constructor of
+the <samp class="codeph">nitro_service</samp> class.<div class="note"><span class="notetitle">Note:</span> To access the NITRO API securely, use HTTPS as the protocol.</div>
+</li>
+<li id="ns-nitro-manage-sys-new-tsk__li_968A5773B9A64D44B956777231C5912E"><a name="ns-nitro-manage-sys-new-tsk__li_968A5773B9A64D44B956777231C5912E"><!-- --></a>Log in to the NetScaler appliance by using one of the <samp class="codeph">login()</samp>
+methods provided by the <samp class="codeph">nitro_service</samp> class.</li>
+</ol>
+
+
+
+
+
+
+</div>
+<div class="p"><div class="note"><span class="notetitle">Note:</span> By default, the connection with the appliance expires after 30 minutes of inactivity. To change the session timeout period, specify the new timeout period in the <samp class="codeph">login()</samp> method.</div>
+ </div>
+</td>
+<td class="cellrowborder" valign="top"><p>To connect to a NetScaler appliance with NSIP address 10.102.29.60 by using the using HTTP protocol:</p>
+<div class="p"><pre class="codeblock">//Specify the NetScaler appliance IP address and protocol
+nitro_service ns_session = new nitro_service("10.102.29.60","http");
+
+//Specify the login credentials
+ns_session.login("admin","verysecret");</pre>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p"><div class="note"><span class="notetitle">Note:</span> You must have a user account on that
+appliance. The configuration operations that you can perform are limited by the
+administrative role assigned to your account.</div>
+</div>
+<p/>
+<p id="ns-nitro-manage-sys-new-tsk__features"><a name="ns-nitro-manage-sys-new-tsk__features"><!-- --></a><strong>Enable NetScaler Features</strong></p>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all"><div><p>NetScaler features must be enabled explicitly before using them (except features that are enabled by default). The features that can be enabled depend on the NetScaler license.</p>
+</div><tbody><tr><td class="cellrowborder" valign="top"><strong>Description</strong></td>
+<td class="cellrowborder" valign="top"><strong>Sample</strong></td>
+</tr>
+</tbody>
+<tbody><tr><td class="cellrowborder" valign="top"><p>To enable or disable features, invoke the  <samp class="codeph">enable_features()</samp> method or  <samp class="codeph">disable_features()</samp> method.</p>
+
+<p>To get a list of features available or features currently
+enabled, invoke the <samp class="codeph">get_features()</samp> method or <samp class="codeph">get_enabled_features()</samp> method.</p>
+</td>
+<td class="cellrowborder" valign="top"><p>To enable the load balancing feature:</p>
+<div class="p"><pre class="codeblock">ns_session.enable_features("lb");</pre>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p/>
+<p id="ns-nitro-manage-sys-new-tsk__modes"><a name="ns-nitro-manage-sys-new-tsk__modes"><!-- --></a><strong>Enable NetScaler Modes</strong></p>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all"><div><p>Modes represent NetScaler capabilities that need to be enabled in order to take effect. Modes are not related to licensing. They are capabilities that affect traffic processing, and they can be turned on or off as required.</p>
+</div><tbody><tr><td class="cellrowborder" valign="top" width="50%"><strong>Description</strong></td>
+<td class="cellrowborder" valign="top" width="50%"><strong>Sample</strong></td>
+</tr>
+</tbody>
+<tbody><tr><td class="cellrowborder" valign="top" width="50%"><p>To enable or disable modes, invoke the  <samp class="codeph">enable_modes()</samp> method or  <samp class="codeph">disable_modes()</samp> method.</p>
+
+<p> To get a list of the modes available or modes
+currently enabled, invoke the  <samp class="codeph">get_modes()</samp> method or  <samp class="codeph">get_enabled_modes()</samp> method.</p>
+
+</td>
+<td class="cellrowborder" valign="top" width="50%"><p>To enable L2 mode:</p>
+<div class="p"><pre class="codeblock">ns_session.enable_modes("L2");</pre>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p/>
+<p id="ns-nitro-manage-sys-new-tsk__saveconfig"><a name="ns-nitro-manage-sys-new-tsk__saveconfig"><!-- --></a><strong>Save Configurations</strong></p>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all"><div><p>NetScaler configurations must be saved before disconnecting. Otherwise, the configurations do not persist.</p>
+</div><tbody><tr><td class="cellrowborder" valign="top" width="50%"><strong>Description</strong></td>
+<td class="cellrowborder" valign="top" width="50%"><strong>Sample</strong></td>
+</tr>
+</tbody>
+<tbody><tr><td class="cellrowborder" valign="top" width="50%"><p>To
+save the current configurations on the appliance, invoke
+the <samp class="codeph">save_config()</samp> method.</p>
+
+</td>
+<td class="cellrowborder" valign="top" width="50%"><p>To save NetScaler configurations:</p>
+<div class="p"><pre class="codeblock">ns_session.save_config();</pre>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p/>
+<p id="ns-nitro-manage-sys-new-tsk__clearconfig"><a name="ns-nitro-manage-sys-new-tsk__clearconfig"><!-- --></a><strong>Clear Configurations</strong></p>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all"><div><p>NetScaler configurations can be cleared if you do not want the changes to persist. You can clear basic configurations, extended configurations, or all configurations.</p>
+</div><tbody><tr><td class="cellrowborder" valign="top" width="50%"><strong>Description</strong></td>
+<td class="cellrowborder" valign="top" width="50%"><strong>Sample</strong></td>
+</tr>
+</tbody>
+<tbody><tr><td class="cellrowborder" valign="top" width="50%"><p>To
+clear the current configurations from the appliance, invoke
+the <samp class="codeph">clear_config()</samp> method, including a Boolean "true" as a
+parameter to indicate that you want to force clearing the
+configuration even if it has not been saved.</p>
+<p>You can also specify whether you want to clear
+basic, extended, or full configuration, by passing a string as the
+second string parameter for the <samp class="codeph">clear_config()</samp> method.</p>
+
+</td>
+<td class="cellrowborder" valign="top" width="50%"><p>To clear all NetScaler configurations:</p>
+<div class="p"><pre class="codeblock">ns_session.clear_config();</pre>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p"><div class="note"><span class="notetitle">Note:</span> If you are using HTTPS to connect to the appliance, clearing the configuration also clears the SSL configuration on the appliance, which results in immediate disconnection.</div>
+</div>
+<p/>
+<p id="ns-nitro-manage-sys-new-tsk__disconnect"><a name="ns-nitro-manage-sys-new-tsk__disconnect"><!-- --></a><strong>Disconnect from the NetScaler Appliance</strong></p>
+
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all"><div><p>When the application does not need to interact with the
+appliance, you must log off the appliance.</p>
+</div><tbody><tr><td class="cellrowborder" valign="top" width="50%"><strong>Description</strong></td>
+<td class="cellrowborder" valign="top" width="50%"><strong>Sample</strong></td>
+</tr>
+</tbody>
+<tbody><tr><td class="cellrowborder" valign="top" width="50%"><p>To disconnect from the NetScaler appliance, invoke the  <samp class="codeph">logout()</samp>method.</p>
+
+</td>
+<td class="cellrowborder" valign="top" width="50%"><p>To disconnect from a NetScaler appliance:</p>
+<pre class="codeblock">
+ns_session.logout();
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p"><div class="note"><span class="notetitle">Note:</span> Make sure that you have saved the configurations before performing this operation.</div>
+</div>
+</div>
+</div>
+
+<p style="font-size: 8pt !important"/>
+</body>
+</html>
