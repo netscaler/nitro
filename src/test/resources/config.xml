@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config>
+	<netscaler id="2001">
+		<ip>10.1.1.1</ip>
+		<username>nsroot</username>
+		<password>nsroot</password>
+	</netscaler>
+</config>
