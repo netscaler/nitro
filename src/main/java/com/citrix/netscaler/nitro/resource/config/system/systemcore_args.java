@@ -26,7 +26,7 @@ public class systemcore_args
 
 	/**
 	* <pre>
-	* Specify Data source name.
+	* Specifies the source which contains all the stored counter values.
 	* </pre>
 	*/
 	public void set_datasource(String datasource) throws Exception{
@@ -35,7 +35,7 @@ public class systemcore_args
 
 	/**
 	* <pre>
-	* Specify Data source name.
+	* Specifies the source which contains all the stored counter values.
 	* </pre>
 	*/
 	public String get_datasource() throws Exception {

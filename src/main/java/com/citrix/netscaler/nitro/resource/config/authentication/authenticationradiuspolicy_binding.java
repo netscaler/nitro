@@ -16,10 +16,10 @@
 
 package com.citrix.netscaler.nitro.resource.config.authentication;
 
-import com.citrix.netscaler.nitro.resource.config.authentication.authenticationradiuspolicy_vpnglobal_binding;
 import com.citrix.netscaler.nitro.resource.config.authentication.authenticationradiuspolicy_vpnvserver_binding;
 import com.citrix.netscaler.nitro.resource.config.authentication.authenticationradiuspolicy_systemglobal_binding;
 import com.citrix.netscaler.nitro.resource.config.authentication.authenticationradiuspolicy_authenticationvserver_binding;
+import com.citrix.netscaler.nitro.resource.config.authentication.authenticationradiuspolicy_vpnglobal_binding;
 import com.citrix.netscaler.nitro.resource.base.*;
 import com.citrix.netscaler.nitro.service.nitro_service;
 import com.citrix.netscaler.nitro.service.options;
@@ -37,14 +37,14 @@ class authenticationradiuspolicy_binding_response extends base_response
 public class authenticationradiuspolicy_binding extends base_resource
 {
 	private String name;
-	private authenticationradiuspolicy_vpnglobal_binding	authenticationradiuspolicy_vpnglobal_binding[] = null;
 	private authenticationradiuspolicy_vpnvserver_binding	authenticationradiuspolicy_vpnvserver_binding[] = null;
 	private authenticationradiuspolicy_systemglobal_binding	authenticationradiuspolicy_systemglobal_binding[] = null;
 	private authenticationradiuspolicy_authenticationvserver_binding	authenticationradiuspolicy_authenticationvserver_binding[] = null;
+	private authenticationradiuspolicy_vpnglobal_binding	authenticationradiuspolicy_vpnglobal_binding[] = null;
 
 	/**
 	* <pre>
-	* The name of the policy. If no name is provided, all the configured RADIUS policies will be displayed.<br> Minimum length =  1
+	* Name of the RADIUS authentication policy.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -53,7 +53,7 @@ public class authenticationradiuspolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the policy. If no name is provided, all the configured RADIUS policies will be displayed.<br> Minimum length =  1
+	* Name of the RADIUS authentication policy.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {

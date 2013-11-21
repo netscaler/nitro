@@ -48,7 +48,7 @@ public class sslcert extends base_resource
 
 	/**
 	* <pre>
-	* The name of the generated certificate file. The default path of the certificate file is /nsconfig/ssl/.<br> Maximum length =  63
+	* Name for and, optionally, path to the generated certificate file. /nsconfig/ssl/ is the default path.<br> Maximum length =  63
 	* </pre>
 	*/
 	public void set_certfile(String certfile) throws Exception{
@@ -57,7 +57,7 @@ public class sslcert extends base_resource
 
 	/**
 	* <pre>
-	* The name of the generated certificate file. The default path of the certificate file is /nsconfig/ssl/.<br> Maximum length =  63
+	* Name for and, optionally, path to the generated certificate file. /nsconfig/ssl/ is the default path.<br> Maximum length =  63
 	* </pre>
 	*/
 	public String get_certfile() throws Exception {
@@ -66,7 +66,7 @@ public class sslcert extends base_resource
 
 	/**
 	* <pre>
-	* The Certificate Signing Request (CSR) file that is used to generate the certificate.  This file is created using the "create ssl certreq" command or an existing CSR. The default input path for the CSR file is /nsconfig/ssl/.<br> Maximum length =  63
+	* Name for and, optionally, path to the certificate-signing request (CSR). /nsconfig/ssl/ is the default path.<br> Maximum length =  63
 	* </pre>
 	*/
 	public void set_reqfile(String reqfile) throws Exception{
@@ -75,7 +75,7 @@ public class sslcert extends base_resource
 
 	/**
 	* <pre>
-	* The Certificate Signing Request (CSR) file that is used to generate the certificate.  This file is created using the "create ssl certreq" command or an existing CSR. The default input path for the CSR file is /nsconfig/ssl/.<br> Maximum length =  63
+	* Name for and, optionally, path to the certificate-signing request (CSR). /nsconfig/ssl/ is the default path.<br> Maximum length =  63
 	* </pre>
 	*/
 	public String get_reqfile() throws Exception {
@@ -84,21 +84,11 @@ public class sslcert extends base_resource
 
 	/**
 	* <pre>
-	* The type of the certificate to be generated.
-
-	ROOT_CERT : The certificate generated will be a self-signed Root-CA certificate. For this, you need to specify the -keyfile parameter. The generated Root-CA certificate can be used for signing end-user certificates (Client/Server) or to create Intermediate-CA certificates.
-
-	INTM_CERT : The certificate generated will be an Intermediate-CA certificate. For this, you need to specify the following parameters: -CAcert , -CAkey, and -CAserial.
-
-NOTE:	The three parameters are also mandatory for the CLNT_CERT or SRVR_CERT certificate types.
-
-	CLNT_CERT : The certificate generated will be an end-user client certificate. This can be used in a Client-Authentication setup.
-
-	SRVR_CERT : The certificate generated will be an end-user Server certificate. This can be used as an SSL server certificate on the backend SSL servers for an SSL backend-encryption setup with the system.
-
-		NOTE:	Avoid using the Server certificate (generated above) for a front-end SSL virtual server (or SSL service) on a system or on any frontend SSL server if the certificate is signed by System. The same is true with System generated Intermediate-CA or Root-CA certificate. The reason being, the System generated CA certificates will not be present in browsers (such as IE, Netscape, and other browsers) by default. So during the SSL handshake the Server Certificate verification will fail. Browsers generally display a warning message and prompt the user to either continue with the SSL handshake or terminate it.
-
-			If the System generated CA certificates are installed in the browsers as trusted CA certificates, the SSL handshake will proceed without any errors or warnings.<br> Possible values = ROOT_CERT, INTM_CERT, CLNT_CERT, SRVR_CERT
+	* Type of certificate to generate. Specify one of the following:
+* ROOT_CERT - Self-signed Root-CA certificate. You must specify the key file name. The generated Root-CA certificate can be used for signing end-user client or server certificates or to create Intermediate-CA certificates.
+* INTM_CERT - Intermediate-CA certificate. 
+* CLNT_CERT - End-user client certificate used for client authentication.
+* SRVR_CERT - SSL server certificate used on SSL servers for end-to-end encryption.<br> Possible values = ROOT_CERT, INTM_CERT, CLNT_CERT, SRVR_CERT
 	* </pre>
 	*/
 	public void set_certtype(String certtype) throws Exception{
@@ -107,21 +97,11 @@ NOTE:	The three parameters are also mandatory for the CLNT_CERT or SRVR_CERT cer
 
 	/**
 	* <pre>
-	* The type of the certificate to be generated.
-
-	ROOT_CERT : The certificate generated will be a self-signed Root-CA certificate. For this, you need to specify the -keyfile parameter. The generated Root-CA certificate can be used for signing end-user certificates (Client/Server) or to create Intermediate-CA certificates.
-
-	INTM_CERT : The certificate generated will be an Intermediate-CA certificate. For this, you need to specify the following parameters: -CAcert , -CAkey, and -CAserial.
-
-NOTE:	The three parameters are also mandatory for the CLNT_CERT or SRVR_CERT certificate types.
-
-	CLNT_CERT : The certificate generated will be an end-user client certificate. This can be used in a Client-Authentication setup.
-
-	SRVR_CERT : The certificate generated will be an end-user Server certificate. This can be used as an SSL server certificate on the backend SSL servers for an SSL backend-encryption setup with the system.
-
-		NOTE:	Avoid using the Server certificate (generated above) for a front-end SSL virtual server (or SSL service) on a system or on any frontend SSL server if the certificate is signed by System. The same is true with System generated Intermediate-CA or Root-CA certificate. The reason being, the System generated CA certificates will not be present in browsers (such as IE, Netscape, and other browsers) by default. So during the SSL handshake the Server Certificate verification will fail. Browsers generally display a warning message and prompt the user to either continue with the SSL handshake or terminate it.
-
-			If the System generated CA certificates are installed in the browsers as trusted CA certificates, the SSL handshake will proceed without any errors or warnings.<br> Possible values = ROOT_CERT, INTM_CERT, CLNT_CERT, SRVR_CERT
+	* Type of certificate to generate. Specify one of the following:
+* ROOT_CERT - Self-signed Root-CA certificate. You must specify the key file name. The generated Root-CA certificate can be used for signing end-user client or server certificates or to create Intermediate-CA certificates.
+* INTM_CERT - Intermediate-CA certificate. 
+* CLNT_CERT - End-user client certificate used for client authentication.
+* SRVR_CERT - SSL server certificate used on SSL servers for end-to-end encryption.<br> Possible values = ROOT_CERT, INTM_CERT, CLNT_CERT, SRVR_CERT
 	* </pre>
 	*/
 	public String get_certtype() throws Exception {
@@ -130,8 +110,8 @@ NOTE:	The three parameters are also mandatory for the CLNT_CERT or SRVR_CERT cer
 
 	/**
 	* <pre>
-	* The input keyFile to sign the certificate being generated. This keyFile is created using the "create ssl rsakey" or "create ssl dsakey" commands, or an existing RSA/DSA key. This file is required only when creating a self-signed Root-CA certificate. The default input path for the keyFile is /nsconfig/ssl/.
-	Note: If the input key specified is an encrypted key, the user will be prompted to enter the PEM pass-phrase that was used for encrypting the key.<br> Maximum length =  63
+	* Name for and, optionally, path to the private key. You can either use an existing RSA or DSA key that you own or create a new private key on the NetScaler appliance. This file is required only when creating a self-signed Root-CA certificate. The key file is stored in the /nsconfig/ssl directory by default.                    
+If the input key specified is an encrypted key, you are prompted to enter the PEM pass phrase that was used for encrypting the key.<br> Maximum length =  63
 	* </pre>
 	*/
 	public void set_keyfile(String keyfile) throws Exception{
@@ -140,8 +120,8 @@ NOTE:	The three parameters are also mandatory for the CLNT_CERT or SRVR_CERT cer
 
 	/**
 	* <pre>
-	* The input keyFile to sign the certificate being generated. This keyFile is created using the "create ssl rsakey" or "create ssl dsakey" commands, or an existing RSA/DSA key. This file is required only when creating a self-signed Root-CA certificate. The default input path for the keyFile is /nsconfig/ssl/.
-	Note: If the input key specified is an encrypted key, the user will be prompted to enter the PEM pass-phrase that was used for encrypting the key.<br> Maximum length =  63
+	* Name for and, optionally, path to the private key. You can either use an existing RSA or DSA key that you own or create a new private key on the NetScaler appliance. This file is required only when creating a self-signed Root-CA certificate. The key file is stored in the /nsconfig/ssl directory by default.                    
+If the input key specified is an encrypted key, you are prompted to enter the PEM pass phrase that was used for encrypting the key.<br> Maximum length =  63
 	* </pre>
 	*/
 	public String get_keyfile() throws Exception {
@@ -150,9 +130,7 @@ NOTE:	The three parameters are also mandatory for the CLNT_CERT or SRVR_CERT cer
 
 	/**
 	* <pre>
-	* The format for the input key file:
-	PEM : Privacy Enhanced Mail
-	DER : Distinguished Encoding Rule.<br> Default value: FORMAT_PEM<br> Possible values = DER, PEM
+	* Format in which the key is stored on the appliance.<br> Default value: PEM<br> Possible values = DER, PEM
 	* </pre>
 	*/
 	public void set_keyform(String keyform) throws Exception{
@@ -161,9 +139,7 @@ NOTE:	The three parameters are also mandatory for the CLNT_CERT or SRVR_CERT cer
 
 	/**
 	* <pre>
-	* The format for the input key file:
-	PEM : Privacy Enhanced Mail
-	DER : Distinguished Encoding Rule.<br> Default value: FORMAT_PEM<br> Possible values = DER, PEM
+	* Format in which the key is stored on the appliance.<br> Default value: PEM<br> Possible values = DER, PEM
 	* </pre>
 	*/
 	public String get_keyform() throws Exception {
@@ -190,7 +166,7 @@ NOTE:	The three parameters are also mandatory for the CLNT_CERT or SRVR_CERT cer
 
 	/**
 	* <pre>
-	* The number of days for which the certificate will be valid. The certificate is valid from the time and day (system time) of the creation, to the number of days specified in the -days field.The maximum value allowed is 3650.<br> Default value: 365<br> Minimum value =  1<br> Maximum value =  3650
+	* Number of days for which the certificate will be valid, beginning with the time and day (system time) of creation.<br> Default value: 365<br> Minimum value =  1<br> Maximum value =  3650
 	* </pre>
 	*/
 	public void set_days(long days) throws Exception {
@@ -199,7 +175,7 @@ NOTE:	The three parameters are also mandatory for the CLNT_CERT or SRVR_CERT cer
 
 	/**
 	* <pre>
-	* The number of days for which the certificate will be valid. The certificate is valid from the time and day (system time) of the creation, to the number of days specified in the -days field.The maximum value allowed is 3650.<br> Default value: 365<br> Minimum value =  1<br> Maximum value =  3650
+	* Number of days for which the certificate will be valid, beginning with the time and day (system time) of creation.<br> Default value: 365<br> Minimum value =  1<br> Maximum value =  3650
 	* </pre>
 	*/
 	public void set_days(Long days) throws Exception{
@@ -208,7 +184,7 @@ NOTE:	The three parameters are also mandatory for the CLNT_CERT or SRVR_CERT cer
 
 	/**
 	* <pre>
-	* The number of days for which the certificate will be valid. The certificate is valid from the time and day (system time) of the creation, to the number of days specified in the -days field.The maximum value allowed is 3650.<br> Default value: 365<br> Minimum value =  1<br> Maximum value =  3650
+	* Number of days for which the certificate will be valid, beginning with the time and day (system time) of creation.<br> Default value: 365<br> Minimum value =  1<br> Maximum value =  3650
 	* </pre>
 	*/
 	public Long get_days() throws Exception {
@@ -217,9 +193,7 @@ NOTE:	The three parameters are also mandatory for the CLNT_CERT or SRVR_CERT cer
 
 	/**
 	* <pre>
-	* The output certificate format:
-	PEM: Privacy Enhanced Mail
-	DER: Distinguished Encoding Rule.<br> Default value: FORMAT_PEM<br> Possible values = DER, PEM
+	* Format in which the certificate is stored on the appliance.<br> Default value: PEM<br> Possible values = DER, PEM
 	* </pre>
 	*/
 	public void set_certform(String certform) throws Exception{
@@ -228,9 +202,7 @@ NOTE:	The three parameters are also mandatory for the CLNT_CERT or SRVR_CERT cer
 
 	/**
 	* <pre>
-	* The output certificate format:
-	PEM: Privacy Enhanced Mail
-	DER: Distinguished Encoding Rule.<br> Default value: FORMAT_PEM<br> Possible values = DER, PEM
+	* Format in which the certificate is stored on the appliance.<br> Default value: PEM<br> Possible values = DER, PEM
 	* </pre>
 	*/
 	public String get_certform() throws Exception {
@@ -239,7 +211,7 @@ NOTE:	The three parameters are also mandatory for the CLNT_CERT or SRVR_CERT cer
 
 	/**
 	* <pre>
-	* The CA certificate file that will issue and sign the Intermediate-CA certificate or the end-user certificates (Client/Server). The default input path for the CA certificate file is /nsconfig/ssl/.<br> Maximum length =  63
+	* Name of the CA certificate file that issues and signs the Intermediate-CA certificate or the end-user client and server certificates.<br> Maximum length =  63
 	* </pre>
 	*/
 	public void set_cacert(String cacert) throws Exception{
@@ -248,7 +220,7 @@ NOTE:	The three parameters are also mandatory for the CLNT_CERT or SRVR_CERT cer
 
 	/**
 	* <pre>
-	* The CA certificate file that will issue and sign the Intermediate-CA certificate or the end-user certificates (Client/Server). The default input path for the CA certificate file is /nsconfig/ssl/.<br> Maximum length =  63
+	* Name of the CA certificate file that issues and signs the Intermediate-CA certificate or the end-user client and server certificates.<br> Maximum length =  63
 	* </pre>
 	*/
 	public String get_cacert() throws Exception {
@@ -257,9 +229,7 @@ NOTE:	The three parameters are also mandatory for the CLNT_CERT or SRVR_CERT cer
 
 	/**
 	* <pre>
-	* The format of the input CA certificate file:
-	PEM: Privacy Enhanced Mail
-	DER: Distinguished Encoding Rule.<br> Default value: FORMAT_PEM<br> Possible values = DER, PEM
+	* Format of the CA certificate.<br> Default value: PEM<br> Possible values = DER, PEM
 	* </pre>
 	*/
 	public void set_cacertform(String cacertform) throws Exception{
@@ -268,9 +238,7 @@ NOTE:	The three parameters are also mandatory for the CLNT_CERT or SRVR_CERT cer
 
 	/**
 	* <pre>
-	* The format of the input CA certificate file:
-	PEM: Privacy Enhanced Mail
-	DER: Distinguished Encoding Rule.<br> Default value: FORMAT_PEM<br> Possible values = DER, PEM
+	* Format of the CA certificate.<br> Default value: PEM<br> Possible values = DER, PEM
 	* </pre>
 	*/
 	public String get_cacertform() throws Exception {
@@ -279,8 +247,7 @@ NOTE:	The three parameters are also mandatory for the CLNT_CERT or SRVR_CERT cer
 
 	/**
 	* <pre>
-	* The CA key file that will be used to sign the Intermediate-CA certificate or the end-user certificates (Client/Server). The default input path for the CA key file is /nsconfig/ssl/.
-	Note: If the CA key file is password protected, the user will be prompted to enter the pass-phrase used for encrypting the key.<br> Maximum length =  63
+	* Private key, associated with the CA certificate that is used to sign the Intermediate-CA certificate or the end-user client and server certificate. If the CA key file is password protected, the user is prompted to enter the pass phrase that was used to encrypt the key.<br> Maximum length =  63
 	* </pre>
 	*/
 	public void set_cakey(String cakey) throws Exception{
@@ -289,8 +256,7 @@ NOTE:	The three parameters are also mandatory for the CLNT_CERT or SRVR_CERT cer
 
 	/**
 	* <pre>
-	* The CA key file that will be used to sign the Intermediate-CA certificate or the end-user certificates (Client/Server). The default input path for the CA key file is /nsconfig/ssl/.
-	Note: If the CA key file is password protected, the user will be prompted to enter the pass-phrase used for encrypting the key.<br> Maximum length =  63
+	* Private key, associated with the CA certificate that is used to sign the Intermediate-CA certificate or the end-user client and server certificate. If the CA key file is password protected, the user is prompted to enter the pass phrase that was used to encrypt the key.<br> Maximum length =  63
 	* </pre>
 	*/
 	public String get_cakey() throws Exception {
@@ -299,9 +265,7 @@ NOTE:	The three parameters are also mandatory for the CLNT_CERT or SRVR_CERT cer
 
 	/**
 	* <pre>
-	* The format of the input CA key file:
-	PEM: Privacy Enhanced Mail
-	DER: Distinguished Encoding Rule.<br> Default value: FORMAT_PEM<br> Possible values = DER, PEM
+	* Format for the CA certificate.<br> Default value: PEM<br> Possible values = DER, PEM
 	* </pre>
 	*/
 	public void set_cakeyform(String cakeyform) throws Exception{
@@ -310,9 +274,7 @@ NOTE:	The three parameters are also mandatory for the CLNT_CERT or SRVR_CERT cer
 
 	/**
 	* <pre>
-	* The format of the input CA key file:
-	PEM: Privacy Enhanced Mail
-	DER: Distinguished Encoding Rule.<br> Default value: FORMAT_PEM<br> Possible values = DER, PEM
+	* Format for the CA certificate.<br> Default value: PEM<br> Possible values = DER, PEM
 	* </pre>
 	*/
 	public String get_cakeyform() throws Exception {
@@ -321,9 +283,7 @@ NOTE:	The three parameters are also mandatory for the CLNT_CERT or SRVR_CERT cer
 
 	/**
 	* <pre>
-	* The Serial number file maintained for the CA certificate. This will contain the serial number of the next certificate to be issued/signed by the CA (-CAcert). If the specified file does not exist, a new file will be created. The default input path for the CAserial file name is /nsconfig/ssl/.
-
-	Note: Specify the proper path of the existing serial file; else a new serial file will be created. This may change the certificate serial numbers assigned by the CA certificate to each of the certificate it signs.<br> Maximum length =  63
+	* Serial number file maintained for the CA certificate. This file contains the serial number of the next certificate to be issued or signed by the CA. If the specified file does not exist, a new file is created, with /nsconfig/ssl/ as the default path. If you do not specify a proper path for the existing serial file, a new serial file is created. This might change the certificate serial numbers assigned by the CA certificate to each of the certificates it signs.<br> Maximum length =  63
 	* </pre>
 	*/
 	public void set_caserial(String caserial) throws Exception{
@@ -332,9 +292,7 @@ NOTE:	The three parameters are also mandatory for the CLNT_CERT or SRVR_CERT cer
 
 	/**
 	* <pre>
-	* The Serial number file maintained for the CA certificate. This will contain the serial number of the next certificate to be issued/signed by the CA (-CAcert). If the specified file does not exist, a new file will be created. The default input path for the CAserial file name is /nsconfig/ssl/.
-
-	Note: Specify the proper path of the existing serial file; else a new serial file will be created. This may change the certificate serial numbers assigned by the CA certificate to each of the certificate it signs.<br> Maximum length =  63
+	* Serial number file maintained for the CA certificate. This file contains the serial number of the next certificate to be issued or signed by the CA. If the specified file does not exist, a new file is created, with /nsconfig/ssl/ as the default path. If you do not specify a proper path for the existing serial file, a new serial file is created. This might change the certificate serial numbers assigned by the CA certificate to each of the certificates it signs.<br> Maximum length =  63
 	* </pre>
 	*/
 	public String get_caserial() throws Exception {

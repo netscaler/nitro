@@ -33,7 +33,7 @@ class scpolicy_response extends base_response
 public class scpolicy_stats extends base_resource
 {
 	private String name;
-	private Long sctotalserverttlb;
+	private String clearstats;
 	private Long avgservertransactiontime;
 	private Long avgservertransactiontimerate;
 	private Long scaverageclientttlb;
@@ -55,6 +55,7 @@ public class scpolicy_stats extends base_resource
 	private Long totclienttransaction;
 	private Long clienttransactionrate;
 	private Long sctotalservertransactions;
+	private Long scservertransactionsrate;
 	private Long sctotalrequestsreceived;
 	private Long screquestsreceivedrate;
 	private Long sctotalrequestbytes;
@@ -66,7 +67,7 @@ public class scpolicy_stats extends base_resource
 
 	/**
 	* <pre>
-	* The name of the SC policy for which statistics will be displayed. If not given stati        stics are shown for all SC policies.
+	* Name of the policy about which to display statistics. To display statistics about all SureConnect policies, do not set this parameter.
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -75,11 +76,29 @@ public class scpolicy_stats extends base_resource
 
 	/**
 	* <pre>
-	* The name of the SC policy for which statistics will be displayed. If not given stati        stics are shown for all SC policies.<br> Minimum length =  1<br> Maximum length =  31
+	* Name of the policy about which to display statistics. To display statistics about all SureConnect policies, do not set this parameter.<br> Minimum length =  1<br> Maximum length =  31
 	* </pre>
 	*/
 	public String get_name() throws Exception {
 		return this.name;
+	}
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters
+	* </pre>
+	*/
+	public void set_clearstats(String clearstats) throws Exception{
+		this.clearstats = clearstats;
+	}
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters.<br> Possible values = basic, full
+	* </pre>
+	*/
+	public String get_clearstats() throws Exception {
+		return this.clearstats;
 	}
 
 	/**
@@ -129,7 +148,7 @@ public class scpolicy_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of clients currently  allowed a server connection by this SureConnect policy.
+	* Rate (/s) counter for sccurrentclientconnections
 	* </pre>
 	*/
 	public Long get_sccurrentclientconnectionsrate() throws Exception {
@@ -147,7 +166,7 @@ public class scpolicy_stats extends base_resource
 
 	/**
 	* <pre>
-	* Current number of open connections to the servers matching this policy.
+	* Rate (/s) counter for totopenconn
 	* </pre>
 	*/
 	public Long get_openconnrate() throws Exception {
@@ -156,7 +175,7 @@ public class scpolicy_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of client transactions processed by this SureConnect policy.
+	* Rate (/s) counter for totclienttransaction
 	* </pre>
 	*/
 	public Long get_clienttransactionrate() throws Exception {
@@ -165,7 +184,7 @@ public class scpolicy_stats extends base_resource
 
 	/**
 	* <pre>
-	* Value of the currently estimated waiting time in seconds for the configured URL.
+	* Rate (/s) counter for sccurrentwaitingtime
 	* </pre>
 	*/
 	public Long get_sccurrentwaitingtimerate() throws Exception {
@@ -183,7 +202,7 @@ public class scpolicy_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of clients that were allowed a server connection by this SureConnect policy.
+	* Rate (/s) counter for sctotalclientconnections
 	* </pre>
 	*/
 	public Long get_scclientconnectionsrate() throws Exception {
@@ -192,7 +211,7 @@ public class scpolicy_stats extends base_resource
 
 	/**
 	* <pre>
-	* Average value of the client Time-To-Last-Byte in seconds for this SureConnect policy.
+	* Rate (/s) counter for scaverageclientttlb
 	* </pre>
 	*/
 	public Long get_scaverageclientttlbrate() throws Exception {
@@ -206,6 +225,15 @@ public class scpolicy_stats extends base_resource
 	*/
 	public Long get_totclienttransaction() throws Exception {
 		return this.totclienttransaction;
+	}
+
+	/**
+	* <pre>
+	* Rate (/s) counter for sctotalservertransactions
+	* </pre>
+	*/
+	public Long get_scservertransactionsrate() throws Exception {
+		return this.scservertransactionsrate;
 	}
 
 	/**
@@ -228,7 +256,7 @@ public class scpolicy_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of requests received by this SureConnect policy.
+	* Rate (/s) counter for sctotalrequestsreceived
 	* </pre>
 	*/
 	public Long get_screquestsreceivedrate() throws Exception {
@@ -237,7 +265,7 @@ public class scpolicy_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of response bytes received by this SureConnect policy.
+	* Rate (/s) counter for sctotalresponsebytes
 	* </pre>
 	*/
 	public Long get_scresponsebytesrate() throws Exception {
@@ -255,16 +283,7 @@ public class scpolicy_stats extends base_resource
 
 	/**
 	* <pre>
-	* Server Time-To-Last-Byte in seconds calculated for this SureConnect policy.
-	* </pre>
-	*/
-	public Long get_sctotalserverttlb() throws Exception {
-		return this.sctotalserverttlb;
-	}
-
-	/**
-	* <pre>
-	* Total number of request bytes received by this SureConnect policy.
+	* Rate (/s) counter for sctotalrequestbytes
 	* </pre>
 	*/
 	public Long get_screquestbytesrate() throws Exception {
@@ -291,7 +310,7 @@ public class scpolicy_stats extends base_resource
 
 	/**
 	* <pre>
-	* Average server transaction time in seconds for this SureConnect Policy.
+	* Rate (/s) counter for avgservertransactiontime
 	* </pre>
 	*/
 	public Long get_avgservertransactiontimerate() throws Exception {
@@ -300,7 +319,7 @@ public class scpolicy_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of server responses received by this SureConnect policy.
+	* Rate (/s) counter for sctotalresponsesreceived
 	* </pre>
 	*/
 	public Long get_scresponsesreceivedrate() throws Exception {
@@ -318,7 +337,7 @@ public class scpolicy_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of server connections that were established through this SureConnect policy.
+	* Rate (/s) counter for sctotalserverconnections
 	* </pre>
 	*/
 	public Long get_scserverconnectionsrate() throws Exception {
@@ -345,7 +364,7 @@ public class scpolicy_stats extends base_resource
 
 	/**
 	* <pre>
-	* Current number of SureConnect priority clients that are waiting for a server connection.
+	* Rate (/s) counter for sccurrentwaitingclients
 	* </pre>
 	*/
 	public Long get_sccurrentwaitingclientsrate() throws Exception {
@@ -414,4 +433,8 @@ public class scpolicy_stats extends base_resource
 		return response;
 	}
 
+	public static class clearstatsEnum {
+		public static final String basic = "basic";
+		public static final String full = "full";
+	}
 }

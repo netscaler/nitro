@@ -86,7 +86,7 @@ public class nstimer extends base_resource
 
 	/**
 	* <pre>
-	* Timer interval unit.<br> Default value: NSTMUNT_SEC<br> Possible values = 
+	* Timer interval unit.<br> Default value: SEC<br> Possible values = SEC, MIN
 	* </pre>
 	*/
 	public void set_unit(String unit) throws Exception{
@@ -95,7 +95,7 @@ public class nstimer extends base_resource
 
 	/**
 	* <pre>
-	* Timer interval unit.<br> Default value: NSTMUNT_SEC<br> Possible values = 
+	* Timer interval unit.<br> Default value: SEC<br> Possible values = SEC, MIN
 	* </pre>
 	*/
 	public String get_unit() throws Exception {
@@ -474,4 +474,8 @@ public class nstimer extends base_resource
 		return 0;
 	}
 
+	public static class unitEnum {
+		public static final String SEC = "SEC";
+		public static final String MIN = "MIN";
+	}
 }

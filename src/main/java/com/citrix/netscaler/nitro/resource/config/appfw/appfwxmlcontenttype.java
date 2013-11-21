@@ -60,7 +60,7 @@ public class appfwxmlcontenttype extends base_resource
 
 	/**
 	* <pre>
-	* Is field name a regular expression?.<br> Default value: NS_NOTREGEX<br> Possible values = REGEX, NOTREGEX
+	* Is field name a regular expression?.<br> Default value: NOTREGEX<br> Possible values = REGEX, NOTREGEX
 	* </pre>
 	*/
 	public void set_isregex(String isregex) throws Exception{
@@ -69,7 +69,7 @@ public class appfwxmlcontenttype extends base_resource
 
 	/**
 	* <pre>
-	* Is field name a regular expression?.<br> Default value: NS_NOTREGEX<br> Possible values = REGEX, NOTREGEX
+	* Is field name a regular expression?.<br> Default value: NOTREGEX<br> Possible values = REGEX, NOTREGEX
 	* </pre>
 	*/
 	public String get_isregex() throws Exception {

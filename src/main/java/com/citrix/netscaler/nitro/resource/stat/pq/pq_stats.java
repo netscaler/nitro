@@ -29,6 +29,7 @@ class pq_response extends base_response
 
 public class pq_stats extends base_resource
 {
+	private String clearstats;
 	private Long pqtotalpolicymatches;
 	private Long pqpolicymatchesrate;
 	private Long pqtotalthresholdfailed;
@@ -42,7 +43,25 @@ public class pq_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of priority 2 requests that the Netscaler appliance received.
+	* Clear the statsistics / counters
+	* </pre>
+	*/
+	public void set_clearstats(String clearstats) throws Exception{
+		this.clearstats = clearstats;
+	}
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters.<br> Possible values = basic, full
+	* </pre>
+	*/
+	public String get_clearstats() throws Exception {
+		return this.clearstats;
+	}
+
+	/**
+	* <pre>
+	* Rate (/s) counter for pqpriority2requests
 	* </pre>
 	*/
 	public Long get_pqpriority2requestsrate() throws Exception {
@@ -51,7 +70,7 @@ public class pq_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of times the Netscaler appliance matched an incoming request using any priority queuing policy.
+	* Rate (/s) counter for pqtotalpolicymatches
 	* </pre>
 	*/
 	public Long get_pqpolicymatchesrate() throws Exception {
@@ -60,7 +79,7 @@ public class pq_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of priority 1 requests that the Netscaler appliance received.
+	* Rate (/s) counter for pqpriority1requests
 	* </pre>
 	*/
 	public Long get_pqpriority1requestsrate() throws Exception {
@@ -69,7 +88,7 @@ public class pq_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of times the Netscaler appliance failed to match an incoming request to any of priority queing policy.
+	* Rate (/s) counter for pqtotalthresholdfailed
 	* </pre>
 	*/
 	public Long get_pqthresholdfailedrate() throws Exception {
@@ -96,7 +115,7 @@ public class pq_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of priority 3 requests that the Netscaler appliance received.
+	* Rate (/s) counter for pqpriority3requests
 	* </pre>
 	*/
 	public Long get_pqpriority3requestsrate() throws Exception {
@@ -184,4 +203,8 @@ public class pq_stats extends base_resource
 		return response[0];
 	}
 
+	public static class clearstatsEnum {
+		public static final String basic = "basic";
+		public static final String full = "full";
+	}
 }

@@ -38,7 +38,7 @@ public class appflowpolicylabel_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the AppFlow policy label.<br> Minimum length =  1
+	* Name of the policy label about which to display detailed information.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_labelname(String labelname) throws Exception{
@@ -47,7 +47,7 @@ public class appflowpolicylabel_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the AppFlow policy label.<br> Minimum length =  1
+	* Name of the policy label about which to display detailed information.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_labelname() throws Exception {

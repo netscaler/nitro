@@ -55,7 +55,7 @@ public class fis_interface_binding extends base_resource
 
 	/**
 	* <pre>
-	* The interface to be bound to the FIS, specified in the slot/port notation (for example, 1/3). .
+	* Interface to be bound to the FIS, specified in slot/port notation (for example, 1/3).
 	* </pre>
 	*/
 	public void set_ifnum(String ifnum) throws Exception{
@@ -64,7 +64,7 @@ public class fis_interface_binding extends base_resource
 
 	/**
 	* <pre>
-	* The interface to be bound to the FIS, specified in the slot/port notation (for example, 1/3). .
+	* Interface to be bound to the FIS, specified in slot/port notation (for example, 1/3).
 	* </pre>
 	*/
 	public String get_ifnum() throws Exception {

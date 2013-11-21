@@ -36,7 +36,7 @@ public class streamsession extends base_resource
 
 	/**
 	* <pre>
-	* The name of the identifier.<br> Minimum length =  1
+	* Name of the stream identifier.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -45,7 +45,7 @@ public class streamsession extends base_resource
 
 	/**
 	* <pre>
-	* The name of the identifier.<br> Minimum length =  1
+	* Name of the stream identifier.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {

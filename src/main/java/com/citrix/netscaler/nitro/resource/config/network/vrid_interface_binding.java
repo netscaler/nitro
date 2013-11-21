@@ -59,7 +59,7 @@ public class vrid_interface_binding extends base_resource
 
 	/**
 	* <pre>
-	* Interfaces that you want to bind to the VMAC. The format for specifying an interface is slot/port notation (for example,  1/2).
+	* Interfaces to bind to the VMAC, specified in (slot/port) notation (for example, 1/2).Use spaces to separate multiple entries.
 	* </pre>
 	*/
 	public void set_ifnum(String ifnum) throws Exception{
@@ -68,7 +68,7 @@ public class vrid_interface_binding extends base_resource
 
 	/**
 	* <pre>
-	* Interfaces that you want to bind to the VMAC. The format for specifying an interface is slot/port notation (for example,  1/2).
+	* Interfaces to bind to the VMAC, specified in (slot/port) notation (for example, 1/2).Use spaces to separate multiple entries.
 	* </pre>
 	*/
 	public String get_ifnum() throws Exception {
@@ -77,7 +77,7 @@ public class vrid_interface_binding extends base_resource
 
 	/**
 	* <pre>
-	* An integer value that uniquely identifies the VMAC address. The generic VMAC address is in the form of 00:00:5e:00:01:<VRID>. For example, if you add a VRID with a value of 60 and bind it to an interface, the resulting VMAC address is 00:00:5e:00:01:3c, where 3c is the hexadecimal representation of 60. Minimum value: 1. Maximum value: 255. .<br> Minimum value =  1<br> Maximum value =  255
+	* Integer that uniquely identifies the VMAC address. The generic VMAC address is in the form of 00:00:5e:00:01:<VRID>. For example, if you add a VRID with a value of 60 and bind it to an interface, the resulting VMAC address is 00:00:5e:00:01:3c, where 3c is the hexadecimal representation of 60.<br> Minimum value =  1<br> Maximum value =  255
 	* </pre>
 	*/
 	public void set_id(long id) throws Exception {
@@ -86,7 +86,7 @@ public class vrid_interface_binding extends base_resource
 
 	/**
 	* <pre>
-	* An integer value that uniquely identifies the VMAC address. The generic VMAC address is in the form of 00:00:5e:00:01:<VRID>. For example, if you add a VRID with a value of 60 and bind it to an interface, the resulting VMAC address is 00:00:5e:00:01:3c, where 3c is the hexadecimal representation of 60. Minimum value: 1. Maximum value: 255. .<br> Minimum value =  1<br> Maximum value =  255
+	* Integer that uniquely identifies the VMAC address. The generic VMAC address is in the form of 00:00:5e:00:01:<VRID>. For example, if you add a VRID with a value of 60 and bind it to an interface, the resulting VMAC address is 00:00:5e:00:01:3c, where 3c is the hexadecimal representation of 60.<br> Minimum value =  1<br> Maximum value =  255
 	* </pre>
 	*/
 	public void set_id(Long id) throws Exception{
@@ -95,7 +95,7 @@ public class vrid_interface_binding extends base_resource
 
 	/**
 	* <pre>
-	* An integer value that uniquely identifies the VMAC address. The generic VMAC address is in the form of 00:00:5e:00:01:<VRID>. For example, if you add a VRID with a value of 60 and bind it to an interface, the resulting VMAC address is 00:00:5e:00:01:3c, where 3c is the hexadecimal representation of 60. Minimum value: 1. Maximum value: 255. .<br> Minimum value =  1<br> Maximum value =  255
+	* Integer that uniquely identifies the VMAC address. The generic VMAC address is in the form of 00:00:5e:00:01:<VRID>. For example, if you add a VRID with a value of 60 and bind it to an interface, the resulting VMAC address is 00:00:5e:00:01:3c, where 3c is the hexadecimal representation of 60.<br> Minimum value =  1<br> Maximum value =  255
 	* </pre>
 	*/
 	public Long get_id() throws Exception {

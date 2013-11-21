@@ -33,6 +33,7 @@ class vlan_response extends base_response
 public class vlan_stats extends base_resource
 {
 	private Long id;
+	private String clearstats;
 	private Long vlantotrxpkts;
 	private Long vlanrxpktsrate;
 	private Long vlantotrxbytes;
@@ -73,7 +74,25 @@ public class vlan_stats extends base_resource
 
 	/**
 	* <pre>
-	* Bytes of data received on the VLAN.
+	* Clear the statsistics / counters
+	* </pre>
+	*/
+	public void set_clearstats(String clearstats) throws Exception{
+		this.clearstats = clearstats;
+	}
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters.<br> Possible values = basic, full
+	* </pre>
+	*/
+	public String get_clearstats() throws Exception {
+		return this.clearstats;
+	}
+
+	/**
+	* <pre>
+	* Rate (/s) counter for vlantotrxbytes
 	* </pre>
 	*/
 	public Long get_vlanrxbytesrate() throws Exception {
@@ -100,7 +119,7 @@ public class vlan_stats extends base_resource
 
 	/**
 	* <pre>
-	* Packets received on the VLAN.
+	* Rate (/s) counter for vlantotrxpkts
 	* </pre>
 	*/
 	public Long get_vlanrxpktsrate() throws Exception {
@@ -118,7 +137,7 @@ public class vlan_stats extends base_resource
 
 	/**
 	* <pre>
-	* Packets transmitted on the VLAN.
+	* Rate (/s) counter for vlantottxpkts
 	* </pre>
 	*/
 	public Long get_vlantxpktsrate() throws Exception {
@@ -136,7 +155,7 @@ public class vlan_stats extends base_resource
 
 	/**
 	* <pre>
-	* Bytes of data transmitted on the VLAN.
+	* Rate (/s) counter for vlantottxbytes
 	* </pre>
 	*/
 	public Long get_vlantxbytesrate() throws Exception {
@@ -226,4 +245,8 @@ public class vlan_stats extends base_resource
 		return response;
 	}
 
+	public static class clearstatsEnum {
+		public static final String basic = "basic";
+		public static final String full = "full";
+	}
 }

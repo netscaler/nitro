@@ -35,6 +35,7 @@ public class tmglobal_tmsessionpolicy_binding extends base_resource
 	private String policyname;
 	private Long priority;
 	private Long bindpolicytype;
+	private String[] builtin;
 	private Long __count;
 
 	/**
@@ -62,6 +63,24 @@ public class tmglobal_tmsessionpolicy_binding extends base_resource
 	*/
 	public Long get_priority() throws Exception {
 		return this.priority;
+	}
+
+	/**
+	* <pre>
+	* Indicates that a variable is a built-in (SYSTEM INTERNAL) type.<br> Possible values = MODIFIABLE, DELETABLE, IMMUTABLE
+	* </pre>
+	*/
+	public void set_builtin(String[] builtin) throws Exception{
+		this.builtin = builtin;
+	}
+
+	/**
+	* <pre>
+	* Indicates that a variable is a built-in (SYSTEM INTERNAL) type.<br> Possible values = MODIFIABLE, DELETABLE, IMMUTABLE
+	* </pre>
+	*/
+	public String[] get_builtin() throws Exception {
+		return this.builtin;
 	}
 
 	/**
@@ -244,5 +263,10 @@ public class tmglobal_tmsessionpolicy_binding extends base_resource
 		return 0;
 	}
 
+	public static class builtinEnum {
+		public static final String MODIFIABLE = "MODIFIABLE";
+		public static final String DELETABLE = "DELETABLE";
+		public static final String IMMUTABLE = "IMMUTABLE";
+	}
 
 }

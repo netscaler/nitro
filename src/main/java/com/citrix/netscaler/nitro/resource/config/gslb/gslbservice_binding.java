@@ -16,8 +16,8 @@
 
 package com.citrix.netscaler.nitro.resource.config.gslb;
 
-import com.citrix.netscaler.nitro.resource.config.gslb.gslbservice_lbmonitor_binding;
 import com.citrix.netscaler.nitro.resource.config.gslb.gslbservice_dnsview_binding;
+import com.citrix.netscaler.nitro.resource.config.gslb.gslbservice_lbmonitor_binding;
 import com.citrix.netscaler.nitro.resource.base.*;
 import com.citrix.netscaler.nitro.service.nitro_service;
 import com.citrix.netscaler.nitro.service.options;
@@ -35,12 +35,12 @@ class gslbservice_binding_response extends base_response
 public class gslbservice_binding extends base_resource
 {
 	private String servicename;
-	private gslbservice_lbmonitor_binding	gslbservice_lbmonitor_binding[] = null;
 	private gslbservice_dnsview_binding	gslbservice_dnsview_binding[] = null;
+	private gslbservice_lbmonitor_binding	gslbservice_lbmonitor_binding[] = null;
 
 	/**
 	* <pre>
-	* The name of the gslb service.<br> Minimum length =  1
+	* Name of the GSLB service.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_servicename(String servicename) throws Exception{
@@ -49,7 +49,7 @@ public class gslbservice_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the gslb service.<br> Minimum length =  1
+	* Name of the GSLB service.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_servicename() throws Exception {

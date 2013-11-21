@@ -41,7 +41,7 @@ public class gslbconfig extends base_resource
 
 	/**
 	* <pre>
-	* Preview of the commands that are applied on the slave node. This won't initiate the gslb auto sync.
+	* Do not synchronize the GSLB sites, but display the commands that would be applied on the slave node upon synchronization. Mutually exclusive with the Save Configuration option.
 	* </pre>
 	*/
 	public void set_preview(boolean preview) throws Exception {
@@ -50,7 +50,7 @@ public class gslbconfig extends base_resource
 
 	/**
 	* <pre>
-	* Preview of the commands that are applied on the slave node. This won't initiate the gslb auto sync.
+	* Do not synchronize the GSLB sites, but display the commands that would be applied on the slave node upon synchronization. Mutually exclusive with the Save Configuration option.
 	* </pre>
 	*/
 	public void set_preview(Boolean preview) throws Exception{
@@ -59,7 +59,7 @@ public class gslbconfig extends base_resource
 
 	/**
 	* <pre>
-	* Preview of the commands that are applied on the slave node. This won't initiate the gslb auto sync.
+	* Do not synchronize the GSLB sites, but display the commands that would be applied on the slave node upon synchronization. Mutually exclusive with the Save Configuration option.
 	* </pre>
 	*/
 	public Boolean get_preview() throws Exception {
@@ -68,7 +68,7 @@ public class gslbconfig extends base_resource
 
 	/**
 	* <pre>
-	* A more verbose output of gslb auto sync.
+	* Generate verbose output when synchronizing the GSLB sites. The Debug option generates more verbose output than the sync gslb config command in which the option is not used, and is useful for analyzing synchronization issues.
 	* </pre>
 	*/
 	public void set_debug(boolean debug) throws Exception {
@@ -77,7 +77,7 @@ public class gslbconfig extends base_resource
 
 	/**
 	* <pre>
-	* A more verbose output of gslb auto sync.
+	* Generate verbose output when synchronizing the GSLB sites. The Debug option generates more verbose output than the sync gslb config command in which the option is not used, and is useful for analyzing synchronization issues.
 	* </pre>
 	*/
 	public void set_debug(Boolean debug) throws Exception{
@@ -86,7 +86,7 @@ public class gslbconfig extends base_resource
 
 	/**
 	* <pre>
-	* A more verbose output of gslb auto sync.
+	* Generate verbose output when synchronizing the GSLB sites. The Debug option generates more verbose output than the sync gslb config command in which the option is not used, and is useful for analyzing synchronization issues.
 	* </pre>
 	*/
 	public Boolean get_debug() throws Exception {
@@ -95,7 +95,8 @@ public class gslbconfig extends base_resource
 
 	/**
 	* <pre>
-	* Forcibly sync the config from master to slave. The slave is identified with the sitename supplied as part of the argument.  If the supplied argument is "all-sites", the config will be pushed to all slave nodes.
+	* Force synchronization of the specified site even if a dependent configuration on the remote site is preventing synchronization or if one or more GSLB entities on the remote site have the same name but are of a different type. You can specify either the name of the remote site that you want to synchronize with the local site, or you can specify All Sites in the configuration utility (the string all-sites in the CLI). If you specify All Sites, all the sites in the GSLB setup are synchronized with the site on the master node. 
+Note: If you select the Force Sync option, the synchronization starts without displaying the commands that are going to be executed.
 	* </pre>
 	*/
 	public void set_forcesync(String forcesync) throws Exception{
@@ -104,7 +105,8 @@ public class gslbconfig extends base_resource
 
 	/**
 	* <pre>
-	* Forcibly sync the config from master to slave. The slave is identified with the sitename supplied as part of the argument.  If the supplied argument is "all-sites", the config will be pushed to all slave nodes.
+	* Force synchronization of the specified site even if a dependent configuration on the remote site is preventing synchronization or if one or more GSLB entities on the remote site have the same name but are of a different type. You can specify either the name of the remote site that you want to synchronize with the local site, or you can specify All Sites in the configuration utility (the string all-sites in the CLI). If you specify All Sites, all the sites in the GSLB setup are synchronized with the site on the master node. 
+Note: If you select the Force Sync option, the synchronization starts without displaying the commands that are going to be executed.
 	* </pre>
 	*/
 	public String get_forcesync() throws Exception {
@@ -113,7 +115,7 @@ public class gslbconfig extends base_resource
 
 	/**
 	* <pre>
-	* Suppresses warning and confirmation prompt.
+	* Suppress the warning and the confirmation prompt that are displayed before site synchronization begins. This option can be used in automation scripts that must not be interrupted by a prompt.
 	* </pre>
 	*/
 	public void set_nowarn(boolean nowarn) throws Exception {
@@ -122,7 +124,7 @@ public class gslbconfig extends base_resource
 
 	/**
 	* <pre>
-	* Suppresses warning and confirmation prompt.
+	* Suppress the warning and the confirmation prompt that are displayed before site synchronization begins. This option can be used in automation scripts that must not be interrupted by a prompt.
 	* </pre>
 	*/
 	public void set_nowarn(Boolean nowarn) throws Exception{
@@ -131,7 +133,7 @@ public class gslbconfig extends base_resource
 
 	/**
 	* <pre>
-	* Suppresses warning and confirmation prompt.
+	* Suppress the warning and the confirmation prompt that are displayed before site synchronization begins. This option can be used in automation scripts that must not be interrupted by a prompt.
 	* </pre>
 	*/
 	public Boolean get_nowarn() throws Exception {
@@ -140,7 +142,7 @@ public class gslbconfig extends base_resource
 
 	/**
 	* <pre>
-	* Executes saveconfig on master prior to sync and after successful sync on slaves.
+	* Save the configuration on all the nodes participating in the synchronization process, automatically. The master saves its configuration immediately before synchronization begins. Slave nodes save their configurations after the process of synchronization is complete. A slave node saves its configuration only if the configuration difference was successfully applied to it. Mutually exclusive with the Preview option.
 	* </pre>
 	*/
 	public void set_saveconfig(boolean saveconfig) throws Exception {
@@ -149,7 +151,7 @@ public class gslbconfig extends base_resource
 
 	/**
 	* <pre>
-	* Executes saveconfig on master prior to sync and after successful sync on slaves.
+	* Save the configuration on all the nodes participating in the synchronization process, automatically. The master saves its configuration immediately before synchronization begins. Slave nodes save their configurations after the process of synchronization is complete. A slave node saves its configuration only if the configuration difference was successfully applied to it. Mutually exclusive with the Preview option.
 	* </pre>
 	*/
 	public void set_saveconfig(Boolean saveconfig) throws Exception{
@@ -158,7 +160,7 @@ public class gslbconfig extends base_resource
 
 	/**
 	* <pre>
-	* Executes saveconfig on master prior to sync and after successful sync on slaves.
+	* Save the configuration on all the nodes participating in the synchronization process, automatically. The master saves its configuration immediately before synchronization begins. Slave nodes save their configurations after the process of synchronization is complete. A slave node saves its configuration only if the configuration difference was successfully applied to it. Mutually exclusive with the Preview option.
 	* </pre>
 	*/
 	public Boolean get_saveconfig() throws Exception {
@@ -167,7 +169,7 @@ public class gslbconfig extends base_resource
 
 	/**
 	* <pre>
-	* Execute the command on master and then on all the slaves.
+	* Run the specified command on the master node and then on all the slave nodes. You cannot use this option with the force sync and preview options.
 	* </pre>
 	*/
 	public void set_command(String command) throws Exception{
@@ -176,7 +178,7 @@ public class gslbconfig extends base_resource
 
 	/**
 	* <pre>
-	* Execute the command on master and then on all the slaves.
+	* Run the specified command on the master node and then on all the slave nodes. You cannot use this option with the force sync and preview options.
 	* </pre>
 	*/
 	public String get_command() throws Exception {

@@ -33,6 +33,7 @@ class vpnvserver_response extends base_response
 public class vpnvserver_stats extends base_resource
 {
 	private String name;
+	private String clearstats;
 	private String primaryipaddress;
 	private Integer primaryport;
 	private String type;
@@ -48,7 +49,7 @@ public class vpnvserver_stats extends base_resource
 
 	/**
 	* <pre>
-	* The name of the vserver for which statistics will be displayed.  If not given statistics are shown for all vpn vservers.
+	* Name of the virtual server for which to show detailed statistics.
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -57,7 +58,7 @@ public class vpnvserver_stats extends base_resource
 
 	/**
 	* <pre>
-	* The name of the vserver for which statistics will be displayed.  If not given statistics are shown for all vpn vservers.<br> Minimum length =  1
+	* Name of the virtual server for which to show detailed statistics.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -66,7 +67,25 @@ public class vpnvserver_stats extends base_resource
 
 	/**
 	* <pre>
-	* Current state of the server.
+	* Clear the statsistics / counters
+	* </pre>
+	*/
+	public void set_clearstats(String clearstats) throws Exception{
+		this.clearstats = clearstats;
+	}
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters.<br> Possible values = basic, full
+	* </pre>
+	*/
+	public String get_clearstats() throws Exception {
+		return this.clearstats;
+	}
+
+	/**
+	* <pre>
+	* Current state of the server. Possible values are UP, DOWN, UNKNOWN, OFS(Out of Service), TROFS(Transition Out of Service), TROFS_DOWN(Down When going Out of Service)
 	* </pre>
 	*/
 	public String get_state() throws Exception {
@@ -75,7 +94,7 @@ public class vpnvserver_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of request bytes received on this service or virtual server.
+	* Rate (/s) counter for totalrequestbytes
 	* </pre>
 	*/
 	public Long get_requestbytesrate() throws Exception {
@@ -111,7 +130,7 @@ public class vpnvserver_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of responses received on this service or virtual server. (This applies to HTTP/SSL services and servers.)
+	* Rate (/s) counter for totalresponses
 	* </pre>
 	*/
 	public Long get_responsesrate() throws Exception {
@@ -138,7 +157,7 @@ public class vpnvserver_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of requests received on this service or virtual server. (This applies to HTTP/SSL services and servers.)
+	* Rate (/s) counter for totalrequests
 	* </pre>
 	*/
 	public Long get_requestsrate() throws Exception {
@@ -147,7 +166,7 @@ public class vpnvserver_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of response bytes received by this service or virtual server.
+	* Rate (/s) counter for totalresponsebytes
 	* </pre>
 	*/
 	public Long get_responsebytesrate() throws Exception {
@@ -234,4 +253,8 @@ public class vpnvserver_stats extends base_resource
 		return response;
 	}
 
+	public static class clearstatsEnum {
+		public static final String basic = "basic";
+		public static final String full = "full";
+	}
 }

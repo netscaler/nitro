@@ -46,7 +46,7 @@ public class vpnicaconnection extends base_resource
 
 	/**
 	* <pre>
-	* The user name.<br> Minimum length =  1
+	* User name for which to display connections.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_username(String username) throws Exception{
@@ -55,7 +55,7 @@ public class vpnicaconnection extends base_resource
 
 	/**
 	* <pre>
-	* The user name.<br> Minimum length =  1
+	* User name for which to display connections.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_username() throws Exception {

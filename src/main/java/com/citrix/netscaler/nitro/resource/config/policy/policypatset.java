@@ -33,6 +33,7 @@ class policypatset_response extends base_response
 public class policypatset extends base_resource
 {
 	private String name;
+	private String indextype;
 
 	//------- Read only Parameter ---------;
 
@@ -41,7 +42,7 @@ public class policypatset extends base_resource
 
 	/**
 	* <pre>
-	* The name of the patset. The name must not exceed 127 characters.<br> Minimum length =  1
+	* Unique name of the pattern set. Not case sensitive. Must begin with an ASCII letter or underscore (_) character and must contain only alphanumeric and underscore characters. Must not be the name of an existing named expression, pattern set, dataset, string map, or HTTP callout.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -50,11 +51,29 @@ public class policypatset extends base_resource
 
 	/**
 	* <pre>
-	* The name of the patset. The name must not exceed 127 characters.<br> Minimum length =  1
+	* Unique name of the pattern set. Not case sensitive. Must begin with an ASCII letter or underscore (_) character and must contain only alphanumeric and underscore characters. Must not be the name of an existing named expression, pattern set, dataset, string map, or HTTP callout.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
 		return this.name;
+	}
+
+	/**
+	* <pre>
+	* Index type.<br> Possible values = Auto-generated, User-defined
+	* </pre>
+	*/
+	public void set_indextype(String indextype) throws Exception{
+		this.indextype = indextype;
+	}
+
+	/**
+	* <pre>
+	* Index type.<br> Possible values = Auto-generated, User-defined
+	* </pre>
+	*/
+	public String get_indextype() throws Exception {
+		return this.indextype;
 	}
 
 	/**
@@ -106,6 +125,7 @@ public class policypatset extends base_resource
 	public static base_response add(nitro_service client, policypatset resource) throws Exception {
 		policypatset addresource = new policypatset();
 		addresource.name = resource.name;
+		addresource.indextype = resource.indextype;
 		return addresource.add_resource(client);
 	}
 
@@ -119,6 +139,7 @@ public class policypatset extends base_resource
 			for (int i=0;i<resources.length;i++){
 				addresources[i] = new policypatset();
 				addresources[i].name = resources[i].name;
+				addresources[i].indextype = resources[i].indextype;
 			}
 			result = add_bulk_request(client, addresources);
 		}
@@ -287,4 +308,8 @@ public class policypatset extends base_resource
 		return 0;
 	}
 
+	public static class indextypeEnum {
+		public static final String Auto_generated = "Auto-generated";
+		public static final String User_defined = "User-defined";
+	}
 }

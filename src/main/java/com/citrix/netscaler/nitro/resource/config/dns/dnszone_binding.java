@@ -38,7 +38,7 @@ public class dnszone_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the zone whose info is to be displayed.<br> Minimum length =  1
+	* Name of the zone. Mutually exclusive with the type parameter.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_zonename(String zonename) throws Exception{
@@ -47,7 +47,7 @@ public class dnszone_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the zone whose info is to be displayed.<br> Minimum length =  1
+	* Name of the zone. Mutually exclusive with the type parameter.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_zonename() throws Exception {

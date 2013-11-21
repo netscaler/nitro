@@ -38,7 +38,7 @@ public class lbmonitor_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the monitor.<br> Minimum length =  1
+	* Name of the monitor.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_monitorname(String monitorname) throws Exception{
@@ -47,7 +47,7 @@ public class lbmonitor_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the monitor.<br> Minimum length =  1
+	* Name of the monitor.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_monitorname() throws Exception {

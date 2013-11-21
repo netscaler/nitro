@@ -40,7 +40,7 @@ public class cmppolicylabel_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the HTTP compression policy label.<br> Minimum length =  1
+	* Name of the HTTP compression policy label for which to display details.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_labelname(String labelname) throws Exception{
@@ -49,7 +49,7 @@ public class cmppolicylabel_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the HTTP compression policy label.<br> Minimum length =  1
+	* Name of the HTTP compression policy label for which to display details.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_labelname() throws Exception {

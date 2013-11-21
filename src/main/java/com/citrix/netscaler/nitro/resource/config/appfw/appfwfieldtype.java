@@ -44,7 +44,11 @@ public class appfwfieldtype extends base_resource
 
 	/**
 	* <pre>
-	* The name of this field type.<br> Minimum length =  1
+	* Name for the field type.
+Must begin with a letter, number, or the underscore character \(_\), and must contain only letters, numbers, and the hyphen \(-\), period \(.\) pound \(\#\), space \( \), at \(\@\), equals \(=\), colon \(:\), and underscore characters. Cannot be changed after the field type is added.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks \(for example, "my field type" or 'my field type'\).<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -53,7 +57,11 @@ public class appfwfieldtype extends base_resource
 
 	/**
 	* <pre>
-	* The name of this field type.<br> Minimum length =  1
+	* Name for the field type.
+Must begin with a letter, number, or the underscore character \(_\), and must contain only letters, numbers, and the hyphen \(-\), period \(.\) pound \(\#\), space \( \), at \(\@\), equals \(=\), colon \(:\), and underscore characters. Cannot be changed after the field type is added.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks \(for example, "my field type" or 'my field type'\).<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -62,7 +70,7 @@ public class appfwfieldtype extends base_resource
 
 	/**
 	* <pre>
-	* The regular expression that describes this field type.<br> Minimum length =  1
+	* PCRE - format regular expression defining the characters and length allowed for this field type.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_regex(String regex) throws Exception{
@@ -71,7 +79,7 @@ public class appfwfieldtype extends base_resource
 
 	/**
 	* <pre>
-	* The regular expression that describes this field type.<br> Minimum length =  1
+	* PCRE - format regular expression defining the characters and length allowed for this field type.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_regex() throws Exception {
@@ -80,7 +88,7 @@ public class appfwfieldtype extends base_resource
 
 	/**
 	* <pre>
-	* The priority of this field type.<br> Minimum value =  0<br> Maximum value =  64000
+	* Positive integer specifying the priority of the field type. A lower number specified a higher priority. Field types are checked in the order of their priority numbers.<br> Minimum value =  0<br> Maximum value =  64000
 	* </pre>
 	*/
 	public void set_priority(long priority) throws Exception {
@@ -89,7 +97,7 @@ public class appfwfieldtype extends base_resource
 
 	/**
 	* <pre>
-	* The priority of this field type.<br> Minimum value =  0<br> Maximum value =  64000
+	* Positive integer specifying the priority of the field type. A lower number specified a higher priority. Field types are checked in the order of their priority numbers.<br> Minimum value =  0<br> Maximum value =  64000
 	* </pre>
 	*/
 	public void set_priority(Long priority) throws Exception{
@@ -98,7 +106,7 @@ public class appfwfieldtype extends base_resource
 
 	/**
 	* <pre>
-	* The priority of this field type.<br> Minimum value =  0<br> Maximum value =  64000
+	* Positive integer specifying the priority of the field type. A lower number specified a higher priority. Field types are checked in the order of their priority numbers.<br> Minimum value =  0<br> Maximum value =  64000
 	* </pre>
 	*/
 	public Long get_priority() throws Exception {
@@ -107,7 +115,7 @@ public class appfwfieldtype extends base_resource
 
 	/**
 	* <pre>
-	* Comments associated with this field type.
+	* Comment describing the type of field that this field type is intended to match.
 	* </pre>
 	*/
 	public void set_comment(String comment) throws Exception{
@@ -116,7 +124,7 @@ public class appfwfieldtype extends base_resource
 
 	/**
 	* <pre>
-	* Comments associated with this field type.
+	* Comment describing the type of field that this field type is intended to match.
 	* </pre>
 	*/
 	public String get_comment() throws Exception {

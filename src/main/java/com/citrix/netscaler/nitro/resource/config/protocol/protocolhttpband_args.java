@@ -26,7 +26,7 @@ public class protocolhttpband_args
 
 	/**
 	* <pre>
-	* Specify whether to display request/response band statistics.<br> Possible values = REQUEST, RESPONSE
+	* Type of statistics to display.<br> Possible values = REQUEST, RESPONSE
 	* </pre>
 	*/
 	public void set_type(String type) throws Exception{
@@ -35,7 +35,7 @@ public class protocolhttpband_args
 
 	/**
 	* <pre>
-	* Specify whether to display request/response band statistics.<br> Possible values = REQUEST, RESPONSE
+	* Type of statistics to display.<br> Possible values = REQUEST, RESPONSE
 	* </pre>
 	*/
 	public String get_type() throws Exception {

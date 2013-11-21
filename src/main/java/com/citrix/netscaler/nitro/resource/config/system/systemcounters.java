@@ -41,7 +41,7 @@ public class systemcounters extends base_resource
 
 	/**
 	* <pre>
-	* Specify the group name.
+	* Specify the (counter) group name which contains all the counters specific tot his particular group.
 	* </pre>
 	*/
 	public void set_countergroup(String countergroup) throws Exception{
@@ -50,7 +50,7 @@ public class systemcounters extends base_resource
 
 	/**
 	* <pre>
-	* Specify the group name.
+	* Specify the (counter) group name which contains all the counters specific tot his particular group.
 	* </pre>
 	*/
 	public String get_countergroup() throws Exception {
@@ -59,7 +59,7 @@ public class systemcounters extends base_resource
 
 	/**
 	* <pre>
-	* Specify Data source name.
+	* Specifies the source which contains all the stored counter values.
 	* </pre>
 	*/
 	public void set_datasource(String datasource) throws Exception{
@@ -68,7 +68,7 @@ public class systemcounters extends base_resource
 
 	/**
 	* <pre>
-	* Specify Data source name.
+	* Specifies the source which contains all the stored counter values.
 	* </pre>
 	*/
 	public String get_datasource() throws Exception {

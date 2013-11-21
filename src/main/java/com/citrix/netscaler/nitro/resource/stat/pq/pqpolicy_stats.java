@@ -33,7 +33,7 @@ class pqpolicy_response extends base_response
 public class pqpolicy_stats extends base_resource
 {
 	private String policyname;
-	private Long pqtotqueuewaittime;
+	private String clearstats;
 	private Long pqtotavgqueuewaittime;
 	private Long pqavgqueuewaittimerate;
 	private Long pqavgclienttransactiontimems;
@@ -45,18 +45,17 @@ public class pqpolicy_stats extends base_resource
 	private Long pqcurrentclientconnections;
 	private Long pqcurrentclientconnectionsrate;
 	private Long pqtotclientconnections;
+	private Long pqclientconnectionsrate;
 	private Long pqdropped;
 	private Long pqdroppedrate;
 	private Long totclienttransactions;
 	private Long clienttransactionsrate;
 	private Long pqtotqueuedepth;
 	private Long pqqueuedepthrate;
-	private Long pqavgclienttransactiontime;
-	private Long pqavgclienttransactiontimerate;
 
 	/**
 	* <pre>
-	* The name of the priority queuing policy whose statistics must be displayed. If a name is not provided, details of all priority queuing policies available on the appliance are displayed.
+	* Name of the priority queuing policy whose statistics must be displayed. If a name is not provided, statistics of all priority queuing policies are shown.
 	* </pre>
 	*/
 	public void set_policyname(String policyname) throws Exception{
@@ -65,11 +64,29 @@ public class pqpolicy_stats extends base_resource
 
 	/**
 	* <pre>
-	* The name of the priority queuing policy whose statistics must be displayed. If a name is not provided, details of all priority queuing policies available on the appliance are displayed.<br> Minimum length =  1
+	* Name of the priority queuing policy whose statistics must be displayed. If a name is not provided, statistics of all priority queuing policies are shown.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_policyname() throws Exception {
 		return this.policyname;
+	}
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters
+	* </pre>
+	*/
+	public void set_clearstats(String clearstats) throws Exception{
+		this.clearstats = clearstats;
+	}
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters.<br> Possible values = basic, full
+	* </pre>
+	*/
+	public String get_clearstats() throws Exception {
+		return this.clearstats;
 	}
 
 	/**
@@ -83,7 +100,7 @@ public class pqpolicy_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of waiting clients for this priority queuing policy.
+	* Rate (/s) counter for pqtotqueuedepth
 	* </pre>
 	*/
 	public Long get_pqqueuedepthrate() throws Exception {
@@ -92,7 +109,7 @@ public class pqpolicy_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of dropped transactions for this priority queuing policy.
+	* Rate (/s) counter for pqdropped
 	* </pre>
 	*/
 	public Long get_pqdroppedrate() throws Exception {
@@ -119,15 +136,6 @@ public class pqpolicy_stats extends base_resource
 
 	/**
 	* <pre>
-	* Amount of time spent by priority queuing clients waiting in the priority queue.
-	* </pre>
-	*/
-	public Long get_pqtotqueuewaittime() throws Exception {
-		return this.pqtotqueuewaittime;
-	}
-
-	/**
-	* <pre>
 	* Total number of client transactions for this priority queuing policy.
 	* </pre>
 	*/
@@ -137,7 +145,7 @@ public class pqpolicy_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of client transactions for this priority queuing policy.
+	* Rate (/s) counter for totclienttransactions
 	* </pre>
 	*/
 	public Long get_clienttransactionsrate() throws Exception {
@@ -146,7 +154,7 @@ public class pqpolicy_stats extends base_resource
 
 	/**
 	* <pre>
-	* Current number of server connections established for serving clients for this priority queuing policy.
+	* Rate (/s) counter for pqcurrentclientconnections
 	* </pre>
 	*/
 	public Long get_pqcurrentclientconnectionsrate() throws Exception {
@@ -155,16 +163,7 @@ public class pqpolicy_stats extends base_resource
 
 	/**
 	* <pre>
-	* Average time taken by a priority queuing client to complete its transaction for this priority queuing policy.
-	* </pre>
-	*/
-	public Long get_pqavgclienttransactiontimerate() throws Exception {
-		return this.pqavgclienttransactiontimerate;
-	}
-
-	/**
-	* <pre>
-	* Number of clients waiting currently for this priority queuing policy.
+	* Rate (/s) counter for pqqdepth
 	* </pre>
 	*/
 	public Long get_pqqdepthrate() throws Exception {
@@ -182,11 +181,11 @@ public class pqpolicy_stats extends base_resource
 
 	/**
 	* <pre>
-	* Average time taken by a priority queuing client to complete its transaction for this priority queuing policy.
+	* Rate (/s) counter for pqtotclientconnections
 	* </pre>
 	*/
-	public Long get_pqavgclienttransactiontime() throws Exception {
-		return this.pqavgclienttransactiontime;
+	public Long get_pqclientconnectionsrate() throws Exception {
+		return this.pqclientconnectionsrate;
 	}
 
 	/**
@@ -200,7 +199,7 @@ public class pqpolicy_stats extends base_resource
 
 	/**
 	* <pre>
-	* Average time taken by a priority queuing client to complete its transaction for this  priority queuing policy.
+	* Rate (/s) counter for pqavgclienttransactiontimems
 	* </pre>
 	*/
 	public Long get_pqavgclienttransactiontimemsrate() throws Exception {
@@ -236,7 +235,7 @@ public class pqpolicy_stats extends base_resource
 
 	/**
 	* <pre>
-	* Average wait time for clients for this priority queuing policy.
+	* Rate (/s) counter for pqtotavgqueuewaittime
 	* </pre>
 	*/
 	public Long get_pqavgqueuewaittimerate() throws Exception {
@@ -314,4 +313,8 @@ public class pqpolicy_stats extends base_resource
 		return response;
 	}
 
+	public static class clearstatsEnum {
+		public static final String basic = "basic";
+		public static final String full = "full";
+	}
 }

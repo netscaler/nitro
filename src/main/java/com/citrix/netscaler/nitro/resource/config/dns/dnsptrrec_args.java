@@ -26,10 +26,10 @@ public class dnsptrrec_args
 
 	/**
 	* <pre>
-	* PTR record type. The type can take 3 values:
-ADNS -  If this is specified, all of the authoritative ptr records will be displayed.
-PROXY - If this is specified, all of the proxy ptr records will be displayed.
-ALL  -  If this is specified, all of the ptr records will be displayed.<br> Possible values = ALL, ADNS, PROXY
+	* Type of records to display. Available settings function as follows:
+* ADNS - Display all authoritative address records.
+* PROXY - Display all proxy address records.
+* ALL - Display all address records.<br> Possible values = ALL, ADNS, PROXY
 	* </pre>
 	*/
 	public void set_type(String type) throws Exception{
@@ -38,10 +38,10 @@ ALL  -  If this is specified, all of the ptr records will be displayed.<br> Poss
 
 	/**
 	* <pre>
-	* PTR record type. The type can take 3 values:
-ADNS -  If this is specified, all of the authoritative ptr records will be displayed.
-PROXY - If this is specified, all of the proxy ptr records will be displayed.
-ALL  -  If this is specified, all of the ptr records will be displayed.<br> Possible values = ALL, ADNS, PROXY
+	* Type of records to display. Available settings function as follows:
+* ADNS - Display all authoritative address records.
+* PROXY - Display all proxy address records.
+* ALL - Display all address records.<br> Possible values = ALL, ADNS, PROXY
 	* </pre>
 	*/
 	public String get_type() throws Exception {

@@ -34,6 +34,7 @@ public class vlan_nsip_binding extends base_resource
 {
 	private String ipaddress;
 	private String netmask;
+	private Long td;
 	private Long id;
 	private Long __count;
 
@@ -66,7 +67,34 @@ public class vlan_nsip_binding extends base_resource
 
 	/**
 	* <pre>
-	* The subnet mask for the network address defined for this VLAN.
+	* Traffic Domain Id.<br> Minimum value =  0<br> Maximum value =  4094
+	* </pre>
+	*/
+	public void set_td(long td) throws Exception {
+		this.td = new Long(td);
+	}
+
+	/**
+	* <pre>
+	* Traffic Domain Id.<br> Minimum value =  0<br> Maximum value =  4094
+	* </pre>
+	*/
+	public void set_td(Long td) throws Exception{
+		this.td = td;
+	}
+
+	/**
+	* <pre>
+	* Traffic Domain Id.<br> Minimum value =  0<br> Maximum value =  4094
+	* </pre>
+	*/
+	public Long get_td() throws Exception {
+		return this.td;
+	}
+
+	/**
+	* <pre>
+	* Subnet mask for the network address defined for this VLAN.
 	* </pre>
 	*/
 	public void set_netmask(String netmask) throws Exception{
@@ -75,7 +103,7 @@ public class vlan_nsip_binding extends base_resource
 
 	/**
 	* <pre>
-	* The subnet mask for the network address defined for this VLAN.
+	* Subnet mask for the network address defined for this VLAN.
 	* </pre>
 	*/
 	public String get_netmask() throws Exception {
@@ -142,6 +170,7 @@ public class vlan_nsip_binding extends base_resource
 		updateresource.id = resource.id;
 		updateresource.ipaddress = resource.ipaddress;
 		updateresource.netmask = resource.netmask;
+		updateresource.td = resource.td;
 		return updateresource.update_resource(client);
 	}
 
@@ -154,6 +183,7 @@ public class vlan_nsip_binding extends base_resource
 				updateresources[i].id = resources[i].id;
 				updateresources[i].ipaddress = resources[i].ipaddress;
 				updateresources[i].netmask = resources[i].netmask;
+				updateresources[i].td = resources[i].td;
 			}
 			result = update_bulk_request(client, updateresources);
 		}
@@ -165,6 +195,7 @@ public class vlan_nsip_binding extends base_resource
 		deleteresource.id = resource.id;
 		deleteresource.ipaddress = resource.ipaddress;
 		deleteresource.netmask = resource.netmask;
+		deleteresource.td = resource.td;
 		return deleteresource.delete_resource(client);
 	}
 
@@ -177,6 +208,7 @@ public class vlan_nsip_binding extends base_resource
 				deleteresources[i].id = resources[i].id;
 				deleteresources[i].ipaddress = resources[i].ipaddress;
 				deleteresources[i].netmask = resources[i].netmask;
+				deleteresources[i].td = resources[i].td;
 			}
 			result = delete_bulk_request(client, deleteresources);
 		}

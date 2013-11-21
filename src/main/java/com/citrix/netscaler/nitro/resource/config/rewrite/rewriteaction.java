@@ -55,7 +55,10 @@ public class rewriteaction extends base_resource
 
 	/**
 	* <pre>
-	* Name of the rewrite action to be added.
+	* Name for the user-defined rewrite action. Must begin with a letter, number, or the underscore character (_), and must contain only letters, numbers, and the hyphen (-), period (.) hash (#), space ( ), at (@), equals (=), colon (:), and underscore characters. Can be changed after the rewrite policy is added.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my rewrite action" or ‘my rewrite action’).
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -64,7 +67,10 @@ public class rewriteaction extends base_resource
 
 	/**
 	* <pre>
-	* Name of the rewrite action to be added.
+	* Name for the user-defined rewrite action. Must begin with a letter, number, or the underscore character (_), and must contain only letters, numbers, and the hyphen (-), period (.) hash (#), space ( ), at (@), equals (=), colon (:), and underscore characters. Can be changed after the rewrite policy is added.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my rewrite action" or ‘my rewrite action’).
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -73,73 +79,20 @@ public class rewriteaction extends base_resource
 
 	/**
 	* <pre>
-	* Type of rewrite action. It can be: (replace|insert_http_header|delete_http_header|corrupt_http_header|insert_before|insert_after|delete|replace_http_res).
-	For each action type the <target> and <string builder expr> are defined below.
-
-		o	INSERT_HTTP_HEADER: Will insert a HTTP header.
-			<target> = header name.
-			<string builder expr> = header value specified as a compound text expression.
-
-		o	INSERT_SIP_HEADER: Will insert a SIP header.
-			<target> = header name.
-			<string builder expr> = header value specified as a compound text expression.
-
-		o	DELETE_HTTP_HEADER: Will delete all occurrence of HTTP header.
-			<target> = header name.
-
-		o	DELETE_SIP_HEADER: Will delete all occurrence of SIP header.
-			<target> = header name.
-
-		o	CORRUPT_HTTP_HEADER: Will corrupt all occurrence of HTTP header.
-			<target> = header name.
-
-		o	CORRUPT_SIP_HEADER: Will corrupt all occurrence of SIP header.
-			<target> = header name.
-
-		o	REPLACE: Will replace the target text reference with the value specified in attr.
-			<target> = Advanced text expression
-			<string builder expr> = Compound text expression
-
-		o	INSERT_BEFORE: Will insert the value specified by attr before the target text reference.
-			<target> = Advanced text expression
-			<string builder expr> = Compound text expression
-
-		o	INSERT_AFTER: Will insert the value specified by attr after the target text reference.
-			<target> = Advanced text expression
-			<string builder expr> = Compound text expression
-
-		o	DELETE: Delete the target text reference.
-			<target> = Advanced text expression
-
-		o	REPLACE_HTTP_RES: Replace the http response with value specified in target.
-			<target> = Compound text expression
-
-		o	REPLACE_SIP_RES: Replace the SIP response with value specified in target.
-			<target> = Compound text expression
-
-		o	REPLACE_ALL: Replaces all occurrence of the pattern in the text provided in the target with the text provided in the stringBuilderExpr, with a string defined in the -pattern argument or -search argument.
-      For example, you can replace all occurences of abcd with -pattern efgh.
-			<target> = text in a request or a response, for example http.req.body(1000)
-			<stringBuilderExpr> = Compound text expression
-			-pattern <expression> = string constant, for example -pattern efgh or -search text("efgh")
-
-		o	INSERT_BEFORE_ALL: Will insert the value specified by stringBuilderExpr before all the occurrence of pattern in the target text reference.
-			<target> = Advanced text expression
-			<stringBuilderExpr> = Compound text expression
-			-pattern <expression> = string constant or advanced regular expression or
-			-search regex(<regular expression>) or -search text(string constant)
-
-		o	INSERT_AFTER_ALL: Will insert the value specified by stringBuilderExpr after all the occurrence of pattern in the target text reference.
-			<target> = Advanced text expression
-			<stringBuilderExpr> = Compound text expression
-			-pattern <expression> = string constant or advanced regular expression or
-			-search regex(<regular expression>) or -search text(string constant)
-
-		o	DELETE_ALL: Delete all the occurrence of pattern in the target text reference.
-			<target> = Advanced text expression
-			-pattern <expression> = string constant or advanced regular expression or
-			-search regex(<regular expression>) or -search text(string constant)
-		.<br> Possible values = noop, delete, insert_http_header, delete_http_header, corrupt_http_header, insert_before, insert_after, replace, replace_http_res, delete_all, replace_all, insert_before_all, insert_after_all, clientless_vpn_encode, clientless_vpn_encode_all, clientless_vpn_decode, clientless_vpn_decode_all, insert_sip_header, delete_sip_header, corrupt_sip_header, replace_sip_res
+	* Type of user-defined rewrite action. The information that you provide for, and the effect of, each type are as follows:: 
+* REPLACE <target> <string_builder_expr>. Replaces the string with the string-builder expression.
+* REPLACE_ALL <target> <string_builder_expr1> -(pattern|search) <string_builder_expr2>. In the request or response specified by <target>, replaces all occurrences of the string defined by <string_builder_expr1> with the string defined by <string_builder_expr2>. You can use a PCRE-format pattern or the search facility to find the strings to be replaced.
+* REPLACE_HTTP_RES <string_builder_expr>. Replaces the complete HTTP response with the string defined by the string-builder expression.
+* REPLACE_SIP_RES <target> - Replaces the complete SIP response with the string specified by <target>.
+* INSERT_HTTP_HEADER <header_string_builder_expr> <contents_string_builder_expr>. Inserts the HTTP header specified by <header_string_builder_expr> and header contents specified by <contents_string_builder_expr>.
+* DELETE_HTTP_HEADER <target>. Deletes the HTTP header specified by <target>.
+* CORRUPT_HTTP_HEADER <target>. Replaces the header name of all occurrences of the HTTP header specified by <target> with a corrupted name, so that it will not be recognized by the receiver  Example: MY_HEADER is changed to MHEY_ADER.
+* INSERT_BEFORE <string_builder_expr1> <string_builder_expr1>. Finds the string specified in <string_builder_expr1> and inserts the string in <string_builder_expr2> before it.
+* INSERT_BEFORE_ALL <target> <string_builder_expr1> -(pattern|search) <string_builder_expr2>. In the request or response specified by <target>, locates all occurrences of the string specified in <string_builder_expr1> and inserts the string specified in <string_builder_expr2> before each. You can use a PCRE-format pattern or the search facility to find the strings.
+* INSERT_AFTER <string_builder_expr1> <string_builder_expr2>. Finds the string specified in <string_builder_expr1>, and inserts the string specified in <string_builder_expr2> after it.
+* INSERT_AFTER_ALL <target> <string_builder_expr1> -(pattern|search) <string_builder_expr>. In the request or response specified by <target>, locates all occurrences of the string specified by <string_builder_expr1> and inserts the string specified by <string_builder_expr2> after each. You can use a PCRE-format pattern or the search facility to find the strings.
+* DELETE <target>. Finds and deletes the specified target.
+* DELETE_ALL <target> -(pattern|search) <string_builder_expr>. In the request or response specified by <target>, locates and deletes all occurrences of the string specified by <string_builder_expr>. You can use a PCRE-format pattern or the search facility to find the strings.<br> Possible values = noop, delete, insert_http_header, delete_http_header, corrupt_http_header, insert_before, insert_after, replace, replace_http_res, delete_all, replace_all, insert_before_all, insert_after_all, clientless_vpn_encode, clientless_vpn_encode_all, clientless_vpn_decode, clientless_vpn_decode_all, insert_sip_header, delete_sip_header, corrupt_sip_header, replace_sip_res
 	* </pre>
 	*/
 	public void set_type(String type) throws Exception{
@@ -148,73 +101,20 @@ public class rewriteaction extends base_resource
 
 	/**
 	* <pre>
-	* Type of rewrite action. It can be: (replace|insert_http_header|delete_http_header|corrupt_http_header|insert_before|insert_after|delete|replace_http_res).
-	For each action type the <target> and <string builder expr> are defined below.
-
-		o	INSERT_HTTP_HEADER: Will insert a HTTP header.
-			<target> = header name.
-			<string builder expr> = header value specified as a compound text expression.
-
-		o	INSERT_SIP_HEADER: Will insert a SIP header.
-			<target> = header name.
-			<string builder expr> = header value specified as a compound text expression.
-
-		o	DELETE_HTTP_HEADER: Will delete all occurrence of HTTP header.
-			<target> = header name.
-
-		o	DELETE_SIP_HEADER: Will delete all occurrence of SIP header.
-			<target> = header name.
-
-		o	CORRUPT_HTTP_HEADER: Will corrupt all occurrence of HTTP header.
-			<target> = header name.
-
-		o	CORRUPT_SIP_HEADER: Will corrupt all occurrence of SIP header.
-			<target> = header name.
-
-		o	REPLACE: Will replace the target text reference with the value specified in attr.
-			<target> = Advanced text expression
-			<string builder expr> = Compound text expression
-
-		o	INSERT_BEFORE: Will insert the value specified by attr before the target text reference.
-			<target> = Advanced text expression
-			<string builder expr> = Compound text expression
-
-		o	INSERT_AFTER: Will insert the value specified by attr after the target text reference.
-			<target> = Advanced text expression
-			<string builder expr> = Compound text expression
-
-		o	DELETE: Delete the target text reference.
-			<target> = Advanced text expression
-
-		o	REPLACE_HTTP_RES: Replace the http response with value specified in target.
-			<target> = Compound text expression
-
-		o	REPLACE_SIP_RES: Replace the SIP response with value specified in target.
-			<target> = Compound text expression
-
-		o	REPLACE_ALL: Replaces all occurrence of the pattern in the text provided in the target with the text provided in the stringBuilderExpr, with a string defined in the -pattern argument or -search argument.
-      For example, you can replace all occurences of abcd with -pattern efgh.
-			<target> = text in a request or a response, for example http.req.body(1000)
-			<stringBuilderExpr> = Compound text expression
-			-pattern <expression> = string constant, for example -pattern efgh or -search text("efgh")
-
-		o	INSERT_BEFORE_ALL: Will insert the value specified by stringBuilderExpr before all the occurrence of pattern in the target text reference.
-			<target> = Advanced text expression
-			<stringBuilderExpr> = Compound text expression
-			-pattern <expression> = string constant or advanced regular expression or
-			-search regex(<regular expression>) or -search text(string constant)
-
-		o	INSERT_AFTER_ALL: Will insert the value specified by stringBuilderExpr after all the occurrence of pattern in the target text reference.
-			<target> = Advanced text expression
-			<stringBuilderExpr> = Compound text expression
-			-pattern <expression> = string constant or advanced regular expression or
-			-search regex(<regular expression>) or -search text(string constant)
-
-		o	DELETE_ALL: Delete all the occurrence of pattern in the target text reference.
-			<target> = Advanced text expression
-			-pattern <expression> = string constant or advanced regular expression or
-			-search regex(<regular expression>) or -search text(string constant)
-		.<br> Possible values = noop, delete, insert_http_header, delete_http_header, corrupt_http_header, insert_before, insert_after, replace, replace_http_res, delete_all, replace_all, insert_before_all, insert_after_all, clientless_vpn_encode, clientless_vpn_encode_all, clientless_vpn_decode, clientless_vpn_decode_all, insert_sip_header, delete_sip_header, corrupt_sip_header, replace_sip_res
+	* Type of user-defined rewrite action. The information that you provide for, and the effect of, each type are as follows:: 
+* REPLACE <target> <string_builder_expr>. Replaces the string with the string-builder expression.
+* REPLACE_ALL <target> <string_builder_expr1> -(pattern|search) <string_builder_expr2>. In the request or response specified by <target>, replaces all occurrences of the string defined by <string_builder_expr1> with the string defined by <string_builder_expr2>. You can use a PCRE-format pattern or the search facility to find the strings to be replaced.
+* REPLACE_HTTP_RES <string_builder_expr>. Replaces the complete HTTP response with the string defined by the string-builder expression.
+* REPLACE_SIP_RES <target> - Replaces the complete SIP response with the string specified by <target>.
+* INSERT_HTTP_HEADER <header_string_builder_expr> <contents_string_builder_expr>. Inserts the HTTP header specified by <header_string_builder_expr> and header contents specified by <contents_string_builder_expr>.
+* DELETE_HTTP_HEADER <target>. Deletes the HTTP header specified by <target>.
+* CORRUPT_HTTP_HEADER <target>. Replaces the header name of all occurrences of the HTTP header specified by <target> with a corrupted name, so that it will not be recognized by the receiver  Example: MY_HEADER is changed to MHEY_ADER.
+* INSERT_BEFORE <string_builder_expr1> <string_builder_expr1>. Finds the string specified in <string_builder_expr1> and inserts the string in <string_builder_expr2> before it.
+* INSERT_BEFORE_ALL <target> <string_builder_expr1> -(pattern|search) <string_builder_expr2>. In the request or response specified by <target>, locates all occurrences of the string specified in <string_builder_expr1> and inserts the string specified in <string_builder_expr2> before each. You can use a PCRE-format pattern or the search facility to find the strings.
+* INSERT_AFTER <string_builder_expr1> <string_builder_expr2>. Finds the string specified in <string_builder_expr1>, and inserts the string specified in <string_builder_expr2> after it.
+* INSERT_AFTER_ALL <target> <string_builder_expr1> -(pattern|search) <string_builder_expr>. In the request or response specified by <target>, locates all occurrences of the string specified by <string_builder_expr1> and inserts the string specified by <string_builder_expr2> after each. You can use a PCRE-format pattern or the search facility to find the strings.
+* DELETE <target>. Finds and deletes the specified target.
+* DELETE_ALL <target> -(pattern|search) <string_builder_expr>. In the request or response specified by <target>, locates and deletes all occurrences of the string specified by <string_builder_expr>. You can use a PCRE-format pattern or the search facility to find the strings.<br> Possible values = noop, delete, insert_http_header, delete_http_header, corrupt_http_header, insert_before, insert_after, replace, replace_http_res, delete_all, replace_all, insert_before_all, insert_after_all, clientless_vpn_encode, clientless_vpn_encode_all, clientless_vpn_decode, clientless_vpn_decode_all, insert_sip_header, delete_sip_header, corrupt_sip_header, replace_sip_res
 	* </pre>
 	*/
 	public String get_type() throws Exception {
@@ -223,7 +123,7 @@ public class rewriteaction extends base_resource
 
 	/**
 	* <pre>
-	* Expression specifying which part of HTTP packet needs to be rewritten.<br> Minimum length =  1
+	* Default syntax expression that specifies which part of the request or response to rewrite.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_target(String target) throws Exception{
@@ -232,7 +132,7 @@ public class rewriteaction extends base_resource
 
 	/**
 	* <pre>
-	* Expression specifying which part of HTTP packet needs to be rewritten.<br> Minimum length =  1
+	* Default syntax expression that specifies which part of the request or response to rewrite.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_target() throws Exception {
@@ -241,7 +141,7 @@ public class rewriteaction extends base_resource
 
 	/**
 	* <pre>
-	* Expression specifying new value of the rewritten HTTP packet. Maximum length of the input expression is 8191. Maximum size of string that can be used inside the expression is 1499.
+	* Default syntax expression that specifies the content to insert into the request or response at the specified location, or that replaces the specified string.
 	* </pre>
 	*/
 	public void set_stringbuilderexpr(String stringbuilderexpr) throws Exception{
@@ -250,7 +150,7 @@ public class rewriteaction extends base_resource
 
 	/**
 	* <pre>
-	* Expression specifying new value of the rewritten HTTP packet. Maximum length of the input expression is 8191. Maximum size of string that can be used inside the expression is 1499.
+	* Default syntax expression that specifies the content to insert into the request or response at the specified location, or that replaces the specified string.
 	* </pre>
 	*/
 	public String get_stringbuilderexpr() throws Exception {
@@ -259,7 +159,7 @@ public class rewriteaction extends base_resource
 
 	/**
 	* <pre>
-	* Pattern to be used for insert_before_all, insert_after_all, replace_all, delete_all action types.
+	* Pattern that is used to match multiple strings in the request or response. The pattern may be a string literal (without quotes) or a PCRE-format regular expression with a delimiter that consists of any printable ASCII non-alphanumeric character except for the underscore (_) and space ( ) that is not otherwise used in the expression. Example: re~https?://|HTTPS?://~ The preceding regular expression can use the tilde (~) as the delimiter because that character does not appear in the regular expression itself. Used in the INSERT_BEFORE_ALL, INSERT_AFTER_ALL, REPLACE_ALL, and DELETE_ALL action types.
 	* </pre>
 	*/
 	public void set_pattern(String pattern) throws Exception{
@@ -268,7 +168,7 @@ public class rewriteaction extends base_resource
 
 	/**
 	* <pre>
-	* Pattern to be used for insert_before_all, insert_after_all, replace_all, delete_all action types.
+	* Pattern that is used to match multiple strings in the request or response. The pattern may be a string literal (without quotes) or a PCRE-format regular expression with a delimiter that consists of any printable ASCII non-alphanumeric character except for the underscore (_) and space ( ) that is not otherwise used in the expression. Example: re~https?://|HTTPS?://~ The preceding regular expression can use the tilde (~) as the delimiter because that character does not appear in the regular expression itself. Used in the INSERT_BEFORE_ALL, INSERT_AFTER_ALL, REPLACE_ALL, and DELETE_ALL action types.
 	* </pre>
 	*/
 	public String get_pattern() throws Exception {
@@ -277,20 +177,13 @@ public class rewriteaction extends base_resource
 
 	/**
 	* <pre>
-	* search expression takes the followin 5 argumens to use the appropriate methods to search in the specified body or header:
-1. text(string) - example: -search text("hello")
-2. regex(re<delimiter>regular exp<delimiter>) - example: -search regex(re/^hello/)
-3. xpath(xp<delimiter>xpath expression<delimiter>) - example: -search xpath(xp%/a/b%)
-4. xpath_json(xp<delimiter>xpath expression<delimiter>) - example: -search xpath_json(xp%/a/b%)
-	xpath_json_search takes xpath expression as argument but operates on json file instead of xml file.
-5. patset(patset) - example: -search patset("patset1")
-
-search expression are allowed on actions of type
-1) replace_all
-2) insert_after_all
-3) delete_all
-4) insert_before_all.
-search is a super set of pattern. It is advised to use search over pattern.
+	* Search facility that is used to match multiple strings in the request or response. Used in the INSERT_BEFORE_ALL, INSERT_AFTER_ALL, REPLACE_ALL, and DELETE_ALL action types. The following search types are supported:
+* Text ("text(string)") - A literal string. Example: -search text("hello")
+* Regular expression (“regex(re<delimiter>regular exp<delimiter>)”) - Pattern that is used to match multiple strings in the request or response. The pattern may be a string literal (without quotes) or a PCRE-format regular expression with a delimiter that consists of any printable ASCII non-alphanumeric character except for the underscore (_) and space ( ) that is not otherwise used in the expression. Example: -search regex(re~^hello~) The preceding regular expression can use the tilde (~) as the delimiter because that character does not appear in the regular expression itself.
+* XPath ("xpath(xp<delimiter>xpath expression<delimiter>)") - An XPath expression. Example: -search xpath(xp%/a/b%)
+* JSON ("xpath_json(xp<delimiter>xpath expression<delimiter>)") - An XPath JSON expression. Example: -search xpath_json(xp%/a/b%)
+NOTE: JSON searches use the same syntax as XPath searches, but operate on JSON files instead of standard XML files.
+* Patset ("patset(patset)") - A predefined pattern set. Example: -search patset("patset1").
 	* </pre>
 	*/
 	public void set_search(String search) throws Exception{
@@ -299,20 +192,13 @@ search is a super set of pattern. It is advised to use search over pattern.
 
 	/**
 	* <pre>
-	* search expression takes the followin 5 argumens to use the appropriate methods to search in the specified body or header:
-1. text(string) - example: -search text("hello")
-2. regex(re<delimiter>regular exp<delimiter>) - example: -search regex(re/^hello/)
-3. xpath(xp<delimiter>xpath expression<delimiter>) - example: -search xpath(xp%/a/b%)
-4. xpath_json(xp<delimiter>xpath expression<delimiter>) - example: -search xpath_json(xp%/a/b%)
-	xpath_json_search takes xpath expression as argument but operates on json file instead of xml file.
-5. patset(patset) - example: -search patset("patset1")
-
-search expression are allowed on actions of type
-1) replace_all
-2) insert_after_all
-3) delete_all
-4) insert_before_all.
-search is a super set of pattern. It is advised to use search over pattern.
+	* Search facility that is used to match multiple strings in the request or response. Used in the INSERT_BEFORE_ALL, INSERT_AFTER_ALL, REPLACE_ALL, and DELETE_ALL action types. The following search types are supported:
+* Text ("text(string)") - A literal string. Example: -search text("hello")
+* Regular expression (“regex(re<delimiter>regular exp<delimiter>)”) - Pattern that is used to match multiple strings in the request or response. The pattern may be a string literal (without quotes) or a PCRE-format regular expression with a delimiter that consists of any printable ASCII non-alphanumeric character except for the underscore (_) and space ( ) that is not otherwise used in the expression. Example: -search regex(re~^hello~) The preceding regular expression can use the tilde (~) as the delimiter because that character does not appear in the regular expression itself.
+* XPath ("xpath(xp<delimiter>xpath expression<delimiter>)") - An XPath expression. Example: -search xpath(xp%/a/b%)
+* JSON ("xpath_json(xp<delimiter>xpath expression<delimiter>)") - An XPath JSON expression. Example: -search xpath_json(xp%/a/b%)
+NOTE: JSON searches use the same syntax as XPath searches, but operate on JSON files instead of standard XML files.
+* Patset ("patset(patset)") - A predefined pattern set. Example: -search patset("patset1").
 	* </pre>
 	*/
 	public String get_search() throws Exception {
@@ -321,7 +207,7 @@ search is a super set of pattern. It is advised to use search over pattern.
 
 	/**
 	* <pre>
-	* Bypass the safety check and allow unsafe expressions.<br> Default value: NO<br> Possible values = YES, NO
+	* Bypass the safety check and allow unsafe expressions. An unsafe expression is one that contains references to message elements that might not be present in all messages. If an expression refers to a missing request element, an empty string is used instead.<br> Default value: NO<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public void set_bypasssafetycheck(String bypasssafetycheck) throws Exception{
@@ -330,7 +216,7 @@ search is a super set of pattern. It is advised to use search over pattern.
 
 	/**
 	* <pre>
-	* Bypass the safety check and allow unsafe expressions.<br> Default value: NO<br> Possible values = YES, NO
+	* Bypass the safety check and allow unsafe expressions. An unsafe expression is one that contains references to message elements that might not be present in all messages. If an expression refers to a missing request element, an empty string is used instead.<br> Default value: NO<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public String get_bypasssafetycheck() throws Exception {
@@ -339,15 +225,9 @@ search is a super set of pattern. It is advised to use search over pattern.
 
 	/**
 	* <pre>
-	* refineSearch expressions specifies how the selected HTTP data can further be refined. These expression always starts with the 'Extend(m,n)' operation. Where 'm' specifies number of bytes to the left of selected data and 'n' specifies number of bytes to the right of selected data.
-refineSearch expression are only allowed on body based expression and for actions of type
-1) replace_all
-2) insert_after_all
-3) delete_all
-4) insert_before_all.
-This can accelerate search using regular expression. For example if we need to find all the urls from www.zippo.com in a response body. Rather than writing a regular expression to search this url pattern we can search for 'zippo' pattern first and then extend the search space by some bytes and finally check for prefix 'www.zippo.com'. The rewrite command might look like:
-     	add rewrite action act1 delete_all 'http.res.body(10000)' -pattern "zippo" -refineSearch "extend(10,10).regex_select(re%<www.zippo.com[^>].*>%)"
-Maximum length of the input expression is 8191. Maximum size of string that can be used inside the expression is 1499.
+	* Specify additional criteria to refine the results of the search. 
+Always starts with the "extend(m,n)" operation, where 'm' specifies number of bytes to the left of selected data and 'n' specifies number of bytes to the right of selected data.
+You can use refineSearch only on body expressions, and for the INSERT_BEFORE_ALL, INSERT_AFTER_ALL, REPLACE_ALL, and DELETE_ALL action types.
 	* </pre>
 	*/
 	public void set_refinesearch(String refinesearch) throws Exception{
@@ -356,15 +236,9 @@ Maximum length of the input expression is 8191. Maximum size of string that can 
 
 	/**
 	* <pre>
-	* refineSearch expressions specifies how the selected HTTP data can further be refined. These expression always starts with the 'Extend(m,n)' operation. Where 'm' specifies number of bytes to the left of selected data and 'n' specifies number of bytes to the right of selected data.
-refineSearch expression are only allowed on body based expression and for actions of type
-1) replace_all
-2) insert_after_all
-3) delete_all
-4) insert_before_all.
-This can accelerate search using regular expression. For example if we need to find all the urls from www.zippo.com in a response body. Rather than writing a regular expression to search this url pattern we can search for 'zippo' pattern first and then extend the search space by some bytes and finally check for prefix 'www.zippo.com'. The rewrite command might look like:
-     	add rewrite action act1 delete_all 'http.res.body(10000)' -pattern "zippo" -refineSearch "extend(10,10).regex_select(re%<www.zippo.com[^>].*>%)"
-Maximum length of the input expression is 8191. Maximum size of string that can be used inside the expression is 1499.
+	* Specify additional criteria to refine the results of the search. 
+Always starts with the "extend(m,n)" operation, where 'm' specifies number of bytes to the left of selected data and 'n' specifies number of bytes to the right of selected data.
+You can use refineSearch only on body expressions, and for the INSERT_BEFORE_ALL, INSERT_AFTER_ALL, REPLACE_ALL, and DELETE_ALL action types.
 	* </pre>
 	*/
 	public String get_refinesearch() throws Exception {
@@ -373,7 +247,7 @@ Maximum length of the input expression is 8191. Maximum size of string that can 
 
 	/**
 	* <pre>
-	* Comments associated with this rewrite action.
+	* Comment. Can be used to preserve information about this rewrite action.
 	* </pre>
 	*/
 	public void set_comment(String comment) throws Exception{
@@ -382,7 +256,7 @@ Maximum length of the input expression is 8191. Maximum size of string that can 
 
 	/**
 	* <pre>
-	* Comments associated with this rewrite action.
+	* Comment. Can be used to preserve information about this rewrite action.
 	* </pre>
 	*/
 	public String get_comment() throws Exception {
@@ -391,7 +265,11 @@ Maximum length of the input expression is 8191. Maximum size of string that can 
 
 	/**
 	* <pre>
-	* The new name of the rewrite action.<br> Minimum length =  1
+	* New name for the rewrite action. 
+Must begin with a letter, number, or the underscore character (_), and must contain only letters, numbers, and the hyphen (-), period (.) hash (#), space ( ), at (@), equals (=), colon (:), and underscore characters. Can be changed after the rewrite policy is added.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my rewrite action" or ‘my rewrite action’).<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_newname(String newname) throws Exception{
@@ -400,7 +278,11 @@ Maximum length of the input expression is 8191. Maximum size of string that can 
 
 	/**
 	* <pre>
-	* The new name of the rewrite action.<br> Minimum length =  1
+	* New name for the rewrite action. 
+Must begin with a letter, number, or the underscore character (_), and must contain only letters, numbers, and the hyphen (-), period (.) hash (#), space ( ), at (@), equals (=), colon (:), and underscore characters. Can be changed after the rewrite policy is added.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my rewrite action" or ‘my rewrite action’).<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_newname() throws Exception {
@@ -631,22 +513,9 @@ Maximum length of the input expression is 8191. Maximum size of string that can 
 	* Use this API to unset the properties of rewriteaction resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String name, String args[]) throws Exception {
-		rewriteaction unsetresource = new rewriteaction();
-		unsetresource.name = name;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of rewriteaction resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, rewriteaction resource, String[] args) throws Exception{
 		rewriteaction unsetresource = new rewriteaction();
 		unsetresource.name = resource.name;
-		unsetresource.stringbuilderexpr = resource.stringbuilderexpr;
-		unsetresource.refinesearch = resource.refinesearch;
-		unsetresource.comment = resource.comment;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -678,9 +547,6 @@ Maximum length of the input expression is 8191. Maximum size of string that can 
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new rewriteaction();
 				unsetresources[i].name = resources[i].name;
-				unsetresources[i].stringbuilderexpr = resources[i].stringbuilderexpr;
-				unsetresources[i].refinesearch = resources[i].refinesearch;
-				unsetresources[i].comment = resources[i].comment;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}

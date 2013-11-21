@@ -45,11 +45,15 @@ public class appfwpolicylabel extends base_resource
 	private String labeltype;
 	private String invoke_labelname;
 	private String description;
+	private String policytype;
 	private Long __count;
 
 	/**
 	* <pre>
-	* Name of the application firewall policy label.
+	* Name for the policy label. Must begin with a letter, number, or the underscore character (_), and must contain only letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at (@), equals (=), colon (:), and underscore characters. Can be changed after the policy label is created.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my policy label" or 'my policy label').
 	* </pre>
 	*/
 	public void set_labelname(String labelname) throws Exception{
@@ -58,7 +62,10 @@ public class appfwpolicylabel extends base_resource
 
 	/**
 	* <pre>
-	* Name of the application firewall policy label.
+	* Name for the policy label. Must begin with a letter, number, or the underscore character (_), and must contain only letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at (@), equals (=), colon (:), and underscore characters. Can be changed after the policy label is created.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my policy label" or 'my policy label').
 	* </pre>
 	*/
 	public String get_labelname() throws Exception {
@@ -67,7 +74,7 @@ public class appfwpolicylabel extends base_resource
 
 	/**
 	* <pre>
-	* The type of transformations allowed by the policies bound to the label.<br> Possible values = http_req
+	* Type of transformations allowed by the policies bound to the label. Always http_req for application firewall policy labels.<br> Possible values = http_req
 	* </pre>
 	*/
 	public void set_policylabeltype(String policylabeltype) throws Exception{
@@ -76,7 +83,7 @@ public class appfwpolicylabel extends base_resource
 
 	/**
 	* <pre>
-	* The type of transformations allowed by the policies bound to the label.<br> Possible values = http_req
+	* Type of transformations allowed by the policies bound to the label. Always http_req for application firewall policy labels.<br> Possible values = http_req
 	* </pre>
 	*/
 	public String get_policylabeltype() throws Exception {
@@ -121,7 +128,7 @@ public class appfwpolicylabel extends base_resource
 
 	/**
 	* <pre>
-	* Specifies the priority of the policy.
+	* Positive integer specifying the priority of the policy. A lower number specifies a higher priority. Must be unique within a group of policies that are bound to the same bind point or label. Policies are evaluated in the order of their priority numbers.
 	* </pre>
 	*/
 	public Long get_priority() throws Exception {
@@ -139,7 +146,9 @@ public class appfwpolicylabel extends base_resource
 
 	/**
 	* <pre>
-	* Type of policy label invocation.<br> Possible values = reqvserver, policylabel
+	* Type of policy label to invoke if the current policy evaluates to TRUE and the invoke parameter is set. Available settings function as follows:
+* reqvserver. Invoke the unnamed policy label associated with the specified request virtual server.
+* policylabel. Invoke the specified user-defined policy label.<br> Possible values = reqvserver, policylabel
 	* </pre>
 	*/
 	public String get_labeltype() throws Exception {
@@ -148,7 +157,7 @@ public class appfwpolicylabel extends base_resource
 
 	/**
 	* <pre>
-	* Name of the label to invoke if the current policy rule evaluates to TRUE.
+	* Name of the policy label to invoke if the current policy evaluates to TRUE, the invoke parameter is set, and Label Type is set to Policy Label.
 	* </pre>
 	*/
 	public String get_invoke_labelname() throws Exception {
@@ -162,6 +171,15 @@ public class appfwpolicylabel extends base_resource
 	*/
 	public String get_description() throws Exception {
 		return this.description;
+	}
+
+	/**
+	* <pre>
+	* .<br> Possible values = Classic Policy, Advanced Policy
+	* </pre>
+	*/
+	public String get_policytype() throws Exception {
+		return this.policytype;
 	}
 
 	/**
@@ -411,5 +429,9 @@ public class appfwpolicylabel extends base_resource
 	public static class labeltypeEnum {
 		public static final String reqvserver = "reqvserver";
 		public static final String policylabel = "policylabel";
+	}
+	public static class policytypeEnum {
+		public static final String Classic_Policy = "Classic Policy";
+		public static final String Advanced_Policy = "Advanced Policy";
 	}
 }

@@ -192,7 +192,6 @@ public class inatparam extends base_resource
 	*/
 	public static base_response unset(nitro_service client, inatparam resource, String[] args) throws Exception{
 		inatparam unsetresource = new inatparam();
-		unsetresource.nat46v6prefix = resource.nat46v6prefix;
 		return unsetresource.unset_resource(client,args);
 	}
 

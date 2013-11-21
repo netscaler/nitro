@@ -29,7 +29,7 @@ class ns_response extends base_response
 
 public class ns_stats extends base_resource
 {
-	private Long memtotavail;
+	private String clearstats;
 	private Long cachemaxmemorykb;
 	private Double delcmpratio;
 	private Long rescpuusage;
@@ -91,30 +91,29 @@ public class ns_stats extends base_resource
 	private Long appfirewallredirectsrate;
 	private Long misccounter0;
 	private Long misccounter1;
-	private Long misccounter2;
-	private Long misccounter3;
 	private Long numcpus;
-	private Long cpuuse;
-	private Long mgmtcpuuse;
-	private Long sslcardstatus;
-	private Long cachetot304hits;
-	private Long cache304hitsrate;
-	private Long cachetotnon304hits;
-	private Long cachenon304hitsrate;
-	private Long cachetotrequests;
-	private Long cacherequestsrate;
-	private Long comptotaltxbytes;
-	private Long comptxbytesrate;
-	private Long comptotalrxbytes;
-	private Long comprxbytesrate;
-	private Long delcomptcprxbytes;
-	private Long delcomptcprxbytesrate;
-	private Long delcomptcptxbytes;
-	private Long delcomptcptxbytesrate;
 
 	/**
 	* <pre>
-	* Responses served from the integrated cache. These responses match a policy with a CACHE action.
+	* Clear the statsistics / counters
+	* </pre>
+	*/
+	public void set_clearstats(String clearstats) throws Exception{
+		this.clearstats = clearstats;
+	}
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters.<br> Possible values = basic, full
+	* </pre>
+	*/
+	public String get_clearstats() throws Exception {
+		return this.clearstats;
+	}
+
+	/**
+	* <pre>
+	* Rate (/s) counter for cachetothits
 	* </pre>
 	*/
 	public Long get_cachehitsrate() throws Exception {
@@ -123,7 +122,7 @@ public class ns_stats extends base_resource
 
 	/**
 	* <pre>
-	* HTTP/HTTPS requests redirected by the Application Firewall to a different Web page or web server. (HTTP 302)
+	* Rate (/s) counter for appfirewallredirects
 	* </pre>
 	*/
 	public Long get_appfirewallredirectsrate() throws Exception {
@@ -183,7 +182,7 @@ FORCE CHANGE - Indicates that the secondary node is forcibly changing its status
 
 	/**
 	* <pre>
-	* Total number of bytes of HTTP request data received.
+	* Rate (/s) counter for httptotrxrequestbytes
 	* </pre>
 	*/
 	public Long get_httprxrequestbytesrate() throws Exception {
@@ -210,16 +209,7 @@ FORCE CHANGE - Indicates that the secondary node is forcibly changing its status
 
 	/**
 	* <pre>
-	* Number of bytes the NetScaler sends to the client after compressing the response from the server.
-	* </pre>
-	*/
-	public Long get_comptotaltxbytes() throws Exception {
-		return this.comptotaltxbytes;
-	}
-
-	/**
-	* <pre>
-	* Average CPU utilization percentage.
+	* Average CPU utilization percentage. Not applicable for a single-CPU system.
 	* </pre>
 	*/
 	public Double get_rescpuusagepcnt() throws Exception {
@@ -237,15 +227,6 @@ FORCE CHANGE - Indicates that the secondary node is forcibly changing its status
 
 	/**
 	* <pre>
-	* Total number of delta-compressed bytes transmitted by NetScaler.
-	* </pre>
-	*/
-	public Long get_delcomptcptxbytes() throws Exception {
-		return this.delcomptcptxbytes;
-	}
-
-	/**
-	* <pre>
 	* Available space in /var partition of the hard disk.
 	* </pre>
 	*/
@@ -255,7 +236,7 @@ FORCE CHANGE - Indicates that the secondary node is forcibly changing its status
 
 	/**
 	* <pre>
-	* HTTP/HTTPS responses sent by your protected web servers via the Application Firewall.
+	* Rate (/s) counter for appfirewallresponses
 	* </pre>
 	*/
 	public Long get_appfirewallresponsesrate() throws Exception {
@@ -309,7 +290,7 @@ FORCE CHANGE - Indicates that the secondary node is forcibly changing its status
 
 	/**
 	* <pre>
-	* Average CPU utilization percentage.
+	* Shows average CPU utilization percentage if more than 1 CPU is present.
 	* </pre>
 	*/
 	public Long get_rescpuusage() throws Exception {
@@ -336,16 +317,7 @@ FORCE CHANGE - Indicates that the secondary node is forcibly changing its status
 
 	/**
 	* <pre>
-	* Number of bytes that can be compressed, which the NetScaler receives from the server. This gives the content length of the response that the NetScaler receives from server.
-	* </pre>
-	*/
-	public Long get_comprxbytesrate() throws Exception {
-		return this.comprxbytesrate;
-	}
-
-	/**
-	* <pre>
-	* Total number of bytes of HTTP response data received.
+	* Rate (/s) counter for httptotrxresponsebytes
 	* </pre>
 	*/
 	public Long get_httprxresponsebytesrate() throws Exception {
@@ -365,7 +337,7 @@ You can configure /flash Used (%) by using the Set snmp alarm DISK-USAGE-HIGH co
 
 	/**
 	* <pre>
-	* Incomplete HTTP/HTTPS requests aborted by the client before the Application Firewall could finish processing them.
+	* Rate (/s) counter for appfirewallaborts
 	* </pre>
 	*/
 	public Long get_appfirewallabortsrate() throws Exception {
@@ -374,7 +346,7 @@ You can configure /flash Used (%) by using the Set snmp alarm DISK-USAGE-HIGH co
 
 	/**
 	* <pre>
-	* HTTP/HTTPS requests sent to your protected web servers via the Application Firewall.
+	* Rate (/s) counter for appfirewallrequests
 	* </pre>
 	*/
 	public Long get_appfirewallrequestsrate() throws Exception {
@@ -410,16 +382,7 @@ You can configure /flash Used (%) by using the Set snmp alarm DISK-USAGE-HIGH co
 
 	/**
 	* <pre>
-	* Total cache hits plus total cache misses.
-	* </pre>
-	*/
-	public Long get_cacherequestsrate() throws Exception {
-		return this.cacherequestsrate;
-	}
-
-	/**
-	* <pre>
-	* Intercepted HTTP requests requiring fetches from origin server.
+	* Rate (/s) counter for cachetotmisses
 	* </pre>
 	*/
 	public Long get_cachemissesrate() throws Exception {
@@ -491,29 +454,11 @@ You can configure /flash Used (%) by using the Set snmp alarm DISK-USAGE-HIGH co
 
 	/**
 	* <pre>
-	* Number of bytes that can be compressed, which the NetScaler receives from the server. This gives the content length of the response that the NetScaler receives from server.
-	* </pre>
-	*/
-	public Long get_comptotalrxbytes() throws Exception {
-		return this.comptotalrxbytes;
-	}
-
-	/**
-	* <pre>
 	* Miscellaneous Counter 1.
 	* </pre>
 	*/
 	public Long get_misccounter1() throws Exception {
 		return this.misccounter1;
-	}
-
-	/**
-	* <pre>
-	* Miscellaneous Counter 2.
-	* </pre>
-	*/
-	public Long get_misccounter2() throws Exception {
-		return this.misccounter2;
 	}
 
 	/**
@@ -527,16 +472,7 @@ You can configure /flash Used (%) by using the Set snmp alarm DISK-USAGE-HIGH co
 
 	/**
 	* <pre>
-	* Number of bytes the NetScaler sends to the client after compressing the response from the server.
-	* </pre>
-	*/
-	public Long get_comptxbytesrate() throws Exception {
-		return this.comptxbytesrate;
-	}
-
-	/**
-	* <pre>
-	* Packet CPU utilization percentage.
+	* Average CPU utilization percentage for all packet engines excluding management PE.
 	* </pre>
 	*/
 	public Double get_pktcpuusagepcnt() throws Exception {
@@ -545,16 +481,7 @@ You can configure /flash Used (%) by using the Set snmp alarm DISK-USAGE-HIGH co
 
 	/**
 	* <pre>
-	* Status of the SSL card(s). The value should be interpreted in binary form, with each set bit indicates a card as UP.
-	* </pre>
-	*/
-	public Long get_sslcardstatus() throws Exception {
-		return this.sslcardstatus;
-	}
-
-	/**
-	* <pre>
-	* Number of SSL transactions on the NetScaler appliance.
+	* Rate (/s) counter for ssltottransactions
 	* </pre>
 	*/
 	public Long get_ssltransactionsrate() throws Exception {
@@ -563,16 +490,7 @@ You can configure /flash Used (%) by using the Set snmp alarm DISK-USAGE-HIGH co
 
 	/**
 	* <pre>
-	* CPU utilization: percentage * 10.
-	* </pre>
-	*/
-	public Long get_cpuuse() throws Exception {
-		return this.cpuuse;
-	}
-
-	/**
-	* <pre>
-	* Total number of HTTP requests received.
+	* Rate (/s) counter for httptotrequests
 	* </pre>
 	*/
 	public Long get_httprequestsrate() throws Exception {
@@ -590,7 +508,7 @@ You can configure /flash Used (%) by using the Set snmp alarm DISK-USAGE-HIGH co
 
 	/**
 	* <pre>
-	* Total number of HTTP responses sent.
+	* Rate (/s) counter for httptotresponses
 	* </pre>
 	*/
 	public Long get_httpresponsesrate() throws Exception {
@@ -608,38 +526,11 @@ You can configure /flash Used (%) by using the Set snmp alarm DISK-USAGE-HIGH co
 
 	/**
 	* <pre>
-	* Total number of full (non-304) responses served from the cache. A 304 status code indicates that a response has not been modified since the last time it was served
-	* </pre>
-	*/
-	public Long get_cachenon304hitsrate() throws Exception {
-		return this.cachenon304hitsrate;
-	}
-
-	/**
-	* <pre>
-	* Total number of full (non-304) responses served from the cache. A 304 status code indicates that a response has not been modified since the last time it was served
-	* </pre>
-	*/
-	public Long get_cachetotnon304hits() throws Exception {
-		return this.cachetotnon304hits;
-	}
-
-	/**
-	* <pre>
 	* Main memory currently in use, in megabytes.
 	* </pre>
 	*/
 	public Long get_memuseinmb() throws Exception {
 		return this.memuseinmb;
-	}
-
-	/**
-	* <pre>
-	* Total number of delta-compressed bytes transmitted by NetScaler.
-	* </pre>
-	*/
-	public Long get_delcomptcptxbytesrate() throws Exception {
-		return this.delcomptcptxbytesrate;
 	}
 
 	/**
@@ -653,7 +544,7 @@ You can configure /flash Used (%) by using the Set snmp alarm DISK-USAGE-HIGH co
 
 	/**
 	* <pre>
-	* Number of megabytes transmitted by the NetScaler appliance.
+	* Rate (/s) counter for tottxmbits
 	* </pre>
 	*/
 	public Long get_txmbitsrate() throws Exception {
@@ -662,7 +553,7 @@ You can configure /flash Used (%) by using the Set snmp alarm DISK-USAGE-HIGH co
 
 	/**
 	* <pre>
-	* Number of SSL session reuse hits on the NetScaler appliance.
+	* Rate (/s) counter for ssltotsessionhits
 	* </pre>
 	*/
 	public Long get_sslsessionhitsrate() throws Exception {
@@ -676,15 +567,6 @@ You can configure /flash Used (%) by using the Set snmp alarm DISK-USAGE-HIGH co
 	*/
 	public Long get_resmemusage() throws Exception {
 		return this.resmemusage;
-	}
-
-	/**
-	* <pre>
-	* Object not modified responses served from the cache. (Status code 304 served instead of the full response.)
-	* </pre>
-	*/
-	public Long get_cache304hitsrate() throws Exception {
-		return this.cache304hitsrate;
 	}
 
 	/**
@@ -716,20 +598,11 @@ ROUTEMONITORFAIL – Indicates that the route monitor has failed. This state trigg
 
 	/**
 	* <pre>
-	* Number of megabytes received by the NetScaler appliance.
+	* Rate (/s) counter for totrxmbits
 	* </pre>
 	*/
 	public Long get_rxmbitsrate() throws Exception {
 		return this.rxmbitsrate;
-	}
-
-	/**
-	* <pre>
-	* Total number of delta-compressible bytes received by NetScaler.
-	* </pre>
-	*/
-	public Long get_delcomptcprxbytes() throws Exception {
-		return this.delcomptcprxbytes;
 	}
 
 	/**
@@ -743,29 +616,11 @@ ROUTEMONITORFAIL – Indicates that the route monitor has failed. This state trigg
 
 	/**
 	* <pre>
-	* Object not modified responses served from the cache. (Status code 304 served instead of the full response.)
-	* </pre>
-	*/
-	public Long get_cachetot304hits() throws Exception {
-		return this.cachetot304hits;
-	}
-
-	/**
-	* <pre>
 	* Time when the NetScaler appliance was last started.
 	* </pre>
 	*/
 	public String get_starttime() throws Exception {
 		return this.starttime;
-	}
-
-	/**
-	* <pre>
-	* Total system memory available for PE to grab from the system.
-	* </pre>
-	*/
-	public Long get_memtotavail() throws Exception {
-		return this.memtotavail;
 	}
 
 	/**
@@ -788,47 +643,11 @@ ROUTEMONITORFAIL – Indicates that the route monitor has failed. This state trigg
 
 	/**
 	* <pre>
-	* Total number of delta-compressible bytes received by NetScaler.
-	* </pre>
-	*/
-	public Long get_delcomptcprxbytesrate() throws Exception {
-		return this.delcomptcprxbytesrate;
-	}
-
-	/**
-	* <pre>
 	* Percentage of origin bandwidth saved, expressed as number of bytes served from the integrated cache divided by all bytes served. The assumption is that all compression is done in the NetScaler.
 	* </pre>
 	*/
 	public Long get_cachepercentoriginbandwidthsaved() throws Exception {
 		return this.cachepercentoriginbandwidthsaved;
-	}
-
-	/**
-	* <pre>
-	* Miscellaneous Counter 3.
-	* </pre>
-	*/
-	public Long get_misccounter3() throws Exception {
-		return this.misccounter3;
-	}
-
-	/**
-	* <pre>
-	* Total cache hits plus total cache misses.
-	* </pre>
-	*/
-	public Long get_cachetotrequests() throws Exception {
-		return this.cachetotrequests;
-	}
-
-	/**
-	* <pre>
-	* Management CPU utilization: percentage * 10.
-	* </pre>
-	*/
-	public Long get_mgmtcpuuse() throws Exception {
-		return this.mgmtcpuuse;
 	}
 
 	/**
@@ -921,4 +740,8 @@ ROUTEMONITORFAIL – Indicates that the route monitor has failed. This state trigg
 		return response[0];
 	}
 
+	public static class clearstatsEnum {
+		public static final String basic = "basic";
+		public static final String full = "full";
+	}
 }

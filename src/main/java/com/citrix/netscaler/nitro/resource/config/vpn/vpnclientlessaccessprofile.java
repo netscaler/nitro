@@ -56,7 +56,10 @@ public class vpnclientlessaccessprofile extends base_resource
 
 	/**
 	* <pre>
-	* The name of the clientless access profile.<br> Minimum length =  1
+	* Name for the Access Gateway clientless access profile. Must begin with an ASCII alphabetic or underscore (_) character, and must consist only of ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Cannot be changed after the profile is created.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my profile" or 'my profile').<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_profilename(String profilename) throws Exception{
@@ -65,7 +68,10 @@ public class vpnclientlessaccessprofile extends base_resource
 
 	/**
 	* <pre>
-	* The name of the clientless access profile.<br> Minimum length =  1
+	* Name for the Access Gateway clientless access profile. Must begin with an ASCII alphabetic or underscore (_) character, and must consist only of ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Cannot be changed after the profile is created.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my profile" or 'my profile').<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_profilename() throws Exception {
@@ -74,7 +80,7 @@ public class vpnclientlessaccessprofile extends base_resource
 
 	/**
 	* <pre>
-	* The configured URL rewrite policylabel.<br> Minimum length =  1
+	* Name of the configured URL rewrite policy label. If you do not specify a policy label name, then URLs are not rewritten.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_urlrewritepolicylabel(String urlrewritepolicylabel) throws Exception{
@@ -83,7 +89,7 @@ public class vpnclientlessaccessprofile extends base_resource
 
 	/**
 	* <pre>
-	* The configured URL rewrite policylabel.<br> Minimum length =  1
+	* Name of the configured URL rewrite policy label. If you do not specify a policy label name, then URLs are not rewritten.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_urlrewritepolicylabel() throws Exception {
@@ -92,7 +98,7 @@ public class vpnclientlessaccessprofile extends base_resource
 
 	/**
 	* <pre>
-	* The configured JavaScript rewrite policylabel.<br> Minimum length =  1
+	* Name of the configured JavaScript rewrite policy label.  If you do not specify a policy label name, then JAVA scripts are not rewritten.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_javascriptrewritepolicylabel(String javascriptrewritepolicylabel) throws Exception{
@@ -101,7 +107,7 @@ public class vpnclientlessaccessprofile extends base_resource
 
 	/**
 	* <pre>
-	* The configured JavaScript rewrite policylabel.<br> Minimum length =  1
+	* Name of the configured JavaScript rewrite policy label.  If you do not specify a policy label name, then JAVA scripts are not rewritten.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_javascriptrewritepolicylabel() throws Exception {
@@ -110,7 +116,7 @@ public class vpnclientlessaccessprofile extends base_resource
 
 	/**
 	* <pre>
-	* The configured Request Header rewrite policylabel.<br> Minimum length =  1
+	* Name of the configured Request rewrite policy label.  If you do not specify a policy label name, then requests are not rewritten.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_reqhdrrewritepolicylabel(String reqhdrrewritepolicylabel) throws Exception{
@@ -119,7 +125,7 @@ public class vpnclientlessaccessprofile extends base_resource
 
 	/**
 	* <pre>
-	* The configured Request Header rewrite policylabel.<br> Minimum length =  1
+	* Name of the configured Request rewrite policy label.  If you do not specify a policy label name, then requests are not rewritten.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_reqhdrrewritepolicylabel() throws Exception {
@@ -128,7 +134,7 @@ public class vpnclientlessaccessprofile extends base_resource
 
 	/**
 	* <pre>
-	* The configured Response rewrite policylabel.<br> Minimum length =  1
+	* Name of the configured Response rewrite policy label.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_reshdrrewritepolicylabel(String reshdrrewritepolicylabel) throws Exception{
@@ -137,7 +143,7 @@ public class vpnclientlessaccessprofile extends base_resource
 
 	/**
 	* <pre>
-	* The configured Response rewrite policylabel.<br> Minimum length =  1
+	* Name of the configured Response rewrite policy label.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_reshdrrewritepolicylabel() throws Exception {
@@ -146,7 +152,7 @@ public class vpnclientlessaccessprofile extends base_resource
 
 	/**
 	* <pre>
-	* Patclass having regexes to find the URLs in JavaScript.<br> Minimum length =  1
+	* Name of the pattern set that contains the regular expressions, which match the URL in Java script.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_regexforfindingurlinjavascript(String regexforfindingurlinjavascript) throws Exception{
@@ -155,7 +161,7 @@ public class vpnclientlessaccessprofile extends base_resource
 
 	/**
 	* <pre>
-	* Patclass having regexes to find the URLs in JavaScript.<br> Minimum length =  1
+	* Name of the pattern set that contains the regular expressions, which match the URL in Java script.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_regexforfindingurlinjavascript() throws Exception {
@@ -164,7 +170,7 @@ public class vpnclientlessaccessprofile extends base_resource
 
 	/**
 	* <pre>
-	* Patclass having regexes to find the URLs in CSS.<br> Minimum length =  1
+	* Name of the pattern set that contains the regular expressions, which match the URL in the CSS.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_regexforfindingurlincss(String regexforfindingurlincss) throws Exception{
@@ -173,7 +179,7 @@ public class vpnclientlessaccessprofile extends base_resource
 
 	/**
 	* <pre>
-	* Patclass having regexes to find the URLs in CSS.<br> Minimum length =  1
+	* Name of the pattern set that contains the regular expressions, which match the URL in the CSS.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_regexforfindingurlincss() throws Exception {
@@ -182,7 +188,7 @@ public class vpnclientlessaccessprofile extends base_resource
 
 	/**
 	* <pre>
-	* Patclass having regexes to find the URLs in X-Component.<br> Minimum length =  1
+	* Name of the pattern set that contains the regular expressions, which match the URL in X Component.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_regexforfindingurlinxcomponent(String regexforfindingurlinxcomponent) throws Exception{
@@ -191,7 +197,7 @@ public class vpnclientlessaccessprofile extends base_resource
 
 	/**
 	* <pre>
-	* Patclass having regexes to find the URLs in X-Component.<br> Minimum length =  1
+	* Name of the pattern set that contains the regular expressions, which match the URL in X Component.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_regexforfindingurlinxcomponent() throws Exception {
@@ -200,7 +206,7 @@ public class vpnclientlessaccessprofile extends base_resource
 
 	/**
 	* <pre>
-	* Patclass having regexes to find the URLs in XML.<br> Minimum length =  1
+	* Name of the pattern set that contains the regular expressions, which match the URL in XML.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_regexforfindingurlinxml(String regexforfindingurlinxml) throws Exception{
@@ -209,7 +215,7 @@ public class vpnclientlessaccessprofile extends base_resource
 
 	/**
 	* <pre>
-	* Patclass having regexes to find the URLs in XML.<br> Minimum length =  1
+	* Name of the pattern set that contains the regular expressions, which match the URL in XML.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_regexforfindingurlinxml() throws Exception {
@@ -218,7 +224,7 @@ public class vpnclientlessaccessprofile extends base_resource
 
 	/**
 	* <pre>
-	* Patclass having regexes to find the custom URLs.<br> Minimum length =  1
+	* Name of the pattern set that contains the regular expressions, which match the URLs in the custom content type other than HTML, CSS, XML, XCOMP, and JavaScript. The custom content type should be included in the patset ns_cvpn_custom_content_types.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_regexforfindingcustomurls(String regexforfindingcustomurls) throws Exception{
@@ -227,7 +233,7 @@ public class vpnclientlessaccessprofile extends base_resource
 
 	/**
 	* <pre>
-	* Patclass having regexes to find the custom URLs.<br> Minimum length =  1
+	* Name of the pattern set that contains the regular expressions, which match the URLs in the custom content type other than HTML, CSS, XML, XCOMP, and JavaScript. The custom content type should be included in the patset ns_cvpn_custom_content_types.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_regexforfindingcustomurls() throws Exception {
@@ -236,7 +242,7 @@ public class vpnclientlessaccessprofile extends base_resource
 
 	/**
 	* <pre>
-	* Patclass having the client consumed Cookie names.<br> Minimum length =  1
+	* Specify the name of the pattern set containing the names of the cookies, which are allowed between the client and the server. If a pattern set is not specified, Access Gateway does not allow any cookies between the client and the server. A cookie that is not specified in the pattern set is handled by Access Gateway on behalf of the client.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_clientconsumedcookies(String clientconsumedcookies) throws Exception{
@@ -245,7 +251,7 @@ public class vpnclientlessaccessprofile extends base_resource
 
 	/**
 	* <pre>
-	* Patclass having the client consumed Cookie names.<br> Minimum length =  1
+	* Specify the name of the pattern set containing the names of the cookies, which are allowed between the client and the server. If a pattern set is not specified, Access Gateway does not allow any cookies between the client and the server. A cookie that is not specified in the pattern set is handled by Access Gateway on behalf of the client.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_clientconsumedcookies() throws Exception {
@@ -254,7 +260,7 @@ public class vpnclientlessaccessprofile extends base_resource
 
 	/**
 	* <pre>
-	* The flag to select Persistent cookie for the profile.<br> Default value: OFF<br> Possible values = ON, OFF
+	* Specify whether a persistent session cookie is set and accepted for clientless access. If this parameter is set to ON, COM objects, such as MSOffice, which are invoked by the browser can access the files using clientless access. Use caution because the persistent cookie is stored on the disk.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_requirepersistentcookie(String requirepersistentcookie) throws Exception{
@@ -263,7 +269,7 @@ public class vpnclientlessaccessprofile extends base_resource
 
 	/**
 	* <pre>
-	* The flag to select Persistent cookie for the profile.<br> Default value: OFF<br> Possible values = ON, OFF
+	* Specify whether a persistent session cookie is set and accepted for clientless access. If this parameter is set to ON, COM objects, such as MSOffice, which are invoked by the browser can access the files using clientless access. Use caution because the persistent cookie is stored on the disk.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_requirepersistentcookie() throws Exception {
@@ -488,17 +494,6 @@ public class vpnclientlessaccessprofile extends base_resource
 	public static base_response unset(nitro_service client, vpnclientlessaccessprofile resource, String[] args) throws Exception{
 		vpnclientlessaccessprofile unsetresource = new vpnclientlessaccessprofile();
 		unsetresource.profilename = resource.profilename;
-		unsetresource.urlrewritepolicylabel = resource.urlrewritepolicylabel;
-		unsetresource.javascriptrewritepolicylabel = resource.javascriptrewritepolicylabel;
-		unsetresource.reqhdrrewritepolicylabel = resource.reqhdrrewritepolicylabel;
-		unsetresource.reshdrrewritepolicylabel = resource.reshdrrewritepolicylabel;
-		unsetresource.regexforfindingurlinjavascript = resource.regexforfindingurlinjavascript;
-		unsetresource.regexforfindingurlincss = resource.regexforfindingurlincss;
-		unsetresource.regexforfindingurlinxcomponent = resource.regexforfindingurlinxcomponent;
-		unsetresource.regexforfindingurlinxml = resource.regexforfindingurlinxml;
-		unsetresource.regexforfindingcustomurls = resource.regexforfindingcustomurls;
-		unsetresource.clientconsumedcookies = resource.clientconsumedcookies;
-		unsetresource.requirepersistentcookie = resource.requirepersistentcookie;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -530,17 +525,6 @@ public class vpnclientlessaccessprofile extends base_resource
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new vpnclientlessaccessprofile();
 				unsetresources[i].profilename = resources[i].profilename;
-				unsetresources[i].urlrewritepolicylabel = resources[i].urlrewritepolicylabel;
-				unsetresources[i].javascriptrewritepolicylabel = resources[i].javascriptrewritepolicylabel;
-				unsetresources[i].reqhdrrewritepolicylabel = resources[i].reqhdrrewritepolicylabel;
-				unsetresources[i].reshdrrewritepolicylabel = resources[i].reshdrrewritepolicylabel;
-				unsetresources[i].regexforfindingurlinjavascript = resources[i].regexforfindingurlinjavascript;
-				unsetresources[i].regexforfindingurlincss = resources[i].regexforfindingurlincss;
-				unsetresources[i].regexforfindingurlinxcomponent = resources[i].regexforfindingurlinxcomponent;
-				unsetresources[i].regexforfindingurlinxml = resources[i].regexforfindingurlinxml;
-				unsetresources[i].regexforfindingcustomurls = resources[i].regexforfindingcustomurls;
-				unsetresources[i].clientconsumedcookies = resources[i].clientconsumedcookies;
-				unsetresources[i].requirepersistentcookie = resources[i].requirepersistentcookie;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}

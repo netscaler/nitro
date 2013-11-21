@@ -33,6 +33,8 @@ class rnatip_response extends base_response
 public class rnatip_stats extends base_resource
 {
 	private String Rnatip;
+	private String clearstats;
+	private Long iptd;
 	private Long iprnattotrxbytes;
 	private Long iprnatrxbytesrate;
 	private Long iprnattottxbytes;
@@ -65,7 +67,25 @@ public class rnatip_stats extends base_resource
 
 	/**
 	* <pre>
-	* Packets received on this IP address during RNAT sessions.
+	* Clear the statsistics / counters
+	* </pre>
+	*/
+	public void set_clearstats(String clearstats) throws Exception{
+		this.clearstats = clearstats;
+	}
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters.<br> Possible values = basic, full
+	* </pre>
+	*/
+	public String get_clearstats() throws Exception {
+		return this.clearstats;
+	}
+
+	/**
+	* <pre>
+	* Rate (/s) counter for iprnattotrxpkts
 	* </pre>
 	*/
 	public Long get_iprnatrxpktsrate() throws Exception {
@@ -74,7 +94,7 @@ public class rnatip_stats extends base_resource
 
 	/**
 	* <pre>
-	* Packets sent from this IP address during RNAT sessions.
+	* Rate (/s) counter for iprnattottxpkts
 	* </pre>
 	*/
 	public Long get_iprnattxpktsrate() throws Exception {
@@ -88,6 +108,15 @@ public class rnatip_stats extends base_resource
 	*/
 	public Long get_iprnattottxpkts() throws Exception {
 		return this.iprnattottxpkts;
+	}
+
+	/**
+	* <pre>
+	* Traffic domain for ipaddr.
+	* </pre>
+	*/
+	public Long get_iptd() throws Exception {
+		return this.iptd;
 	}
 
 	/**
@@ -110,7 +139,7 @@ public class rnatip_stats extends base_resource
 
 	/**
 	* <pre>
-	* Bytes received on this IP address during RNAT sessions.
+	* Rate (/s) counter for iprnattotrxbytes
 	* </pre>
 	*/
 	public Long get_iprnatrxbytesrate() throws Exception {
@@ -128,7 +157,7 @@ public class rnatip_stats extends base_resource
 
 	/**
 	* <pre>
-	* Requests for connections sent from this IP address during RNAT sessions.
+	* Rate (/s) counter for iprnattottxsyn
 	* </pre>
 	*/
 	public Long get_iprnattxsynrate() throws Exception {
@@ -137,7 +166,7 @@ public class rnatip_stats extends base_resource
 
 	/**
 	* <pre>
-	* Bytes sent from this IP address during RNAT sessions.
+	* Rate (/s) counter for iprnattottxbytes
 	* </pre>
 	*/
 	public Long get_iprnattxbytesrate() throws Exception {
@@ -224,4 +253,8 @@ public class rnatip_stats extends base_resource
 		return response;
 	}
 
+	public static class clearstatsEnum {
+		public static final String basic = "basic";
+		public static final String full = "full";
+	}
 }

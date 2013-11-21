@@ -42,7 +42,9 @@ public class aaagroup_vpntrafficpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The priority of the policy.
+	* Priority to assign to the policy, as an integer. A lower number indicates a higher priority.  
+Required when binding a group to a policy. Not relevant to any other
+type of group binding.
 	* </pre>
 	*/
 	public void set_priority(long priority) throws Exception {
@@ -51,7 +53,9 @@ public class aaagroup_vpntrafficpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The priority of the policy.
+	* Priority to assign to the policy, as an integer. A lower number indicates a higher priority.  
+Required when binding a group to a policy. Not relevant to any other
+type of group binding.
 	* </pre>
 	*/
 	public void set_priority(Long priority) throws Exception{
@@ -60,7 +64,9 @@ public class aaagroup_vpntrafficpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The priority of the policy.
+	* Priority to assign to the policy, as an integer. A lower number indicates a higher priority.  
+Required when binding a group to a policy. Not relevant to any other
+type of group binding.
 	* </pre>
 	*/
 	public Long get_priority() throws Exception {
@@ -105,7 +111,7 @@ public class aaagroup_vpntrafficpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The group name.<br> Minimum length =  1
+	* Name of the group that you are binding.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_groupname(String groupname) throws Exception{
@@ -114,7 +120,7 @@ public class aaagroup_vpntrafficpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The group name.<br> Minimum length =  1
+	* Name of the group that you are binding.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_groupname() throws Exception {
@@ -123,7 +129,7 @@ public class aaagroup_vpntrafficpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The intranet vpn application.
+	* Bind the group to the specified intranet VPN application.
 	* </pre>
 	*/
 	public void set_intranetapplication(String intranetapplication) throws Exception{
@@ -132,7 +138,7 @@ public class aaagroup_vpntrafficpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The intranet vpn application.
+	* Bind the group to the specified intranet VPN application.
 	* </pre>
 	*/
 	public String get_intranetapplication() throws Exception {

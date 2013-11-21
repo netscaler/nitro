@@ -42,7 +42,7 @@ public class wisite_binding extends base_resource
 
 	/**
 	* <pre>
-	* The path of Web Interface site.<br> Minimum length =  1<br> Maximum length =  250
+	* Path of a Web Interface site whose details you want the NetScaler appliance to display.<br> Minimum length =  1<br> Maximum length =  250
 	* </pre>
 	*/
 	public void set_sitepath(String sitepath) throws Exception{
@@ -51,7 +51,7 @@ public class wisite_binding extends base_resource
 
 	/**
 	* <pre>
-	* The path of Web Interface site.<br> Minimum length =  1<br> Maximum length =  250
+	* Path of a Web Interface site whose details you want the NetScaler appliance to display.<br> Minimum length =  1<br> Maximum length =  250
 	* </pre>
 	*/
 	public String get_sitepath() throws Exception {

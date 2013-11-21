@@ -32,11 +32,32 @@ class ipsecparameter_response extends base_response
 
 public class ipsecparameter extends base_resource
 {
+	private String ikeversion;
 	private String[] encalgo;
 	private String[] hashalgo;
 	private Long lifetime;
 	private Long livenesscheckinterval;
+	private Long replaywindowsize;
+	private Long ikeretryinterval;
 	private Long retransmissiontime;
+
+	/**
+	* <pre>
+	* IKE Protocol Version.<br> Default value: V2<br> Possible values = V1, V2
+	* </pre>
+	*/
+	public void set_ikeversion(String ikeversion) throws Exception{
+		this.ikeversion = ikeversion;
+	}
+
+	/**
+	* <pre>
+	* IKE Protocol Version.<br> Default value: V2<br> Possible values = V1, V2
+	* </pre>
+	*/
+	public String get_ikeversion() throws Exception {
+		return this.ikeversion;
+	}
 
 	/**
 	* <pre>
@@ -130,6 +151,60 @@ public class ipsecparameter extends base_resource
 
 	/**
 	* <pre>
+	* IPSec Replay window size for the data traffic.<br> Minimum value =  0<br> Maximum value =  16384
+	* </pre>
+	*/
+	public void set_replaywindowsize(long replaywindowsize) throws Exception {
+		this.replaywindowsize = new Long(replaywindowsize);
+	}
+
+	/**
+	* <pre>
+	* IPSec Replay window size for the data traffic.<br> Minimum value =  0<br> Maximum value =  16384
+	* </pre>
+	*/
+	public void set_replaywindowsize(Long replaywindowsize) throws Exception{
+		this.replaywindowsize = replaywindowsize;
+	}
+
+	/**
+	* <pre>
+	* IPSec Replay window size for the data traffic.<br> Minimum value =  0<br> Maximum value =  16384
+	* </pre>
+	*/
+	public Long get_replaywindowsize() throws Exception {
+		return this.replaywindowsize;
+	}
+
+	/**
+	* <pre>
+	* IKE retry interval for bringing up the connection.<br> Minimum value =  60<br> Maximum value =  3600
+	* </pre>
+	*/
+	public void set_ikeretryinterval(long ikeretryinterval) throws Exception {
+		this.ikeretryinterval = new Long(ikeretryinterval);
+	}
+
+	/**
+	* <pre>
+	* IKE retry interval for bringing up the connection.<br> Minimum value =  60<br> Maximum value =  3600
+	* </pre>
+	*/
+	public void set_ikeretryinterval(Long ikeretryinterval) throws Exception{
+		this.ikeretryinterval = ikeretryinterval;
+	}
+
+	/**
+	* <pre>
+	* IKE retry interval for bringing up the connection.<br> Minimum value =  60<br> Maximum value =  3600
+	* </pre>
+	*/
+	public Long get_ikeretryinterval() throws Exception {
+		return this.ikeretryinterval;
+	}
+
+	/**
+	* <pre>
 	* The interval in seconds to retry sending the IKE messages to peer, three consecutive attempts are done with doubled interval after every failure.,
 increases for every retransmit till 6 retransmits. .<br> Minimum value =  1<br> Maximum value =  99
 	* </pre>
@@ -199,10 +274,13 @@ increases for every retransmit till 6 retransmits. .<br> Minimum value =  1<br> 
 	*/
 	public static base_response update(nitro_service client, ipsecparameter resource) throws Exception {
 		ipsecparameter updateresource = new ipsecparameter();
+		updateresource.ikeversion = resource.ikeversion;
 		updateresource.encalgo = resource.encalgo;
 		updateresource.hashalgo = resource.hashalgo;
 		updateresource.lifetime = resource.lifetime;
 		updateresource.livenesscheckinterval = resource.livenesscheckinterval;
+		updateresource.replaywindowsize = resource.replaywindowsize;
+		updateresource.ikeretryinterval = resource.ikeretryinterval;
 		updateresource.retransmissiontime = resource.retransmissiontime;
 		return updateresource.update_resource(client);
 	}
@@ -213,11 +291,6 @@ increases for every retransmit till 6 retransmits. .<br> Minimum value =  1<br> 
 	*/
 	public static base_response unset(nitro_service client, ipsecparameter resource, String[] args) throws Exception{
 		ipsecparameter unsetresource = new ipsecparameter();
-		unsetresource.encalgo = resource.encalgo;
-		unsetresource.hashalgo = resource.hashalgo;
-		unsetresource.lifetime = resource.lifetime;
-		unsetresource.livenesscheckinterval = resource.livenesscheckinterval;
-		unsetresource.retransmissiontime = resource.retransmissiontime;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -242,6 +315,10 @@ increases for every retransmit till 6 retransmits. .<br> Minimum value =  1<br> 
 	public static class encalgoEnum {
 		public static final String AES = "AES";
 		public static final String _3DES = "3DES";
+	}
+	public static class ikeversionEnum {
+		public static final String V1 = "V1";
+		public static final String V2 = "V2";
 	}
 	public static class hashalgoEnum {
 		public static final String HMAC_SHA1 = "HMAC_SHA1";

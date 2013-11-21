@@ -42,7 +42,7 @@ public class cspolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the policy to be displayed. if no name is given then all policies will be displayed.<br> Minimum length =  1
+	* Name of the content switching policy to display. If this parameter is omitted, details of all the policies are displayed.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_policyname(String policyname) throws Exception{
@@ -51,7 +51,7 @@ public class cspolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the policy to be displayed. if no name is given then all policies will be displayed.<br> Minimum length =  1
+	* Name of the content switching policy to display. If this parameter is omitted, details of all the policies are displayed.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_policyname() throws Exception {

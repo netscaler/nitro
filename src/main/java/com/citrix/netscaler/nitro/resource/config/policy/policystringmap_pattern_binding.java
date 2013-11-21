@@ -39,7 +39,7 @@ public class policystringmap_pattern_binding extends base_resource
 
 	/**
 	* <pre>
-	* The key in the string map.<br> Minimum length =  1
+	* Character string constituting the key to be bound to the string map. The key is matched against the data processed by the operation that uses the string map. The default character set is ASCII. UTF-8 characters can be included if the character set is UTF-8.  UTF-8 characters can be entered directly (if the UI supports it) or can be encoded as a sequence of hexadecimal bytes '\xNN'. For example, the UTF-8 character 'ü' can be encoded as '\xC3\xBC'.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_key(String key) throws Exception{
@@ -48,7 +48,7 @@ public class policystringmap_pattern_binding extends base_resource
 
 	/**
 	* <pre>
-	* The key in the string map.<br> Minimum length =  1
+	* Character string constituting the key to be bound to the string map. The key is matched against the data processed by the operation that uses the string map. The default character set is ASCII. UTF-8 characters can be included if the character set is UTF-8.  UTF-8 characters can be entered directly (if the UI supports it) or can be encoded as a sequence of hexadecimal bytes '\xNN'. For example, the UTF-8 character 'ü' can be encoded as '\xC3\xBC'.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_key() throws Exception {
@@ -57,7 +57,7 @@ public class policystringmap_pattern_binding extends base_resource
 
 	/**
 	* <pre>
-	* The value associated with the key in the string map.<br> Minimum length =  1
+	* Character string constituting the value associated with the key. This value is returned when processed data matches the associated key. Refer to the key parameter for details of the value character set.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_value(String value) throws Exception{
@@ -66,7 +66,7 @@ public class policystringmap_pattern_binding extends base_resource
 
 	/**
 	* <pre>
-	* The value associated with the key in the string map.<br> Minimum length =  1
+	* Character string constituting the value associated with the key. This value is returned when processed data matches the associated key. Refer to the key parameter for details of the value character set.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_value() throws Exception {
@@ -75,7 +75,7 @@ public class policystringmap_pattern_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the string map.<br> Minimum length =  1
+	* Name of the string map to which to bind the key-value pair.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -84,7 +84,7 @@ public class policystringmap_pattern_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the string map.<br> Minimum length =  1
+	* Name of the string map to which to bind the key-value pair.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {

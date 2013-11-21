@@ -40,6 +40,8 @@ public class appfwsettings extends base_resource
 	private String sessioncookiename;
 	private String clientiploggingheader;
 	private Long importsizelimit;
+	private String signatureautoupdate;
+	private String signatureurl;
 	private String cookiepostencryptprefix;
 	private String logmalformedreq;
 	private String ceflogging;
@@ -48,7 +50,7 @@ public class appfwsettings extends base_resource
 
 	/**
 	* <pre>
-	* Application Firewall global default profile.<br> Default value: APPFW_BYPASS<br> Minimum length =  1
+	* Profile to use when a connection does not match any policy. Default setting is APPFW_BYPASS, which sends unmatched connections back to the NetScaler appliance without attempting to filter them further.<br> Default value: APPFW_BYPASS<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_defaultprofile(String defaultprofile) throws Exception{
@@ -57,7 +59,7 @@ public class appfwsettings extends base_resource
 
 	/**
 	* <pre>
-	* Application Firewall global default profile.<br> Default value: APPFW_BYPASS<br> Minimum length =  1
+	* Profile to use when a connection does not match any policy. Default setting is APPFW_BYPASS, which sends unmatched connections back to the NetScaler appliance without attempting to filter them further.<br> Default value: APPFW_BYPASS<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_defaultprofile() throws Exception {
@@ -66,7 +68,8 @@ public class appfwsettings extends base_resource
 
 	/**
 	* <pre>
-	* Application Firewall global undefined profile.<br> Default value: APPFW_BLOCK<br> Minimum length =  1
+	* Profile to use when an application firewall policy evaluates to undefined (UNDEF). 
+An UNDEF event indicates an internal error condition. The APPFW_BLOCK built-in profile is the default setting. You can specify a different built-in or user-created profile as the UNDEF profile.<br> Default value: APPFW_BLOCK<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_undefaction(String undefaction) throws Exception{
@@ -75,7 +78,8 @@ public class appfwsettings extends base_resource
 
 	/**
 	* <pre>
-	* Application Firewall global undefined profile.<br> Default value: APPFW_BLOCK<br> Minimum length =  1
+	* Profile to use when an application firewall policy evaluates to undefined (UNDEF). 
+An UNDEF event indicates an internal error condition. The APPFW_BLOCK built-in profile is the default setting. You can specify a different built-in or user-created profile as the UNDEF profile.<br> Default value: APPFW_BLOCK<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_undefaction() throws Exception {
@@ -84,7 +88,7 @@ public class appfwsettings extends base_resource
 
 	/**
 	* <pre>
-	* The user session timeout (in seconds).  After this many seconds of no user activity, the session is terminated and the user must establish a new session before continuing to use the protected web site.<br> Default value: 900<br> Minimum value =  1<br> Maximum value =  65535
+	* Timeout, in seconds, after which a user session is terminated. Before continuing to use the protected web site, the user must establish a new session by opening a designated start URL.<br> Default value: 900<br> Minimum value =  1<br> Maximum value =  65535
 	* </pre>
 	*/
 	public void set_sessiontimeout(long sessiontimeout) throws Exception {
@@ -93,7 +97,7 @@ public class appfwsettings extends base_resource
 
 	/**
 	* <pre>
-	* The user session timeout (in seconds).  After this many seconds of no user activity, the session is terminated and the user must establish a new session before continuing to use the protected web site.<br> Default value: 900<br> Minimum value =  1<br> Maximum value =  65535
+	* Timeout, in seconds, after which a user session is terminated. Before continuing to use the protected web site, the user must establish a new session by opening a designated start URL.<br> Default value: 900<br> Minimum value =  1<br> Maximum value =  65535
 	* </pre>
 	*/
 	public void set_sessiontimeout(Long sessiontimeout) throws Exception{
@@ -102,7 +106,7 @@ public class appfwsettings extends base_resource
 
 	/**
 	* <pre>
-	* The user session timeout (in seconds).  After this many seconds of no user activity, the session is terminated and the user must establish a new session before continuing to use the protected web site.<br> Default value: 900<br> Minimum value =  1<br> Maximum value =  65535
+	* Timeout, in seconds, after which a user session is terminated. Before continuing to use the protected web site, the user must establish a new session by opening a designated start URL.<br> Default value: 900<br> Minimum value =  1<br> Maximum value =  65535
 	* </pre>
 	*/
 	public Long get_sessiontimeout() throws Exception {
@@ -111,7 +115,7 @@ public class appfwsettings extends base_resource
 
 	/**
 	* <pre>
-	* The AppFw learn messages rate limit value (in messages per second). The extra learn messages are dropped when the rate goes above this value.<br> Default value: 400<br> Minimum value =  1<br> Maximum value =  1000
+	* Maximum number of connections per second that the application firewall learning engine examines to generate new relaxations for learning-enabled security checks. The application firewall drops any connections above this limit from the list of connections used by the learning engine.<br> Default value: 400<br> Minimum value =  1<br> Maximum value =  1000
 	* </pre>
 	*/
 	public void set_learnratelimit(long learnratelimit) throws Exception {
@@ -120,7 +124,7 @@ public class appfwsettings extends base_resource
 
 	/**
 	* <pre>
-	* The AppFw learn messages rate limit value (in messages per second). The extra learn messages are dropped when the rate goes above this value.<br> Default value: 400<br> Minimum value =  1<br> Maximum value =  1000
+	* Maximum number of connections per second that the application firewall learning engine examines to generate new relaxations for learning-enabled security checks. The application firewall drops any connections above this limit from the list of connections used by the learning engine.<br> Default value: 400<br> Minimum value =  1<br> Maximum value =  1000
 	* </pre>
 	*/
 	public void set_learnratelimit(Long learnratelimit) throws Exception{
@@ -129,7 +133,7 @@ public class appfwsettings extends base_resource
 
 	/**
 	* <pre>
-	* The AppFw learn messages rate limit value (in messages per second). The extra learn messages are dropped when the rate goes above this value.<br> Default value: 400<br> Minimum value =  1<br> Maximum value =  1000
+	* Maximum number of connections per second that the application firewall learning engine examines to generate new relaxations for learning-enabled security checks. The application firewall drops any connections above this limit from the list of connections used by the learning engine.<br> Default value: 400<br> Minimum value =  1<br> Maximum value =  1000
 	* </pre>
 	*/
 	public Long get_learnratelimit() throws Exception {
@@ -138,7 +142,7 @@ public class appfwsettings extends base_resource
 
 	/**
 	* <pre>
-	* The user session lifetime (in seconds).  If a session has existed more than the specified number of seconds, the session can be terminated and the user must establish a new session before continuing to use the protected web site.<br> Default value: 0<br> Minimum value =  0<br> Maximum value =  2147483647
+	* Maximum amount of time (in seconds) that the application firewall allows a user session to remain active, regardless of user activity. After this time, the user session is terminated. Before continuing to use the protected web site, the user must establish a new session by opening a designated start URL.<br> Default value: 0<br> Minimum value =  0<br> Maximum value =  2147483647
 	* </pre>
 	*/
 	public void set_sessionlifetime(long sessionlifetime) throws Exception {
@@ -147,7 +151,7 @@ public class appfwsettings extends base_resource
 
 	/**
 	* <pre>
-	* The user session lifetime (in seconds).  If a session has existed more than the specified number of seconds, the session can be terminated and the user must establish a new session before continuing to use the protected web site.<br> Default value: 0<br> Minimum value =  0<br> Maximum value =  2147483647
+	* Maximum amount of time (in seconds) that the application firewall allows a user session to remain active, regardless of user activity. After this time, the user session is terminated. Before continuing to use the protected web site, the user must establish a new session by opening a designated start URL.<br> Default value: 0<br> Minimum value =  0<br> Maximum value =  2147483647
 	* </pre>
 	*/
 	public void set_sessionlifetime(Long sessionlifetime) throws Exception{
@@ -156,7 +160,7 @@ public class appfwsettings extends base_resource
 
 	/**
 	* <pre>
-	* The user session lifetime (in seconds).  If a session has existed more than the specified number of seconds, the session can be terminated and the user must establish a new session before continuing to use the protected web site.<br> Default value: 0<br> Minimum value =  0<br> Maximum value =  2147483647
+	* Maximum amount of time (in seconds) that the application firewall allows a user session to remain active, regardless of user activity. After this time, the user session is terminated. Before continuing to use the protected web site, the user must establish a new session by opening a designated start URL.<br> Default value: 0<br> Minimum value =  0<br> Maximum value =  2147483647
 	* </pre>
 	*/
 	public Long get_sessionlifetime() throws Exception {
@@ -165,7 +169,11 @@ public class appfwsettings extends base_resource
 
 	/**
 	* <pre>
-	* The name of the session cookie set by the Application Firewall to track the user session.<br> Minimum length =  1
+	* Name of the session cookie that the application firewall uses to track user sessions. 
+Must begin with a letter or number, and can consist of from 1 to 31 letters, numbers, and the hyphen (-) and underscore (_) symbols.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my cookie name" or 'my cookie name').<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_sessioncookiename(String sessioncookiename) throws Exception{
@@ -174,7 +182,11 @@ public class appfwsettings extends base_resource
 
 	/**
 	* <pre>
-	* The name of the session cookie set by the Application Firewall to track the user session.<br> Minimum length =  1
+	* Name of the session cookie that the application firewall uses to track user sessions. 
+Must begin with a letter or number, and can consist of from 1 to 31 letters, numbers, and the hyphen (-) and underscore (_) symbols.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my cookie name" or 'my cookie name').<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_sessioncookiename() throws Exception {
@@ -183,7 +195,7 @@ public class appfwsettings extends base_resource
 
 	/**
 	* <pre>
-	* The name of the header that holds downstream IP address for logging purposes.
+	* Name of an HTTP header that contains the IP address that the client used to connect to the protected web site or service.
 	* </pre>
 	*/
 	public void set_clientiploggingheader(String clientiploggingheader) throws Exception{
@@ -192,7 +204,7 @@ public class appfwsettings extends base_resource
 
 	/**
 	* <pre>
-	* The name of the header that holds downstream IP address for logging purposes.
+	* Name of an HTTP header that contains the IP address that the client used to connect to the protected web site or service.
 	* </pre>
 	*/
 	public String get_clientiploggingheader() throws Exception {
@@ -201,7 +213,7 @@ public class appfwsettings extends base_resource
 
 	/**
 	* <pre>
-	* Total import size limit.<br> Default value: 134217728<br> Minimum value =  1<br> Maximum value =  134217728
+	* Cumulative total maximum number of bytes in web forms imported to a protected web site. If a user attempts to upload files with a total byte count higher than the specified limit, the application firewall blocks the request.<br> Default value: 134217728<br> Minimum value =  1<br> Maximum value =  134217728
 	* </pre>
 	*/
 	public void set_importsizelimit(long importsizelimit) throws Exception {
@@ -210,7 +222,7 @@ public class appfwsettings extends base_resource
 
 	/**
 	* <pre>
-	* Total import size limit.<br> Default value: 134217728<br> Minimum value =  1<br> Maximum value =  134217728
+	* Cumulative total maximum number of bytes in web forms imported to a protected web site. If a user attempts to upload files with a total byte count higher than the specified limit, the application firewall blocks the request.<br> Default value: 134217728<br> Minimum value =  1<br> Maximum value =  134217728
 	* </pre>
 	*/
 	public void set_importsizelimit(Long importsizelimit) throws Exception{
@@ -219,7 +231,7 @@ public class appfwsettings extends base_resource
 
 	/**
 	* <pre>
-	* Total import size limit.<br> Default value: 134217728<br> Minimum value =  1<br> Maximum value =  134217728
+	* Cumulative total maximum number of bytes in web forms imported to a protected web site. If a user attempts to upload files with a total byte count higher than the specified limit, the application firewall blocks the request.<br> Default value: 134217728<br> Minimum value =  1<br> Maximum value =  134217728
 	* </pre>
 	*/
 	public Long get_importsizelimit() throws Exception {
@@ -228,7 +240,43 @@ public class appfwsettings extends base_resource
 
 	/**
 	* <pre>
-	* String which is prepended to all encrypted cookie values.<br> Minimum length =  1
+	* Flag used to enable/disable auto update signatures.<br> Default value: OFF<br> Possible values = ON, OFF
+	* </pre>
+	*/
+	public void set_signatureautoupdate(String signatureautoupdate) throws Exception{
+		this.signatureautoupdate = signatureautoupdate;
+	}
+
+	/**
+	* <pre>
+	* Flag used to enable/disable auto update signatures.<br> Default value: OFF<br> Possible values = ON, OFF
+	* </pre>
+	*/
+	public String get_signatureautoupdate() throws Exception {
+		return this.signatureautoupdate;
+	}
+
+	/**
+	* <pre>
+	* URL to download the mapping file from server.<br> Default value: https://s3.amazonaws.com/NSAppFwSignatures/SignaturesMapping.xml
+	* </pre>
+	*/
+	public void set_signatureurl(String signatureurl) throws Exception{
+		this.signatureurl = signatureurl;
+	}
+
+	/**
+	* <pre>
+	* URL to download the mapping file from server.<br> Default value: https://s3.amazonaws.com/NSAppFwSignatures/SignaturesMapping.xml
+	* </pre>
+	*/
+	public String get_signatureurl() throws Exception {
+		return this.signatureurl;
+	}
+
+	/**
+	* <pre>
+	* String that is prepended to all encrypted cookie values.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_cookiepostencryptprefix(String cookiepostencryptprefix) throws Exception{
@@ -237,7 +285,7 @@ public class appfwsettings extends base_resource
 
 	/**
 	* <pre>
-	* String which is prepended to all encrypted cookie values.<br> Minimum length =  1
+	* String that is prepended to all encrypted cookie values.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_cookiepostencryptprefix() throws Exception {
@@ -246,7 +294,7 @@ public class appfwsettings extends base_resource
 
 	/**
 	* <pre>
-	* Log requests that are so malformed that AppFw parsing doesn't happen.<br> Default value: ON<br> Possible values = ON, OFF
+	* Log requests that are so malformed that application firewall parsing doesn't occur.<br> Default value: ON<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_logmalformedreq(String logmalformedreq) throws Exception{
@@ -255,7 +303,7 @@ public class appfwsettings extends base_resource
 
 	/**
 	* <pre>
-	* Log requests that are so malformed that AppFw parsing doesn't happen.<br> Default value: ON<br> Possible values = ON, OFF
+	* Log requests that are so malformed that application firewall parsing doesn't occur.<br> Default value: ON<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_logmalformedreq() throws Exception {
@@ -264,7 +312,7 @@ public class appfwsettings extends base_resource
 
 	/**
 	* <pre>
-	* Enable CEF formatted logging.<br> Default value: OFF<br> Possible values = ON, OFF
+	* Enable CEF format logs.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_ceflogging(String ceflogging) throws Exception{
@@ -273,7 +321,7 @@ public class appfwsettings extends base_resource
 
 	/**
 	* <pre>
-	* Enable CEF formatted logging.<br> Default value: OFF<br> Possible values = ON, OFF
+	* Enable CEF format logs.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_ceflogging() throws Exception {
@@ -282,7 +330,7 @@ public class appfwsettings extends base_resource
 
 	/**
 	* <pre>
-	* Decode Entity-Encoded characters before doing AppFw checks.<br> Default value: OFF<br> Possible values = ON, OFF
+	* Transform multibyte (double- or half-width) characters to single width characters.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_entitydecoding(String entitydecoding) throws Exception{
@@ -291,7 +339,7 @@ public class appfwsettings extends base_resource
 
 	/**
 	* <pre>
-	* Decode Entity-Encoded characters before doing AppFw checks.<br> Default value: OFF<br> Possible values = ON, OFF
+	* Transform multibyte (double- or half-width) characters to single width characters.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_entitydecoding() throws Exception {
@@ -365,6 +413,8 @@ public class appfwsettings extends base_resource
 		updateresource.sessioncookiename = resource.sessioncookiename;
 		updateresource.clientiploggingheader = resource.clientiploggingheader;
 		updateresource.importsizelimit = resource.importsizelimit;
+		updateresource.signatureautoupdate = resource.signatureautoupdate;
+		updateresource.signatureurl = resource.signatureurl;
 		updateresource.cookiepostencryptprefix = resource.cookiepostencryptprefix;
 		updateresource.logmalformedreq = resource.logmalformedreq;
 		updateresource.ceflogging = resource.ceflogging;
@@ -379,19 +429,6 @@ public class appfwsettings extends base_resource
 	*/
 	public static base_response unset(nitro_service client, appfwsettings resource, String[] args) throws Exception{
 		appfwsettings unsetresource = new appfwsettings();
-		unsetresource.defaultprofile = resource.defaultprofile;
-		unsetresource.undefaction = resource.undefaction;
-		unsetresource.sessiontimeout = resource.sessiontimeout;
-		unsetresource.learnratelimit = resource.learnratelimit;
-		unsetresource.sessionlifetime = resource.sessionlifetime;
-		unsetresource.sessioncookiename = resource.sessioncookiename;
-		unsetresource.clientiploggingheader = resource.clientiploggingheader;
-		unsetresource.importsizelimit = resource.importsizelimit;
-		unsetresource.cookiepostencryptprefix = resource.cookiepostencryptprefix;
-		unsetresource.logmalformedreq = resource.logmalformedreq;
-		unsetresource.ceflogging = resource.ceflogging;
-		unsetresource.entitydecoding = resource.entitydecoding;
-		unsetresource.useconfigurablesecretkey = resource.useconfigurablesecretkey;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -418,6 +455,10 @@ public class appfwsettings extends base_resource
 		public static final String OFF = "OFF";
 	}
 	public static class logmalformedreqEnum {
+		public static final String ON = "ON";
+		public static final String OFF = "OFF";
+	}
+	public static class signatureautoupdateEnum {
 		public static final String ON = "ON";
 		public static final String OFF = "OFF";
 	}

@@ -42,7 +42,7 @@ public class sslrsakey extends base_resource
 
 	/**
 	* <pre>
-	* The file in which the generated RSA key is stored. The default output path for the key file is /nsconfig/ssl/.<br> Maximum length =  63
+	* Name for and, optionally, path to the RSA key file. /nsconfig/ssl/ is the default path.<br> Maximum length =  63
 	* </pre>
 	*/
 	public void set_keyfile(String keyfile) throws Exception{
@@ -51,7 +51,7 @@ public class sslrsakey extends base_resource
 
 	/**
 	* <pre>
-	* The file in which the generated RSA key is stored. The default output path for the key file is /nsconfig/ssl/.<br> Maximum length =  63
+	* Name for and, optionally, path to the RSA key file. /nsconfig/ssl/ is the default path.<br> Maximum length =  63
 	* </pre>
 	*/
 	public String get_keyfile() throws Exception {
@@ -60,7 +60,7 @@ public class sslrsakey extends base_resource
 
 	/**
 	* <pre>
-	* The bit value (key length) for the RSA key.<br> Minimum value =  512<br> Maximum value =  4096
+	* Size, in bits, of the RSA key.<br> Minimum value =  512<br> Maximum value =  4096
 	* </pre>
 	*/
 	public void set_bits(long bits) throws Exception {
@@ -69,7 +69,7 @@ public class sslrsakey extends base_resource
 
 	/**
 	* <pre>
-	* The bit value (key length) for the RSA key.<br> Minimum value =  512<br> Maximum value =  4096
+	* Size, in bits, of the RSA key.<br> Minimum value =  512<br> Maximum value =  4096
 	* </pre>
 	*/
 	public void set_bits(Long bits) throws Exception{
@@ -78,7 +78,7 @@ public class sslrsakey extends base_resource
 
 	/**
 	* <pre>
-	* The bit value (key length) for the RSA key.<br> Minimum value =  512<br> Maximum value =  4096
+	* Size, in bits, of the RSA key.<br> Minimum value =  512<br> Maximum value =  4096
 	* </pre>
 	*/
 	public Long get_bits() throws Exception {
@@ -87,7 +87,7 @@ public class sslrsakey extends base_resource
 
 	/**
 	* <pre>
-	* The public exponent value for the RSA key. The supported values are F4 (Hex: 0x10001) or 3 (Hex: 0x3).<br> Default value: FIPSEXP_F4<br> Possible values = 3, F4
+	* Public exponent for the RSA key. The exponent is part of the cipher algorithm and is required for creating the RSA key.<br> Default value: F4<br> Possible values = 3, F4
 	* </pre>
 	*/
 	public void set_exponent(String exponent) throws Exception{
@@ -96,7 +96,7 @@ public class sslrsakey extends base_resource
 
 	/**
 	* <pre>
-	* The public exponent value for the RSA key. The supported values are F4 (Hex: 0x10001) or 3 (Hex: 0x3).<br> Default value: FIPSEXP_F4<br> Possible values = 3, F4
+	* Public exponent for the RSA key. The exponent is part of the cipher algorithm and is required for creating the RSA key.<br> Default value: F4<br> Possible values = 3, F4
 	* </pre>
 	*/
 	public String get_exponent() throws Exception {
@@ -105,9 +105,7 @@ public class sslrsakey extends base_resource
 
 	/**
 	* <pre>
-	* The format for the key file:
-	PEM: Privacy Enhanced Mail
-	DER: Distinguished Encoding Rule.<br> Default value: FORMAT_PEM<br> Possible values = DER, PEM
+	* Format in which the RSA key file is stored on the appliance.<br> Default value: PEM<br> Possible values = DER, PEM
 	* </pre>
 	*/
 	public void set_keyform(String keyform) throws Exception{
@@ -116,9 +114,7 @@ public class sslrsakey extends base_resource
 
 	/**
 	* <pre>
-	* The format for the key file:
-	PEM: Privacy Enhanced Mail
-	DER: Distinguished Encoding Rule.<br> Default value: FORMAT_PEM<br> Possible values = DER, PEM
+	* Format in which the RSA key file is stored on the appliance.<br> Default value: PEM<br> Possible values = DER, PEM
 	* </pre>
 	*/
 	public String get_keyform() throws Exception {
@@ -127,7 +123,7 @@ public class sslrsakey extends base_resource
 
 	/**
 	* <pre>
-	* Encrypt the generated RSA key using DES algorithm. You will be prompted to enter the pass-phrase (password) that will be used to encrypt the key.
+	* Encrypt the generated RSA key by using the DES algorithm. On the command line, you are prompted to enter the pass phrase (password) that is used to encrypt the key.
 	* </pre>
 	*/
 	public void set_des(boolean des) throws Exception {
@@ -136,7 +132,7 @@ public class sslrsakey extends base_resource
 
 	/**
 	* <pre>
-	* Encrypt the generated RSA key using DES algorithm. You will be prompted to enter the pass-phrase (password) that will be used to encrypt the key.
+	* Encrypt the generated RSA key by using the DES algorithm. On the command line, you are prompted to enter the pass phrase (password) that is used to encrypt the key.
 	* </pre>
 	*/
 	public void set_des(Boolean des) throws Exception{
@@ -145,7 +141,7 @@ public class sslrsakey extends base_resource
 
 	/**
 	* <pre>
-	* Encrypt the generated RSA key using DES algorithm. You will be prompted to enter the pass-phrase (password) that will be used to encrypt the key.
+	* Encrypt the generated RSA key by using the DES algorithm. On the command line, you are prompted to enter the pass phrase (password) that is used to encrypt the key.
 	* </pre>
 	*/
 	public Boolean get_des() throws Exception {
@@ -154,7 +150,7 @@ public class sslrsakey extends base_resource
 
 	/**
 	* <pre>
-	* Encrypt the generated RSA key using the Triple-DES algorithm. You will be prompted to enter the pass-phrase (password) that will be used to encrypt the key.
+	* Encrypt the generated RSA key by using the Triple-DES algorithm. On the command line, you are prompted to enter the pass phrase (password) that is used to encrypt the key.
 	* </pre>
 	*/
 	public void set_des3(boolean des3) throws Exception {
@@ -163,7 +159,7 @@ public class sslrsakey extends base_resource
 
 	/**
 	* <pre>
-	* Encrypt the generated RSA key using the Triple-DES algorithm. You will be prompted to enter the pass-phrase (password) that will be used to encrypt the key.
+	* Encrypt the generated RSA key by using the Triple-DES algorithm. On the command line, you are prompted to enter the pass phrase (password) that is used to encrypt the key.
 	* </pre>
 	*/
 	public void set_des3(Boolean des3) throws Exception{
@@ -172,7 +168,7 @@ public class sslrsakey extends base_resource
 
 	/**
 	* <pre>
-	* Encrypt the generated RSA key using the Triple-DES algorithm. You will be prompted to enter the pass-phrase (password) that will be used to encrypt the key.
+	* Encrypt the generated RSA key by using the Triple-DES algorithm. On the command line, you are prompted to enter the pass phrase (password) that is used to encrypt the key.
 	* </pre>
 	*/
 	public Boolean get_des3() throws Exception {
@@ -181,7 +177,7 @@ public class sslrsakey extends base_resource
 
 	/**
 	* <pre>
-	* The pass-phrase to use for encryption if '-des' or '-des3' option is selected.<br> Minimum length =  1<br> Maximum length =  31
+	* Pass phrase to use for encryption if DES or DES3 option is selected.<br> Minimum length =  1<br> Maximum length =  31
 	* </pre>
 	*/
 	public void set_password(String password) throws Exception{
@@ -190,7 +186,7 @@ public class sslrsakey extends base_resource
 
 	/**
 	* <pre>
-	* The pass-phrase to use for encryption if '-des' or '-des3' option is selected.<br> Minimum length =  1<br> Maximum length =  31
+	* Pass phrase to use for encryption if DES or DES3 option is selected.<br> Minimum length =  1<br> Maximum length =  31
 	* </pre>
 	*/
 	public String get_password() throws Exception {

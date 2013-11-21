@@ -37,6 +37,7 @@ public class lbvserver_csvserver_binding extends base_resource
 	private String cachetype;
 	private Long priority;
 	private Long hits;
+	private Long pipolicyhits;
 	private String name;
 	private Long __count;
 
@@ -87,7 +88,9 @@ public class lbvserver_csvserver_binding extends base_resource
 
 	/**
 	* <pre>
-	* The virtual server name to which the service is bound.<br> Minimum length =  1
+	* Name for the virtual server. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at sign (@), equal sign (=), and hyphen (-) characters. Can be changed after the virtual server is created.
+
+CLI Users: If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my vserver" or 'my vserver'). .<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -96,7 +99,9 @@ public class lbvserver_csvserver_binding extends base_resource
 
 	/**
 	* <pre>
-	* The virtual server name to which the service is bound.<br> Minimum length =  1
+	* Name for the virtual server. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at sign (@), equal sign (=), and hyphen (-) characters. Can be changed after the virtual server is created.
+
+CLI Users: If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my vserver" or 'my vserver'). .<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -137,6 +142,15 @@ public class lbvserver_csvserver_binding extends base_resource
 	*/
 	public Long get_hits() throws Exception {
 		return this.hits;
+	}
+
+	/**
+	* <pre>
+	* Number of hits.
+	* </pre>
+	*/
+	public Long get_pipolicyhits() throws Exception {
+		return this.pipolicyhits;
 	}
 
 	/**

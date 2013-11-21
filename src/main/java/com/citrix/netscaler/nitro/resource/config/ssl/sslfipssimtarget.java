@@ -39,7 +39,7 @@ public class sslfipssimtarget extends base_resource
 
 	/**
 	* <pre>
-	* The file name and path for storing the target FIPS system's key-vector. The default output path for the secret data is /nsconfig/ssl/.<br> Minimum length =  1
+	* Name of and, optionally, path to the target FIPS appliance's key vector. /nsconfig/ssl/ is the default path.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_keyvector(String keyvector) throws Exception{
@@ -48,7 +48,7 @@ public class sslfipssimtarget extends base_resource
 
 	/**
 	* <pre>
-	* The file name and path for storing the target FIPS system's key-vector. The default output path for the secret data is /nsconfig/ssl/.<br> Minimum length =  1
+	* Name of and, optionally, path to the target FIPS appliance's key vector. /nsconfig/ssl/ is the default path.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_keyvector() throws Exception {
@@ -57,7 +57,7 @@ public class sslfipssimtarget extends base_resource
 
 	/**
 	* <pre>
-	* The file name and path for the source FIPS system's secret data. The default input path for the secret data is /nsconfig/ssl/.<br> Minimum length =  1
+	* Name of and, optionally, path to the source FIPS appliance's secret data. /nsconfig/ssl/ is the default path.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_sourcesecret(String sourcesecret) throws Exception{
@@ -66,7 +66,7 @@ public class sslfipssimtarget extends base_resource
 
 	/**
 	* <pre>
-	* The file name and path for the source FIPS system's secret data. The default input path for the secret data is /nsconfig/ssl/.<br> Minimum length =  1
+	* Name of and, optionally, path to the source FIPS appliance's secret data. /nsconfig/ssl/ is the default path.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_sourcesecret() throws Exception {
@@ -75,7 +75,7 @@ public class sslfipssimtarget extends base_resource
 
 	/**
 	* <pre>
-	* The source FIPS system's certificate file name and path. The default input path for the certificate file is /nsconfig/ssl/.<br> Minimum length =  1
+	* Name of and, optionally, path to the source FIPS appliance's certificate file. /nsconfig/ssl/ is the default path.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_certfile(String certfile) throws Exception{
@@ -84,7 +84,7 @@ public class sslfipssimtarget extends base_resource
 
 	/**
 	* <pre>
-	* The source FIPS system's certificate file name and path. The default input path for the certificate file is /nsconfig/ssl/.<br> Minimum length =  1
+	* Name of and, optionally, path to the source FIPS appliance's certificate file. /nsconfig/ssl/ is the default path.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_certfile() throws Exception {
@@ -93,7 +93,7 @@ public class sslfipssimtarget extends base_resource
 
 	/**
 	* <pre>
-	* The file name and path for storing the target FIPS system's secret data. The default output path for the secret data is /nsconfig/ssl/.<br> Minimum length =  1
+	* Name for and, optionally, path to the target FIPS appliance's secret data. The default input path for the secret data is /nsconfig/ssl/.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_targetsecret(String targetsecret) throws Exception{
@@ -102,7 +102,7 @@ public class sslfipssimtarget extends base_resource
 
 	/**
 	* <pre>
-	* The file name and path for storing the target FIPS system's secret data. The default output path for the secret data is /nsconfig/ssl/.<br> Minimum length =  1
+	* Name for and, optionally, path to the target FIPS appliance's secret data. The default input path for the secret data is /nsconfig/ssl/.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_targetsecret() throws Exception {

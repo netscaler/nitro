@@ -38,7 +38,8 @@ public class channel_binding extends base_resource
 
 	/**
 	* <pre>
-	* LA channel name in form LA/x, where x is the channel ID, which ranges from 1 to 4.<br> Minimum length =  1
+	* ID of an LA channel or LA channel in cluster configuration whose details you want the NetScaler appliance to display.
+Specify an LA channel in LA/x notation or a cluster LA channel in CLA/x notation, where x can range from 1 to 4.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_id(String id) throws Exception{
@@ -47,7 +48,8 @@ public class channel_binding extends base_resource
 
 	/**
 	* <pre>
-	* LA channel name in form LA/x, where x is the channel ID, which ranges from 1 to 4.<br> Minimum length =  1
+	* ID of an LA channel or LA channel in cluster configuration whose details you want the NetScaler appliance to display.
+Specify an LA channel in LA/x notation or a cluster LA channel in CLA/x notation, where x can range from 1 to 4.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_id() throws Exception {

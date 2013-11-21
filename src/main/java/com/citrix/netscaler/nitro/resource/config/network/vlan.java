@@ -38,6 +38,7 @@ public class vlan extends base_resource
 
 	//------- Read only Parameter ---------;
 
+	private String linklocalipv6addr;
 	private Boolean rnat;
 	private Long portbitmap;
 	private Long lsbitmap;
@@ -47,11 +48,12 @@ public class vlan extends base_resource
 	private String tagifaces;
 	private String ifnum;
 	private Boolean tagged;
+	private String sdxvlan;
 	private Long __count;
 
 	/**
 	* <pre>
-	* An integer that uniquely identifies the VLAN that you want to remove from the NetScaler appliance. Once the VLAN is removed, its interfaces become members of VLAN 1.<br> Minimum value =  1<br> Maximum value =  4094
+	* ID of the VLAN whose parameters you want to modify.<br> Minimum value =  1<br> Maximum value =  4094
 	* </pre>
 	*/
 	public void set_id(long id) throws Exception {
@@ -60,7 +62,7 @@ public class vlan extends base_resource
 
 	/**
 	* <pre>
-	* An integer that uniquely identifies the VLAN that you want to remove from the NetScaler appliance. Once the VLAN is removed, its interfaces become members of VLAN 1.<br> Minimum value =  1<br> Maximum value =  4094
+	* ID of the VLAN whose parameters you want to modify.<br> Minimum value =  1<br> Maximum value =  4094
 	* </pre>
 	*/
 	public void set_id(Long id) throws Exception{
@@ -69,7 +71,7 @@ public class vlan extends base_resource
 
 	/**
 	* <pre>
-	* An integer that uniquely identifies the VLAN that you want to remove from the NetScaler appliance. Once the VLAN is removed, its interfaces become members of VLAN 1.<br> Minimum value =  1<br> Maximum value =  4094
+	* ID of the VLAN whose parameters you want to modify.<br> Minimum value =  1<br> Maximum value =  4094
 	* </pre>
 	*/
 	public Long get_id() throws Exception {
@@ -96,7 +98,7 @@ public class vlan extends base_resource
 
 	/**
 	* <pre>
-	* Enable all IPv6 dynamic routing protocols on this VLAN. Possible values: ENABLED, DISABLED Default: DISABLED. Note: For the ENABLED setting to work, you must configure IPv6 dynamic routing protocols from the VTYSH command line. For more information about configuring IPv6 dynamic routing protocols on the NetScaler appliance, see the “Dynamic Routing” chapter of the Citrix NetScaler Networking Guide.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Enable all IPv6 dynamic routing protocols on this VLAN. Note: For the ENABLED setting to work, you must configure IPv6 dynamic routing protocols from the VTYSH command line.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_ipv6dynamicrouting(String ipv6dynamicrouting) throws Exception{
@@ -105,11 +107,20 @@ public class vlan extends base_resource
 
 	/**
 	* <pre>
-	* Enable all IPv6 dynamic routing protocols on this VLAN. Possible values: ENABLED, DISABLED Default: DISABLED. Note: For the ENABLED setting to work, you must configure IPv6 dynamic routing protocols from the VTYSH command line. For more information about configuring IPv6 dynamic routing protocols on the NetScaler appliance, see the “Dynamic Routing” chapter of the Citrix NetScaler Networking Guide.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Enable all IPv6 dynamic routing protocols on this VLAN. Note: For the ENABLED setting to work, you must configure IPv6 dynamic routing protocols from the VTYSH command line.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_ipv6dynamicrouting() throws Exception {
 		return this.ipv6dynamicrouting;
+	}
+
+	/**
+	* <pre>
+	* The link-local IP address assigned to the VLAN.
+	* </pre>
+	*/
+	public String get_linklocalipv6addr() throws Exception {
+		return this.linklocalipv6addr;
 	}
 
 	/**
@@ -191,6 +202,15 @@ public class vlan extends base_resource
 	*/
 	public Boolean get_tagged() throws Exception {
 		return this.tagged;
+	}
+
+	/**
+	* <pre>
+	* SDX vlan.<br> Default value: NO<br> Possible values = YES, NO
+	* </pre>
+	*/
+	public String get_sdxvlan() throws Exception {
+		return this.sdxvlan;
 	}
 
 	/**
@@ -342,21 +362,9 @@ public class vlan extends base_resource
 	* Use this API to unset the properties of vlan resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, Long id, String args[]) throws Exception {
-		vlan unsetresource = new vlan();
-		unsetresource.id = id;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of vlan resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, vlan resource, String[] args) throws Exception{
 		vlan unsetresource = new vlan();
 		unsetresource.id = resource.id;
-		unsetresource.aliasname = resource.aliasname;
-		unsetresource.ipv6dynamicrouting = resource.ipv6dynamicrouting;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -388,8 +396,6 @@ public class vlan extends base_resource
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new vlan();
 				unsetresources[i].id = resources[i].id;
-				unsetresources[i].aliasname = resources[i].aliasname;
-				unsetresources[i].ipv6dynamicrouting = resources[i].ipv6dynamicrouting;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}
@@ -511,5 +517,9 @@ public class vlan extends base_resource
 	public static class ipv6dynamicroutingEnum {
 		public static final String ENABLED = "ENABLED";
 		public static final String DISABLED = "DISABLED";
+	}
+	public static class sdxvlanEnum {
+		public static final String YES = "YES";
+		public static final String NO = "NO";
 	}
 }

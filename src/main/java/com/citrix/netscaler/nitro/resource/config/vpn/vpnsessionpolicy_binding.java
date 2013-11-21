@@ -44,7 +44,7 @@ public class vpnsessionpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the vpn session policy.<br> Minimum length =  1
+	* Name of the session policy to display.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -53,7 +53,7 @@ public class vpnsessionpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the vpn session policy.<br> Minimum length =  1
+	* Name of the session policy to display.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {

@@ -56,7 +56,7 @@ public class service_scpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the service to which the policy will be bound.<br> Minimum length =  1
+	* Name of the service to which to bind a policy or monitor.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -65,7 +65,7 @@ public class service_scpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the service to which the policy will be bound.<br> Minimum length =  1
+	* Name of the service to which to bind a policy or monitor.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {

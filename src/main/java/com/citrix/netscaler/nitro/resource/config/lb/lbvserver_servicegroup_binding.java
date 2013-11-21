@@ -40,7 +40,7 @@ public class lbvserver_servicegroup_binding extends base_resource
 
 	/**
 	* <pre>
-	* Weight for this service. This weight is used when the system performs load balancing, giving greater priority to a specific service. It is useful when the services bound to a virtual server are of different capacity.<br> Default value: 1<br> Minimum value =  1<br> Maximum value =  100
+	* Integer specifying the weight of the service. A larger number specifies a greater weight. Defines the capacity of the service relative to the other services in the load balancing configuration. Determines the priority given to the service in load balancing decisions.<br> Default value: 1<br> Minimum value =  1<br> Maximum value =  100
 	* </pre>
 	*/
 	public void set_weight(long weight) throws Exception {
@@ -49,7 +49,7 @@ public class lbvserver_servicegroup_binding extends base_resource
 
 	/**
 	* <pre>
-	* Weight for this service. This weight is used when the system performs load balancing, giving greater priority to a specific service. It is useful when the services bound to a virtual server are of different capacity.<br> Default value: 1<br> Minimum value =  1<br> Maximum value =  100
+	* Integer specifying the weight of the service. A larger number specifies a greater weight. Defines the capacity of the service relative to the other services in the load balancing configuration. Determines the priority given to the service in load balancing decisions.<br> Default value: 1<br> Minimum value =  1<br> Maximum value =  100
 	* </pre>
 	*/
 	public void set_weight(Long weight) throws Exception{
@@ -58,7 +58,7 @@ public class lbvserver_servicegroup_binding extends base_resource
 
 	/**
 	* <pre>
-	* Weight for this service. This weight is used when the system performs load balancing, giving greater priority to a specific service. It is useful when the services bound to a virtual server are of different capacity.<br> Default value: 1<br> Minimum value =  1<br> Maximum value =  100
+	* Integer specifying the weight of the service. A larger number specifies a greater weight. Defines the capacity of the service relative to the other services in the load balancing configuration. Determines the priority given to the service in load balancing decisions.<br> Default value: 1<br> Minimum value =  1<br> Maximum value =  100
 	* </pre>
 	*/
 	public Long get_weight() throws Exception {
@@ -67,7 +67,9 @@ public class lbvserver_servicegroup_binding extends base_resource
 
 	/**
 	* <pre>
-	* The virtual server name to which the service is bound.<br> Minimum length =  1
+	* Name for the virtual server. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at sign (@), equal sign (=), and hyphen (-) characters. Can be changed after the virtual server is created.
+
+CLI Users: If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my vserver" or 'my vserver'). .<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -76,7 +78,9 @@ public class lbvserver_servicegroup_binding extends base_resource
 
 	/**
 	* <pre>
-	* The virtual server name to which the service is bound.<br> Minimum length =  1
+	* Name for the virtual server. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at sign (@), equal sign (=), and hyphen (-) characters. Can be changed after the virtual server is created.
+
+CLI Users: If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my vserver" or 'my vserver'). .<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -85,7 +89,7 @@ public class lbvserver_servicegroup_binding extends base_resource
 
 	/**
 	* <pre>
-	* The service name bound to the selected load balancing virtual server.<br> Minimum length =  1
+	* Service to bind to the virtual server.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_servicename(String servicename) throws Exception{
@@ -94,7 +98,7 @@ public class lbvserver_servicegroup_binding extends base_resource
 
 	/**
 	* <pre>
-	* The service name bound to the selected load balancing virtual server.<br> Minimum length =  1
+	* Service to bind to the virtual server.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_servicename() throws Exception {

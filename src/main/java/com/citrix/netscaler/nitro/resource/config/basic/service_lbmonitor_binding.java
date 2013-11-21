@@ -56,7 +56,7 @@ public class service_lbmonitor_binding extends base_resource
 
 	/**
 	* <pre>
-	* The weight for the specified monitor.<br> Minimum value =  1<br> Maximum value =  100
+	* Weight to assign to the monitor-service binding. When a monitor is UP, the weight assigned to its binding with the service determines how much the monitor contributes toward keeping the health of the service above the value configured for the Monitor Threshold parameter.<br> Minimum value =  1<br> Maximum value =  100
 	* </pre>
 	*/
 	public void set_weight(long weight) throws Exception {
@@ -65,7 +65,7 @@ public class service_lbmonitor_binding extends base_resource
 
 	/**
 	* <pre>
-	* The weight for the specified monitor.<br> Minimum value =  1<br> Maximum value =  100
+	* Weight to assign to the monitor-service binding. When a monitor is UP, the weight assigned to its binding with the service determines how much the monitor contributes toward keeping the health of the service above the value configured for the Monitor Threshold parameter.<br> Minimum value =  1<br> Maximum value =  100
 	* </pre>
 	*/
 	public void set_weight(Long weight) throws Exception{
@@ -74,7 +74,7 @@ public class service_lbmonitor_binding extends base_resource
 
 	/**
 	* <pre>
-	* The weight for the specified monitor.<br> Minimum value =  1<br> Maximum value =  100
+	* Weight to assign to the monitor-service binding. When a monitor is UP, the weight assigned to its binding with the service determines how much the monitor contributes toward keeping the health of the service above the value configured for the Monitor Threshold parameter.<br> Minimum value =  1<br> Maximum value =  100
 	* </pre>
 	*/
 	public Long get_weight() throws Exception {
@@ -83,7 +83,7 @@ public class service_lbmonitor_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the service to which the policy will be bound.<br> Minimum length =  1
+	* Name of the service to which to bind a policy or monitor.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -92,7 +92,7 @@ public class service_lbmonitor_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the service to which the policy will be bound.<br> Minimum length =  1
+	* Name of the service to which to bind a policy or monitor.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -218,7 +218,7 @@ public class service_lbmonitor_binding extends base_resource
 
 	/**
 	* <pre>
-	* The running state of the monitor on this service.<br> Possible values = UP, DOWN, UNKNOWN, BUSY, OUT OF SERVICE, GOING OUT OF SERVICE, DOWN WHEN GOING OUT OF SERVICE, NS_EMPTY_STR
+	* The running state of the monitor on this service.<br> Possible values = UP, DOWN, UNKNOWN, BUSY, OUT OF SERVICE, GOING OUT OF SERVICE, DOWN WHEN GOING OUT OF SERVICE, NS_EMPTY_STR, Unknown, DISABLED
 	* </pre>
 	*/
 	public String get_monitor_state() throws Exception {
@@ -473,6 +473,8 @@ public class service_lbmonitor_binding extends base_resource
 		public static final String GOING_OUT_OF_SERVICE = "GOING OUT OF SERVICE";
 		public static final String DOWN_WHEN_GOING_OUT_OF_SERVICE = "DOWN WHEN GOING OUT OF SERVICE";
 		public static final String NS_EMPTY_STR = "NS_EMPTY_STR";
+		public static final String Unknown = "Unknown";
+		public static final String DISABLED = "DISABLED";
 	}
 	public static class monstateEnum {
 		public static final String ENABLED = "ENABLED";

@@ -72,17 +72,19 @@ public class lbvserver_filterpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Expression specifying the priority of the next policy which will get evaluated if the current policy rule evaluates to TRUE.
-	o	If gotoPriorityExpression is not present or if it is equal to END then the policy bank evaluation ends here
-	o	Else if the gotoPriorityExpression is equal to NEXT then the next policy in the priority order is evaluated.
-	o	Else gotoPriorityExpression is evaluated. The result of gotoPriorityExpression (which has to be a number) is processed as follows:
-		-	An UNDEF event is triggered if
-			.	gotoPriorityExpression cannot be evaluated
-			.	gotoPriorityExpression evaluates to number which is smaller than the maximum priority in the policy bank but is not same as any policy's priority
-			.	gotoPriorityExpression evaluates to a priority that is smaller than the current policy's priority
-		-	If the gotoPriorityExpression evaluates to the priority of the current policy then the next policy in the priority order is evaluated.
-		-	If the gotoPriorityExpression evaluates to the priority of a policy further ahead in the list then that policy will be evaluated next.
-		This field is applicable only to rewrite and responder policies.
+	* Expression or other value specifying the next policy to be evaluated if the current policy evaluates to TRUE.  Specify one of the following values:
+* NEXT - Evaluate the policy with the next higher priority number.
+* END - End policy evaluation.
+* USE_INVOCATION_RESULT - Applicable if this policy invokes another policy label. If the final goto in the invoked policy label has a value of END, the evaluation stops. If the final goto is anything other than END, the current policy label performs a NEXT.
+* A default syntax expression that evaluates to a number.
+If you specify an expression, the number to which it evaluates determines the next policy to evaluate, as follows:
+* If the expression evaluates to a higher numbered priority, the policy with that priority is evaluated next.
+* If the expression evaluates to the priority of the current policy, the policy with the next higher numbered priority is evaluated next.
+* If the expression evaluates to a priority number that is numerically higher than the highest numbered priority, policy evaluation ends.
+An UNDEF event is triggered if:
+* The expression is invalid.
+* The expression evaluates to a priority number that is numerically lower than the current policy's priority.
+* The expression evaluates to a priority number that is between the current policy's priority number (say, 30) and the highest priority number (say, 100), but does not match any configured priority number (for example, the expression evaluates to the number 85). This example assumes that the priority number increments by 10 for every successive policy, and therefore a priority number of 85 does not exist in the policy label.
 	* </pre>
 	*/
 	public void set_gotopriorityexpression(String gotopriorityexpression) throws Exception{
@@ -91,17 +93,19 @@ public class lbvserver_filterpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Expression specifying the priority of the next policy which will get evaluated if the current policy rule evaluates to TRUE.
-	o	If gotoPriorityExpression is not present or if it is equal to END then the policy bank evaluation ends here
-	o	Else if the gotoPriorityExpression is equal to NEXT then the next policy in the priority order is evaluated.
-	o	Else gotoPriorityExpression is evaluated. The result of gotoPriorityExpression (which has to be a number) is processed as follows:
-		-	An UNDEF event is triggered if
-			.	gotoPriorityExpression cannot be evaluated
-			.	gotoPriorityExpression evaluates to number which is smaller than the maximum priority in the policy bank but is not same as any policy's priority
-			.	gotoPriorityExpression evaluates to a priority that is smaller than the current policy's priority
-		-	If the gotoPriorityExpression evaluates to the priority of the current policy then the next policy in the priority order is evaluated.
-		-	If the gotoPriorityExpression evaluates to the priority of a policy further ahead in the list then that policy will be evaluated next.
-		This field is applicable only to rewrite and responder policies.
+	* Expression or other value specifying the next policy to be evaluated if the current policy evaluates to TRUE.  Specify one of the following values:
+* NEXT - Evaluate the policy with the next higher priority number.
+* END - End policy evaluation.
+* USE_INVOCATION_RESULT - Applicable if this policy invokes another policy label. If the final goto in the invoked policy label has a value of END, the evaluation stops. If the final goto is anything other than END, the current policy label performs a NEXT.
+* A default syntax expression that evaluates to a number.
+If you specify an expression, the number to which it evaluates determines the next policy to evaluate, as follows:
+* If the expression evaluates to a higher numbered priority, the policy with that priority is evaluated next.
+* If the expression evaluates to the priority of the current policy, the policy with the next higher numbered priority is evaluated next.
+* If the expression evaluates to a priority number that is numerically higher than the highest numbered priority, policy evaluation ends.
+An UNDEF event is triggered if:
+* The expression is invalid.
+* The expression evaluates to a priority number that is numerically lower than the current policy's priority.
+* The expression evaluates to a priority number that is between the current policy's priority number (say, 30) and the highest priority number (say, 100), but does not match any configured priority number (for example, the expression evaluates to the number 85). This example assumes that the priority number increments by 10 for every successive policy, and therefore a priority number of 85 does not exist in the policy label.
 	* </pre>
 	*/
 	public String get_gotopriorityexpression() throws Exception {
@@ -128,7 +132,9 @@ public class lbvserver_filterpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The virtual server name to which the service is bound.<br> Minimum length =  1
+	* Name for the virtual server. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at sign (@), equal sign (=), and hyphen (-) characters. Can be changed after the virtual server is created.
+
+CLI Users: If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my vserver" or 'my vserver'). .<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -137,7 +143,9 @@ public class lbvserver_filterpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The virtual server name to which the service is bound.<br> Minimum length =  1
+	* Name for the virtual server. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at sign (@), equal sign (=), and hyphen (-) characters. Can be changed after the virtual server is created.
+
+CLI Users: If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my vserver" or 'my vserver'). .<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -146,7 +154,7 @@ public class lbvserver_filterpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Bindpoint, specifying where to bind the policy. This field is applicable only to rewrite and cache policies.<br> Possible values = REQUEST, RESPONSE
+	* Bind point to which to bind the policy. Applicable only to compression, rewrite, and cache policies.<br> Possible values = REQUEST, RESPONSE
 	* </pre>
 	*/
 	public void set_bindpoint(String bindpoint) throws Exception{
@@ -155,7 +163,7 @@ public class lbvserver_filterpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Bindpoint, specifying where to bind the policy. This field is applicable only to rewrite and cache policies.<br> Possible values = REQUEST, RESPONSE
+	* Bind point to which to bind the policy. Applicable only to compression, rewrite, and cache policies.<br> Possible values = REQUEST, RESPONSE
 	* </pre>
 	*/
 	public String get_bindpoint() throws Exception {
@@ -164,7 +172,10 @@ public class lbvserver_filterpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Type of policy label invocation. Applicable only to rewrite and cache policies.<br> Possible values = reqvserver, resvserver, policylabel
+	* Type of policy label to invoke. Applicable only to rewrite and cache policies. Available settings function as follows:
+* reqvserver - Evaluate the request against the request-based policies bound to the specified virtual server.
+* resvserver - Evaluate the response against the response-based policies bound to the specified virtual server.
+* policylabel - invoke the request or response against the specified user-defined policy label.<br> Possible values = reqvserver, resvserver, policylabel
 	* </pre>
 	*/
 	public void set_labeltype(String labeltype) throws Exception{
@@ -173,7 +184,10 @@ public class lbvserver_filterpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Type of policy label invocation. Applicable only to rewrite and cache policies.<br> Possible values = reqvserver, resvserver, policylabel
+	* Type of policy label to invoke. Applicable only to rewrite and cache policies. Available settings function as follows:
+* reqvserver - Evaluate the request against the request-based policies bound to the specified virtual server.
+* resvserver - Evaluate the response against the response-based policies bound to the specified virtual server.
+* policylabel - invoke the request or response against the specified user-defined policy label.<br> Possible values = reqvserver, resvserver, policylabel
 	* </pre>
 	*/
 	public String get_labeltype() throws Exception {
@@ -182,7 +196,7 @@ public class lbvserver_filterpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Name of the label to invoke if the current policy rule evaluates to TRUE.
+	* Name of the virtual server or user-defined policy label to invoke if the policy evaluates to TRUE.
 	* </pre>
 	*/
 	public void set_labelname(String labelname) throws Exception{
@@ -191,7 +205,7 @@ public class lbvserver_filterpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Name of the label to invoke if the current policy rule evaluates to TRUE.
+	* Name of the virtual server or user-defined policy label to invoke if the policy evaluates to TRUE.
 	* </pre>
 	*/
 	public String get_labelname() throws Exception {
@@ -200,7 +214,7 @@ public class lbvserver_filterpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Invoke flag.
+	* Invoke policies bound to a virtual server or policy label.
 	* </pre>
 	*/
 	public void set_invoke(boolean invoke) throws Exception {
@@ -209,7 +223,7 @@ public class lbvserver_filterpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Invoke flag.
+	* Invoke policies bound to a virtual server or policy label.
 	* </pre>
 	*/
 	public void set_invoke(Boolean invoke) throws Exception{
@@ -218,7 +232,7 @@ public class lbvserver_filterpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Invoke flag.
+	* Invoke policies bound to a virtual server or policy label.
 	* </pre>
 	*/
 	public Boolean get_invoke() throws Exception {
@@ -227,7 +241,7 @@ public class lbvserver_filterpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Use this parameter to enable SureConnect on the specified virtual server.<br> Default value: OFF<br> Possible values = ON, OFF
+	* Use SureConnect on the virtual server.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_sc() throws Exception {

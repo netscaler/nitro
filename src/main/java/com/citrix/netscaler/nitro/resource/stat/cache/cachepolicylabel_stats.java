@@ -33,12 +33,13 @@ class cachepolicylabel_response extends base_response
 public class cachepolicylabel_stats extends base_resource
 {
 	private String labelname;
+	private String clearstats;
 	private Long pipolicylabelhits;
 	private Long pipolicylabelhitsrate;
 
 	/**
 	* <pre>
-	* The name of the cache policy label for which statistics will be displayed.  If not given statistics are shown for all cache policylabels.
+	* Name of the cache-policy label for which to display statistics. If you do not set this parameter statistics are shown for all cache-policy labels.
 	* </pre>
 	*/
 	public void set_labelname(String labelname) throws Exception{
@@ -47,7 +48,7 @@ public class cachepolicylabel_stats extends base_resource
 
 	/**
 	* <pre>
-	* The name of the cache policy label for which statistics will be displayed.  If not given statistics are shown for all cache policylabels.<br> Minimum length =  1
+	* Name of the cache-policy label for which to display statistics. If you do not set this parameter statistics are shown for all cache-policy labels.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_labelname() throws Exception {
@@ -56,7 +57,25 @@ public class cachepolicylabel_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of times policy label was invoked. 
+	* Clear the statsistics / counters
+	* </pre>
+	*/
+	public void set_clearstats(String clearstats) throws Exception{
+		this.clearstats = clearstats;
+	}
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters.<br> Possible values = basic, full
+	* </pre>
+	*/
+	public String get_clearstats() throws Exception {
+		return this.clearstats;
+	}
+
+	/**
+	* <pre>
+	* Rate (/s) counter for pipolicylabelhits
 	* </pre>
 	*/
 	public Long get_pipolicylabelhitsrate() throws Exception {
@@ -134,4 +153,8 @@ public class cachepolicylabel_stats extends base_resource
 		return response;
 	}
 
+	public static class clearstatsEnum {
+		public static final String basic = "basic";
+		public static final String full = "full";
+	}
 }

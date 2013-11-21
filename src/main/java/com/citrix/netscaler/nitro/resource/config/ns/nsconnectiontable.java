@@ -88,193 +88,31 @@ public class nsconnectiontable extends base_resource
 	private Integer sourcenodeidnnm;
 	private Long channelidnnm;
 	private Long msgversionnnm;
+	private Long td;
 	private Long __count;
 
 	/**
 	* <pre>
-	* The maximum length of filter expression is 255 and it can be of following format:
-  <expression> [<relop> <expression>]
-
-	<relop> = ( && | || )
-
-	connectiontable supports two types of filter expressions:
-
-	Classic Expressions:
-
-	<expression> = the expression string in the format:
-	<qualifier> <operator> <qualifier-value>
-
-	<qualifier> = SOURCEIP.
-	<qualifier-value> = A valid IP address.
-	<qualifier> = SOURCEPORT.
-	<qualifier-value> = A valid port number.
-	<qualifier> = DESTIP.
-	<qualifier-value> = A valid IP address.
-	<qualifier> = DESTPORT.
-	<qualifier-value> = A valid port number.
-	<qualifier> = IP.
-	<qualifier-value> = A valid IP address.
-	<qualifier> = PORT.
-	<qualifier-value> = A valid port number.
-	<qualifier> = IDLETIME.
-	<qualifier-value> = A positive integer indicating the idle time.
-	<qualifier> = SVCNAME.
-	<qualifier-value> = The name of a service.
-	<qualifier> = VSVRNAME.
-	<qualifier-value> = The name of a vserver.
-	<qualifier> = CONNID
-	<qualifier-value> = A valid PCB dev number.
-	<qualifier> = INTF
-	<qualifier-value> = A valid interface id in the form of x/y 
-				(n/x/y in case of cluster interface).
-	<qualifier> = VLAN
-	<qualifier-value> = A valid VLAN ID.
-	<qualifier> = STATE.
-	<qualifier-value> = ( CLOSE_WAIT | CLOSED | CLOSING | ESTABLISHED |
-		FIN_WAIT_1 | FIN_WAIT_2 | LAST_ACK | LISTEN |
-		SYN_RECEIVED | SYN_SENT | TIME_WAIT )
-	<qualifier> = SVCTYPE.
-	<qualifier-value> = ( HTTP | FTP | TCP | UDP | SSL |
-		SSL_BRIDGE | SSL_TCP | NNTP | RPCSVR | RPCSVRS |
-		RPCCLNT | DNS | ADNS | SNMP | RTSP | DHCPRA | ANY |
-		MONITOR | MONITOR_UDP | MONITOR_PING | SIP_UDP | MYSQL | MSSQL | UNKNOWN )
-
-	<operator> = ( == | eq | != | neq | > | gt | < | lt | >= |
-		ge | <= | le | BETWEEN )
-		
-	Default Expressions:
-
-	<expression> =:
-	CONNECTION.<qualifier>.<qualifier-method>.(<qualifier-value>)
-
-	<qualifier> = SRCIP
-	<qualifier-method> = [ EQ | NE ]
-	<qualifier-value>  = A valid IPv4 address
-	example = CONNECTION.SRCIP.EQ(127.0.0.1)
-
-	<qualifier> = DSTIP
-	<qualifier-method> = [ EQ | NE ]
-	<qualifier-value>  = A valid IPv4 address.
-	example = CONNECTION.DSTIP.EQ(127.0.0.1)
-
-	<qualifier> = IP
-	<qualifier-method> = [ EQ | NE ]
-	<qualifier-value>  = A valid IPv4 address.
-	example = CONNECTION.IP.EQ(127.0.0.1)
-
-	<qualifier> = SRCIPv6
-	<qualifier-method> = [ EQ | NE ]
-	<qualifier-value>  = A valid IPv6 address.
-	example = CONNECTION.SRCIPv6.EQ(2001:db8:0:0:1::1)
-
-	<qualifier> = DSTIPv6
-	<qualifier-method> = [ EQ | NE ]
-	<qualifier-value>  = A valid IPv6 address.
-	example = CONNECTION.DSTIPv6.EQ(2001:db8:0:0:1::1)
-
-	<qualifier> = IPv6
-	<qualifier-method> = [ EQ | NE ]
-	<qualifier-value>  = A valid IPv6 address.
-	example = CONNECTION.IPv6.EQ(2001:db8:0:0:1::1)
-
-	<qualifier> = SRCPORT
-	<qualifier-method> = [ EQ | NE | GT | GE | LT | LE ]
-	<qualifier-value>  = A valid port number.
-	example = CONNECTION.SRCPORT.EQ(80)
-
-	<qualifier> = DSTPORT
-	<qualifier-method> = [ EQ | NE | GT | GE | LT | LE ]
-	<qualifier-value>  = A valid port number.
-	example = CONNECTION.DSTPORT.EQ(80)
-
-	<qualifier> = PORT
-	<qualifier-method> = [ EQ | NE ]
-	<qualifier-value>  = A valid port number.
-	example = CONNECTION.PORT.EQ(80)
-
-	<qualifier> = SVCNAME
-	<qualifier-method> = [ EQ | NE | CONTAINS | STARTSWITH
-						| ENDSWITH ]
-	<qualifier-value>  = service name.
-	example = CONNECTION.SVCNAME.EQ("name")
-
-	<qualifier> = LB_VSERVER.NAME
-	<qualifier-method> = [ EQ | NE | CONTAINS | STARTSWITH
-						| ENDSWITH ]
-	<qualifier-value>  = LB vserver name.
-	example = CONNECTION.LB_VSERVER.NAME.EQ("name")
-
-	<qualifier> = CS_VSERVER.NAME
-	<qualifier-method> = [ EQ | NE | CONTAINS | STARTSWITH
-						| ENDSWITH ]
-	<qualifier-value>  = CS vserver name.
-	example = CONNECTION.CS_VSERVER.NAME.EQ("name")
-
-	<qualifier> = INTF
-	<qualifier-method> = [ EQ | NE ]
-	<qualifier-value>  = A valid interface id in the form of
-				x/y (n/x/y in case of cluster interface).
-	examle = CONNECTION.INTF.EQ("0/1/1")
-
-	<qualifier> = VLANID
-	<qualifier-method> = [ EQ | NE | GT | GE | LT | LE ]
-	<qualifier-value>  = A valid VLAN ID.
-	example = CONNECTION.VLANID.EQ(0)
-
-	<qualifier> = CONNID
-	<qualifier-method> = [ EQ | NE | GT | GE | LT | LE ]
-	<qualifier-value>  = A valid PCB dev number.
-	example = CONNECTION.CONNID.EQ(0)
-	
-	<qualifier> = IDLETIME
-	<qualifier-method> = [ EQ | NE | GT | GE | LT | LE ]
-	<qualifier-value>  = A positive integer indicating the
-   				idletime.
-	example = CONNECTION.IDLETIME.LT(100)
-
-	<qualifier> = TCPSTATE
-	<qualifier-method> = [ EQ | NE ]
-	<qualifier-value>  = ( CLOSE_WAIT | CLOSED | CLOSING |
-   		ESTABLISHED | FIN_WAIT_1 | FIN_WAIT_2 | LAST_ACK |
-		LISTEN | SYN_RECEIVED | SYN_SENT | TIME_WAIT | 
-		NOT_APPLICABLE)
-	example = CONNECTION.TCPSTATE.EQ(LISTEN)
-
-	<qualifier> = SERVICE_TYPE
-	<qualifier-method> = [ EQ | NE ]
-	<qualifier-value>  = ( SVC_HTTP | FTP | TCP | UDP | SSL |
-		SSL_BRIDGE | SSL_TCP | NNTP | RPCSVR | RPCSVRS |
-		RPCCLNT | SVC_DNS | ADNS | SNMP | RTSP | DHCPRA | ANY|
-		MONITOR | MONITOR_UDP | MONITOR_PING | SIP_UDP |
-		SVC_MYSQL | SVC_MSSQL | SERVICE_UNKNOWN )
-	example = CONNECTION.SERVICE_TYPE.EQ(ANY)
-	
-	common usecases:
-	Filtering out loopback connections and view present
-	connections through netsclaer 
-	show connectiontable "CONNECTION.IP.NEQ(127.0.0.1) &&
-	CONNECTION.TCPSTATE.EQ(ESTABLISHED)" -detail full
-
-	show connections from a particular sourceip and targeted
-	to port 80
-	show connectiontable "CONNECTION.SRCIP.EQ(10.102.1.91) &&
-	CONNECTION.DSTPORT.EQ(80)"
-
-	show connection particular to a service and its linked
-	client connections 
-	show connectiontable "CONNECTION.SVCNAME.EQ("S1")" 
-	-detail link
-
-	show connections for a particular servicetype(e.g.http)
-	show connectiontable "CONNECTION.SERVICE_TYPE.EQ(TCP)"
-
-	viewing connections that have been idle for a long time
-	show connectiontable "CONNECTION.IDLETIME.GT(100)"
-
-	show connections for a particular interface and vlan
-	show connectiontable "CONNECTION.INTF.EQ("1/1") &&
-	CONNECTION.VLANID.EQ(1)"
-	.
+	* Expression using which TCP/IP connections must be filtered. Maximum length of filter is 255 and it can be of the following format: 
+"<expression> \[<relop> <expression>"\]
+where,
+<relop> can be the && or the || relational operators.
+<expression> is a string in the following format: 
+<qualifier> <operator> <qualifier-value>
+where, 
+<operator> can be any one of the following (except the commas): ==, eq, !=, neq, >, gt, <, lt, >=, ge, <=, le, BETWEEN
+Following are the valid qualifier - qualifier value combinations:
+SOURCEIP - A valid IP address
+SOURCEPORT - A valid port number
+DESTIP - A valid IP address
+DESTPORT - A valid port number
+IP - A valid IP address
+PORT - A valid port number
+IDLETIME - A positive integer indicating the idle time
+SVCNAME - The name of a service
+VSVRNAME - The name of a vserver
+STATE - CLOSE_WAIT, CLOSED, CLOSING, ESTABLISHED, FIN_WAIT_1, FIN_WAIT_2, LAST_ACK, LISTEN, SYN_RECEIVED, SYN_SENT, TIME_WAIT
+SVCTYPE - HTTP, FTP, TCP, UDP, SSL, SSL_BRIDGE, SSL_TCP, NNTP, RPCSVR, RPCSVRS, RPCCLNT, DNS, ADNS, SNMP, RTSP, DHCPRA, ANY, MONITOR, MONITOR_UDP, MONITOR_PING, SIP_UDP, MYSQL, MSSQL, UNKNOWN.
 	* </pre>
 	*/
 	public void set_filterexpression(String filterexpression) throws Exception{
@@ -283,189 +121,26 @@ public class nsconnectiontable extends base_resource
 
 	/**
 	* <pre>
-	* The maximum length of filter expression is 255 and it can be of following format:
-  <expression> [<relop> <expression>]
-
-	<relop> = ( && | || )
-
-	connectiontable supports two types of filter expressions:
-
-	Classic Expressions:
-
-	<expression> = the expression string in the format:
-	<qualifier> <operator> <qualifier-value>
-
-	<qualifier> = SOURCEIP.
-	<qualifier-value> = A valid IP address.
-	<qualifier> = SOURCEPORT.
-	<qualifier-value> = A valid port number.
-	<qualifier> = DESTIP.
-	<qualifier-value> = A valid IP address.
-	<qualifier> = DESTPORT.
-	<qualifier-value> = A valid port number.
-	<qualifier> = IP.
-	<qualifier-value> = A valid IP address.
-	<qualifier> = PORT.
-	<qualifier-value> = A valid port number.
-	<qualifier> = IDLETIME.
-	<qualifier-value> = A positive integer indicating the idle time.
-	<qualifier> = SVCNAME.
-	<qualifier-value> = The name of a service.
-	<qualifier> = VSVRNAME.
-	<qualifier-value> = The name of a vserver.
-	<qualifier> = CONNID
-	<qualifier-value> = A valid PCB dev number.
-	<qualifier> = INTF
-	<qualifier-value> = A valid interface id in the form of x/y 
-				(n/x/y in case of cluster interface).
-	<qualifier> = VLAN
-	<qualifier-value> = A valid VLAN ID.
-	<qualifier> = STATE.
-	<qualifier-value> = ( CLOSE_WAIT | CLOSED | CLOSING | ESTABLISHED |
-		FIN_WAIT_1 | FIN_WAIT_2 | LAST_ACK | LISTEN |
-		SYN_RECEIVED | SYN_SENT | TIME_WAIT )
-	<qualifier> = SVCTYPE.
-	<qualifier-value> = ( HTTP | FTP | TCP | UDP | SSL |
-		SSL_BRIDGE | SSL_TCP | NNTP | RPCSVR | RPCSVRS |
-		RPCCLNT | DNS | ADNS | SNMP | RTSP | DHCPRA | ANY |
-		MONITOR | MONITOR_UDP | MONITOR_PING | SIP_UDP | MYSQL | MSSQL | UNKNOWN )
-
-	<operator> = ( == | eq | != | neq | > | gt | < | lt | >= |
-		ge | <= | le | BETWEEN )
-		
-	Default Expressions:
-
-	<expression> =:
-	CONNECTION.<qualifier>.<qualifier-method>.(<qualifier-value>)
-
-	<qualifier> = SRCIP
-	<qualifier-method> = [ EQ | NE ]
-	<qualifier-value>  = A valid IPv4 address
-	example = CONNECTION.SRCIP.EQ(127.0.0.1)
-
-	<qualifier> = DSTIP
-	<qualifier-method> = [ EQ | NE ]
-	<qualifier-value>  = A valid IPv4 address.
-	example = CONNECTION.DSTIP.EQ(127.0.0.1)
-
-	<qualifier> = IP
-	<qualifier-method> = [ EQ | NE ]
-	<qualifier-value>  = A valid IPv4 address.
-	example = CONNECTION.IP.EQ(127.0.0.1)
-
-	<qualifier> = SRCIPv6
-	<qualifier-method> = [ EQ | NE ]
-	<qualifier-value>  = A valid IPv6 address.
-	example = CONNECTION.SRCIPv6.EQ(2001:db8:0:0:1::1)
-
-	<qualifier> = DSTIPv6
-	<qualifier-method> = [ EQ | NE ]
-	<qualifier-value>  = A valid IPv6 address.
-	example = CONNECTION.DSTIPv6.EQ(2001:db8:0:0:1::1)
-
-	<qualifier> = IPv6
-	<qualifier-method> = [ EQ | NE ]
-	<qualifier-value>  = A valid IPv6 address.
-	example = CONNECTION.IPv6.EQ(2001:db8:0:0:1::1)
-
-	<qualifier> = SRCPORT
-	<qualifier-method> = [ EQ | NE | GT | GE | LT | LE ]
-	<qualifier-value>  = A valid port number.
-	example = CONNECTION.SRCPORT.EQ(80)
-
-	<qualifier> = DSTPORT
-	<qualifier-method> = [ EQ | NE | GT | GE | LT | LE ]
-	<qualifier-value>  = A valid port number.
-	example = CONNECTION.DSTPORT.EQ(80)
-
-	<qualifier> = PORT
-	<qualifier-method> = [ EQ | NE ]
-	<qualifier-value>  = A valid port number.
-	example = CONNECTION.PORT.EQ(80)
-
-	<qualifier> = SVCNAME
-	<qualifier-method> = [ EQ | NE | CONTAINS | STARTSWITH
-						| ENDSWITH ]
-	<qualifier-value>  = service name.
-	example = CONNECTION.SVCNAME.EQ("name")
-
-	<qualifier> = LB_VSERVER.NAME
-	<qualifier-method> = [ EQ | NE | CONTAINS | STARTSWITH
-						| ENDSWITH ]
-	<qualifier-value>  = LB vserver name.
-	example = CONNECTION.LB_VSERVER.NAME.EQ("name")
-
-	<qualifier> = CS_VSERVER.NAME
-	<qualifier-method> = [ EQ | NE | CONTAINS | STARTSWITH
-						| ENDSWITH ]
-	<qualifier-value>  = CS vserver name.
-	example = CONNECTION.CS_VSERVER.NAME.EQ("name")
-
-	<qualifier> = INTF
-	<qualifier-method> = [ EQ | NE ]
-	<qualifier-value>  = A valid interface id in the form of
-				x/y (n/x/y in case of cluster interface).
-	examle = CONNECTION.INTF.EQ("0/1/1")
-
-	<qualifier> = VLANID
-	<qualifier-method> = [ EQ | NE | GT | GE | LT | LE ]
-	<qualifier-value>  = A valid VLAN ID.
-	example = CONNECTION.VLANID.EQ(0)
-
-	<qualifier> = CONNID
-	<qualifier-method> = [ EQ | NE | GT | GE | LT | LE ]
-	<qualifier-value>  = A valid PCB dev number.
-	example = CONNECTION.CONNID.EQ(0)
-	
-	<qualifier> = IDLETIME
-	<qualifier-method> = [ EQ | NE | GT | GE | LT | LE ]
-	<qualifier-value>  = A positive integer indicating the
-   				idletime.
-	example = CONNECTION.IDLETIME.LT(100)
-
-	<qualifier> = TCPSTATE
-	<qualifier-method> = [ EQ | NE ]
-	<qualifier-value>  = ( CLOSE_WAIT | CLOSED | CLOSING |
-   		ESTABLISHED | FIN_WAIT_1 | FIN_WAIT_2 | LAST_ACK |
-		LISTEN | SYN_RECEIVED | SYN_SENT | TIME_WAIT | 
-		NOT_APPLICABLE)
-	example = CONNECTION.TCPSTATE.EQ(LISTEN)
-
-	<qualifier> = SERVICE_TYPE
-	<qualifier-method> = [ EQ | NE ]
-	<qualifier-value>  = ( SVC_HTTP | FTP | TCP | UDP | SSL |
-		SSL_BRIDGE | SSL_TCP | NNTP | RPCSVR | RPCSVRS |
-		RPCCLNT | SVC_DNS | ADNS | SNMP | RTSP | DHCPRA | ANY|
-		MONITOR | MONITOR_UDP | MONITOR_PING | SIP_UDP |
-		SVC_MYSQL | SVC_MSSQL | SERVICE_UNKNOWN )
-	example = CONNECTION.SERVICE_TYPE.EQ(ANY)
-	
-	common usecases:
-	Filtering out loopback connections and view present
-	connections through netsclaer 
-	show connectiontable "CONNECTION.IP.NEQ(127.0.0.1) &&
-	CONNECTION.TCPSTATE.EQ(ESTABLISHED)" -detail full
-
-	show connections from a particular sourceip and targeted
-	to port 80
-	show connectiontable "CONNECTION.SRCIP.EQ(10.102.1.91) &&
-	CONNECTION.DSTPORT.EQ(80)"
-
-	show connection particular to a service and its linked
-	client connections 
-	show connectiontable "CONNECTION.SVCNAME.EQ("S1")" 
-	-detail link
-
-	show connections for a particular servicetype(e.g.http)
-	show connectiontable "CONNECTION.SERVICE_TYPE.EQ(TCP)"
-
-	viewing connections that have been idle for a long time
-	show connectiontable "CONNECTION.IDLETIME.GT(100)"
-
-	show connections for a particular interface and vlan
-	show connectiontable "CONNECTION.INTF.EQ("1/1") &&
-	CONNECTION.VLANID.EQ(1)"
-	.
+	* Expression using which TCP/IP connections must be filtered. Maximum length of filter is 255 and it can be of the following format: 
+"<expression> \[<relop> <expression>"\]
+where,
+<relop> can be the && or the || relational operators.
+<expression> is a string in the following format: 
+<qualifier> <operator> <qualifier-value>
+where, 
+<operator> can be any one of the following (except the commas): ==, eq, !=, neq, >, gt, <, lt, >=, ge, <=, le, BETWEEN
+Following are the valid qualifier - qualifier value combinations:
+SOURCEIP - A valid IP address
+SOURCEPORT - A valid port number
+DESTIP - A valid IP address
+DESTPORT - A valid port number
+IP - A valid IP address
+PORT - A valid port number
+IDLETIME - A positive integer indicating the idle time
+SVCNAME - The name of a service
+VSVRNAME - The name of a vserver
+STATE - CLOSE_WAIT, CLOSED, CLOSING, ESTABLISHED, FIN_WAIT_1, FIN_WAIT_2, LAST_ACK, LISTEN, SYN_RECEIVED, SYN_SENT, TIME_WAIT
+SVCTYPE - HTTP, FTP, TCP, UDP, SSL, SSL_BRIDGE, SSL_TCP, NNTP, RPCSVR, RPCSVRS, RPCCLNT, DNS, ADNS, SNMP, RTSP, DHCPRA, ANY, MONITOR, MONITOR_UDP, MONITOR_PING, SIP_UDP, MYSQL, MSSQL, UNKNOWN.
 	* </pre>
 	*/
 	public String get_filterexpression() throws Exception {
@@ -528,7 +203,11 @@ public class nsconnectiontable extends base_resource
 
 	/**
 	* <pre>
-	* Display options for the connection table.<br> Possible values = LINK, NAME, CONNFAILOVER, FULL, NNM
+	* Specify display options for the connection table. 
+* LINK - Displays the linked PCB (Protocol Control Block). 
+* NAME - Displays along with the service name. 
+* CONNFAILOVER - Displays PCB with connection failover. 
+* FULL - Displays all available details.<br> Possible values = LINK, NAME, CONNFAILOVER, FULL, NNM
 	* </pre>
 	*/
 	public void set_detail(String[] detail) throws Exception{
@@ -537,7 +216,11 @@ public class nsconnectiontable extends base_resource
 
 	/**
 	* <pre>
-	* Display options for the connection table.<br> Possible values = LINK, NAME, CONNFAILOVER, FULL, NNM
+	* Specify display options for the connection table. 
+* LINK - Displays the linked PCB (Protocol Control Block). 
+* NAME - Displays along with the service name. 
+* CONNFAILOVER - Displays PCB with connection failover. 
+* FULL - Displays all available details.<br> Possible values = LINK, NAME, CONNFAILOVER, FULL, NNM
 	* </pre>
 	*/
 	public String[] get_detail() throws Exception {
@@ -582,7 +265,7 @@ public class nsconnectiontable extends base_resource
 
 	/**
 	* <pre>
-	* Protocol supported by the connection.<br> Possible values = HTTP, FTP, TCP, UDP, SSL, SSL_BRIDGE, SSL_TCP, NNTP, RPCSVR, DNS, ADNS, SNMP, RTSP, DHCPRA, ANY, SIP_UDP, DNS_TCP, ADNS_TCP, HTTPSVR, HTTPCLIENT, NAT, HA, AAA, SINCTCP, VPN AFTP, MONITORS, SSLVPN UDP, SINCUDP, RIP, UDP CLNT, SASP, RPCCLNTS, ROUTE, AUDIT, STA HTTP, STA SSL, DNS RESOLVE, RDP, MYSQL, MSSQL, DIAMETER, SSL_DIAMETER
+	* Protocol supported by the connection.<br> Possible values = HTTP, FTP, TCP, UDP, SSL, SSL_BRIDGE, SSL_TCP, NNTP, RPCSVR, DNS, ADNS, SNMP, RTSP, DHCPRA, ANY, SIP_UDP, DNS_TCP, ADNS_TCP, HTTPSVR, HTTPCLIENT, NAT, HA, AAA, SINCTCP, VPN AFTP, MONITORS, SSLVPN UDP, SINCUDP, RIP, UDP CLNT, SASP, RPCCLNTS, ROUTE, AUDIT, STA HTTP, STA SSL, DNS RESOLVE, RDP, MYSQL, MSSQL, DIAMETER, SSL_DIAMETER, TFTP, ICA, RADIUS
 	* </pre>
 	*/
 	public String get_svctype() throws Exception {
@@ -645,7 +328,7 @@ public class nsconnectiontable extends base_resource
 
 	/**
 	* <pre>
-	* Protocol supported by the link connection.<br> Possible values = HTTP, FTP, TCP, UDP, SSL, SSL_BRIDGE, SSL_TCP, NNTP, RPCSVR, DNS, ADNS, SNMP, RTSP, DHCPRA, ANY, SIP_UDP, DNS_TCP, ADNS_TCP, HTTPSVR, HTTPCLIENT, NAT, HA, AAA, SINCTCP, VPN AFTP, MONITORS, SSLVPN UDP, SINCUDP, RIP, UDP CLNT, SASP, RPCCLNTS, ROUTE, AUDIT, STA HTTP, STA SSL, DNS RESOLVE, RDP, MYSQL, MSSQL, DIAMETER, SSL_DIAMETER
+	* Protocol supported by the link connection.<br> Possible values = HTTP, FTP, TCP, UDP, SSL, SSL_BRIDGE, SSL_TCP, NNTP, RPCSVR, DNS, ADNS, SNMP, RTSP, DHCPRA, ANY, SIP_UDP, DNS_TCP, ADNS_TCP, HTTPSVR, HTTPCLIENT, NAT, HA, AAA, SINCTCP, VPN AFTP, MONITORS, SSLVPN UDP, SINCUDP, RIP, UDP CLNT, SASP, RPCCLNTS, ROUTE, AUDIT, STA HTTP, STA SSL, DNS RESOLVE, RDP, MYSQL, MSSQL, DIAMETER, SSL_DIAMETER, TFTP, ICA, RADIUS
 	* </pre>
 	*/
 	public String get_linkservicetype() throws Exception {
@@ -987,6 +670,15 @@ public class nsconnectiontable extends base_resource
 
 	/**
 	* <pre>
+	* Traffic Domain Id.
+	* </pre>
+	*/
+	public Long get_td() throws Exception {
+		return this.td;
+	}
+
+	/**
+	* <pre>
 	* converts nitro response into object and returns the object array in case of get request.
 	* </pre>
 	*/
@@ -1206,6 +898,9 @@ public class nsconnectiontable extends base_resource
 		public static final String MSSQL = "MSSQL";
 		public static final String DIAMETER = "DIAMETER";
 		public static final String SSL_DIAMETER = "SSL_DIAMETER";
+		public static final String TFTP = "TFTP";
+		public static final String ICA = "ICA";
+		public static final String RADIUS = "RADIUS";
 	}
 	public static class httpreqverEnum {
 		public static final String HTTP_1_0 = "HTTP_1_0";
@@ -1277,6 +972,9 @@ public class nsconnectiontable extends base_resource
 		public static final String MSSQL = "MSSQL";
 		public static final String DIAMETER = "DIAMETER";
 		public static final String SSL_DIAMETER = "SSL_DIAMETER";
+		public static final String TFTP = "TFTP";
+		public static final String ICA = "ICA";
+		public static final String RADIUS = "RADIUS";
 	}
 	public static class httpstateEnum {
 		public static final String INITIALIZED = "INITIALIZED";

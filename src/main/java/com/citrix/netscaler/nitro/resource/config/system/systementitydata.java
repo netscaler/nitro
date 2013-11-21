@@ -88,7 +88,7 @@ public class systementitydata extends base_resource
 
 	/**
 	* <pre>
-	* Specify this if you would like to deleted all deleted entity database.
+	* Specify this if you would like to delete information about all deleted entities from the database.
 	* </pre>
 	*/
 	public void set_alldeleted(boolean alldeleted) throws Exception {
@@ -97,7 +97,7 @@ public class systementitydata extends base_resource
 
 	/**
 	* <pre>
-	* Specify this if you would like to deleted all deleted entity database.
+	* Specify this if you would like to delete information about all deleted entities from the database.
 	* </pre>
 	*/
 	public void set_alldeleted(Boolean alldeleted) throws Exception{
@@ -106,7 +106,7 @@ public class systementitydata extends base_resource
 
 	/**
 	* <pre>
-	* Specify this if you would like to deleted all deleted entity database.
+	* Specify this if you would like to delete information about all deleted entities from the database.
 	* </pre>
 	*/
 	public Boolean get_alldeleted() throws Exception {
@@ -115,7 +115,7 @@ public class systementitydata extends base_resource
 
 	/**
 	* <pre>
-	* Specify this if you would like to deleted all inactive entity database.
+	* Specify this if you would like to delete information about all inactive entities from the database.
 	* </pre>
 	*/
 	public void set_allinactive(boolean allinactive) throws Exception {
@@ -124,7 +124,7 @@ public class systementitydata extends base_resource
 
 	/**
 	* <pre>
-	* Specify this if you would like to deleted all inactive entity database.
+	* Specify this if you would like to delete information about all inactive entities from the database.
 	* </pre>
 	*/
 	public void set_allinactive(Boolean allinactive) throws Exception{
@@ -133,7 +133,7 @@ public class systementitydata extends base_resource
 
 	/**
 	* <pre>
-	* Specify this if you would like to deleted all inactive entity database.
+	* Specify this if you would like to delete information about all inactive entities from the database.
 	* </pre>
 	*/
 	public Boolean get_allinactive() throws Exception {
@@ -142,7 +142,7 @@ public class systementitydata extends base_resource
 
 	/**
 	* <pre>
-	* Specify data source name.
+	* Specifies the source which contains all the stored counter values.
 	* </pre>
 	*/
 	public void set_datasource(String datasource) throws Exception{
@@ -151,7 +151,7 @@ public class systementitydata extends base_resource
 
 	/**
 	* <pre>
-	* Specify data source name.
+	* Specifies the source which contains all the stored counter values.
 	* </pre>
 	*/
 	public String get_datasource() throws Exception {
@@ -160,7 +160,7 @@ public class systementitydata extends base_resource
 
 	/**
 	* <pre>
-	* Specify core.
+	* Specify core ID of the PE in nCore.
 	* </pre>
 	*/
 	public void set_core(int core) throws Exception {
@@ -169,7 +169,7 @@ public class systementitydata extends base_resource
 
 	/**
 	* <pre>
-	* Specify core.
+	* Specify core ID of the PE in nCore.
 	* </pre>
 	*/
 	public void set_core(Integer core) throws Exception{
@@ -178,7 +178,7 @@ public class systementitydata extends base_resource
 
 	/**
 	* <pre>
-	* Specify core.
+	* Specify core ID of the PE in nCore.
 	* </pre>
 	*/
 	public Integer get_core() throws Exception {
@@ -187,7 +187,7 @@ public class systementitydata extends base_resource
 
 	/**
 	* <pre>
-	* Specify the  counters.
+	* Specify the counters to be collected.
 	* </pre>
 	*/
 	public void set_counters(String counters) throws Exception{
@@ -196,7 +196,7 @@ public class systementitydata extends base_resource
 
 	/**
 	* <pre>
-	* Specify the  counters.
+	* Specify the counters to be collected.
 	* </pre>
 	*/
 	public String get_counters() throws Exception {
@@ -205,7 +205,7 @@ public class systementitydata extends base_resource
 
 	/**
 	* <pre>
-	* Specify end time in mmddyyyyhhmm.
+	* Specify start time in mmddyyyyhhmm to start collecting values from that timestamp.
 	* </pre>
 	*/
 	public void set_starttime(String starttime) throws Exception{
@@ -214,7 +214,7 @@ public class systementitydata extends base_resource
 
 	/**
 	* <pre>
-	* Specify end time in mmddyyyyhhmm.
+	* Specify start time in mmddyyyyhhmm to start collecting values from that timestamp.
 	* </pre>
 	*/
 	public String get_starttime() throws Exception {
@@ -223,7 +223,7 @@ public class systementitydata extends base_resource
 
 	/**
 	* <pre>
-	* Specify end time in mmddyyyyhhmm.
+	* Specify end time in mmddyyyyhhmm upto which values have to be collected.
 	* </pre>
 	*/
 	public void set_endtime(String endtime) throws Exception{
@@ -232,7 +232,7 @@ public class systementitydata extends base_resource
 
 	/**
 	* <pre>
-	* Specify end time in mmddyyyyhhmm.
+	* Specify end time in mmddyyyyhhmm upto which values have to be collected.
 	* </pre>
 	*/
 	public String get_endtime() throws Exception {
@@ -241,7 +241,7 @@ public class systementitydata extends base_resource
 
 	/**
 	* <pre>
-	* Specify the  counters.<br> Default value: 1
+	* Last is literal way of saying a certain time period from the current moment. Example: -last 1 hour, -last 1 day, et cetera.<br> Default value: 1
 	* </pre>
 	*/
 	public void set_last(int last) throws Exception {
@@ -250,7 +250,7 @@ public class systementitydata extends base_resource
 
 	/**
 	* <pre>
-	* Specify the  counters.<br> Default value: 1
+	* Last is literal way of saying a certain time period from the current moment. Example: -last 1 hour, -last 1 day, et cetera.<br> Default value: 1
 	* </pre>
 	*/
 	public void set_last(Integer last) throws Exception{
@@ -259,7 +259,7 @@ public class systementitydata extends base_resource
 
 	/**
 	* <pre>
-	* Specify the  counters.<br> Default value: 1
+	* Last is literal way of saying a certain time period from the current moment. Example: -last 1 hour, -last 1 day, et cetera.<br> Default value: 1
 	* </pre>
 	*/
 	public Integer get_last() throws Exception {
@@ -268,7 +268,7 @@ public class systementitydata extends base_resource
 
 	/**
 	* <pre>
-	* Specify the  Units.<br> Possible values = HOURS, DAYS, MONTHS
+	* Specify the time period from current moment. Example 1 x where x = hours/ days/ years.<br> Possible values = HOURS, DAYS, MONTHS
 	* </pre>
 	*/
 	public void set_unit(String unit) throws Exception{
@@ -277,7 +277,7 @@ public class systementitydata extends base_resource
 
 	/**
 	* <pre>
-	* Specify the  Units.<br> Possible values = HOURS, DAYS, MONTHS
+	* Specify the time period from current moment. Example 1 x where x = hours/ days/ years.<br> Possible values = HOURS, DAYS, MONTHS
 	* </pre>
 	*/
 	public String get_unit() throws Exception {

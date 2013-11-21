@@ -40,7 +40,7 @@ public class auditnslogpolicy_aaagroup_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the nslog policy. If an nslog policy name is not provided, all of the configured nslog policies will be displayed.<br> Minimum length =  1
+	* Name of the policy.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -49,7 +49,7 @@ public class auditnslogpolicy_aaagroup_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the nslog policy. If an nslog policy name is not provided, all of the configured nslog policies will be displayed.<br> Minimum length =  1
+	* Name of the policy.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {

@@ -32,6 +32,7 @@ class ipseccounters_response extends base_response
 
 public class ipseccounters_stats extends base_resource
 {
+	private String clearstats;
 	private Long ipsectotrxbytes;
 	private Long ipsecrxbytesrate;
 	private Long ipsectottxbytes;
@@ -43,7 +44,25 @@ public class ipseccounters_stats extends base_resource
 
 	/**
 	* <pre>
-	* Bytes received during IPsec sessions.
+	* Clear the statsistics / counters
+	* </pre>
+	*/
+	public void set_clearstats(String clearstats) throws Exception{
+		this.clearstats = clearstats;
+	}
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters.<br> Possible values = basic, full
+	* </pre>
+	*/
+	public String get_clearstats() throws Exception {
+		return this.clearstats;
+	}
+
+	/**
+	* <pre>
+	* Rate (/s) counter for ipsectotrxbytes
 	* </pre>
 	*/
 	public Long get_ipsecrxbytesrate() throws Exception {
@@ -52,7 +71,7 @@ public class ipseccounters_stats extends base_resource
 
 	/**
 	* <pre>
-	* Bytes sent during IPsec sessions.
+	* Rate (/s) counter for ipsectottxbytes
 	* </pre>
 	*/
 	public Long get_ipsectxbytesrate() throws Exception {
@@ -70,7 +89,7 @@ public class ipseccounters_stats extends base_resource
 
 	/**
 	* <pre>
-	* Packets received during IPsec sessions.
+	* Rate (/s) counter for ipsectotrxpkts
 	* </pre>
 	*/
 	public Long get_ipsecrxpktsrate() throws Exception {
@@ -106,7 +125,7 @@ public class ipseccounters_stats extends base_resource
 
 	/**
 	* <pre>
-	* Packets sent during IPsec sessions.
+	* Rate (/s) counter for ipsectottxpkts
 	* </pre>
 	*/
 	public Long get_ipsectxpktsrate() throws Exception {
@@ -167,4 +186,8 @@ public class ipseccounters_stats extends base_resource
 		return response[0];
 	}
 
+	public static class clearstatsEnum {
+		public static final String basic = "basic";
+		public static final String full = "full";
+	}
 }

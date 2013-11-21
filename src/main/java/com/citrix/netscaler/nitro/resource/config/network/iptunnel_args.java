@@ -27,7 +27,7 @@ public class iptunnel_args
 
 	/**
 	* <pre>
-	* The remote IP address or subnet of the tunnel.<br> Minimum length =  1
+	* Public IPv4 address, of the remote device, used to set up the tunnel. For this parameter, you can alternativelyspecify a network address if you specify IPIP (IP over IP) for the Protocol parameter.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_remote(String remote) throws Exception{
@@ -36,7 +36,7 @@ public class iptunnel_args
 
 	/**
 	* <pre>
-	* The remote IP address or subnet of the tunnel.<br> Minimum length =  1
+	* Public IPv4 address, of the remote device, used to set up the tunnel. For this parameter, you can alternativelyspecify a network address if you specify IPIP (IP over IP) for the Protocol parameter.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_remote() throws Exception {
@@ -45,7 +45,7 @@ public class iptunnel_args
 
 	/**
 	* <pre>
-	* Subnet mask of the remote IP address of the tunnel. A public IPv4 address of the remote device used to set up the tunnel. For this parameter, you can also specify a network address if you specify IPIP (IP over IP) for the Protocol parameter.
+	* Subnet mask of the remote IP address of the tunnel.
 	* </pre>
 	*/
 	public void set_remotesubnetmask(String remotesubnetmask) throws Exception{
@@ -54,7 +54,7 @@ public class iptunnel_args
 
 	/**
 	* <pre>
-	* Subnet mask of the remote IP address of the tunnel. A public IPv4 address of the remote device used to set up the tunnel. For this parameter, you can also specify a network address if you specify IPIP (IP over IP) for the Protocol parameter.
+	* Subnet mask of the remote IP address of the tunnel.
 	* </pre>
 	*/
 	public String get_remotesubnetmask() throws Exception {

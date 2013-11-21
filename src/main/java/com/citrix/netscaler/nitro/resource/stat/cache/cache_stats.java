@@ -29,6 +29,7 @@ class cache_response extends base_response
 
 public class cache_stats extends base_resource
 {
+	private String clearstats;
 	private Long cachemaxmemorykb;
 	private Long cacherecentpercentsuccessfulrevalidation;
 	private Long cacherecentpercentstoreablemiss;
@@ -74,11 +75,20 @@ public class cache_stats extends base_resource
 	private Long cachetothits;
 	private Long cachehitsrate;
 	private Long cachetotrequests;
+	private Long cacherequestsrate;
 	private Long cachenumcached;
+	private Long cachenumobjsavedondisk;
+	private Long cachenumobjsavedondiskrate;
+	private Long cachenummbreadfromdisk;
+	private Long cachenummbreadfromdiskrate;
+	private Long cachenummbwrittentodisk;
+	private Long cachenummbwrittentodiskrate;
 	private Long cachecurhits;
 	private Long cachecurmisses;
 	private Long cachetotnon304hits;
+	private Long cachenon304hitsrate;
 	private Long cachetot304hits;
+	private Long cache304hitsrate;
 	private Long cachetotexpireatlastbyte;
 	private Long cacheexpireatlastbyterate;
 	private Long cachetotflashcachemisses;
@@ -94,18 +104,37 @@ public class cache_stats extends base_resource
 	private Long cachetotparameterizedrequests;
 	private Long cacheparameterizedrequestsrate;
 	private Long cachetotparameterizednon304hits;
+	private Long cacheparameterizednon304hitsrate;
 	private Long cachetotparameterized304hits;
+	private Long cacheparameterized304hitsrate;
 	private Long cachetotpetrequests;
 	private Long cachepetrequestsrate;
 	private Long cacheerrmemalloc;
 	private Long cachelargestresponsereceived;
-	private Long comptotaltxbytes;
-	private Long comptotalrxbytes;
-	private Long httptotrxresponsebytes;
+	private Long cachenummbsavedondisk;
+	private Long cachenummbsavedondiskrate;
 
 	/**
 	* <pre>
-	* Responses served from the integrated cache. These responses match a policy with a CACHE action.
+	* Clear the statsistics / counters
+	* </pre>
+	*/
+	public void set_clearstats(String clearstats) throws Exception{
+		this.clearstats = clearstats;
+	}
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters.<br> Possible values = basic, full
+	* </pre>
+	*/
+	public String get_clearstats() throws Exception {
+		return this.clearstats;
+	}
+
+	/**
+	* <pre>
+	* Rate (/s) counter for cachetothits
 	* </pre>
 	*/
 	public Long get_cachehitsrate() throws Exception {
@@ -114,7 +143,7 @@ public class cache_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of times a cache hit was found during a search of a content group that has Poll Every Time enabled.
+	* Rate (/s) counter for cachetotpethits
 	* </pre>
 	*/
 	public Long get_cachepethitsrate() throws Exception {
@@ -141,6 +170,15 @@ public class cache_stats extends base_resource
 
 	/**
 	* <pre>
+	* Total Number of MB written to disk since last reboot.
+	* </pre>
+	*/
+	public Long get_cachenummbwrittentodisk() throws Exception {
+		return this.cachenummbwrittentodisk;
+	}
+
+	/**
+	* <pre>
 	* This number should be close to the number of hits being served currently.
 	* </pre>
 	*/
@@ -150,7 +188,7 @@ public class cache_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of HTTP response bytes served by NetScaler from both the origin and the cache
+	* Rate (/s) counter for cachetotresponsebytes
 	* </pre>
 	*/
 	public Long get_cacheresponsebytesrate() throws Exception {
@@ -186,29 +224,11 @@ public class cache_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of bytes of HTTP response data received.
-	* </pre>
-	*/
-	public Long get_httptotrxresponsebytes() throws Exception {
-		return this.httptotrxresponsebytes;
-	}
-
-	/**
-	* <pre>
 	* Total number of bytes served from the integrated cache
 	* </pre>
 	*/
 	public Long get_cachebytesserved() throws Exception {
 		return this.cachebytesserved;
-	}
-
-	/**
-	* <pre>
-	* Number of bytes the NetScaler sends to the client after compressing the response from the server.
-	* </pre>
-	*/
-	public Long get_comptotaltxbytes() throws Exception {
-		return this.comptotaltxbytes;
 	}
 
 	/**
@@ -222,7 +242,34 @@ public class cache_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of bytes served from the integrated cache
+	* Total Number of MB read from disk since last reboot.
+	* </pre>
+	*/
+	public Long get_cachenummbreadfromdisk() throws Exception {
+		return this.cachenummbreadfromdisk;
+	}
+
+	/**
+	* <pre>
+	* Rate (/s) counter for cachenumobjsavedondisk
+	* </pre>
+	*/
+	public Long get_cachenumobjsavedondiskrate() throws Exception {
+		return this.cachenumobjsavedondiskrate;
+	}
+
+	/**
+	* <pre>
+	* Size (MB) of cached responses currently saved on disk. Includes responses fully saved to disk, and expired or flushed but not yet removed.
+	* </pre>
+	*/
+	public Long get_cachenummbsavedondisk() throws Exception {
+		return this.cachenummbsavedondisk;
+	}
+
+	/**
+	* <pre>
+	* Rate (/s) counter for cachebytesserved
 	* </pre>
 	*/
 	public Long get_cachebytesservedrate() throws Exception {
@@ -294,7 +341,7 @@ public class cache_stats extends base_resource
 
 	/**
 	* <pre>
-	* Requests that match an invalidation policy where the invalGroups parameter is configured and expires one or more content groups.
+	* Rate (/s) counter for cachetotnonparameterizedinvalidationrequests
 	* </pre>
 	*/
 	public Long get_cachenonparameterizedinvalidationrequestsrate() throws Exception {
@@ -321,7 +368,7 @@ public class cache_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of times stored content was successfully revalidated by a 304 Not Modified response from the origin.
+	* Rate (/s) counter for cachetotsuccessfulrevalidation
 	* </pre>
 	*/
 	public Long get_cachesuccessfulrevalidationrate() throws Exception {
@@ -330,7 +377,16 @@ public class cache_stats extends base_resource
 
 	/**
 	* <pre>
-	* Intercepted HTTP requests requiring fetches from origin server.
+	* Rate (/s) counter for cachetotrequests
+	* </pre>
+	*/
+	public Long get_cacherequestsrate() throws Exception {
+		return this.cacherequestsrate;
+	}
+
+	/**
+	* <pre>
+	* Rate (/s) counter for cachetotmisses
 	* </pre>
 	*/
 	public Long get_cachemissesrate() throws Exception {
@@ -375,15 +431,6 @@ public class cache_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of bytes that can be compressed, which the NetScaler receives from the server. This gives the content length of the response that the NetScaler receives from server.
-	* </pre>
-	*/
-	public Long get_comptotalrxbytes() throws Exception {
-		return this.comptotalrxbytes;
-	}
-
-	/**
-	* <pre>
 	* Percentage of parameterized 304 hits relative to all parameterized hits.
 	* </pre>
 	*/
@@ -393,7 +440,7 @@ public class cache_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of requests to a content group with flash cache enabled that were cache hits. The flash cache setting queues requests that arrive simultaneously and distributes the response to all the clients in the queue.
+	* Rate (/s) counter for cachetotflashcachehits
 	* </pre>
 	*/
 	public Long get_cacheflashcachehitsrate() throws Exception {
@@ -402,7 +449,7 @@ public class cache_stats extends base_resource
 
 	/**
 	* <pre>
-	* Cache misses for which the fetched response is stored in the cache before serving it to the client. Storable misses conform to a built-in or user-defined caching policy that contains a CACHE action.
+	* Rate (/s) counter for cachetotstoreablemisses
 	* </pre>
 	*/
 	public Long get_cachestoreablemissesrate() throws Exception {
@@ -416,6 +463,15 @@ public class cache_stats extends base_resource
 	*/
 	public Long get_cachetotflashcachehits() throws Exception {
 		return this.cachetotflashcachehits;
+	}
+
+	/**
+	* <pre>
+	* Rate (/s) counter for cachenummbwrittentodisk
+	* </pre>
+	*/
+	public Long get_cachenummbwrittentodiskrate() throws Exception {
+		return this.cachenummbwrittentodiskrate;
 	}
 
 	/**
@@ -447,7 +503,7 @@ public class cache_stats extends base_resource
 
 	/**
 	* <pre>
-	* Parameterized requests resulting in either a 304 or non-304 hit.
+	* Rate (/s) counter for cachetotparameterizedhits
 	* </pre>
 	*/
 	public Long get_cacheparameterizedhitsrate() throws Exception {
@@ -456,7 +512,16 @@ public class cache_stats extends base_resource
 
 	/**
 	* <pre>
-	* Instances of content expiring immediately after receiving the last body byte due to the Expire at Last Byte setting for the content group.
+	* Rate (/s) counter for cachetotparameterized304hits
+	* </pre>
+	*/
+	public Long get_cacheparameterized304hitsrate() throws Exception {
+		return this.cacheparameterized304hitsrate;
+	}
+
+	/**
+	* <pre>
+	* Rate (/s) counter for cachetotexpireatlastbyte
 	* </pre>
 	*/
 	public Long get_cacheexpireatlastbyterate() throws Exception {
@@ -474,11 +539,20 @@ public class cache_stats extends base_resource
 
 	/**
 	* <pre>
-	* Responses that an intervening cache revalidated with the integrated cache before serving, as determined by a Cache-Control: Max-Age header configurable in the integrated cache
+	* Rate (/s) counter for cachetotrevalidationmiss
 	* </pre>
 	*/
 	public Long get_cacherevalidationmissrate() throws Exception {
 		return this.cacherevalidationmissrate;
+	}
+
+	/**
+	* <pre>
+	* Rate (/s) counter for cachetotnon304hits
+	* </pre>
+	*/
+	public Long get_cachenon304hitsrate() throws Exception {
+		return this.cachenon304hitsrate;
 	}
 
 	/**
@@ -501,7 +575,7 @@ public class cache_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of user-agent requests for a cached  Poll Every Time (PET) response that were sent to the origin server as conditional requests. 
+	* Rate (/s) counter for cachetotfulltoconditionalrequest
 	* </pre>
 	*/
 	public Long get_cachefulltoconditionalrequestrate() throws Exception {
@@ -537,6 +611,15 @@ public class cache_stats extends base_resource
 
 	/**
 	* <pre>
+	* Cached responses currently saved on disk. Includes responses fully saved to disk, and expired or flushed but not yet removed.
+	* </pre>
+	*/
+	public Long get_cachenumobjsavedondisk() throws Exception {
+		return this.cachenumobjsavedondisk;
+	}
+
+	/**
+	* <pre>
 	* Number of requests to a content group with flash cache enabled that were cache misses. Flash cache distributes the response to all the clients in aqueue.
 	* </pre>
 	*/
@@ -546,7 +629,16 @@ public class cache_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of requests where the content group has hit and invalidation parameters or selectors.
+	* Rate (/s) counter for cachenummbreadfromdisk
+	* </pre>
+	*/
+	public Long get_cachenummbreadfromdiskrate() throws Exception {
+		return this.cachenummbreadfromdiskrate;
+	}
+
+	/**
+	* <pre>
+	* Rate (/s) counter for cachetotparameterizedrequests
 	* </pre>
 	*/
 	public Long get_cacheparameterizedrequestsrate() throws Exception {
@@ -573,11 +665,29 @@ public class cache_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of compressed bytes served from the cache
+	* Rate (/s) counter for cachenummbsavedondisk
+	* </pre>
+	*/
+	public Long get_cachenummbsavedondiskrate() throws Exception {
+		return this.cachenummbsavedondiskrate;
+	}
+
+	/**
+	* <pre>
+	* Rate (/s) counter for cachecompressedbytesserved
 	* </pre>
 	*/
 	public Long get_cachecompressedbytesservedrate() throws Exception {
 		return this.cachecompressedbytesservedrate;
+	}
+
+	/**
+	* <pre>
+	* Rate (/s) counter for cachetot304hits
+	* </pre>
+	*/
+	public Long get_cache304hitsrate() throws Exception {
+		return this.cache304hitsrate;
 	}
 
 	/**
@@ -591,7 +701,7 @@ public class cache_stats extends base_resource
 
 	/**
 	* <pre>
-	* Cache misses for which the fetched response is not stored in the cache. These responses match policies with a NOCACHE action or are affected by Poll Every Time.
+	* Rate (/s) counter for cachetotnonstoreablemisses
 	* </pre>
 	*/
 	public Long get_cachenonstoreablemissesrate() throws Exception {
@@ -645,7 +755,7 @@ public class cache_stats extends base_resource
 
 	/**
 	* <pre>
-	* Requests that triggered a search of a content group that has Poll Every Time (PET) enabled (always consult the origin server before serving cached data).
+	* Rate (/s) counter for cachetotpetrequests
 	* </pre>
 	*/
 	public Long get_cachepetrequestsrate() throws Exception {
@@ -699,6 +809,15 @@ public class cache_stats extends base_resource
 
 	/**
 	* <pre>
+	* Rate (/s) counter for cachetotparameterizednon304hits
+	* </pre>
+	*/
+	public Long get_cacheparameterizednon304hitsrate() throws Exception {
+		return this.cacheparameterizednon304hitsrate;
+	}
+
+	/**
+	* <pre>
 	* Intercepted HTTP requests requiring fetches from origin server.
 	* </pre>
 	*/
@@ -717,7 +836,7 @@ public class cache_stats extends base_resource
 
 	/**
 	* <pre>
-	* Requests matching a policy with an invalidation (INVAL) action and a content group that uses an invalidation selector or parameters.
+	* Rate (/s) counter for cachetotparameterizedinvalidationrequests
 	* </pre>
 	*/
 	public Long get_cacheparameterizedinvalidationrequestsrate() throws Exception {
@@ -735,7 +854,7 @@ public class cache_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of requests to a content group with flash cache enabled that were cache misses. Flash cache distributes the response to all the clients in aqueue.
+	* Rate (/s) counter for cachetotflashcachemisses
 	* </pre>
 	*/
 	public Long get_cacheflashcachemissesrate() throws Exception {
@@ -744,7 +863,7 @@ public class cache_stats extends base_resource
 
 	/**
 	* <pre>
-	* Requests that match an invalidation policy and result in expiration of specific cached responses or entire content groups.
+	* Rate (/s) counter for cachetotinvalidationrequests
 	* </pre>
 	*/
 	public Long get_cacheinvalidationrequestsrate() throws Exception {
@@ -814,4 +933,8 @@ public class cache_stats extends base_resource
 		return response[0];
 	}
 
+	public static class clearstatsEnum {
+		public static final String basic = "basic";
+		public static final String full = "full";
+	}
 }

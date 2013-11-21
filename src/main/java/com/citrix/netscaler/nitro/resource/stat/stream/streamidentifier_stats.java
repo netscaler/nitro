@@ -34,6 +34,7 @@ public class streamidentifier_stats extends base_resource
 {
 	private String name;
 	private String[] pattern;
+	private String clearstats;
 	private String sortby;
 	private String sortorder;
 	private Long streamobjreq;
@@ -43,7 +44,7 @@ public class streamidentifier_stats extends base_resource
 
 	/**
 	* <pre>
-	* The name of the identifier.
+	* Name of the stream identifier.
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -52,7 +53,7 @@ public class streamidentifier_stats extends base_resource
 
 	/**
 	* <pre>
-	* The name of the identifier.<br> Minimum length =  1
+	* Name of the stream identifier.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -61,7 +62,29 @@ public class streamidentifier_stats extends base_resource
 
 	/**
 	* <pre>
-	* Pattern for the selector field, ? means field is required, * means field value does not matter, anything else is a regular pattern
+	* Values on which grouping is performed are displayed in the output as row titles. If grouping is performed on two or more fields, their values are separated by a question mark in the row title.
+
+For example, consider a selector that contains the expressions HTTP.REQ.URL and CLIENT.IP.SRC (in that order), on an appliance that has accumulated records of a number of requests for two URLs, example.com/page1.html and example.com/page2.html, from two client IP addresses, 192.0.2.10 and 192.0.2.11. 
+
+With a pattern of ? ?, the appliance performs grouping on both fields and displays statistics for the following:
+* Requests for example.com/abc.html from 192.0.2.10, with a row title of example.com/abc.html?192.0.2.10.
+* Requests for example.com/abc.html from 192.0.2.11, with a row title of example.com/abc.html?192.0.2.11.
+* Requests for example.com/def.html from 192.0.2.10, with a row title of example.com/def.html?192.0.2.10.
+* Requests for example.com/def.html from 192.0.2.11, with a row title of example.com/def.html?192.0.2.11.
+
+With a pattern of * ?, the appliance performs grouping on only the client IP address values and displays statistics for the following requests:
+* All requests from 192.0.2.10, with the IP address as the row title.
+* All requests from 192.0.2.11, with the IP address as the row title.
+
+With a pattern of ? *, the appliance performs grouping on only the URL values and displays statistics for the following requests:
+* All requests for example.com/abc.html, with the URL as the row title.
+* All requests for example.com/def.html, with the URL as the row title.
+
+With a pattern of * *, the appliance displays one set of collective statistics for all the requests received, with no row title.
+
+With a pattern of example.com/abc.html ?, the appliance displays statistics for requests for example.com/abc.html from each unique client IP address.
+
+With a pattern of * 192.0.2.11, the appliance displays statistics for all requests from 192.0.2.11.
 	* </pre>
 	*/
 	public void set_pattern(String[] pattern) throws Exception{
@@ -70,33 +93,83 @@ public class streamidentifier_stats extends base_resource
 
 	/**
 	* <pre>
-	* Pattern for the selector field, ? means field is required, * means field value does not matter, anything else is a regular pattern.
+	* Values on which grouping is performed are displayed in the output as row titles. If grouping is performed on two or more fields, their values are separated by a question mark in the row title.
+
+For example, consider a selector that contains the expressions HTTP.REQ.URL and CLIENT.IP.SRC (in that order), on an appliance that has accumulated records of a number of requests for two URLs, example.com/page1.html and example.com/page2.html, from two client IP addresses, 192.0.2.10 and 192.0.2.11. 
+
+With a pattern of ? ?, the appliance performs grouping on both fields and displays statistics for the following:
+* Requests for example.com/abc.html from 192.0.2.10, with a row title of example.com/abc.html?192.0.2.10.
+* Requests for example.com/abc.html from 192.0.2.11, with a row title of example.com/abc.html?192.0.2.11.
+* Requests for example.com/def.html from 192.0.2.10, with a row title of example.com/def.html?192.0.2.10.
+* Requests for example.com/def.html from 192.0.2.11, with a row title of example.com/def.html?192.0.2.11.
+
+With a pattern of * ?, the appliance performs grouping on only the client IP address values and displays statistics for the following requests:
+* All requests from 192.0.2.10, with the IP address as the row title.
+* All requests from 192.0.2.11, with the IP address as the row title.
+
+With a pattern of ? *, the appliance performs grouping on only the URL values and displays statistics for the following requests:
+* All requests for example.com/abc.html, with the URL as the row title.
+* All requests for example.com/def.html, with the URL as the row title.
+
+With a pattern of * *, the appliance displays one set of collective statistics for all the requests received, with no row title.
+
+With a pattern of example.com/abc.html ?, the appliance displays statistics for requests for example.com/abc.html from each unique client IP address.
+
+With a pattern of * 192.0.2.11, the appliance displays statistics for all requests from 192.0.2.11.
 	* </pre>
 	*/
 	public String[] get_pattern() throws Exception {
 		return this.pattern;
 	}
 
+	/**
+	* <pre>
+	* Clear the statsistics / counters
+	* </pre>
+	*/
+	public void set_clearstats(String clearstats) throws Exception{
+		this.clearstats = clearstats;
+	}
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters.<br> Possible values = basic, full
+	* </pre>
+	*/
+	public String get_clearstats() throws Exception {
+		return this.clearstats;
+	}
+
+	/**
+	* <pre>
+	* use this argument to sort by specific key
+	* </pre>
+	*/
 	public void set_sortby(String sortby) throws Exception{
 		this.sortby = sortby;
 	}
 
 	/**
 	* <pre>
-	* .<br> Possible values = 
+	* use this argument to sort by specific key.<br> Possible values = 
 	* </pre>
 	*/
 	public String get_sortby() throws Exception {
 		return this.sortby;
 	}
 
+	/**
+	* <pre>
+	* use this argument to specify sort order
+	* </pre>
+	*/
 	public void set_sortorder(String sortorder) throws Exception{
 		this.sortorder = sortorder;
 	}
 
 	/**
 	* <pre>
-	* .<br> Default value: SORT_DESCENDING<br> Possible values = ascending, descending
+	* use this argument to specify sort order.<br> Default value: SORT_DESCENDING<br> Possible values = ascending, descending
 	* </pre>
 	*/
 	public String get_sortorder() throws Exception {
@@ -193,6 +266,10 @@ public class streamidentifier_stats extends base_resource
 		return response;
 	}
 
+	public static class clearstatsEnum {
+		public static final String basic = "basic";
+		public static final String full = "full";
+	}
 	public static class sortorderEnum {
 		public static final String ascending = "ascending";
 		public static final String descending = "descending";

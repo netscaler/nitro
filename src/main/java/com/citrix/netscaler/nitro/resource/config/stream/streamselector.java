@@ -34,15 +34,11 @@ public class streamselector extends base_resource
 {
 	private String name;
 	private String[] rule;
-
-	//------- Read only Parameter ---------;
-
-	private Long flags;
 	private Long __count;
 
 	/**
 	* <pre>
-	* The name of stream selector.
+	* Name for the selector. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. If the name includes one or more spaces, and you are using the NetScaler CLI, enclose the name in double or single quotation marks (for example, "my selector" or 'my selector').
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -51,7 +47,7 @@ public class streamselector extends base_resource
 
 	/**
 	* <pre>
-	* The name of stream selector.
+	* Name for the selector. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. If the name includes one or more spaces, and you are using the NetScaler CLI, enclose the name in double or single quotation marks (for example, "my selector" or 'my selector').
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -60,7 +56,8 @@ public class streamselector extends base_resource
 
 	/**
 	* <pre>
-	* The set of PIXL expressions.<br> Minimum length =  1
+	* Set of up to five individual (not compound) default syntax expressions. Maximum length: 7499 characters. Each expression must identify a specific request characteristic, such as the client's IP address (with CLIENT.IP.SRC) or requested server resource (with HTTP.REQ.URL). 
+Note: If two or more selectors contain the same expressions in different order, a separate set of records is created for each selector.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_rule(String[] rule) throws Exception{
@@ -69,20 +66,12 @@ public class streamselector extends base_resource
 
 	/**
 	* <pre>
-	* The set of PIXL expressions.<br> Minimum length =  1
+	* Set of up to five individual (not compound) default syntax expressions. Maximum length: 7499 characters. Each expression must identify a specific request characteristic, such as the client's IP address (with CLIENT.IP.SRC) or requested server resource (with HTTP.REQ.URL). 
+Note: If two or more selectors contain the same expressions in different order, a separate set of records is created for each selector.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String[] get_rule() throws Exception {
 		return this.rule;
-	}
-
-	/**
-	* <pre>
-	* .
-	* </pre>
-	*/
-	public Long get_flags() throws Exception {
-		return this.flags;
 	}
 
 	/**

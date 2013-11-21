@@ -34,6 +34,7 @@ public class aaacertparams extends base_resource
 {
 	private String usernamefield;
 	private String groupnamefield;
+	private String defaultauthenticationgroup;
 
 	//------- Read only Parameter ---------;
 
@@ -41,7 +42,7 @@ public class aaacertparams extends base_resource
 
 	/**
 	* <pre>
-	* The field in the client certificate to extract the username from. Should be of the format <field:subfield>. Allowed values for field are "Subject" and "Issuer".
+	* Client certificate field that contains the username, in the format <field>:<subfield>. .
 	* </pre>
 	*/
 	public void set_usernamefield(String usernamefield) throws Exception{
@@ -50,7 +51,7 @@ public class aaacertparams extends base_resource
 
 	/**
 	* <pre>
-	* The field in the client certificate to extract the username from. Should be of the format <field:subfield>. Allowed values for field are "Subject" and "Issuer".
+	* Client certificate field that contains the username, in the format <field>:<subfield>. .
 	* </pre>
 	*/
 	public String get_usernamefield() throws Exception {
@@ -59,7 +60,7 @@ public class aaacertparams extends base_resource
 
 	/**
 	* <pre>
-	* The certificate field to extract the group from. Should be of the format <field:subfield>. Allowed values for field are "Subject" and "Issuer".
+	* Client certificate field that specifies the group, in the format <field>:<subfield>.
 	* </pre>
 	*/
 	public void set_groupnamefield(String groupnamefield) throws Exception{
@@ -68,11 +69,29 @@ public class aaacertparams extends base_resource
 
 	/**
 	* <pre>
-	* The certificate field to extract the group from. Should be of the format <field:subfield>. Allowed values for field are "Subject" and "Issuer".
+	* Client certificate field that specifies the group, in the format <field>:<subfield>.
 	* </pre>
 	*/
 	public String get_groupnamefield() throws Exception {
 		return this.groupnamefield;
+	}
+
+	/**
+	* <pre>
+	* This is the default group that is chosen when the authentication succeeds in addition to extracted groups.<br> Maximum length =  64
+	* </pre>
+	*/
+	public void set_defaultauthenticationgroup(String defaultauthenticationgroup) throws Exception{
+		this.defaultauthenticationgroup = defaultauthenticationgroup;
+	}
+
+	/**
+	* <pre>
+	* This is the default group that is chosen when the authentication succeeds in addition to extracted groups.<br> Maximum length =  64
+	* </pre>
+	*/
+	public String get_defaultauthenticationgroup() throws Exception {
+		return this.defaultauthenticationgroup;
 	}
 
 	/**
@@ -127,6 +146,7 @@ public class aaacertparams extends base_resource
 		aaacertparams updateresource = new aaacertparams();
 		updateresource.usernamefield = resource.usernamefield;
 		updateresource.groupnamefield = resource.groupnamefield;
+		updateresource.defaultauthenticationgroup = resource.defaultauthenticationgroup;
 		return updateresource.update_resource(client);
 	}
 
@@ -136,8 +156,6 @@ public class aaacertparams extends base_resource
 	*/
 	public static base_response unset(nitro_service client, aaacertparams resource, String[] args) throws Exception{
 		aaacertparams unsetresource = new aaacertparams();
-		unsetresource.usernamefield = resource.usernamefield;
-		unsetresource.groupnamefield = resource.groupnamefield;
 		return unsetresource.unset_resource(client,args);
 	}
 

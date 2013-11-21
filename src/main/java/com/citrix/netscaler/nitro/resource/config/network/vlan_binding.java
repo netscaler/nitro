@@ -18,9 +18,9 @@ package com.citrix.netscaler.nitro.resource.config.network;
 
 import com.citrix.netscaler.nitro.resource.config.network.vlan_channel_binding;
 import com.citrix.netscaler.nitro.resource.config.network.vlan_nsip_binding;
-import com.citrix.netscaler.nitro.resource.config.network.vlan_interface_binding;
 import com.citrix.netscaler.nitro.resource.config.network.vlan_linkset_binding;
 import com.citrix.netscaler.nitro.resource.config.network.vlan_nsip6_binding;
+import com.citrix.netscaler.nitro.resource.config.network.vlan_interface_binding;
 import com.citrix.netscaler.nitro.resource.base.*;
 import com.citrix.netscaler.nitro.service.nitro_service;
 import com.citrix.netscaler.nitro.service.options;
@@ -40,13 +40,13 @@ public class vlan_binding extends base_resource
 	private Long id;
 	private vlan_channel_binding	vlan_channel_binding[] = null;
 	private vlan_nsip_binding	vlan_nsip_binding[] = null;
-	private vlan_interface_binding	vlan_interface_binding[] = null;
 	private vlan_linkset_binding	vlan_linkset_binding[] = null;
 	private vlan_nsip6_binding	vlan_nsip6_binding[] = null;
+	private vlan_interface_binding	vlan_interface_binding[] = null;
 
 	/**
 	* <pre>
-	* An integer that uniquely identifies the VLAN for which the details are to be displayed.<br> Minimum value =  1<br> Maximum value =  4094
+	* Integer that uniquely identifies the VLAN for which the details are to be displayed.<br> Minimum value =  1<br> Maximum value =  4094
 	* </pre>
 	*/
 	public void set_id(long id) throws Exception {
@@ -55,7 +55,7 @@ public class vlan_binding extends base_resource
 
 	/**
 	* <pre>
-	* An integer that uniquely identifies the VLAN for which the details are to be displayed.<br> Minimum value =  1<br> Maximum value =  4094
+	* Integer that uniquely identifies the VLAN for which the details are to be displayed.<br> Minimum value =  1<br> Maximum value =  4094
 	* </pre>
 	*/
 	public void set_id(Long id) throws Exception{
@@ -64,7 +64,7 @@ public class vlan_binding extends base_resource
 
 	/**
 	* <pre>
-	* An integer that uniquely identifies the VLAN for which the details are to be displayed.<br> Minimum value =  1<br> Maximum value =  4094
+	* Integer that uniquely identifies the VLAN for which the details are to be displayed.<br> Minimum value =  1<br> Maximum value =  4094
 	* </pre>
 	*/
 	public Long get_id() throws Exception {

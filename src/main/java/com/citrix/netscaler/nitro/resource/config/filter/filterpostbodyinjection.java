@@ -40,7 +40,7 @@ public class filterpostbodyinjection extends base_resource
 
 	/**
 	* <pre>
-	* The file name for postbody.<br> Minimum length =  1
+	* Name of file whose contents are to be inserted after the response body.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_postbody(String postbody) throws Exception{
@@ -49,7 +49,7 @@ public class filterpostbodyinjection extends base_resource
 
 	/**
 	* <pre>
-	* The file name for postbody.<br> Minimum length =  1
+	* Name of file whose contents are to be inserted after the response body.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_postbody() throws Exception {
@@ -116,7 +116,6 @@ public class filterpostbodyinjection extends base_resource
 	*/
 	public static base_response unset(nitro_service client, filterpostbodyinjection resource, String[] args) throws Exception{
 		filterpostbodyinjection unsetresource = new filterpostbodyinjection();
-		unsetresource.postbody = resource.postbody;
 		return unsetresource.unset_resource(client,args);
 	}
 

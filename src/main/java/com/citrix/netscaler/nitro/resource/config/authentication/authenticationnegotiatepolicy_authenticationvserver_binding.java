@@ -58,7 +58,7 @@ public class authenticationnegotiatepolicy_authenticationvserver_binding extends
 
 	/**
 	* <pre>
-	* The name of the Negotiate policy. If no name is given, all the configured Negotiate policies will be displayed.<br> Minimum length =  1
+	* Name of the negotiate policy.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -67,7 +67,7 @@ public class authenticationnegotiatepolicy_authenticationvserver_binding extends
 
 	/**
 	* <pre>
-	* The name of the Negotiate policy. If no name is given, all the configured Negotiate policies will be displayed.<br> Minimum length =  1
+	* Name of the negotiate policy.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {

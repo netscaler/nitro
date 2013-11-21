@@ -43,7 +43,11 @@ public class auditnslogpolicy extends base_resource
 
 	/**
 	* <pre>
-	* The name of nslog policy.<br> Minimum length =  1
+	* Name for the policy. 
+Must begin with a letter, number, or the underscore character (_), and must consist only of letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at sign (@), equals (=), colon (:), and underscore characters. Cannot be changed after the nslog policy is added.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, “my nslog policy” or ‘my nslog policy’).<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -52,7 +56,11 @@ public class auditnslogpolicy extends base_resource
 
 	/**
 	* <pre>
-	* The name of nslog policy.<br> Minimum length =  1
+	* Name for the policy. 
+Must begin with a letter, number, or the underscore character (_), and must consist only of letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at sign (@), equals (=), colon (:), and underscore characters. Cannot be changed after the nslog policy is added.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, “my nslog policy” or ‘my nslog policy’).<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -61,7 +69,7 @@ public class auditnslogpolicy extends base_resource
 
 	/**
 	* <pre>
-	* The name of the rule or expression that the policy will use. Currently supports only the rule "ns_true".<br> Minimum length =  1
+	* Name of the NetScaler named rule, or a default syntax expression, that defines the messages to be logged to the nslog server.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_rule(String rule) throws Exception{
@@ -70,7 +78,7 @@ public class auditnslogpolicy extends base_resource
 
 	/**
 	* <pre>
-	* The name of the rule or expression that the policy will use. Currently supports only the rule "ns_true".<br> Minimum length =  1
+	* Name of the NetScaler named rule, or a default syntax expression, that defines the messages to be logged to the nslog server.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_rule() throws Exception {
@@ -79,7 +87,8 @@ public class auditnslogpolicy extends base_resource
 
 	/**
 	* <pre>
-	* The name of the nslog action to be bound to the nslog policy.<br> Minimum length =  1
+	* Nslog server action that is performed when this policy matches.
+NOTE: An nslog server action must be associated with an nslog audit policy.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_action(String action) throws Exception{
@@ -88,7 +97,8 @@ public class auditnslogpolicy extends base_resource
 
 	/**
 	* <pre>
-	* The name of the nslog action to be bound to the nslog policy.<br> Minimum length =  1
+	* Nslog server action that is performed when this policy matches.
+NOTE: An nslog server action must be associated with an nslog audit policy.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_action() throws Exception {

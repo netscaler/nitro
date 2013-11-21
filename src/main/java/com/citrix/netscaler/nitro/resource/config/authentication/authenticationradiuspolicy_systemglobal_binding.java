@@ -40,7 +40,7 @@ public class authenticationradiuspolicy_systemglobal_binding extends base_resour
 
 	/**
 	* <pre>
-	* The name of the policy. If no name is provided, all the configured RADIUS policies will be displayed.<br> Minimum length =  1
+	* Name of the RADIUS authentication policy.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -49,7 +49,7 @@ public class authenticationradiuspolicy_systemglobal_binding extends base_resour
 
 	/**
 	* <pre>
-	* The name of the policy. If no name is provided, all the configured RADIUS policies will be displayed.<br> Minimum length =  1
+	* Name of the RADIUS authentication policy.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {

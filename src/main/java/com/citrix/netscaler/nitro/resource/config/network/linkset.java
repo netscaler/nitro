@@ -41,7 +41,7 @@ public class linkset extends base_resource
 
 	/**
 	* <pre>
-	* A unique identifier of the linkset. It must be of the form LS/x, where x can be an integer from 1 to 32.
+	* Unique identifier for the linkset. Must be of the form LS/x, where x can be an integer from 1 to 32.
 	* </pre>
 	*/
 	public void set_id(String id) throws Exception{
@@ -50,7 +50,7 @@ public class linkset extends base_resource
 
 	/**
 	* <pre>
-	* A unique identifier of the linkset. It must be of the form LS/x, where x can be an integer from 1 to 32.
+	* Unique identifier for the linkset. Must be of the form LS/x, where x can be an integer from 1 to 32.
 	* </pre>
 	*/
 	public String get_id() throws Exception {

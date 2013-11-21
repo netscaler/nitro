@@ -38,6 +38,7 @@ public class sslvserver_sslcertkey_binding extends base_resource
 	private Integer cleartextport;
 	private Boolean ca;
 	private Boolean snicert;
+	private Boolean skipcaname;
 	private String vservername;
 	private Long __count;
 
@@ -57,6 +58,33 @@ public class sslvserver_sslcertkey_binding extends base_resource
 	*/
 	public String get_certkeyname() throws Exception {
 		return this.certkeyname;
+	}
+
+	/**
+	* <pre>
+	* The flag is used to indicate whether this particular CA certificate's CA_Name needs to be sent to the SSL client while requesting for client certificate in a SSL handshake.
+	* </pre>
+	*/
+	public void set_skipcaname(boolean skipcaname) throws Exception {
+		this.skipcaname = new Boolean(skipcaname);
+	}
+
+	/**
+	* <pre>
+	* The flag is used to indicate whether this particular CA certificate's CA_Name needs to be sent to the SSL client while requesting for client certificate in a SSL handshake.
+	* </pre>
+	*/
+	public void set_skipcaname(Boolean skipcaname) throws Exception{
+		this.skipcaname = skipcaname;
+	}
+
+	/**
+	* <pre>
+	* The flag is used to indicate whether this particular CA certificate's CA_Name needs to be sent to the SSL client while requesting for client certificate in a SSL handshake.
+	* </pre>
+	*/
+	public Boolean get_skipcaname() throws Exception {
+		return this.skipcaname;
 	}
 
 	/**
@@ -151,7 +179,7 @@ public class sslvserver_sslcertkey_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the SSL virtual server to which the SSL policy needs to be bound.<br> Minimum length =  1
+	* Name of the SSL virtual server.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_vservername(String vservername) throws Exception{
@@ -160,7 +188,7 @@ public class sslvserver_sslcertkey_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the SSL virtual server to which the SSL policy needs to be bound.<br> Minimum length =  1
+	* Name of the SSL virtual server.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_vservername() throws Exception {
@@ -169,7 +197,7 @@ public class sslvserver_sslcertkey_binding extends base_resource
 
 	/**
 	* <pre>
-	* The port on the back-end web-servers where the clear-text data is sent by system. Use this setting for the wildcard IP based SSL Acceleration configuration (*:443).
+	* Port on which clear-text data is sent by the appliance to the server. Do not specify this parameter for SSL offloading with end-to-end encryption.
 	* </pre>
 	*/
 	public Integer get_cleartextport() throws Exception {
@@ -216,6 +244,7 @@ public class sslvserver_sslcertkey_binding extends base_resource
 		updateresource.certkeyname = resource.certkeyname;
 		updateresource.ca = resource.ca;
 		updateresource.crlcheck = resource.crlcheck;
+		updateresource.skipcaname = resource.skipcaname;
 		updateresource.snicert = resource.snicert;
 		updateresource.ocspcheck = resource.ocspcheck;
 		return updateresource.update_resource(client);
@@ -231,6 +260,7 @@ public class sslvserver_sslcertkey_binding extends base_resource
 				updateresources[i].certkeyname = resources[i].certkeyname;
 				updateresources[i].ca = resources[i].ca;
 				updateresources[i].crlcheck = resources[i].crlcheck;
+				updateresources[i].skipcaname = resources[i].skipcaname;
 				updateresources[i].snicert = resources[i].snicert;
 				updateresources[i].ocspcheck = resources[i].ocspcheck;
 			}

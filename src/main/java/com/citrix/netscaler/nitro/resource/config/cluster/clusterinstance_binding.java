@@ -38,7 +38,7 @@ public class clusterinstance_binding extends base_resource
 
 	/**
 	* <pre>
-	* A unique number that identifies the cluster.<br> Minimum value =  1<br> Maximum value =  16
+	* Unique number that identifies the cluster.<br> Minimum value =  1<br> Maximum value =  16
 	* </pre>
 	*/
 	public void set_clid(long clid) throws Exception {
@@ -47,7 +47,7 @@ public class clusterinstance_binding extends base_resource
 
 	/**
 	* <pre>
-	* A unique number that identifies the cluster.<br> Minimum value =  1<br> Maximum value =  16
+	* Unique number that identifies the cluster.<br> Minimum value =  1<br> Maximum value =  16
 	* </pre>
 	*/
 	public void set_clid(Long clid) throws Exception{
@@ -56,7 +56,7 @@ public class clusterinstance_binding extends base_resource
 
 	/**
 	* <pre>
-	* A unique number that identifies the cluster.<br> Minimum value =  1<br> Maximum value =  16
+	* Unique number that identifies the cluster.<br> Minimum value =  1<br> Maximum value =  16
 	* </pre>
 	*/
 	public Long get_clid() throws Exception {

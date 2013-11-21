@@ -36,6 +36,7 @@ public class authenticationvserver_auditnslogpolicy_binding extends base_resourc
 	private Long priority;
 	private String name;
 	private Boolean secondary;
+	private Boolean groupextraction;
 	private Long __count;
 
 	/**
@@ -67,7 +68,7 @@ public class authenticationvserver_auditnslogpolicy_binding extends base_resourc
 
 	/**
 	* <pre>
-	* The vserver to which this command shall bind parameters.<br> Minimum length =  1
+	* Name of the authentication virtual server to which to bind the policy.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -76,7 +77,7 @@ public class authenticationvserver_auditnslogpolicy_binding extends base_resourc
 
 	/**
 	* <pre>
-	* The vserver to which this command shall bind parameters.<br> Minimum length =  1
+	* Name of the authentication virtual server to which to bind the policy.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -85,7 +86,9 @@ public class authenticationvserver_auditnslogpolicy_binding extends base_resourc
 
 	/**
 	* <pre>
-	* Bind the Authentication policy to the secondary chain. This provides for multifactor authentication in which a user must not only authenticate to a primary authentication server but also a server in the secondary chain.  User groups are aggregated across both authentication systems and while user may use different passwords in each system their username must be exactly the same.
+	* Bind the authentication policy to the secondary chain.
+Provides for multifactor authentication in which a user must authenticate via both a primary authentication method and, afterward, via a secondary authentication method.
+Because user groups are aggregated across authentication systems, usernames must be the same on all authentication servers. Passwords can be different.
 	* </pre>
 	*/
 	public void set_secondary(boolean secondary) throws Exception {
@@ -94,7 +97,9 @@ public class authenticationvserver_auditnslogpolicy_binding extends base_resourc
 
 	/**
 	* <pre>
-	* Bind the Authentication policy to the secondary chain. This provides for multifactor authentication in which a user must not only authenticate to a primary authentication server but also a server in the secondary chain.  User groups are aggregated across both authentication systems and while user may use different passwords in each system their username must be exactly the same.
+	* Bind the authentication policy to the secondary chain.
+Provides for multifactor authentication in which a user must authenticate via both a primary authentication method and, afterward, via a secondary authentication method.
+Because user groups are aggregated across authentication systems, usernames must be the same on all authentication servers. Passwords can be different.
 	* </pre>
 	*/
 	public void set_secondary(Boolean secondary) throws Exception{
@@ -103,7 +108,9 @@ public class authenticationvserver_auditnslogpolicy_binding extends base_resourc
 
 	/**
 	* <pre>
-	* Bind the Authentication policy to the secondary chain. This provides for multifactor authentication in which a user must not only authenticate to a primary authentication server but also a server in the secondary chain.  User groups are aggregated across both authentication systems and while user may use different passwords in each system their username must be exactly the same.
+	* Bind the authentication policy to the secondary chain.
+Provides for multifactor authentication in which a user must authenticate via both a primary authentication method and, afterward, via a secondary authentication method.
+Because user groups are aggregated across authentication systems, usernames must be the same on all authentication servers. Passwords can be different.
 	* </pre>
 	*/
 	public Boolean get_secondary() throws Exception {
@@ -126,6 +133,33 @@ public class authenticationvserver_auditnslogpolicy_binding extends base_resourc
 	*/
 	public String get_policy() throws Exception {
 		return this.policy;
+	}
+
+	/**
+	* <pre>
+	* Bind the Authentication policy to a tertiary chain which will be used only for group extraction.  The user will not authenticate against this server, and this will only be called if primary and/or secondary authentication has succeeded.
+	* </pre>
+	*/
+	public void set_groupextraction(boolean groupextraction) throws Exception {
+		this.groupextraction = new Boolean(groupextraction);
+	}
+
+	/**
+	* <pre>
+	* Bind the Authentication policy to a tertiary chain which will be used only for group extraction.  The user will not authenticate against this server, and this will only be called if primary and/or secondary authentication has succeeded.
+	* </pre>
+	*/
+	public void set_groupextraction(Boolean groupextraction) throws Exception{
+		this.groupextraction = groupextraction;
+	}
+
+	/**
+	* <pre>
+	* Bind the Authentication policy to a tertiary chain which will be used only for group extraction.  The user will not authenticate against this server, and this will only be called if primary and/or secondary authentication has succeeded.
+	* </pre>
+	*/
+	public Boolean get_groupextraction() throws Exception {
+		return this.groupextraction;
 	}
 
 	/**
@@ -168,6 +202,7 @@ public class authenticationvserver_auditnslogpolicy_binding extends base_resourc
 		updateresource.policy = resource.policy;
 		updateresource.priority = resource.priority;
 		updateresource.secondary = resource.secondary;
+		updateresource.groupextraction = resource.groupextraction;
 		return updateresource.update_resource(client);
 	}
 
@@ -181,6 +216,7 @@ public class authenticationvserver_auditnslogpolicy_binding extends base_resourc
 				updateresources[i].policy = resources[i].policy;
 				updateresources[i].priority = resources[i].priority;
 				updateresources[i].secondary = resources[i].secondary;
+				updateresources[i].groupextraction = resources[i].groupextraction;
 			}
 			result = update_bulk_request(client, updateresources);
 		}
@@ -192,6 +228,7 @@ public class authenticationvserver_auditnslogpolicy_binding extends base_resourc
 		deleteresource.name = resource.name;
 		deleteresource.policy = resource.policy;
 		deleteresource.secondary = resource.secondary;
+		deleteresource.groupextraction = resource.groupextraction;
 		return deleteresource.delete_resource(client);
 	}
 
@@ -204,6 +241,7 @@ public class authenticationvserver_auditnslogpolicy_binding extends base_resourc
 				deleteresources[i].name = resources[i].name;
 				deleteresources[i].policy = resources[i].policy;
 				deleteresources[i].secondary = resources[i].secondary;
+				deleteresources[i].groupextraction = resources[i].groupextraction;
 			}
 			result = delete_bulk_request(client, deleteresources);
 		}

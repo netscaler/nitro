@@ -114,7 +114,7 @@ public class lbmonitor_metric_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the monitor to be bound.<br> Minimum length =  1
+	* Name of the monitor.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_monitorname(String monitorname) throws Exception{
@@ -123,7 +123,7 @@ public class lbmonitor_metric_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the monitor to be bound.<br> Minimum length =  1
+	* Name of the monitor.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_monitorname() throws Exception {
@@ -132,7 +132,7 @@ public class lbmonitor_metric_binding extends base_resource
 
 	/**
 	* <pre>
-	* Metric table to use for the metrics that are going to be bound.<br> Minimum length =  1<br> Maximum length =  99
+	* Metric table to which to bind metrics.<br> Minimum length =  1<br> Maximum length =  99
 	* </pre>
 	*/
 	public String get_metrictable() throws Exception {

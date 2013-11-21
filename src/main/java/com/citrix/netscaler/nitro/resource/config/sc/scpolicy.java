@@ -44,7 +44,7 @@ public class scpolicy extends base_resource
 
 	/**
 	* <pre>
-	* The name of the SureConnect policy.<br> Minimum length =  1<br> Maximum length =  31
+	* Name for the policy. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.<br> Minimum length =  1<br> Maximum length =  31
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -53,7 +53,7 @@ public class scpolicy extends base_resource
 
 	/**
 	* <pre>
-	* The name of the SureConnect policy.<br> Minimum length =  1<br> Maximum length =  31
+	* Name for the policy. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.<br> Minimum length =  1<br> Maximum length =  31
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -62,8 +62,7 @@ public class scpolicy extends base_resource
 
 	/**
 	* <pre>
-	* The URL name. The system matches the incoming client request against the URL you enter here.
-If the incoming request does not match any of the configured URLs or the rules that have been configured, then SureConnect does not trigger.<br> Maximum length =  127
+	* URL against which to match incoming client request.<br> Maximum length =  127
 	* </pre>
 	*/
 	public void set_url(String url) throws Exception{
@@ -72,8 +71,7 @@ If the incoming request does not match any of the configured URLs or the rules t
 
 	/**
 	* <pre>
-	* The URL name. The system matches the incoming client request against the URL you enter here.
-If the incoming request does not match any of the configured URLs or the rules that have been configured, then SureConnect does not trigger.<br> Maximum length =  127
+	* URL against which to match incoming client request.<br> Maximum length =  127
 	* </pre>
 	*/
 	public String get_url() throws Exception {
@@ -82,11 +80,13 @@ If the incoming request does not match any of the configured URLs or the rules t
 
 	/**
 	* <pre>
-	* The rule that the system matches with the incoming request.
-The system matches the incoming request against the rules you enter here. Before matching against the configured rules, the system matches the requests with any of the configured URLs. Thus, URLs have a higher precedence over rules. If the incoming request does not match any of the configured URLs or the rules that have been configured, then SureConnect does not trigger.
-Expression logic is expression names, separated by the logical operators || and && , and possibly grouped using parenthesis. If the expression contains blanks (for example, between an expression name and a logical operator), then the entire argument must be enclosed in double quotes.The following are valid expression logic:
-ns_ext_cgi||ns_ext_asp
-ns_non_get && (ns_header_cookie||ns_header_pragma).<br> Maximum length =  1499
+	* Expression against which the traffic is evaluated. 
+Maximum length of a string literal in the expression is 255 characters. A longer string can be split into smaller strings of up to 255 characters each, and the smaller strings concatenated with the + operator. For example, you can create a 500-character string as follows: '"<string of 255 characters>" + "<string of 245 characters>"'
+
+The following requirements apply only to the NetScaler CLI:
+* If the expression includes one or more spaces, enclose the entire expression in double quotation marks.
+* If the expression itself includes double quotation marks, escape the quotations by using the  character. 
+* Alternatively, you can use single quotation marks to enclose the rule, in which case you do not have to escape the double quotation marks.<br> Maximum length =  1499
 	* </pre>
 	*/
 	public void set_rule(String rule) throws Exception{
@@ -95,11 +95,13 @@ ns_non_get && (ns_header_cookie||ns_header_pragma).<br> Maximum length =  1499
 
 	/**
 	* <pre>
-	* The rule that the system matches with the incoming request.
-The system matches the incoming request against the rules you enter here. Before matching against the configured rules, the system matches the requests with any of the configured URLs. Thus, URLs have a higher precedence over rules. If the incoming request does not match any of the configured URLs or the rules that have been configured, then SureConnect does not trigger.
-Expression logic is expression names, separated by the logical operators || and && , and possibly grouped using parenthesis. If the expression contains blanks (for example, between an expression name and a logical operator), then the entire argument must be enclosed in double quotes.The following are valid expression logic:
-ns_ext_cgi||ns_ext_asp
-ns_non_get && (ns_header_cookie||ns_header_pragma).<br> Maximum length =  1499
+	* Expression against which the traffic is evaluated. 
+Maximum length of a string literal in the expression is 255 characters. A longer string can be split into smaller strings of up to 255 characters each, and the smaller strings concatenated with the + operator. For example, you can create a 500-character string as follows: '"<string of 255 characters>" + "<string of 245 characters>"'
+
+The following requirements apply only to the NetScaler CLI:
+* If the expression includes one or more spaces, enclose the entire expression in double quotation marks.
+* If the expression itself includes double quotation marks, escape the quotations by using the  character. 
+* Alternatively, you can use single quotation marks to enclose the rule, in which case you do not have to escape the double quotation marks.<br> Maximum length =  1499
 	* </pre>
 	*/
 	public String get_rule() throws Exception {
@@ -108,7 +110,7 @@ ns_non_get && (ns_header_cookie||ns_header_pragma).<br> Maximum length =  1499
 
 	/**
 	* <pre>
-	* The delay threshold in microseconds for the configured URL or the rule. If the delay statistics gathered for the configured URL or rule exceeds the configured delay, then SureConnect is triggered on the incoming request which matched the corresponding delay.<br> Minimum value =  1<br> Maximum value =  599999999
+	* Delay threshold, in microseconds, for requests that match the policy's URL or rule. If the delay statistics gathered for the matching request exceed the specified delay, SureConnect is triggered for that request.<br> Minimum value =  1<br> Maximum value =  599999999
 	* </pre>
 	*/
 	public void set_delay(long delay) throws Exception {
@@ -117,7 +119,7 @@ ns_non_get && (ns_header_cookie||ns_header_pragma).<br> Maximum length =  1499
 
 	/**
 	* <pre>
-	* The delay threshold in microseconds for the configured URL or the rule. If the delay statistics gathered for the configured URL or rule exceeds the configured delay, then SureConnect is triggered on the incoming request which matched the corresponding delay.<br> Minimum value =  1<br> Maximum value =  599999999
+	* Delay threshold, in microseconds, for requests that match the policy's URL or rule. If the delay statistics gathered for the matching request exceed the specified delay, SureConnect is triggered for that request.<br> Minimum value =  1<br> Maximum value =  599999999
 	* </pre>
 	*/
 	public void set_delay(Long delay) throws Exception{
@@ -126,7 +128,7 @@ ns_non_get && (ns_header_cookie||ns_header_pragma).<br> Maximum length =  1499
 
 	/**
 	* <pre>
-	* The delay threshold in microseconds for the configured URL or the rule. If the delay statistics gathered for the configured URL or rule exceeds the configured delay, then SureConnect is triggered on the incoming request which matched the corresponding delay.<br> Minimum value =  1<br> Maximum value =  599999999
+	* Delay threshold, in microseconds, for requests that match the policy's URL or rule. If the delay statistics gathered for the matching request exceed the specified delay, SureConnect is triggered for that request.<br> Minimum value =  1<br> Maximum value =  599999999
 	* </pre>
 	*/
 	public Long get_delay() throws Exception {
@@ -135,7 +137,7 @@ ns_non_get && (ns_header_cookie||ns_header_pragma).<br> Maximum length =  1499
 
 	/**
 	* <pre>
-	* The maximum number of concurrent connections that can be open for the configured URL or rule. You can enter this argument as any integer value greater than zero.<br> Minimum value =  1<br> Maximum value =  4294967294
+	* Maximum number of concurrent connections that can be open for requests that match the policy's URL or rule.<br> Minimum value =  1<br> Maximum value =  4294967294
 	* </pre>
 	*/
 	public void set_maxconn(long maxconn) throws Exception {
@@ -144,7 +146,7 @@ ns_non_get && (ns_header_cookie||ns_header_pragma).<br> Maximum length =  1499
 
 	/**
 	* <pre>
-	* The maximum number of concurrent connections that can be open for the configured URL or rule. You can enter this argument as any integer value greater than zero.<br> Minimum value =  1<br> Maximum value =  4294967294
+	* Maximum number of concurrent connections that can be open for requests that match the policy's URL or rule.<br> Minimum value =  1<br> Maximum value =  4294967294
 	* </pre>
 	*/
 	public void set_maxconn(Long maxconn) throws Exception{
@@ -153,7 +155,7 @@ ns_non_get && (ns_header_cookie||ns_header_pragma).<br> Maximum length =  1499
 
 	/**
 	* <pre>
-	* The maximum number of concurrent connections that can be open for the configured URL or rule. You can enter this argument as any integer value greater than zero.<br> Minimum value =  1<br> Maximum value =  4294967294
+	* Maximum number of concurrent connections that can be open for requests that match the policy's URL or rule.<br> Minimum value =  1<br> Maximum value =  4294967294
 	* </pre>
 	*/
 	public Long get_maxconn() throws Exception {
@@ -162,10 +164,10 @@ ns_non_get && (ns_header_cookie||ns_header_pragma).<br> Maximum length =  1499
 
 	/**
 	* <pre>
-	* The action to be taken when the thresholds are met. The valid options are ACS , NS and NOACTION .
-  ACS - Specifies that alternate content is to be served from altContSvcName with the path altContPath .
-  NS - Specifies that alternate content is to be served from the system. See the set sc parameter command to customize the response served from the system.
-  NOACTION - Specifies that no alternate content is to be served. However, delay statistics are still collected for the configured URLs. If the - maxconn argument is specified, the number of connections is limited to that specified value for that configured URL or rule (alternate content will not served even if the - maxconn threshold is met).<br> Possible values = ACS, NS, NOACTION
+	* Action to be taken when the delay or maximum-connections threshold is reached. Available settings function as follows:
+ACS - Serve content from an alternative content service.
+NS - Serve alternative content from the NetScaler appliance.
+NO ACTION - Serve no alternative content. However, delay statistics are still collected for the configured URLs, and, if the Maximum Client Connections parameter is set, the number of connections is limited to the value specified by that parameter. (However, alternative content is not served even if the maxConn threshold is met).<br> Possible values = ACS, NS, NOACTION
 	* </pre>
 	*/
 	public void set_action(String action) throws Exception{
@@ -174,10 +176,10 @@ ns_non_get && (ns_header_cookie||ns_header_pragma).<br> Maximum length =  1499
 
 	/**
 	* <pre>
-	* The action to be taken when the thresholds are met. The valid options are ACS , NS and NOACTION .
-  ACS - Specifies that alternate content is to be served from altContSvcName with the path altContPath .
-  NS - Specifies that alternate content is to be served from the system. See the set sc parameter command to customize the response served from the system.
-  NOACTION - Specifies that no alternate content is to be served. However, delay statistics are still collected for the configured URLs. If the - maxconn argument is specified, the number of connections is limited to that specified value for that configured URL or rule (alternate content will not served even if the - maxconn threshold is met).<br> Possible values = ACS, NS, NOACTION
+	* Action to be taken when the delay or maximum-connections threshold is reached. Available settings function as follows:
+ACS - Serve content from an alternative content service.
+NS - Serve alternative content from the NetScaler appliance.
+NO ACTION - Serve no alternative content. However, delay statistics are still collected for the configured URLs, and, if the Maximum Client Connections parameter is set, the number of connections is limited to the value specified by that parameter. (However, alternative content is not served even if the maxConn threshold is met).<br> Possible values = ACS, NS, NOACTION
 	* </pre>
 	*/
 	public String get_action() throws Exception {
@@ -186,7 +188,7 @@ ns_non_get && (ns_header_cookie||ns_header_pragma).<br> Maximum length =  1499
 
 	/**
 	* <pre>
-	* The alternate content service name used in the ACS action.<br> Minimum length =  1<br> Maximum length =  127
+	* Name of the alternative content service to be used in the ACS action.<br> Minimum length =  1<br> Maximum length =  127
 	* </pre>
 	*/
 	public void set_altcontentsvcname(String altcontentsvcname) throws Exception{
@@ -195,7 +197,7 @@ ns_non_get && (ns_header_cookie||ns_header_pragma).<br> Maximum length =  1499
 
 	/**
 	* <pre>
-	* The alternate content service name used in the ACS action.<br> Minimum length =  1<br> Maximum length =  127
+	* Name of the alternative content service to be used in the ACS action.<br> Minimum length =  1<br> Maximum length =  127
 	* </pre>
 	*/
 	public String get_altcontentsvcname() throws Exception {
@@ -204,7 +206,7 @@ ns_non_get && (ns_header_cookie||ns_header_pragma).<br> Maximum length =  1499
 
 	/**
 	* <pre>
-	* The alternate content path for the ACS action.<br> Minimum length =  1<br> Maximum length =  127
+	* Path to the alternative content service to be used in the ACS action.<br> Minimum length =  1<br> Maximum length =  127
 	* </pre>
 	*/
 	public void set_altcontentpath(String altcontentpath) throws Exception{
@@ -213,7 +215,7 @@ ns_non_get && (ns_header_cookie||ns_header_pragma).<br> Maximum length =  1499
 
 	/**
 	* <pre>
-	* The alternate content path for the ACS action.<br> Minimum length =  1<br> Maximum length =  127
+	* Path to the alternative content service to be used in the ACS action.<br> Minimum length =  1<br> Maximum length =  127
 	* </pre>
 	*/
 	public String get_altcontentpath() throws Exception {
@@ -386,21 +388,9 @@ ns_non_get && (ns_header_cookie||ns_header_pragma).<br> Maximum length =  1499
 	* Use this API to unset the properties of scpolicy resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String name, String args[]) throws Exception {
-		scpolicy unsetresource = new scpolicy();
-		unsetresource.name = name;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of scpolicy resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, scpolicy resource, String[] args) throws Exception{
 		scpolicy unsetresource = new scpolicy();
 		unsetresource.name = resource.name;
-		unsetresource.delay = resource.delay;
-		unsetresource.maxconn = resource.maxconn;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -432,8 +422,6 @@ ns_non_get && (ns_header_cookie||ns_header_pragma).<br> Maximum length =  1499
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new scpolicy();
 				unsetresources[i].name = resources[i].name;
-				unsetresources[i].delay = resources[i].delay;
-				unsetresources[i].maxconn = resources[i].maxconn;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}

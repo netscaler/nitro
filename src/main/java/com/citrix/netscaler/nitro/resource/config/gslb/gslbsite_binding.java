@@ -38,7 +38,7 @@ public class gslbsite_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the site. If sitename is specified, all the services created under that site will be displayed.<br> Minimum length =  1
+	* Name of the GSLB site. If you specify a site name, details of all the site's constituent services are also displayed.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_sitename(String sitename) throws Exception{
@@ -47,7 +47,7 @@ public class gslbsite_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the site. If sitename is specified, all the services created under that site will be displayed.<br> Minimum length =  1
+	* Name of the GSLB site. If you specify a site name, details of all the site's constituent services are also displayed.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_sitename() throws Exception {

@@ -39,11 +39,17 @@ public class authenticationsamlaction extends base_resource
 	private String samluserfield;
 	private String samlrejectunsignedassertion;
 	private String samlissuername;
+	private String samltwofactor;
+	private String defaultauthenticationgroup;
 	private Long __count;
 
 	/**
 	* <pre>
-	* The name for the new SAML action.<br> Minimum length =  1
+	* Name for the SAML server profile (action). 
+Must begin with a letter, number, or the underscore character (_), and must contain only letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at (@), equals (=), colon (:), and underscore characters. Cannot be changed after SAML profile is created.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, “my authentication action” or ‘my authentication action’).<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -52,7 +58,11 @@ public class authenticationsamlaction extends base_resource
 
 	/**
 	* <pre>
-	* The name for the new SAML action.<br> Minimum length =  1
+	* Name for the SAML server profile (action). 
+Must begin with a letter, number, or the underscore character (_), and must contain only letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at (@), equals (=), colon (:), and underscore characters. Cannot be changed after SAML profile is created.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, “my authentication action” or ‘my authentication action’).<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -61,7 +71,7 @@ public class authenticationsamlaction extends base_resource
 
 	/**
 	* <pre>
-	* The name of the certificate to be used to decrypt messages from IdP.<br> Minimum length =  1
+	* Name of the SAML server as given in that server’s SSL certificate.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_samlidpcertname(String samlidpcertname) throws Exception{
@@ -70,7 +80,7 @@ public class authenticationsamlaction extends base_resource
 
 	/**
 	* <pre>
-	* The name of the certificate to be used to decrypt messages from IdP.<br> Minimum length =  1
+	* Name of the SAML server as given in that server’s SSL certificate.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_samlidpcertname() throws Exception {
@@ -79,7 +89,7 @@ public class authenticationsamlaction extends base_resource
 
 	/**
 	* <pre>
-	* The name of the certificate to be used to sign messages to IdP.<br> Minimum length =  1
+	* Name of the signing authority as given in the SAML server’s SSL certificate.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_samlsigningcertname(String samlsigningcertname) throws Exception{
@@ -88,7 +98,7 @@ public class authenticationsamlaction extends base_resource
 
 	/**
 	* <pre>
-	* The name of the certificate to be used to sign messages to IdP.<br> Minimum length =  1
+	* Name of the signing authority as given in the SAML server’s SSL certificate.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_samlsigningcertname() throws Exception {
@@ -97,7 +107,7 @@ public class authenticationsamlaction extends base_resource
 
 	/**
 	* <pre>
-	* The URL at the IdP to which user must be redirected for authentication.<br> Minimum length =  1
+	* URL to which users are redirected after successful authentication.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_samlredirecturl(String samlredirecturl) throws Exception{
@@ -106,7 +116,7 @@ public class authenticationsamlaction extends base_resource
 
 	/**
 	* <pre>
-	* The URL at the IdP to which user must be redirected for authentication.<br> Minimum length =  1
+	* URL to which users are redirected after successful authentication.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_samlredirecturl() throws Exception {
@@ -115,7 +125,7 @@ public class authenticationsamlaction extends base_resource
 
 	/**
 	* <pre>
-	* The field/tag from where username/id is to be	extracted.<br> Minimum length =  1
+	* SAML user ID, as given in the SAML assertion.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_samluserfield(String samluserfield) throws Exception{
@@ -124,7 +134,7 @@ public class authenticationsamlaction extends base_resource
 
 	/**
 	* <pre>
-	* The field/tag from where username/id is to be	extracted.<br> Minimum length =  1
+	* SAML user ID, as given in the SAML assertion.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_samluserfield() throws Exception {
@@ -133,7 +143,7 @@ public class authenticationsamlaction extends base_resource
 
 	/**
 	* <pre>
-	* The option to reject Assertions which come without Signature.<br> Default value: ON<br> Possible values = ON, OFF
+	* Reject unsigned SAML assertions.<br> Default value: ON<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_samlrejectunsignedassertion(String samlrejectunsignedassertion) throws Exception{
@@ -142,7 +152,7 @@ public class authenticationsamlaction extends base_resource
 
 	/**
 	* <pre>
-	* The option to reject Assertions which come without Signature.<br> Default value: ON<br> Possible values = ON, OFF
+	* Reject unsigned SAML assertions.<br> Default value: ON<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_samlrejectunsignedassertion() throws Exception {
@@ -165,6 +175,42 @@ public class authenticationsamlaction extends base_resource
 	*/
 	public String get_samlissuername() throws Exception {
 		return this.samlissuername;
+	}
+
+	/**
+	* <pre>
+	* Option to enable second factor after SAML.<br> Default value: OFF<br> Possible values = ON, OFF
+	* </pre>
+	*/
+	public void set_samltwofactor(String samltwofactor) throws Exception{
+		this.samltwofactor = samltwofactor;
+	}
+
+	/**
+	* <pre>
+	* Option to enable second factor after SAML.<br> Default value: OFF<br> Possible values = ON, OFF
+	* </pre>
+	*/
+	public String get_samltwofactor() throws Exception {
+		return this.samltwofactor;
+	}
+
+	/**
+	* <pre>
+	* This is the default group that is chosen when the authentication succeeds in addition to extracted groups.<br> Maximum length =  64
+	* </pre>
+	*/
+	public void set_defaultauthenticationgroup(String defaultauthenticationgroup) throws Exception{
+		this.defaultauthenticationgroup = defaultauthenticationgroup;
+	}
+
+	/**
+	* <pre>
+	* This is the default group that is chosen when the authentication succeeds in addition to extracted groups.<br> Maximum length =  64
+	* </pre>
+	*/
+	public String get_defaultauthenticationgroup() throws Exception {
+		return this.defaultauthenticationgroup;
 	}
 
 	/**
@@ -213,6 +259,8 @@ public class authenticationsamlaction extends base_resource
 		addresource.samluserfield = resource.samluserfield;
 		addresource.samlrejectunsignedassertion = resource.samlrejectunsignedassertion;
 		addresource.samlissuername = resource.samlissuername;
+		addresource.samltwofactor = resource.samltwofactor;
+		addresource.defaultauthenticationgroup = resource.defaultauthenticationgroup;
 		return addresource.add_resource(client);
 	}
 
@@ -232,6 +280,8 @@ public class authenticationsamlaction extends base_resource
 				addresources[i].samluserfield = resources[i].samluserfield;
 				addresources[i].samlrejectunsignedassertion = resources[i].samlrejectunsignedassertion;
 				addresources[i].samlissuername = resources[i].samlissuername;
+				addresources[i].samltwofactor = resources[i].samltwofactor;
+				addresources[i].defaultauthenticationgroup = resources[i].defaultauthenticationgroup;
 			}
 			result = add_bulk_request(client, addresources);
 		}
@@ -300,6 +350,8 @@ public class authenticationsamlaction extends base_resource
 		updateresource.samluserfield = resource.samluserfield;
 		updateresource.samlrejectunsignedassertion = resource.samlrejectunsignedassertion;
 		updateresource.samlissuername = resource.samlissuername;
+		updateresource.samltwofactor = resource.samltwofactor;
+		updateresource.defaultauthenticationgroup = resource.defaultauthenticationgroup;
 		return updateresource.update_resource(client);
 	}
 
@@ -319,6 +371,8 @@ public class authenticationsamlaction extends base_resource
 				updateresources[i].samluserfield = resources[i].samluserfield;
 				updateresources[i].samlrejectunsignedassertion = resources[i].samlrejectunsignedassertion;
 				updateresources[i].samlissuername = resources[i].samlissuername;
+				updateresources[i].samltwofactor = resources[i].samltwofactor;
+				updateresources[i].defaultauthenticationgroup = resources[i].defaultauthenticationgroup;
 			}
 			result = update_bulk_request(client, updateresources);
 		}
@@ -329,25 +383,9 @@ public class authenticationsamlaction extends base_resource
 	* Use this API to unset the properties of authenticationsamlaction resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String name, String args[]) throws Exception {
-		authenticationsamlaction unsetresource = new authenticationsamlaction();
-		unsetresource.name = name;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of authenticationsamlaction resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, authenticationsamlaction resource, String[] args) throws Exception{
 		authenticationsamlaction unsetresource = new authenticationsamlaction();
 		unsetresource.name = resource.name;
-		unsetresource.samlidpcertname = resource.samlidpcertname;
-		unsetresource.samlsigningcertname = resource.samlsigningcertname;
-		unsetresource.samlredirecturl = resource.samlredirecturl;
-		unsetresource.samluserfield = resource.samluserfield;
-		unsetresource.samlrejectunsignedassertion = resource.samlrejectunsignedassertion;
-		unsetresource.samlissuername = resource.samlissuername;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -379,12 +417,6 @@ public class authenticationsamlaction extends base_resource
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new authenticationsamlaction();
 				unsetresources[i].name = resources[i].name;
-				unsetresources[i].samlidpcertname = resources[i].samlidpcertname;
-				unsetresources[i].samlsigningcertname = resources[i].samlsigningcertname;
-				unsetresources[i].samlredirecturl = resources[i].samlredirecturl;
-				unsetresources[i].samluserfield = resources[i].samluserfield;
-				unsetresources[i].samlrejectunsignedassertion = resources[i].samlrejectunsignedassertion;
-				unsetresources[i].samlissuername = resources[i].samlissuername;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}
@@ -503,6 +535,10 @@ public class authenticationsamlaction extends base_resource
 		return 0;
 	}
 
+	public static class samltwofactorEnum {
+		public static final String ON = "ON";
+		public static final String OFF = "OFF";
+	}
 	public static class samlrejectunsignedassertionEnum {
 		public static final String ON = "ON";
 		public static final String OFF = "OFF";

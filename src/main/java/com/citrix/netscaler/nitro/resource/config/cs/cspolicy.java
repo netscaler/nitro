@@ -37,6 +37,8 @@ public class cspolicy extends base_resource
 	private String rule;
 	private String domain;
 	private String action;
+	private String logaction;
+	private String newname;
 
 	//------- Read only Parameter ---------;
 
@@ -45,7 +47,6 @@ public class cspolicy extends base_resource
 	private Long bindhits;
 	private String labelname;
 	private String labeltype;
-	private String target;
 	private Long priority;
 	private Boolean activepolicy;
 	private String cspolicytype;
@@ -53,7 +54,9 @@ public class cspolicy extends base_resource
 
 	/**
 	* <pre>
-	* The name of the new content switching policy.<br> Minimum length =  1
+	* Name for the content switching policy. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at sign (@), equal sign (=), and hyphen (-) characters. Cannot be changed after a policy is created.
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, “my policy” or ‘my policy’).<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_policyname(String policyname) throws Exception{
@@ -62,7 +65,9 @@ public class cspolicy extends base_resource
 
 	/**
 	* <pre>
-	* The name of the new content switching policy.<br> Minimum length =  1
+	* Name for the content switching policy. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at sign (@), equal sign (=), and hyphen (-) characters. Cannot be changed after a policy is created.
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, “my policy” or ‘my policy’).<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_policyname() throws Exception {
@@ -71,9 +76,7 @@ public class cspolicy extends base_resource
 
 	/**
 	* <pre>
-	* The URL, with wildcards.
-Specify the string value in this format:
-// [[prefix ] [*]] [.suffix].<br> Minimum length =  1<br> Maximum length =  208
+	* URL string that is matched with the URL of a request. Can contain a wildcard character. Specify the string value in the following format: [[prefix] [*]] [.suffix].<br> Minimum length =  1<br> Maximum length =  208
 	* </pre>
 	*/
 	public void set_url(String url) throws Exception{
@@ -82,9 +85,7 @@ Specify the string value in this format:
 
 	/**
 	* <pre>
-	* The URL, with wildcards.
-Specify the string value in this format:
-// [[prefix ] [*]] [.suffix].<br> Minimum length =  1<br> Maximum length =  208
+	* URL string that is matched with the URL of a request. Can contain a wildcard character. Specify the string value in the following format: [[prefix] [*]] [.suffix].<br> Minimum length =  1<br> Maximum length =  208
 	* </pre>
 	*/
 	public String get_url() throws Exception {
@@ -93,14 +94,13 @@ Specify the string value in this format:
 
 	/**
 	* <pre>
-	* The condition for applying this policy.
-Expression logic is as follows:
-        - Expression names separated by the logical operators || and &&.
-        - Expression names may be grouped using parenthesis.
-        - If the expression contains blanks (e.g., between an expression name and a logical operator), then the entire argument must be enclosed in double quotes.
-The following example shows valid expression logic:
-        ns_ext_cgi||ns_ext_asp
-        "ns_non_get && (ns_header_cookie||ns_header_pragma)".
+	* Expression, or name of a named expression, against which traffic is evaluated. Written in the classic or default syntax. 
+Note:
+Maximum length of a string literal in the expression is 255 characters. A longer string can be split into smaller strings of up to 255 characters each, and the smaller strings concatenated with the + operator. For example, you can create a 500-character string as follows: '"<string of 255 characters>" + "<string of 245 characters>"'
+The following requirements apply only to the NetScaler CLI:
+*  If the expression includes one or more spaces, enclose the entire expression in double quotation marks.
+*  If the expression itself includes double quotation marks, escape the quotations by using the  character. 
+*  Alternatively, you can use single quotation marks to enclose the rule, in which case you do not have to escape the double quotation marks.
 	* </pre>
 	*/
 	public void set_rule(String rule) throws Exception{
@@ -109,14 +109,13 @@ The following example shows valid expression logic:
 
 	/**
 	* <pre>
-	* The condition for applying this policy.
-Expression logic is as follows:
-        - Expression names separated by the logical operators || and &&.
-        - Expression names may be grouped using parenthesis.
-        - If the expression contains blanks (e.g., between an expression name and a logical operator), then the entire argument must be enclosed in double quotes.
-The following example shows valid expression logic:
-        ns_ext_cgi||ns_ext_asp
-        "ns_non_get && (ns_header_cookie||ns_header_pragma)".
+	* Expression, or name of a named expression, against which traffic is evaluated. Written in the classic or default syntax. 
+Note:
+Maximum length of a string literal in the expression is 255 characters. A longer string can be split into smaller strings of up to 255 characters each, and the smaller strings concatenated with the + operator. For example, you can create a 500-character string as follows: '"<string of 255 characters>" + "<string of 245 characters>"'
+The following requirements apply only to the NetScaler CLI:
+*  If the expression includes one or more spaces, enclose the entire expression in double quotation marks.
+*  If the expression itself includes double quotation marks, escape the quotations by using the  character. 
+*  Alternatively, you can use single quotation marks to enclose the rule, in which case you do not have to escape the double quotation marks.
 	* </pre>
 	*/
 	public String get_rule() throws Exception {
@@ -143,7 +142,7 @@ The following example shows valid expression logic:
 
 	/**
 	* <pre>
-	* Content switching action to be used by the policy.
+	* Content switching action that names the target load balancing virtual server to which the traffic is switched.
 	* </pre>
 	*/
 	public void set_action(String action) throws Exception{
@@ -152,11 +151,47 @@ The following example shows valid expression logic:
 
 	/**
 	* <pre>
-	* Content switching action to be used by the policy.
+	* Content switching action that names the target load balancing virtual server to which the traffic is switched.
 	* </pre>
 	*/
 	public String get_action() throws Exception {
 		return this.action;
+	}
+
+	/**
+	* <pre>
+	* The log action associated with the content switching policy.
+	* </pre>
+	*/
+	public void set_logaction(String logaction) throws Exception{
+		this.logaction = logaction;
+	}
+
+	/**
+	* <pre>
+	* The log action associated with the content switching policy.
+	* </pre>
+	*/
+	public String get_logaction() throws Exception {
+		return this.logaction;
+	}
+
+	/**
+	* <pre>
+	* The new name of the content switching policy.<br> Minimum length =  1
+	* </pre>
+	*/
+	public void set_newname(String newname) throws Exception{
+		this.newname = newname;
+	}
+
+	/**
+	* <pre>
+	* The new name of the content switching policy.<br> Minimum length =  1
+	* </pre>
+	*/
+	public String get_newname() throws Exception {
+		return this.newname;
 	}
 
 	/**
@@ -202,15 +237,6 @@ The following example shows valid expression logic:
 	*/
 	public String get_labeltype() throws Exception {
 		return this.labeltype;
-	}
-
-	/**
-	* <pre>
-	* Target flag.
-	* </pre>
-	*/
-	public String get_target() throws Exception {
-		return this.target;
 	}
 
 	/**
@@ -284,6 +310,7 @@ The following example shows valid expression logic:
 		addresource.rule = resource.rule;
 		addresource.domain = resource.domain;
 		addresource.action = resource.action;
+		addresource.logaction = resource.logaction;
 		return addresource.add_resource(client);
 	}
 
@@ -301,6 +328,7 @@ The following example shows valid expression logic:
 				addresources[i].rule = resources[i].rule;
 				addresources[i].domain = resources[i].domain;
 				addresources[i].action = resources[i].action;
+				addresources[i].logaction = resources[i].logaction;
 			}
 			result = add_bulk_request(client, addresources);
 		}
@@ -367,6 +395,7 @@ The following example shows valid expression logic:
 		updateresource.rule = resource.rule;
 		updateresource.domain = resource.domain;
 		updateresource.action = resource.action;
+		updateresource.logaction = resource.logaction;
 		return updateresource.update_resource(client);
 	}
 
@@ -384,6 +413,7 @@ The following example shows valid expression logic:
 				updateresources[i].rule = resources[i].rule;
 				updateresources[i].domain = resources[i].domain;
 				updateresources[i].action = resources[i].action;
+				updateresources[i].logaction = resources[i].logaction;
 			}
 			result = update_bulk_request(client, updateresources);
 		}
@@ -394,23 +424,9 @@ The following example shows valid expression logic:
 	* Use this API to unset the properties of cspolicy resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String policyname, String args[]) throws Exception {
-		cspolicy unsetresource = new cspolicy();
-		unsetresource.policyname = policyname;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of cspolicy resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, cspolicy resource, String[] args) throws Exception{
 		cspolicy unsetresource = new cspolicy();
 		unsetresource.policyname = resource.policyname;
-		unsetresource.url = resource.url;
-		unsetresource.rule = resource.rule;
-		unsetresource.domain = resource.domain;
-		unsetresource.action = resource.action;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -442,14 +458,28 @@ The following example shows valid expression logic:
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new cspolicy();
 				unsetresources[i].policyname = resources[i].policyname;
-				unsetresources[i].url = resources[i].url;
-				unsetresources[i].rule = resources[i].rule;
-				unsetresources[i].domain = resources[i].domain;
-				unsetresources[i].action = resources[i].action;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}
 		return result;
+	}
+
+	/**
+	* Use this API to rename a cspolicy resource.
+	*/
+	public static base_response rename(nitro_service client, cspolicy resource, String new_policyname) throws Exception {
+		cspolicy renameresource = new cspolicy();
+		renameresource.policyname = resource.policyname;
+		return renameresource.rename_resource(client,new_policyname);
+	}
+
+	/**
+	* Use this API to rename a cspolicy resource.
+	*/
+	public static base_response rename(nitro_service client, String policyname, String new_policyname) throws Exception {
+		cspolicy renameresource = new cspolicy();
+		renameresource.policyname = policyname;
+		return renameresource.rename_resource(client,new_policyname);
 	}
 
 	/**

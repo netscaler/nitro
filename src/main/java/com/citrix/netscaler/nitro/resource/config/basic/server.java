@@ -40,9 +40,8 @@ public class server extends base_resource
 	private Integer domainresolveretry;
 	private String state;
 	private String ipv6address;
-	private String aaa_tm_kbr_domain;
-	private String realm;
 	private String comment;
+	private Long td;
 	private Boolean domainresolvenow;
 	private Long delay;
 	private String graceful;
@@ -57,7 +56,9 @@ public class server extends base_resource
 
 	/**
 	* <pre>
-	* The server's name.<br> Minimum length =  1
+	* Name for the server. 
+Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.
+Can be changed after the name is created.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -66,7 +67,9 @@ public class server extends base_resource
 
 	/**
 	* <pre>
-	* The server's name.<br> Minimum length =  1
+	* Name for the server. 
+Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.
+Can be changed after the name is created.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -75,7 +78,7 @@ public class server extends base_resource
 
 	/**
 	* <pre>
-	* The IP address of the server.
+	* IPv4 or IPv6 address of the server. If you create an IP address based server, you can specify the name of the server, instead of its IP address, when creating a service. Note: If you do not create a server entry, the server IP address that you enter when you create a service becomes the name of the server.
 	* </pre>
 	*/
 	public void set_ipaddress(String ipaddress) throws Exception{
@@ -84,7 +87,7 @@ public class server extends base_resource
 
 	/**
 	* <pre>
-	* The IP address of the server.
+	* IPv4 or IPv6 address of the server. If you create an IP address based server, you can specify the name of the server, instead of its IP address, when creating a service. Note: If you do not create a server entry, the server IP address that you enter when you create a service becomes the name of the server.
 	* </pre>
 	*/
 	public String get_ipaddress() throws Exception {
@@ -93,7 +96,7 @@ public class server extends base_resource
 
 	/**
 	* <pre>
-	* The domain name of the server for which a service needs to be added. If an IP Address has been specified, the domain name does not need to be specified.<br> Minimum length =  1
+	* Domain name of the server. For a domain based configuration, you must create the server first.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_domain(String domain) throws Exception{
@@ -102,7 +105,7 @@ public class server extends base_resource
 
 	/**
 	* <pre>
-	* The domain name of the server for which a service needs to be added. If an IP Address has been specified, the domain name does not need to be specified.<br> Minimum length =  1
+	* Domain name of the server. For a domain based configuration, you must create the server first.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_domain() throws Exception {
@@ -111,7 +114,7 @@ public class server extends base_resource
 
 	/**
 	* <pre>
-	* The IP address used for translating dns obtained ip.
+	* IP address used to transform the server's DNS-resolved IP address.
 	* </pre>
 	*/
 	public void set_translationip(String translationip) throws Exception{
@@ -120,7 +123,7 @@ public class server extends base_resource
 
 	/**
 	* <pre>
-	* The IP address used for translating dns obtained ip.
+	* IP address used to transform the server's DNS-resolved IP address.
 	* </pre>
 	*/
 	public String get_translationip() throws Exception {
@@ -147,7 +150,7 @@ public class server extends base_resource
 
 	/**
 	* <pre>
-	* The duration in seconds for which NetScaler system waits to send the next dns query to resolve the domain name, in case the last query failed. If last query succeeds, the netscaler system waits for TTL time in the response.<br> Default value: 5<br> Minimum value =  5<br> Maximum value =  20939
+	* Time, in seconds, for which the NetScaler appliance must wait, after DNS resolution fails, before sending the next DNS query to resolve the domain name.<br> Default value: 5<br> Minimum value =  5<br> Maximum value =  20939
 	* </pre>
 	*/
 	public void set_domainresolveretry(int domainresolveretry) throws Exception {
@@ -156,7 +159,7 @@ public class server extends base_resource
 
 	/**
 	* <pre>
-	* The duration in seconds for which NetScaler system waits to send the next dns query to resolve the domain name, in case the last query failed. If last query succeeds, the netscaler system waits for TTL time in the response.<br> Default value: 5<br> Minimum value =  5<br> Maximum value =  20939
+	* Time, in seconds, for which the NetScaler appliance must wait, after DNS resolution fails, before sending the next DNS query to resolve the domain name.<br> Default value: 5<br> Minimum value =  5<br> Maximum value =  20939
 	* </pre>
 	*/
 	public void set_domainresolveretry(Integer domainresolveretry) throws Exception{
@@ -165,7 +168,7 @@ public class server extends base_resource
 
 	/**
 	* <pre>
-	* The duration in seconds for which NetScaler system waits to send the next dns query to resolve the domain name, in case the last query failed. If last query succeeds, the netscaler system waits for TTL time in the response.<br> Default value: 5<br> Minimum value =  5<br> Maximum value =  20939
+	* Time, in seconds, for which the NetScaler appliance must wait, after DNS resolution fails, before sending the next DNS query to resolve the domain name.<br> Default value: 5<br> Minimum value =  5<br> Maximum value =  20939
 	* </pre>
 	*/
 	public Integer get_domainresolveretry() throws Exception {
@@ -174,7 +177,7 @@ public class server extends base_resource
 
 	/**
 	* <pre>
-	* The initial state of the service.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Initial state of the server.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_state(String state) throws Exception{
@@ -183,7 +186,7 @@ public class server extends base_resource
 
 	/**
 	* <pre>
-	* The initial state of the service.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Initial state of the server.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_state() throws Exception {
@@ -192,7 +195,7 @@ public class server extends base_resource
 
 	/**
 	* <pre>
-	* Defines whether server is of type ipv6 or not for DBS services.<br> Default value: NO<br> Possible values = YES, NO
+	* Support IPv6 addressing mode. If you configure a server with the IPv6 addressing mode, you cannot use the server in the IPv4 addressing mode.<br> Default value: NO<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public void set_ipv6address(String ipv6address) throws Exception{
@@ -201,7 +204,7 @@ public class server extends base_resource
 
 	/**
 	* <pre>
-	* Defines whether server is of type ipv6 or not for DBS services.<br> Default value: NO<br> Possible values = YES, NO
+	* Support IPv6 addressing mode. If you configure a server with the IPv6 addressing mode, you cannot use the server in the IPv4 addressing mode.<br> Default value: NO<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public String get_ipv6address() throws Exception {
@@ -210,43 +213,7 @@ public class server extends base_resource
 
 	/**
 	* <pre>
-	* Domain of service.<br> Minimum length =  3<br> Maximum length =  252
-	* </pre>
-	*/
-	public void set_aaa_tm_kbr_domain(String aaa_tm_kbr_domain) throws Exception{
-		this.aaa_tm_kbr_domain = aaa_tm_kbr_domain;
-	}
-
-	/**
-	* <pre>
-	* Domain of service.<br> Minimum length =  3<br> Maximum length =  252
-	* </pre>
-	*/
-	public String get_aaa_tm_kbr_domain() throws Exception {
-		return this.aaa_tm_kbr_domain;
-	}
-
-	/**
-	* <pre>
-	* Realm.<br> Minimum length =  3<br> Maximum length =  252
-	* </pre>
-	*/
-	public void set_realm(String realm) throws Exception{
-		this.realm = realm;
-	}
-
-	/**
-	* <pre>
-	* Realm.<br> Minimum length =  3<br> Maximum length =  252
-	* </pre>
-	*/
-	public String get_realm() throws Exception {
-		return this.realm;
-	}
-
-	/**
-	* <pre>
-	* Comments associated with this server.
+	* Any information about the server.
 	* </pre>
 	*/
 	public void set_comment(String comment) throws Exception{
@@ -255,7 +222,7 @@ public class server extends base_resource
 
 	/**
 	* <pre>
-	* Comments associated with this server.
+	* Any information about the server.
 	* </pre>
 	*/
 	public String get_comment() throws Exception {
@@ -264,7 +231,34 @@ public class server extends base_resource
 
 	/**
 	* <pre>
-	* Restart the probe for this domain based server, immediately.
+	* Traffic Domain Id.<br> Minimum value =  0<br> Maximum value =  4094
+	* </pre>
+	*/
+	public void set_td(long td) throws Exception {
+		this.td = new Long(td);
+	}
+
+	/**
+	* <pre>
+	* Traffic Domain Id.<br> Minimum value =  0<br> Maximum value =  4094
+	* </pre>
+	*/
+	public void set_td(Long td) throws Exception{
+		this.td = td;
+	}
+
+	/**
+	* <pre>
+	* Traffic Domain Id.<br> Minimum value =  0<br> Maximum value =  4094
+	* </pre>
+	*/
+	public Long get_td() throws Exception {
+		return this.td;
+	}
+
+	/**
+	* <pre>
+	* Immediately send a DNS query to resolve the server's domain name.
 	* </pre>
 	*/
 	public void set_domainresolvenow(boolean domainresolvenow) throws Exception {
@@ -273,7 +267,7 @@ public class server extends base_resource
 
 	/**
 	* <pre>
-	* Restart the probe for this domain based server, immediately.
+	* Immediately send a DNS query to resolve the server's domain name.
 	* </pre>
 	*/
 	public void set_domainresolvenow(Boolean domainresolvenow) throws Exception{
@@ -282,7 +276,7 @@ public class server extends base_resource
 
 	/**
 	* <pre>
-	* Restart the probe for this domain based server, immediately.
+	* Immediately send a DNS query to resolve the server's domain name.
 	* </pre>
 	*/
 	public Boolean get_domainresolvenow() throws Exception {
@@ -291,7 +285,7 @@ public class server extends base_resource
 
 	/**
 	* <pre>
-	* The time in seconds after which all services in this server are brought down.
+	* Time, in seconds, after which all the services configured on the server are disabled.
 	* </pre>
 	*/
 	public void set_delay(long delay) throws Exception {
@@ -300,7 +294,7 @@ public class server extends base_resource
 
 	/**
 	* <pre>
-	* The time in seconds after which all services in this server are brought down.
+	* Time, in seconds, after which all the services configured on the server are disabled.
 	* </pre>
 	*/
 	public void set_delay(Long delay) throws Exception{
@@ -309,7 +303,7 @@ public class server extends base_resource
 
 	/**
 	* <pre>
-	* The time in seconds after which all services in this server are brought down.
+	* Time, in seconds, after which all the services configured on the server are disabled.
 	* </pre>
 	*/
 	public Long get_delay() throws Exception {
@@ -318,7 +312,7 @@ public class server extends base_resource
 
 	/**
 	* <pre>
-	* Indicates graceful shutdown of the service. System will wait for all outstanding connections to this service to be closed before disabling the service.<br> Default value: NO<br> Possible values = YES, NO
+	* Shut down gracefully, without accepting any new connections, and disabling each service when all of its connections are closed.<br> Default value: NO<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public void set_graceful(String graceful) throws Exception{
@@ -327,7 +321,7 @@ public class server extends base_resource
 
 	/**
 	* <pre>
-	* Indicates graceful shutdown of the service. System will wait for all outstanding connections to this service to be closed before disabling the service.<br> Default value: NO<br> Possible values = YES, NO
+	* Shut down gracefully, without accepting any new connections, and disabling each service when all of its connections are closed.<br> Default value: NO<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public String get_graceful() throws Exception {
@@ -336,7 +330,7 @@ public class server extends base_resource
 
 	/**
 	* <pre>
-	* Display internally created named servers.
+	* Display names of the servers that have been created for internal use.
 	* </pre>
 	*/
 	public void set_Internal(boolean Internal) throws Exception {
@@ -345,7 +339,7 @@ public class server extends base_resource
 
 	/**
 	* <pre>
-	* Display internally created named servers.
+	* Display names of the servers that have been created for internal use.
 	* </pre>
 	*/
 	public void set_Internal(Boolean Internal) throws Exception{
@@ -354,7 +348,7 @@ public class server extends base_resource
 
 	/**
 	* <pre>
-	* Display internally created named servers.
+	* Display names of the servers that have been created for internal use.
 	* </pre>
 	*/
 	public Boolean get_Internal() throws Exception {
@@ -363,7 +357,7 @@ public class server extends base_resource
 
 	/**
 	* <pre>
-	* The new name of the server.<br> Minimum length =  1
+	* New name for the server. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_newname(String newname) throws Exception{
@@ -372,7 +366,7 @@ public class server extends base_resource
 
 	/**
 	* <pre>
-	* The new name of the server.<br> Minimum length =  1
+	* New name for the server. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_newname() throws Exception {
@@ -444,9 +438,8 @@ public class server extends base_resource
 		addresource.domainresolveretry = resource.domainresolveretry;
 		addresource.state = resource.state;
 		addresource.ipv6address = resource.ipv6address;
-		addresource.aaa_tm_kbr_domain = resource.aaa_tm_kbr_domain;
-		addresource.realm = resource.realm;
 		addresource.comment = resource.comment;
+		addresource.td = resource.td;
 		return addresource.add_resource(client);
 	}
 
@@ -467,9 +460,8 @@ public class server extends base_resource
 				addresources[i].domainresolveretry = resources[i].domainresolveretry;
 				addresources[i].state = resources[i].state;
 				addresources[i].ipv6address = resources[i].ipv6address;
-				addresources[i].aaa_tm_kbr_domain = resources[i].aaa_tm_kbr_domain;
-				addresources[i].realm = resources[i].realm;
 				addresources[i].comment = resources[i].comment;
+				addresources[i].td = resources[i].td;
 			}
 			result = add_bulk_request(client, addresources);
 		}
@@ -537,8 +529,6 @@ public class server extends base_resource
 		updateresource.translationip = resource.translationip;
 		updateresource.translationmask = resource.translationmask;
 		updateresource.domainresolvenow = resource.domainresolvenow;
-		updateresource.aaa_tm_kbr_domain = resource.aaa_tm_kbr_domain;
-		updateresource.realm = resource.realm;
 		updateresource.comment = resource.comment;
 		return updateresource.update_resource(client);
 	}
@@ -558,8 +548,6 @@ public class server extends base_resource
 				updateresources[i].translationip = resources[i].translationip;
 				updateresources[i].translationmask = resources[i].translationmask;
 				updateresources[i].domainresolvenow = resources[i].domainresolvenow;
-				updateresources[i].aaa_tm_kbr_domain = resources[i].aaa_tm_kbr_domain;
-				updateresources[i].realm = resources[i].realm;
 				updateresources[i].comment = resources[i].comment;
 			}
 			result = update_bulk_request(client, updateresources);
@@ -571,22 +559,9 @@ public class server extends base_resource
 	* Use this API to unset the properties of server resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String name, String args[]) throws Exception {
-		server unsetresource = new server();
-		unsetresource.name = name;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of server resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, server resource, String[] args) throws Exception{
 		server unsetresource = new server();
 		unsetresource.name = resource.name;
-		unsetresource.aaa_tm_kbr_domain = resource.aaa_tm_kbr_domain;
-		unsetresource.realm = resource.realm;
-		unsetresource.comment = resource.comment;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -618,9 +593,6 @@ public class server extends base_resource
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new server();
 				unsetresources[i].name = resources[i].name;
-				unsetresources[i].aaa_tm_kbr_domain = resources[i].aaa_tm_kbr_domain;
-				unsetresources[i].realm = resources[i].realm;
-				unsetresources[i].comment = resources[i].comment;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}

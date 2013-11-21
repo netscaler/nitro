@@ -36,7 +36,11 @@ public class rewriteparam extends base_resource
 
 	/**
 	* <pre>
-	* can be NOREWRITE, RESET or DROP.<br> Default value: "NOREWRITE"
+	* Action to perform if the result of policy evaluation is undefined (UNDEF). An UNDEF event indicates an internal error condition.
+Available settings function as follows:
+* NOOP - Send the request to the protected server instead of responding to it.
+* RESET - Reset the request and notify the user’s browser, so that the user can resend the request.
+* DROP - Drop the request without sending a response to the user.<br> Default value: "NOREWRITE"
 	* </pre>
 	*/
 	public void set_undefaction(String undefaction) throws Exception{
@@ -45,7 +49,11 @@ public class rewriteparam extends base_resource
 
 	/**
 	* <pre>
-	* can be NOREWRITE, RESET or DROP.<br> Default value: "NOREWRITE"
+	* Action to perform if the result of policy evaluation is undefined (UNDEF). An UNDEF event indicates an internal error condition.
+Available settings function as follows:
+* NOOP - Send the request to the protected server instead of responding to it.
+* RESET - Reset the request and notify the user’s browser, so that the user can resend the request.
+* DROP - Drop the request without sending a response to the user.<br> Default value: "NOREWRITE"
 	* </pre>
 	*/
 	public String get_undefaction() throws Exception {
@@ -103,7 +111,6 @@ public class rewriteparam extends base_resource
 	*/
 	public static base_response unset(nitro_service client, rewriteparam resource, String[] args) throws Exception{
 		rewriteparam unsetresource = new rewriteparam();
-		unsetresource.undefaction = resource.undefaction;
 		return unsetresource.unset_resource(client,args);
 	}
 

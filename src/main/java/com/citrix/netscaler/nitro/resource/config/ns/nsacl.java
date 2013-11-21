@@ -34,6 +34,7 @@ public class nsacl extends base_resource
 {
 	private String aclname;
 	private String aclaction;
+	private Long td;
 	private Boolean srcip;
 	private String srcipop;
 	private String srcipval;
@@ -69,7 +70,7 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* The alphanumeric name of the ACL.<br> Minimum length =  1
+	* Name for the extended ACL rule. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Can be changed after the extended ACL rule is created.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_aclname(String aclname) throws Exception{
@@ -78,7 +79,7 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* The alphanumeric name of the ACL.<br> Minimum length =  1
+	* Name for the extended ACL rule. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Can be changed after the extended ACL rule is created.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_aclname() throws Exception {
@@ -87,7 +88,11 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* The action associated with the ACL.<br> Possible values = BRIDGE, DENY, ALLOW
+	* Action to perform on incoming IPv4 packets that match the extended ACL rule. 
+Available settings function as follows:
+* ALLOW - The NetScaler appliance processes the packet.
+* BRIDGE - The NetScaler appliance bridges the packet to the destination without processing it.
+* DENY - The NetScaler appliance drops the packet.<br> Possible values = BRIDGE, DENY, ALLOW
 	* </pre>
 	*/
 	public void set_aclaction(String aclaction) throws Exception{
@@ -96,7 +101,11 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* The action associated with the ACL.<br> Possible values = BRIDGE, DENY, ALLOW
+	* Action to perform on incoming IPv4 packets that match the extended ACL rule. 
+Available settings function as follows:
+* ALLOW - The NetScaler appliance processes the packet.
+* BRIDGE - The NetScaler appliance bridges the packet to the destination without processing it.
+* DENY - The NetScaler appliance drops the packet.<br> Possible values = BRIDGE, DENY, ALLOW
 	* </pre>
 	*/
 	public String get_aclaction() throws Exception {
@@ -105,7 +114,34 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* The source IP address (range).
+	* Traffic Domain Id.<br> Minimum value =  0<br> Maximum value =  4094
+	* </pre>
+	*/
+	public void set_td(long td) throws Exception {
+		this.td = new Long(td);
+	}
+
+	/**
+	* <pre>
+	* Traffic Domain Id.<br> Minimum value =  0<br> Maximum value =  4094
+	* </pre>
+	*/
+	public void set_td(Long td) throws Exception{
+		this.td = td;
+	}
+
+	/**
+	* <pre>
+	* Traffic Domain Id.<br> Minimum value =  0<br> Maximum value =  4094
+	* </pre>
+	*/
+	public Long get_td() throws Exception {
+		return this.td;
+	}
+
+	/**
+	* <pre>
+	* IP address or range of IP addresses to match against the source IP address of an incoming IPv4 packet. In the command line interface, separate the range with a hyphen and enclose within brackets. For example: [10.102.29.30-10.102.29.189].
 	* </pre>
 	*/
 	public void set_srcip(boolean srcip) throws Exception {
@@ -114,7 +150,7 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* The source IP address (range).
+	* IP address or range of IP addresses to match against the source IP address of an incoming IPv4 packet. In the command line interface, separate the range with a hyphen and enclose within brackets. For example: [10.102.29.30-10.102.29.189].
 	* </pre>
 	*/
 	public void set_srcip(Boolean srcip) throws Exception{
@@ -123,7 +159,7 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* The source IP address (range).
+	* IP address or range of IP addresses to match against the source IP address of an incoming IPv4 packet. In the command line interface, separate the range with a hyphen and enclose within brackets. For example: [10.102.29.30-10.102.29.189].
 	* </pre>
 	*/
 	public Boolean get_srcip() throws Exception {
@@ -132,7 +168,7 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* Logical operator.<br> Possible values = =, !=, EQ, NEQ
+	* Either the equals (=) or does not equal (!=) logical operator.<br> Possible values = =, !=, EQ, NEQ
 	* </pre>
 	*/
 	public void set_srcipop(String srcipop) throws Exception{
@@ -141,7 +177,7 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* Logical operator.<br> Possible values = =, !=, EQ, NEQ
+	* Either the equals (=) or does not equal (!=) logical operator.<br> Possible values = =, !=, EQ, NEQ
 	* </pre>
 	*/
 	public String get_srcipop() throws Exception {
@@ -150,7 +186,7 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* The source IP address (range).
+	* IP address or range of IP addresses to match against the source IP address of an incoming IPv4 packet. In the command line interface, separate the range with a hyphen and enclose within brackets. For example: [10.102.29.30-10.102.29.189].
 	* </pre>
 	*/
 	public void set_srcipval(String srcipval) throws Exception{
@@ -159,7 +195,7 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* The source IP address (range).
+	* IP address or range of IP addresses to match against the source IP address of an incoming IPv4 packet. In the command line interface, separate the range with a hyphen and enclose within brackets. For example: [10.102.29.30-10.102.29.189].
 	* </pre>
 	*/
 	public String get_srcipval() throws Exception {
@@ -168,7 +204,7 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* The source Port (range).
+	* Port number or range of port numbers to match against the source port number of an incoming IPv4 packet. In the command line interface, separate the range with a hyphen and enclose within brackets. For example: [40-90].
 	* </pre>
 	*/
 	public void set_srcport(boolean srcport) throws Exception {
@@ -177,7 +213,7 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* The source Port (range).
+	* Port number or range of port numbers to match against the source port number of an incoming IPv4 packet. In the command line interface, separate the range with a hyphen and enclose within brackets. For example: [40-90].
 	* </pre>
 	*/
 	public void set_srcport(Boolean srcport) throws Exception{
@@ -186,7 +222,7 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* The source Port (range).
+	* Port number or range of port numbers to match against the source port number of an incoming IPv4 packet. In the command line interface, separate the range with a hyphen and enclose within brackets. For example: [40-90].
 	* </pre>
 	*/
 	public Boolean get_srcport() throws Exception {
@@ -195,7 +231,7 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* Logical operator.<br> Possible values = =, !=, EQ, NEQ
+	* Either the equals (=) or does not equal (!=) logical operator.<br> Possible values = =, !=, EQ, NEQ
 	* </pre>
 	*/
 	public void set_srcportop(String srcportop) throws Exception{
@@ -204,7 +240,7 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* Logical operator.<br> Possible values = =, !=, EQ, NEQ
+	* Either the equals (=) or does not equal (!=) logical operator.<br> Possible values = =, !=, EQ, NEQ
 	* </pre>
 	*/
 	public String get_srcportop() throws Exception {
@@ -213,7 +249,7 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* The source Port (range).<br> Maximum length =  65535
+	* Port number or range of port numbers to match against the source port number of an incoming IPv4 packet. In the command line interface, separate the range with a hyphen and enclose within brackets. For example: [40-90].<br> Maximum length =  65535
 	* </pre>
 	*/
 	public void set_srcportval(String srcportval) throws Exception{
@@ -222,7 +258,7 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* The source Port (range).<br> Maximum length =  65535
+	* Port number or range of port numbers to match against the source port number of an incoming IPv4 packet. In the command line interface, separate the range with a hyphen and enclose within brackets. For example: [40-90].<br> Maximum length =  65535
 	* </pre>
 	*/
 	public String get_srcportval() throws Exception {
@@ -231,7 +267,7 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* The destination IP address (range).
+	* IP address or range of IP addresses to match against the destination IP address of an incoming IPv4 packet.  In the command line interface, separate the range with a hyphen and enclose within brackets. For example: [10.102.29.30-10.102.29.189].
 	* </pre>
 	*/
 	public void set_destip(boolean destip) throws Exception {
@@ -240,7 +276,7 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* The destination IP address (range).
+	* IP address or range of IP addresses to match against the destination IP address of an incoming IPv4 packet.  In the command line interface, separate the range with a hyphen and enclose within brackets. For example: [10.102.29.30-10.102.29.189].
 	* </pre>
 	*/
 	public void set_destip(Boolean destip) throws Exception{
@@ -249,7 +285,7 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* The destination IP address (range).
+	* IP address or range of IP addresses to match against the destination IP address of an incoming IPv4 packet.  In the command line interface, separate the range with a hyphen and enclose within brackets. For example: [10.102.29.30-10.102.29.189].
 	* </pre>
 	*/
 	public Boolean get_destip() throws Exception {
@@ -258,7 +294,7 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* Logical operator.<br> Possible values = =, !=, EQ, NEQ
+	* Either the equals (=) or does not equal (!=) logical operator.<br> Possible values = =, !=, EQ, NEQ
 	* </pre>
 	*/
 	public void set_destipop(String destipop) throws Exception{
@@ -267,7 +303,7 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* Logical operator.<br> Possible values = =, !=, EQ, NEQ
+	* Either the equals (=) or does not equal (!=) logical operator.<br> Possible values = =, !=, EQ, NEQ
 	* </pre>
 	*/
 	public String get_destipop() throws Exception {
@@ -276,7 +312,7 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* The destination IP address (range).
+	* IP address or range of IP addresses to match against the destination IP address of an incoming IPv4 packet.  In the command line interface, separate the range with a hyphen and enclose within brackets. For example: [10.102.29.30-10.102.29.189].
 	* </pre>
 	*/
 	public void set_destipval(String destipval) throws Exception{
@@ -285,7 +321,7 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* The destination IP address (range).
+	* IP address or range of IP addresses to match against the destination IP address of an incoming IPv4 packet.  In the command line interface, separate the range with a hyphen and enclose within brackets. For example: [10.102.29.30-10.102.29.189].
 	* </pre>
 	*/
 	public String get_destipval() throws Exception {
@@ -294,7 +330,9 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* The destination Port (range).
+	* Port number or range of port numbers to match against the destination port number of an incoming IPv4 packet. In the command line interface, separate the range with a hyphen and enclose within brackets. For example: [40-90]. 
+
+Note: The destination port can be specified only for TCP and UDP protocols.
 	* </pre>
 	*/
 	public void set_destport(boolean destport) throws Exception {
@@ -303,7 +341,9 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* The destination Port (range).
+	* Port number or range of port numbers to match against the destination port number of an incoming IPv4 packet. In the command line interface, separate the range with a hyphen and enclose within brackets. For example: [40-90]. 
+
+Note: The destination port can be specified only for TCP and UDP protocols.
 	* </pre>
 	*/
 	public void set_destport(Boolean destport) throws Exception{
@@ -312,7 +352,9 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* The destination Port (range).
+	* Port number or range of port numbers to match against the destination port number of an incoming IPv4 packet. In the command line interface, separate the range with a hyphen and enclose within brackets. For example: [40-90]. 
+
+Note: The destination port can be specified only for TCP and UDP protocols.
 	* </pre>
 	*/
 	public Boolean get_destport() throws Exception {
@@ -321,7 +363,7 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* Logical operator.<br> Possible values = =, !=, EQ, NEQ
+	* Either the equals (=) or does not equal (!=) logical operator.<br> Possible values = =, !=, EQ, NEQ
 	* </pre>
 	*/
 	public void set_destportop(String destportop) throws Exception{
@@ -330,7 +372,7 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* Logical operator.<br> Possible values = =, !=, EQ, NEQ
+	* Either the equals (=) or does not equal (!=) logical operator.<br> Possible values = =, !=, EQ, NEQ
 	* </pre>
 	*/
 	public String get_destportop() throws Exception {
@@ -339,7 +381,9 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* The destination Port (range).<br> Maximum length =  65535
+	* Port number or range of port numbers to match against the destination port number of an incoming IPv4 packet. In the command line interface, separate the range with a hyphen and enclose within brackets. For example: [40-90]. 
+
+Note: The destination port can be specified only for TCP and UDP protocols.<br> Maximum length =  65535
 	* </pre>
 	*/
 	public void set_destportval(String destportval) throws Exception{
@@ -348,7 +392,9 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* The destination Port (range).<br> Maximum length =  65535
+	* Port number or range of port numbers to match against the destination port number of an incoming IPv4 packet. In the command line interface, separate the range with a hyphen and enclose within brackets. For example: [40-90]. 
+
+Note: The destination port can be specified only for TCP and UDP protocols.<br> Maximum length =  65535
 	* </pre>
 	*/
 	public String get_destportval() throws Exception {
@@ -357,7 +403,7 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* The time to expire this ACL(in seconds).<br> Minimum value =  1<br> Maximum value =  2147483647
+	* Number of seconds, in multiples of four, after which the extended ACL rule expires. If you do not want the extended ACL rule to expire, do not specify a TTL value.<br> Minimum value =  1<br> Maximum value =  2147483647
 	* </pre>
 	*/
 	public void set_ttl(long ttl) throws Exception {
@@ -366,7 +412,7 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* The time to expire this ACL(in seconds).<br> Minimum value =  1<br> Maximum value =  2147483647
+	* Number of seconds, in multiples of four, after which the extended ACL rule expires. If you do not want the extended ACL rule to expire, do not specify a TTL value.<br> Minimum value =  1<br> Maximum value =  2147483647
 	* </pre>
 	*/
 	public void set_ttl(Long ttl) throws Exception{
@@ -375,7 +421,7 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* The time to expire this ACL(in seconds).<br> Minimum value =  1<br> Maximum value =  2147483647
+	* Number of seconds, in multiples of four, after which the extended ACL rule expires. If you do not want the extended ACL rule to expire, do not specify a TTL value.<br> Minimum value =  1<br> Maximum value =  2147483647
 	* </pre>
 	*/
 	public Long get_ttl() throws Exception {
@@ -384,7 +430,7 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* The source MAC address.
+	* MAC address to match against the source MAC address of an incoming IPv4 packet.
 	* </pre>
 	*/
 	public void set_srcmac(String srcmac) throws Exception{
@@ -393,7 +439,7 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* The source MAC address.
+	* MAC address to match against the source MAC address of an incoming IPv4 packet.
 	* </pre>
 	*/
 	public String get_srcmac() throws Exception {
@@ -402,7 +448,7 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* The IP protocol name.<br> Possible values = ICMP, IGMP, TCP, EGP, IGP, ARGUS, UDP, RDP, RSVP, EIGRP, L2TP, ISIS
+	* Protocol to match against the protocol of an incoming IPv4 packet.<br> Possible values = ICMP, IGMP, TCP, EGP, IGP, ARGUS, UDP, RDP, RSVP, EIGRP, L2TP, ISIS
 	* </pre>
 	*/
 	public void set_protocol(String protocol) throws Exception{
@@ -411,7 +457,7 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* The IP protocol name.<br> Possible values = ICMP, IGMP, TCP, EGP, IGP, ARGUS, UDP, RDP, RSVP, EIGRP, L2TP, ISIS
+	* Protocol to match against the protocol of an incoming IPv4 packet.<br> Possible values = ICMP, IGMP, TCP, EGP, IGP, ARGUS, UDP, RDP, RSVP, EIGRP, L2TP, ISIS
 	* </pre>
 	*/
 	public String get_protocol() throws Exception {
@@ -420,7 +466,7 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* The IP protocol number (decimal).<br> Minimum value =  1<br> Maximum value =  255
+	* Protocol to match against the protocol of an incoming IPv4 packet.<br> Minimum value =  1<br> Maximum value =  255
 	* </pre>
 	*/
 	public void set_protocolnumber(long protocolnumber) throws Exception {
@@ -429,7 +475,7 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* The IP protocol number (decimal).<br> Minimum value =  1<br> Maximum value =  255
+	* Protocol to match against the protocol of an incoming IPv4 packet.<br> Minimum value =  1<br> Maximum value =  255
 	* </pre>
 	*/
 	public void set_protocolnumber(Long protocolnumber) throws Exception{
@@ -438,7 +484,7 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* The IP protocol number (decimal).<br> Minimum value =  1<br> Maximum value =  255
+	* Protocol to match against the protocol of an incoming IPv4 packet.<br> Minimum value =  1<br> Maximum value =  255
 	* </pre>
 	*/
 	public Long get_protocolnumber() throws Exception {
@@ -447,7 +493,7 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* The VLAN number.<br> Minimum value =  1<br> Maximum value =  4094
+	* ID of the VLAN. The NetScaler appliance applies the ACL rule only to the incoming packets of the specified VLAN. If you do not specify a VLAN ID, the appliance applies the ACL rule to the incoming packets on all VLANs.<br> Minimum value =  1<br> Maximum value =  4094
 	* </pre>
 	*/
 	public void set_vlan(long vlan) throws Exception {
@@ -456,7 +502,7 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* The VLAN number.<br> Minimum value =  1<br> Maximum value =  4094
+	* ID of the VLAN. The NetScaler appliance applies the ACL rule only to the incoming packets of the specified VLAN. If you do not specify a VLAN ID, the appliance applies the ACL rule to the incoming packets on all VLANs.<br> Minimum value =  1<br> Maximum value =  4094
 	* </pre>
 	*/
 	public void set_vlan(Long vlan) throws Exception{
@@ -465,7 +511,7 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* The VLAN number.<br> Minimum value =  1<br> Maximum value =  4094
+	* ID of the VLAN. The NetScaler appliance applies the ACL rule only to the incoming packets of the specified VLAN. If you do not specify a VLAN ID, the appliance applies the ACL rule to the incoming packets on all VLANs.<br> Minimum value =  1<br> Maximum value =  4094
 	* </pre>
 	*/
 	public Long get_vlan() throws Exception {
@@ -474,7 +520,7 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* The physical interface.
+	* ID of an interface. The NetScaler appliance applies the ACL rule only to the incoming packets from the specified interface. If you do not specify any value, the appliance applies the ACL rule to the incoming packets of all interfaces.
 	* </pre>
 	*/
 	public void set_Interface(String Interface) throws Exception{
@@ -483,7 +529,7 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* The physical interface.
+	* ID of an interface. The NetScaler appliance applies the ACL rule only to the incoming packets from the specified interface. If you do not specify any value, the appliance applies the ACL rule to the incoming packets of all interfaces.
 	* </pre>
 	*/
 	public String get_Interface() throws Exception {
@@ -492,7 +538,7 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* This argument indicates that the ACL should be used for TCP response traffic only.
+	* Allow only incoming TCP packets that have the ACK or RST bit set, if the action set for the ACL rule is ALLOW and these packets match the other conditions in the ACL rule.
 	* </pre>
 	*/
 	public void set_established(boolean established) throws Exception {
@@ -501,7 +547,7 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* This argument indicates that the ACL should be used for TCP response traffic only.
+	* Allow only incoming TCP packets that have the ACK or RST bit set, if the action set for the ACL rule is ALLOW and these packets match the other conditions in the ACL rule.
 	* </pre>
 	*/
 	public void set_established(Boolean established) throws Exception{
@@ -510,7 +556,7 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* This argument indicates that the ACL should be used for TCP response traffic only.
+	* Allow only incoming TCP packets that have the ACK or RST bit set, if the action set for the ACL rule is ALLOW and these packets match the other conditions in the ACL rule.
 	* </pre>
 	*/
 	public Boolean get_established() throws Exception {
@@ -519,7 +565,9 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* The ICMP message type, valid values are 0-255.<br> Minimum value =  0<br> Maximum value =  65536
+	* ICMP Message type to match against the message type of an incoming ICMP packet. For example, to block DESTINATION UNREACHABLE messages, you must specify 3 as the ICMP type. 
+
+Note: This parameter can be specified only for the ICMP protocol.<br> Minimum value =  0<br> Maximum value =  65536
 	* </pre>
 	*/
 	public void set_icmptype(long icmptype) throws Exception {
@@ -528,7 +576,9 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* The ICMP message type, valid values are 0-255.<br> Minimum value =  0<br> Maximum value =  65536
+	* ICMP Message type to match against the message type of an incoming ICMP packet. For example, to block DESTINATION UNREACHABLE messages, you must specify 3 as the ICMP type. 
+
+Note: This parameter can be specified only for the ICMP protocol.<br> Minimum value =  0<br> Maximum value =  65536
 	* </pre>
 	*/
 	public void set_icmptype(Long icmptype) throws Exception{
@@ -537,7 +587,9 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* The ICMP message type, valid values are 0-255.<br> Minimum value =  0<br> Maximum value =  65536
+	* ICMP Message type to match against the message type of an incoming ICMP packet. For example, to block DESTINATION UNREACHABLE messages, you must specify 3 as the ICMP type. 
+
+Note: This parameter can be specified only for the ICMP protocol.<br> Minimum value =  0<br> Maximum value =  65536
 	* </pre>
 	*/
 	public Long get_icmptype() throws Exception {
@@ -546,7 +598,9 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* The ICMP message code, valid values are 0-255.<br> Minimum value =  0<br> Maximum value =  65536
+	* Code of a particular ICMP message type to match against the ICMP code of an incoming ICMP packet.  For example, to block DESTINATION HOST UNREACHABLE messages, specify 3 as the ICMP type and 1 as the ICMP code. 
+
+If you set this parameter, you must set the ICMP Type parameter.<br> Minimum value =  0<br> Maximum value =  65536
 	* </pre>
 	*/
 	public void set_icmpcode(long icmpcode) throws Exception {
@@ -555,7 +609,9 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* The ICMP message code, valid values are 0-255.<br> Minimum value =  0<br> Maximum value =  65536
+	* Code of a particular ICMP message type to match against the ICMP code of an incoming ICMP packet.  For example, to block DESTINATION HOST UNREACHABLE messages, specify 3 as the ICMP type and 1 as the ICMP code. 
+
+If you set this parameter, you must set the ICMP Type parameter.<br> Minimum value =  0<br> Maximum value =  65536
 	* </pre>
 	*/
 	public void set_icmpcode(Long icmpcode) throws Exception{
@@ -564,7 +620,9 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* The ICMP message code, valid values are 0-255.<br> Minimum value =  0<br> Maximum value =  65536
+	* Code of a particular ICMP message type to match against the ICMP code of an incoming ICMP packet.  For example, to block DESTINATION HOST UNREACHABLE messages, specify 3 as the ICMP type and 1 as the ICMP code. 
+
+If you set this parameter, you must set the ICMP Type parameter.<br> Minimum value =  0<br> Maximum value =  65536
 	* </pre>
 	*/
 	public Long get_icmpcode() throws Exception {
@@ -573,7 +631,7 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* The priority of the ACL.<br> Minimum value =  1<br> Maximum value =  100000
+	* Priority for the extended ACL rule that determines the order in which it is evaluated relative to the other extended ACL rules. If you do not specify priorities while creating extended ACL rules, the ACL rules are evaluated in the order in which they are created.<br> Minimum value =  1<br> Maximum value =  100000
 	* </pre>
 	*/
 	public void set_priority(long priority) throws Exception {
@@ -582,7 +640,7 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* The priority of the ACL.<br> Minimum value =  1<br> Maximum value =  100000
+	* Priority for the extended ACL rule that determines the order in which it is evaluated relative to the other extended ACL rules. If you do not specify priorities while creating extended ACL rules, the ACL rules are evaluated in the order in which they are created.<br> Minimum value =  1<br> Maximum value =  100000
 	* </pre>
 	*/
 	public void set_priority(Long priority) throws Exception{
@@ -591,7 +649,7 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* The priority of the ACL.<br> Minimum value =  1<br> Maximum value =  100000
+	* Priority for the extended ACL rule that determines the order in which it is evaluated relative to the other extended ACL rules. If you do not specify priorities while creating extended ACL rules, the ACL rules are evaluated in the order in which they are created.<br> Minimum value =  1<br> Maximum value =  100000
 	* </pre>
 	*/
 	public Long get_priority() throws Exception {
@@ -600,7 +658,7 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* The state of the ACL.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED, REMOVED
+	* Enable or disable the extended ACL rule. After you apply the extended ACL rules, the NetScaler appliance compares incoming packets against the enabled extended ACL rules.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_state(String state) throws Exception{
@@ -609,7 +667,7 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* The state of the ACL.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED, REMOVED
+	* Enable or disable the extended ACL rule. After you apply the extended ACL rules, the NetScaler appliance compares incoming packets against the enabled extended ACL rules.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_state() throws Exception {
@@ -618,7 +676,7 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* The logging state of the ACL.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Enable or disable logging of events related to the extended ACL rule. The log messages are stored in the configured syslog or auditlog server.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_logstate(String logstate) throws Exception{
@@ -627,7 +685,7 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* The logging state of the ACL.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Enable or disable logging of events related to the extended ACL rule. The log messages are stored in the configured syslog or auditlog server.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_logstate() throws Exception {
@@ -636,7 +694,7 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* log message rate limit for acl rule.<br> Default value: 100<br> Minimum value =  1<br> Maximum value =  10000
+	* Maximum number of log messages to be generated per second. If you set this parameter, you must enable the Log State parameter.<br> Default value: 100<br> Minimum value =  1<br> Maximum value =  10000
 	* </pre>
 	*/
 	public void set_ratelimit(long ratelimit) throws Exception {
@@ -645,7 +703,7 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* log message rate limit for acl rule.<br> Default value: 100<br> Minimum value =  1<br> Maximum value =  10000
+	* Maximum number of log messages to be generated per second. If you set this parameter, you must enable the Log State parameter.<br> Default value: 100<br> Minimum value =  1<br> Maximum value =  10000
 	* </pre>
 	*/
 	public void set_ratelimit(Long ratelimit) throws Exception{
@@ -654,7 +712,7 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* log message rate limit for acl rule.<br> Default value: 100<br> Minimum value =  1<br> Maximum value =  10000
+	* Maximum number of log messages to be generated per second. If you set this parameter, you must enable the Log State parameter.<br> Default value: 100<br> Minimum value =  1<br> Maximum value =  10000
 	* </pre>
 	*/
 	public Long get_ratelimit() throws Exception {
@@ -663,7 +721,7 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* The new name of the ACL rule.<br> Minimum length =  1
+	* New name for the extended ACL rule. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_newname(String newname) throws Exception{
@@ -672,7 +730,7 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* The new name of the ACL rule.<br> Minimum length =  1
+	* New name for the extended ACL rule. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_newname() throws Exception {
@@ -690,7 +748,7 @@ public class nsacl extends base_resource
 
 	/**
 	* <pre>
-	* The commit status of the ACL.<br> Default value: XACLNAPPLIED<br> Possible values = APPLIED, NOTAPPLIED, RE-APPLY, SFAPPLIED, SFNOTAPPLIED, SFAPPLIED61, SFNOTAPPLIED61
+	* The commit status of the ACL.<br> Default value: NOTAPPLIED<br> Possible values = APPLIED, NOTAPPLIED, RE-APPLY, SFAPPLIED, SFNOTAPPLIED, SFAPPLIED61, SFNOTAPPLIED61
 	* </pre>
 	*/
 	public String get_kernelstate() throws Exception {
@@ -738,6 +796,7 @@ public class nsacl extends base_resource
 		nsacl addresource = new nsacl();
 		addresource.aclname = resource.aclname;
 		addresource.aclaction = resource.aclaction;
+		addresource.td = resource.td;
 		addresource.srcip = resource.srcip;
 		addresource.srcipop = resource.srcipop;
 		addresource.srcipval = resource.srcipval;
@@ -777,6 +836,7 @@ public class nsacl extends base_resource
 				addresources[i] = new nsacl();
 				addresources[i].aclname = resources[i].aclname;
 				addresources[i].aclaction = resources[i].aclaction;
+				addresources[i].td = resources[i].td;
 				addresources[i].srcip = resources[i].srcip;
 				addresources[i].srcipop = resources[i].srcipop;
 				addresources[i].srcipval = resources[i].srcipval;
@@ -935,32 +995,9 @@ public class nsacl extends base_resource
 	* Use this API to unset the properties of nsacl resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String aclname, String args[]) throws Exception {
-		nsacl unsetresource = new nsacl();
-		unsetresource.aclname = aclname;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of nsacl resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, nsacl resource, String[] args) throws Exception{
 		nsacl unsetresource = new nsacl();
 		unsetresource.aclname = resource.aclname;
-		unsetresource.srcip = resource.srcip;
-		unsetresource.srcport = resource.srcport;
-		unsetresource.destip = resource.destip;
-		unsetresource.destport = resource.destport;
-		unsetresource.srcmac = resource.srcmac;
-		unsetresource.protocol = resource.protocol;
-		unsetresource.icmptype = resource.icmptype;
-		unsetresource.icmpcode = resource.icmpcode;
-		unsetresource.vlan = resource.vlan;
-		unsetresource.Interface = resource.Interface;
-		unsetresource.logstate = resource.logstate;
-		unsetresource.ratelimit = resource.ratelimit;
-		unsetresource.established = resource.established;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -992,19 +1029,6 @@ public class nsacl extends base_resource
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new nsacl();
 				unsetresources[i].aclname = resources[i].aclname;
-				unsetresources[i].srcip = resources[i].srcip;
-				unsetresources[i].srcport = resources[i].srcport;
-				unsetresources[i].destip = resources[i].destip;
-				unsetresources[i].destport = resources[i].destport;
-				unsetresources[i].srcmac = resources[i].srcmac;
-				unsetresources[i].protocol = resources[i].protocol;
-				unsetresources[i].icmptype = resources[i].icmptype;
-				unsetresources[i].icmpcode = resources[i].icmpcode;
-				unsetresources[i].vlan = resources[i].vlan;
-				unsetresources[i].Interface = resources[i].Interface;
-				unsetresources[i].logstate = resources[i].logstate;
-				unsetresources[i].ratelimit = resources[i].ratelimit;
-				unsetresources[i].established = resources[i].established;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}
@@ -1270,7 +1294,6 @@ public class nsacl extends base_resource
 	public static class stateEnum {
 		public static final String ENABLED = "ENABLED";
 		public static final String DISABLED = "DISABLED";
-		public static final String REMOVED = "REMOVED";
 	}
 	public static class kernelstateEnum {
 		public static final String APPLIED = "APPLIED";

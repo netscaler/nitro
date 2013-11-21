@@ -40,7 +40,7 @@ public class filterprebodyinjection extends base_resource
 
 	/**
 	* <pre>
-	* The file name for prebody.<br> Minimum length =  1
+	* Name of file whose contents are to be inserted before the response body.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_prebody(String prebody) throws Exception{
@@ -49,7 +49,7 @@ public class filterprebodyinjection extends base_resource
 
 	/**
 	* <pre>
-	* The file name for prebody.<br> Minimum length =  1
+	* Name of file whose contents are to be inserted before the response body.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_prebody() throws Exception {
@@ -116,7 +116,6 @@ public class filterprebodyinjection extends base_resource
 	*/
 	public static base_response unset(nitro_service client, filterprebodyinjection resource, String[] args) throws Exception{
 		filterprebodyinjection unsetresource = new filterprebodyinjection();
-		unsetresource.prebody = resource.prebody;
 		return unsetresource.unset_resource(client,args);
 	}
 

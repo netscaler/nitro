@@ -16,10 +16,10 @@
 
 package com.citrix.netscaler.nitro.resource.config.authentication;
 
-import com.citrix.netscaler.nitro.resource.config.authentication.authenticationlocalpolicy_vpnglobal_binding;
 import com.citrix.netscaler.nitro.resource.config.authentication.authenticationlocalpolicy_vpnvserver_binding;
 import com.citrix.netscaler.nitro.resource.config.authentication.authenticationlocalpolicy_systemglobal_binding;
 import com.citrix.netscaler.nitro.resource.config.authentication.authenticationlocalpolicy_authenticationvserver_binding;
+import com.citrix.netscaler.nitro.resource.config.authentication.authenticationlocalpolicy_vpnglobal_binding;
 import com.citrix.netscaler.nitro.resource.base.*;
 import com.citrix.netscaler.nitro.service.nitro_service;
 import com.citrix.netscaler.nitro.service.options;
@@ -37,14 +37,14 @@ class authenticationlocalpolicy_binding_response extends base_response
 public class authenticationlocalpolicy_binding extends base_resource
 {
 	private String name;
-	private authenticationlocalpolicy_vpnglobal_binding	authenticationlocalpolicy_vpnglobal_binding[] = null;
 	private authenticationlocalpolicy_vpnvserver_binding	authenticationlocalpolicy_vpnvserver_binding[] = null;
 	private authenticationlocalpolicy_systemglobal_binding	authenticationlocalpolicy_systemglobal_binding[] = null;
 	private authenticationlocalpolicy_authenticationvserver_binding	authenticationlocalpolicy_authenticationvserver_binding[] = null;
+	private authenticationlocalpolicy_vpnglobal_binding	authenticationlocalpolicy_vpnglobal_binding[] = null;
 
 	/**
 	* <pre>
-	* The name of the policy. If a name is not provided, all the configured LOCAL policies will be displayed.
+	* Name of the local authentication policy.
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -53,7 +53,7 @@ public class authenticationlocalpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the policy. If a name is not provided, all the configured LOCAL policies will be displayed.
+	* Name of the local authentication policy.
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -71,20 +71,20 @@ public class authenticationlocalpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* systemglobal that can be bound to authenticationlocalpolicy.
-	* </pre>
-	*/
-	public authenticationlocalpolicy_systemglobal_binding[] get_authenticationlocalpolicy_systemglobal_bindings() throws Exception {
-		return this.authenticationlocalpolicy_systemglobal_binding;
-	}
-
-	/**
-	* <pre>
 	* vpnglobal that can be bound to authenticationlocalpolicy.
 	* </pre>
 	*/
 	public authenticationlocalpolicy_vpnglobal_binding[] get_authenticationlocalpolicy_vpnglobal_bindings() throws Exception {
 		return this.authenticationlocalpolicy_vpnglobal_binding;
+	}
+
+	/**
+	* <pre>
+	* systemglobal that can be bound to authenticationlocalpolicy.
+	* </pre>
+	*/
+	public authenticationlocalpolicy_systemglobal_binding[] get_authenticationlocalpolicy_systemglobal_bindings() throws Exception {
+		return this.authenticationlocalpolicy_systemglobal_binding;
 	}
 
 	/**

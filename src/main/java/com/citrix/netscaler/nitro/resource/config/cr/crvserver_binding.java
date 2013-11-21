@@ -18,6 +18,7 @@ package com.citrix.netscaler.nitro.resource.config.cr;
 
 import com.citrix.netscaler.nitro.resource.config.cr.crvserver_filterpolicy_binding;
 import com.citrix.netscaler.nitro.resource.config.cr.crvserver_cmppolicy_binding;
+import com.citrix.netscaler.nitro.resource.config.cr.crvserver_lbvserver_binding;
 import com.citrix.netscaler.nitro.resource.config.cr.crvserver_policymap_binding;
 import com.citrix.netscaler.nitro.resource.config.cr.crvserver_cspolicy_binding;
 import com.citrix.netscaler.nitro.resource.config.cr.crvserver_crpolicy_binding;
@@ -40,13 +41,14 @@ public class crvserver_binding extends base_resource
 	private String name;
 	private crvserver_filterpolicy_binding	crvserver_filterpolicy_binding[] = null;
 	private crvserver_cmppolicy_binding	crvserver_cmppolicy_binding[] = null;
+	private crvserver_lbvserver_binding	crvserver_lbvserver_binding[] = null;
 	private crvserver_policymap_binding	crvserver_policymap_binding[] = null;
 	private crvserver_cspolicy_binding	crvserver_cspolicy_binding[] = null;
 	private crvserver_crpolicy_binding	crvserver_crpolicy_binding[] = null;
 
 	/**
 	* <pre>
-	* The name of the cache redirection virtual server.<br> Minimum length =  1
+	* Name of a cache redirection virtual server about which to display detailed information.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -55,7 +57,7 @@ public class crvserver_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the cache redirection virtual server.<br> Minimum length =  1
+	* Name of a cache redirection virtual server about which to display detailed information.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -69,6 +71,15 @@ public class crvserver_binding extends base_resource
 	*/
 	public crvserver_policymap_binding[] get_crvserver_policymap_bindings() throws Exception {
 		return this.crvserver_policymap_binding;
+	}
+
+	/**
+	* <pre>
+	* lbvserver that can be bound to crvserver.
+	* </pre>
+	*/
+	public crvserver_lbvserver_binding[] get_crvserver_lbvserver_bindings() throws Exception {
+		return this.crvserver_lbvserver_binding;
 	}
 
 	/**

@@ -51,7 +51,7 @@ public class dnspolicy extends base_resource
 
 	/**
 	* <pre>
-	* Name of the dns policy.
+	* Name for the DNS policy.
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -60,7 +60,7 @@ public class dnspolicy extends base_resource
 
 	/**
 	* <pre>
-	* Name of the dns policy.
+	* Name for the DNS policy.
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -69,7 +69,13 @@ public class dnspolicy extends base_resource
 
 	/**
 	* <pre>
-	* Expression to be used by the dns policy.
+	* Expression against which DNS traffic is evaluated. Written in the default syntax.
+Note:
+* On the command line interface, if the expression includes blank spaces, the entire expression must be enclosed in double quotation marks.
+* If the expression itself includes double quotation marks, you must escape the quotations by using the  character. 
+* Alternatively, you can use single quotation marks to enclose the rule, in which case you do not have to escape the double quotation marks. 
+Maximum length of a string literal in the expression is 255 characters. A longer string can be split into smaller strings of up to 255 characters each, and the smaller strings concatenated with the + operator. For example, you can create a 500-character string as follows: '"<string of 255 characters>" + "<string of 245 characters>"'
+Example: CLIENT.UDP.DNS.DOMAIN.EQ("domainname").
 	* </pre>
 	*/
 	public void set_rule(String rule) throws Exception{
@@ -78,7 +84,13 @@ public class dnspolicy extends base_resource
 
 	/**
 	* <pre>
-	* Expression to be used by the dns policy.
+	* Expression against which DNS traffic is evaluated. Written in the default syntax.
+Note:
+* On the command line interface, if the expression includes blank spaces, the entire expression must be enclosed in double quotation marks.
+* If the expression itself includes double quotation marks, you must escape the quotations by using the  character. 
+* Alternatively, you can use single quotation marks to enclose the rule, in which case you do not have to escape the double quotation marks. 
+Maximum length of a string literal in the expression is 255 characters. A longer string can be split into smaller strings of up to 255 characters each, and the smaller strings concatenated with the + operator. For example, you can create a 500-character string as follows: '"<string of 255 characters>" + "<string of 245 characters>"'
+Example: CLIENT.UDP.DNS.DOMAIN.EQ("domainname").
 	* </pre>
 	*/
 	public String get_rule() throws Exception {
@@ -177,7 +189,10 @@ public class dnspolicy extends base_resource
 
 	/**
 	* <pre>
-	* Name of the dns action added using add dns action command.
+	* Name of the DNS action to perform when the rule evaluates to TRUE. The built in actions function as follows:
+* dns_default_act_Drop. Drop the DNS request.
+* dns_default_act_Cachebypass. Bypass the DNS cache and forward the request to the name server.
+You can create custom actions by using the add dns action command in the CLI or the DNS > Actions > Create DNS Action dialog box in the NetScaler configuration utility.
 	* </pre>
 	*/
 	public void set_actionname(String actionname) throws Exception{
@@ -186,7 +201,10 @@ public class dnspolicy extends base_resource
 
 	/**
 	* <pre>
-	* Name of the dns action added using add dns action command.
+	* Name of the DNS action to perform when the rule evaluates to TRUE. The built in actions function as follows:
+* dns_default_act_Drop. Drop the DNS request.
+* dns_default_act_Cachebypass. Bypass the DNS cache and forward the request to the name server.
+You can create custom actions by using the add dns action command in the CLI or the DNS > Actions > Create DNS Action dialog box in the NetScaler configuration utility.
 	* </pre>
 	*/
 	public String get_actionname() throws Exception {

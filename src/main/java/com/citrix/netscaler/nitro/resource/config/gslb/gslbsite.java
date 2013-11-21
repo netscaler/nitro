@@ -51,7 +51,9 @@ public class gslbsite extends base_resource
 
 	/**
 	* <pre>
-	* The name of the site that is participating in the GSLB.<br> Minimum length =  1
+	* Name for the GSLB site. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Cannot be changed after the virtual server is created.
+
+CLI Users: If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my gslbsite" or 'my gslbsite').<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_sitename(String sitename) throws Exception{
@@ -60,7 +62,9 @@ public class gslbsite extends base_resource
 
 	/**
 	* <pre>
-	* The name of the site that is participating in the GSLB.<br> Minimum length =  1
+	* Name for the GSLB site. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Cannot be changed after the virtual server is created.
+
+CLI Users: If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my gslbsite" or 'my gslbsite').<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_sitename() throws Exception {
@@ -69,7 +73,7 @@ public class gslbsite extends base_resource
 
 	/**
 	* <pre>
-	* Specify whether the site is LOCAL or REMOTE. If this option is not specified, then it will be automatically detected whether the site should be considered LOCAL or REMOTE. This decision is based on whether the siteIPAddress is found to be already configured in the system, for e.g., MIP or SNIP.<br> Default value: NS_NORMAL<br> Possible values = REMOTE, LOCAL
+	* Type of site to create. If the type is not specified, the appliance automatically detects and sets the type on the basis of the IP address being assigned to the site. If the specified site IP address is owned by the appliance (for example, a MIP address or SNIP address), the site is a local site. Otherwise, it is a remote site.<br> Default value: NONE<br> Possible values = REMOTE, LOCAL
 	* </pre>
 	*/
 	public void set_sitetype(String sitetype) throws Exception{
@@ -78,7 +82,7 @@ public class gslbsite extends base_resource
 
 	/**
 	* <pre>
-	* Specify whether the site is LOCAL or REMOTE. If this option is not specified, then it will be automatically detected whether the site should be considered LOCAL or REMOTE. This decision is based on whether the siteIPAddress is found to be already configured in the system, for e.g., MIP or SNIP.<br> Default value: NS_NORMAL<br> Possible values = REMOTE, LOCAL
+	* Type of site to create. If the type is not specified, the appliance automatically detects and sets the type on the basis of the IP address being assigned to the site. If the specified site IP address is owned by the appliance (for example, a MIP address or SNIP address), the site is a local site. Otherwise, it is a remote site.<br> Default value: NONE<br> Possible values = REMOTE, LOCAL
 	* </pre>
 	*/
 	public String get_sitetype() throws Exception {
@@ -87,7 +91,7 @@ public class gslbsite extends base_resource
 
 	/**
 	* <pre>
-	* The IP address of the site. This IP address will be a System owned IP address. SNIP or MIP can be used as Site IP address.<br> Minimum length =  1
+	* IP address for the GSLB site. The GSLB site uses this IP address to communicate with other GSLB sites. For a local site, use any IP address that is owned by the appliance (for example, a SNIP or MIP address, or the IP address of the ADNS service).<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_siteipaddress(String siteipaddress) throws Exception{
@@ -96,7 +100,7 @@ public class gslbsite extends base_resource
 
 	/**
 	* <pre>
-	* The IP address of the site. This IP address will be a System owned IP address. SNIP or MIP can be used as Site IP address.<br> Minimum length =  1
+	* IP address for the GSLB site. The GSLB site uses this IP address to communicate with other GSLB sites. For a local site, use any IP address that is owned by the appliance (for example, a SNIP or MIP address, or the IP address of the ADNS service).<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_siteipaddress() throws Exception {
@@ -105,7 +109,7 @@ public class gslbsite extends base_resource
 
 	/**
 	* <pre>
-	* The Public IP. This parameter is in effect only for a LOCAL site. This parameter is required only if the local System is in a private address space and has a public IP hosted on an external FW or NAT device.<br> Minimum length =  1
+	* Public IP address for the local site. Required only if the appliance is deployed in a private address space and the site has a public IP address hosted on an external firewall or a NAT device.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_publicip(String publicip) throws Exception{
@@ -114,7 +118,7 @@ public class gslbsite extends base_resource
 
 	/**
 	* <pre>
-	* The Public IP. This parameter is in effect only for a LOCAL site. This parameter is required only if the local System is in a private address space and has a public IP hosted on an external FW or NAT device.<br> Minimum length =  1
+	* Public IP address for the local site. Required only if the appliance is deployed in a private address space and the site has a public IP address hosted on an external firewall or a NAT device.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_publicip() throws Exception {
@@ -123,7 +127,9 @@ public class gslbsite extends base_resource
 
 	/**
 	* <pre>
-	* The state of MEP. When metric exchange is DISABLED, then the site does not exchange metrics with other sites. When this option is disabled, a simple ROUNDROBIN method will be used for Global Server Load Balancing.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Exchange metrics with other sites. Metrics are exchanged by using Metric Exchange Protocol (MEP). The appliances in the GSLB setup exchange health information once every second. 
+
+If you disable metrics exchange, you can use only static load balancing methods (such as round robin, static proximity, or the hash-based methods), and if you disable metrics exchange when a dynamic load balancing method (such as least connection) is in operation, the appliance falls back to round robin. Also, if you disable metrics exchange, you must use a monitor to determine the state of GSLB services. Otherwise, the service is marked as DOWN.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_metricexchange(String metricexchange) throws Exception{
@@ -132,7 +138,9 @@ public class gslbsite extends base_resource
 
 	/**
 	* <pre>
-	* The state of MEP. When metric exchange is DISABLED, then the site does not exchange metrics with other sites. When this option is disabled, a simple ROUNDROBIN method will be used for Global Server Load Balancing.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Exchange metrics with other sites. Metrics are exchanged by using Metric Exchange Protocol (MEP). The appliances in the GSLB setup exchange health information once every second. 
+
+If you disable metrics exchange, you can use only static load balancing methods (such as round robin, static proximity, or the hash-based methods), and if you disable metrics exchange when a dynamic load balancing method (such as least connection) is in operation, the appliance falls back to round robin. Also, if you disable metrics exchange, you must use a monitor to determine the state of GSLB services. Otherwise, the service is marked as DOWN.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_metricexchange() throws Exception {
@@ -141,7 +149,7 @@ public class gslbsite extends base_resource
 
 	/**
 	* <pre>
-	* Disable or enable exchange of network metrics like RTT.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Exchange, with other GSLB sites, network metrics such as round-trip time (RTT), learned from communications with various local DNS (LDNS) servers used by clients. RTT information is used in the dynamic RTT load balancing method, and is exchanged every 5 seconds.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_nwmetricexchange(String nwmetricexchange) throws Exception{
@@ -150,7 +158,7 @@ public class gslbsite extends base_resource
 
 	/**
 	* <pre>
-	* Disable or enable exchange of network metrics like RTT.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Exchange, with other GSLB sites, network metrics such as round-trip time (RTT), learned from communications with various local DNS (LDNS) servers used by clients. RTT information is used in the dynamic RTT load balancing method, and is exchanged every 5 seconds.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_nwmetricexchange() throws Exception {
@@ -159,7 +167,7 @@ public class gslbsite extends base_resource
 
 	/**
 	* <pre>
-	* Disable or enable exchange of persistence session entries.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Exchange persistent session entries with other GSLB sites every five seconds.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_sessionexchange(String sessionexchange) throws Exception{
@@ -168,7 +176,7 @@ public class gslbsite extends base_resource
 
 	/**
 	* <pre>
-	* Disable or enable exchange of persistence session entries.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Exchange persistent session entries with other GSLB sites every five seconds.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_sessionexchange() throws Exception {
@@ -177,7 +185,12 @@ public class gslbsite extends base_resource
 
 	/**
 	* <pre>
-	* A setting that defines when bound monitors if any should be triggered for services belonging to this site.<br> Default value: NSGSLB_TRIGMON_ALWAYS<br> Possible values = ALWAYS, MEPDOWN, MEPDOWN_SVCDOWN
+	* Specify the conditions under which the GSLB service must be monitored by a monitor, if one is bound. Available settings function as follows:
+* ALWAYS - Monitor the GSLB service at all times.
+* MEPDOWN - Monitor the GSLB service only when the exchange of metrics through the Metrics Exchange Protocol (MEP) is disabled.
+MEPDOWN_SVCDOWN - Monitor the service in either of the following situations: 
+* The exchange of metrics through MEP is disabled.
+* The exchange of metrics through MEP is enabled but the status of the service, learned through metrics exchange, is DOWN.<br> Default value: ALWAYS<br> Possible values = ALWAYS, MEPDOWN, MEPDOWN_SVCDOWN
 	* </pre>
 	*/
 	public void set_triggermonitor(String triggermonitor) throws Exception{
@@ -186,7 +199,12 @@ public class gslbsite extends base_resource
 
 	/**
 	* <pre>
-	* A setting that defines when bound monitors if any should be triggered for services belonging to this site.<br> Default value: NSGSLB_TRIGMON_ALWAYS<br> Possible values = ALWAYS, MEPDOWN, MEPDOWN_SVCDOWN
+	* Specify the conditions under which the GSLB service must be monitored by a monitor, if one is bound. Available settings function as follows:
+* ALWAYS - Monitor the GSLB service at all times.
+* MEPDOWN - Monitor the GSLB service only when the exchange of metrics through the Metrics Exchange Protocol (MEP) is disabled.
+MEPDOWN_SVCDOWN - Monitor the service in either of the following situations: 
+* The exchange of metrics through MEP is disabled.
+* The exchange of metrics through MEP is enabled but the status of the service, learned through metrics exchange, is DOWN.<br> Default value: ALWAYS<br> Possible values = ALWAYS, MEPDOWN, MEPDOWN_SVCDOWN
 	* </pre>
 	*/
 	public String get_triggermonitor() throws Exception {
@@ -195,7 +213,7 @@ public class gslbsite extends base_resource
 
 	/**
 	* <pre>
-	* Parent site of this site.
+	* Parent site of the GSLB site, in a parent-child topology.
 	* </pre>
 	*/
 	public void set_parentsite(String parentsite) throws Exception{
@@ -204,7 +222,7 @@ public class gslbsite extends base_resource
 
 	/**
 	* <pre>
-	* Parent site of this site.
+	* Parent site of the GSLB site, in a parent-child topology.
 	* </pre>
 	*/
 	public String get_parentsite() throws Exception {
@@ -400,23 +418,9 @@ public class gslbsite extends base_resource
 	* Use this API to unset the properties of gslbsite resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String sitename, String args[]) throws Exception {
-		gslbsite unsetresource = new gslbsite();
-		unsetresource.sitename = sitename;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of gslbsite resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, gslbsite resource, String[] args) throws Exception{
 		gslbsite unsetresource = new gslbsite();
 		unsetresource.sitename = resource.sitename;
-		unsetresource.metricexchange = resource.metricexchange;
-		unsetresource.nwmetricexchange = resource.nwmetricexchange;
-		unsetresource.sessionexchange = resource.sessionexchange;
-		unsetresource.triggermonitor = resource.triggermonitor;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -448,10 +452,6 @@ public class gslbsite extends base_resource
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new gslbsite();
 				unsetresources[i].sitename = resources[i].sitename;
-				unsetresources[i].metricexchange = resources[i].metricexchange;
-				unsetresources[i].nwmetricexchange = resources[i].nwmetricexchange;
-				unsetresources[i].sessionexchange = resources[i].sessionexchange;
-				unsetresources[i].triggermonitor = resources[i].triggermonitor;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}

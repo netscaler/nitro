@@ -41,9 +41,7 @@ public class sslcipher_individualcipher_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the user-defined cipher group.
-	If the cipher group does not exist on the system, a new group is created with the specified name. The ciphers are added to this group.
-	If a group identified by cipherGroupName already exists on the system, the ciphers are added to it.<br> Minimum length =  1
+	* Name of the user-defined cipher group.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_ciphergroupname(String ciphergroupname) throws Exception{
@@ -52,9 +50,7 @@ public class sslcipher_individualcipher_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the user-defined cipher group.
-	If the cipher group does not exist on the system, a new group is created with the specified name. The ciphers are added to this group.
-	If a group identified by cipherGroupName already exists on the system, the ciphers are added to it.<br> Minimum length =  1
+	* Name of the user-defined cipher group.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_ciphergroupname() throws Exception {

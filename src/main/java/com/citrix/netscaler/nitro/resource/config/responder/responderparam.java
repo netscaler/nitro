@@ -36,7 +36,10 @@ public class responderparam extends base_resource
 
 	/**
 	* <pre>
-	* can be NOOP, RESET or DROP.<br> Default value: "NOOP"
+	* Action to perform when policy evaluation creates an UNDEF condition. Available settings function as follows:
+* NOOP - Send the request to the protected server.
+* RESET - Reset the request and notify the user's browser, so that the user can resend the request.
+* DROP - Drop the request without sending a response to the user.<br> Default value: "NOOP"
 	* </pre>
 	*/
 	public void set_undefaction(String undefaction) throws Exception{
@@ -45,7 +48,10 @@ public class responderparam extends base_resource
 
 	/**
 	* <pre>
-	* can be NOOP, RESET or DROP.<br> Default value: "NOOP"
+	* Action to perform when policy evaluation creates an UNDEF condition. Available settings function as follows:
+* NOOP - Send the request to the protected server.
+* RESET - Reset the request and notify the user's browser, so that the user can resend the request.
+* DROP - Drop the request without sending a response to the user.<br> Default value: "NOOP"
 	* </pre>
 	*/
 	public String get_undefaction() throws Exception {
@@ -103,7 +109,6 @@ public class responderparam extends base_resource
 	*/
 	public static base_response unset(nitro_service client, responderparam resource, String[] args) throws Exception{
 		responderparam unsetresource = new responderparam();
-		unsetresource.undefaction = resource.undefaction;
 		return unsetresource.unset_resource(client,args);
 	}
 

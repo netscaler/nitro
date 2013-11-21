@@ -33,6 +33,7 @@ class gslbservice_response extends base_response
 public class gslbservice_stats extends base_resource
 {
 	private String servicename;
+	private String clearstats;
 	private Long establishedconn;
 	private String primaryipaddress;
 	private Integer primaryport;
@@ -51,11 +52,10 @@ public class gslbservice_stats extends base_resource
 	private Long cursrvrconnections;
 	private Long vsvrservicehits;
 	private Long vsvrservicehitsrate;
-	private Long svrestablishedconn;
 
 	/**
 	* <pre>
-	* The name of the service.
+	* Name of the GSLB service.
 	* </pre>
 	*/
 	public void set_servicename(String servicename) throws Exception{
@@ -64,7 +64,7 @@ public class gslbservice_stats extends base_resource
 
 	/**
 	* <pre>
-	* The name of the service.<br> Minimum length =  1
+	* Name of the GSLB service.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_servicename() throws Exception {
@@ -73,11 +73,20 @@ public class gslbservice_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of server connections in ESTABLISHED state.
+	* Clear the statsistics / counters
 	* </pre>
 	*/
-	public Long get_svrestablishedconn() throws Exception {
-		return this.svrestablishedconn;
+	public void set_clearstats(String clearstats) throws Exception{
+		this.clearstats = clearstats;
+	}
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters.<br> Possible values = basic, full
+	* </pre>
+	*/
+	public String get_clearstats() throws Exception {
+		return this.clearstats;
 	}
 
 	/**
@@ -91,7 +100,7 @@ public class gslbservice_stats extends base_resource
 
 	/**
 	* <pre>
-	* The service type of this service.
+	* The service type of this service.Possible values are ADNS, DNS, MYSQL, RTSP, SSL_DIAMETER, ADNS_TCP, DNS_TCP, NNTP, SIP_UDP, SSL_TCP, ANY, FTP, RADIUS, SNMP, TCP, DHCPRA, HTTP, RDP, SSL, TFTP, DIAMETER, MSSQL, RPCSVR, SSL_BRIDGE, UDP
 	* </pre>
 	*/
 	public String get_servicetype() throws Exception {
@@ -118,7 +127,7 @@ public class gslbservice_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of response bytes received by this service or virtual server.
+	* Rate (/s) counter for totalresponsebytes
 	* </pre>
 	*/
 	public Long get_responsebytesrate() throws Exception {
@@ -136,7 +145,7 @@ public class gslbservice_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of request bytes received on this service or virtual server.
+	* Rate (/s) counter for totalrequestbytes
 	* </pre>
 	*/
 	public Long get_requestbytesrate() throws Exception {
@@ -163,7 +172,7 @@ public class gslbservice_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of responses received on this service or virtual server. (This applies to HTTP/SSL services and servers.)
+	* Rate (/s) counter for totalresponses
 	* </pre>
 	*/
 	public Long get_responsesrate() throws Exception {
@@ -190,7 +199,7 @@ public class gslbservice_stats extends base_resource
 
 	/**
 	* <pre>
-	* Current state of the server.
+	* Current state of the server. Possible values are UP, DOWN, UNKNOWN, OFS(Out of Service), TROFS(Transition Out of Service), TROFS_DOWN(Down When going Out of Service)
 	* </pre>
 	*/
 	public String get_state() throws Exception {
@@ -226,7 +235,7 @@ public class gslbservice_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of requests received on this service or virtual server. (This applies to HTTP/SSL services and servers.)
+	* Rate (/s) counter for totalrequests
 	* </pre>
 	*/
 	public Long get_requestsrate() throws Exception {
@@ -235,7 +244,7 @@ public class gslbservice_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of times that the service has been provided.
+	* Rate (/s) counter for vsvrservicehits
 	* </pre>
 	*/
 	public Long get_vsvrservicehitsrate() throws Exception {
@@ -304,4 +313,8 @@ public class gslbservice_stats extends base_resource
 		return response;
 	}
 
+	public static class clearstatsEnum {
+		public static final String basic = "basic";
+		public static final String full = "full";
+	}
 }

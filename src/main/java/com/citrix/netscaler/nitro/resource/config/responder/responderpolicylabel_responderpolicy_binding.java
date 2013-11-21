@@ -88,7 +88,7 @@ public class responderpolicylabel_responderpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Name of the responder policy label.
+	* Name of the responder policy label to which to bind the policy.
 	* </pre>
 	*/
 	public void set_labelname(String labelname) throws Exception{
@@ -97,7 +97,7 @@ public class responderpolicylabel_responderpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Name of the responder policy label.
+	* Name of the responder policy label to which to bind the policy.
 	* </pre>
 	*/
 	public String get_labelname() throws Exception {
@@ -106,7 +106,8 @@ public class responderpolicylabel_responderpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Name of the label to invoke if the current policy rule evaluates to TRUE.
+	* * If labelType is policylabel, name of the policy label to invoke. 
+* If labelType is reqvserver or resvserver, name of the virtual server.
 	* </pre>
 	*/
 	public void set_invoke_labelname(String invoke_labelname) throws Exception{
@@ -115,7 +116,8 @@ public class responderpolicylabel_responderpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Name of the label to invoke if the current policy rule evaluates to TRUE.
+	* * If labelType is policylabel, name of the policy label to invoke. 
+* If labelType is reqvserver or resvserver, name of the virtual server.
 	* </pre>
 	*/
 	public String get_invoke_labelname() throws Exception {
@@ -142,7 +144,7 @@ public class responderpolicylabel_responderpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Invoke flag.
+	* If the current policy evaluates to TRUE, terminate evaluation of policies bound to the current policy label and evaluate the specified policy label.
 	* </pre>
 	*/
 	public void set_invoke(boolean invoke) throws Exception {
@@ -151,7 +153,7 @@ public class responderpolicylabel_responderpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Invoke flag.
+	* If the current policy evaluates to TRUE, terminate evaluation of policies bound to the current policy label and evaluate the specified policy label.
 	* </pre>
 	*/
 	public void set_invoke(Boolean invoke) throws Exception{
@@ -160,7 +162,7 @@ public class responderpolicylabel_responderpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Invoke flag.
+	* If the current policy evaluates to TRUE, terminate evaluation of policies bound to the current policy label and evaluate the specified policy label.
 	* </pre>
 	*/
 	public Boolean get_invoke() throws Exception {
@@ -169,7 +171,9 @@ public class responderpolicylabel_responderpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Type of policy label invocation.<br> Possible values = vserver, policylabel
+	* Type of policy label to invoke. Available settings function as follows:
+* vserver - Invoke an unnamed policy label associated with a virtual server.
+* policylabel - Invoke a user-defined policy label.<br> Possible values = vserver, policylabel
 	* </pre>
 	*/
 	public void set_labeltype(String labeltype) throws Exception{
@@ -178,7 +182,9 @@ public class responderpolicylabel_responderpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Type of policy label invocation.<br> Possible values = vserver, policylabel
+	* Type of policy label to invoke. Available settings function as follows:
+* vserver - Invoke an unnamed policy label associated with a virtual server.
+* policylabel - Invoke a user-defined policy label.<br> Possible values = vserver, policylabel
 	* </pre>
 	*/
 	public String get_labeltype() throws Exception {

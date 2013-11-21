@@ -90,7 +90,7 @@ public class responderglobal_responderpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Name of the label to invoke if the current policy rule evaluates to TRUE.
+	* Name of the policy label to invoke. If the current policy evaluates to TRUE, the invoke parameter is set, and Label Type is policylabel.
 	* </pre>
 	*/
 	public void set_labelname(String labelname) throws Exception{
@@ -99,7 +99,7 @@ public class responderglobal_responderpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Name of the label to invoke if the current policy rule evaluates to TRUE.
+	* Name of the policy label to invoke. If the current policy evaluates to TRUE, the invoke parameter is set, and Label Type is policylabel.
 	* </pre>
 	*/
 	public String get_labelname() throws Exception {
@@ -126,7 +126,7 @@ public class responderglobal_responderpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Invoke flag.
+	* If the current policy evaluates to TRUE, terminate evaluation of policies bound to the current policy label, and then forward the request to the specified virtual server or evaluate the specified policy label.
 	* </pre>
 	*/
 	public void set_invoke(boolean invoke) throws Exception {
@@ -135,7 +135,7 @@ public class responderglobal_responderpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Invoke flag.
+	* If the current policy evaluates to TRUE, terminate evaluation of policies bound to the current policy label, and then forward the request to the specified virtual server or evaluate the specified policy label.
 	* </pre>
 	*/
 	public void set_invoke(Boolean invoke) throws Exception{
@@ -144,7 +144,7 @@ public class responderglobal_responderpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Invoke flag.
+	* If the current policy evaluates to TRUE, terminate evaluation of policies bound to the current policy label, and then forward the request to the specified virtual server or evaluate the specified policy label.
 	* </pre>
 	*/
 	public Boolean get_invoke() throws Exception {
@@ -153,7 +153,17 @@ public class responderglobal_responderpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The bindpoint to which policy is bound.<br> Possible values = REQ_OVERRIDE, REQ_DEFAULT, OVERRIDE, DEFAULT, OTHERTCP_REQ_OVERRIDE, OTHERTCP_REQ_DEFAULT, SIPUDP_REQ_OVERRIDE, SIPUDP_REQ_DEFAULT, MSSQL_REQ_OVERRIDE, MSSQL_REQ_DEFAULT, MYSQL_REQ_OVERRIDE, MYSQL_REQ_DEFAULT
+	* Specifies the bind point whose policies you want to display. Available settings function as follows:
+* REQ_OVERRIDE - Request override. Binds the policy to the priority request queue.
+* REQ_DEFAULT - Binds the policy to the default request queue.
+* OTHERTCP_REQ_OVERRIDE - Binds the policy to the non-HTTP TCP priority request queue.
+* OTHERTCP_REQ_DEFAULT - Binds the policy to the non-HTTP TCP default request queue..
+* SIPUDP_REQ_OVERRIDE - Binds the policy to the SIP UDP priority response queue..
+* SIPUDP_REQ_DEFAULT - Binds the policy to the SIP UDP default response queue.
+* MSSQL_REQ_OVERRIDE - Binds the policy to the Microsoft SQL priority response queue..
+* MSSQL_REQ_DEFAULT - Binds the policy to the Microsoft SQL default response queue.
+* MYSQL_REQ_OVERRIDE - Binds the policy to the MySQL priority response queue.
+* MYSQL_REQ_DEFAULT - Binds the policy to the MySQL default response queue.<br> Possible values = REQ_OVERRIDE, REQ_DEFAULT, OVERRIDE, DEFAULT, OTHERTCP_REQ_OVERRIDE, OTHERTCP_REQ_DEFAULT, SIPUDP_REQ_OVERRIDE, SIPUDP_REQ_DEFAULT, MSSQL_REQ_OVERRIDE, MSSQL_REQ_DEFAULT, MYSQL_REQ_OVERRIDE, MYSQL_REQ_DEFAULT
 	* </pre>
 	*/
 	public void set_type(String type) throws Exception{
@@ -162,7 +172,17 @@ public class responderglobal_responderpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The bindpoint to which policy is bound.<br> Possible values = REQ_OVERRIDE, REQ_DEFAULT, OVERRIDE, DEFAULT, OTHERTCP_REQ_OVERRIDE, OTHERTCP_REQ_DEFAULT, SIPUDP_REQ_OVERRIDE, SIPUDP_REQ_DEFAULT, MSSQL_REQ_OVERRIDE, MSSQL_REQ_DEFAULT, MYSQL_REQ_OVERRIDE, MYSQL_REQ_DEFAULT
+	* Specifies the bind point whose policies you want to display. Available settings function as follows:
+* REQ_OVERRIDE - Request override. Binds the policy to the priority request queue.
+* REQ_DEFAULT - Binds the policy to the default request queue.
+* OTHERTCP_REQ_OVERRIDE - Binds the policy to the non-HTTP TCP priority request queue.
+* OTHERTCP_REQ_DEFAULT - Binds the policy to the non-HTTP TCP default request queue..
+* SIPUDP_REQ_OVERRIDE - Binds the policy to the SIP UDP priority response queue..
+* SIPUDP_REQ_DEFAULT - Binds the policy to the SIP UDP default response queue.
+* MSSQL_REQ_OVERRIDE - Binds the policy to the Microsoft SQL priority response queue..
+* MSSQL_REQ_DEFAULT - Binds the policy to the Microsoft SQL default response queue.
+* MYSQL_REQ_OVERRIDE - Binds the policy to the MySQL priority response queue.
+* MYSQL_REQ_DEFAULT - Binds the policy to the MySQL default response queue.<br> Possible values = REQ_OVERRIDE, REQ_DEFAULT, OVERRIDE, DEFAULT, OTHERTCP_REQ_OVERRIDE, OTHERTCP_REQ_DEFAULT, SIPUDP_REQ_OVERRIDE, SIPUDP_REQ_DEFAULT, MSSQL_REQ_OVERRIDE, MSSQL_REQ_DEFAULT, MYSQL_REQ_OVERRIDE, MYSQL_REQ_DEFAULT
 	* </pre>
 	*/
 	public String get_type() throws Exception {
@@ -171,7 +191,9 @@ public class responderglobal_responderpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Type of policy label invocation.<br> Possible values = vserver, policylabel
+	* Type of invocation, Available settings function as follows:
+* vserver - Forward the request to the specified virtual server.
+* policylabel - Invoke the specified policy label.<br> Possible values = vserver, policylabel
 	* </pre>
 	*/
 	public void set_labeltype(String labeltype) throws Exception{
@@ -180,7 +202,9 @@ public class responderglobal_responderpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Type of policy label invocation.<br> Possible values = vserver, policylabel
+	* Type of invocation, Available settings function as follows:
+* vserver - Forward the request to the specified virtual server.
+* policylabel - Invoke the specified policy label.<br> Possible values = vserver, policylabel
 	* </pre>
 	*/
 	public String get_labeltype() throws Exception {

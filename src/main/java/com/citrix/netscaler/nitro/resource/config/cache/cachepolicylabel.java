@@ -50,7 +50,7 @@ public class cachepolicylabel extends base_resource
 
 	/**
 	* <pre>
-	* Name of the cache policy label.
+	* Name for the label. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Can be changed after the label is created.
 	* </pre>
 	*/
 	public void set_labelname(String labelname) throws Exception{
@@ -59,7 +59,7 @@ public class cachepolicylabel extends base_resource
 
 	/**
 	* <pre>
-	* Name of the cache policy label.
+	* Name for the label. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Can be changed after the label is created.
 	* </pre>
 	*/
 	public String get_labelname() throws Exception {
@@ -68,7 +68,7 @@ public class cachepolicylabel extends base_resource
 
 	/**
 	* <pre>
-	* Gives when policies bound to this label get executed.<br> Possible values = REQ, RES, MSSQL_REQ, MSSQL_RES, MYSQL_REQ, MYSQL_RES
+	* When to evaluate policies bound to this label: request-time or response-time.<br> Possible values = REQ, RES, MSSQL_REQ, MSSQL_RES, MYSQL_REQ, MYSQL_RES
 	* </pre>
 	*/
 	public void set_evaluates(String evaluates) throws Exception{
@@ -77,7 +77,7 @@ public class cachepolicylabel extends base_resource
 
 	/**
 	* <pre>
-	* Gives when policies bound to this label get executed.<br> Possible values = REQ, RES, MSSQL_REQ, MSSQL_RES, MYSQL_REQ, MYSQL_RES
+	* When to evaluate policies bound to this label: request-time or response-time.<br> Possible values = REQ, RES, MSSQL_REQ, MSSQL_RES, MYSQL_REQ, MYSQL_RES
 	* </pre>
 	*/
 	public String get_evaluates() throws Exception {
@@ -86,7 +86,7 @@ public class cachepolicylabel extends base_resource
 
 	/**
 	* <pre>
-	* The new name of the cache policylabel.<br> Minimum length =  1
+	* New name for the cache-policy label. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_newname(String newname) throws Exception{
@@ -95,7 +95,7 @@ public class cachepolicylabel extends base_resource
 
 	/**
 	* <pre>
-	* The new name of the cache policylabel.<br> Minimum length =  1
+	* New name for the cache-policy label. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_newname() throws Exception {
@@ -140,7 +140,7 @@ public class cachepolicylabel extends base_resource
 
 	/**
 	* <pre>
-	* Type of policy label invocation.<br> Possible values = reqvserver, resvserver, policylabel
+	* Type of policy label to invoke: an unnamed label associated with a virtual server, or user-defined policy label.<br> Possible values = reqvserver, resvserver, policylabel
 	* </pre>
 	*/
 	public String get_labeltype() throws Exception {
@@ -149,7 +149,7 @@ public class cachepolicylabel extends base_resource
 
 	/**
 	* <pre>
-	* Name of the label to invoke if the current policy rule evaluates to TRUE.
+	* Name of the policy label to invoke if the current policy rule evaluates to TRUE.
 	* </pre>
 	*/
 	public String get_invoke_labelname() throws Exception {

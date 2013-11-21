@@ -95,7 +95,7 @@ public class lbmonbindings_servicegroup_binding extends base_resource
 
 	/**
 	* <pre>
-	* The type of service.<br> Possible values = HTTP, FTP, TCP, UDP, SSL, SSL_BRIDGE, SSL_TCP, NNTP, RPCSVR, DNS, ADNS, SNMP, RTSP, DHCPRA, ANY, SIP_UDP, DNS_TCP, ADNS_TCP, MYSQL, MSSQL, RADIUS, RDP, DIAMETER, SSL_DIAMETER
+	* The type of service.<br> Possible values = HTTP, FTP, TCP, UDP, SSL, SSL_BRIDGE, SSL_TCP, DTLS, NNTP, RPCSVR, DNS, ADNS, SNMP, RTSP, DHCPRA, ANY, SIP_UDP, DNS_TCP, ADNS_TCP, MYSQL, MSSQL, RADIUS, RDP, DIAMETER, SSL_DIAMETER, TFTP
 	* </pre>
 	*/
 	public String get_servicetype() throws Exception {
@@ -233,6 +233,7 @@ public class lbmonbindings_servicegroup_binding extends base_resource
 		public static final String SSL = "SSL";
 		public static final String SSL_BRIDGE = "SSL_BRIDGE";
 		public static final String SSL_TCP = "SSL_TCP";
+		public static final String DTLS = "DTLS";
 		public static final String NNTP = "NNTP";
 		public static final String RPCSVR = "RPCSVR";
 		public static final String DNS = "DNS";
@@ -250,6 +251,7 @@ public class lbmonbindings_servicegroup_binding extends base_resource
 		public static final String RDP = "RDP";
 		public static final String DIAMETER = "DIAMETER";
 		public static final String SSL_DIAMETER = "SSL_DIAMETER";
+		public static final String TFTP = "TFTP";
 	}
 	public static class monstateEnum {
 		public static final String ENABLED = "ENABLED";

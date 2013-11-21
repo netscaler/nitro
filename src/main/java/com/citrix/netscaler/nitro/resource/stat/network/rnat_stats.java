@@ -32,6 +32,7 @@ class rnat_response extends base_response
 
 public class rnat_stats extends base_resource
 {
+	private String clearstats;
 	private Long rnattotrxbytes;
 	private Long rnatrxbytesrate;
 	private Long rnattottxbytes;
@@ -46,6 +47,24 @@ public class rnat_stats extends base_resource
 
 	/**
 	* <pre>
+	* Clear the statsistics / counters
+	* </pre>
+	*/
+	public void set_clearstats(String clearstats) throws Exception{
+		this.clearstats = clearstats;
+	}
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters.<br> Possible values = basic, full
+	* </pre>
+	*/
+	public String get_clearstats() throws Exception {
+		return this.clearstats;
+	}
+
+	/**
+	* <pre>
 	* Packets sent during RNAT sessions.
 	* </pre>
 	*/
@@ -55,7 +74,7 @@ public class rnat_stats extends base_resource
 
 	/**
 	* <pre>
-	* Bytes received during RNAT sessions.
+	* Rate (/s) counter for rnattotrxbytes
 	* </pre>
 	*/
 	public Long get_rnatrxbytesrate() throws Exception {
@@ -64,7 +83,7 @@ public class rnat_stats extends base_resource
 
 	/**
 	* <pre>
-	* Requests for connections sent during RNAT sessions.
+	* Rate (/s) counter for rnattottxsyn
 	* </pre>
 	*/
 	public Long get_rnattxsynrate() throws Exception {
@@ -73,7 +92,7 @@ public class rnat_stats extends base_resource
 
 	/**
 	* <pre>
-	* Packets sent during RNAT sessions.
+	* Rate (/s) counter for rnattottxpkts
 	* </pre>
 	*/
 	public Long get_rnattxpktsrate() throws Exception {
@@ -91,7 +110,7 @@ public class rnat_stats extends base_resource
 
 	/**
 	* <pre>
-	* Bytes sent during RNAT sessions.
+	* Rate (/s) counter for rnattottxbytes
 	* </pre>
 	*/
 	public Long get_rnattxbytesrate() throws Exception {
@@ -100,7 +119,7 @@ public class rnat_stats extends base_resource
 
 	/**
 	* <pre>
-	* Packets received during RNAT sessions.
+	* Rate (/s) counter for rnattotrxpkts
 	* </pre>
 	*/
 	public Long get_rnatrxpktsrate() throws Exception {
@@ -197,4 +216,8 @@ public class rnat_stats extends base_resource
 		return response[0];
 	}
 
+	public static class clearstatsEnum {
+		public static final String basic = "basic";
+		public static final String full = "full";
+	}
 }

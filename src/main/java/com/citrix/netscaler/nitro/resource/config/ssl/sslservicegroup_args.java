@@ -26,7 +26,7 @@ public class sslservicegroup_args
 
 	/**
 	* <pre>
-	* Display the details of the individual ciphers bound to the SSL service group.
+	* Display details of the individual ciphers bound to the SSL service group.
 	* </pre>
 	*/
 	public void set_cipherdetails(boolean cipherdetails) throws Exception {
@@ -35,7 +35,7 @@ public class sslservicegroup_args
 
 	/**
 	* <pre>
-	* Display the details of the individual ciphers bound to the SSL service group.
+	* Display details of the individual ciphers bound to the SSL service group.
 	* </pre>
 	*/
 	public void set_cipherdetails(Boolean cipherdetails) throws Exception{
@@ -44,7 +44,7 @@ public class sslservicegroup_args
 
 	/**
 	* <pre>
-	* Display the details of the individual ciphers bound to the SSL service group.
+	* Display details of the individual ciphers bound to the SSL service group.
 	* </pre>
 	*/
 	public Boolean get_cipherdetails() throws Exception {

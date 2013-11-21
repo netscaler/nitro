@@ -36,7 +36,7 @@ public class vridparam extends base_resource
 
 	/**
 	* <pre>
-	* Forward packets to the master node, in an active-active mode configuration, if the virtual server is in the backup state and sharing is disabled. Possible values: ENABLED, DISABLED. Default: DISABLED.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Forward packets to the master node, in an active-active mode configuration, if the virtual server is in the backup state and sharing is disabled.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_sendtomaster(String sendtomaster) throws Exception{
@@ -45,7 +45,7 @@ public class vridparam extends base_resource
 
 	/**
 	* <pre>
-	* Forward packets to the master node, in an active-active mode configuration, if the virtual server is in the backup state and sharing is disabled. Possible values: ENABLED, DISABLED. Default: DISABLED.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Forward packets to the master node, in an active-active mode configuration, if the virtual server is in the backup state and sharing is disabled.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_sendtomaster() throws Exception {
@@ -103,7 +103,6 @@ public class vridparam extends base_resource
 	*/
 	public static base_response unset(nitro_service client, vridparam resource, String[] args) throws Exception{
 		vridparam unsetresource = new vridparam();
-		unsetresource.sendtomaster = resource.sendtomaster;
 		return unsetresource.unset_resource(client,args);
 	}
 

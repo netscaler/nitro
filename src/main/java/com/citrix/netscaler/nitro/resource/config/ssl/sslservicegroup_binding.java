@@ -42,7 +42,7 @@ public class sslservicegroup_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the SSL service group.<br> Minimum length =  1
+	* Name of the SSL service group for which to show detailed information.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_servicegroupname(String servicegroupname) throws Exception{
@@ -51,7 +51,7 @@ public class sslservicegroup_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the SSL service group.<br> Minimum length =  1
+	* Name of the SSL service group for which to show detailed information.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_servicegroupname() throws Exception {

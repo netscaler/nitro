@@ -51,7 +51,10 @@ public class rewritepolicylabel extends base_resource
 
 	/**
 	* <pre>
-	* Name of the rewrite policy label.
+	* Name for the rewrite policy label. Must begin with a letter, number, or the underscore character (_), and must contain only letters, numbers, and the hyphen (-), period (.) hash (#), space ( ), at (@), equals (=), colon (:), and underscore characters. Cannot be changed after the rewrite policy label is added.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my rewrite policy label" or ‘my rewrite policy label’).
 	* </pre>
 	*/
 	public void set_labelname(String labelname) throws Exception{
@@ -60,7 +63,10 @@ public class rewritepolicylabel extends base_resource
 
 	/**
 	* <pre>
-	* Name of the rewrite policy label.
+	* Name for the rewrite policy label. Must begin with a letter, number, or the underscore character (_), and must contain only letters, numbers, and the hyphen (-), period (.) hash (#), space ( ), at (@), equals (=), colon (:), and underscore characters. Cannot be changed after the rewrite policy label is added.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my rewrite policy label" or ‘my rewrite policy label’).
 	* </pre>
 	*/
 	public String get_labelname() throws Exception {
@@ -69,7 +75,17 @@ public class rewritepolicylabel extends base_resource
 
 	/**
 	* <pre>
-	* The type of transformations allowed by the policies bound to the label.<br> Possible values = http_req, http_res, othertcp_req, othertcp_res, url, text, clientless_vpn_req, clientless_vpn_res, sipudp_req, sipudp_res
+	* Types of transformations allowed by the policies bound to the label. For Rewrite, the following types are supported:
+* http_req - HTTP requests
+* http_res - HTTP responses
+* othertcp_req - Non-HTTP TCP requests
+* othertcp_res - Non-HTTP TCP responses
+* url - URLs
+* text - Text strings
+* clientless_vpn_req - NetScaler clientless VPN requests
+* clientless_vpn_res - NetScaler clientless VPN responses
+* sipudp_req - SIP requests
+* sipudp_res - SIP responses.<br> Possible values = http_req, http_res, othertcp_req, othertcp_res, url, text, clientless_vpn_req, clientless_vpn_res, sipudp_req, sipudp_res
 	* </pre>
 	*/
 	public void set_transform(String transform) throws Exception{
@@ -78,7 +94,17 @@ public class rewritepolicylabel extends base_resource
 
 	/**
 	* <pre>
-	* The type of transformations allowed by the policies bound to the label.<br> Possible values = http_req, http_res, othertcp_req, othertcp_res, url, text, clientless_vpn_req, clientless_vpn_res, sipudp_req, sipudp_res
+	* Types of transformations allowed by the policies bound to the label. For Rewrite, the following types are supported:
+* http_req - HTTP requests
+* http_res - HTTP responses
+* othertcp_req - Non-HTTP TCP requests
+* othertcp_res - Non-HTTP TCP responses
+* url - URLs
+* text - Text strings
+* clientless_vpn_req - NetScaler clientless VPN requests
+* clientless_vpn_res - NetScaler clientless VPN responses
+* sipudp_req - SIP requests
+* sipudp_res - SIP responses.<br> Possible values = http_req, http_res, othertcp_req, othertcp_res, url, text, clientless_vpn_req, clientless_vpn_res, sipudp_req, sipudp_res
 	* </pre>
 	*/
 	public String get_transform() throws Exception {
@@ -87,7 +113,11 @@ public class rewritepolicylabel extends base_resource
 
 	/**
 	* <pre>
-	* The new name of the rewrite policylabel.<br> Minimum length =  1
+	* New name for the rewrite policy label. 
+Must begin with a letter, number, or the underscore character (_), and must contain only letters, numbers, and the hyphen (-), period (.) hash (#), space ( ), at (@), equals (=), colon (:), and underscore characters.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my policy label" or ‘my policy label’).<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_newname(String newname) throws Exception{
@@ -96,7 +126,11 @@ public class rewritepolicylabel extends base_resource
 
 	/**
 	* <pre>
-	* The new name of the rewrite policylabel.<br> Minimum length =  1
+	* New name for the rewrite policy label. 
+Must begin with a letter, number, or the underscore character (_), and must contain only letters, numbers, and the hyphen (-), period (.) hash (#), space ( ), at (@), equals (=), colon (:), and underscore characters.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my policy label" or ‘my policy label’).<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_newname() throws Exception {
@@ -141,7 +175,10 @@ public class rewritepolicylabel extends base_resource
 
 	/**
 	* <pre>
-	* Type of policy label invocation.<br> Possible values = reqvserver, resvserver, policylabel
+	* Type of invocation. Available settings function as follows:
+* reqvserver - Forward the request to the specified request virtual server.
+* resvserver - Forward the response to the specified response virtual server.
+* policylabel - Invoke the specified policy label.<br> Possible values = reqvserver, resvserver, policylabel
 	* </pre>
 	*/
 	public String get_labeltype() throws Exception {
@@ -150,7 +187,8 @@ public class rewritepolicylabel extends base_resource
 
 	/**
 	* <pre>
-	* Name of the label to invoke if the current policy rule evaluates to TRUE.
+	* * If labelType is policylabel, name of the policy label to invoke. 
+* If labelType is reqvserver or resvserver, name of the virtual server to which to forward the request or response.
 	* </pre>
 	*/
 	public String get_invoke_labelname() throws Exception {

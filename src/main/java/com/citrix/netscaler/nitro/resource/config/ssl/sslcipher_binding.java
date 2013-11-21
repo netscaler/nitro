@@ -40,7 +40,7 @@ public class sslcipher_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of cipher group/alias/individual cipher name.<br> Minimum length =  1
+	* Name of the cipher group for which to show detailed information.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_ciphergroupname(String ciphergroupname) throws Exception{
@@ -49,7 +49,7 @@ public class sslcipher_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of cipher group/alias/individual cipher name.<br> Minimum length =  1
+	* Name of the cipher group for which to show detailed information.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_ciphergroupname() throws Exception {

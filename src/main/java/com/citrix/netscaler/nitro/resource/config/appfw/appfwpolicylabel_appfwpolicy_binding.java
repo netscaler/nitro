@@ -43,7 +43,7 @@ public class appfwpolicylabel_appfwpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Specifies the priority of the policy.
+	* Positive integer specifying the priority of the policy. A lower number specifies a higher priority. Must be unique within a group of policies that are bound to the same bind point or label. Policies are evaluated in the order of their priority numbers.
 	* </pre>
 	*/
 	public void set_priority(long priority) throws Exception {
@@ -52,7 +52,7 @@ public class appfwpolicylabel_appfwpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Specifies the priority of the policy.
+	* Positive integer specifying the priority of the policy. A lower number specifies a higher priority. Must be unique within a group of policies that are bound to the same bind point or label. Policies are evaluated in the order of their priority numbers.
 	* </pre>
 	*/
 	public void set_priority(Long priority) throws Exception{
@@ -61,7 +61,7 @@ public class appfwpolicylabel_appfwpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Specifies the priority of the policy.
+	* Positive integer specifying the priority of the policy. A lower number specifies a higher priority. Must be unique within a group of policies that are bound to the same bind point or label. Policies are evaluated in the order of their priority numbers.
 	* </pre>
 	*/
 	public Long get_priority() throws Exception {
@@ -88,7 +88,7 @@ public class appfwpolicylabel_appfwpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The transform policy name.
+	* Name of the application firewall policy to bind to the policy label.
 	* </pre>
 	*/
 	public void set_policyname(String policyname) throws Exception{
@@ -97,7 +97,7 @@ public class appfwpolicylabel_appfwpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The transform policy name.
+	* Name of the application firewall policy to bind to the policy label.
 	* </pre>
 	*/
 	public String get_policyname() throws Exception {
@@ -106,7 +106,9 @@ public class appfwpolicylabel_appfwpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Type of policy label invocation.<br> Possible values = reqvserver, policylabel
+	* Type of policy label to invoke if the current policy evaluates to TRUE and the invoke parameter is set. Available settings function as follows:
+* reqvserver. Invoke the unnamed policy label associated with the specified request virtual server.
+* policylabel. Invoke the specified user-defined policy label.<br> Possible values = reqvserver, policylabel
 	* </pre>
 	*/
 	public void set_labeltype(String labeltype) throws Exception{
@@ -115,7 +117,9 @@ public class appfwpolicylabel_appfwpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Type of policy label invocation.<br> Possible values = reqvserver, policylabel
+	* Type of policy label to invoke if the current policy evaluates to TRUE and the invoke parameter is set. Available settings function as follows:
+* reqvserver. Invoke the unnamed policy label associated with the specified request virtual server.
+* policylabel. Invoke the specified user-defined policy label.<br> Possible values = reqvserver, policylabel
 	* </pre>
 	*/
 	public String get_labeltype() throws Exception {
@@ -142,7 +146,7 @@ public class appfwpolicylabel_appfwpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Name of the label to invoke if the current policy rule evaluates to TRUE.
+	* Name of the policy label to invoke if the current policy evaluates to TRUE, the invoke parameter is set, and Label Type is set to Policy Label.
 	* </pre>
 	*/
 	public void set_invoke_labelname(String invoke_labelname) throws Exception{
@@ -151,7 +155,7 @@ public class appfwpolicylabel_appfwpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Name of the label to invoke if the current policy rule evaluates to TRUE.
+	* Name of the policy label to invoke if the current policy evaluates to TRUE, the invoke parameter is set, and Label Type is set to Policy Label.
 	* </pre>
 	*/
 	public String get_invoke_labelname() throws Exception {
@@ -160,7 +164,7 @@ public class appfwpolicylabel_appfwpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Invoke flag.
+	* If the current policy evaluates to TRUE, terminate evaluation of policies bound to the current policy label, and then forward the request to the specified virtual server or evaluate the specified policy label.
 	* </pre>
 	*/
 	public void set_invoke(boolean invoke) throws Exception {
@@ -169,7 +173,7 @@ public class appfwpolicylabel_appfwpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Invoke flag.
+	* If the current policy evaluates to TRUE, terminate evaluation of policies bound to the current policy label, and then forward the request to the specified virtual server or evaluate the specified policy label.
 	* </pre>
 	*/
 	public void set_invoke(Boolean invoke) throws Exception{
@@ -178,7 +182,7 @@ public class appfwpolicylabel_appfwpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Invoke flag.
+	* If the current policy evaluates to TRUE, terminate evaluation of policies bound to the current policy label, and then forward the request to the specified virtual server or evaluate the specified policy label.
 	* </pre>
 	*/
 	public Boolean get_invoke() throws Exception {

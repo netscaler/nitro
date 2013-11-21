@@ -45,7 +45,7 @@ public class ip6tunnel extends base_resource
 
 	/**
 	* <pre>
-	* The name of the IPv6 tunnel.<br> Minimum length =  1<br> Maximum length =  31
+	* Name for the IPv6 Tunnel. Cannot be changed after the service group is created. Must begin with a number or letter, and can consist of letters, numbers, and the @ _ - . (period) : (colon) # and space ( ) characters.<br> Minimum length =  1<br> Maximum length =  31
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -54,7 +54,7 @@ public class ip6tunnel extends base_resource
 
 	/**
 	* <pre>
-	* The name of the IPv6 tunnel.<br> Minimum length =  1<br> Maximum length =  31
+	* Name for the IPv6 Tunnel. Cannot be changed after the service group is created. Must begin with a number or letter, and can consist of letters, numbers, and the @ _ - . (period) : (colon) # and space ( ) characters.<br> Minimum length =  1<br> Maximum length =  31
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -63,7 +63,7 @@ public class ip6tunnel extends base_resource
 
 	/**
 	* <pre>
-	* The remote IP address or subnet of the tunnel.<br> Minimum length =  1
+	* An IPv6 address of the remote NetScaler appliance used to set up the tunnel.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_remote(String remote) throws Exception{
@@ -72,7 +72,7 @@ public class ip6tunnel extends base_resource
 
 	/**
 	* <pre>
-	* The remote IP address or subnet of the tunnel.<br> Minimum length =  1
+	* An IPv6 address of the remote NetScaler appliance used to set up the tunnel.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_remote() throws Exception {
@@ -81,7 +81,7 @@ public class ip6tunnel extends base_resource
 
 	/**
 	* <pre>
-	* The local IP address of the tunnel.
+	* An IPv6 address of the local NetScaler appliance used to set up the tunnel.
 	* </pre>
 	*/
 	public void set_local(String local) throws Exception{
@@ -90,7 +90,7 @@ public class ip6tunnel extends base_resource
 
 	/**
 	* <pre>
-	* The local IP address of the tunnel.
+	* An IPv6 address of the local NetScaler appliance used to set up the tunnel.
 	* </pre>
 	*/
 	public String get_local() throws Exception {

@@ -247,6 +247,7 @@ public abstract class base_resource
 	/**
 	 * Use this method to perform a get operation on netscaler resource.
 	 * @param service nitro_service object.
+	 * @param option options class object.
 	 * @return Array of nitro resources of specified type.
 	 * @throws Exception Nitro exception is thrown.
 	 */
@@ -417,7 +418,7 @@ public abstract class base_resource
 	 * operation on netscaler resources.
 	 * @param service nitro_service object. 
 	 * @param resources Array of Nitro resources on which the specified action to be performed.
-	 * @param action action needs to be taken on resource. 
+	 * @param option options object with action that is to be performed set.
 	 * @return status of the operation performed.
 	 * @throws Exception Nitro exception is thrown.
 	 */
@@ -488,6 +489,7 @@ public abstract class base_resource
 	 * Use this method to perform an update operation on netscaler resources.
 	 * @param service nitro_service object.
 	 * @param resources  Array of nitro resources to be updated.
+	 * @param option options class object
 	 * @return status of the operation performed.
 	 * @throws Exception Nitro exception is thrown.
 	 */
@@ -522,6 +524,7 @@ public abstract class base_resource
 	 * Use this method to perform a add operation on netscaler resources.
 	 * @param service nitro_service object.
 	 * @param resources Nitro resources to be added on netscaler.
+	 * @param option options class object.
 	 * @return status of the performed operation.
 	 * @throws Exception  Nitro exception is thrown.
 	 */
@@ -542,6 +545,7 @@ public abstract class base_resource
 	 * Use this method to perform a delete operation on netscaler resources.
 	 * @param service nitro_service object.
 	 * @param resources Nitro resources to be deleted on netscaler.
+	 * @param option options class object.
 	 * @return status of the performed operation.
 	 * @throws Exception  Nitro exception is thrown.
 	 */
@@ -589,17 +593,37 @@ public abstract class base_resource
 			httpURLConnection.setRequestMethod("PUT");
 			if (httpURLConnection instanceof HttpsURLConnection)
 			{
-				SSLContext sslContext = SSLContext.getInstance("SSL");
-				//we are using an empty trust manager, because NetScaler currently presents
-				//a test certificate not issued by any signing authority, so we need to bypass
-				//the credentials check
-				sslContext.init(null, new TrustManager[]{new EmptyTrustManager()}, null);
-				SocketFactory sslSocketFactory = sslContext.getSocketFactory();
-
-				HttpsURLConnection secured = (HttpsURLConnection) httpURLConnection;
-				secured.setSSLSocketFactory((SSLSocketFactory)sslSocketFactory);
-				secured.setHostnameVerifier(new EmptyHostnameVerifier());
+				if (service.get_certvalidation()) {
+					SocketFactory sslSocketFactory = SSLSocketFactory.getDefault();
+					HttpsURLConnection secured = (HttpsURLConnection) httpURLConnection;
+					secured.setSSLSocketFactory((SSLSocketFactory)sslSocketFactory);	
+					if (!service.get_hostnameverification()) {
+						/*
+						 * override defualt hostNameverifier's verify method
+						 * with EmptyHostnameVerifier's verify method to ignore hostname verification check.
+						 */
+						secured.setHostnameVerifier(new EmptyHostnameVerifier());
+					}
+				} else {
+					SSLContext sslContext = SSLContext.getInstance("SSL");
+					//we are using an empty trust manager, because NetScaler currently presents
+					//a test certificate not issued by any signing authority, so we need to bypass
+					//the credentials check
+					sslContext.init(null, new TrustManager[]{new EmptyTrustManager()}, null);
+					SocketFactory sslSocketFactory = sslContext.getSocketFactory();
+					
+					HttpsURLConnection secured = (HttpsURLConnection) httpURLConnection;
+					secured.setSSLSocketFactory((SSLSocketFactory)sslSocketFactory);
+					if (!service.get_hostnameverification()) {
+						/*
+						 * overriding defualt hostNameverifier's verify method
+						 * with EmptyHostnameVerifier's verify method to bypass hostname check.
+						 */
+						secured.setHostnameVerifier(new EmptyHostnameVerifier());
+					}
+				}
 			}
+
 			httpURLConnection.setDoInput(true);
 			httpURLConnection.setDoOutput(true);
 			httpURLConnection.setUseCaches(false);
@@ -719,19 +743,41 @@ public abstract class base_resource
 			URL url = new URL(urlstr);
 			httpURLConnection = (HttpURLConnection) url.openConnection();
 			httpURLConnection.setRequestMethod("POST");
+			
+
 			if (httpURLConnection instanceof HttpsURLConnection)
 			{
-				SSLContext sslContext = SSLContext.getInstance("SSL");
-				//we are using an empty trust manager, because NetScaler currently presents
-				//a test certificate not issued by any signing authority, so we need to bypass
-				//the credentials check
-				sslContext.init(null, new TrustManager[]{new EmptyTrustManager()}, null);
-				SocketFactory sslSocketFactory = sslContext.getSocketFactory();
-
-				HttpsURLConnection secured = (HttpsURLConnection) httpURLConnection;
-				secured.setSSLSocketFactory((SSLSocketFactory)sslSocketFactory);
-				secured.setHostnameVerifier(new EmptyHostnameVerifier());
+				if (service.get_certvalidation()) {
+					SocketFactory sslSocketFactory = SSLSocketFactory.getDefault();
+					HttpsURLConnection secured = (HttpsURLConnection) httpURLConnection;
+					secured.setSSLSocketFactory((SSLSocketFactory)sslSocketFactory);	
+					if (!service.get_hostnameverification()) {
+						/*
+						 * override defualt hostNameverifier's verify method
+						 * with EmptyHostnameVerifier's verify method to ignore hostname verification check.
+						 */
+						secured.setHostnameVerifier(new EmptyHostnameVerifier());
+					}
+				} else {
+					SSLContext sslContext = SSLContext.getInstance("SSL");
+					//we are using an empty trust manager, because NetScaler currently presents
+					//a test certificate not issued by any signing authority, so we need to bypass
+					//the credentials check
+					sslContext.init(null, new TrustManager[]{new EmptyTrustManager()}, null);
+					SocketFactory sslSocketFactory = sslContext.getSocketFactory();
+					
+					HttpsURLConnection secured = (HttpsURLConnection) httpURLConnection;
+					secured.setSSLSocketFactory((SSLSocketFactory)sslSocketFactory);
+					if (!service.get_hostnameverification()) {
+						/*
+						 * overriding defualt hostNameverifier's verify method
+						 * with EmptyHostnameVerifier's verify method to bypass hostname check.
+						 */
+						secured.setHostnameVerifier(new EmptyHostnameVerifier());
+					}
+				}
 			}
+			
 			httpURLConnection.setDoInput(true);
 			httpURLConnection.setDoOutput(true);
 			httpURLConnection.setUseCaches(false);
@@ -907,16 +953,35 @@ public abstract class base_resource
 
 			if (httpURLConnection instanceof HttpsURLConnection)
 			{
-				SSLContext sslContext = SSLContext.getInstance("SSL");
-				//we are using an empty trust manager, because NetScaler currently presents
-				//a test certificate not issued by any signing authority, so we need to bypass
-				//the credentials check
-				sslContext.init(null, new TrustManager[]{new EmptyTrustManager()}, null);
-				SocketFactory sslSocketFactory = sslContext.getSocketFactory();
-
-				HttpsURLConnection secured = (HttpsURLConnection) httpURLConnection;
-				secured.setSSLSocketFactory((SSLSocketFactory)sslSocketFactory);
-				secured.setHostnameVerifier(new EmptyHostnameVerifier());
+				if (service.get_certvalidation()) {
+					SocketFactory sslSocketFactory = SSLSocketFactory.getDefault();
+					HttpsURLConnection secured = (HttpsURLConnection) httpURLConnection;
+					secured.setSSLSocketFactory((SSLSocketFactory)sslSocketFactory);	
+					if (!service.get_hostnameverification()) {
+						/*
+						 * override defualt hostNameverifier's verify method
+						 * with EmptyHostnameVerifier's verify method to ignore hostname verification check.
+						 */
+						secured.setHostnameVerifier(new EmptyHostnameVerifier());
+					}
+				} else {
+					SSLContext sslContext = SSLContext.getInstance("SSL");
+					//we are using an empty trust manager, because NetScaler currently presents
+					//a test certificate not issued by any signing authority, so we need to bypass
+					//the credentials check
+					sslContext.init(null, new TrustManager[]{new EmptyTrustManager()}, null);
+					SocketFactory sslSocketFactory = sslContext.getSocketFactory();
+					
+					HttpsURLConnection secured = (HttpsURLConnection) httpURLConnection;
+					secured.setSSLSocketFactory((SSLSocketFactory)sslSocketFactory);
+					if (!service.get_hostnameverification()) {
+						/*
+						 * overriding defualt hostNameverifier's verify method
+						 * with EmptyHostnameVerifier's verify method to bypass hostname check.
+						 */
+						secured.setHostnameVerifier(new EmptyHostnameVerifier());
+					}
+				}
 			}
 			
 			InputStream input;
@@ -1030,16 +1095,35 @@ public abstract class base_resource
 
 			if (httpURLConnection instanceof HttpsURLConnection)
 			{
-				SSLContext sslContext = SSLContext.getInstance("SSL");
-				//we are using an empty trust manager, because NetScaler currently presents
-				//a test certificate not issued by any signing authority, so we need to bypass
-				//the credentials check
-				sslContext.init(null, new TrustManager[]{new EmptyTrustManager()}, null);
-				SocketFactory sslSocketFactory = sslContext.getSocketFactory();
-
-				HttpsURLConnection secured = (HttpsURLConnection) httpURLConnection;
-				secured.setSSLSocketFactory((SSLSocketFactory)sslSocketFactory);
-				secured.setHostnameVerifier(new EmptyHostnameVerifier());
+				if (service.get_certvalidation()) {
+					SocketFactory sslSocketFactory = SSLSocketFactory.getDefault();
+					HttpsURLConnection secured = (HttpsURLConnection) httpURLConnection;
+					secured.setSSLSocketFactory((SSLSocketFactory)sslSocketFactory);	
+					if (!service.get_hostnameverification()) {
+						/*
+						 * override defualt hostNameverifier's verify method
+						 * with EmptyHostnameVerifier's verify method to ignore hostname verification check.
+						 */
+						secured.setHostnameVerifier(new EmptyHostnameVerifier());
+					}
+				} else {
+					SSLContext sslContext = SSLContext.getInstance("SSL");
+					//we are using an empty trust manager, because NetScaler currently presents
+					//a test certificate not issued by any signing authority, so we need to bypass
+					//the credentials check
+					sslContext.init(null, new TrustManager[]{new EmptyTrustManager()}, null);
+					SocketFactory sslSocketFactory = sslContext.getSocketFactory();
+					
+					HttpsURLConnection secured = (HttpsURLConnection) httpURLConnection;
+					secured.setSSLSocketFactory((SSLSocketFactory)sslSocketFactory);
+					if (!service.get_hostnameverification()) {
+						/*
+						 * overriding defualt hostNameverifier's verify method
+						 * with EmptyHostnameVerifier's verify method to bypass hostname check.
+						 */
+						secured.setHostnameVerifier(new EmptyHostnameVerifier());
+					}
+				}
 			}
 
 			InputStream input;
@@ -1141,16 +1225,35 @@ public abstract class base_resource
 
 			if (httpURLConnection instanceof HttpsURLConnection)
 			{
-				SSLContext sslContext = SSLContext.getInstance("SSL");
-				//we are using an empty trust manager, because NetScaler currently presents
-				//a test certificate not issued by any signing authority, so we need to bypass
-				//the credentials check
-				sslContext.init(null, new TrustManager[]{new EmptyTrustManager()}, null);
-				SocketFactory sslSocketFactory = sslContext.getSocketFactory();
-
-				HttpsURLConnection secured = (HttpsURLConnection) httpURLConnection;
-				secured.setSSLSocketFactory((SSLSocketFactory)sslSocketFactory);
-				secured.setHostnameVerifier(new EmptyHostnameVerifier());
+				if (service.get_certvalidation()) {
+					SocketFactory sslSocketFactory = SSLSocketFactory.getDefault();
+					HttpsURLConnection secured = (HttpsURLConnection) httpURLConnection;
+					secured.setSSLSocketFactory((SSLSocketFactory)sslSocketFactory);	
+					if (!service.get_hostnameverification()) {
+						/*
+						 * override defualt hostNameverifier's verify method
+						 * with EmptyHostnameVerifier's verify method to ignore hostname verification check.
+						 */
+						secured.setHostnameVerifier(new EmptyHostnameVerifier());
+					}
+				} else {
+					SSLContext sslContext = SSLContext.getInstance("SSL");
+					//we are using an empty trust manager, because NetScaler currently presents
+					//a test certificate not issued by any signing authority, so we need to bypass
+					//the credentials check
+					sslContext.init(null, new TrustManager[]{new EmptyTrustManager()}, null);
+					SocketFactory sslSocketFactory = sslContext.getSocketFactory();
+					
+					HttpsURLConnection secured = (HttpsURLConnection) httpURLConnection;
+					secured.setSSLSocketFactory((SSLSocketFactory)sslSocketFactory);
+					if (!service.get_hostnameverification()) {
+						/*
+						 * overriding defualt hostNameverifier's verify method
+						 * with EmptyHostnameVerifier's verify method to bypass hostname check.
+						 */
+						secured.setHostnameVerifier(new EmptyHostnameVerifier());
+					}
+				}
 			}
 
 			InputStream input;

@@ -44,7 +44,10 @@ public class aaapreauthenticationpolicy extends base_resource
 
 	/**
 	* <pre>
-	* The name to assign to the new Pre-authentication policy.<br> Minimum length =  1
+	* Name for the preauthentication policy. Must begin with a letter, number, or the underscore character (_), and must consist only of letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at sign (@), equals (=), colon (:), and underscore characters. Cannot be changed after the preauthentication policy is created.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, “my policy” or ‘my policy’).<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -53,7 +56,10 @@ public class aaapreauthenticationpolicy extends base_resource
 
 	/**
 	* <pre>
-	* The name to assign to the new Pre-authentication policy.<br> Minimum length =  1
+	* Name for the preauthentication policy. Must begin with a letter, number, or the underscore character (_), and must consist only of letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at sign (@), equals (=), colon (:), and underscore characters. Cannot be changed after the preauthentication policy is created.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, “my policy” or ‘my policy’).<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -62,7 +68,7 @@ public class aaapreauthenticationpolicy extends base_resource
 
 	/**
 	* <pre>
-	* The name of the rule or expression that the policy will use.
+	* Name of the NetScaler named rule, or a default syntax expression, defining connections that match the policy.
 	* </pre>
 	*/
 	public void set_rule(String rule) throws Exception{
@@ -71,7 +77,7 @@ public class aaapreauthenticationpolicy extends base_resource
 
 	/**
 	* <pre>
-	* The name of the rule or expression that the policy will use.
+	* Name of the NetScaler named rule, or a default syntax expression, defining connections that match the policy.
 	* </pre>
 	*/
 	public String get_rule() throws Exception {
@@ -80,7 +86,7 @@ public class aaapreauthenticationpolicy extends base_resource
 
 	/**
 	* <pre>
-	* The name of the RADIUS action the policy will use.<br> Minimum length =  1
+	* Name of the action that the policy is to invoke when a connection matches the policy.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_reqaction(String reqaction) throws Exception{
@@ -89,7 +95,7 @@ public class aaapreauthenticationpolicy extends base_resource
 
 	/**
 	* <pre>
-	* The name of the RADIUS action the policy will use.<br> Minimum length =  1
+	* Name of the action that the policy is to invoke when a connection matches the policy.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_reqaction() throws Exception {

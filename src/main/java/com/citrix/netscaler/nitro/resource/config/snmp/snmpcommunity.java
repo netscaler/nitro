@@ -38,7 +38,10 @@ public class snmpcommunity extends base_resource
 
 	/**
 	* <pre>
-	* The SNMP community string. Can consist of 1 to 31 characters that include letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at sign (@), equals (=), colon (:), and underscore (_) characters.<br> Minimum length =  1
+	* The SNMP community string. Can consist of 1 to 31 characters that include uppercase and lowercase letters, numbers, and special characters.
+
+The following requirement applies only to the NetScaler CLI:
+If the string includes one or more spaces, enclose the name in double or single quotation marks (for example, "my string" or 'my string').<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_communityname(String communityname) throws Exception{
@@ -47,7 +50,10 @@ public class snmpcommunity extends base_resource
 
 	/**
 	* <pre>
-	* The SNMP community string. Can consist of 1 to 31 characters that include letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at sign (@), equals (=), colon (:), and underscore (_) characters.<br> Minimum length =  1
+	* The SNMP community string. Can consist of 1 to 31 characters that include uppercase and lowercase letters, numbers, and special characters.
+
+The following requirement applies only to the NetScaler CLI:
+If the string includes one or more spaces, enclose the name in double or single quotation marks (for example, "my string" or 'my string').<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_communityname() throws Exception {
@@ -56,7 +62,7 @@ public class snmpcommunity extends base_resource
 
 	/**
 	* <pre>
-	* The SNMP V1 or V2 query-type privilege that you want to associate with this SNMP community. .<br> Possible values = GET, GET_NEXT, GET_BULK, ALL
+	* The SNMP V1 or V2 query-type privilege that you want to associate with this SNMP community.<br> Possible values = GET, GET_NEXT, GET_BULK, SET, ALL
 	* </pre>
 	*/
 	public void set_permissions(String permissions) throws Exception{
@@ -65,7 +71,7 @@ public class snmpcommunity extends base_resource
 
 	/**
 	* <pre>
-	* The SNMP V1 or V2 query-type privilege that you want to associate with this SNMP community. .<br> Possible values = GET, GET_NEXT, GET_BULK, ALL
+	* The SNMP V1 or V2 query-type privilege that you want to associate with this SNMP community.<br> Possible values = GET, GET_NEXT, GET_BULK, SET, ALL
 	* </pre>
 	*/
 	public String get_permissions() throws Exception {
@@ -299,6 +305,7 @@ public class snmpcommunity extends base_resource
 		public static final String GET = "GET";
 		public static final String GET_NEXT = "GET_NEXT";
 		public static final String GET_BULK = "GET_BULK";
+		public static final String SET = "SET";
 		public static final String ALL = "ALL";
 	}
 }

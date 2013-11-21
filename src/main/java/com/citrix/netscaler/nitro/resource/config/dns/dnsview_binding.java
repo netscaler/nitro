@@ -40,7 +40,7 @@ public class dnsview_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the view to be displayed.<br> Minimum length =  1
+	* Name of the view to display.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_viewname(String viewname) throws Exception{
@@ -49,7 +49,7 @@ public class dnsview_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the view to be displayed.<br> Minimum length =  1
+	* Name of the view to display.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_viewname() throws Exception {

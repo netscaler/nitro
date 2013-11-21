@@ -26,7 +26,7 @@ public class sslvserver_args
 
 	/**
 	* <pre>
-	* Details of the individual ciphers bound to the SSL vserver. Select this flag value to display the details of the individual ciphers bound to the SSL vserver.
+	* Display details of the individual ciphers bound to the SSL virtual server.
 	* </pre>
 	*/
 	public void set_cipherdetails(boolean cipherdetails) throws Exception {
@@ -35,7 +35,7 @@ public class sslvserver_args
 
 	/**
 	* <pre>
-	* Details of the individual ciphers bound to the SSL vserver. Select this flag value to display the details of the individual ciphers bound to the SSL vserver.
+	* Display details of the individual ciphers bound to the SSL virtual server.
 	* </pre>
 	*/
 	public void set_cipherdetails(Boolean cipherdetails) throws Exception{
@@ -44,7 +44,7 @@ public class sslvserver_args
 
 	/**
 	* <pre>
-	* Details of the individual ciphers bound to the SSL vserver. Select this flag value to display the details of the individual ciphers bound to the SSL vserver.
+	* Display details of the individual ciphers bound to the SSL virtual server.
 	* </pre>
 	*/
 	public Boolean get_cipherdetails() throws Exception {

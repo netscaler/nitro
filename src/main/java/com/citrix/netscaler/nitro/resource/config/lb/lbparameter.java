@@ -41,9 +41,13 @@ public class lbparameter extends base_resource
 	private String monitorconnectionclose;
 	private String vserverspecificmac;
 
+	//------- Read only Parameter ---------;
+
+	private Long sessionsthreshold;
+
 	/**
 	* <pre>
-	* enable/disable httponly flag for persistence cookie.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Include the HttpOnly attribute in persistence cookies. The HttpOnly attribute limits the scope of a cookie to HTTP requests and helps mitigate the risk of cross-site scripting attacks.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_httponlycookieflag(String httponlycookieflag) throws Exception{
@@ -52,7 +56,7 @@ public class lbparameter extends base_resource
 
 	/**
 	* <pre>
-	* enable/disable httponly flag for persistence cookie.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Include the HttpOnly attribute in persistence cookies. The HttpOnly attribute limits the scope of a cookie to HTTP requests and helps mitigate the risk of cross-site scripting attacks.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_httponlycookieflag() throws Exception {
@@ -61,7 +65,7 @@ public class lbparameter extends base_resource
 
 	/**
 	* <pre>
-	* Indicates whether use consolidate stats to find the least connection service.<br> Default value: YES<br> Possible values = YES, NO
+	* To find the service with the fewest connections, the virtual server uses the consolidated connection statistics from all the packet engines. The NO setting allows consideration of only the number of connections on the packet engine that received the new connection.<br> Default value: YES<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public void set_consolidatedlconn(String consolidatedlconn) throws Exception{
@@ -70,7 +74,7 @@ public class lbparameter extends base_resource
 
 	/**
 	* <pre>
-	* Indicates whether use consolidate stats to find the least connection service.<br> Default value: YES<br> Possible values = YES, NO
+	* To find the service with the fewest connections, the virtual server uses the consolidated connection statistics from all the packet engines. The NO setting allows consideration of only the number of connections on the packet engine that received the new connection.<br> Default value: YES<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public String get_consolidatedlconn() throws Exception {
@@ -79,7 +83,7 @@ public class lbparameter extends base_resource
 
 	/**
 	* <pre>
-	* Indicates whether to consider port of the service for hash based lb methods.<br> Default value: YES<br> Possible values = YES, NO
+	* Include the port number of the service when creating a hash for hash based load balancing methods. With the NO setting, only the IP address of the service is considered when creating a hash.<br> Default value: YES<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public void set_useportforhashlb(String useportforhashlb) throws Exception{
@@ -88,7 +92,7 @@ public class lbparameter extends base_resource
 
 	/**
 	* <pre>
-	* Indicates whether to consider port of the service for hash based lb methods.<br> Default value: YES<br> Possible values = YES, NO
+	* Include the port number of the service when creating a hash for hash based load balancing methods. With the NO setting, only the IP address of the service is considered when creating a hash.<br> Default value: YES<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public String get_useportforhashlb() throws Exception {
@@ -97,7 +101,7 @@ public class lbparameter extends base_resource
 
 	/**
 	* <pre>
-	* If enabled, will do route lookup incase of wildcard server.<br> Default value: YES<br> Possible values = YES, NO
+	* Perform route lookup for traffic received by the NetScaler appliance, and forward the traffic according to configured routes. Do not set this parameter if you want a wildcard virtual server to direct packets received by the appliance to an intermediary device, such as a firewall, even if their destination is directly connected to the appliance. Route lookup is performed after the packets have been processed and returned by the intermediary device.<br> Default value: YES<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public void set_preferdirectroute(String preferdirectroute) throws Exception{
@@ -106,7 +110,7 @@ public class lbparameter extends base_resource
 
 	/**
 	* <pre>
-	* If enabled, will do route lookup incase of wildcard server.<br> Default value: YES<br> Possible values = YES, NO
+	* Perform route lookup for traffic received by the NetScaler appliance, and forward the traffic according to configured routes. Do not set this parameter if you want a wildcard virtual server to direct packets received by the appliance to an intermediary device, such as a firewall, even if their destination is directly connected to the appliance. Route lookup is performed after the packets have been processed and returned by the intermediary device.<br> Default value: YES<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public String get_preferdirectroute() throws Exception {
@@ -115,7 +119,15 @@ public class lbparameter extends base_resource
 
 	/**
 	* <pre>
-	* Factor used to decide the number of requests the vserver will be serving in Round Robin mode, before switching to configured LB method.
+	* Number of requests, per service, for which to apply the round robin load balancing method before switching to the configured load balancing method, thus allowing services to ramp up gradually to full load. Until the specified number of requests is distributed, the NetScaler appliance is said to be implementing the slow start mode (or startup round robin). Implemented for a virtual server when one of the following is true:
+* The virtual server is newly created.
+* One or more services are newly bound to the virtual server. 
+* One or more services bound to the virtual server are enabled.
+* The load balancing method is changed.
+This parameter applies to all the load balancing virtual servers configured on the NetScaler appliance, except for those virtual servers for which the virtual server-level slow start parameters (New Service Startup Request Rate and Increment Interval) are configured. If the global slow start parameter and the slow start parameters for a given virtual server are not set, the appliance implements a default slow start for the virtual server, as follows:
+* For a newly configured virtual server, the appliance implements slow start for the first 100 requests received by the virtual server.
+* For an existing virtual server, if one or more services are newly bound or newly enabled, or if the load balancing method is changed, the appliance dynamically computes the number of requests for which to implement startup round robin. It obtains this number by multiplying the request rate by the number of bound services (it includes services that are marked as DOWN). For example, if the current request rate is 20 requests/s and ten services are bound to the virtual server, the appliance performs startup round robin for 200 requests.
+Not applicable to a virtual server for which a hash based load balancing method is configured.
 	* </pre>
 	*/
 	public void set_startuprrfactor(long startuprrfactor) throws Exception {
@@ -124,7 +136,15 @@ public class lbparameter extends base_resource
 
 	/**
 	* <pre>
-	* Factor used to decide the number of requests the vserver will be serving in Round Robin mode, before switching to configured LB method.
+	* Number of requests, per service, for which to apply the round robin load balancing method before switching to the configured load balancing method, thus allowing services to ramp up gradually to full load. Until the specified number of requests is distributed, the NetScaler appliance is said to be implementing the slow start mode (or startup round robin). Implemented for a virtual server when one of the following is true:
+* The virtual server is newly created.
+* One or more services are newly bound to the virtual server. 
+* One or more services bound to the virtual server are enabled.
+* The load balancing method is changed.
+This parameter applies to all the load balancing virtual servers configured on the NetScaler appliance, except for those virtual servers for which the virtual server-level slow start parameters (New Service Startup Request Rate and Increment Interval) are configured. If the global slow start parameter and the slow start parameters for a given virtual server are not set, the appliance implements a default slow start for the virtual server, as follows:
+* For a newly configured virtual server, the appliance implements slow start for the first 100 requests received by the virtual server.
+* For an existing virtual server, if one or more services are newly bound or newly enabled, or if the load balancing method is changed, the appliance dynamically computes the number of requests for which to implement startup round robin. It obtains this number by multiplying the request rate by the number of bound services (it includes services that are marked as DOWN). For example, if the current request rate is 20 requests/s and ten services are bound to the virtual server, the appliance performs startup round robin for 200 requests.
+Not applicable to a virtual server for which a hash based load balancing method is configured.
 	* </pre>
 	*/
 	public void set_startuprrfactor(Long startuprrfactor) throws Exception{
@@ -133,7 +153,15 @@ public class lbparameter extends base_resource
 
 	/**
 	* <pre>
-	* Factor used to decide the number of requests the vserver will be serving in Round Robin mode, before switching to configured LB method.
+	* Number of requests, per service, for which to apply the round robin load balancing method before switching to the configured load balancing method, thus allowing services to ramp up gradually to full load. Until the specified number of requests is distributed, the NetScaler appliance is said to be implementing the slow start mode (or startup round robin). Implemented for a virtual server when one of the following is true:
+* The virtual server is newly created.
+* One or more services are newly bound to the virtual server. 
+* One or more services bound to the virtual server are enabled.
+* The load balancing method is changed.
+This parameter applies to all the load balancing virtual servers configured on the NetScaler appliance, except for those virtual servers for which the virtual server-level slow start parameters (New Service Startup Request Rate and Increment Interval) are configured. If the global slow start parameter and the slow start parameters for a given virtual server are not set, the appliance implements a default slow start for the virtual server, as follows:
+* For a newly configured virtual server, the appliance implements slow start for the first 100 requests received by the virtual server.
+* For an existing virtual server, if one or more services are newly bound or newly enabled, or if the load balancing method is changed, the appliance dynamically computes the number of requests for which to implement startup round robin. It obtains this number by multiplying the request rate by the number of bound services (it includes services that are marked as DOWN). For example, if the current request rate is 20 requests/s and ten services are bound to the virtual server, the appliance performs startup round robin for 200 requests.
+Not applicable to a virtual server for which a hash based load balancing method is configured.
 	* </pre>
 	*/
 	public Long get_startuprrfactor() throws Exception {
@@ -142,7 +170,7 @@ public class lbparameter extends base_resource
 
 	/**
 	* <pre>
-	* Enabling this option will skip maxClients limit check for monitoring connections.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* When a monitor initiates a connection to a service, do not check to determine whether the number of connections to the service has reached the limit specified by the service's Max Clients setting. Enables monitoring to continue even if the service has reached its connection limit.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_monitorskipmaxclient(String monitorskipmaxclient) throws Exception{
@@ -151,7 +179,7 @@ public class lbparameter extends base_resource
 
 	/**
 	* <pre>
-	* Enabling this option will skip maxClients limit check for monitoring connections.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* When a monitor initiates a connection to a service, do not check to determine whether the number of connections to the service has reached the limit specified by the service's Max Clients setting. Enables monitoring to continue even if the service has reached its connection limit.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_monitorskipmaxclient() throws Exception {
@@ -160,7 +188,7 @@ public class lbparameter extends base_resource
 
 	/**
 	* <pre>
-	* This option is used to control the way the monitoring connections will be closed, either by FIN or RST . Default is FIN.<br> Default value: FIN<br> Possible values = RESET, FIN
+	* Close monitoring connections by sending the service a connection termination message with the specified bit set.<br> Default value: FIN<br> Possible values = RESET, FIN
 	* </pre>
 	*/
 	public void set_monitorconnectionclose(String monitorconnectionclose) throws Exception{
@@ -169,7 +197,7 @@ public class lbparameter extends base_resource
 
 	/**
 	* <pre>
-	* This option is used to control the way the monitoring connections will be closed, either by FIN or RST . Default is FIN.<br> Default value: FIN<br> Possible values = RESET, FIN
+	* Close monitoring connections by sending the service a connection termination message with the specified bit set.<br> Default value: FIN<br> Possible values = RESET, FIN
 	* </pre>
 	*/
 	public String get_monitorconnectionclose() throws Exception {
@@ -178,7 +206,8 @@ public class lbparameter extends base_resource
 
 	/**
 	* <pre>
-	* Incase of FW LB deployments, we might want that the return traffic from firewall should be send to another FW. NS defualt behavior is that we never reload balance the trafic returned from the services. However turning this knob ON, it willl make sure that NS lets other mac mode LB vserver to pick up this return traffic. The loop however is avoided as we dont pick the same vserver again.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Allow a MAC-mode virtual server to accept traffic returned by an intermediary device, such as a firewall, to which the traffic was previously forwarded by another MAC-mode virtual server. The second virtual server can then distribute that traffic across the destination server farm. Also useful when load balancing Branch Repeater appliances.
+Note: The second virtual server can also send the traffic to another set of intermediary devices, such as another set of firewalls. If necessary, you can configure multiple MAC-mode virtual servers to pass traffic successively through multiple sets of intermediary devices.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_vserverspecificmac(String vserverspecificmac) throws Exception{
@@ -187,11 +216,21 @@ public class lbparameter extends base_resource
 
 	/**
 	* <pre>
-	* Incase of FW LB deployments, we might want that the return traffic from firewall should be send to another FW. NS defualt behavior is that we never reload balance the trafic returned from the services. However turning this knob ON, it willl make sure that NS lets other mac mode LB vserver to pick up this return traffic. The loop however is avoided as we dont pick the same vserver again.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Allow a MAC-mode virtual server to accept traffic returned by an intermediary device, such as a firewall, to which the traffic was previously forwarded by another MAC-mode virtual server. The second virtual server can then distribute that traffic across the destination server farm. Also useful when load balancing Branch Repeater appliances.
+Note: The second virtual server can also send the traffic to another set of intermediary devices, such as another set of firewalls. If necessary, you can configure multiple MAC-mode virtual servers to pass traffic successively through multiple sets of intermediary devices.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_vserverspecificmac() throws Exception {
 		return this.vserverspecificmac;
+	}
+
+	/**
+	* <pre>
+	* This option is used to get the upper-limit on the number of persistent sessions set by the administrator for this system.
+	* </pre>
+	*/
+	public Long get_sessionsthreshold() throws Exception {
+		return this.sessionsthreshold;
 	}
 
 	/**
@@ -252,14 +291,6 @@ public class lbparameter extends base_resource
 	*/
 	public static base_response unset(nitro_service client, lbparameter resource, String[] args) throws Exception{
 		lbparameter unsetresource = new lbparameter();
-		unsetresource.httponlycookieflag = resource.httponlycookieflag;
-		unsetresource.consolidatedlconn = resource.consolidatedlconn;
-		unsetresource.useportforhashlb = resource.useportforhashlb;
-		unsetresource.preferdirectroute = resource.preferdirectroute;
-		unsetresource.startuprrfactor = resource.startuprrfactor;
-		unsetresource.monitorskipmaxclient = resource.monitorskipmaxclient;
-		unsetresource.monitorconnectionclose = resource.monitorconnectionclose;
-		unsetresource.vserverspecificmac = resource.vserverspecificmac;
 		return unsetresource.unset_resource(client,args);
 	}
 

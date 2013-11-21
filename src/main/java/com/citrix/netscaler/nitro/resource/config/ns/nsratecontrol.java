@@ -35,10 +35,11 @@ public class nsratecontrol extends base_resource
 	private Long tcpthreshold;
 	private Long udpthreshold;
 	private Long icmpthreshold;
+	private Long tcprstthreshold;
 
 	/**
 	* <pre>
-	* The number of SYNs permitted per 10 milli second.
+	* Number of SYNs permitted per 10 milliseconds.
 	* </pre>
 	*/
 	public void set_tcpthreshold(long tcpthreshold) throws Exception {
@@ -47,7 +48,7 @@ public class nsratecontrol extends base_resource
 
 	/**
 	* <pre>
-	* The number of SYNs permitted per 10 milli second.
+	* Number of SYNs permitted per 10 milliseconds.
 	* </pre>
 	*/
 	public void set_tcpthreshold(Long tcpthreshold) throws Exception{
@@ -56,7 +57,7 @@ public class nsratecontrol extends base_resource
 
 	/**
 	* <pre>
-	* The number of SYNs permitted per 10 milli second.
+	* Number of SYNs permitted per 10 milliseconds.
 	* </pre>
 	*/
 	public Long get_tcpthreshold() throws Exception {
@@ -65,7 +66,7 @@ public class nsratecontrol extends base_resource
 
 	/**
 	* <pre>
-	* The number of UDP packets permitted per 10 milli second.
+	* Number of UDP packets permitted per 10 milliseconds.
 	* </pre>
 	*/
 	public void set_udpthreshold(long udpthreshold) throws Exception {
@@ -74,7 +75,7 @@ public class nsratecontrol extends base_resource
 
 	/**
 	* <pre>
-	* The number of UDP packets permitted per 10 milli second.
+	* Number of UDP packets permitted per 10 milliseconds.
 	* </pre>
 	*/
 	public void set_udpthreshold(Long udpthreshold) throws Exception{
@@ -83,7 +84,7 @@ public class nsratecontrol extends base_resource
 
 	/**
 	* <pre>
-	* The number of UDP packets permitted per 10 milli second.
+	* Number of UDP packets permitted per 10 milliseconds.
 	* </pre>
 	*/
 	public Long get_udpthreshold() throws Exception {
@@ -92,7 +93,7 @@ public class nsratecontrol extends base_resource
 
 	/**
 	* <pre>
-	* The number of ICMP packets permitted per 10 milli second.<br> Default value: 100
+	* Number of ICMP packets permitted per 10 milliseconds.<br> Default value: 100
 	* </pre>
 	*/
 	public void set_icmpthreshold(long icmpthreshold) throws Exception {
@@ -101,7 +102,7 @@ public class nsratecontrol extends base_resource
 
 	/**
 	* <pre>
-	* The number of ICMP packets permitted per 10 milli second.<br> Default value: 100
+	* Number of ICMP packets permitted per 10 milliseconds.<br> Default value: 100
 	* </pre>
 	*/
 	public void set_icmpthreshold(Long icmpthreshold) throws Exception{
@@ -110,11 +111,38 @@ public class nsratecontrol extends base_resource
 
 	/**
 	* <pre>
-	* The number of ICMP packets permitted per 10 milli second.<br> Default value: 100
+	* Number of ICMP packets permitted per 10 milliseconds.<br> Default value: 100
 	* </pre>
 	*/
 	public Long get_icmpthreshold() throws Exception {
 		return this.icmpthreshold;
+	}
+
+	/**
+	* <pre>
+	* The number of TCP RST packets permitted per 10 milli second. zero means rate control is disabled and 0xffffffff means every thing is rate controlled.<br> Default value: 100
+	* </pre>
+	*/
+	public void set_tcprstthreshold(long tcprstthreshold) throws Exception {
+		this.tcprstthreshold = new Long(tcprstthreshold);
+	}
+
+	/**
+	* <pre>
+	* The number of TCP RST packets permitted per 10 milli second. zero means rate control is disabled and 0xffffffff means every thing is rate controlled.<br> Default value: 100
+	* </pre>
+	*/
+	public void set_tcprstthreshold(Long tcprstthreshold) throws Exception{
+		this.tcprstthreshold = tcprstthreshold;
+	}
+
+	/**
+	* <pre>
+	* The number of TCP RST packets permitted per 10 milli second. zero means rate control is disabled and 0xffffffff means every thing is rate controlled.<br> Default value: 100
+	* </pre>
+	*/
+	public Long get_tcprstthreshold() throws Exception {
+		return this.tcprstthreshold;
 	}
 
 	/**
@@ -161,6 +189,7 @@ public class nsratecontrol extends base_resource
 		updateresource.tcpthreshold = resource.tcpthreshold;
 		updateresource.udpthreshold = resource.udpthreshold;
 		updateresource.icmpthreshold = resource.icmpthreshold;
+		updateresource.tcprstthreshold = resource.tcprstthreshold;
 		return updateresource.update_resource(client);
 	}
 
@@ -170,9 +199,6 @@ public class nsratecontrol extends base_resource
 	*/
 	public static base_response unset(nitro_service client, nsratecontrol resource, String[] args) throws Exception{
 		nsratecontrol unsetresource = new nsratecontrol();
-		unsetresource.tcpthreshold = resource.tcpthreshold;
-		unsetresource.udpthreshold = resource.udpthreshold;
-		unsetresource.icmpthreshold = resource.icmpthreshold;
 		return unsetresource.unset_resource(client,args);
 	}
 

@@ -37,13 +37,13 @@ public class hafiles extends base_resource
 	/**
 	* <pre>
 	* Specify one of the following modes of synchronization.
-	all. Synchronize files related to system configuration, Access Gateway bookmarks, SSL certificates, SSL CRL lists, HTML injection scripts, and Application Firewall XML objects. 
-	bookmarks. Synchronize all Access Gateway bookmarks.
-	ssl. Synchronize all certificates, keys, and CRLs for the SSL feature. 
-	htmlinjection. Synchronize all scripts configured for the HTML injection feature. 
-	imports. Synchronize all XML objects (for example, WSDLs, schemas, error pages) configured for the Application Firewall. 
-	misc. Synchronize all license files and the rc.conf file. 
-	all_plus_misc. Synchronize files related to system configuration, Access Gateway bookmarks, SSL certificates, SSL CRL lists, HTML injection scripts, Application Firewall XML objects, licenses, and the rc.conf file.<br> Possible values = all, bookmarks, ssl, htmlinjection, imports, misc, dns, all_plus_misc
+* all - Synchronize files related to system configuration, Access Gateway bookmarks, SSL certificates, SSL CRL lists, HTML injection scripts, and Application Firewall XML objects. 
+* bookmarks - Synchronize all Access Gateway bookmarks.
+* ssl - Synchronize all certificates, keys, and CRLs for the SSL feature. 
+* htmlinjection. Synchronize all scripts configured for the HTML injection feature. 
+* imports. Synchronize all XML objects (for example, WSDLs, schemas, error pages) configured for the application firewall. 
+* misc - Synchronize all license files and the rc.conf file. 
+* all_plus_misc - Synchronize files related to system configuration, Access Gateway bookmarks, SSL certificates, SSL CRL lists, HTML injection scripts, application firewall XML objects, licenses, and the rc.conf file.<br> Possible values = all, bookmarks, ssl, htmlinjection, imports, misc, dns, krb, all_plus_misc
 	* </pre>
 	*/
 	public void set_mode(String[] mode) throws Exception{
@@ -53,13 +53,13 @@ public class hafiles extends base_resource
 	/**
 	* <pre>
 	* Specify one of the following modes of synchronization.
-	all. Synchronize files related to system configuration, Access Gateway bookmarks, SSL certificates, SSL CRL lists, HTML injection scripts, and Application Firewall XML objects. 
-	bookmarks. Synchronize all Access Gateway bookmarks.
-	ssl. Synchronize all certificates, keys, and CRLs for the SSL feature. 
-	htmlinjection. Synchronize all scripts configured for the HTML injection feature. 
-	imports. Synchronize all XML objects (for example, WSDLs, schemas, error pages) configured for the Application Firewall. 
-	misc. Synchronize all license files and the rc.conf file. 
-	all_plus_misc. Synchronize files related to system configuration, Access Gateway bookmarks, SSL certificates, SSL CRL lists, HTML injection scripts, Application Firewall XML objects, licenses, and the rc.conf file.<br> Possible values = all, bookmarks, ssl, htmlinjection, imports, misc, dns, all_plus_misc
+* all - Synchronize files related to system configuration, Access Gateway bookmarks, SSL certificates, SSL CRL lists, HTML injection scripts, and Application Firewall XML objects. 
+* bookmarks - Synchronize all Access Gateway bookmarks.
+* ssl - Synchronize all certificates, keys, and CRLs for the SSL feature. 
+* htmlinjection. Synchronize all scripts configured for the HTML injection feature. 
+* imports. Synchronize all XML objects (for example, WSDLs, schemas, error pages) configured for the application firewall. 
+* misc - Synchronize all license files and the rc.conf file. 
+* all_plus_misc - Synchronize files related to system configuration, Access Gateway bookmarks, SSL certificates, SSL CRL lists, HTML injection scripts, application firewall XML objects, licenses, and the rc.conf file.<br> Possible values = all, bookmarks, ssl, htmlinjection, imports, misc, dns, krb, all_plus_misc
 	* </pre>
 	*/
 	public String[] get_mode() throws Exception {
@@ -119,6 +119,7 @@ public class hafiles extends base_resource
 		public static final String imports = "imports";
 		public static final String misc = "misc";
 		public static final String dns = "dns";
+		public static final String krb = "krb";
 		public static final String all_plus_misc = "all_plus_misc";
 	}
 }

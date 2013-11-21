@@ -29,6 +29,7 @@ class audit_response extends base_response
 
 public class audit_stats extends base_resource
 {
+	private String clearstats;
 	private Long auditsyslogmsgsent;
 	private Long auditsyslogmsgsentrate;
 	private Long auditsyslogmsggen;
@@ -54,7 +55,25 @@ public class audit_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of times the NetScaler failed to allocate a port when sending a syslog message to the syslog server(s).
+	* Clear the statsistics / counters
+	* </pre>
+	*/
+	public void set_clearstats(String clearstats) throws Exception{
+		this.clearstats = clearstats;
+	}
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters.<br> Possible values = basic, full
+	* </pre>
+	*/
+	public String get_clearstats() throws Exception {
+		return this.clearstats;
+	}
+
+	/**
+	* <pre>
+	* Rate (/s) counter for auditportallocfail
 	* </pre>
 	*/
 	public Long get_auditportallocfailrate() throws Exception {
@@ -63,7 +82,7 @@ public class audit_stats extends base_resource
 
 	/**
 	* <pre>
-	* NAT allocation failed.
+	* Rate (/s) counter for auditnsballocfail
 	* </pre>
 	*/
 	public Long get_auditnsballocfailrate() throws Exception {
@@ -72,10 +91,7 @@ public class audit_stats extends base_resource
 
 	/**
 	* <pre>
-	* Failures in finding the context structure for an Access Gateway session during attempts to send session-specific audit messages.
-
-During an Access Gateway session, audit messages related to the session are queued up in the auditlog buffer for transmission to the audit log server(s). If the session is killed before the messages are sent, the context structure allocated at session creation is removed. This structure is needed for sending the queued auditlog messages. If it is not found, this counter is incremented.
-
+	* Rate (/s) counter for auditcontextnotfound
 	* </pre>
 	*/
 	public Long get_auditcontextnotfoundrate() throws Exception {
@@ -93,7 +109,7 @@ During an Access Gateway session, audit messages related to the session are queu
 
 	/**
 	* <pre>
-	* Auditlog buffer flushes. In a multiprocessor NetScaler, both the main processor and the co-processor can generate auditlog messages and fill up the auditlog buffers. But only the primary processor can free up the buffers by sending auditlog messages to the auditlog server(s). The number of auditlog buffers is fixed. If the co-processor detects that all the auditlog buffers are full, it issues a flush command to the main processor.
+	* Rate (/s) counter for flushcmdcnt
 	* </pre>
 	*/
 	public Long get_flushcmdcntrate() throws Exception {
@@ -102,7 +118,7 @@ During an Access Gateway session, audit messages related to the session are queu
 
 	/**
 	* <pre>
-	* Nsb allocation failed.
+	* Rate (/s) counter for auditlog32errsyslogallocnsbfail
 	* </pre>
 	*/
 	public Long get_auditlog32errsyslogallocnsbfailrate() throws Exception {
@@ -120,7 +136,7 @@ During an Access Gateway session, audit messages related to the session are queu
 
 	/**
 	* <pre>
-	* Syslog messages sent to the syslog server(s).
+	* Rate (/s) counter for auditsyslogmsgsent
 	* </pre>
 	*/
 	public Long get_auditsyslogmsgsentrate() throws Exception {
@@ -129,7 +145,7 @@ During an Access Gateway session, audit messages related to the session are queu
 
 	/**
 	* <pre>
-	* Failures in establishment of a connection between the NetScaler and the auditserver tool (the Netscaler's custom logging tool).
+	* Rate (/s) counter for clientconnfail
 	* </pre>
 	*/
 	public Long get_clientconnfailrate() throws Exception {
@@ -138,7 +154,7 @@ During an Access Gateway session, audit messages related to the session are queu
 
 	/**
 	* <pre>
-	* NAT lookup failed.
+	* Rate (/s) counter for auditnatpcblkupfail
 	* </pre>
 	*/
 	public Long get_auditnatpcblkupfailrate() throws Exception {
@@ -147,7 +163,7 @@ During an Access Gateway session, audit messages related to the session are queu
 
 	/**
 	* <pre>
-	* Failures in allocation of Access Gateway context structure. When an Access Gateway session is established, the NetScaler creates an internal context structure , which identifies the user and the IP address from which the user has logged in.
+	* Rate (/s) counter for auditmemallocfail
 	* </pre>
 	*/
 	public Long get_auditmemallocfailrate() throws Exception {
@@ -201,7 +217,7 @@ During an Access Gateway session, audit messages related to the session are queu
 
 	/**
 	* <pre>
-	* Syslog messages about to be sent to the syslog server.
+	* Rate (/s) counter for auditsyslogmsggen
 	* </pre>
 	*/
 	public Long get_auditsyslogmsggenrate() throws Exception {
@@ -249,7 +265,7 @@ During an Access Gateway session, audit messages related to the session are queu
 
 	/**
 	* <pre>
-	* Nsb Chain allocation failed.
+	* Rate (/s) counter for nsbchainallocfail
 	* </pre>
 	*/
 	public Long get_nsbchainallocfailrate() throws Exception {
@@ -310,4 +326,8 @@ During an Access Gateway session, audit messages related to the session are queu
 		return response[0];
 	}
 
+	public static class clearstatsEnum {
+		public static final String basic = "basic";
+		public static final String full = "full";
+	}
 }

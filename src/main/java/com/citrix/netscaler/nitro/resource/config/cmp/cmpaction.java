@@ -40,11 +40,15 @@ public class cmpaction extends base_resource
 	//------- Read only Parameter ---------;
 
 	private String[] builtin;
+	private Boolean isdefault;
 	private Long __count;
 
 	/**
 	* <pre>
-	* The name of the compression action.<br> Minimum length =  1
+	* Name of the compression action. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Can be changed after the action is added. 
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my cmp action" or 'my cmp action').<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -53,7 +57,10 @@ public class cmpaction extends base_resource
 
 	/**
 	* <pre>
-	* The name of the compression action.<br> Minimum length =  1
+	* Name of the compression action. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Can be changed after the action is added. 
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my cmp action" or 'my cmp action').<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -62,7 +69,12 @@ public class cmpaction extends base_resource
 
 	/**
 	* <pre>
-	* The type of compression action.<br> Possible values = compress, gzip, deflate, nocompress
+	* Type of compression performed by this action. 
+Available settings function as follows: 
+* COMPRESS - Apply GZIP or DEFLATE compression to the response, depending on the request header. Prefer GZIP.
+* GZIP - Apply GZIP compression.
+* DEFLATE - Apply DEFLATE compression.
+* NOCOMPRESS - Do not compress the response if the request matches a policy that uses this action.<br> Possible values = compress, gzip, deflate, nocompress
 	* </pre>
 	*/
 	public void set_cmptype(String cmptype) throws Exception{
@@ -71,7 +83,12 @@ public class cmpaction extends base_resource
 
 	/**
 	* <pre>
-	* The type of compression action.<br> Possible values = compress, gzip, deflate, nocompress
+	* Type of compression performed by this action. 
+Available settings function as follows: 
+* COMPRESS - Apply GZIP or DEFLATE compression to the response, depending on the request header. Prefer GZIP.
+* GZIP - Apply GZIP compression.
+* DEFLATE - Apply DEFLATE compression.
+* NOCOMPRESS - Do not compress the response if the request matches a policy that uses this action.<br> Possible values = compress, gzip, deflate, nocompress
 	* </pre>
 	*/
 	public String get_cmptype() throws Exception {
@@ -80,7 +97,7 @@ public class cmpaction extends base_resource
 
 	/**
 	* <pre>
-	* The type of delta action (if delta type compression action is defined).<br> Default value: NS_ACT_CMP_DELTA_TYPE_PERURL<br> Possible values = PERURL, PERPOLICY
+	* The type of delta action (if delta type compression action is defined).<br> Default value: PERURL<br> Possible values = PERURL, PERPOLICY
 	* </pre>
 	*/
 	public void set_deltatype(String deltatype) throws Exception{
@@ -89,7 +106,7 @@ public class cmpaction extends base_resource
 
 	/**
 	* <pre>
-	* The type of delta action (if delta type compression action is defined).<br> Default value: NS_ACT_CMP_DELTA_TYPE_PERURL<br> Possible values = PERURL, PERPOLICY
+	* The type of delta action (if delta type compression action is defined).<br> Default value: PERURL<br> Possible values = PERURL, PERPOLICY
 	* </pre>
 	*/
 	public String get_deltatype() throws Exception {
@@ -98,7 +115,12 @@ public class cmpaction extends base_resource
 
 	/**
 	* <pre>
-	* The new name of the cmp action.<br> Minimum length =  1
+	* New name for the compression action. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at
+(@), equals (=), and hyphen (-) characters. 
+Choose a name that can be correlated with the function that the action performs. 
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my cmp action" or 'my cmp action').<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_newname(String newname) throws Exception{
@@ -107,7 +129,12 @@ public class cmpaction extends base_resource
 
 	/**
 	* <pre>
-	* The new name of the cmp action.<br> Minimum length =  1
+	* New name for the compression action. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at
+(@), equals (=), and hyphen (-) characters. 
+Choose a name that can be correlated with the function that the action performs. 
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my cmp action" or 'my cmp action').<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_newname() throws Exception {
@@ -121,6 +148,15 @@ public class cmpaction extends base_resource
 	*/
 	public String[] get_builtin() throws Exception {
 		return this.builtin;
+	}
+
+	/**
+	* <pre>
+	* A value of true is returned if it is a default policy.
+	* </pre>
+	*/
+	public Boolean get_isdefault() throws Exception {
+		return this.isdefault;
 	}
 
 	/**

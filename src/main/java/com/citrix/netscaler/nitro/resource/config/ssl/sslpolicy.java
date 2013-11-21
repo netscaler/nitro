@@ -44,11 +44,15 @@ public class sslpolicy extends base_resource
 	private Long hits;
 	private Long undefhits;
 	private String description;
+	private String policytype;
 	private Long __count;
 
 	/**
 	* <pre>
-	* The name for the new SSL policy.<br> Minimum length =  1
+	* Name for the new SSL policy. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.  Cannot be changed after the policy is created.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my policy" or 'my policy').<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -57,7 +61,10 @@ public class sslpolicy extends base_resource
 
 	/**
 	* <pre>
-	* The name for the new SSL policy.<br> Minimum length =  1
+	* Name for the new SSL policy. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.  Cannot be changed after the policy is created.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my policy" or 'my policy').<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -66,7 +73,15 @@ public class sslpolicy extends base_resource
 
 	/**
 	* <pre>
-	* The expression that sets the condition for application of the SSL policy.
+	* Expression, against which traffic is evaluated. Written in the classic or default syntax.
+Note:
+Maximum length of a string literal in the expression is 255 characters. A longer string can be split into smaller strings of up to 255 characters each, and the smaller strings concatenated with the + operator. For example, you can create a 500-character string as follows: '"<string of 255 characters>" + "<string of 245 characters>"'
+(Classic expressions are not supported in the cluster build.)
+
+The following requirements apply only to the NetScaler CLI:
+* If the expression includes one or more spaces, enclose the entire expression in double quotation marks.
+* If the expression itself includes double quotation marks, escape the quotations by using the  character. 
+* Alternatively, you can use single quotation marks to enclose the rule, in which case you do not have to escape the double quotation marks.
 	* </pre>
 	*/
 	public void set_rule(String rule) throws Exception{
@@ -75,7 +90,15 @@ public class sslpolicy extends base_resource
 
 	/**
 	* <pre>
-	* The expression that sets the condition for application of the SSL policy.
+	* Expression, against which traffic is evaluated. Written in the classic or default syntax.
+Note:
+Maximum length of a string literal in the expression is 255 characters. A longer string can be split into smaller strings of up to 255 characters each, and the smaller strings concatenated with the + operator. For example, you can create a 500-character string as follows: '"<string of 255 characters>" + "<string of 245 characters>"'
+(Classic expressions are not supported in the cluster build.)
+
+The following requirements apply only to the NetScaler CLI:
+* If the expression includes one or more spaces, enclose the entire expression in double quotation marks.
+* If the expression itself includes double quotation marks, escape the quotations by using the  character. 
+* Alternatively, you can use single quotation marks to enclose the rule, in which case you do not have to escape the double quotation marks.
 	* </pre>
 	*/
 	public String get_rule() throws Exception {
@@ -102,7 +125,7 @@ public class sslpolicy extends base_resource
 
 	/**
 	* <pre>
-	* The name of the action to be performed on the request. Refer to "add ssl action" command to add a new action. This is a mandatory argument. Actions like NOOP, RESET, DROP, CLIENTAUTH and NOCLIENTAUTH are also allowed.
+	* Name of the built-in or user-defined action to perform on the request. Available built-in actions are NOOP, RESET, DROP, CLIENTAUTH, and NOCLIENTAUTH.
 	* </pre>
 	*/
 	public void set_action(String action) throws Exception{
@@ -111,7 +134,7 @@ public class sslpolicy extends base_resource
 
 	/**
 	* <pre>
-	* The name of the action to be performed on the request. Refer to "add ssl action" command to add a new action. This is a mandatory argument. Actions like NOOP, RESET, DROP, CLIENTAUTH and NOCLIENTAUTH are also allowed.
+	* Name of the built-in or user-defined action to perform on the request. Available built-in actions are NOOP, RESET, DROP, CLIENTAUTH, and NOCLIENTAUTH.
 	* </pre>
 	*/
 	public String get_action() throws Exception {
@@ -120,7 +143,7 @@ public class sslpolicy extends base_resource
 
 	/**
 	* <pre>
-	* Action to be used by the policy when the rule evaluation turns out to be undefined. The undef action can be NOOP, RESET or DROP.
+	* Name of the action to be performed when the result of rule evaluation is undefined. Possible values for control policies: CLIENTAUTH, NOCLIENTAUTH, NOOP, RESET, DROP. Possible values for data policies: NOOP, RESET or DROP.
 	* </pre>
 	*/
 	public void set_undefaction(String undefaction) throws Exception{
@@ -129,7 +152,7 @@ public class sslpolicy extends base_resource
 
 	/**
 	* <pre>
-	* Action to be used by the policy when the rule evaluation turns out to be undefined. The undef action can be NOOP, RESET or DROP.
+	* Name of the action to be performed when the result of rule evaluation is undefined. Possible values for control policies: CLIENTAUTH, NOCLIENTAUTH, NOOP, RESET, DROP. Possible values for data policies: NOOP, RESET or DROP.
 	* </pre>
 	*/
 	public String get_undefaction() throws Exception {
@@ -138,7 +161,7 @@ public class sslpolicy extends base_resource
 
 	/**
 	* <pre>
-	* Comments associated with this policy.
+	* Any comments associated with this policy.
 	* </pre>
 	*/
 	public void set_comment(String comment) throws Exception{
@@ -147,7 +170,7 @@ public class sslpolicy extends base_resource
 
 	/**
 	* <pre>
-	* Comments associated with this policy.
+	* Any comments associated with this policy.
 	* </pre>
 	*/
 	public String get_comment() throws Exception {
@@ -179,6 +202,15 @@ public class sslpolicy extends base_resource
 	*/
 	public String get_description() throws Exception {
 		return this.description;
+	}
+
+	/**
+	* <pre>
+	* .<br> Possible values = Classic Policy, Advanced Policy
+	* </pre>
+	*/
+	public String get_policytype() throws Exception {
+		return this.policytype;
 	}
 
 	/**
@@ -337,21 +369,9 @@ public class sslpolicy extends base_resource
 	* Use this API to unset the properties of sslpolicy resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String name, String args[]) throws Exception {
-		sslpolicy unsetresource = new sslpolicy();
-		unsetresource.name = name;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of sslpolicy resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, sslpolicy resource, String[] args) throws Exception{
 		sslpolicy unsetresource = new sslpolicy();
 		unsetresource.name = resource.name;
-		unsetresource.undefaction = resource.undefaction;
-		unsetresource.comment = resource.comment;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -383,8 +403,6 @@ public class sslpolicy extends base_resource
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new sslpolicy();
 				unsetresources[i].name = resources[i].name;
-				unsetresources[i].undefaction = resources[i].undefaction;
-				unsetresources[i].comment = resources[i].comment;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}
@@ -503,4 +521,8 @@ public class sslpolicy extends base_resource
 		return 0;
 	}
 
+	public static class policytypeEnum {
+		public static final String Classic_Policy = "Classic Policy";
+		public static final String Advanced_Policy = "Advanced Policy";
+	}
 }

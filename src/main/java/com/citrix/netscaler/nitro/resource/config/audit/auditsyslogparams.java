@@ -45,12 +45,11 @@ public class auditsyslogparams extends base_resource
 
 	//------- Read only Parameter ---------;
 
-	private String name;
 	private String[] builtin;
 
 	/**
 	* <pre>
-	* The IP address of the syslog server.<br> Minimum length =  1
+	* IP address of the syslog server.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_serverip(String serverip) throws Exception{
@@ -59,7 +58,7 @@ public class auditsyslogparams extends base_resource
 
 	/**
 	* <pre>
-	* The IP address of the syslog server.<br> Minimum length =  1
+	* IP address of the syslog server.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_serverip() throws Exception {
@@ -68,7 +67,7 @@ public class auditsyslogparams extends base_resource
 
 	/**
 	* <pre>
-	* The port on which the syslog server is running.<br> Minimum value =  1
+	* Port on which the syslog server accepts connections.<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_serverport(int serverport) throws Exception {
@@ -77,7 +76,7 @@ public class auditsyslogparams extends base_resource
 
 	/**
 	* <pre>
-	* The port on which the syslog server is running.<br> Minimum value =  1
+	* Port on which the syslog server accepts connections.<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_serverport(Integer serverport) throws Exception{
@@ -86,7 +85,7 @@ public class auditsyslogparams extends base_resource
 
 	/**
 	* <pre>
-	* The port on which the syslog server is running.<br> Minimum value =  1
+	* Port on which the syslog server accepts connections.<br> Minimum value =  1
 	* </pre>
 	*/
 	public Integer get_serverport() throws Exception {
@@ -95,7 +94,11 @@ public class auditsyslogparams extends base_resource
 
 	/**
 	* <pre>
-	* The date format.<br> Possible values = MMDDYYYY, DDMMYYYY
+	* Format of dates in the logs.
+Supported formats are: 
+* MMDDYYYY - U.S. style month/date/year format.
+* DDMMYYYY. European style  -date/month/year format.
+* YYYYMMDD - ISO style year/month/date format.<br> Possible values = MMDDYYYY, DDMMYYYY, YYYYMMDD
 	* </pre>
 	*/
 	public void set_dateformat(String dateformat) throws Exception{
@@ -104,7 +107,11 @@ public class auditsyslogparams extends base_resource
 
 	/**
 	* <pre>
-	* The date format.<br> Possible values = MMDDYYYY, DDMMYYYY
+	* Format of dates in the logs.
+Supported formats are: 
+* MMDDYYYY - U.S. style month/date/year format.
+* DDMMYYYY. European style  -date/month/year format.
+* YYYYMMDD - ISO style year/month/date format.<br> Possible values = MMDDYYYY, DDMMYYYY, YYYYMMDD
 	* </pre>
 	*/
 	public String get_dateformat() throws Exception {
@@ -113,7 +120,18 @@ public class auditsyslogparams extends base_resource
 
 	/**
 	* <pre>
-	* The audit log level for which messages should be logged.<br> Possible values = ALL, EMERGENCY, ALERT, CRITICAL, ERROR, WARNING, NOTICE, INFORMATIONAL, DEBUG, NONE
+	* Types of information to be logged. 
+Available settings function as follows: 
+* ALL - All events.
+* EMERGENCY - Events that indicate an immediate crisis on the server.
+* ALERT - Events that might require action.
+* CRITICAL - Events that indicate an imminent server crisis.
+* ERROR - Events that indicate some type of error.
+* WARNING - Events that require action in the near future.
+* NOTICE - Events that the administrator should know about.
+* INFORMATIONAL - All but low-level events.
+* DEBUG - All events, in extreme detail.
+* NONE - No events.<br> Possible values = ALL, EMERGENCY, ALERT, CRITICAL, ERROR, WARNING, NOTICE, INFORMATIONAL, DEBUG, NONE
 	* </pre>
 	*/
 	public void set_loglevel(String[] loglevel) throws Exception{
@@ -122,7 +140,18 @@ public class auditsyslogparams extends base_resource
 
 	/**
 	* <pre>
-	* The audit log level for which messages should be logged.<br> Possible values = ALL, EMERGENCY, ALERT, CRITICAL, ERROR, WARNING, NOTICE, INFORMATIONAL, DEBUG, NONE
+	* Types of information to be logged. 
+Available settings function as follows: 
+* ALL - All events.
+* EMERGENCY - Events that indicate an immediate crisis on the server.
+* ALERT - Events that might require action.
+* CRITICAL - Events that indicate an imminent server crisis.
+* ERROR - Events that indicate some type of error.
+* WARNING - Events that require action in the near future.
+* NOTICE - Events that the administrator should know about.
+* INFORMATIONAL - All but low-level events.
+* DEBUG - All events, in extreme detail.
+* NONE - No events.<br> Possible values = ALL, EMERGENCY, ALERT, CRITICAL, ERROR, WARNING, NOTICE, INFORMATIONAL, DEBUG, NONE
 	* </pre>
 	*/
 	public String[] get_loglevel() throws Exception {
@@ -131,7 +160,8 @@ public class auditsyslogparams extends base_resource
 
 	/**
 	* <pre>
-	* The log facility (RFC 3164).<br> Possible values = LOCAL0, LOCAL1, LOCAL2, LOCAL3, LOCAL4, LOCAL5, LOCAL6, LOCAL7
+	* Facility value, as defined in RFC 3164, assigned to the log message. 
+Log facility values are numbers 0 to 7 (LOCAL0 through LOCAL7). Each number indicates where a specific message originated from, such as the NetScaler appliance itself, the VPN, or external.<br> Possible values = LOCAL0, LOCAL1, LOCAL2, LOCAL3, LOCAL4, LOCAL5, LOCAL6, LOCAL7
 	* </pre>
 	*/
 	public void set_logfacility(String logfacility) throws Exception{
@@ -140,7 +170,8 @@ public class auditsyslogparams extends base_resource
 
 	/**
 	* <pre>
-	* The log facility (RFC 3164).<br> Possible values = LOCAL0, LOCAL1, LOCAL2, LOCAL3, LOCAL4, LOCAL5, LOCAL6, LOCAL7
+	* Facility value, as defined in RFC 3164, assigned to the log message. 
+Log facility values are numbers 0 to 7 (LOCAL0 through LOCAL7). Each number indicates where a specific message originated from, such as the NetScaler appliance itself, the VPN, or external.<br> Possible values = LOCAL0, LOCAL1, LOCAL2, LOCAL3, LOCAL4, LOCAL5, LOCAL6, LOCAL7
 	* </pre>
 	*/
 	public String get_logfacility() throws Exception {
@@ -149,7 +180,7 @@ public class auditsyslogparams extends base_resource
 
 	/**
 	* <pre>
-	* Log the tcp messages.<br> Possible values = NONE, ALL
+	* Log TCP messages.<br> Possible values = NONE, ALL
 	* </pre>
 	*/
 	public void set_tcp(String tcp) throws Exception{
@@ -158,7 +189,7 @@ public class auditsyslogparams extends base_resource
 
 	/**
 	* <pre>
-	* Log the tcp messages.<br> Possible values = NONE, ALL
+	* Log TCP messages.<br> Possible values = NONE, ALL
 	* </pre>
 	*/
 	public String get_tcp() throws Exception {
@@ -167,7 +198,7 @@ public class auditsyslogparams extends base_resource
 
 	/**
 	* <pre>
-	* Log the acl messages.<br> Possible values = ENABLED, DISABLED
+	* Log access control list (ACL) messages.<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_acl(String acl) throws Exception{
@@ -176,7 +207,7 @@ public class auditsyslogparams extends base_resource
 
 	/**
 	* <pre>
-	* Log the acl messages.<br> Possible values = ENABLED, DISABLED
+	* Log access control list (ACL) messages.<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_acl() throws Exception {
@@ -185,7 +216,10 @@ public class auditsyslogparams extends base_resource
 
 	/**
 	* <pre>
-	* Specifies the timezone in which the timestmps in the log messages will be generated.<br> Possible values = GMT_TIME, LOCAL_TIME
+	* Time zone used for date and timestamps in the logs. 
+Available settings function as follows: 
+* GMT_TIME - Coordinated Universal Time.
+* LOCAL_TIME  Use the server’s timezone setting.<br> Possible values = GMT_TIME, LOCAL_TIME
 	* </pre>
 	*/
 	public void set_timezone(String timezone) throws Exception{
@@ -194,7 +228,10 @@ public class auditsyslogparams extends base_resource
 
 	/**
 	* <pre>
-	* Specifies the timezone in which the timestmps in the log messages will be generated.<br> Possible values = GMT_TIME, LOCAL_TIME
+	* Time zone used for date and timestamps in the logs. 
+Available settings function as follows: 
+* GMT_TIME - Coordinated Universal Time.
+* LOCAL_TIME  Use the server’s timezone setting.<br> Possible values = GMT_TIME, LOCAL_TIME
 	* </pre>
 	*/
 	public String get_timezone() throws Exception {
@@ -203,7 +240,8 @@ public class auditsyslogparams extends base_resource
 
 	/**
 	* <pre>
-	* Specifies whether the user configurable log messages should be done or not.<br> Possible values = YES, NO
+	* Log user-configurable log messages to syslog. 
+Setting this parameter to NO causes audit to ignore all user-configured message actions. Setting this parameter to YES causes audit to log user-configured message actions that meet the other logging criteria.<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public void set_userdefinedauditlog(String userdefinedauditlog) throws Exception{
@@ -212,7 +250,8 @@ public class auditsyslogparams extends base_resource
 
 	/**
 	* <pre>
-	* Specifies whether the user configurable log messages should be done or not.<br> Possible values = YES, NO
+	* Log user-configurable log messages to syslog. 
+Setting this parameter to NO causes audit to ignore all user-configured message actions. Setting this parameter to YES causes audit to log user-configured message actions that meet the other logging criteria.<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public String get_userdefinedauditlog() throws Exception {
@@ -221,7 +260,8 @@ public class auditsyslogparams extends base_resource
 
 	/**
 	* <pre>
-	* Control export of log messages to AppFlow collectors.<br> Possible values = ENABLED, DISABLED
+	* Export log messages to AppFlow collectors.
+Appflow collectors are entities to which log messages can be sent so that some action can be performed on them.<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_appflowexport(String appflowexport) throws Exception{
@@ -230,20 +270,12 @@ public class auditsyslogparams extends base_resource
 
 	/**
 	* <pre>
-	* Control export of log messages to AppFlow collectors.<br> Possible values = ENABLED, DISABLED
+	* Export log messages to AppFlow collectors.
+Appflow collectors are entities to which log messages can be sent so that some action can be performed on them.<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_appflowexport() throws Exception {
 		return this.appflowexport;
-	}
-
-	/**
-	* <pre>
-	* Name.
-	* </pre>
-	*/
-	public String get_name() throws Exception {
-		return this.name;
 	}
 
 	/**
@@ -315,16 +347,6 @@ public class auditsyslogparams extends base_resource
 	*/
 	public static base_response unset(nitro_service client, auditsyslogparams resource, String[] args) throws Exception{
 		auditsyslogparams unsetresource = new auditsyslogparams();
-		unsetresource.serverip = resource.serverip;
-		unsetresource.serverport = resource.serverport;
-		unsetresource.loglevel = resource.loglevel;
-		unsetresource.dateformat = resource.dateformat;
-		unsetresource.logfacility = resource.logfacility;
-		unsetresource.tcp = resource.tcp;
-		unsetresource.acl = resource.acl;
-		unsetresource.timezone = resource.timezone;
-		unsetresource.userdefinedauditlog = resource.userdefinedauditlog;
-		unsetresource.appflowexport = resource.appflowexport;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -362,6 +384,7 @@ public class auditsyslogparams extends base_resource
 	public static class dateformatEnum {
 		public static final String MMDDYYYY = "MMDDYYYY";
 		public static final String DDMMYYYY = "DDMMYYYY";
+		public static final String YYYYMMDD = "YYYYMMDD";
 	}
 	public static class aclEnum {
 		public static final String ENABLED = "ENABLED";

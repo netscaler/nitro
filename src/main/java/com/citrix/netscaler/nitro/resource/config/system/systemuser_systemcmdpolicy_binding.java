@@ -84,7 +84,7 @@ public class systemuser_systemcmdpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the system user.<br> Minimum length =  1
+	* Name of the system-user entry to which to bind the command policy.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_username(String username) throws Exception{
@@ -93,7 +93,7 @@ public class systemuser_systemcmdpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the system user.<br> Minimum length =  1
+	* Name of the system-user entry to which to bind the command policy.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_username() throws Exception {

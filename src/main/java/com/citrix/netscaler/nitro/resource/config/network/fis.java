@@ -41,7 +41,7 @@ public class fis extends base_resource
 
 	/**
 	* <pre>
-	* A name for the FIS to be created. Must begin with a letter, a number, or the underscore symbol, and can consist of from 1 to 31 letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at sign (@), equals (=), colon (:), and underscore (_) characters. You should choose a name that helps identify the FIS.<br> Minimum length =  1
+	* Name for the FIS to be created. Leading character must be a number or letter. Other characters allowed, after the first character, are @ _ - . (period) : (colon) # and space ( ).<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -50,7 +50,7 @@ public class fis extends base_resource
 
 	/**
 	* <pre>
-	* A name for the FIS to be created. Must begin with a letter, a number, or the underscore symbol, and can consist of from 1 to 31 letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at sign (@), equals (=), colon (:), and underscore (_) characters. You should choose a name that helps identify the FIS.<br> Minimum length =  1
+	* Name for the FIS to be created. Leading character must be a number or letter. Other characters allowed, after the first character, are @ _ - . (period) : (colon) # and space ( ).<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {

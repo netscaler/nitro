@@ -48,7 +48,7 @@ public class servicegroup_servicegroupmember_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the service group to which the service will be bound.<br> Minimum length =  1
+	* Name of the service group.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_servicegroupname(String servicegroupname) throws Exception{
@@ -57,7 +57,7 @@ public class servicegroup_servicegroupmember_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the service group to which the service will be bound.<br> Minimum length =  1
+	* Name of the service group.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_servicegroupname() throws Exception {
@@ -84,7 +84,7 @@ public class servicegroup_servicegroupmember_binding extends base_resource
 
 	/**
 	* <pre>
-	* The port number of the member to be changed.<br> Range 1 - 65535
+	* Server port number.<br> Range 1 - 65535
 	* </pre>
 	*/
 	public void set_port(int port) throws Exception {
@@ -93,7 +93,7 @@ public class servicegroup_servicegroupmember_binding extends base_resource
 
 	/**
 	* <pre>
-	* The port number of the member to be changed.<br> Range 1 - 65535
+	* Server port number.<br> Range 1 - 65535
 	* </pre>
 	*/
 	public void set_port(Integer port) throws Exception{
@@ -102,7 +102,7 @@ public class servicegroup_servicegroupmember_binding extends base_resource
 
 	/**
 	* <pre>
-	* The port number of the member to be changed.<br> Range 1 - 65535
+	* Server port number.<br> Range 1 - 65535
 	* </pre>
 	*/
 	public Integer get_port() throws Exception {
@@ -111,7 +111,7 @@ public class servicegroup_servicegroupmember_binding extends base_resource
 
 	/**
 	* <pre>
-	* The state of the service group after it is added.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Initial state of the service group.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_state(String state) throws Exception{
@@ -120,7 +120,7 @@ public class servicegroup_servicegroupmember_binding extends base_resource
 
 	/**
 	* <pre>
-	* The state of the service group after it is added.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Initial state of the service group.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_state() throws Exception {
@@ -156,7 +156,7 @@ public class servicegroup_servicegroupmember_binding extends base_resource
 
 	/**
 	* <pre>
-	* A positive integer to identify the service. Used when the persistency type is set to Custom Server ID.
+	* The  identifier for the service. This is used when the persistency type is set to Custom Server ID.
 	* </pre>
 	*/
 	public void set_serverid(long serverid) throws Exception {
@@ -165,7 +165,7 @@ public class servicegroup_servicegroupmember_binding extends base_resource
 
 	/**
 	* <pre>
-	* A positive integer to identify the service. Used when the persistency type is set to Custom Server ID.
+	* The  identifier for the service. This is used when the persistency type is set to Custom Server ID.
 	* </pre>
 	*/
 	public void set_serverid(Long serverid) throws Exception{
@@ -174,7 +174,7 @@ public class servicegroup_servicegroupmember_binding extends base_resource
 
 	/**
 	* <pre>
-	* A positive integer to identify the service. Used when the persistency type is set to Custom Server ID.
+	* The  identifier for the service. This is used when the persistency type is set to Custom Server ID.
 	* </pre>
 	*/
 	public Long get_serverid() throws Exception {
@@ -183,7 +183,7 @@ public class servicegroup_servicegroupmember_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the server to be changed.<br> Minimum length =  1
+	* Name of the server to which to bind the service group.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_servername(String servername) throws Exception{
@@ -192,7 +192,7 @@ public class servicegroup_servicegroupmember_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the server to be changed.<br> Minimum length =  1
+	* Name of the server to which to bind the service group.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_servername() throws Exception {
@@ -201,7 +201,7 @@ public class servicegroup_servicegroupmember_binding extends base_resource
 
 	/**
 	* <pre>
-	* A positive integer to identify the service. Used when the persistency type is set to Custom Server ID.<br> Default value: "None"
+	* The identifier for this IP:Port pair. Used when the persistency type is set to Custom Server ID.<br> Default value: "None"
 	* </pre>
 	*/
 	public void set_customserverid(String customserverid) throws Exception{
@@ -210,7 +210,7 @@ public class servicegroup_servicegroupmember_binding extends base_resource
 
 	/**
 	* <pre>
-	* A positive integer to identify the service. Used when the persistency type is set to Custom Server ID.<br> Default value: "None"
+	* The identifier for this IP:Port pair. Used when the persistency type is set to Custom Server ID.<br> Default value: "None"
 	* </pre>
 	*/
 	public String get_customserverid() throws Exception {
@@ -219,7 +219,7 @@ public class servicegroup_servicegroupmember_binding extends base_resource
 
 	/**
 	* <pre>
-	* when used along with monitor name, it specifies the weight of the monitor binding. When used along with servername & port pair, specifies the weight of this service.<br> Minimum value =  1<br> Maximum value =  100
+	* Weight to assign to the servers in the service group. Specifies the capacity of the servers relative to the other servers in the load balancing configuration. The higher the weight, the higher the percentage of requests sent to the service.<br> Minimum value =  1<br> Maximum value =  100
 	* </pre>
 	*/
 	public void set_weight(long weight) throws Exception {
@@ -228,7 +228,7 @@ public class servicegroup_servicegroupmember_binding extends base_resource
 
 	/**
 	* <pre>
-	* when used along with monitor name, it specifies the weight of the monitor binding. When used along with servername & port pair, specifies the weight of this service.<br> Minimum value =  1<br> Maximum value =  100
+	* Weight to assign to the servers in the service group. Specifies the capacity of the servers relative to the other servers in the load balancing configuration. The higher the weight, the higher the percentage of requests sent to the service.<br> Minimum value =  1<br> Maximum value =  100
 	* </pre>
 	*/
 	public void set_weight(Long weight) throws Exception{
@@ -237,7 +237,7 @@ public class servicegroup_servicegroupmember_binding extends base_resource
 
 	/**
 	* <pre>
-	* when used along with monitor name, it specifies the weight of the monitor binding. When used along with servername & port pair, specifies the weight of this service.<br> Minimum value =  1<br> Maximum value =  100
+	* Weight to assign to the servers in the service group. Specifies the capacity of the servers relative to the other servers in the load balancing configuration. The higher the weight, the higher the percentage of requests sent to the service.<br> Minimum value =  1<br> Maximum value =  100
 	* </pre>
 	*/
 	public Long get_weight() throws Exception {
@@ -246,7 +246,7 @@ public class servicegroup_servicegroupmember_binding extends base_resource
 
 	/**
 	* <pre>
-	* The state of the service.<br> Possible values = UP, DOWN, UNKNOWN, BUSY, OUT OF SERVICE, GOING OUT OF SERVICE, DOWN WHEN GOING OUT OF SERVICE, NS_EMPTY_STR
+	* The state of the service.<br> Possible values = UP, DOWN, UNKNOWN, BUSY, OUT OF SERVICE, GOING OUT OF SERVICE, DOWN WHEN GOING OUT OF SERVICE, NS_EMPTY_STR, Unknown, DISABLED
 	* </pre>
 	*/
 	public String get_svrstate() throws Exception {
@@ -255,7 +255,7 @@ public class servicegroup_servicegroupmember_binding extends base_resource
 
 	/**
 	* <pre>
-	* The time allowed (in seconds) for a graceful shutdown. During this period, new connections or requests will continue to be sent to this service for clients who already have a persistent session on the system. Connections or requests from fresh or new clients who do not yet have a persistence sessions on the system will not be sent to the service. Instead, they will be load balanced among other available services. After the delay time expires, no new requests or connections will be sent to the service.
+	* Time, in seconds, allocated for a shutdown of the services in the service group. During this period, new requests are sent to the service only for clients who already have persistent sessions on the appliance. Requests from new clients are load balanced among other available services. After the delay time expires, no requests are sent to the service, and the service is marked as unavailable (OUT OF SERVICE).
 	* </pre>
 	*/
 	public Long get_delay() throws Exception {
@@ -264,7 +264,7 @@ public class servicegroup_servicegroupmember_binding extends base_resource
 
 	/**
 	* <pre>
-	* Indicates graceful shutdown of the service. System will wait for all outstanding connections to this service to be closed before disabling the service.<br> Default value: NO<br> Possible values = YES, NO
+	* Wait for all existing connections to the service to terminate before shutting down the service.<br> Default value: NO<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public String get_graceful() throws Exception {
@@ -459,8 +459,10 @@ public class servicegroup_servicegroupmember_binding extends base_resource
 		public static final String GOING_OUT_OF_SERVICE = "GOING OUT OF SERVICE";
 		public static final String DOWN_WHEN_GOING_OUT_OF_SERVICE = "DOWN WHEN GOING OUT OF SERVICE";
 		public static final String NS_EMPTY_STR = "NS_EMPTY_STR";
+		public static final String Unknown = "Unknown";
+		public static final String DISABLED = "DISABLED";
 	}
-	public static class dup_stateEnum {
+	public static class monstateEnum {
 		public static final String ENABLED = "ENABLED";
 		public static final String DISABLED = "DISABLED";
 	}

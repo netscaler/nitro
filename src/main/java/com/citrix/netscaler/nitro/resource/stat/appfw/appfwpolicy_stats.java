@@ -33,6 +33,7 @@ class appfwpolicy_response extends base_response
 public class appfwpolicy_stats extends base_resource
 {
 	private String name;
+	private String clearstats;
 	private Long pipolicyhits;
 	private Long pipolicyhitsrate;
 	private Long pipolicyundefhits;
@@ -40,7 +41,7 @@ public class appfwpolicy_stats extends base_resource
 
 	/**
 	* <pre>
-	* The name of the advance application firewall policy for which statistics will be displayed.  If not given statistics are shown for all advance application firewall policies.
+	* Name of the application firewall policy.
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -49,7 +50,7 @@ public class appfwpolicy_stats extends base_resource
 
 	/**
 	* <pre>
-	* The name of the advance application firewall policy for which statistics will be displayed.  If not given statistics are shown for all advance application firewall policies.<br> Minimum length =  1
+	* Name of the application firewall policy.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -58,7 +59,25 @@ public class appfwpolicy_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of undef hits on the policy
+	* Clear the statsistics / counters
+	* </pre>
+	*/
+	public void set_clearstats(String clearstats) throws Exception{
+		this.clearstats = clearstats;
+	}
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters.<br> Possible values = basic, full
+	* </pre>
+	*/
+	public String get_clearstats() throws Exception {
+		return this.clearstats;
+	}
+
+	/**
+	* <pre>
+	* Rate (/s) counter for pipolicyundefhits
 	* </pre>
 	*/
 	public Long get_pipolicyundefhitsrate() throws Exception {
@@ -76,7 +95,7 @@ public class appfwpolicy_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of hits on the policy
+	* Rate (/s) counter for pipolicyhits
 	* </pre>
 	*/
 	public Long get_pipolicyhitsrate() throws Exception {
@@ -154,4 +173,8 @@ public class appfwpolicy_stats extends base_resource
 		return response;
 	}
 
+	public static class clearstatsEnum {
+		public static final String basic = "basic";
+		public static final String full = "full";
+	}
 }

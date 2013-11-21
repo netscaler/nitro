@@ -36,7 +36,7 @@ public class ptp extends base_resource
 
 	/**
 	* <pre>
-	* Running State of Precision Time Protocol (PTP) on the cluster. When enabled, PTP synchronizes the time on the cluster nodes. Otherwise, you can configure NTP (on the cluster IP address) to synchronize the time on the cluster nodes.<br> Default value: NSA_PTP_ENABLE<br> Possible values = 
+	* Enables or disables Precision Time Protocol (PTP) on the appliance. If you disable PTP, make sure you enable Network Time Protocol (NTP) on the cluster.<br> Default value: ENABLE<br> Possible values = DISABLE, ENABLE
 	* </pre>
 	*/
 	public void set_state(String state) throws Exception{
@@ -45,7 +45,7 @@ public class ptp extends base_resource
 
 	/**
 	* <pre>
-	* Running State of Precision Time Protocol (PTP) on the cluster. When enabled, PTP synchronizes the time on the cluster nodes. Otherwise, you can configure NTP (on the cluster IP address) to synchronize the time on the cluster nodes.<br> Default value: NSA_PTP_ENABLE<br> Possible values = 
+	* Enables or disables Precision Time Protocol (PTP) on the appliance. If you disable PTP, make sure you enable Network Time Protocol (NTP) on the cluster.<br> Default value: ENABLE<br> Possible values = DISABLE, ENABLE
 	* </pre>
 	*/
 	public String get_state() throws Exception {
@@ -115,4 +115,8 @@ public class ptp extends base_resource
 		return response[0];
 	}
 
+	public static class stateEnum {
+		public static final String DISABLE = "DISABLE";
+		public static final String ENABLE = "ENABLE";
+	}
 }

@@ -36,6 +36,7 @@ public class route extends base_resource
 	private String netmask;
 	private String gateway;
 	private Long cost;
+	private Long td;
 	private Long distance;
 	private Long cost1;
 	private Long weight;
@@ -84,7 +85,7 @@ public class route extends base_resource
 
 	/**
 	* <pre>
-	* An IPv4 network address for which you want to add a route entry in the routing table of the NetScaler appliance.
+	* IPv4 network address for which to add a route entry in the routing table of the NetScaler appliance.
 	* </pre>
 	*/
 	public void set_network(String network) throws Exception{
@@ -93,7 +94,7 @@ public class route extends base_resource
 
 	/**
 	* <pre>
-	* An IPv4 network address for which you want to add a route entry in the routing table of the NetScaler appliance.
+	* IPv4 network address for which to add a route entry in the routing table of the NetScaler appliance.
 	* </pre>
 	*/
 	public String get_network() throws Exception {
@@ -120,7 +121,7 @@ public class route extends base_resource
 
 	/**
 	* <pre>
-	* The IP address of the gateway for this route. Can be null to specify a null-interface route.<br> Minimum length =  1
+	* IP address of the gateway for this route. Can be either the IP address of the gateway, or can be null to specify a null interface route.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_gateway(String gateway) throws Exception{
@@ -129,7 +130,7 @@ public class route extends base_resource
 
 	/**
 	* <pre>
-	* The IP address of the gateway for this route. Can be null to specify a null-interface route.<br> Minimum length =  1
+	* IP address of the gateway for this route. Can be either the IP address of the gateway, or can be null to specify a null interface route.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_gateway() throws Exception {
@@ -138,7 +139,7 @@ public class route extends base_resource
 
 	/**
 	* <pre>
-	* The cost of a route is used to compare routes of the same type. The route having the lowest cost is the most preferred route. Possible values: 0 through 65535. Default: 0.<br> Minimum value =  0<br> Maximum value =  65535
+	* Positive integer used by the routing algorithms to determine preference for using this route. The lower the cost, the higher the preference.<br> Minimum value =  0<br> Maximum value =  65535
 	* </pre>
 	*/
 	public void set_cost(long cost) throws Exception {
@@ -147,7 +148,7 @@ public class route extends base_resource
 
 	/**
 	* <pre>
-	* The cost of a route is used to compare routes of the same type. The route having the lowest cost is the most preferred route. Possible values: 0 through 65535. Default: 0.<br> Minimum value =  0<br> Maximum value =  65535
+	* Positive integer used by the routing algorithms to determine preference for using this route. The lower the cost, the higher the preference.<br> Minimum value =  0<br> Maximum value =  65535
 	* </pre>
 	*/
 	public void set_cost(Long cost) throws Exception{
@@ -156,7 +157,7 @@ public class route extends base_resource
 
 	/**
 	* <pre>
-	* The cost of a route is used to compare routes of the same type. The route having the lowest cost is the most preferred route. Possible values: 0 through 65535. Default: 0.<br> Minimum value =  0<br> Maximum value =  65535
+	* Positive integer used by the routing algorithms to determine preference for using this route. The lower the cost, the higher the preference.<br> Minimum value =  0<br> Maximum value =  65535
 	* </pre>
 	*/
 	public Long get_cost() throws Exception {
@@ -165,7 +166,34 @@ public class route extends base_resource
 
 	/**
 	* <pre>
-	* Administrative distance of this route from the appliance.<br> Default value: 1<br> Minimum value =  0<br> Maximum value =  255
+	* Traffic Domain Id.<br> Minimum value =  0<br> Maximum value =  4094
+	* </pre>
+	*/
+	public void set_td(long td) throws Exception {
+		this.td = new Long(td);
+	}
+
+	/**
+	* <pre>
+	* Traffic Domain Id.<br> Minimum value =  0<br> Maximum value =  4094
+	* </pre>
+	*/
+	public void set_td(Long td) throws Exception{
+		this.td = td;
+	}
+
+	/**
+	* <pre>
+	* Traffic Domain Id.<br> Minimum value =  0<br> Maximum value =  4094
+	* </pre>
+	*/
+	public Long get_td() throws Exception {
+		return this.td;
+	}
+
+	/**
+	* <pre>
+	* Administrative distance of this route, which determines the preference of this route over other routes, with same destination, from different routing protocols. A lower value is preferred.<br> Default value: 1<br> Minimum value =  0<br> Maximum value =  255
 	* </pre>
 	*/
 	public void set_distance(long distance) throws Exception {
@@ -174,7 +202,7 @@ public class route extends base_resource
 
 	/**
 	* <pre>
-	* Administrative distance of this route from the appliance.<br> Default value: 1<br> Minimum value =  0<br> Maximum value =  255
+	* Administrative distance of this route, which determines the preference of this route over other routes, with same destination, from different routing protocols. A lower value is preferred.<br> Default value: 1<br> Minimum value =  0<br> Maximum value =  255
 	* </pre>
 	*/
 	public void set_distance(Long distance) throws Exception{
@@ -183,7 +211,7 @@ public class route extends base_resource
 
 	/**
 	* <pre>
-	* Administrative distance of this route from the appliance.<br> Default value: 1<br> Minimum value =  0<br> Maximum value =  255
+	* Administrative distance of this route, which determines the preference of this route over other routes, with same destination, from different routing protocols. A lower value is preferred.<br> Default value: 1<br> Minimum value =  0<br> Maximum value =  255
 	* </pre>
 	*/
 	public Long get_distance() throws Exception {
@@ -219,7 +247,7 @@ public class route extends base_resource
 
 	/**
 	* <pre>
-	* Value to facilitate balancing the load on ECMP routes. This value is compared with the hashed value of the packet, and a route is then chosen. Specific to ECMP routes.<br> Default value: 1<br> Minimum value =  1<br> Maximum value =  65535
+	* Positive integer used by the routing algorithms to determine preference for this route over others of equal cost. The lower the weight, the higher the preference.<br> Default value: 1<br> Minimum value =  1<br> Maximum value =  65535
 	* </pre>
 	*/
 	public void set_weight(long weight) throws Exception {
@@ -228,7 +256,7 @@ public class route extends base_resource
 
 	/**
 	* <pre>
-	* Value to facilitate balancing the load on ECMP routes. This value is compared with the hashed value of the packet, and a route is then chosen. Specific to ECMP routes.<br> Default value: 1<br> Minimum value =  1<br> Maximum value =  65535
+	* Positive integer used by the routing algorithms to determine preference for this route over others of equal cost. The lower the weight, the higher the preference.<br> Default value: 1<br> Minimum value =  1<br> Maximum value =  65535
 	* </pre>
 	*/
 	public void set_weight(Long weight) throws Exception{
@@ -237,7 +265,7 @@ public class route extends base_resource
 
 	/**
 	* <pre>
-	* Value to facilitate balancing the load on ECMP routes. This value is compared with the hashed value of the packet, and a route is then chosen. Specific to ECMP routes.<br> Default value: 1<br> Minimum value =  1<br> Maximum value =  65535
+	* Positive integer used by the routing algorithms to determine preference for this route over others of equal cost. The lower the weight, the higher the preference.<br> Default value: 1<br> Minimum value =  1<br> Maximum value =  65535
 	* </pre>
 	*/
 	public Long get_weight() throws Exception {
@@ -246,7 +274,7 @@ public class route extends base_resource
 
 	/**
 	* <pre>
-	* State of advertisement of this route by dynamic routing protocols.<br> Possible values = DISABLED, ENABLED
+	* Advertise this route.<br> Possible values = DISABLED, ENABLED
 	* </pre>
 	*/
 	public void set_advertise(String advertise) throws Exception{
@@ -255,7 +283,7 @@ public class route extends base_resource
 
 	/**
 	* <pre>
-	* State of advertisement of this route by dynamic routing protocols.<br> Possible values = DISABLED, ENABLED
+	* Advertise this route.<br> Possible values = DISABLED, ENABLED
 	* </pre>
 	*/
 	public String get_advertise() throws Exception {
@@ -264,8 +292,7 @@ public class route extends base_resource
 
 	/**
 	* <pre>
-	* Routing protocols used for advertising routes if route advertisement is enabled.
-             Note: For this setting to work, you must configure the dynamic routing protocol from the VTYSH command line. For more information about configuring dynamic routing protocols on the NetScaler appliance, see the “Dynamic Routing” chapter of the Citrix NetScaler Networking Guide. .<br> Possible values = OSPF, ISIS, RIP, BGP
+	* Routing protocol used for advertising this route.<br> Default value: ADV_ROUTE_FLAGS<br> Possible values = OSPF, ISIS, RIP, BGP
 	* </pre>
 	*/
 	public void set_protocol(String[] protocol) throws Exception{
@@ -274,8 +301,7 @@ public class route extends base_resource
 
 	/**
 	* <pre>
-	* Routing protocols used for advertising routes if route advertisement is enabled.
-             Note: For this setting to work, you must configure the dynamic routing protocol from the VTYSH command line. For more information about configuring dynamic routing protocols on the NetScaler appliance, see the “Dynamic Routing” chapter of the Citrix NetScaler Networking Guide. .<br> Possible values = OSPF, ISIS, RIP, BGP
+	* Routing protocol used for advertising this route.<br> Default value: ADV_ROUTE_FLAGS<br> Possible values = OSPF, ISIS, RIP, BGP
 	* </pre>
 	*/
 	public String[] get_protocol() throws Exception {
@@ -284,7 +310,7 @@ public class route extends base_resource
 
 	/**
 	* <pre>
-	* Monitor this route to verify its reachability through the gateway.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Monitor this route using a monitor of type ARP or PING.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_msr(String msr) throws Exception{
@@ -293,7 +319,7 @@ public class route extends base_resource
 
 	/**
 	* <pre>
-	* Monitor this route to verify its reachability through the gateway.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Monitor this route using a monitor of type ARP or PING.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_msr() throws Exception {
@@ -302,7 +328,7 @@ public class route extends base_resource
 
 	/**
 	* <pre>
-	* A PING or ARP monitor to monitor the static route.<br> Minimum length =  1
+	* Name of the monitor, of type ARP or PING, configured on the NetScaler appliance to monitor this route.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_monitor(String monitor) throws Exception{
@@ -311,7 +337,7 @@ public class route extends base_resource
 
 	/**
 	* <pre>
-	* A PING or ARP monitor to monitor the static route.<br> Minimum length =  1
+	* Name of the monitor, of type ARP or PING, configured on the NetScaler appliance to monitor this route.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_monitor() throws Exception {
@@ -320,7 +346,7 @@ public class route extends base_resource
 
 	/**
 	* <pre>
-	* The type of the route.<br> Possible values = CONNECTED, STATIC, DYNAMIC, OSPF, ISIS, RIP, BGP
+	* Protocol used by routes that you want to remove from the routing table of the NetScaler appliance.<br> Possible values = CONNECTED, STATIC, DYNAMIC, OSPF, ISIS, RIP, BGP
 	* </pre>
 	*/
 	public void set_routetype(String routetype) throws Exception{
@@ -329,7 +355,7 @@ public class route extends base_resource
 
 	/**
 	* <pre>
-	* The type of the route.<br> Possible values = CONNECTED, STATIC, DYNAMIC, OSPF, ISIS, RIP, BGP
+	* Protocol used by routes that you want to remove from the routing table of the NetScaler appliance.<br> Possible values = CONNECTED, STATIC, DYNAMIC, OSPF, ISIS, RIP, BGP
 	* </pre>
 	*/
 	public String get_routetype() throws Exception {
@@ -482,7 +508,7 @@ public class route extends base_resource
 
 	/**
 	* <pre>
-	* Use this option with -dynamic and in a cluster only to specify the set of nodes from which this dynamic route has been learnt.<br> Possible values = 
+	* Use this option with -dynamic and in a cluster only to specify the set of nodes from which this dynamic route has been learnt.<br> Possible values = 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31
 	* </pre>
 	*/
 	public String[] get_routeowners() throws Exception {
@@ -694,6 +720,7 @@ public class route extends base_resource
 		addresource.netmask = resource.netmask;
 		addresource.gateway = resource.gateway;
 		addresource.cost = resource.cost;
+		addresource.td = resource.td;
 		addresource.distance = resource.distance;
 		addresource.cost1 = resource.cost1;
 		addresource.weight = resource.weight;
@@ -717,6 +744,7 @@ public class route extends base_resource
 				addresources[i].netmask = resources[i].netmask;
 				addresources[i].gateway = resources[i].gateway;
 				addresources[i].cost = resources[i].cost;
+				addresources[i].td = resources[i].td;
 				addresources[i].distance = resources[i].distance;
 				addresources[i].cost1 = resources[i].cost1;
 				addresources[i].weight = resources[i].weight;
@@ -772,6 +800,7 @@ public class route extends base_resource
 		deleteresource.network = resource.network;
 		deleteresource.netmask = resource.netmask;
 		deleteresource.gateway = resource.gateway;
+		deleteresource.td = resource.td;
 		return deleteresource.delete_resource(client);
 	}
 
@@ -803,6 +832,7 @@ public class route extends base_resource
 				deleteresources[i].network = resources[i].network;
 				deleteresources[i].netmask = resources[i].netmask;
 				deleteresources[i].gateway = resources[i].gateway;
+				deleteresources[i].td = resources[i].td;
 			}
 			result = delete_bulk_request(client, deleteresources);
 		}
@@ -817,6 +847,7 @@ public class route extends base_resource
 		updateresource.network = resource.network;
 		updateresource.netmask = resource.netmask;
 		updateresource.gateway = resource.gateway;
+		updateresource.td = resource.td;
 		updateresource.distance = resource.distance;
 		updateresource.cost1 = resource.cost1;
 		updateresource.weight = resource.weight;
@@ -839,6 +870,7 @@ public class route extends base_resource
 				updateresources[i].network = resources[i].network;
 				updateresources[i].netmask = resources[i].netmask;
 				updateresources[i].gateway = resources[i].gateway;
+				updateresources[i].td = resources[i].td;
 				updateresources[i].distance = resources[i].distance;
 				updateresources[i].cost1 = resources[i].cost1;
 				updateresources[i].weight = resources[i].weight;
@@ -856,46 +888,13 @@ public class route extends base_resource
 	* Use this API to unset the properties of route resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String network, String args[]) throws Exception {
-		route unsetresource = new route();
-		unsetresource.network = network;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of route resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, route resource, String[] args) throws Exception{
 		route unsetresource = new route();
 		unsetresource.network = resource.network;
 		unsetresource.netmask = resource.netmask;
 		unsetresource.gateway = resource.gateway;
-		unsetresource.advertise = resource.advertise;
-		unsetresource.protocol = resource.protocol;
-		unsetresource.distance = resource.distance;
-		unsetresource.cost1 = resource.cost1;
-		unsetresource.weight = resource.weight;
-		unsetresource.msr = resource.msr;
-		unsetresource.monitor = resource.monitor;
+		unsetresource.td = resource.td;
 		return unsetresource.unset_resource(client,args);
-	}
-
-	/**
-	* Use this API to unset the properties of route resources.
-	* Properties that need to be unset are specified in args array.
-	*/
-	public static base_responses unset(nitro_service client, String network[], String args[]) throws Exception {
-		base_responses result = null;
-		if (network != null && network.length > 0) {
-			route unsetresources[] = new route[network.length];
-			for (int i=0;i<network.length;i++){
-				unsetresources[i] = new route();
-				unsetresources[i].network = network[i];
-			}
-			result = unset_bulk_request(client, unsetresources,args);
-		}
-		return result;
 	}
 
 	/**
@@ -911,13 +910,7 @@ public class route extends base_resource
 				unsetresources[i].network = resources[i].network;
 				unsetresources[i].netmask = resources[i].netmask;
 				unsetresources[i].gateway = resources[i].gateway;
-				unsetresources[i].advertise = resources[i].advertise;
-				unsetresources[i].protocol = resources[i].protocol;
-				unsetresources[i].distance = resources[i].distance;
-				unsetresources[i].cost1 = resources[i].cost1;
-				unsetresources[i].weight = resources[i].weight;
-				unsetresources[i].msr = resources[i].msr;
-				unsetresources[i].monitor = resources[i].monitor;
+				unsetresources[i].td = resources[i].td;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}
@@ -1052,6 +1045,40 @@ public class route extends base_resource
 		public static final String ISIS = "ISIS";
 		public static final String RIP = "RIP";
 		public static final String BGP = "BGP";
+	}
+	public static class routeownersEnum {
+		public static final String _0 = "0";
+		public static final String _1 = "1";
+		public static final String _2 = "2";
+		public static final String _3 = "3";
+		public static final String _4 = "4";
+		public static final String _5 = "5";
+		public static final String _6 = "6";
+		public static final String _7 = "7";
+		public static final String _8 = "8";
+		public static final String _9 = "9";
+		public static final String _10 = "10";
+		public static final String _11 = "11";
+		public static final String _12 = "12";
+		public static final String _13 = "13";
+		public static final String _14 = "14";
+		public static final String _15 = "15";
+		public static final String _16 = "16";
+		public static final String _17 = "17";
+		public static final String _18 = "18";
+		public static final String _19 = "19";
+		public static final String _20 = "20";
+		public static final String _21 = "21";
+		public static final String _22 = "22";
+		public static final String _23 = "23";
+		public static final String _24 = "24";
+		public static final String _25 = "25";
+		public static final String _26 = "26";
+		public static final String _27 = "27";
+		public static final String _28 = "28";
+		public static final String _29 = "29";
+		public static final String _30 = "30";
+		public static final String _31 = "31";
 	}
 	public static class advertiseEnum {
 		public static final String DISABLED = "DISABLED";

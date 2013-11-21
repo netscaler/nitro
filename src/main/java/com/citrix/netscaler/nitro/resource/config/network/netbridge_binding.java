@@ -17,8 +17,8 @@
 package com.citrix.netscaler.nitro.resource.config.network;
 
 import com.citrix.netscaler.nitro.resource.config.network.netbridge_iptunnel_binding;
-import com.citrix.netscaler.nitro.resource.config.network.netbridge_nsip_binding;
 import com.citrix.netscaler.nitro.resource.config.network.netbridge_vlan_binding;
+import com.citrix.netscaler.nitro.resource.config.network.netbridge_nsip_binding;
 import com.citrix.netscaler.nitro.resource.config.network.netbridge_nsip6_binding;
 import com.citrix.netscaler.nitro.resource.base.*;
 import com.citrix.netscaler.nitro.service.nitro_service;
@@ -38,8 +38,8 @@ public class netbridge_binding extends base_resource
 {
 	private String name;
 	private netbridge_iptunnel_binding	netbridge_iptunnel_binding[] = null;
-	private netbridge_nsip_binding	netbridge_nsip_binding[] = null;
 	private netbridge_vlan_binding	netbridge_vlan_binding[] = null;
+	private netbridge_nsip_binding	netbridge_nsip_binding[] = null;
 	private netbridge_nsip6_binding	netbridge_nsip6_binding[] = null;
 
 	/**

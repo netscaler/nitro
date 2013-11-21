@@ -34,6 +34,7 @@ public class nsacl6 extends base_resource
 {
 	private String acl6name;
 	private String acl6action;
+	private Long td;
 	private Boolean srcipv6;
 	private String srcipop;
 	private String srcipv6val;
@@ -68,7 +69,7 @@ public class nsacl6 extends base_resource
 
 	/**
 	* <pre>
-	* Alphanumeric name of the ACL6.<br> Minimum length =  1
+	* Name for the ACL6 rule. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Can be changed after the ACL6 rule is created.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_acl6name(String acl6name) throws Exception{
@@ -77,7 +78,7 @@ public class nsacl6 extends base_resource
 
 	/**
 	* <pre>
-	* Alphanumeric name of the ACL6.<br> Minimum length =  1
+	* Name for the ACL6 rule. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Can be changed after the ACL6 rule is created.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_acl6name() throws Exception {
@@ -86,7 +87,11 @@ public class nsacl6 extends base_resource
 
 	/**
 	* <pre>
-	* Action associated with the ACL6.<br> Possible values = BRIDGE, DENY, ALLOW
+	* Action to perform on the incoming IPv6 packets that match the ACL6 rule. 
+Available settings function as follows:
+* ALLOW - The NetScaler appliance processes the packet.
+* BRIDGE - The NetScaler appliance bridges the packet to the destination without processing it.
+* DENY - The NetScaler appliance drops the packet.<br> Possible values = BRIDGE, DENY, ALLOW
 	* </pre>
 	*/
 	public void set_acl6action(String acl6action) throws Exception{
@@ -95,7 +100,11 @@ public class nsacl6 extends base_resource
 
 	/**
 	* <pre>
-	* Action associated with the ACL6.<br> Possible values = BRIDGE, DENY, ALLOW
+	* Action to perform on the incoming IPv6 packets that match the ACL6 rule. 
+Available settings function as follows:
+* ALLOW - The NetScaler appliance processes the packet.
+* BRIDGE - The NetScaler appliance bridges the packet to the destination without processing it.
+* DENY - The NetScaler appliance drops the packet.<br> Possible values = BRIDGE, DENY, ALLOW
 	* </pre>
 	*/
 	public String get_acl6action() throws Exception {
@@ -104,7 +113,34 @@ public class nsacl6 extends base_resource
 
 	/**
 	* <pre>
-	* Source IPv6 address (range).
+	* Traffic Domain Id.<br> Minimum value =  0<br> Maximum value =  4094
+	* </pre>
+	*/
+	public void set_td(long td) throws Exception {
+		this.td = new Long(td);
+	}
+
+	/**
+	* <pre>
+	* Traffic Domain Id.<br> Minimum value =  0<br> Maximum value =  4094
+	* </pre>
+	*/
+	public void set_td(Long td) throws Exception{
+		this.td = td;
+	}
+
+	/**
+	* <pre>
+	* Traffic Domain Id.<br> Minimum value =  0<br> Maximum value =  4094
+	* </pre>
+	*/
+	public Long get_td() throws Exception {
+		return this.td;
+	}
+
+	/**
+	* <pre>
+	* IP address or range of IP addresses to match against the source IP address of an incoming IPv6 packet. In the command line interface, separate the range with a hyphen and enclose within brackets.
 	* </pre>
 	*/
 	public void set_srcipv6(boolean srcipv6) throws Exception {
@@ -113,7 +149,7 @@ public class nsacl6 extends base_resource
 
 	/**
 	* <pre>
-	* Source IPv6 address (range).
+	* IP address or range of IP addresses to match against the source IP address of an incoming IPv6 packet. In the command line interface, separate the range with a hyphen and enclose within brackets.
 	* </pre>
 	*/
 	public void set_srcipv6(Boolean srcipv6) throws Exception{
@@ -122,7 +158,7 @@ public class nsacl6 extends base_resource
 
 	/**
 	* <pre>
-	* Source IPv6 address (range).
+	* IP address or range of IP addresses to match against the source IP address of an incoming IPv6 packet. In the command line interface, separate the range with a hyphen and enclose within brackets.
 	* </pre>
 	*/
 	public Boolean get_srcipv6() throws Exception {
@@ -167,7 +203,9 @@ public class nsacl6 extends base_resource
 
 	/**
 	* <pre>
-	* Source port (range).
+	* Port number or range of port numbers to match against the source port number of an incoming IPv6 packet. In the command line interface, separate the range with a hyphen and enclose within brackets. For example: [40-90].
+
+Note: The destination port can be specified only for TCP and UDP protocols.
 	* </pre>
 	*/
 	public void set_srcport(boolean srcport) throws Exception {
@@ -176,7 +214,9 @@ public class nsacl6 extends base_resource
 
 	/**
 	* <pre>
-	* Source port (range).
+	* Port number or range of port numbers to match against the source port number of an incoming IPv6 packet. In the command line interface, separate the range with a hyphen and enclose within brackets. For example: [40-90].
+
+Note: The destination port can be specified only for TCP and UDP protocols.
 	* </pre>
 	*/
 	public void set_srcport(Boolean srcport) throws Exception{
@@ -185,7 +225,9 @@ public class nsacl6 extends base_resource
 
 	/**
 	* <pre>
-	* Source port (range).
+	* Port number or range of port numbers to match against the source port number of an incoming IPv6 packet. In the command line interface, separate the range with a hyphen and enclose within brackets. For example: [40-90].
+
+Note: The destination port can be specified only for TCP and UDP protocols.
 	* </pre>
 	*/
 	public Boolean get_srcport() throws Exception {
@@ -230,7 +272,7 @@ public class nsacl6 extends base_resource
 
 	/**
 	* <pre>
-	* Destination IPv6 address (range).
+	* IP address or range of IP addresses to match against the destination IP address of an incoming IPv6 packet.  In the command line interface, separate the range with a hyphen and enclose within brackets.
 	* </pre>
 	*/
 	public void set_destipv6(boolean destipv6) throws Exception {
@@ -239,7 +281,7 @@ public class nsacl6 extends base_resource
 
 	/**
 	* <pre>
-	* Destination IPv6 address (range).
+	* IP address or range of IP addresses to match against the destination IP address of an incoming IPv6 packet.  In the command line interface, separate the range with a hyphen and enclose within brackets.
 	* </pre>
 	*/
 	public void set_destipv6(Boolean destipv6) throws Exception{
@@ -248,7 +290,7 @@ public class nsacl6 extends base_resource
 
 	/**
 	* <pre>
-	* Destination IPv6 address (range).
+	* IP address or range of IP addresses to match against the destination IP address of an incoming IPv6 packet.  In the command line interface, separate the range with a hyphen and enclose within brackets.
 	* </pre>
 	*/
 	public Boolean get_destipv6() throws Exception {
@@ -293,7 +335,9 @@ public class nsacl6 extends base_resource
 
 	/**
 	* <pre>
-	* Destination port (range).
+	* Port number or range of port numbers to match against the destination port number of an incoming IPv6 packet. In the command line interface, separate the range with a hyphen and enclose within brackets. For example: [40-90]. 
+
+Note: The destination port can be specified only for TCP and UDP protocols.
 	* </pre>
 	*/
 	public void set_destport(boolean destport) throws Exception {
@@ -302,7 +346,9 @@ public class nsacl6 extends base_resource
 
 	/**
 	* <pre>
-	* Destination port (range).
+	* Port number or range of port numbers to match against the destination port number of an incoming IPv6 packet. In the command line interface, separate the range with a hyphen and enclose within brackets. For example: [40-90]. 
+
+Note: The destination port can be specified only for TCP and UDP protocols.
 	* </pre>
 	*/
 	public void set_destport(Boolean destport) throws Exception{
@@ -311,7 +357,9 @@ public class nsacl6 extends base_resource
 
 	/**
 	* <pre>
-	* Destination port (range).
+	* Port number or range of port numbers to match against the destination port number of an incoming IPv6 packet. In the command line interface, separate the range with a hyphen and enclose within brackets. For example: [40-90]. 
+
+Note: The destination port can be specified only for TCP and UDP protocols.
 	* </pre>
 	*/
 	public Boolean get_destport() throws Exception {
@@ -383,7 +431,7 @@ public class nsacl6 extends base_resource
 
 	/**
 	* <pre>
-	* Source MAC address.
+	* MAC address to match against the source MAC address of an incoming IPv6 packet.
 	* </pre>
 	*/
 	public void set_srcmac(String srcmac) throws Exception{
@@ -392,7 +440,7 @@ public class nsacl6 extends base_resource
 
 	/**
 	* <pre>
-	* Source MAC address.
+	* MAC address to match against the source MAC address of an incoming IPv6 packet.
 	* </pre>
 	*/
 	public String get_srcmac() throws Exception {
@@ -401,7 +449,7 @@ public class nsacl6 extends base_resource
 
 	/**
 	* <pre>
-	* IPv6 protocol name.<br> Possible values = ICMPV6, TCP, UDP
+	* Protocol, identified by protocol name, to match against the protocol of an incoming IPv6 packet.<br> Possible values = ICMPV6, TCP, UDP
 	* </pre>
 	*/
 	public void set_protocol(String protocol) throws Exception{
@@ -410,7 +458,7 @@ public class nsacl6 extends base_resource
 
 	/**
 	* <pre>
-	* IPv6 protocol name.<br> Possible values = ICMPV6, TCP, UDP
+	* Protocol, identified by protocol name, to match against the protocol of an incoming IPv6 packet.<br> Possible values = ICMPV6, TCP, UDP
 	* </pre>
 	*/
 	public String get_protocol() throws Exception {
@@ -419,7 +467,7 @@ public class nsacl6 extends base_resource
 
 	/**
 	* <pre>
-	* IPv6 protocol number (decimal).<br> Minimum value =  1<br> Maximum value =  255
+	* Protocol, identified by protocol number, to match against the protocol of an incoming IPv6 packet.<br> Minimum value =  1<br> Maximum value =  255
 	* </pre>
 	*/
 	public void set_protocolnumber(long protocolnumber) throws Exception {
@@ -428,7 +476,7 @@ public class nsacl6 extends base_resource
 
 	/**
 	* <pre>
-	* IPv6 protocol number (decimal).<br> Minimum value =  1<br> Maximum value =  255
+	* Protocol, identified by protocol number, to match against the protocol of an incoming IPv6 packet.<br> Minimum value =  1<br> Maximum value =  255
 	* </pre>
 	*/
 	public void set_protocolnumber(Long protocolnumber) throws Exception{
@@ -437,7 +485,7 @@ public class nsacl6 extends base_resource
 
 	/**
 	* <pre>
-	* IPv6 protocol number (decimal).<br> Minimum value =  1<br> Maximum value =  255
+	* Protocol, identified by protocol number, to match against the protocol of an incoming IPv6 packet.<br> Minimum value =  1<br> Maximum value =  255
 	* </pre>
 	*/
 	public Long get_protocolnumber() throws Exception {
@@ -446,7 +494,7 @@ public class nsacl6 extends base_resource
 
 	/**
 	* <pre>
-	* VLAN number.<br> Minimum value =  1<br> Maximum value =  4094
+	* ID of the VLAN. The NetScaler appliance applies the ACL6 rule only to the incoming packets on the specified VLAN. If you do not specify a VLAN ID, the appliance applies the ACL6 rule to the incoming packets on all VLANs.<br> Minimum value =  1<br> Maximum value =  4094
 	* </pre>
 	*/
 	public void set_vlan(long vlan) throws Exception {
@@ -455,7 +503,7 @@ public class nsacl6 extends base_resource
 
 	/**
 	* <pre>
-	* VLAN number.<br> Minimum value =  1<br> Maximum value =  4094
+	* ID of the VLAN. The NetScaler appliance applies the ACL6 rule only to the incoming packets on the specified VLAN. If you do not specify a VLAN ID, the appliance applies the ACL6 rule to the incoming packets on all VLANs.<br> Minimum value =  1<br> Maximum value =  4094
 	* </pre>
 	*/
 	public void set_vlan(Long vlan) throws Exception{
@@ -464,7 +512,7 @@ public class nsacl6 extends base_resource
 
 	/**
 	* <pre>
-	* VLAN number.<br> Minimum value =  1<br> Maximum value =  4094
+	* ID of the VLAN. The NetScaler appliance applies the ACL6 rule only to the incoming packets on the specified VLAN. If you do not specify a VLAN ID, the appliance applies the ACL6 rule to the incoming packets on all VLANs.<br> Minimum value =  1<br> Maximum value =  4094
 	* </pre>
 	*/
 	public Long get_vlan() throws Exception {
@@ -473,7 +521,7 @@ public class nsacl6 extends base_resource
 
 	/**
 	* <pre>
-	* Physical interface name.
+	* ID of an interface. The NetScaler appliance applies the ACL6 rule only to the incoming packets from the specified interface. If you do not specify any value, the appliance applies the ACL6 rule to the incoming packets from all interfaces.
 	* </pre>
 	*/
 	public void set_Interface(String Interface) throws Exception{
@@ -482,7 +530,7 @@ public class nsacl6 extends base_resource
 
 	/**
 	* <pre>
-	* Physical interface name.
+	* ID of an interface. The NetScaler appliance applies the ACL6 rule only to the incoming packets from the specified interface. If you do not specify any value, the appliance applies the ACL6 rule to the incoming packets from all interfaces.
 	* </pre>
 	*/
 	public String get_Interface() throws Exception {
@@ -491,7 +539,7 @@ public class nsacl6 extends base_resource
 
 	/**
 	* <pre>
-	* This argument indicates that the ACL6 should be used for TCP response traffic only.
+	* Allow only incoming TCP packets that have the ACK or RST bit set if the action set for the ACL6 rule is ALLOW and these packets match the other conditions in the ACL6 rule.
 	* </pre>
 	*/
 	public void set_established(boolean established) throws Exception {
@@ -500,7 +548,7 @@ public class nsacl6 extends base_resource
 
 	/**
 	* <pre>
-	* This argument indicates that the ACL6 should be used for TCP response traffic only.
+	* Allow only incoming TCP packets that have the ACK or RST bit set if the action set for the ACL6 rule is ALLOW and these packets match the other conditions in the ACL6 rule.
 	* </pre>
 	*/
 	public void set_established(Boolean established) throws Exception{
@@ -509,7 +557,7 @@ public class nsacl6 extends base_resource
 
 	/**
 	* <pre>
-	* This argument indicates that the ACL6 should be used for TCP response traffic only.
+	* Allow only incoming TCP packets that have the ACK or RST bit set if the action set for the ACL6 rule is ALLOW and these packets match the other conditions in the ACL6 rule.
 	* </pre>
 	*/
 	public Boolean get_established() throws Exception {
@@ -518,7 +566,9 @@ public class nsacl6 extends base_resource
 
 	/**
 	* <pre>
-	* ICMPv6 message type.<br> Minimum value =  0<br> Maximum value =  65536
+	* ICMP Message type to match against the message type of an incoming IPv6 ICMP packet. For example, to block DESTINATION UNREACHABLE messages, you must specify 3 as the ICMP type. 
+
+Note: This parameter can be specified only for the ICMP protocol.<br> Minimum value =  0<br> Maximum value =  65536
 	* </pre>
 	*/
 	public void set_icmptype(long icmptype) throws Exception {
@@ -527,7 +577,9 @@ public class nsacl6 extends base_resource
 
 	/**
 	* <pre>
-	* ICMPv6 message type.<br> Minimum value =  0<br> Maximum value =  65536
+	* ICMP Message type to match against the message type of an incoming IPv6 ICMP packet. For example, to block DESTINATION UNREACHABLE messages, you must specify 3 as the ICMP type. 
+
+Note: This parameter can be specified only for the ICMP protocol.<br> Minimum value =  0<br> Maximum value =  65536
 	* </pre>
 	*/
 	public void set_icmptype(Long icmptype) throws Exception{
@@ -536,7 +588,9 @@ public class nsacl6 extends base_resource
 
 	/**
 	* <pre>
-	* ICMPv6 message type.<br> Minimum value =  0<br> Maximum value =  65536
+	* ICMP Message type to match against the message type of an incoming IPv6 ICMP packet. For example, to block DESTINATION UNREACHABLE messages, you must specify 3 as the ICMP type. 
+
+Note: This parameter can be specified only for the ICMP protocol.<br> Minimum value =  0<br> Maximum value =  65536
 	* </pre>
 	*/
 	public Long get_icmptype() throws Exception {
@@ -545,7 +599,9 @@ public class nsacl6 extends base_resource
 
 	/**
 	* <pre>
-	* ICMPv6 message code.<br> Minimum value =  0<br> Maximum value =  65536
+	* Code of a particular ICMP message type to match against the ICMP code of an incoming IPv6 ICMP packet.  For example, to block DESTINATION HOST UNREACHABLE messages, specify 3 as the ICMP type and 1 as the ICMP code. 
+
+If you set this parameter, you must set the ICMP Type parameter.<br> Minimum value =  0<br> Maximum value =  65536
 	* </pre>
 	*/
 	public void set_icmpcode(long icmpcode) throws Exception {
@@ -554,7 +610,9 @@ public class nsacl6 extends base_resource
 
 	/**
 	* <pre>
-	* ICMPv6 message code.<br> Minimum value =  0<br> Maximum value =  65536
+	* Code of a particular ICMP message type to match against the ICMP code of an incoming IPv6 ICMP packet.  For example, to block DESTINATION HOST UNREACHABLE messages, specify 3 as the ICMP type and 1 as the ICMP code. 
+
+If you set this parameter, you must set the ICMP Type parameter.<br> Minimum value =  0<br> Maximum value =  65536
 	* </pre>
 	*/
 	public void set_icmpcode(Long icmpcode) throws Exception{
@@ -563,7 +621,9 @@ public class nsacl6 extends base_resource
 
 	/**
 	* <pre>
-	* ICMPv6 message code.<br> Minimum value =  0<br> Maximum value =  65536
+	* Code of a particular ICMP message type to match against the ICMP code of an incoming IPv6 ICMP packet.  For example, to block DESTINATION HOST UNREACHABLE messages, specify 3 as the ICMP type and 1 as the ICMP code. 
+
+If you set this parameter, you must set the ICMP Type parameter.<br> Minimum value =  0<br> Maximum value =  65536
 	* </pre>
 	*/
 	public Long get_icmpcode() throws Exception {
@@ -572,7 +632,7 @@ public class nsacl6 extends base_resource
 
 	/**
 	* <pre>
-	* Priority of the ACL6. (Sequence of execution).<br> Minimum value =  1<br> Maximum value =  80000
+	* Priority for the ACL6 rule, which determines the order in which it is evaluated relative to the other ACL6 rules. If you do not specify priorities while creating ACL6 rules, the ACL6 rules are evaluated in the order in which they are created.<br> Minimum value =  1<br> Maximum value =  80000
 	* </pre>
 	*/
 	public void set_priority(long priority) throws Exception {
@@ -581,7 +641,7 @@ public class nsacl6 extends base_resource
 
 	/**
 	* <pre>
-	* Priority of the ACL6. (Sequence of execution).<br> Minimum value =  1<br> Maximum value =  80000
+	* Priority for the ACL6 rule, which determines the order in which it is evaluated relative to the other ACL6 rules. If you do not specify priorities while creating ACL6 rules, the ACL6 rules are evaluated in the order in which they are created.<br> Minimum value =  1<br> Maximum value =  80000
 	* </pre>
 	*/
 	public void set_priority(Long priority) throws Exception{
@@ -590,7 +650,7 @@ public class nsacl6 extends base_resource
 
 	/**
 	* <pre>
-	* Priority of the ACL6. (Sequence of execution).<br> Minimum value =  1<br> Maximum value =  80000
+	* Priority for the ACL6 rule, which determines the order in which it is evaluated relative to the other ACL6 rules. If you do not specify priorities while creating ACL6 rules, the ACL6 rules are evaluated in the order in which they are created.<br> Minimum value =  1<br> Maximum value =  80000
 	* </pre>
 	*/
 	public Long get_priority() throws Exception {
@@ -599,7 +659,7 @@ public class nsacl6 extends base_resource
 
 	/**
 	* <pre>
-	* State of the ACL6.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED, REMOVED
+	* State of the ACL6.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_state(String state) throws Exception{
@@ -608,7 +668,7 @@ public class nsacl6 extends base_resource
 
 	/**
 	* <pre>
-	* State of the ACL6.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED, REMOVED
+	* State of the ACL6.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_state() throws Exception {
@@ -635,7 +695,7 @@ public class nsacl6 extends base_resource
 
 	/**
 	* <pre>
-	* The new name of the ACL6 rule.<br> Minimum length =  1
+	* New name for the ACL6 rule. Must begin with an ASCII alphabetic or underscore \(_\) character, and must contain only ASCII alphanumeric, underscore, hash \(\#\), period \(.\), space, colon \(:\), at \(@\), equals \(=\), and hyphen \(-\) characters.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_newname(String newname) throws Exception{
@@ -644,7 +704,7 @@ public class nsacl6 extends base_resource
 
 	/**
 	* <pre>
-	* The new name of the ACL6 rule.<br> Minimum length =  1
+	* New name for the ACL6 rule. Must begin with an ASCII alphabetic or underscore \(_\) character, and must contain only ASCII alphanumeric, underscore, hash \(\#\), period \(.\), space, colon \(:\), at \(@\), equals \(=\), and hyphen \(-\) characters.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_newname() throws Exception {
@@ -653,7 +713,7 @@ public class nsacl6 extends base_resource
 
 	/**
 	* <pre>
-	* Commit status of the ACL6.<br> Default value: ACL6NAPPLIED<br> Possible values = APPLIED, NOTAPPLIED, RE-APPLY, SFAPPLIED, SFNOTAPPLIED
+	* Commit status of the ACL6.<br> Default value: NOTAPPLIED<br> Possible values = APPLIED, NOTAPPLIED, RE-APPLY, SFAPPLIED, SFNOTAPPLIED
 	* </pre>
 	*/
 	public String get_kernelstate() throws Exception {
@@ -710,6 +770,7 @@ public class nsacl6 extends base_resource
 		nsacl6 addresource = new nsacl6();
 		addresource.acl6name = resource.acl6name;
 		addresource.acl6action = resource.acl6action;
+		addresource.td = resource.td;
 		addresource.srcipv6 = resource.srcipv6;
 		addresource.srcipop = resource.srcipop;
 		addresource.srcipv6val = resource.srcipv6val;
@@ -747,6 +808,7 @@ public class nsacl6 extends base_resource
 				addresources[i] = new nsacl6();
 				addresources[i].acl6name = resources[i].acl6name;
 				addresources[i].acl6action = resources[i].acl6action;
+				addresources[i].td = resources[i].td;
 				addresources[i].srcipv6 = resources[i].srcipv6;
 				addresources[i].srcipop = resources[i].srcipop;
 				addresources[i].srcipv6val = resources[i].srcipv6val;
@@ -899,30 +961,9 @@ public class nsacl6 extends base_resource
 	* Use this API to unset the properties of nsacl6 resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String acl6name, String args[]) throws Exception {
-		nsacl6 unsetresource = new nsacl6();
-		unsetresource.acl6name = acl6name;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of nsacl6 resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, nsacl6 resource, String[] args) throws Exception{
 		nsacl6 unsetresource = new nsacl6();
 		unsetresource.acl6name = resource.acl6name;
-		unsetresource.srcipv6 = resource.srcipv6;
-		unsetresource.srcport = resource.srcport;
-		unsetresource.destipv6 = resource.destipv6;
-		unsetresource.destport = resource.destport;
-		unsetresource.srcmac = resource.srcmac;
-		unsetresource.protocol = resource.protocol;
-		unsetresource.icmptype = resource.icmptype;
-		unsetresource.icmpcode = resource.icmpcode;
-		unsetresource.vlan = resource.vlan;
-		unsetresource.Interface = resource.Interface;
-		unsetresource.established = resource.established;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -954,17 +995,6 @@ public class nsacl6 extends base_resource
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new nsacl6();
 				unsetresources[i].acl6name = resources[i].acl6name;
-				unsetresources[i].srcipv6 = resources[i].srcipv6;
-				unsetresources[i].srcport = resources[i].srcport;
-				unsetresources[i].destipv6 = resources[i].destipv6;
-				unsetresources[i].destport = resources[i].destport;
-				unsetresources[i].srcmac = resources[i].srcmac;
-				unsetresources[i].protocol = resources[i].protocol;
-				unsetresources[i].icmptype = resources[i].icmptype;
-				unsetresources[i].icmpcode = resources[i].icmpcode;
-				unsetresources[i].vlan = resources[i].vlan;
-				unsetresources[i].Interface = resources[i].Interface;
-				unsetresources[i].established = resources[i].established;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}
@@ -1215,7 +1245,6 @@ public class nsacl6 extends base_resource
 	public static class stateEnum {
 		public static final String ENABLED = "ENABLED";
 		public static final String DISABLED = "DISABLED";
-		public static final String REMOVED = "REMOVED";
 	}
 	public static class kernelstateEnum {
 		public static final String APPLIED = "APPLIED";

@@ -69,7 +69,10 @@ public class sslcrl extends base_resource
 
 	/**
 	* <pre>
-	* The object name for the CRL.<br> Minimum length =  1
+	* Name for the Certificate Revocation List (CRL). Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Cannot be changed after the CRL is created.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my crl" or 'my crl').<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_crlname(String crlname) throws Exception{
@@ -78,7 +81,10 @@ public class sslcrl extends base_resource
 
 	/**
 	* <pre>
-	* The object name for the CRL.<br> Minimum length =  1
+	* Name for the Certificate Revocation List (CRL). Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Cannot be changed after the CRL is created.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my crl" or 'my crl').<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_crlname() throws Exception {
@@ -87,7 +93,7 @@ public class sslcrl extends base_resource
 
 	/**
 	* <pre>
-	* The file name and path for the CRL file. The default input path for the CRL is /var/netscaler/ssl/.<br> Minimum length =  1
+	* Path to the CRL file. /var/netscaler/ssl/ is the default path.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_crlpath(String crlpath) throws Exception{
@@ -96,7 +102,7 @@ public class sslcrl extends base_resource
 
 	/**
 	* <pre>
-	* The file name and path for the CRL file. The default input path for the CRL is /var/netscaler/ssl/.<br> Minimum length =  1
+	* Path to the CRL file. /var/netscaler/ssl/ is the default path.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_crlpath() throws Exception {
@@ -105,9 +111,9 @@ public class sslcrl extends base_resource
 
 	/**
 	* <pre>
-	* The input format of the CRL file.
-	PEM: Privacy Enhanced Mail
-	DER: Distinguished Encoding Rule.<br> Default value: FORMAT_PEM<br> Possible values = DER, PEM
+	* Input format of the CRL file. The two formats supported on the appliance are:
+PEM - Privacy Enhanced Mail.
+DER - Distinguished Encoding Rule.<br> Default value: PEM<br> Possible values = DER, PEM
 	* </pre>
 	*/
 	public void set_inform(String inform) throws Exception{
@@ -116,9 +122,9 @@ public class sslcrl extends base_resource
 
 	/**
 	* <pre>
-	* The input format of the CRL file.
-	PEM: Privacy Enhanced Mail
-	DER: Distinguished Encoding Rule.<br> Default value: FORMAT_PEM<br> Possible values = DER, PEM
+	* Input format of the CRL file. The two formats supported on the appliance are:
+PEM - Privacy Enhanced Mail.
+DER - Distinguished Encoding Rule.<br> Default value: PEM<br> Possible values = DER, PEM
 	* </pre>
 	*/
 	public String get_inform() throws Exception {
@@ -127,7 +133,7 @@ public class sslcrl extends base_resource
 
 	/**
 	* <pre>
-	* Enables or disables the auto refresh feature for the CRL identified by the crlName.<br> Possible values = ENABLED, DISABLED
+	* Set CRL auto refresh.<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_refresh(String refresh) throws Exception{
@@ -136,7 +142,7 @@ public class sslcrl extends base_resource
 
 	/**
 	* <pre>
-	* Enables or disables the auto refresh feature for the CRL identified by the crlName.<br> Possible values = ENABLED, DISABLED
+	* Set CRL auto refresh.<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_refresh() throws Exception {
@@ -145,9 +151,7 @@ public class sslcrl extends base_resource
 
 	/**
 	* <pre>
-	* The corresponding CA certificate that has issued the CRL. This is the System object identifying the CA certificate that is loaded in System.
-
-	Note: This is a mandatory field when the "-refresh" option is enabled. The CA certificate needs to be installed before loading the CRL.<br> Minimum length =  1
+	* CA certificate that has issued the CRL. Required if CRL Auto Refresh is selected. Install the CA certificate on the appliance before adding the CRL.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_cacert(String cacert) throws Exception{
@@ -156,9 +160,7 @@ public class sslcrl extends base_resource
 
 	/**
 	* <pre>
-	* The corresponding CA certificate that has issued the CRL. This is the System object identifying the CA certificate that is loaded in System.
-
-	Note: This is a mandatory field when the "-refresh" option is enabled. The CA certificate needs to be installed before loading the CRL.<br> Minimum length =  1
+	* CA certificate that has issued the CRL. Required if CRL Auto Refresh is selected. Install the CA certificate on the appliance before adding the CRL.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_cacert() throws Exception {
@@ -167,7 +169,7 @@ public class sslcrl extends base_resource
 
 	/**
 	* <pre>
-	* The method for CRL refresh - HTTP or LDAP.<br> Possible values = HTTP, LDAP
+	* Method for CRL refresh. If LDAP is selected, specify the method, CA certificate, base DN, port, and LDAP server name. If HTTP is selected, specify the CA certificate, method, URL, and port. Cannot be changed after a CRL is added.<br> Possible values = HTTP, LDAP
 	* </pre>
 	*/
 	public void set_method(String method) throws Exception{
@@ -176,7 +178,7 @@ public class sslcrl extends base_resource
 
 	/**
 	* <pre>
-	* The method for CRL refresh - HTTP or LDAP.<br> Possible values = HTTP, LDAP
+	* Method for CRL refresh. If LDAP is selected, specify the method, CA certificate, base DN, port, and LDAP server name. If HTTP is selected, specify the CA certificate, method, URL, and port. Cannot be changed after a CRL is added.<br> Possible values = HTTP, LDAP
 	* </pre>
 	*/
 	public String get_method() throws Exception {
@@ -185,7 +187,7 @@ public class sslcrl extends base_resource
 
 	/**
 	* <pre>
-	* The IP address of the LDAP server from which the CRLs are to be fetched.<br> Minimum length =  1
+	* IP address of the LDAP server from which to fetch the CRLs.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_server(String server) throws Exception{
@@ -194,7 +196,7 @@ public class sslcrl extends base_resource
 
 	/**
 	* <pre>
-	* The IP address of the LDAP server from which the CRLs are to be fetched.<br> Minimum length =  1
+	* IP address of the LDAP server from which to fetch the CRLs.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_server() throws Exception {
@@ -203,7 +205,7 @@ public class sslcrl extends base_resource
 
 	/**
 	* <pre>
-	* URI of the CRL Distribution Point.
+	* URL of the CRL distribution point.
 	* </pre>
 	*/
 	public void set_url(String url) throws Exception{
@@ -212,7 +214,7 @@ public class sslcrl extends base_resource
 
 	/**
 	* <pre>
-	* URI of the CRL Distribution Point.
+	* URL of the CRL distribution point.
 	* </pre>
 	*/
 	public String get_url() throws Exception {
@@ -221,7 +223,7 @@ public class sslcrl extends base_resource
 
 	/**
 	* <pre>
-	* The port for the LDAP server.<br> Minimum value =  1
+	* Port for the LDAP server.<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_port(int port) throws Exception {
@@ -230,7 +232,7 @@ public class sslcrl extends base_resource
 
 	/**
 	* <pre>
-	* The port for the LDAP server.<br> Minimum value =  1
+	* Port for the LDAP server.<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_port(Integer port) throws Exception{
@@ -239,7 +241,7 @@ public class sslcrl extends base_resource
 
 	/**
 	* <pre>
-	* The port for the LDAP server.<br> Minimum value =  1
+	* Port for the LDAP server.<br> Minimum value =  1
 	* </pre>
 	*/
 	public Integer get_port() throws Exception {
@@ -248,8 +250,7 @@ public class sslcrl extends base_resource
 
 	/**
 	* <pre>
-	* The baseDN attribute used by LDAP search to query for the attribute certificateRevocationList.
-	Note: It is recommended to use the baseDN attribute over the Issuer Name from the CA certificate for the CRL, if the Issuer-Name fields does not exactly match the LDAP directory structure's DN.<br> Minimum length =  1
+	* Base distinguished name (DN), which is used in an LDAP search to search for a CRL. Citrix recommends searching for the Base DN instead of the Issuer Name from the CA certificate, because the Issuer Name field might not exactly match the LDAP directory structure's DN.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_basedn(String basedn) throws Exception{
@@ -258,8 +259,7 @@ public class sslcrl extends base_resource
 
 	/**
 	* <pre>
-	* The baseDN attribute used by LDAP search to query for the attribute certificateRevocationList.
-	Note: It is recommended to use the baseDN attribute over the Issuer Name from the CA certificate for the CRL, if the Issuer-Name fields does not exactly match the LDAP directory structure's DN.<br> Minimum length =  1
+	* Base distinguished name (DN), which is used in an LDAP search to search for a CRL. Citrix recommends searching for the Base DN instead of the Issuer Name from the CA certificate, because the Issuer Name field might not exactly match the LDAP directory structure's DN.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_basedn() throws Exception {
@@ -268,9 +268,9 @@ public class sslcrl extends base_resource
 
 	/**
 	* <pre>
-	* Extent of the search operation on the LDAP server.
-	Base: Exactly the same level as basedn
-	One : One level below basedn.<br> Default value: NSAPI_ONESCOPE<br> Possible values = Base, One
+	* Extent of the search operation on the LDAP server. Available settings function as follows:
+One - One level below Base DN.
+Base - Exactly the same level as Base DN.<br> Default value: One<br> Possible values = Base, One
 	* </pre>
 	*/
 	public void set_scope(String scope) throws Exception{
@@ -279,9 +279,9 @@ public class sslcrl extends base_resource
 
 	/**
 	* <pre>
-	* Extent of the search operation on the LDAP server.
-	Base: Exactly the same level as basedn
-	One : One level below basedn.<br> Default value: NSAPI_ONESCOPE<br> Possible values = Base, One
+	* Extent of the search operation on the LDAP server. Available settings function as follows:
+One - One level below Base DN.
+Base - Exactly the same level as Base DN.<br> Default value: One<br> Possible values = Base, One
 	* </pre>
 	*/
 	public String get_scope() throws Exception {
@@ -290,9 +290,7 @@ public class sslcrl extends base_resource
 
 	/**
 	* <pre>
-	* The CRL refresh interval. The valid values are monthly, weekly, and daily. This along with the -days and -time option will identify the exact time/time-interval for CRL refresh.
-
-	-interval NONE can be used to reset previously set interval settings.<br> Possible values = MONTHLY, WEEKLY, DAILY, NONE
+	* CRL refresh interval. Use the NONE setting to unset this parameter.<br> Possible values = MONTHLY, WEEKLY, DAILY, NONE
 	* </pre>
 	*/
 	public void set_interval(String interval) throws Exception{
@@ -301,9 +299,7 @@ public class sslcrl extends base_resource
 
 	/**
 	* <pre>
-	* The CRL refresh interval. The valid values are monthly, weekly, and daily. This along with the -days and -time option will identify the exact time/time-interval for CRL refresh.
-
-	-interval NONE can be used to reset previously set interval settings.<br> Possible values = MONTHLY, WEEKLY, DAILY, NONE
+	* CRL refresh interval. Use the NONE setting to unset this parameter.<br> Possible values = MONTHLY, WEEKLY, DAILY, NONE
 	* </pre>
 	*/
 	public String get_interval() throws Exception {
@@ -312,17 +308,7 @@ public class sslcrl extends base_resource
 
 	/**
 	* <pre>
-	* The purpose of this option varies with the usage of the -interval option.
-
-	If the -interval option has been set to MONTHLY, the -days option can be used to set a particular day of the month (1-30/31/28) on which the CRL needs to be refreshed.
-
-	If  the -interval option has been set to WEEKLY, the -days option can be used to set a particular day of the week, i.e. 1...7 (Sun=1,Sat=7) on which the CRL needs to be refreshed.
-
-The system handles the valid number of days in a Month or Week, if the input value for the corresponding -day option is set incorrectly.
-
-	If the -interval option has been set to DAILY, the -days parameter is not used.
-
-	If the -days option is used without the -interval option, it specifies the number of days after which the refresh is to be done.<br> Minimum value =  0<br> Maximum value =  31
+	* Day on which to refresh the CRL, or, if the Interval parameter is not set, the number of days after which to refresh the CRL. If Interval is set to MONTHLY, specify the date. If Interval is set to WEEKLY, specify the day of the week (for example, Sun=0 and Sat=6). This parameter is not applicable if the Interval is set to DAILY.<br> Minimum value =  0<br> Maximum value =  31
 	* </pre>
 	*/
 	public void set_day(int day) throws Exception {
@@ -331,17 +317,7 @@ The system handles the valid number of days in a Month or Week, if the input val
 
 	/**
 	* <pre>
-	* The purpose of this option varies with the usage of the -interval option.
-
-	If the -interval option has been set to MONTHLY, the -days option can be used to set a particular day of the month (1-30/31/28) on which the CRL needs to be refreshed.
-
-	If  the -interval option has been set to WEEKLY, the -days option can be used to set a particular day of the week, i.e. 1...7 (Sun=1,Sat=7) on which the CRL needs to be refreshed.
-
-The system handles the valid number of days in a Month or Week, if the input value for the corresponding -day option is set incorrectly.
-
-	If the -interval option has been set to DAILY, the -days parameter is not used.
-
-	If the -days option is used without the -interval option, it specifies the number of days after which the refresh is to be done.<br> Minimum value =  0<br> Maximum value =  31
+	* Day on which to refresh the CRL, or, if the Interval parameter is not set, the number of days after which to refresh the CRL. If Interval is set to MONTHLY, specify the date. If Interval is set to WEEKLY, specify the day of the week (for example, Sun=0 and Sat=6). This parameter is not applicable if the Interval is set to DAILY.<br> Minimum value =  0<br> Maximum value =  31
 	* </pre>
 	*/
 	public void set_day(Integer day) throws Exception{
@@ -350,17 +326,7 @@ The system handles the valid number of days in a Month or Week, if the input val
 
 	/**
 	* <pre>
-	* The purpose of this option varies with the usage of the -interval option.
-
-	If the -interval option has been set to MONTHLY, the -days option can be used to set a particular day of the month (1-30/31/28) on which the CRL needs to be refreshed.
-
-	If  the -interval option has been set to WEEKLY, the -days option can be used to set a particular day of the week, i.e. 1...7 (Sun=1,Sat=7) on which the CRL needs to be refreshed.
-
-The system handles the valid number of days in a Month or Week, if the input value for the corresponding -day option is set incorrectly.
-
-	If the -interval option has been set to DAILY, the -days parameter is not used.
-
-	If the -days option is used without the -interval option, it specifies the number of days after which the refresh is to be done.<br> Minimum value =  0<br> Maximum value =  31
+	* Day on which to refresh the CRL, or, if the Interval parameter is not set, the number of days after which to refresh the CRL. If Interval is set to MONTHLY, specify the date. If Interval is set to WEEKLY, specify the day of the week (for example, Sun=0 and Sat=6). This parameter is not applicable if the Interval is set to DAILY.<br> Minimum value =  0<br> Maximum value =  31
 	* </pre>
 	*/
 	public Integer get_day() throws Exception {
@@ -369,7 +335,7 @@ The system handles the valid number of days in a Month or Week, if the input val
 
 	/**
 	* <pre>
-	* Time duration when the crl is to be refreshed w.r.t hours or minutes.
+	* Time, in hours (1-24) and minutes (1-60), at which to refresh the CRL.
 	* </pre>
 	*/
 	public void set_time(String time) throws Exception{
@@ -378,7 +344,7 @@ The system handles the valid number of days in a Month or Week, if the input val
 
 	/**
 	* <pre>
-	* Time duration when the crl is to be refreshed w.r.t hours or minutes.
+	* Time, in hours (1-24) and minutes (1-60), at which to refresh the CRL.
 	* </pre>
 	*/
 	public String get_time() throws Exception {
@@ -387,7 +353,7 @@ The system handles the valid number of days in a Month or Week, if the input val
 
 	/**
 	* <pre>
-	* The bindDN to be used to access the CRL object in the LDAP repository. This is required if the access to the LDAP repository is restricted, i.e. anonymous access is not allowed.<br> Minimum length =  1
+	* Bind distinguished name (DN) to be used to access the CRL object in the LDAP repository if access to the LDAP repository is restricted or anonymous access is not allowed.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_binddn(String binddn) throws Exception{
@@ -396,7 +362,7 @@ The system handles the valid number of days in a Month or Week, if the input val
 
 	/**
 	* <pre>
-	* The bindDN to be used to access the CRL object in the LDAP repository. This is required if the access to the LDAP repository is restricted, i.e. anonymous access is not allowed.<br> Minimum length =  1
+	* Bind distinguished name (DN) to be used to access the CRL object in the LDAP repository if access to the LDAP repository is restricted or anonymous access is not allowed.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_binddn() throws Exception {
@@ -405,7 +371,7 @@ The system handles the valid number of days in a Month or Week, if the input val
 
 	/**
 	* <pre>
-	* The password to be used to access the CRL object in the LDAP repository. This is required if the access to the LDAP repository is restricted i.e. anonymous access is not allowed.<br> Minimum length =  1
+	* Password to access the CRL in the LDAP repository if access to the LDAP repository is restricted or anonymous access is not allowed.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_password(String password) throws Exception{
@@ -414,7 +380,7 @@ The system handles the valid number of days in a Month or Week, if the input val
 
 	/**
 	* <pre>
-	* The password to be used to access the CRL object in the LDAP repository. This is required if the access to the LDAP repository is restricted i.e. anonymous access is not allowed.<br> Minimum length =  1
+	* Password to access the CRL in the LDAP repository if access to the LDAP repository is restricted or anonymous access is not allowed.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_password() throws Exception {
@@ -423,7 +389,7 @@ The system handles the valid number of days in a Month or Week, if the input val
 
 	/**
 	* <pre>
-	* Set the LDAP based CRL retrieval mode to binary.<br> Default value: NO<br> Possible values = YES, NO
+	* Set the LDAP-based CRL retrieval mode to binary.<br> Default value: NO<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public void set_binary(String binary) throws Exception{
@@ -432,7 +398,7 @@ The system handles the valid number of days in a Month or Week, if the input val
 
 	/**
 	* <pre>
-	* Set the LDAP based CRL retrieval mode to binary.<br> Default value: NO<br> Possible values = YES, NO
+	* Set the LDAP-based CRL retrieval mode to binary.<br> Default value: NO<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public String get_binary() throws Exception {
@@ -441,7 +407,8 @@ The system handles the valid number of days in a Month or Week, if the input val
 
 	/**
 	* <pre>
-	* Path to the CA certificate file. The default input path for the CA certificate is /nsconfig/ssl/.<br> Maximum length =  63
+	* Name of and, optionally, path to the CA certificate file.
+/nsconfig/ssl/ is the default path.<br> Maximum length =  63
 	* </pre>
 	*/
 	public void set_cacertfile(String cacertfile) throws Exception{
@@ -450,7 +417,8 @@ The system handles the valid number of days in a Month or Week, if the input val
 
 	/**
 	* <pre>
-	* Path to the CA certificate file. The default input path for the CA certificate is /nsconfig/ssl/.<br> Maximum length =  63
+	* Name of and, optionally, path to the CA certificate file.
+/nsconfig/ssl/ is the default path.<br> Maximum length =  63
 	* </pre>
 	*/
 	public String get_cacertfile() throws Exception {
@@ -459,7 +427,7 @@ The system handles the valid number of days in a Month or Week, if the input val
 
 	/**
 	* <pre>
-	* Path to the CA key file. The default input path for the CA key is /nsconfig/ssl/.<br> Maximum length =  63
+	* Name of and, optionally, path to the CA key file. /nsconfig/ssl/ is the default path.<br> Maximum length =  63
 	* </pre>
 	*/
 	public void set_cakeyfile(String cakeyfile) throws Exception{
@@ -468,7 +436,7 @@ The system handles the valid number of days in a Month or Week, if the input val
 
 	/**
 	* <pre>
-	* Path to the CA key file. The default input path for the CA key is /nsconfig/ssl/.<br> Maximum length =  63
+	* Name of and, optionally, path to the CA key file. /nsconfig/ssl/ is the default path.<br> Maximum length =  63
 	* </pre>
 	*/
 	public String get_cakeyfile() throws Exception {
@@ -477,7 +445,7 @@ The system handles the valid number of days in a Month or Week, if the input val
 
 	/**
 	* <pre>
-	* This file contains the serial number of all the certificates that are revoked. This file is created the first time. New certificate revocation will be added to it subsequently. The default input path for the index file is /nsconfig/ssl/.<br> Maximum length =  63
+	* Name of and, optionally, path to the file containing the serial numbers of all the certificates that are revoked. Revoked certificates are appended to the file. /nsconfig/ssl/ is the default path.<br> Maximum length =  63
 	* </pre>
 	*/
 	public void set_indexfile(String indexfile) throws Exception{
@@ -486,7 +454,7 @@ The system handles the valid number of days in a Month or Week, if the input val
 
 	/**
 	* <pre>
-	* This file contains the serial number of all the certificates that are revoked. This file is created the first time. New certificate revocation will be added to it subsequently. The default input path for the index file is /nsconfig/ssl/.<br> Maximum length =  63
+	* Name of and, optionally, path to the file containing the serial numbers of all the certificates that are revoked. Revoked certificates are appended to the file. /nsconfig/ssl/ is the default path.<br> Maximum length =  63
 	* </pre>
 	*/
 	public String get_indexfile() throws Exception {
@@ -495,7 +463,7 @@ The system handles the valid number of days in a Month or Week, if the input val
 
 	/**
 	* <pre>
-	* The certificate file to be revoked. The default input path for the certificate(s) is /nsconfig/ssl/.<br> Maximum length =  63
+	* Name of and, optionally, path to the certificate to be revoked. /nsconfig/ssl/ is the default path.<br> Maximum length =  63
 	* </pre>
 	*/
 	public void set_revoke(String revoke) throws Exception{
@@ -504,7 +472,7 @@ The system handles the valid number of days in a Month or Week, if the input val
 
 	/**
 	* <pre>
-	* The certificate file to be revoked. The default input path for the certificate(s) is /nsconfig/ssl/.<br> Maximum length =  63
+	* Name of and, optionally, path to the certificate to be revoked. /nsconfig/ssl/ is the default path.<br> Maximum length =  63
 	* </pre>
 	*/
 	public String get_revoke() throws Exception {
@@ -513,7 +481,7 @@ The system handles the valid number of days in a Month or Week, if the input val
 
 	/**
 	* <pre>
-	* The CRL file to be created. The list of certificates that have been revoked is obtained from the index file. The default output path for the CRL file is /var/netscaler/ssl/.<br> Maximum length =  63
+	* Name of and, optionally, path to the CRL file to be generated. The list of certificates that have been revoked is obtained from the index file. /nsconfig/ssl/ is the default path.<br> Maximum length =  63
 	* </pre>
 	*/
 	public void set_gencrl(String gencrl) throws Exception{
@@ -522,7 +490,7 @@ The system handles the valid number of days in a Month or Week, if the input val
 
 	/**
 	* <pre>
-	* The CRL file to be created. The list of certificates that have been revoked is obtained from the index file. The default output path for the CRL file is /var/netscaler/ssl/.<br> Maximum length =  63
+	* Name of and, optionally, path to the CRL file to be generated. The list of certificates that have been revoked is obtained from the index file. /nsconfig/ssl/ is the default path.<br> Maximum length =  63
 	* </pre>
 	*/
 	public String get_gencrl() throws Exception {
@@ -834,33 +802,9 @@ The system handles the valid number of days in a Month or Week, if the input val
 	* Use this API to unset the properties of sslcrl resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String crlname, String args[]) throws Exception {
-		sslcrl unsetresource = new sslcrl();
-		unsetresource.crlname = crlname;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of sslcrl resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, sslcrl resource, String[] args) throws Exception{
 		sslcrl unsetresource = new sslcrl();
 		unsetresource.crlname = resource.crlname;
-		unsetresource.refresh = resource.refresh;
-		unsetresource.cacert = resource.cacert;
-		unsetresource.server = resource.server;
-		unsetresource.method = resource.method;
-		unsetresource.url = resource.url;
-		unsetresource.port = resource.port;
-		unsetresource.basedn = resource.basedn;
-		unsetresource.scope = resource.scope;
-		unsetresource.interval = resource.interval;
-		unsetresource.day = resource.day;
-		unsetresource.time = resource.time;
-		unsetresource.binddn = resource.binddn;
-		unsetresource.password = resource.password;
-		unsetresource.binary = resource.binary;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -892,20 +836,6 @@ The system handles the valid number of days in a Month or Week, if the input val
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new sslcrl();
 				unsetresources[i].crlname = resources[i].crlname;
-				unsetresources[i].refresh = resources[i].refresh;
-				unsetresources[i].cacert = resources[i].cacert;
-				unsetresources[i].server = resources[i].server;
-				unsetresources[i].method = resources[i].method;
-				unsetresources[i].url = resources[i].url;
-				unsetresources[i].port = resources[i].port;
-				unsetresources[i].basedn = resources[i].basedn;
-				unsetresources[i].scope = resources[i].scope;
-				unsetresources[i].interval = resources[i].interval;
-				unsetresources[i].day = resources[i].day;
-				unsetresources[i].time = resources[i].time;
-				unsetresources[i].binddn = resources[i].binddn;
-				unsetresources[i].password = resources[i].password;
-				unsetresources[i].binary = resources[i].binary;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}

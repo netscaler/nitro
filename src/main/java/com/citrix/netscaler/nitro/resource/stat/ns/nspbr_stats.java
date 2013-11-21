@@ -33,6 +33,7 @@ class nspbr_response extends base_response
 public class nspbr_stats extends base_resource
 {
 	private String name;
+	private String clearstats;
 	private Long pbrtotpktsallowed;
 	private Long pbrpktsallowedrate;
 	private Long pbrtotpktsdenied;
@@ -46,7 +47,7 @@ public class nspbr_stats extends base_resource
 
 	/**
 	* <pre>
-	* The PBR.
+	* Name of the PBR whose statistics you want the NetScaler appliance to display.
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -55,7 +56,7 @@ public class nspbr_stats extends base_resource
 
 	/**
 	* <pre>
-	* The PBR.<br> Minimum length =  1
+	* Name of the PBR whose statistics you want the NetScaler appliance to display.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -64,7 +65,25 @@ public class nspbr_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total packets that matched the PBR with action DENY 
+	* Clear the statsistics / counters
+	* </pre>
+	*/
+	public void set_clearstats(String clearstats) throws Exception{
+		this.clearstats = clearstats;
+	}
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters.<br> Possible values = basic, full
+	* </pre>
+	*/
+	public String get_clearstats() throws Exception {
+		return this.clearstats;
+	}
+
+	/**
+	* <pre>
+	* Rate (/s) counter for pbrtotpktsdenied
 	* </pre>
 	*/
 	public Long get_pbrpktsdeniedrate() throws Exception {
@@ -73,7 +92,7 @@ public class nspbr_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total packets that did not match any PBR
+	* Rate (/s) counter for pbrtotmisses
 	* </pre>
 	*/
 	public Long get_pbrmissesrate() throws Exception {
@@ -91,7 +110,7 @@ public class nspbr_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of times the pbr was hit
+	* Rate (/s) counter for pbrperhits
 	* </pre>
 	*/
 	public Long get_pbrperhitsrate() throws Exception {
@@ -100,7 +119,7 @@ public class nspbr_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total packets that matched one of the configured PBR
+	* Rate (/s) counter for pbrtothits
 	* </pre>
 	*/
 	public Long get_pbrhitsrate() throws Exception {
@@ -145,7 +164,7 @@ public class nspbr_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total packets that matched the PBR (Policy-Based Routes) with action ALLOW 
+	* Rate (/s) counter for pbrtotpktsallowed
 	* </pre>
 	*/
 	public Long get_pbrpktsallowedrate() throws Exception {
@@ -214,4 +233,8 @@ public class nspbr_stats extends base_resource
 		return response;
 	}
 
+	public static class clearstatsEnum {
+		public static final String basic = "basic";
+		public static final String full = "full";
+	}
 }

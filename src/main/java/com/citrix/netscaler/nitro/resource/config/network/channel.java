@@ -38,6 +38,7 @@ public class channel extends base_resource
 	private String mode;
 	private String conndistr;
 	private String macdistr;
+	private String lamac;
 	private String speed;
 	private String flowctl;
 	private String hamonitor;
@@ -47,6 +48,7 @@ public class channel extends base_resource
 	private Long throughput;
 	private Long bandwidthhigh;
 	private Long bandwidthnormal;
+	private Long lrminthroughput;
 
 	//------- Read only Parameter ---------;
 
@@ -67,6 +69,7 @@ public class channel extends base_resource
 	private String actspeed;
 	private String duplex;
 	private String actflowctl;
+	private String lamode;
 	private Long autoneg;
 	private Long autonegresult;
 	private Long tagged;
@@ -74,6 +77,8 @@ public class channel extends base_resource
 	private Long taggedautolearn;
 	private Long hangdetect;
 	private Long hangreset;
+	private Long linkstate;
+	private Long intfstate;
 	private Long rxpackets;
 	private Long rxbytes;
 	private Long rxerrors;
@@ -96,11 +101,35 @@ public class channel extends base_resource
 	private Long actthroughput;
 	private String backplane;
 	private Long cleartime;
+	private String lacpmode;
+	private String lacptimeout;
+	private Long lacpactorpriority;
+	private Long lacpactorportno;
+	private String lacppartnerstate;
+	private String lacppartnertimeout;
+	private String lacppartneraggregation;
+	private String lacppartnerinsync;
+	private String lacppartnercollecting;
+	private String lacppartnerdistributing;
+	private String lacppartnerdefaulted;
+	private String lacppartnerexpired;
+	private Long lacppartnerpriority;
+	private String lacppartnersystemmac;
+	private Long lacppartnersystempriority;
+	private Long lacppartnerportno;
+	private Long lacppartnerkey;
+	private String lacpactoraggregation;
+	private String lacpactorinsync;
+	private String lacpactorcollecting;
+	private String lacpactordistributing;
+	private String lacpportmuxstate;
+	private String lacpportrxstat;
+	private String lacpportselectstate;
 	private Long __count;
 
 	/**
 	* <pre>
-	* LA channel name (in form LA/* or CLA/* for Cluster LA).
+	* ID for the LA channel or cluster LA channel to be created. Specify an LA channel in LA/x notation or cluster LA channel in CLA/x notation, where x can range from 1 to 4. Cannot be changed after the LA channel is created.
 	* </pre>
 	*/
 	public void set_id(String id) throws Exception{
@@ -109,7 +138,7 @@ public class channel extends base_resource
 
 	/**
 	* <pre>
-	* LA channel name (in form LA/* or CLA/* for Cluster LA).
+	* ID for the LA channel or cluster LA channel to be created. Specify an LA channel in LA/x notation or cluster LA channel in CLA/x notation, where x can range from 1 to 4. Cannot be changed after the LA channel is created.
 	* </pre>
 	*/
 	public String get_id() throws Exception {
@@ -118,7 +147,16 @@ public class channel extends base_resource
 
 	/**
 	* <pre>
-	* The interfaces to be bound to Link Aggregate channel.
+	* Interfaces to be bound to the LA channel of a NetScaler appliance or to the LA channel of a cluster configuration.
+For an LA channel of a NetScaler appliance, specify an interface in C/U notation (for example, 1/3). 
+For an LA channel of a cluster configuration, specify an interface in N/C/U notation (for example, 2/1/3).
+where C can take one of the following values:
+* 0 - Indicates a management interface.
+* 1 - Indicates a 1 Gbps port.
+* 10 - Indicates a 10 Gbps port.
+U is a unique integer for representing an interface in a particular port group.
+N is the ID of the node to which an interface belongs in a cluster configuration.
+Use spaces to separate multiple entries.
 	* </pre>
 	*/
 	public void set_ifnum(String[] ifnum) throws Exception{
@@ -127,7 +165,16 @@ public class channel extends base_resource
 
 	/**
 	* <pre>
-	* The interfaces to be bound to Link Aggregate channel.
+	* Interfaces to be bound to the LA channel of a NetScaler appliance or to the LA channel of a cluster configuration.
+For an LA channel of a NetScaler appliance, specify an interface in C/U notation (for example, 1/3). 
+For an LA channel of a cluster configuration, specify an interface in N/C/U notation (for example, 2/1/3).
+where C can take one of the following values:
+* 0 - Indicates a management interface.
+* 1 - Indicates a 1 Gbps port.
+* 10 - Indicates a 10 Gbps port.
+U is a unique integer for representing an interface in a particular port group.
+N is the ID of the node to which an interface belongs in a cluster configuration.
+Use spaces to separate multiple entries.
 	* </pre>
 	*/
 	public String[] get_ifnum() throws Exception {
@@ -136,7 +183,7 @@ public class channel extends base_resource
 
 	/**
 	* <pre>
-	* The initial state for the LA channel.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Enable or disable the LA channel.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_state(String state) throws Exception{
@@ -145,7 +192,7 @@ public class channel extends base_resource
 
 	/**
 	* <pre>
-	* The initial state for the LA channel.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Enable or disable the LA channel.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_state() throws Exception {
@@ -208,7 +255,25 @@ public class channel extends base_resource
 
 	/**
 	* <pre>
-	* The speed for the LA channel.<br> Default value: NSA_DVC_SPEED_AUTO<br> Possible values = AUTO, 10, 100, 1000, 10000
+	* MAC address for LA channels on VPX Platforms namely VPX on SDX,Xen,ESX.
+	* </pre>
+	*/
+	public void set_lamac(String lamac) throws Exception{
+		this.lamac = lamac;
+	}
+
+	/**
+	* <pre>
+	* MAC address for LA channels on VPX Platforms namely VPX on SDX,Xen,ESX.
+	* </pre>
+	*/
+	public String get_lamac() throws Exception {
+		return this.lamac;
+	}
+
+	/**
+	* <pre>
+	* Ethernet speed of the channel, in Mbps. If the speed of any bound interface is greater than or equal to the value set for this parameter, the state of the interface is UP. Otherwise, the state is INACTIVE. Bound Interfaces whose state is INACTIVE do not process any traffic.<br> Default value: AUTO<br> Possible values = AUTO, 10, 100, 1000, 10000
 	* </pre>
 	*/
 	public void set_speed(String speed) throws Exception{
@@ -217,7 +282,7 @@ public class channel extends base_resource
 
 	/**
 	* <pre>
-	* The speed for the LA channel.<br> Default value: NSA_DVC_SPEED_AUTO<br> Possible values = AUTO, 10, 100, 1000, 10000
+	* Ethernet speed of the channel, in Mbps. If the speed of any bound interface is greater than or equal to the value set for this parameter, the state of the interface is UP. Otherwise, the state is INACTIVE. Bound Interfaces whose state is INACTIVE do not process any traffic.<br> Default value: AUTO<br> Possible values = AUTO, 10, 100, 1000, 10000
 	* </pre>
 	*/
 	public String get_speed() throws Exception {
@@ -244,7 +309,7 @@ public class channel extends base_resource
 
 	/**
 	* <pre>
-	* HA monitoring for the LA channel.<br> Default value: ON<br> Possible values = ON, OFF
+	* In a High Availability (HA) configuration, monitor the LA channel for failure events. Failure of any LA channel that has HA MON enabled triggers HA failover.<br> Default value: ON<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_hamonitor(String hamonitor) throws Exception{
@@ -253,7 +318,7 @@ public class channel extends base_resource
 
 	/**
 	* <pre>
-	* HA monitoring for the LA channel.<br> Default value: ON<br> Possible values = ON, OFF
+	* In a High Availability (HA) configuration, monitor the LA channel for failure events. Failure of any LA channel that has HA MON enabled triggers HA failover.<br> Default value: ON<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_hamonitor() throws Exception {
@@ -262,7 +327,7 @@ public class channel extends base_resource
 
 	/**
 	* <pre>
-	* The appliance adds a four-byte 802.1q tag to every packet sent on this channel.  ON applies tags for all the VLANs that are bound to this channel. OFF, applies the tag for all VLANs other than the native VLAN.<br> Default value: OFF<br> Possible values = ON, OFF
+	* Adds a four-byte 802.1q tag to every packet sent on this channel.  The ON setting applies tags for all VLANs that are bound to this channel. OFF applies the tag for all VLANs other than the native VLAN.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_tagall(String tagall) throws Exception{
@@ -271,7 +336,7 @@ public class channel extends base_resource
 
 	/**
 	* <pre>
-	* The appliance adds a four-byte 802.1q tag to every packet sent on this channel.  ON applies tags for all the VLANs that are bound to this channel. OFF, applies the tag for all VLANs other than the native VLAN.<br> Default value: OFF<br> Possible values = ON, OFF
+	* Adds a four-byte 802.1q tag to every packet sent on this channel.  The ON setting applies tags for all VLANs that are bound to this channel. OFF applies the tag for all VLANs other than the native VLAN.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_tagall() throws Exception {
@@ -298,7 +363,7 @@ public class channel extends base_resource
 
 	/**
 	* <pre>
-	* The alias name for the channel.<br> Default value: " "<br> Maximum length =  31
+	* Alias name for the LA channel. Used only to enhance readability. To perform any operations, you have to specify the LA channel ID.<br> Default value: " "<br> Maximum length =  31
 	* </pre>
 	*/
 	public void set_ifalias(String ifalias) throws Exception{
@@ -307,7 +372,7 @@ public class channel extends base_resource
 
 	/**
 	* <pre>
-	* The alias name for the channel.<br> Default value: " "<br> Maximum length =  31
+	* Alias name for the LA channel. Used only to enhance readability. To perform any operations, you have to specify the LA channel ID.<br> Default value: " "<br> Maximum length =  31
 	* </pre>
 	*/
 	public String get_ifalias() throws Exception {
@@ -316,7 +381,7 @@ public class channel extends base_resource
 
 	/**
 	* <pre>
-	* Minimum required throughput for the interface.<br> Minimum value =  0<br> Maximum value =  80000
+	* Low threshold value for the throughput of the LA channel, in Mbps. In an HA configuration, failover is triggered if the LA channel has HA MON enabled and the throughput is below the specified threshold.<br> Minimum value =  0<br> Maximum value =  80000
 	* </pre>
 	*/
 	public void set_throughput(long throughput) throws Exception {
@@ -325,7 +390,7 @@ public class channel extends base_resource
 
 	/**
 	* <pre>
-	* Minimum required throughput for the interface.<br> Minimum value =  0<br> Maximum value =  80000
+	* Low threshold value for the throughput of the LA channel, in Mbps. In an HA configuration, failover is triggered if the LA channel has HA MON enabled and the throughput is below the specified threshold.<br> Minimum value =  0<br> Maximum value =  80000
 	* </pre>
 	*/
 	public void set_throughput(Long throughput) throws Exception{
@@ -334,7 +399,7 @@ public class channel extends base_resource
 
 	/**
 	* <pre>
-	* Minimum required throughput for the interface.<br> Minimum value =  0<br> Maximum value =  80000
+	* Low threshold value for the throughput of the LA channel, in Mbps. In an HA configuration, failover is triggered if the LA channel has HA MON enabled and the throughput is below the specified threshold.<br> Minimum value =  0<br> Maximum value =  80000
 	* </pre>
 	*/
 	public Long get_throughput() throws Exception {
@@ -343,7 +408,7 @@ public class channel extends base_resource
 
 	/**
 	* <pre>
-	* High threshold, in Mbps, for bandwidth usage by the interface. A trap is sent if bandwidth usage by the interface crosses this limit.<br> Minimum value =  0<br> Maximum value =  80000
+	* High threshold value for the bandwidth usage of the LA channel, in Mbps. The NetScaler appliance generates an SNMP trap message when the bandwidth usage of the LA channel is greater than or equal to the specified high threshold value.<br> Minimum value =  0<br> Maximum value =  80000
 	* </pre>
 	*/
 	public void set_bandwidthhigh(long bandwidthhigh) throws Exception {
@@ -352,7 +417,7 @@ public class channel extends base_resource
 
 	/**
 	* <pre>
-	* High threshold, in Mbps, for bandwidth usage by the interface. A trap is sent if bandwidth usage by the interface crosses this limit.<br> Minimum value =  0<br> Maximum value =  80000
+	* High threshold value for the bandwidth usage of the LA channel, in Mbps. The NetScaler appliance generates an SNMP trap message when the bandwidth usage of the LA channel is greater than or equal to the specified high threshold value.<br> Minimum value =  0<br> Maximum value =  80000
 	* </pre>
 	*/
 	public void set_bandwidthhigh(Long bandwidthhigh) throws Exception{
@@ -361,7 +426,7 @@ public class channel extends base_resource
 
 	/**
 	* <pre>
-	* High threshold, in Mbps, for bandwidth usage by the interface. A trap is sent if bandwidth usage by the interface crosses this limit.<br> Minimum value =  0<br> Maximum value =  80000
+	* High threshold value for the bandwidth usage of the LA channel, in Mbps. The NetScaler appliance generates an SNMP trap message when the bandwidth usage of the LA channel is greater than or equal to the specified high threshold value.<br> Minimum value =  0<br> Maximum value =  80000
 	* </pre>
 	*/
 	public Long get_bandwidthhigh() throws Exception {
@@ -370,7 +435,7 @@ public class channel extends base_resource
 
 	/**
 	* <pre>
-	* Normal threshold, in Mbps, for bandwidth usage by the interface. A trap is sent if bandwidth usage by the interface returns to this value.<br> Minimum value =  0<br> Maximum value =  80000
+	* Normal threshold value for the bandwidth usage of the LA channel, in Mbps. When the bandwidth usage of the LA channel becomes less than or equal to the specified normal threshold after exceeding the high threshold, the NetScaler appliance generates an SNMP trap message to indicate that the bandwidth usage has returned to normal.<br> Minimum value =  0<br> Maximum value =  80000
 	* </pre>
 	*/
 	public void set_bandwidthnormal(long bandwidthnormal) throws Exception {
@@ -379,7 +444,7 @@ public class channel extends base_resource
 
 	/**
 	* <pre>
-	* Normal threshold, in Mbps, for bandwidth usage by the interface. A trap is sent if bandwidth usage by the interface returns to this value.<br> Minimum value =  0<br> Maximum value =  80000
+	* Normal threshold value for the bandwidth usage of the LA channel, in Mbps. When the bandwidth usage of the LA channel becomes less than or equal to the specified normal threshold after exceeding the high threshold, the NetScaler appliance generates an SNMP trap message to indicate that the bandwidth usage has returned to normal.<br> Minimum value =  0<br> Maximum value =  80000
 	* </pre>
 	*/
 	public void set_bandwidthnormal(Long bandwidthnormal) throws Exception{
@@ -388,11 +453,38 @@ public class channel extends base_resource
 
 	/**
 	* <pre>
-	* Normal threshold, in Mbps, for bandwidth usage by the interface. A trap is sent if bandwidth usage by the interface returns to this value.<br> Minimum value =  0<br> Maximum value =  80000
+	* Normal threshold value for the bandwidth usage of the LA channel, in Mbps. When the bandwidth usage of the LA channel becomes less than or equal to the specified normal threshold after exceeding the high threshold, the NetScaler appliance generates an SNMP trap message to indicate that the bandwidth usage has returned to normal.<br> Minimum value =  0<br> Maximum value =  80000
 	* </pre>
 	*/
 	public Long get_bandwidthnormal() throws Exception {
 		return this.bandwidthnormal;
+	}
+
+	/**
+	* <pre>
+	* Minimum required throughput for a channel where we require Link Redundancy. When throughput falls below the threshold, the subset of interfaces which can give maximum throughput will become active When configured in HA pair, this will work along with the throughput parameter set. If lrMinThroughput can be achieved Link Failover will be attempted before Node Failover.<br> Minimum value =  0<br> Maximum value =  80000
+	* </pre>
+	*/
+	public void set_lrminthroughput(long lrminthroughput) throws Exception {
+		this.lrminthroughput = new Long(lrminthroughput);
+	}
+
+	/**
+	* <pre>
+	* Minimum required throughput for a channel where we require Link Redundancy. When throughput falls below the threshold, the subset of interfaces which can give maximum throughput will become active When configured in HA pair, this will work along with the throughput parameter set. If lrMinThroughput can be achieved Link Failover will be attempted before Node Failover.<br> Minimum value =  0<br> Maximum value =  80000
+	* </pre>
+	*/
+	public void set_lrminthroughput(Long lrminthroughput) throws Exception{
+		this.lrminthroughput = lrminthroughput;
+	}
+
+	/**
+	* <pre>
+	* Minimum required throughput for a channel where we require Link Redundancy. When throughput falls below the threshold, the subset of interfaces which can give maximum throughput will become active When configured in HA pair, this will work along with the throughput parameter set. If lrMinThroughput can be achieved Link Failover will be attempted before Node Failover.<br> Minimum value =  0<br> Maximum value =  80000
+	* </pre>
+	*/
+	public Long get_lrminthroughput() throws Exception {
+		return this.lrminthroughput;
 	}
 
 	/**
@@ -550,6 +642,15 @@ public class channel extends base_resource
 
 	/**
 	* <pre>
+	* The  mode(AUTO/MANNUAL) for the LA channel.<br> Possible values = MANUAL, AUTO
+	* </pre>
+	*/
+	public String get_lamode() throws Exception {
+		return this.lamode;
+	}
+
+	/**
+	* <pre>
 	* Requested auto negotiation setting for this channel. Since no media are associated with LA, this setting has no effect.
 	* </pre>
 	*/
@@ -609,6 +710,24 @@ public class channel extends base_resource
 	*/
 	public Long get_hangreset() throws Exception {
 		return this.hangreset;
+	}
+
+	/**
+	* <pre>
+	* The current state of the link associated with the interface. For logical interfaces (LA), the state of the link is dependent on the state of the slave interfaces. For the link to be UP at least one of the slave interfaces needs to be UP.
+	* </pre>
+	*/
+	public Long get_linkstate() throws Exception {
+		return this.linkstate;
+	}
+
+	/**
+	* <pre>
+	* Current state of the specified interface.  The interface state set to UP only if the link state is UP and administrative state is ENABLED.
+	* </pre>
+	*/
+	public Long get_intfstate() throws Exception {
+		return this.intfstate;
 	}
 
 	/**
@@ -817,6 +936,227 @@ public class channel extends base_resource
 
 	/**
 	* <pre>
+	* The LACP mode of the specified interface. The possible values are:
+						 1. Active: A port in active mode generates LACP protocol messages on a regular basis, regardless of any need expressed by its partner to receive them.
+						 2. Passive: A port in passive mode generally does not transmit LACP messages unless its partner is in the active mode; that is, it does not speak unless spoken to.
+						 3. Disabled: Removes the interface from the LA channel. If this is only interface in the LA channel, the LA channel is also deleted.
+						 .<br> Possible values = DISABLED, ACTIVE, PASSIVE
+	* </pre>
+	*/
+	public String get_lacpmode() throws Exception {
+		return this.lacpmode;
+	}
+
+	/**
+	* <pre>
+	* Time to wait for the LACPDU.  If a LACPDU is not received within this interval, the NetScaler markes the link partner port as DOWN. Possible values: Long and Short. Long lacptimeout is 90 sec and Short LACP timeout is 3 sec.<br> Possible values = LONG, SHORT
+	* </pre>
+	*/
+	public String get_lacptimeout() throws Exception {
+		return this.lacptimeout;
+	}
+
+	/**
+	* <pre>
+	* LACP Actor Priority. A LACP port priority is configured on each port using LACP. LACP uses the port priority with the port number to form the port identifier. The port priority determines which ports should be put in standby mode when there is a hardware limitation that prevents all compatible ports from aggregating.
+	* </pre>
+	*/
+	public Long get_lacpactorpriority() throws Exception {
+		return this.lacpactorpriority;
+	}
+
+	/**
+	* <pre>
+	* LACP Actor port number. LACP uses the port priority with the port number to form the port identifier.
+	* </pre>
+	*/
+	public Long get_lacpactorportno() throws Exception {
+		return this.lacpactorportno;
+	}
+
+	/**
+	* <pre>
+	* LACP Partner State. Whether the port is in Active or Passive negotiating state.<br> Possible values = MANUAL, AUTO
+	* </pre>
+	*/
+	public String get_lacppartnerstate() throws Exception {
+		return this.lacppartnerstate;
+	}
+
+	/**
+	* <pre>
+	* The timeout value for the information revieved in LACPDUs. It can have values as SHORT or LONG. The SHORT timeout is 3s and the LONG timeout is 90s.<br> Possible values = LONG, SHORT
+	* </pre>
+	*/
+	public String get_lacppartnertimeout() throws Exception {
+		return this.lacppartnertimeout;
+	}
+
+	/**
+	* <pre>
+	* The Aggregation flag indicates that the participant will allow the link to be used as part of an aggregate. Otherwise the link is to be used as an individual link, i.e. not aggregated with any other.<br> Possible values = NS_EMPTY_STR, AGG
+	* </pre>
+	*/
+	public String get_lacppartneraggregation() throws Exception {
+		return this.lacppartneraggregation;
+	}
+
+	/**
+	* <pre>
+	* The Synchronization flag indicates that the transmitting participant.s mux component is in sync with the system id and key information transmitted.<br> Possible values = NS_EMPTY_STR, SYNC
+	* </pre>
+	*/
+	public String get_lacppartnerinsync() throws Exception {
+		return this.lacppartnerinsync;
+	}
+
+	/**
+	* <pre>
+	* The Collecting flag indicates that the participant.s collector, i.e. the reception component of the mux, is definitely on. If set the flag communicates collecting.<br> Possible values = NS_EMPTY_STR, COLLECTING
+	* </pre>
+	*/
+	public String get_lacppartnercollecting() throws Exception {
+		return this.lacppartnercollecting;
+	}
+
+	/**
+	* <pre>
+	* The Distributing flag indicates that the participant.s distributor is not definitely off. If reset the flag indicates not distributing.<br> Possible values = NS_EMPTY_STR, DISTRIBUTING
+	* </pre>
+	*/
+	public String get_lacppartnerdistributing() throws Exception {
+		return this.lacppartnerdistributing;
+	}
+
+	/**
+	* <pre>
+	* If the timer expires in the Expired state, the Receive Machine enters the Defaulted state.<br> Possible values = NS_EMPTY_STR, DEFAULTED
+	* </pre>
+	*/
+	public String get_lacppartnerdefaulted() throws Exception {
+		return this.lacppartnerdefaulted;
+	}
+
+	/**
+	* <pre>
+	* If the LACPDUs are received for timeout period, the Receive Machine enters the Expired state and the timer is restarted with the timeout value of SHORT timeout.<br> Possible values = NS_EMPTY_STR, EXPIRED
+	* </pre>
+	*/
+	public String get_lacppartnerexpired() throws Exception {
+		return this.lacppartnerexpired;
+	}
+
+	/**
+	* <pre>
+	* LACP Partner Priority. A LACP port priority is configured on each port using LACP. LACP uses the port priority with the port number to form the port identifier. 
+					The port priority determines which ports should be put in standby mode when there is a hardware limitation that prevents all compatible ports from aggregating.
+	* </pre>
+	*/
+	public Long get_lacppartnerpriority() throws Exception {
+		return this.lacppartnerpriority;
+	}
+
+	/**
+	* <pre>
+	* LACP Partner System MAC.
+	* </pre>
+	*/
+	public String get_lacppartnersystemmac() throws Exception {
+		return this.lacppartnersystemmac;
+	}
+
+	/**
+	* <pre>
+	* LACP Partner System Priority. The LACP partner's system priority. The values for the priority range from 0 to 65535. The lower the value, the higher the system priority. The switch with the lower system priority value determines which links between LACP partner are active and which are in the standby for each LACP Channel.
+	* </pre>
+	*/
+	public Long get_lacppartnersystempriority() throws Exception {
+		return this.lacppartnersystempriority;
+	}
+
+	/**
+	* <pre>
+	* LACP Partner Port number. LACP uses the port priority with the port number to form the port identifier.
+	* </pre>
+	*/
+	public Long get_lacppartnerportno() throws Exception {
+		return this.lacppartnerportno;
+	}
+
+	/**
+	* <pre>
+	* LACP Partner Key. The LACP key used by the partner port.
+	* </pre>
+	*/
+	public Long get_lacppartnerkey() throws Exception {
+		return this.lacppartnerkey;
+	}
+
+	/**
+	* <pre>
+	* The Aggregation flag indicates that the participant will allow the link to be used as part of an aggregate. Otherwise the link is to be used as an individual link, i.e. not aggregated with any other.<br> Possible values = NS_EMPTY_STR, AGG
+	* </pre>
+	*/
+	public String get_lacpactoraggregation() throws Exception {
+		return this.lacpactoraggregation;
+	}
+
+	/**
+	* <pre>
+	* The Synchronization flag indicates that the transmitting participant.s mux component is in sync with the system id and key information transmitted.<br> Possible values = NS_EMPTY_STR, SYNC
+	* </pre>
+	*/
+	public String get_lacpactorinsync() throws Exception {
+		return this.lacpactorinsync;
+	}
+
+	/**
+	* <pre>
+	* The Collecting flag indicates that the participant.s collector, i.e. the reception component of the mux, is definitely on. If set the flag communicates collecting.<br> Possible values = NS_EMPTY_STR, COLLECTING
+	* </pre>
+	*/
+	public String get_lacpactorcollecting() throws Exception {
+		return this.lacpactorcollecting;
+	}
+
+	/**
+	* <pre>
+	* The Distributing flag indicates that the participant.s distributor is not definitely off. If reset the flag indicates not distributing.<br> Possible values = NS_EMPTY_STR, DISTRIBUTING
+	* </pre>
+	*/
+	public String get_lacpactordistributing() throws Exception {
+		return this.lacpactordistributing;
+	}
+
+	/**
+	* <pre>
+	* LACP Port MUX state. The state of the MUX control machine. The  Mux Control Machine attaches the physical port to an aggregate port, using the Selection Logic to choose an appropriate port, and turns the distributor and collector for the physical port on or off as required by protocol	information.<br> Possible values = DETACHED, WAITING, ATTACHED, COLLECTING, DISTRIBUTING
+	* </pre>
+	*/
+	public String get_lacpportmuxstate() throws Exception {
+		return this.lacpportmuxstate;
+	}
+
+	/**
+	* <pre>
+	* LACP Port RX state. The state of the Receive machine. The Receive Machine maintains partner information, recording protocol information from LACPDUs sent by remote partner(s). Received information is subject to a timeout, and if sufficient time elapses the receive machine will revert to using default partner information.<br> Possible values = INIT, PORT_DISABLED, LACP_DISABLED, EXPIRED, DEFAULTED, CURRENT
+	* </pre>
+	*/
+	public String get_lacpportrxstat() throws Exception {
+		return this.lacpportrxstat;
+	}
+
+	/**
+	* <pre>
+	* LACP Port SELECT state. The state of the SELECT state machine, It could be SELECTED or UNSELECTED.<br> Possible values = UNSELECTED, SELECTED, STANDBY
+	* </pre>
+	*/
+	public String get_lacpportselectstate() throws Exception {
+		return this.lacpportselectstate;
+	}
+
+	/**
+	* <pre>
 	* converts nitro response into object and returns the object array in case of get request.
 	* </pre>
 	*/
@@ -860,6 +1200,7 @@ public class channel extends base_resource
 		addresource.mode = resource.mode;
 		addresource.conndistr = resource.conndistr;
 		addresource.macdistr = resource.macdistr;
+		addresource.lamac = resource.lamac;
 		addresource.speed = resource.speed;
 		addresource.flowctl = resource.flowctl;
 		addresource.hamonitor = resource.hamonitor;
@@ -887,6 +1228,7 @@ public class channel extends base_resource
 				addresources[i].mode = resources[i].mode;
 				addresources[i].conndistr = resources[i].conndistr;
 				addresources[i].macdistr = resources[i].macdistr;
+				addresources[i].lamac = resources[i].lamac;
 				addresources[i].speed = resources[i].speed;
 				addresources[i].flowctl = resources[i].flowctl;
 				addresources[i].hamonitor = resources[i].hamonitor;
@@ -962,6 +1304,7 @@ public class channel extends base_resource
 		updateresource.mode = resource.mode;
 		updateresource.conndistr = resource.conndistr;
 		updateresource.macdistr = resource.macdistr;
+		updateresource.lamac = resource.lamac;
 		updateresource.speed = resource.speed;
 		updateresource.flowctl = resource.flowctl;
 		updateresource.hamonitor = resource.hamonitor;
@@ -969,6 +1312,7 @@ public class channel extends base_resource
 		updateresource.trunk = resource.trunk;
 		updateresource.ifalias = resource.ifalias;
 		updateresource.throughput = resource.throughput;
+		updateresource.lrminthroughput = resource.lrminthroughput;
 		updateresource.bandwidthhigh = resource.bandwidthhigh;
 		updateresource.bandwidthnormal = resource.bandwidthnormal;
 		return updateresource.update_resource(client);
@@ -988,6 +1332,7 @@ public class channel extends base_resource
 				updateresources[i].mode = resources[i].mode;
 				updateresources[i].conndistr = resources[i].conndistr;
 				updateresources[i].macdistr = resources[i].macdistr;
+				updateresources[i].lamac = resources[i].lamac;
 				updateresources[i].speed = resources[i].speed;
 				updateresources[i].flowctl = resources[i].flowctl;
 				updateresources[i].hamonitor = resources[i].hamonitor;
@@ -995,6 +1340,7 @@ public class channel extends base_resource
 				updateresources[i].trunk = resources[i].trunk;
 				updateresources[i].ifalias = resources[i].ifalias;
 				updateresources[i].throughput = resources[i].throughput;
+				updateresources[i].lrminthroughput = resources[i].lrminthroughput;
 				updateresources[i].bandwidthhigh = resources[i].bandwidthhigh;
 				updateresources[i].bandwidthnormal = resources[i].bandwidthnormal;
 			}
@@ -1007,32 +1353,9 @@ public class channel extends base_resource
 	* Use this API to unset the properties of channel resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String id, String args[]) throws Exception {
-		channel unsetresource = new channel();
-		unsetresource.id = id;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of channel resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, channel resource, String[] args) throws Exception{
 		channel unsetresource = new channel();
 		unsetresource.id = resource.id;
-		unsetresource.state = resource.state;
-		unsetresource.mode = resource.mode;
-		unsetresource.conndistr = resource.conndistr;
-		unsetresource.macdistr = resource.macdistr;
-		unsetresource.speed = resource.speed;
-		unsetresource.flowctl = resource.flowctl;
-		unsetresource.hamonitor = resource.hamonitor;
-		unsetresource.tagall = resource.tagall;
-		unsetresource.trunk = resource.trunk;
-		unsetresource.ifalias = resource.ifalias;
-		unsetresource.throughput = resource.throughput;
-		unsetresource.bandwidthhigh = resource.bandwidthhigh;
-		unsetresource.bandwidthnormal = resource.bandwidthnormal;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -1064,19 +1387,6 @@ public class channel extends base_resource
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new channel();
 				unsetresources[i].id = resources[i].id;
-				unsetresources[i].state = resources[i].state;
-				unsetresources[i].mode = resources[i].mode;
-				unsetresources[i].conndistr = resources[i].conndistr;
-				unsetresources[i].macdistr = resources[i].macdistr;
-				unsetresources[i].speed = resources[i].speed;
-				unsetresources[i].flowctl = resources[i].flowctl;
-				unsetresources[i].hamonitor = resources[i].hamonitor;
-				unsetresources[i].tagall = resources[i].tagall;
-				unsetresources[i].trunk = resources[i].trunk;
-				unsetresources[i].ifalias = resources[i].ifalias;
-				unsetresources[i].throughput = resources[i].throughput;
-				unsetresources[i].bandwidthhigh = resources[i].bandwidthhigh;
-				unsetresources[i].bandwidthnormal = resources[i].bandwidthnormal;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}
@@ -1195,6 +1505,15 @@ public class channel extends base_resource
 		return 0;
 	}
 
+	public static class lacpportselectstateEnum {
+		public static final String UNSELECTED = "UNSELECTED";
+		public static final String SELECTED = "SELECTED";
+		public static final String STANDBY = "STANDBY";
+	}
+	public static class lamodeEnum {
+		public static final String MANUAL = "MANUAL";
+		public static final String AUTO = "AUTO";
+	}
 	public static class reqduplexEnum {
 		public static final String AUTO = "AUTO";
 		public static final String HALF = "HALF";
@@ -1208,9 +1527,21 @@ public class channel extends base_resource
 		public static final String MANUAL = "MANUAL";
 		public static final String AUTO = "AUTO";
 	}
+	public static class lacpportrxstatEnum {
+		public static final String INIT = "INIT";
+		public static final String PORT_DISABLED = "PORT_DISABLED";
+		public static final String LACP_DISABLED = "LACP_DISABLED";
+		public static final String EXPIRED = "EXPIRED";
+		public static final String DEFAULTED = "DEFAULTED";
+		public static final String CURRENT = "CURRENT";
+	}
 	public static class stateEnum {
 		public static final String ENABLED = "ENABLED";
 		public static final String DISABLED = "DISABLED";
+	}
+	public static class lacppartnerinsyncEnum {
+		public static final String NS_EMPTY_STR = "NS_EMPTY_STR";
+		public static final String SYNC = "SYNC";
 	}
 	public static class hamonitorEnum {
 		public static final String ON = "ON";
@@ -1220,6 +1551,14 @@ public class channel extends base_resource
 		public static final String AUTO = "AUTO";
 		public static final String UTP = "UTP";
 		public static final String FIBER = "FIBER";
+	}
+	public static class lacppartnerdistributingEnum {
+		public static final String NS_EMPTY_STR = "NS_EMPTY_STR";
+		public static final String DISTRIBUTING = "DISTRIBUTING";
+	}
+	public static class lacppartnercollectingEnum {
+		public static final String NS_EMPTY_STR = "NS_EMPTY_STR";
+		public static final String COLLECTING = "COLLECTING";
 	}
 	public static class conndistrEnum {
 		public static final String DISABLED = "DISABLED";
@@ -1249,10 +1588,41 @@ public class channel extends base_resource
 		public static final String UTP = "UTP";
 		public static final String FIBER = "FIBER";
 	}
+	public static class lacppartnertimeoutEnum {
+		public static final String LONG = "LONG";
+		public static final String SHORT = "SHORT";
+	}
+	public static class lacppartnerexpiredEnum {
+		public static final String NS_EMPTY_STR = "NS_EMPTY_STR";
+		public static final String EXPIRED = "EXPIRED";
+	}
 	public static class macdistrEnum {
 		public static final String SOURCE = "SOURCE";
 		public static final String DESTINATION = "DESTINATION";
 		public static final String BOTH = "BOTH";
+	}
+	public static class lacppartnerstateEnum {
+		public static final String MANUAL = "MANUAL";
+		public static final String AUTO = "AUTO";
+	}
+	public static class lacpportmuxstateEnum {
+		public static final String DETACHED = "DETACHED";
+		public static final String WAITING = "WAITING";
+		public static final String ATTACHED = "ATTACHED";
+		public static final String COLLECTING = "COLLECTING";
+		public static final String DISTRIBUTING = "DISTRIBUTING";
+	}
+	public static class lacpactordistributingEnum {
+		public static final String NS_EMPTY_STR = "NS_EMPTY_STR";
+		public static final String DISTRIBUTING = "DISTRIBUTING";
+	}
+	public static class lacpactorinsyncEnum {
+		public static final String NS_EMPTY_STR = "NS_EMPTY_STR";
+		public static final String SYNC = "SYNC";
+	}
+	public static class lacppartnerdefaultedEnum {
+		public static final String NS_EMPTY_STR = "NS_EMPTY_STR";
+		public static final String DEFAULTED = "DEFAULTED";
 	}
 	public static class actflowctlEnum {
 		public static final String OFF = "OFF";
@@ -1267,19 +1637,40 @@ public class channel extends base_resource
 		public static final String _1000 = "1000";
 		public static final String _10000 = "10000";
 	}
+	public static class lacptimeoutEnum {
+		public static final String LONG = "LONG";
+		public static final String SHORT = "SHORT";
+	}
 	public static class tagallEnum {
 		public static final String ON = "ON";
 		public static final String OFF = "OFF";
 	}
+	public static class lacppartneraggregationEnum {
+		public static final String NS_EMPTY_STR = "NS_EMPTY_STR";
+		public static final String AGG = "AGG";
+	}
 	public static class trunkEnum {
 		public static final String ON = "ON";
 		public static final String OFF = "OFF";
+	}
+	public static class lacpmodeEnum {
+		public static final String DISABLED = "DISABLED";
+		public static final String ACTIVE = "ACTIVE";
+		public static final String PASSIVE = "PASSIVE";
 	}
 	public static class reqflowcontrolEnum {
 		public static final String OFF = "OFF";
 		public static final String RX = "RX";
 		public static final String TX = "TX";
 		public static final String RXTX = "RXTX";
+	}
+	public static class lacpactorcollectingEnum {
+		public static final String NS_EMPTY_STR = "NS_EMPTY_STR";
+		public static final String COLLECTING = "COLLECTING";
+	}
+	public static class lacpactoraggregationEnum {
+		public static final String NS_EMPTY_STR = "NS_EMPTY_STR";
+		public static final String AGG = "AGG";
 	}
 	public static class flowctlEnum {
 		public static final String OFF = "OFF";

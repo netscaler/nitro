@@ -33,6 +33,7 @@ class Interface_response extends base_response
 public class Interface_stats extends base_resource
 {
 	private String id;
+	private String clearstats;
 	private String curintfstate;
 	private String curlinkuptime;
 	private String curlinkdowntime;
@@ -79,13 +80,13 @@ public class Interface_stats extends base_resource
 
 	/**
 	* <pre>
-	* The interface number, in a/b format, where 'a' can take one of the following values:
-						1.	'0': Indicates a management interface.
-						2.	'1': Indicates a 10/100/1000 Mbps port, or a 10G port on a NetScaler 12000-10G, NetScaler MPX 15000, or NetScaler 17000 platform.
-						3.	'10': Indicates a 10 Gbps port.
-						4.	'LA': Indicates a link aggregation port.
-						5.	'LO': Indicates a loop back port.
-						'b' is an integer that is used to provide a unique label for the interfaces in the group defined by 'a'.
+	* Interface number, in C/U format, where C can take one of the following values:
+* 0 - Indicates a management interface.
+* 1 - Indicates a 1 Gbps port.
+* 10 - Indicates a 10 Gbps port.
+* LA - Indicates a link aggregation port.
+* LO - Indicates a loop back port.
+U is a unique integer for representing an interface in a particular port group.
 	* </pre>
 	*/
 	public void set_id(String id) throws Exception{
@@ -94,17 +95,35 @@ public class Interface_stats extends base_resource
 
 	/**
 	* <pre>
-	* The interface number, in a/b format, where 'a' can take one of the following values:
-						1.	'0': Indicates a management interface.
-						2.	'1': Indicates a 10/100/1000 Mbps port, or a 10G port on a NetScaler 12000-10G, NetScaler MPX 15000, or NetScaler 17000 platform.
-						3.	'10': Indicates a 10 Gbps port.
-						4.	'LA': Indicates a link aggregation port.
-						5.	'LO': Indicates a loop back port.
-						'b' is an integer that is used to provide a unique label for the interfaces in the group defined by 'a'.
+	* Interface number, in C/U format, where C can take one of the following values:
+* 0 - Indicates a management interface.
+* 1 - Indicates a 1 Gbps port.
+* 10 - Indicates a 10 Gbps port.
+* LA - Indicates a link aggregation port.
+* LO - Indicates a loop back port.
+U is a unique integer for representing an interface in a particular port group.
 	* </pre>
 	*/
 	public String get_id() throws Exception {
 		return this.id;
+	}
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters
+	* </pre>
+	*/
+	public void set_clearstats(String clearstats) throws Exception{
+		this.clearstats = clearstats;
+	}
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters.<br> Possible values = basic, full
+	* </pre>
+	*/
+	public String get_clearstats() throws Exception {
+		return this.clearstats;
 	}
 
 	/**
@@ -141,7 +160,7 @@ public class Interface_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of bytes transmitted by an interface since the NetScaler appliance was started or the interface statistics were cleared.
+	* Rate (/s) counter for tottxbytes
 	* </pre>
 	*/
 	public Long get_txbytesrate() throws Exception {
@@ -159,7 +178,7 @@ public class Interface_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of packets, destined to the NetScaler, received by an interface since the NetScaler appliance was started or the interface statistics were cleared. The packets destined to NetScaler are those that have the same MAC address as that of an interface or a VMAC address owned by the NetScaler.
+	* Rate (/s) counter for totnetscalerpkts
 	* </pre>
 	*/
 	public Long get_netscalerpktsrate() throws Exception {
@@ -177,7 +196,7 @@ public class Interface_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of MAC moves between ports. If a high rate of MAC moves is observed, it is likely that there is a bridge loop between two interfaces.
+	* Rate (/s) counter for totmacmoved
 	* </pre>
 	*/
 	public Long get_macmovedrate() throws Exception {
@@ -223,7 +242,7 @@ public class Interface_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of multicast packets received by the specified interface since the NetScaler appliance was started or the interface statistics were cleared.
+	* Rate (/s) counter for nictotmulticastpkts
 	* </pre>
 	*/
 	public Long get_nicmulticastpktsrate() throws Exception {
@@ -232,7 +251,7 @@ public class Interface_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of bytes received by an interface since the NetScaler appliance was started or the interface statistics were cleared.
+	* Rate (/s) counter for totrxbytes
 	* </pre>
 	*/
 	public Long get_rxbytesrate() throws Exception {
@@ -259,11 +278,7 @@ public class Interface_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of packets dropped in transmission by the specified interface due to one of the following reasons.
-			(1) VLAN mismatch.
-			(2) Oversized packets.
-			(3) Interface congestion.  
-			(4) Loopback packets sent on non loop back interface.
+	* Rate (/s) counter for errdroppedtxpkts
 	* </pre>
 	*/
 	public Long get_errdroppedtxpktsrate() throws Exception {
@@ -272,10 +287,7 @@ public class Interface_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of outbound packets dropped by the hardware on a specified interface since the NetScaler appliance was started or the interface statistics were cleared. This could happen due to length (undersize or oversize) errors and lack of resources. This statistic is available only for: 
-			(1) Loop back interface (LO) of all platforms.
-			(2) All data ports on the NetScaler 12000 platform.
-			(3) Management ports on the MPX 15000 and 17000 platforms.
+	* Rate (/s) counter for errpkttx
 	* </pre>
 	*/
 	public Long get_errpkttxrate() throws Exception {
@@ -293,7 +305,7 @@ public class Interface_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of Link Aggregation Control Protocol Data Units(LACPDUs) received by the specified interface since the NetScaler appliance was started or the interface statistics were cleared.
+	* Rate (/s) counter for rxlacpdu
 	* </pre>
 	*/
 	public Long get_rxlacpdurate() throws Exception {
@@ -330,8 +342,8 @@ public class Interface_stats extends base_resource
 	/**
 	* <pre>
 	* Number of times the specified interface is disabled by the NetScaler, due to continuous Receive (Rx) or Transmit (Tx) stalls, since the NetScaler appliance was started or the interface statistics were cleared. The NetScaler disables an interface when one of the following conditions is met:
-			(1) Three consecutive transmit stalls occur within 10 seconds.
-			(2) Three consecutive receive stalls occur within 120 seconds.
+			(1) Three consecutive transmit stalls occurs with at most gap of 10 seconds between any two stalls.
+			(2) Three consecutive receive stalls occurs with at most gap of 120 seconds between any two stalls.
 	* </pre>
 	*/
 	public Long get_nicerrdisables() throws Exception {
@@ -340,7 +352,7 @@ public class Interface_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of packets transmitted by an interface since the NetScaler appliance was started or the interface statistics were cleared.
+	* Rate (/s) counter for tottxpkts
 	* </pre>
 	*/
 	public Long get_txpktsrate() throws Exception {
@@ -358,7 +370,7 @@ public class Interface_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of inbound packets dropped by the specified interface. Commonly dropped packets are multicast frames, spanning tree BPDUs, packets destined to a MAC not owned by the NetScaler when L2 mode is disabled, or packets tagged for a VLAN that is not bound to the interface.  This statistic will increment in most healthy networks at a steady rate regardless of traffic load.  If a sharp spike in dropped packets occurs, it generally indicates an issue with connected L2 switches, such as a forwarding database overflow resulting in packets being broadcast on all ports.
+	* Rate (/s) counter for errdroppedrxpkts
 	* </pre>
 	*/
 	public Long get_errdroppedrxpktsrate() throws Exception {
@@ -389,9 +401,7 @@ public class Interface_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of error-free outbound packets discarded by the specified interface due to a lack of resources. This statistic is not available on:
-			(1) 10G ports of NetScaler MPX 12500/12500/15500-10G  platforms. 
-			(2) 10G data ports on NetScaler MPX 17500/19500/21500 platforms.
+	* Rate (/s) counter for nicerrifoutdiscards
 	* </pre>
 	*/
 	public Long get_nicerrifoutdiscardsrate() throws Exception {
@@ -400,7 +410,7 @@ public class Interface_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of error-free inbound packets discarded by the specified interface due to a lack of resources, for example, insufficient receive buffers.
+	* Rate (/s) counter for errifindiscards
 	* </pre>
 	*/
 	public Long get_errifindiscardsrate() throws Exception {
@@ -465,7 +475,7 @@ public class Interface_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of packets received by an interface since the NetScaler appliance was started or the interface statistics were cleared.
+	* Rate (/s) counter for totrxpkts
 	* </pre>
 	*/
 	public Long get_rxpktsrate() throws Exception {
@@ -483,17 +493,7 @@ public class Interface_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of inbound packets dropped by the hardware on a specified interface once the NetScaler appliance starts or the interface statistics are cleared. This happens due to following reasons:
-			1)	The hardware receives packets at a rate higher rate than that at which the software is processing packets. In this case, the hardware FIFO overruns and starts dropping the packets .
-			2)	The specified interface fails to receive inbound packets from the appliance because of insufficient memory.
-			3)	The specified interface receives packets with CRC errors (Alignment or Frame Check Sequence).
-			4)	The specified interface receives overly long packets.
-			5)	The specified interface receives packets with alignment errors.
-			6)	The software does less buffering because it is running out of available memory. When hardware detects that there is no space into which to push newly arrived packets, it starts dropping them.
-			7)	The specified interface receives packets with Frame Check Sequence (FCS) errors.
-			8)	The specified interface receives packets smaller than 64 bytes.
-			9)	The specified interface discards error-free inbound packets because of insufficient resources. For example: NIC buffers.
-			10)	Packets are missed because of collision detection, link lost, physical decoding error, or MAC abort.
+	* Rate (/s) counter for errpktrx
 	* </pre>
 	*/
 	public Long get_errpktrxrate() throws Exception {
@@ -520,7 +520,7 @@ public class Interface_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of Link Aggregation Control Protocol Data Units(LACPDUs) transmitted by the specified interface since the NetScaler appliance was started or the interface statistics were cleared.
+	* Rate (/s) counter for txlacpdu
 	* </pre>
 	*/
 	public Long get_txlacpdurate() throws Exception {
@@ -598,4 +598,8 @@ public class Interface_stats extends base_resource
 		return response;
 	}
 
+	public static class clearstatsEnum {
+		public static final String basic = "basic";
+		public static final String full = "full";
+	}
 }

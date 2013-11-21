@@ -41,6 +41,9 @@ public class hanode extends base_resource
 	private Long hellointerval;
 	private Long deadinterval;
 	private String failsafe;
+	private Long maxflips;
+	private Long maxfliptime;
+	private Long syncvlan;
 
 	//------- Read only Parameter ---------;
 
@@ -57,11 +60,13 @@ public class hanode extends base_resource
 	private String ssl2;
 	private Long masterstatetime;
 	private String routemonitor;
+	private Long curflips;
+	private Long completedfliptime;
 	private Long __count;
 
 	/**
 	* <pre>
-	* A number that uniquely identifies the peer node.<br> Minimum value =  1<br> Maximum value =  64
+	* Number that uniquely identifies the peer node.<br> Minimum value =  1<br> Maximum value =  64
 	* </pre>
 	*/
 	public void set_id(long id) throws Exception {
@@ -70,7 +75,7 @@ public class hanode extends base_resource
 
 	/**
 	* <pre>
-	* A number that uniquely identifies the peer node.<br> Minimum value =  1<br> Maximum value =  64
+	* Number that uniquely identifies the peer node.<br> Minimum value =  1<br> Maximum value =  64
 	* </pre>
 	*/
 	public void set_id(Long id) throws Exception{
@@ -79,7 +84,7 @@ public class hanode extends base_resource
 
 	/**
 	* <pre>
-	* A number that uniquely identifies the peer node.<br> Minimum value =  1<br> Maximum value =  64
+	* Number that uniquely identifies the peer node.<br> Minimum value =  1<br> Maximum value =  64
 	* </pre>
 	*/
 	public Long get_id() throws Exception {
@@ -88,7 +93,7 @@ public class hanode extends base_resource
 
 	/**
 	* <pre>
-	* The NSIP or NSIP6 address of the node to be added for an HA configuration.<br> Minimum length =  1
+	* The NSIP or NSIP6 address of the node to be added for an HA configuration. This setting is neither propagated nor synchronized.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_ipaddress(String ipaddress) throws Exception{
@@ -97,7 +102,7 @@ public class hanode extends base_resource
 
 	/**
 	* <pre>
-	* The NSIP or NSIP6 address of the node to be added for an HA configuration.<br> Minimum length =  1
+	* The NSIP or NSIP6 address of the node to be added for an HA configuration. This setting is neither propagated nor synchronized.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_ipaddress() throws Exception {
@@ -106,7 +111,7 @@ public class hanode extends base_resource
 
 	/**
 	* <pre>
-	* When this mode is enabled, the following independent network entities and configurations are not propagated to the other node: MIPs, SNIPs, VLANs, routes (except LLB routes), route monitors, RNAT rules (except any RNAT rule with VIP as the NAT IP), dynamic routing configurations. Each node has its own. This option is required if the HA nodes reside on different networks.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* This option is required if the HA nodes reside on different networks. When this mode is enabled, the following independent network entities and configurations are neither propagated nor synced to the other node: MIPs, SNIPs, VLANs, routes (except LLB routes), route monitors, RNAT rules (except any RNAT rule with a VIP as the NAT IP), and dynamic routing configurations. They are maintained independently on each node.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_inc(String inc) throws Exception{
@@ -115,7 +120,7 @@ public class hanode extends base_resource
 
 	/**
 	* <pre>
-	* When this mode is enabled, the following independent network entities and configurations are not propagated to the other node: MIPs, SNIPs, VLANs, routes (except LLB routes), route monitors, RNAT rules (except any RNAT rule with VIP as the NAT IP), dynamic routing configurations. Each node has its own. This option is required if the HA nodes reside on different networks.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* This option is required if the HA nodes reside on different networks. When this mode is enabled, the following independent network entities and configurations are neither propagated nor synced to the other node: MIPs, SNIPs, VLANs, routes (except LLB routes), route monitors, RNAT rules (except any RNAT rule with a VIP as the NAT IP), and dynamic routing configurations. They are maintained independently on each node.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_inc() throws Exception {
@@ -144,7 +149,7 @@ public class hanode extends base_resource
 
 	/**
 	* <pre>
-	* Automatically maintain synchronization by duplicating the configuration of the primary node on the secondary node. This setting is not propagated. Automatic synchronization requires this setting be enabled (the default) on each node. Synchronization uses port 3010.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Automatically maintain synchronization by duplicating the configuration of the primary node on the secondary node. This setting is not propagated. Automatic synchronization requires that this setting be enabled (the default) on the current secondary node. Synchronization uses TCP port 3010.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_hasync(String hasync) throws Exception{
@@ -153,7 +158,7 @@ public class hanode extends base_resource
 
 	/**
 	* <pre>
-	* Automatically maintain synchronization by duplicating the configuration of the primary node on the secondary node. This setting is not propagated. Automatic synchronization requires this setting be enabled (the default) on each node. Synchronization uses port 3010.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Automatically maintain synchronization by duplicating the configuration of the primary node on the secondary node. This setting is not propagated. Automatic synchronization requires that this setting be enabled (the default) on the current secondary node. Synchronization uses TCP port 3010.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_hasync() throws Exception {
@@ -163,14 +168,11 @@ public class hanode extends base_resource
 	/**
 	* <pre>
 	* Automatically propagate all commands from the primary to the secondary node, except the following:
-
-	All HA configuration related commands. For example, add ha node, set ha node, and bind ha node. 
-	All Interface related commands. For example, set interface and unset interface.
-	All channels related commands. For example, add channel, set channel, and bind channel.
-
-The propagated command is executed on the secondary node before it is executed on the primary. If command propagation fails, or if command execution fails on the secondary, the primary node executes the command and logs an error.  Command propagation uses port 3010.
-
-Note: After reenabling propagation, remember to run force synchronization on either node.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+* All HA configuration related commands. For example, add ha node, set ha node, and bind ha node. 
+* All Interface related commands. For example, set interface and unset interface.
+* All channels related commands. For example, add channel, set channel, and bind channel.
+The propagated command is executed on the secondary node before it is executed on the primary. If command propagation fails, or if command execution fails on the secondary, the primary node executes the command and logs an error.  Command propagation uses port 3011.
+Note: After enabling propagation, run force synchronization on either node.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_haprop(String haprop) throws Exception{
@@ -180,14 +182,11 @@ Note: After reenabling propagation, remember to run force synchronization on eit
 	/**
 	* <pre>
 	* Automatically propagate all commands from the primary to the secondary node, except the following:
-
-	All HA configuration related commands. For example, add ha node, set ha node, and bind ha node. 
-	All Interface related commands. For example, set interface and unset interface.
-	All channels related commands. For example, add channel, set channel, and bind channel.
-
-The propagated command is executed on the secondary node before it is executed on the primary. If command propagation fails, or if command execution fails on the secondary, the primary node executes the command and logs an error.  Command propagation uses port 3010.
-
-Note: After reenabling propagation, remember to run force synchronization on either node.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+* All HA configuration related commands. For example, add ha node, set ha node, and bind ha node. 
+* All Interface related commands. For example, set interface and unset interface.
+* All channels related commands. For example, add channel, set channel, and bind channel.
+The propagated command is executed on the secondary node before it is executed on the primary. If command propagation fails, or if command execution fails on the secondary, the primary node executes the command and logs an error.  Command propagation uses port 3011.
+Note: After enabling propagation, run force synchronization on either node.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_haprop() throws Exception {
@@ -196,7 +195,7 @@ Note: After reenabling propagation, remember to run force synchronization on eit
 
 	/**
 	* <pre>
-	* The interval, in milliseconds, between heartbeat messages sent to the peer node.The heartbeat messages are UDP packets sent to port 3003 of the peer node.<br> Default value: 200<br> Minimum value =  200<br> Maximum value =  1000
+	* Interval, in milliseconds, between heartbeat messages sent to the peer node. The heartbeat messages are UDP packets sent to port 3003 of the peer node.<br> Default value: 200<br> Minimum value =  200<br> Maximum value =  1000
 	* </pre>
 	*/
 	public void set_hellointerval(long hellointerval) throws Exception {
@@ -205,7 +204,7 @@ Note: After reenabling propagation, remember to run force synchronization on eit
 
 	/**
 	* <pre>
-	* The interval, in milliseconds, between heartbeat messages sent to the peer node.The heartbeat messages are UDP packets sent to port 3003 of the peer node.<br> Default value: 200<br> Minimum value =  200<br> Maximum value =  1000
+	* Interval, in milliseconds, between heartbeat messages sent to the peer node. The heartbeat messages are UDP packets sent to port 3003 of the peer node.<br> Default value: 200<br> Minimum value =  200<br> Maximum value =  1000
 	* </pre>
 	*/
 	public void set_hellointerval(Long hellointerval) throws Exception{
@@ -214,7 +213,7 @@ Note: After reenabling propagation, remember to run force synchronization on eit
 
 	/**
 	* <pre>
-	* The interval, in milliseconds, between heartbeat messages sent to the peer node.The heartbeat messages are UDP packets sent to port 3003 of the peer node.<br> Default value: 200<br> Minimum value =  200<br> Maximum value =  1000
+	* Interval, in milliseconds, between heartbeat messages sent to the peer node. The heartbeat messages are UDP packets sent to port 3003 of the peer node.<br> Default value: 200<br> Minimum value =  200<br> Maximum value =  1000
 	* </pre>
 	*/
 	public Long get_hellointerval() throws Exception {
@@ -223,7 +222,7 @@ Note: After reenabling propagation, remember to run force synchronization on eit
 
 	/**
 	* <pre>
-	* The number of seconds after which a peer node is marked DOWN if heartbeat messages are not received from the peer node.<br> Default value: 3<br> Minimum value =  3<br> Maximum value =  60
+	* Number of seconds after which a peer node is marked DOWN if heartbeat messages are not received from the peer node.<br> Default value: 3<br> Minimum value =  3<br> Maximum value =  60
 	* </pre>
 	*/
 	public void set_deadinterval(long deadinterval) throws Exception {
@@ -232,7 +231,7 @@ Note: After reenabling propagation, remember to run force synchronization on eit
 
 	/**
 	* <pre>
-	* The number of seconds after which a peer node is marked DOWN if heartbeat messages are not received from the peer node.<br> Default value: 3<br> Minimum value =  3<br> Maximum value =  60
+	* Number of seconds after which a peer node is marked DOWN if heartbeat messages are not received from the peer node.<br> Default value: 3<br> Minimum value =  3<br> Maximum value =  60
 	* </pre>
 	*/
 	public void set_deadinterval(Long deadinterval) throws Exception{
@@ -241,7 +240,7 @@ Note: After reenabling propagation, remember to run force synchronization on eit
 
 	/**
 	* <pre>
-	* The number of seconds after which a peer node is marked DOWN if heartbeat messages are not received from the peer node.<br> Default value: 3<br> Minimum value =  3<br> Maximum value =  60
+	* Number of seconds after which a peer node is marked DOWN if heartbeat messages are not received from the peer node.<br> Default value: 3<br> Minimum value =  3<br> Maximum value =  60
 	* </pre>
 	*/
 	public Long get_deadinterval() throws Exception {
@@ -250,7 +249,7 @@ Note: After reenabling propagation, remember to run force synchronization on eit
 
 	/**
 	* <pre>
-	* Keep one node primary if both nodes fail the health check,so that a partially available node can back up data and handle traffic as well as possible. This mode is set independently on each node.<br> Default value: OFF<br> Possible values = ON, OFF
+	* Keep one node primary if both nodes fail the health check, so that a partially available node can back up data and handle traffic. This mode is set independently on each node.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_failsafe(String failsafe) throws Exception{
@@ -259,11 +258,92 @@ Note: After reenabling propagation, remember to run force synchronization on eit
 
 	/**
 	* <pre>
-	* Keep one node primary if both nodes fail the health check,so that a partially available node can back up data and handle traffic as well as possible. This mode is set independently on each node.<br> Default value: OFF<br> Possible values = ON, OFF
+	* Keep one node primary if both nodes fail the health check, so that a partially available node can back up data and handle traffic. This mode is set independently on each node.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_failsafe() throws Exception {
 		return this.failsafe;
+	}
+
+	/**
+	* <pre>
+	* Max number of flips allowed before becoming sticky primary.
+	* </pre>
+	*/
+	public void set_maxflips(long maxflips) throws Exception {
+		this.maxflips = new Long(maxflips);
+	}
+
+	/**
+	* <pre>
+	* Max number of flips allowed before becoming sticky primary.
+	* </pre>
+	*/
+	public void set_maxflips(Long maxflips) throws Exception{
+		this.maxflips = maxflips;
+	}
+
+	/**
+	* <pre>
+	* Max number of flips allowed before becoming sticky primary.
+	* </pre>
+	*/
+	public Long get_maxflips() throws Exception {
+		return this.maxflips;
+	}
+
+	/**
+	* <pre>
+	* Interval after which flipping of node states can again start.
+	* </pre>
+	*/
+	public void set_maxfliptime(long maxfliptime) throws Exception {
+		this.maxfliptime = new Long(maxfliptime);
+	}
+
+	/**
+	* <pre>
+	* Interval after which flipping of node states can again start.
+	* </pre>
+	*/
+	public void set_maxfliptime(Long maxfliptime) throws Exception{
+		this.maxfliptime = maxfliptime;
+	}
+
+	/**
+	* <pre>
+	* Interval after which flipping of node states can again start.
+	* </pre>
+	*/
+	public Long get_maxfliptime() throws Exception {
+		return this.maxfliptime;
+	}
+
+	/**
+	* <pre>
+	* Vlan on which HA related communication is sent. This include sync, propagation , connection mirroring , LB persistency config sync, persistent session sync and session state sync. However HA heartbeats can go all interfaces.<br> Minimum value =  1<br> Maximum value =  4096
+	* </pre>
+	*/
+	public void set_syncvlan(long syncvlan) throws Exception {
+		this.syncvlan = new Long(syncvlan);
+	}
+
+	/**
+	* <pre>
+	* Vlan on which HA related communication is sent. This include sync, propagation , connection mirroring , LB persistency config sync, persistent session sync and session state sync. However HA heartbeats can go all interfaces.<br> Minimum value =  1<br> Maximum value =  4096
+	* </pre>
+	*/
+	public void set_syncvlan(Long syncvlan) throws Exception{
+		this.syncvlan = syncvlan;
+	}
+
+	/**
+	* <pre>
+	* Vlan on which HA related communication is sent. This include sync, propagation , connection mirroring , LB persistency config sync, persistent session sync and session state sync. However HA heartbeats can go all interfaces.<br> Minimum value =  1<br> Maximum value =  4096
+	* </pre>
+	*/
+	public Long get_syncvlan() throws Exception {
+		return this.syncvlan;
 	}
 
 	/**
@@ -381,6 +461,24 @@ Note: After reenabling propagation, remember to run force synchronization on eit
 	*/
 	public String get_routemonitor() throws Exception {
 		return this.routemonitor;
+	}
+
+	/**
+	* <pre>
+	* Keeps track of number of flips that have happened till now in current interval.
+	* </pre>
+	*/
+	public Long get_curflips() throws Exception {
+		return this.curflips;
+	}
+
+	/**
+	* <pre>
+	* To inform user whether flip time is elapsed or not.
+	* </pre>
+	*/
+	public Long get_completedfliptime() throws Exception {
+		return this.completedfliptime;
 	}
 
 	/**
@@ -511,6 +609,9 @@ Note: After reenabling propagation, remember to run force synchronization on eit
 		updateresource.hellointerval = resource.hellointerval;
 		updateresource.deadinterval = resource.deadinterval;
 		updateresource.failsafe = resource.failsafe;
+		updateresource.maxflips = resource.maxflips;
+		updateresource.maxfliptime = resource.maxfliptime;
+		updateresource.syncvlan = resource.syncvlan;
 		return updateresource.update_resource(client);
 	}
 
@@ -530,6 +631,9 @@ Note: After reenabling propagation, remember to run force synchronization on eit
 				updateresources[i].hellointerval = resources[i].hellointerval;
 				updateresources[i].deadinterval = resources[i].deadinterval;
 				updateresources[i].failsafe = resources[i].failsafe;
+				updateresources[i].maxflips = resources[i].maxflips;
+				updateresources[i].maxfliptime = resources[i].maxfliptime;
+				updateresources[i].syncvlan = resources[i].syncvlan;
 			}
 			result = update_bulk_request(client, updateresources);
 		}
@@ -540,25 +644,9 @@ Note: After reenabling propagation, remember to run force synchronization on eit
 	* Use this API to unset the properties of hanode resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, Long id, String args[]) throws Exception {
-		hanode unsetresource = new hanode();
-		unsetresource.id = id;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of hanode resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, hanode resource, String[] args) throws Exception{
 		hanode unsetresource = new hanode();
 		unsetresource.id = resource.id;
-		unsetresource.hastatus = resource.hastatus;
-		unsetresource.hasync = resource.hasync;
-		unsetresource.haprop = resource.haprop;
-		unsetresource.hellointerval = resource.hellointerval;
-		unsetresource.deadinterval = resource.deadinterval;
-		unsetresource.failsafe = resource.failsafe;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -590,12 +678,6 @@ Note: After reenabling propagation, remember to run force synchronization on eit
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new hanode();
 				unsetresources[i].id = resources[i].id;
-				unsetresources[i].hastatus = resources[i].hastatus;
-				unsetresources[i].hasync = resources[i].hasync;
-				unsetresources[i].haprop = resources[i].haprop;
-				unsetresources[i].hellointerval = resources[i].hellointerval;
-				unsetresources[i].deadinterval = resources[i].deadinterval;
-				unsetresources[i].failsafe = resources[i].failsafe;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}

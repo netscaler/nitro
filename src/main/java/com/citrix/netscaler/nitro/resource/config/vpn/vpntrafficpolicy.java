@@ -39,7 +39,10 @@ public class vpntrafficpolicy extends base_resource
 
 	/**
 	* <pre>
-	* The name for the new vpn traffic policy.<br> Minimum length =  1
+	* Name for the traffic policy. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Cannot be changed after the policy is created.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my policy" or 'my policy').<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -48,7 +51,10 @@ public class vpntrafficpolicy extends base_resource
 
 	/**
 	* <pre>
-	* The name for the new vpn traffic policy.<br> Minimum length =  1
+	* Name for the traffic policy. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Cannot be changed after the policy is created.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my policy" or 'my policy').<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -57,7 +63,13 @@ public class vpntrafficpolicy extends base_resource
 
 	/**
 	* <pre>
-	* The rule to be used by the vpn traffic policy. Rules are combinations of Expressions. Expressions are simple conditions, such as a test for equality, applied to operands, such as a URL string or an IP address. Expression syntax is described in the Installation and Configuration Guide.
+	* Expression, or name of a named expression, against which traffic is evaluated. Written in the classic or default syntax.
+Note:
+Maximum length of a string literal in the expression is 255 characters. A longer string can be split into smaller strings of up to 255 characters each, and the smaller strings concatenated with the + operator. For example, you can create a 500-character string as follows: '"<string of 255 characters>" + "<string of 245 characters>"'
+The following requirements apply only to the NetScaler CLI:
+* If the expression includes one or more spaces, enclose the entire expression in double quotation marks.
+* If the expression itself includes double quotation marks, escape the quotations by using the \ character. 
+* Alternatively, you can use single quotation marks to enclose the rule, in which case you do not have to escape the double quotation marks.
 	* </pre>
 	*/
 	public void set_rule(String rule) throws Exception{
@@ -66,7 +78,13 @@ public class vpntrafficpolicy extends base_resource
 
 	/**
 	* <pre>
-	* The rule to be used by the vpn traffic policy. Rules are combinations of Expressions. Expressions are simple conditions, such as a test for equality, applied to operands, such as a URL string or an IP address. Expression syntax is described in the Installation and Configuration Guide.
+	* Expression, or name of a named expression, against which traffic is evaluated. Written in the classic or default syntax.
+Note:
+Maximum length of a string literal in the expression is 255 characters. A longer string can be split into smaller strings of up to 255 characters each, and the smaller strings concatenated with the + operator. For example, you can create a 500-character string as follows: '"<string of 255 characters>" + "<string of 245 characters>"'
+The following requirements apply only to the NetScaler CLI:
+* If the expression includes one or more spaces, enclose the entire expression in double quotation marks.
+* If the expression itself includes double quotation marks, escape the quotations by using the \ character. 
+* Alternatively, you can use single quotation marks to enclose the rule, in which case you do not have to escape the double quotation marks.
 	* </pre>
 	*/
 	public String get_rule() throws Exception {
@@ -75,7 +93,7 @@ public class vpntrafficpolicy extends base_resource
 
 	/**
 	* <pre>
-	* The action to be applied by the policy if its rule is matched.<br> Minimum length =  1
+	* Action to apply to traffic that matches the policy.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_action(String action) throws Exception{
@@ -84,7 +102,7 @@ public class vpntrafficpolicy extends base_resource
 
 	/**
 	* <pre>
-	* The action to be applied by the policy if its rule is matched.<br> Minimum length =  1
+	* Action to apply to traffic that matches the policy.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_action() throws Exception {
@@ -237,21 +255,9 @@ public class vpntrafficpolicy extends base_resource
 	* Use this API to unset the properties of vpntrafficpolicy resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String name, String args[]) throws Exception {
-		vpntrafficpolicy unsetresource = new vpntrafficpolicy();
-		unsetresource.name = name;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of vpntrafficpolicy resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, vpntrafficpolicy resource, String[] args) throws Exception{
 		vpntrafficpolicy unsetresource = new vpntrafficpolicy();
 		unsetresource.name = resource.name;
-		unsetresource.rule = resource.rule;
-		unsetresource.action = resource.action;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -283,8 +289,6 @@ public class vpntrafficpolicy extends base_resource
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new vpntrafficpolicy();
 				unsetresources[i].name = resources[i].name;
-				unsetresources[i].rule = resources[i].rule;
-				unsetresources[i].action = resources[i].action;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}

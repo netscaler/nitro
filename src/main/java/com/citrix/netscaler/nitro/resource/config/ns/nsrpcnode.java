@@ -40,7 +40,7 @@ public class nsrpcnode extends base_resource
 
 	/**
 	* <pre>
-	* The IP address of the node. This has to be in same subnet as NSIP.<br> Minimum length =  1
+	* IP address of the node. This has to be in the same subnet as the NSIP address.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_ipaddress(String ipaddress) throws Exception{
@@ -49,7 +49,7 @@ public class nsrpcnode extends base_resource
 
 	/**
 	* <pre>
-	* The IP address of the node. This has to be in same subnet as NSIP.<br> Minimum length =  1
+	* IP address of the node. This has to be in the same subnet as the NSIP address.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_ipaddress() throws Exception {
@@ -58,7 +58,7 @@ public class nsrpcnode extends base_resource
 
 	/**
 	* <pre>
-	* The password to be used in authentication with the peer System node.<br> Minimum length =  1
+	* Password to be used in authentication with the peer system node.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_password(String password) throws Exception{
@@ -67,7 +67,7 @@ public class nsrpcnode extends base_resource
 
 	/**
 	* <pre>
-	* The password to be used in authentication with the peer System node.<br> Minimum length =  1
+	* Password to be used in authentication with the peer system node.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_password() throws Exception {
@@ -76,7 +76,7 @@ public class nsrpcnode extends base_resource
 
 	/**
 	* <pre>
-	* The src ip to be used in communiction with the peer System node.
+	* Source IP address to be used to communicate with the peer system node. The default value is 0, which means that the appliance uses the NSIP address as the source IP address.
 	* </pre>
 	*/
 	public void set_srcip(String srcip) throws Exception{
@@ -85,7 +85,7 @@ public class nsrpcnode extends base_resource
 
 	/**
 	* <pre>
-	* The src ip to be used in communiction with the peer System node.
+	* Source IP address to be used to communicate with the peer system node. The default value is 0, which means that the appliance uses the NSIP address as the source IP address.
 	* </pre>
 	*/
 	public String get_srcip() throws Exception {
@@ -94,7 +94,7 @@ public class nsrpcnode extends base_resource
 
 	/**
 	* <pre>
-	* The state of the channel when talking to the node. Channel can be secure or insecure.<br> Possible values = YES, NO
+	* State of the channel when talking to the node.<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public void set_secure(String secure) throws Exception{
@@ -103,7 +103,7 @@ public class nsrpcnode extends base_resource
 
 	/**
 	* <pre>
-	* The state of the channel when talking to the node. Channel can be secure or insecure.<br> Possible values = YES, NO
+	* State of the channel when talking to the node.<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public String get_secure() throws Exception {
@@ -179,22 +179,9 @@ public class nsrpcnode extends base_resource
 	* Use this API to unset the properties of nsrpcnode resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String ipaddress, String args[]) throws Exception {
-		nsrpcnode unsetresource = new nsrpcnode();
-		unsetresource.ipaddress = ipaddress;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of nsrpcnode resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, nsrpcnode resource, String[] args) throws Exception{
 		nsrpcnode unsetresource = new nsrpcnode();
 		unsetresource.ipaddress = resource.ipaddress;
-		unsetresource.password = resource.password;
-		unsetresource.srcip = resource.srcip;
-		unsetresource.secure = resource.secure;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -226,9 +213,6 @@ public class nsrpcnode extends base_resource
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new nsrpcnode();
 				unsetresources[i].ipaddress = resources[i].ipaddress;
-				unsetresources[i].password = resources[i].password;
-				unsetresources[i].srcip = resources[i].srcip;
-				unsetresources[i].secure = resources[i].secure;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}

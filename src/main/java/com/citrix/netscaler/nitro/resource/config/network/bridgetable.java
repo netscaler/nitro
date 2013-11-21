@@ -44,7 +44,7 @@ public class bridgetable extends base_resource
 
 	/**
 	* <pre>
-	* The time-out value for the bridge table entries, in seconds. The new value applies only to the entries that are dynamically learned after the new value is set. Previously existing bridge table entries expire after the previously configured time-out value. Minimum value: 60. Maximum value: 300. Default: 300.<br> Default value: 300<br> Minimum value =  60<br> Maximum value =  300
+	* Time-out value for the bridge table entries, in seconds. The new value applies only to the entries that are dynamically learned after the new value is set. Previously existing bridge table entries expire after the previously configured time-out value.<br> Default value: 300<br> Minimum value =  60<br> Maximum value =  300
 	* </pre>
 	*/
 	public void set_bridgeage(long bridgeage) throws Exception {
@@ -53,7 +53,7 @@ public class bridgetable extends base_resource
 
 	/**
 	* <pre>
-	* The time-out value for the bridge table entries, in seconds. The new value applies only to the entries that are dynamically learned after the new value is set. Previously existing bridge table entries expire after the previously configured time-out value. Minimum value: 60. Maximum value: 300. Default: 300.<br> Default value: 300<br> Minimum value =  60<br> Maximum value =  300
+	* Time-out value for the bridge table entries, in seconds. The new value applies only to the entries that are dynamically learned after the new value is set. Previously existing bridge table entries expire after the previously configured time-out value.<br> Default value: 300<br> Minimum value =  60<br> Maximum value =  300
 	* </pre>
 	*/
 	public void set_bridgeage(Long bridgeage) throws Exception{
@@ -62,7 +62,7 @@ public class bridgetable extends base_resource
 
 	/**
 	* <pre>
-	* The time-out value for the bridge table entries, in seconds. The new value applies only to the entries that are dynamically learned after the new value is set. Previously existing bridge table entries expire after the previously configured time-out value. Minimum value: 60. Maximum value: 300. Default: 300.<br> Default value: 300<br> Minimum value =  60<br> Maximum value =  300
+	* Time-out value for the bridge table entries, in seconds. The new value applies only to the entries that are dynamically learned after the new value is set. Previously existing bridge table entries expire after the previously configured time-out value.<br> Default value: 300<br> Minimum value =  60<br> Maximum value =  300
 	* </pre>
 	*/
 	public Long get_bridgeage() throws Exception {
@@ -197,7 +197,6 @@ public class bridgetable extends base_resource
 	*/
 	public static base_response unset(nitro_service client, bridgetable resource, String[] args) throws Exception{
 		bridgetable unsetresource = new bridgetable();
-		unsetresource.bridgeage = resource.bridgeage;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -211,7 +210,6 @@ public class bridgetable extends base_resource
 			bridgetable unsetresources[] = new bridgetable[resources.length];
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new bridgetable();
-				unsetresources[i].bridgeage = resources[i].bridgeage;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}

@@ -46,7 +46,7 @@ public class hanode_binding extends base_resource
 
 	/**
 	* <pre>
-	* The ID of the node whose HA settings you want to display. (The ID of the local node is always 0.).<br> Minimum value =  0<br> Maximum value =  64
+	* ID of the node whose HA settings you want to display. (The ID of the local node is always 0.).<br> Minimum value =  0<br> Maximum value =  64
 	* </pre>
 	*/
 	public void set_id(long id) throws Exception {
@@ -55,7 +55,7 @@ public class hanode_binding extends base_resource
 
 	/**
 	* <pre>
-	* The ID of the node whose HA settings you want to display. (The ID of the local node is always 0.).<br> Minimum value =  0<br> Maximum value =  64
+	* ID of the node whose HA settings you want to display. (The ID of the local node is always 0.).<br> Minimum value =  0<br> Maximum value =  64
 	* </pre>
 	*/
 	public void set_id(Long id) throws Exception{
@@ -64,7 +64,7 @@ public class hanode_binding extends base_resource
 
 	/**
 	* <pre>
-	* The ID of the node whose HA settings you want to display. (The ID of the local node is always 0.).<br> Minimum value =  0<br> Maximum value =  64
+	* ID of the node whose HA settings you want to display. (The ID of the local node is always 0.).<br> Minimum value =  0<br> Maximum value =  64
 	* </pre>
 	*/
 	public Long get_id() throws Exception {

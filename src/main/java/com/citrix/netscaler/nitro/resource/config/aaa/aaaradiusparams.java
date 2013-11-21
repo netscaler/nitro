@@ -48,6 +48,8 @@ public class aaaradiusparams extends base_resource
 	private String accounting;
 	private Long pwdvendorid;
 	private Long pwdattributetype;
+	private String defaultauthenticationgroup;
+	private String callingstationid;
 
 	//------- Read only Parameter ---------;
 
@@ -56,7 +58,7 @@ public class aaaradiusparams extends base_resource
 
 	/**
 	* <pre>
-	* The IP address of the RADIUS server.<br> Minimum length =  1
+	* IP address of your RADIUS server.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_serverip(String serverip) throws Exception{
@@ -65,7 +67,7 @@ public class aaaradiusparams extends base_resource
 
 	/**
 	* <pre>
-	* The IP address of the RADIUS server.<br> Minimum length =  1
+	* IP address of your RADIUS server.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_serverip() throws Exception {
@@ -74,7 +76,7 @@ public class aaaradiusparams extends base_resource
 
 	/**
 	* <pre>
-	* The port number on which the RADIUS server is running.<br> Default value: 1812<br> Minimum value =  1
+	* Port number on which the RADIUS server listens for connections.<br> Default value: 1812<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_serverport(int serverport) throws Exception {
@@ -83,7 +85,7 @@ public class aaaradiusparams extends base_resource
 
 	/**
 	* <pre>
-	* The port number on which the RADIUS server is running.<br> Default value: 1812<br> Minimum value =  1
+	* Port number on which the RADIUS server listens for connections.<br> Default value: 1812<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_serverport(Integer serverport) throws Exception{
@@ -92,7 +94,7 @@ public class aaaradiusparams extends base_resource
 
 	/**
 	* <pre>
-	* The port number on which the RADIUS server is running.<br> Default value: 1812<br> Minimum value =  1
+	* Port number on which the RADIUS server listens for connections.<br> Default value: 1812<br> Minimum value =  1
 	* </pre>
 	*/
 	public Integer get_serverport() throws Exception {
@@ -101,7 +103,7 @@ public class aaaradiusparams extends base_resource
 
 	/**
 	* <pre>
-	* The maximum number of seconds the system will wait for a response from the RADIUS server.<br> Default value: 3<br> Minimum value =  1
+	* Maximum number of seconds that the NetScaler appliance waits for a response from the RADIUS server.<br> Default value: 3<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_authtimeout(long authtimeout) throws Exception {
@@ -110,7 +112,7 @@ public class aaaradiusparams extends base_resource
 
 	/**
 	* <pre>
-	* The maximum number of seconds the system will wait for a response from the RADIUS server.<br> Default value: 3<br> Minimum value =  1
+	* Maximum number of seconds that the NetScaler appliance waits for a response from the RADIUS server.<br> Default value: 3<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_authtimeout(Long authtimeout) throws Exception{
@@ -119,7 +121,7 @@ public class aaaradiusparams extends base_resource
 
 	/**
 	* <pre>
-	* The maximum number of seconds the system will wait for a response from the RADIUS server.<br> Default value: 3<br> Minimum value =  1
+	* Maximum number of seconds that the NetScaler appliance waits for a response from the RADIUS server.<br> Default value: 3<br> Minimum value =  1
 	* </pre>
 	*/
 	public Long get_authtimeout() throws Exception {
@@ -128,8 +130,8 @@ public class aaaradiusparams extends base_resource
 
 	/**
 	* <pre>
-	* The key shared between the client and the server. This information is required for the system to
-communicate with the RADIUS server.<br> Minimum length =  1
+	* The key shared between the RADIUS server and clients. 
+Required for allowing the NetScaler appliance to communicate with the RADIUS server.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_radkey(String radkey) throws Exception{
@@ -138,8 +140,8 @@ communicate with the RADIUS server.<br> Minimum length =  1
 
 	/**
 	* <pre>
-	* The key shared between the client and the server. This information is required for the system to
-communicate with the RADIUS server.<br> Minimum length =  1
+	* The key shared between the RADIUS server and clients. 
+Required for allowing the NetScaler appliance to communicate with the RADIUS server.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_radkey() throws Exception {
@@ -148,7 +150,7 @@ communicate with the RADIUS server.<br> Minimum length =  1
 
 	/**
 	* <pre>
-	* The option to send the NetScaler's IP address (NSIP) to the server as the "nasip" (Network Access Server IP) part of the Radius protocol.<br> Possible values = ENABLED, DISABLED
+	* Send the NetScaler IP (NSIP) address to the RADIUS server as the Network Access Server IP (NASIP) part of the Radius protocol.<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_radnasip(String radnasip) throws Exception{
@@ -157,7 +159,7 @@ communicate with the RADIUS server.<br> Minimum length =  1
 
 	/**
 	* <pre>
-	* The option to send the NetScaler's IP address (NSIP) to the server as the "nasip" (Network Access Server IP) part of the Radius protocol.<br> Possible values = ENABLED, DISABLED
+	* Send the NetScaler IP (NSIP) address to the RADIUS server as the Network Access Server IP (NASIP) part of the Radius protocol.<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_radnasip() throws Exception {
@@ -166,8 +168,7 @@ communicate with the RADIUS server.<br> Minimum length =  1
 
 	/**
 	* <pre>
-	* The nasid (Network Access Server ID). If configured, this string will be sent to the RADIUS server as the "nasid" part of the
-				Radius protocol.
+	* Send the Network Access Server ID (NASID) for your NetScaler appliance to the RADIUS server as the nasid part of the Radius protocol.
 	* </pre>
 	*/
 	public void set_radnasid(String radnasid) throws Exception{
@@ -176,8 +177,7 @@ communicate with the RADIUS server.<br> Minimum length =  1
 
 	/**
 	* <pre>
-	* The nasid (Network Access Server ID). If configured, this string will be sent to the RADIUS server as the "nasid" part of the
-				Radius protocol.
+	* Send the Network Access Server ID (NASID) for your NetScaler appliance to the RADIUS server as the nasid part of the Radius protocol.
 	* </pre>
 	*/
 	public String get_radnasid() throws Exception {
@@ -186,7 +186,7 @@ communicate with the RADIUS server.<br> Minimum length =  1
 
 	/**
 	* <pre>
-	* The Vendor ID for Radius group extraction.<br> Minimum value =  1
+	* Vendor ID for RADIUS group extraction.<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_radvendorid(long radvendorid) throws Exception {
@@ -195,7 +195,7 @@ communicate with the RADIUS server.<br> Minimum length =  1
 
 	/**
 	* <pre>
-	* The Vendor ID for Radius group extraction.<br> Minimum value =  1
+	* Vendor ID for RADIUS group extraction.<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_radvendorid(Long radvendorid) throws Exception{
@@ -204,7 +204,7 @@ communicate with the RADIUS server.<br> Minimum length =  1
 
 	/**
 	* <pre>
-	* The Vendor ID for Radius group extraction.<br> Minimum value =  1
+	* Vendor ID for RADIUS group extraction.<br> Minimum value =  1
 	* </pre>
 	*/
 	public Long get_radvendorid() throws Exception {
@@ -213,7 +213,7 @@ communicate with the RADIUS server.<br> Minimum length =  1
 
 	/**
 	* <pre>
-	* The Attribute type for Radius group extraction.<br> Minimum value =  1
+	* Attribute type for RADIUS group extraction.<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_radattributetype(long radattributetype) throws Exception {
@@ -222,7 +222,7 @@ communicate with the RADIUS server.<br> Minimum length =  1
 
 	/**
 	* <pre>
-	* The Attribute type for Radius group extraction.<br> Minimum value =  1
+	* Attribute type for RADIUS group extraction.<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_radattributetype(Long radattributetype) throws Exception{
@@ -231,7 +231,7 @@ communicate with the RADIUS server.<br> Minimum length =  1
 
 	/**
 	* <pre>
-	* The Attribute type for Radius group extraction.<br> Minimum value =  1
+	* Attribute type for RADIUS group extraction.<br> Minimum value =  1
 	* </pre>
 	*/
 	public Long get_radattributetype() throws Exception {
@@ -240,7 +240,7 @@ communicate with the RADIUS server.<br> Minimum length =  1
 
 	/**
 	* <pre>
-	* The groups prefix string that precedes the group names within a RADIUS attribute for RADIUS group extraction.
+	* Prefix string that precedes group names within a RADIUS attribute for RADIUS group extraction.
 	* </pre>
 	*/
 	public void set_radgroupsprefix(String radgroupsprefix) throws Exception{
@@ -249,7 +249,7 @@ communicate with the RADIUS server.<br> Minimum length =  1
 
 	/**
 	* <pre>
-	* The groups prefix string that precedes the group names within a RADIUS attribute for RADIUS group extraction.
+	* Prefix string that precedes group names within a RADIUS attribute for RADIUS group extraction.
 	* </pre>
 	*/
 	public String get_radgroupsprefix() throws Exception {
@@ -258,7 +258,7 @@ communicate with the RADIUS server.<br> Minimum length =  1
 
 	/**
 	* <pre>
-	* The group separator string that delimits group names within a RADIUS attribute for RADIUS group extraction.
+	* Group separator string that delimits group names within a RADIUS attribute for RADIUS group extraction.
 	* </pre>
 	*/
 	public void set_radgroupseparator(String radgroupseparator) throws Exception{
@@ -267,7 +267,7 @@ communicate with the RADIUS server.<br> Minimum length =  1
 
 	/**
 	* <pre>
-	* The group separator string that delimits group names within a RADIUS attribute for RADIUS group extraction.
+	* Group separator string that delimits group names within a RADIUS attribute for RADIUS group extraction.
 	* </pre>
 	*/
 	public String get_radgroupseparator() throws Exception {
@@ -276,7 +276,7 @@ communicate with the RADIUS server.<br> Minimum length =  1
 
 	/**
 	* <pre>
-	* The option to encode the password in the Radius packets traveling from the NetScaler to the Radius server.<br> Default value: pap<br> Possible values = pap, chap, mschapv1, mschapv2
+	* Enable password encoding in RADIUS packets that the NetScaler appliance sends to the RADIUS server.<br> Default value: pap<br> Possible values = pap, chap, mschapv1, mschapv2
 	* </pre>
 	*/
 	public void set_passencoding(String passencoding) throws Exception{
@@ -285,7 +285,7 @@ communicate with the RADIUS server.<br> Minimum length =  1
 
 	/**
 	* <pre>
-	* The option to encode the password in the Radius packets traveling from the NetScaler to the Radius server.<br> Default value: pap<br> Possible values = pap, chap, mschapv1, mschapv2
+	* Enable password encoding in RADIUS packets that the NetScaler appliance sends to the RADIUS server.<br> Default value: pap<br> Possible values = pap, chap, mschapv1, mschapv2
 	* </pre>
 	*/
 	public String get_passencoding() throws Exception {
@@ -294,7 +294,8 @@ communicate with the RADIUS server.<br> Minimum length =  1
 
 	/**
 	* <pre>
-	* The vendor ID of the attribute in the RADIUS response. The vendor ID denotes the intranet IP.  The value of 0 denotes that the attribute is not vendor-encoded.
+	* Vendor ID attribute in the RADIUS response. 
+If the attribute is not vendor-encoded, it is set to 0.
 	* </pre>
 	*/
 	public void set_ipvendorid(long ipvendorid) throws Exception {
@@ -303,7 +304,8 @@ communicate with the RADIUS server.<br> Minimum length =  1
 
 	/**
 	* <pre>
-	* The vendor ID of the attribute in the RADIUS response. The vendor ID denotes the intranet IP.  The value of 0 denotes that the attribute is not vendor-encoded.
+	* Vendor ID attribute in the RADIUS response. 
+If the attribute is not vendor-encoded, it is set to 0.
 	* </pre>
 	*/
 	public void set_ipvendorid(Long ipvendorid) throws Exception{
@@ -312,7 +314,8 @@ communicate with the RADIUS server.<br> Minimum length =  1
 
 	/**
 	* <pre>
-	* The vendor ID of the attribute in the RADIUS response. The vendor ID denotes the intranet IP.  The value of 0 denotes that the attribute is not vendor-encoded.
+	* Vendor ID attribute in the RADIUS response. 
+If the attribute is not vendor-encoded, it is set to 0.
 	* </pre>
 	*/
 	public Long get_ipvendorid() throws Exception {
@@ -321,7 +324,7 @@ communicate with the RADIUS server.<br> Minimum length =  1
 
 	/**
 	* <pre>
-	* The attribute type of the remote IP address attribute in a RADIUS response.<br> Minimum value =  1
+	* IP attribute type in the RADIUS response.<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_ipattributetype(long ipattributetype) throws Exception {
@@ -330,7 +333,7 @@ communicate with the RADIUS server.<br> Minimum length =  1
 
 	/**
 	* <pre>
-	* The attribute type of the remote IP address attribute in a RADIUS response.<br> Minimum value =  1
+	* IP attribute type in the RADIUS response.<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_ipattributetype(Long ipattributetype) throws Exception{
@@ -339,7 +342,7 @@ communicate with the RADIUS server.<br> Minimum length =  1
 
 	/**
 	* <pre>
-	* The attribute type of the remote IP address attribute in a RADIUS response.<br> Minimum value =  1
+	* IP attribute type in the RADIUS response.<br> Minimum value =  1
 	* </pre>
 	*/
 	public Long get_ipattributetype() throws Exception {
@@ -348,7 +351,7 @@ communicate with the RADIUS server.<br> Minimum length =  1
 
 	/**
 	* <pre>
-	* The state of the RADIUS server to receive accounting messages.<br> Possible values = ON, OFF
+	* Configure the RADIUS server state to accept or refuse accounting messages.<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_accounting(String accounting) throws Exception{
@@ -357,7 +360,7 @@ communicate with the RADIUS server.<br> Minimum length =  1
 
 	/**
 	* <pre>
-	* The state of the RADIUS server to receive accounting messages.<br> Possible values = ON, OFF
+	* Configure the RADIUS server state to accept or refuse accounting messages.<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_accounting() throws Exception {
@@ -366,7 +369,7 @@ communicate with the RADIUS server.<br> Minimum length =  1
 
 	/**
 	* <pre>
-	* Vendor ID of the attribute in the RADIUS response which will be used to extract the user Password.<br> Minimum value =  1
+	* Vendor ID of the password in the RADIUS response. Used to extract the user password.<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_pwdvendorid(long pwdvendorid) throws Exception {
@@ -375,7 +378,7 @@ communicate with the RADIUS server.<br> Minimum length =  1
 
 	/**
 	* <pre>
-	* Vendor ID of the attribute in the RADIUS response which will be used to extract the user Password.<br> Minimum value =  1
+	* Vendor ID of the password in the RADIUS response. Used to extract the user password.<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_pwdvendorid(Long pwdvendorid) throws Exception{
@@ -384,7 +387,7 @@ communicate with the RADIUS server.<br> Minimum length =  1
 
 	/**
 	* <pre>
-	* Vendor ID of the attribute in the RADIUS response which will be used to extract the user Password.<br> Minimum value =  1
+	* Vendor ID of the password in the RADIUS response. Used to extract the user password.<br> Minimum value =  1
 	* </pre>
 	*/
 	public Long get_pwdvendorid() throws Exception {
@@ -393,7 +396,7 @@ communicate with the RADIUS server.<br> Minimum length =  1
 
 	/**
 	* <pre>
-	* Attribute type of the vendor specific Password-Attribute in a RADIUS response.<br> Minimum value =  1
+	* Attribute type of the Vendor ID in the RADIUS response.<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_pwdattributetype(long pwdattributetype) throws Exception {
@@ -402,7 +405,7 @@ communicate with the RADIUS server.<br> Minimum length =  1
 
 	/**
 	* <pre>
-	* Attribute type of the vendor specific Password-Attribute in a RADIUS response.<br> Minimum value =  1
+	* Attribute type of the Vendor ID in the RADIUS response.<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_pwdattributetype(Long pwdattributetype) throws Exception{
@@ -411,11 +414,47 @@ communicate with the RADIUS server.<br> Minimum length =  1
 
 	/**
 	* <pre>
-	* Attribute type of the vendor specific Password-Attribute in a RADIUS response.<br> Minimum value =  1
+	* Attribute type of the Vendor ID in the RADIUS response.<br> Minimum value =  1
 	* </pre>
 	*/
 	public Long get_pwdattributetype() throws Exception {
 		return this.pwdattributetype;
+	}
+
+	/**
+	* <pre>
+	* This is the default group that is chosen when the authentication succeeds in addition to extracted groups.<br> Maximum length =  64
+	* </pre>
+	*/
+	public void set_defaultauthenticationgroup(String defaultauthenticationgroup) throws Exception{
+		this.defaultauthenticationgroup = defaultauthenticationgroup;
+	}
+
+	/**
+	* <pre>
+	* This is the default group that is chosen when the authentication succeeds in addition to extracted groups.<br> Maximum length =  64
+	* </pre>
+	*/
+	public String get_defaultauthenticationgroup() throws Exception {
+		return this.defaultauthenticationgroup;
+	}
+
+	/**
+	* <pre>
+	* Send Calling-Station-ID of the client to the RADIUS server. IP Address of the client is sent as its Calling-Station-ID.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* </pre>
+	*/
+	public void set_callingstationid(String callingstationid) throws Exception{
+		this.callingstationid = callingstationid;
+	}
+
+	/**
+	* <pre>
+	* Send Calling-Station-ID of the client to the RADIUS server. IP Address of the client is sent as its Calling-Station-ID.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* </pre>
+	*/
+	public String get_callingstationid() throws Exception {
+		return this.callingstationid;
 	}
 
 	/**
@@ -499,6 +538,8 @@ You can bind different policies to each AAA group. Use the command
 		updateresource.accounting = resource.accounting;
 		updateresource.pwdvendorid = resource.pwdvendorid;
 		updateresource.pwdattributetype = resource.pwdattributetype;
+		updateresource.defaultauthenticationgroup = resource.defaultauthenticationgroup;
+		updateresource.callingstationid = resource.callingstationid;
 		return updateresource.update_resource(client);
 	}
 
@@ -508,21 +549,6 @@ You can bind different policies to each AAA group. Use the command
 	*/
 	public static base_response unset(nitro_service client, aaaradiusparams resource, String[] args) throws Exception{
 		aaaradiusparams unsetresource = new aaaradiusparams();
-		unsetresource.serverip = resource.serverip;
-		unsetresource.serverport = resource.serverport;
-		unsetresource.authtimeout = resource.authtimeout;
-		unsetresource.radnasip = resource.radnasip;
-		unsetresource.radnasid = resource.radnasid;
-		unsetresource.radvendorid = resource.radvendorid;
-		unsetresource.radattributetype = resource.radattributetype;
-		unsetresource.radgroupsprefix = resource.radgroupsprefix;
-		unsetresource.radgroupseparator = resource.radgroupseparator;
-		unsetresource.passencoding = resource.passencoding;
-		unsetresource.ipvendorid = resource.ipvendorid;
-		unsetresource.ipattributetype = resource.ipattributetype;
-		unsetresource.accounting = resource.accounting;
-		unsetresource.pwdvendorid = resource.pwdvendorid;
-		unsetresource.pwdattributetype = resource.pwdattributetype;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -549,6 +575,10 @@ You can bind different policies to each AAA group. Use the command
 		public static final String chap = "chap";
 		public static final String mschapv1 = "mschapv1";
 		public static final String mschapv2 = "mschapv2";
+	}
+	public static class callingstationidEnum {
+		public static final String ENABLED = "ENABLED";
+		public static final String DISABLED = "DISABLED";
 	}
 	public static class accountingEnum {
 		public static final String ON = "ON";

@@ -75,6 +75,12 @@ public class nslicense extends base_resource
 	private Boolean isis;
 	private Boolean cluster;
 	private Boolean ch;
+	private Boolean appqoe;
+	private Boolean appflowica;
+	private Boolean isstandardlic;
+	private Boolean isenterpriselic;
+	private Boolean isplatinumlic;
+	private Boolean vpath;
 
 	/**
 	* <pre>
@@ -240,7 +246,9 @@ public class nslicense extends base_resource
 
 	/**
 	* <pre>
-	* Number of licensed users allowed by ICAONLY license.
+	* Number of licensed users allowed by ICAONLY license. As long as the AG Feature is licensed,
+unlimited number of ICA connections are accepted.
+(In API, 0 value for this parameter means unlimited when AG license in ON).
 	* </pre>
 	*/
 	public Long get_f_ica_users() throws Exception {
@@ -434,6 +442,60 @@ public class nslicense extends base_resource
 	*/
 	public Boolean get_ch() throws Exception {
 		return this.ch;
+	}
+
+	/**
+	* <pre>
+	* AppQoS.
+	* </pre>
+	*/
+	public Boolean get_appqoe() throws Exception {
+		return this.appqoe;
+	}
+
+	/**
+	* <pre>
+	* Appflow for ICA.
+	* </pre>
+	*/
+	public Boolean get_appflowica() throws Exception {
+		return this.appflowica;
+	}
+
+	/**
+	* <pre>
+	* Standard License.
+	* </pre>
+	*/
+	public Boolean get_isstandardlic() throws Exception {
+		return this.isstandardlic;
+	}
+
+	/**
+	* <pre>
+	* Enterprise License.
+	* </pre>
+	*/
+	public Boolean get_isenterpriselic() throws Exception {
+		return this.isenterpriselic;
+	}
+
+	/**
+	* <pre>
+	* Platinum License.
+	* </pre>
+	*/
+	public Boolean get_isplatinumlic() throws Exception {
+		return this.isplatinumlic;
+	}
+
+	/**
+	* <pre>
+	* Vpath.
+	* </pre>
+	*/
+	public Boolean get_vpath() throws Exception {
+		return this.vpath;
 	}
 
 	/**

@@ -16,21 +16,23 @@
 
 package com.citrix.netscaler.nitro.resource.config.appfw;
 
+import com.citrix.netscaler.nitro.resource.config.appfw.appfwprofile_excluderescontenttype_binding;
 import com.citrix.netscaler.nitro.resource.config.appfw.appfwprofile_xmlattachmenturl_binding;
 import com.citrix.netscaler.nitro.resource.config.appfw.appfwprofile_crosssitescripting_binding;
 import com.citrix.netscaler.nitro.resource.config.appfw.appfwprofile_xmlwsiurl_binding;
 import com.citrix.netscaler.nitro.resource.config.appfw.appfwprofile_xmldosurl_binding;
 import com.citrix.netscaler.nitro.resource.config.appfw.appfwprofile_fieldconsistency_binding;
-import com.citrix.netscaler.nitro.resource.config.appfw.appfwprofile_safeobject_binding;
-import com.citrix.netscaler.nitro.resource.config.appfw.appfwprofile_sqlinjection_binding;
-import com.citrix.netscaler.nitro.resource.config.appfw.appfwprofile_denyurl_binding;
-import com.citrix.netscaler.nitro.resource.config.appfw.appfwprofile_trustedlearningclients_binding;
-import com.citrix.netscaler.nitro.resource.config.appfw.appfwprofile_csrftag_binding;
 import com.citrix.netscaler.nitro.resource.config.appfw.appfwprofile_cookieconsistency_binding;
 import com.citrix.netscaler.nitro.resource.config.appfw.appfwprofile_starturl_binding;
+import com.citrix.netscaler.nitro.resource.config.appfw.appfwprofile_safeobject_binding;
+import com.citrix.netscaler.nitro.resource.config.appfw.appfwprofile_sqlinjection_binding;
 import com.citrix.netscaler.nitro.resource.config.appfw.appfwprofile_xmlsqlinjection_binding;
+import com.citrix.netscaler.nitro.resource.config.appfw.appfwprofile_denyurl_binding;
+import com.citrix.netscaler.nitro.resource.config.appfw.appfwprofile_contenttype_binding;
 import com.citrix.netscaler.nitro.resource.config.appfw.appfwprofile_xmlxss_binding;
+import com.citrix.netscaler.nitro.resource.config.appfw.appfwprofile_trustedlearningclients_binding;
 import com.citrix.netscaler.nitro.resource.config.appfw.appfwprofile_fieldformat_binding;
+import com.citrix.netscaler.nitro.resource.config.appfw.appfwprofile_csrftag_binding;
 import com.citrix.netscaler.nitro.resource.config.appfw.appfwprofile_xmlvalidationurl_binding;
 import com.citrix.netscaler.nitro.resource.base.*;
 import com.citrix.netscaler.nitro.service.nitro_service;
@@ -49,26 +51,28 @@ class appfwprofile_binding_response extends base_response
 public class appfwprofile_binding extends base_resource
 {
 	private String name;
+	private appfwprofile_excluderescontenttype_binding	appfwprofile_excluderescontenttype_binding[] = null;
 	private appfwprofile_xmlattachmenturl_binding	appfwprofile_xmlattachmenturl_binding[] = null;
 	private appfwprofile_crosssitescripting_binding	appfwprofile_crosssitescripting_binding[] = null;
 	private appfwprofile_xmlwsiurl_binding	appfwprofile_xmlwsiurl_binding[] = null;
 	private appfwprofile_xmldosurl_binding	appfwprofile_xmldosurl_binding[] = null;
 	private appfwprofile_fieldconsistency_binding	appfwprofile_fieldconsistency_binding[] = null;
-	private appfwprofile_safeobject_binding	appfwprofile_safeobject_binding[] = null;
-	private appfwprofile_sqlinjection_binding	appfwprofile_sqlinjection_binding[] = null;
-	private appfwprofile_denyurl_binding	appfwprofile_denyurl_binding[] = null;
-	private appfwprofile_trustedlearningclients_binding	appfwprofile_trustedlearningclients_binding[] = null;
-	private appfwprofile_csrftag_binding	appfwprofile_csrftag_binding[] = null;
 	private appfwprofile_cookieconsistency_binding	appfwprofile_cookieconsistency_binding[] = null;
 	private appfwprofile_starturl_binding	appfwprofile_starturl_binding[] = null;
+	private appfwprofile_safeobject_binding	appfwprofile_safeobject_binding[] = null;
+	private appfwprofile_sqlinjection_binding	appfwprofile_sqlinjection_binding[] = null;
 	private appfwprofile_xmlsqlinjection_binding	appfwprofile_xmlsqlinjection_binding[] = null;
+	private appfwprofile_denyurl_binding	appfwprofile_denyurl_binding[] = null;
+	private appfwprofile_contenttype_binding	appfwprofile_contenttype_binding[] = null;
 	private appfwprofile_xmlxss_binding	appfwprofile_xmlxss_binding[] = null;
+	private appfwprofile_trustedlearningclients_binding	appfwprofile_trustedlearningclients_binding[] = null;
 	private appfwprofile_fieldformat_binding	appfwprofile_fieldformat_binding[] = null;
+	private appfwprofile_csrftag_binding	appfwprofile_csrftag_binding[] = null;
 	private appfwprofile_xmlvalidationurl_binding	appfwprofile_xmlvalidationurl_binding[] = null;
 
 	/**
 	* <pre>
-	* The name of the Application Firewall profile.<br> Minimum length =  1
+	* Name of the application firewall profile.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -77,7 +81,7 @@ public class appfwprofile_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the Application Firewall profile.<br> Minimum length =  1
+	* Name of the application firewall profile.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -190,6 +194,24 @@ public class appfwprofile_binding extends base_resource
 	*/
 	public appfwprofile_crosssitescripting_binding[] get_appfwprofile_crosssitescripting_bindings() throws Exception {
 		return this.appfwprofile_crosssitescripting_binding;
+	}
+
+	/**
+	* <pre>
+	* excluderescontenttype that can be bound to appfwprofile.
+	* </pre>
+	*/
+	public appfwprofile_excluderescontenttype_binding[] get_appfwprofile_excluderescontenttype_bindings() throws Exception {
+		return this.appfwprofile_excluderescontenttype_binding;
+	}
+
+	/**
+	* <pre>
+	* contenttype that can be bound to appfwprofile.
+	* </pre>
+	*/
+	public appfwprofile_contenttype_binding[] get_appfwprofile_contenttype_bindings() throws Exception {
+		return this.appfwprofile_contenttype_binding;
 	}
 
 	/**

@@ -26,10 +26,10 @@ public class dnsaaaarec_args
 
 	/**
 	* <pre>
-	* Specify the address record type. The record type can take 3 values:
-ADNS -  If this is specified, all of the authoritative address records will be displayed.
-PROXY - If this is specified, all of the proxy address records will be displayed.
-ALL  -  If this is specified, all of the address records will be displayed.<br> Possible values = ALL, ADNS, PROXY
+	* Type of records to display. Available settings function as follows:
+* ADNS - Display all authoritative address records.
+* PROXY - Display all proxy address records.
+* ALL - Display all address records.<br> Possible values = ALL, ADNS, PROXY
 	* </pre>
 	*/
 	public void set_type(String type) throws Exception{
@@ -38,10 +38,10 @@ ALL  -  If this is specified, all of the address records will be displayed.<br> 
 
 	/**
 	* <pre>
-	* Specify the address record type. The record type can take 3 values:
-ADNS -  If this is specified, all of the authoritative address records will be displayed.
-PROXY - If this is specified, all of the proxy address records will be displayed.
-ALL  -  If this is specified, all of the address records will be displayed.<br> Possible values = ALL, ADNS, PROXY
+	* Type of records to display. Available settings function as follows:
+* ADNS - Display all authoritative address records.
+* PROXY - Display all proxy address records.
+* ALL - Display all address records.<br> Possible values = ALL, ADNS, PROXY
 	* </pre>
 	*/
 	public String get_type() throws Exception {

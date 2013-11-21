@@ -37,6 +37,7 @@ public class rnat extends base_resource
 	private String aclname;
 	private Boolean redirectport;
 	private String natip;
+	private Long td;
 	private String natip2;
 	private Long __count;
 
@@ -96,7 +97,7 @@ public class rnat extends base_resource
 
 	/**
 	* <pre>
-	* Port number to which the packets are redirected. Applicable to TCP and UDP protocols.
+	* The port number to which the packets are redirected.
 	* </pre>
 	*/
 	public void set_redirectport(boolean redirectport) throws Exception {
@@ -105,7 +106,7 @@ public class rnat extends base_resource
 
 	/**
 	* <pre>
-	* Port number to which the packets are redirected. Applicable to TCP and UDP protocols.
+	* The port number to which the packets are redirected.
 	* </pre>
 	*/
 	public void set_redirectport(Boolean redirectport) throws Exception{
@@ -114,7 +115,7 @@ public class rnat extends base_resource
 
 	/**
 	* <pre>
-	* Port number to which the packets are redirected. Applicable to TCP and UDP protocols.
+	* The port number to which the packets are redirected.
 	* </pre>
 	*/
 	public Boolean get_redirectport() throws Exception {
@@ -137,6 +138,33 @@ public class rnat extends base_resource
 	*/
 	public String get_natip() throws Exception {
 		return this.natip;
+	}
+
+	/**
+	* <pre>
+	* Traffic Domain Id.<br> Minimum value =  0<br> Maximum value =  4094
+	* </pre>
+	*/
+	public void set_td(long td) throws Exception {
+		this.td = new Long(td);
+	}
+
+	/**
+	* <pre>
+	* Traffic Domain Id.<br> Minimum value =  0<br> Maximum value =  4094
+	* </pre>
+	*/
+	public void set_td(Long td) throws Exception{
+		this.td = td;
+	}
+
+	/**
+	* <pre>
+	* Traffic Domain Id.<br> Minimum value =  0<br> Maximum value =  4094
+	* </pre>
+	*/
+	public Long get_td() throws Exception {
+		return this.td;
 	}
 
 	/**
@@ -201,6 +229,7 @@ public class rnat extends base_resource
 		clearresource.aclname = resource.aclname;
 		clearresource.redirectport = resource.redirectport;
 		clearresource.natip = resource.natip;
+		clearresource.td = resource.td;
 		return clearresource.perform_operation(client,"clear");
 	}
 
@@ -218,6 +247,7 @@ public class rnat extends base_resource
 				clearresources[i].aclname = resources[i].aclname;
 				clearresources[i].redirectport = resources[i].redirectport;
 				clearresources[i].natip = resources[i].natip;
+				clearresources[i].td = resources[i].td;
 			}
 			result = perform_operation_bulk_request(client, clearresources,"clear");
 		}
@@ -232,6 +262,7 @@ public class rnat extends base_resource
 		updateresource.network = resource.network;
 		updateresource.netmask = resource.netmask;
 		updateresource.natip = resource.natip;
+		updateresource.td = resource.td;
 		updateresource.aclname = resource.aclname;
 		updateresource.redirectport = resource.redirectport;
 		updateresource.natip2 = resource.natip2;
@@ -250,6 +281,7 @@ public class rnat extends base_resource
 				updateresources[i].network = resources[i].network;
 				updateresources[i].netmask = resources[i].netmask;
 				updateresources[i].natip = resources[i].natip;
+				updateresources[i].td = resources[i].td;
 				updateresources[i].aclname = resources[i].aclname;
 				updateresources[i].redirectport = resources[i].redirectport;
 				updateresources[i].natip2 = resources[i].natip2;
@@ -267,6 +299,7 @@ public class rnat extends base_resource
 		rnat unsetresource = new rnat();
 		unsetresource.network = resource.network;
 		unsetresource.netmask = resource.netmask;
+		unsetresource.td = resource.td;
 		unsetresource.aclname = resource.aclname;
 		unsetresource.redirectport = resource.redirectport;
 		unsetresource.natip = resource.natip;
@@ -285,6 +318,7 @@ public class rnat extends base_resource
 				unsetresources[i] = new rnat();
 				unsetresources[i].network = resources[i].network;
 				unsetresources[i].netmask = resources[i].netmask;
+				unsetresources[i].td = resources[i].td;
 				unsetresources[i].aclname = resources[i].aclname;
 				unsetresources[i].redirectport = resources[i].redirectport;
 				unsetresources[i].natip = resources[i].natip;

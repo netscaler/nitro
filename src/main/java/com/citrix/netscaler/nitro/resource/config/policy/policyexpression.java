@@ -50,7 +50,7 @@ public class policyexpression extends base_resource
 
 	/**
 	* <pre>
-	* The name of the expression that will be created.<br> Minimum length =  1
+	* Unique name for the expression. Not case sensitive. Must begin with an ASCII letter or underscore (_) character, and must consist only of ASCII alphanumeric or underscore characters. Must not begin with 're' or 'xp' or be a word reserved for use as a default syntax expression qualifier prefix (such as HTTP) or enumeration value (such as ASCII). Must not be the name of an existing named expression, pattern set, dataset, stringmap, or HTTP callout.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -59,7 +59,7 @@ public class policyexpression extends base_resource
 
 	/**
 	* <pre>
-	* The name of the expression that will be created.<br> Minimum length =  1
+	* Unique name for the expression. Not case sensitive. Must begin with an ASCII letter or underscore (_) character, and must consist only of ASCII alphanumeric or underscore characters. Must not begin with 're' or 'xp' or be a word reserved for use as a default syntax expression qualifier prefix (such as HTTP) or enumeration value (such as ASCII). Must not be the name of an existing named expression, pattern set, dataset, stringmap, or HTTP callout.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -68,7 +68,7 @@ public class policyexpression extends base_resource
 
 	/**
 	* <pre>
-	*  The expression string.
+	* Expression string. For example: http.req.body(100).contains("this").
 	* </pre>
 	*/
 	public void set_value(String value) throws Exception{
@@ -77,7 +77,7 @@ public class policyexpression extends base_resource
 
 	/**
 	* <pre>
-	*  The expression string.
+	* Expression string. For example: http.req.body(100).contains("this").
 	* </pre>
 	*/
 	public String get_value() throws Exception {
@@ -104,7 +104,7 @@ public class policyexpression extends base_resource
 
 	/**
 	* <pre>
-	* Comments associated with this expression.
+	* Any comments associated with the expression. Displayed upon viewing the policy expression.
 	* </pre>
 	*/
 	public void set_comment(String comment) throws Exception{
@@ -113,7 +113,7 @@ public class policyexpression extends base_resource
 
 	/**
 	* <pre>
-	* Comments associated with this expression.
+	* Any comments associated with the expression. Displayed upon viewing the policy expression.
 	* </pre>
 	*/
 	public String get_comment() throws Exception {
@@ -122,7 +122,7 @@ public class policyexpression extends base_resource
 
 	/**
 	* <pre>
-	* The client security message that will be displayed on failure of this expression.Only relevant for end point check expressions.<br> Minimum length =  1
+	* Message to display if the expression fails. Allowed for classic end-point check expressions only.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_clientsecuritymessage(String clientsecuritymessage) throws Exception{
@@ -131,7 +131,7 @@ public class policyexpression extends base_resource
 
 	/**
 	* <pre>
-	* The client security message that will be displayed on failure of this expression.Only relevant for end point check expressions.<br> Minimum length =  1
+	* Message to display if the expression fails. Allowed for classic end-point check expressions only.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_clientsecuritymessage() throws Exception {
@@ -140,7 +140,7 @@ public class policyexpression extends base_resource
 
 	/**
 	* <pre>
-	* The type of expression. This is for input only.<br> Possible values = CLASSIC, ADVANCED
+	* Type of expression. Can be a classic or default syntax (advanced) expression.<br> Possible values = CLASSIC, ADVANCED
 	* </pre>
 	*/
 	public void set_type(String type) throws Exception{
@@ -149,7 +149,7 @@ public class policyexpression extends base_resource
 
 	/**
 	* <pre>
-	* The type of expression. This is for input only.<br> Possible values = CLASSIC, ADVANCED
+	* Type of expression. Can be a classic or default syntax (advanced) expression.<br> Possible values = CLASSIC, ADVANCED
 	* </pre>
 	*/
 	public String get_type() throws Exception {
@@ -355,22 +355,9 @@ public class policyexpression extends base_resource
 	* Use this API to unset the properties of policyexpression resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String name, String args[]) throws Exception {
-		policyexpression unsetresource = new policyexpression();
-		unsetresource.name = name;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of policyexpression resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, policyexpression resource, String[] args) throws Exception{
 		policyexpression unsetresource = new policyexpression();
 		unsetresource.name = resource.name;
-		unsetresource.description = resource.description;
-		unsetresource.comment = resource.comment;
-		unsetresource.clientsecuritymessage = resource.clientsecuritymessage;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -402,9 +389,6 @@ public class policyexpression extends base_resource
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new policyexpression();
 				unsetresources[i].name = resources[i].name;
-				unsetresources[i].description = resources[i].description;
-				unsetresources[i].comment = resources[i].comment;
-				unsetresources[i].clientsecuritymessage = resources[i].clientsecuritymessage;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}

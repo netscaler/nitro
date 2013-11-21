@@ -40,7 +40,7 @@ public class server_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the server. When a servername is specifed, all services under the server are displayed.<br> Minimum length =  1
+	* Name of the server for which to display parameters.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -49,7 +49,7 @@ public class server_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the server. When a servername is specifed, all services under the server are displayed.<br> Minimum length =  1
+	* Name of the server for which to display parameters.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {

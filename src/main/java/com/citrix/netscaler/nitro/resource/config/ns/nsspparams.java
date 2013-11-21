@@ -41,7 +41,7 @@ public class nsspparams extends base_resource
 
 	/**
 	* <pre>
-	* The base threshold. This is the maximum number of server connections that can be opened before surge protection is activated.<br> Default value: 200<br> Minimum value =  0<br> Maximum value =  32767
+	* Maximum number of server connections that can be opened before surge protection is activated.<br> Default value: 200<br> Minimum value =  0<br> Maximum value =  32767
 	* </pre>
 	*/
 	public void set_basethreshold(int basethreshold) throws Exception {
@@ -50,7 +50,7 @@ public class nsspparams extends base_resource
 
 	/**
 	* <pre>
-	* The base threshold. This is the maximum number of server connections that can be opened before surge protection is activated.<br> Default value: 200<br> Minimum value =  0<br> Maximum value =  32767
+	* Maximum number of server connections that can be opened before surge protection is activated.<br> Default value: 200<br> Minimum value =  0<br> Maximum value =  32767
 	* </pre>
 	*/
 	public void set_basethreshold(Integer basethreshold) throws Exception{
@@ -59,7 +59,7 @@ public class nsspparams extends base_resource
 
 	/**
 	* <pre>
-	* The base threshold. This is the maximum number of server connections that can be opened before surge protection is activated.<br> Default value: 200<br> Minimum value =  0<br> Maximum value =  32767
+	* Maximum number of server connections that can be opened before surge protection is activated.<br> Default value: 200<br> Minimum value =  0<br> Maximum value =  32767
 	* </pre>
 	*/
 	public Integer get_basethreshold() throws Exception {
@@ -68,8 +68,7 @@ public class nsspparams extends base_resource
 
 	/**
 	* <pre>
-	* The throttle rate, which is the rate at which the system opens connections to the server.
-The different names of throttle are the keywords: relaxed, normal, and aggressive.<br> Default value: NORM_SP_TABLE<br> Possible values = Aggressive, Normal, Relaxed
+	* Rate at which the system opens connections to the server.<br> Default value: Normal<br> Possible values = Aggressive, Normal, Relaxed
 	* </pre>
 	*/
 	public void set_throttle(String throttle) throws Exception{
@@ -78,8 +77,7 @@ The different names of throttle are the keywords: relaxed, normal, and aggressiv
 
 	/**
 	* <pre>
-	* The throttle rate, which is the rate at which the system opens connections to the server.
-The different names of throttle are the keywords: relaxed, normal, and aggressive.<br> Default value: NORM_SP_TABLE<br> Possible values = Aggressive, Normal, Relaxed
+	* Rate at which the system opens connections to the server.<br> Default value: Normal<br> Possible values = Aggressive, Normal, Relaxed
 	* </pre>
 	*/
 	public String get_throttle() throws Exception {
@@ -147,8 +145,6 @@ The different names of throttle are the keywords: relaxed, normal, and aggressiv
 	*/
 	public static base_response unset(nitro_service client, nsspparams resource, String[] args) throws Exception{
 		nsspparams unsetresource = new nsspparams();
-		unsetresource.basethreshold = resource.basethreshold;
-		unsetresource.throttle = resource.throttle;
 		return unsetresource.unset_resource(client,args);
 	}
 

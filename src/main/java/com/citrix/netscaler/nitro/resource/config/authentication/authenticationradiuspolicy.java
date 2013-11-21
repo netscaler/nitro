@@ -39,7 +39,11 @@ public class authenticationradiuspolicy extends base_resource
 
 	/**
 	* <pre>
-	* The name of the new authentication RADIUS policy.<br> Minimum length =  1
+	* Name for the RADIUS authentication policy. 
+Must begin with a letter, number, or the underscore character (_), and must contain only letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at (@), equals (=), colon (:), and underscore characters. Cannot be changed after RADIUS policy is created.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, “my authentication policy” or ‘my authentication policy’).<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -48,7 +52,11 @@ public class authenticationradiuspolicy extends base_resource
 
 	/**
 	* <pre>
-	* The name of the new authentication RADIUS policy.<br> Minimum length =  1
+	* Name for the RADIUS authentication policy. 
+Must begin with a letter, number, or the underscore character (_), and must contain only letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at (@), equals (=), colon (:), and underscore characters. Cannot be changed after RADIUS policy is created.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, “my authentication policy” or ‘my authentication policy’).<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -57,7 +65,7 @@ public class authenticationradiuspolicy extends base_resource
 
 	/**
 	* <pre>
-	* The name of the rule or expression the policy will use.
+	* Name of the NetScaler named rule, or a default syntax expression, that the policy uses to determine whether to attempt to authenticate the user with the RADIUS server.
 	* </pre>
 	*/
 	public void set_rule(String rule) throws Exception{
@@ -66,7 +74,7 @@ public class authenticationradiuspolicy extends base_resource
 
 	/**
 	* <pre>
-	* The name of the rule or expression the policy will use.
+	* Name of the NetScaler named rule, or a default syntax expression, that the policy uses to determine whether to attempt to authenticate the user with the RADIUS server.
 	* </pre>
 	*/
 	public String get_rule() throws Exception {
@@ -75,7 +83,7 @@ public class authenticationradiuspolicy extends base_resource
 
 	/**
 	* <pre>
-	* The name of the RADIUS action the policy will use.<br> Minimum length =  1
+	* Name of the RADIUS action to perform if the policy matches.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_reqaction(String reqaction) throws Exception{
@@ -84,7 +92,7 @@ public class authenticationradiuspolicy extends base_resource
 
 	/**
 	* <pre>
-	* The name of the RADIUS action the policy will use.<br> Minimum length =  1
+	* Name of the RADIUS action to perform if the policy matches.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_reqaction() throws Exception {
@@ -237,21 +245,9 @@ public class authenticationradiuspolicy extends base_resource
 	* Use this API to unset the properties of authenticationradiuspolicy resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String name, String args[]) throws Exception {
-		authenticationradiuspolicy unsetresource = new authenticationradiuspolicy();
-		unsetresource.name = name;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of authenticationradiuspolicy resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, authenticationradiuspolicy resource, String[] args) throws Exception{
 		authenticationradiuspolicy unsetresource = new authenticationradiuspolicy();
 		unsetresource.name = resource.name;
-		unsetresource.rule = resource.rule;
-		unsetresource.reqaction = resource.reqaction;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -283,8 +279,6 @@ public class authenticationradiuspolicy extends base_resource
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new authenticationradiuspolicy();
 				unsetresources[i].name = resources[i].name;
-				unsetresources[i].rule = resources[i].rule;
-				unsetresources[i].reqaction = resources[i].reqaction;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}

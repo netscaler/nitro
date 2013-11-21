@@ -45,7 +45,9 @@ public class policymap extends base_resource
 
 	/**
 	* <pre>
-	* The name of the map policy to be created.<br> Minimum length =  1
+	* Name for the map policy. Must begin with a letter, number, or the underscore (_) character and must consist only of letters, numbers, and the hash (#), period (.), colon (:), space ( ), at (@), equals (=), hyphen (-), and underscore (_) characters.
+
+CLI Users: If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my map" or 'my map').<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_mappolicyname(String mappolicyname) throws Exception{
@@ -54,7 +56,9 @@ public class policymap extends base_resource
 
 	/**
 	* <pre>
-	* The name of the map policy to be created.<br> Minimum length =  1
+	* Name for the map policy. Must begin with a letter, number, or the underscore (_) character and must consist only of letters, numbers, and the hash (#), period (.), colon (:), space ( ), at (@), equals (=), hyphen (-), and underscore (_) characters.
+
+CLI Users: If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my map" or 'my map').<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_mappolicyname() throws Exception {
@@ -63,7 +67,7 @@ public class policymap extends base_resource
 
 	/**
 	* <pre>
-	* The source domain name which is publicly known. This is the domain name with which a client request arrives to a reverse proxy virtual server for cache redirection on the system.<br> Minimum length =  1
+	* Publicly known source domain name. This is the domain name with which a client request arrives at a reverse proxy virtual server for cache redirection. If you specify a source domain, you must specify a target domain.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_sd(String sd) throws Exception{
@@ -72,7 +76,7 @@ public class policymap extends base_resource
 
 	/**
 	* <pre>
-	* The source domain name which is publicly known. This is the domain name with which a client request arrives to a reverse proxy virtual server for cache redirection on the system.<br> Minimum length =  1
+	* Publicly known source domain name. This is the domain name with which a client request arrives at a reverse proxy virtual server for cache redirection. If you specify a source domain, you must specify a target domain.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_sd() throws Exception {
@@ -81,7 +85,7 @@ public class policymap extends base_resource
 
 	/**
 	* <pre>
-	* The source URL. The format to specify the argument is: / [[prefix] [*]] [.suffix].<br> Minimum length =  1
+	* Source URL. Specify all or part of the source URL, in the following format: /[[prefix] [*]] [.suffix].<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_su(String su) throws Exception{
@@ -90,7 +94,7 @@ public class policymap extends base_resource
 
 	/**
 	* <pre>
-	* The source URL. The format to specify the argument is: / [[prefix] [*]] [.suffix].<br> Minimum length =  1
+	* Source URL. Specify all or part of the source URL, in the following format: /[[prefix] [*]] [.suffix].<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_su() throws Exception {
@@ -99,7 +103,7 @@ public class policymap extends base_resource
 
 	/**
 	* <pre>
-	* The domain name sent to the server. It replaces the source domain name.<br> Minimum length =  1
+	* Target domain name sent to the server. The source domain name is replaced with this domain name.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_td(String td) throws Exception{
@@ -108,7 +112,7 @@ public class policymap extends base_resource
 
 	/**
 	* <pre>
-	* The domain name sent to the server. It replaces the source domain name.<br> Minimum length =  1
+	* Target domain name sent to the server. The source domain name is replaced with this domain name.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_td() throws Exception {
@@ -117,7 +121,7 @@ public class policymap extends base_resource
 
 	/**
 	* <pre>
-	* The target URL.The format to specify the argument is: / [[prefix] [*]] [.suffix].<br> Minimum length =  1
+	* Target URL. Specify the target URL in the following format: /[[prefix] [*]][.suffix].<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_tu(String tu) throws Exception{
@@ -126,7 +130,7 @@ public class policymap extends base_resource
 
 	/**
 	* <pre>
-	* The target URL.The format to specify the argument is: / [[prefix] [*]] [.suffix].<br> Minimum length =  1
+	* Target URL. Specify the target URL in the following format: /[[prefix] [*]][.suffix].<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_tu() throws Exception {

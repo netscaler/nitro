@@ -53,7 +53,7 @@ public class nslimitsessions extends base_resource
 
 	/**
 	* <pre>
-	* The name of the rate limit identifer.<br> Minimum length =  1
+	* Name of the rate limit identifier for which to display the sessions.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_limitidentifier(String limitidentifier) throws Exception{
@@ -62,7 +62,7 @@ public class nslimitsessions extends base_resource
 
 	/**
 	* <pre>
-	* The name of the rate limit identifer.<br> Minimum length =  1
+	* Name of the rate limit identifier for which to display the sessions.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_limitidentifier() throws Exception {
@@ -71,7 +71,7 @@ public class nslimitsessions extends base_resource
 
 	/**
 	* <pre>
-	* Displays the individual hash values.
+	* Show the individual hash values.
 	* </pre>
 	*/
 	public void set_detail(boolean detail) throws Exception {
@@ -80,7 +80,7 @@ public class nslimitsessions extends base_resource
 
 	/**
 	* <pre>
-	* Displays the individual hash values.
+	* Show the individual hash values.
 	* </pre>
 	*/
 	public void set_detail(Boolean detail) throws Exception{
@@ -89,7 +89,7 @@ public class nslimitsessions extends base_resource
 
 	/**
 	* <pre>
-	* Displays the individual hash values.
+	* Show the individual hash values.
 	* </pre>
 	*/
 	public Boolean get_detail() throws Exception {

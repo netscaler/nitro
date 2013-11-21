@@ -32,6 +32,7 @@ class protocolhttp_response extends base_response
 
 public class protocolhttp_stats extends base_resource
 {
+	private String clearstats;
 	private Long httptotrequests;
 	private Long httprequestsrate;
 	private Long httptotresponses;
@@ -80,6 +81,35 @@ public class protocolhttp_stats extends base_resource
 	private Long httperrlargecontent;
 	private Long httperrlargechunk;
 	private Long httperrlargectlen;
+	private Long spdy2totstreams;
+	private Long spdy2streamsrate;
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters
+	* </pre>
+	*/
+	public void set_clearstats(String clearstats) throws Exception{
+		this.clearstats = clearstats;
+	}
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters.<br> Possible values = basic, full
+	* </pre>
+	*/
+	public String get_clearstats() throws Exception {
+		return this.clearstats;
+	}
+
+	/**
+	* <pre>
+	* Total number of requests received over SPDY
+	* </pre>
+	*/
+	public Long get_spdy2totstreams() throws Exception {
+		return this.spdy2totstreams;
+	}
 
 	/**
 	* <pre>
@@ -101,7 +131,7 @@ public class protocolhttp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of bytes of HTTP request data received.
+	* Rate (/s) counter for httptotrxrequestbytes
 	* </pre>
 	*/
 	public Long get_httprxrequestbytesrate() throws Exception {
@@ -164,11 +194,20 @@ public class protocolhttp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of HTTP/1.0 responses sent.
+	* Rate (/s) counter for httptot10responses
 	* </pre>
 	*/
 	public Long get_http10responsesrate() throws Exception {
 		return this.http10responsesrate;
+	}
+
+	/**
+	* <pre>
+	* Rate (/s) counter for spdy2totstreams
+	* </pre>
+	*/
+	public Long get_spdy2streamsrate() throws Exception {
+		return this.spdy2streamsrate;
 	}
 
 	/**
@@ -189,7 +228,7 @@ public class protocolhttp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of bytes of HTTP request data transmitted.
+	* Rate (/s) counter for httptottxrequestbytes
 	* </pre>
 	*/
 	public Long get_httptxrequestbytesrate() throws Exception {
@@ -216,7 +255,7 @@ public class protocolhttp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of bytes of HTTP response data received.
+	* Rate (/s) counter for httptotrxresponsebytes
 	* </pre>
 	*/
 	public Long get_httprxresponsebytesrate() throws Exception {
@@ -225,7 +264,7 @@ public class protocolhttp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of HTTP responses received in which the header spans more than one packet.
+	* Rate (/s) counter for httperrincompleteresponses
 	* </pre>
 	*/
 	public Long get_httperrincompleteresponsesrate() throws Exception {
@@ -234,7 +273,7 @@ public class protocolhttp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of FIN-terminated responses sent. In FIN-terminated responses, the server finishes sending the data and closes the connection.
+	* Rate (/s) counter for httptotnoclenchunkresponses
 	* </pre>
 	*/
 	public Long get_httpnoclenchunkresponsesrate() throws Exception {
@@ -243,7 +282,7 @@ public class protocolhttp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of HTTP requests in which the Transfer-Encoding field of the HTTP header has been set to chunked.
+	* Rate (/s) counter for httptotchunkedrequests
 	* </pre>
 	*/
 	public Long get_httpchunkedrequestsrate() throws Exception {
@@ -252,7 +291,7 @@ public class protocolhttp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of HTTP/1.1 responses sent.
+	* Rate (/s) counter for httptot11responses
 	* </pre>
 	*/
 	public Long get_http11responsesrate() throws Exception {
@@ -297,14 +336,7 @@ public class protocolhttp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of HTTP error responses received. Some of the error responses are: 
-500 	Internal Server Error
-501 	Not Implemented
-502 	Bad Gateway
-503 	Service Unavailable
-504 	Gateway Timeout
-505 	HTTP Version Not Supported
-
+	* Rate (/s) counter for httperrserverbusy
 	* </pre>
 	*/
 	public Long get_httperrserverbusyrate() throws Exception {
@@ -313,7 +345,7 @@ public class protocolhttp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of HTTP/1.1 requests received.
+	* Rate (/s) counter for httptot11requests
 	* </pre>
 	*/
 	public Long get_http11requestsrate() throws Exception {
@@ -322,7 +354,7 @@ public class protocolhttp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of bytes of HTTP response data transmitted.
+	* Rate (/s) counter for httptottxresponsebytes
 	* </pre>
 	*/
 	public Long get_httptxresponsebytesrate() throws Exception {
@@ -331,7 +363,7 @@ public class protocolhttp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of HTTP requests received with methods other than GET and POST. Some of the other well-defined HTTP methods are HEAD, PUT, DELETE, OPTIONS, and TRACE. User-defined methods are also allowed.
+	* Rate (/s) counter for httptotothers
 	* </pre>
 	*/
 	public Long get_httptohersrate() throws Exception {
@@ -340,7 +372,7 @@ public class protocolhttp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of HTTP responses sent in which the Transfer-Encoding field of the HTTP header has been set to chunked. This setting is used when the server wants to start sending the response before knowing its total length. The server breaks the response into chunks and sends them in sequence, inserting the length of each chunk before the actual data. The message ends with a chunk of size zero.
+	* Rate (/s) counter for httptotchunkedresponses
 	* </pre>
 	*/
 	public Long get_httpchunkedresponsesrate() throws Exception {
@@ -358,7 +390,7 @@ public class protocolhttp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of HTTP/1.0 requests received.
+	* Rate (/s) counter for httptot10requests
 	* </pre>
 	*/
 	public Long get_http10requestsrate() throws Exception {
@@ -367,7 +399,7 @@ public class protocolhttp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of HTTP requests received.
+	* Rate (/s) counter for httptotrequests
 	* </pre>
 	*/
 	public Long get_httprequestsrate() throws Exception {
@@ -376,7 +408,7 @@ public class protocolhttp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of HTTP responses sent.
+	* Rate (/s) counter for httptotresponses
 	* </pre>
 	*/
 	public Long get_httpresponsesrate() throws Exception {
@@ -412,7 +444,7 @@ public class protocolhttp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of HTTP multi-part responses sent. In multi-part responses, one or more entities are encapsulated within the body of a single message.
+	* Rate (/s) counter for httperrnoreusemultipart
 	* </pre>
 	*/
 	public Long get_httperrnoreusemultipartrate() throws Exception {
@@ -439,7 +471,7 @@ public class protocolhttp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of HTTP requests received with the POST method.
+	* Rate (/s) counter for httptotposts
 	* </pre>
 	*/
 	public Long get_httppostsrate() throws Exception {
@@ -448,7 +480,7 @@ public class protocolhttp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of HTTP requests received with the GET method.
+	* Rate (/s) counter for httptotgets
 	* </pre>
 	*/
 	public Long get_httpgetsrate() throws Exception {
@@ -457,7 +489,7 @@ public class protocolhttp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of HTTP responses sent in which the Content-length field of the HTTP header has been set. Content-length specifies the length of the content, in bytes, in the associated HTTP body.
+	* Rate (/s) counter for httptotclenresponses
 	* </pre>
 	*/
 	public Long get_httpclenresponsesrate() throws Exception {
@@ -493,7 +525,7 @@ public class protocolhttp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of HTTP requests received in which the header spans more than one packet.
+	* Rate (/s) counter for httperrincompleterequests
 	* </pre>
 	*/
 	public Long get_httperrincompleterequestsrate() throws Exception {
@@ -502,7 +534,7 @@ public class protocolhttp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of HTTP requests in which the Content-length field of the HTTP header has been set. Content-length specifies the length of the content, in bytes, in the associated HTTP body.
+	* Rate (/s) counter for httptotclenrequests
 	* </pre>
 	*/
 	public Long get_httpclenrequestsrate() throws Exception {
@@ -581,4 +613,8 @@ public class protocolhttp_stats extends base_resource
 		return response[0];
 	}
 
+	public static class clearstatsEnum {
+		public static final String basic = "basic";
+		public static final String full = "full";
+	}
 }

@@ -35,12 +35,14 @@ public class policypatset_pattern_binding extends base_resource
 	private String String;
 	private Long index;
 	private String charset;
+	private String[] builtin;
 	private String name;
 	private Long __count;
 
 	/**
 	* <pre>
-	* The string associated with the patset.
+	* String of characters that constitutes a pattern. For more information about the characters that can be used, refer to the character set parameter.
+Note: Minimum length for pattern sets used in rewrite actions of type REPLACE_ALL, DELETE_ALL, INSERT_AFTER_ALL, and INSERT_BEFORE_ALL, is three characters.
 	* </pre>
 	*/
 	public void set_String(String String) throws Exception{
@@ -49,7 +51,8 @@ public class policypatset_pattern_binding extends base_resource
 
 	/**
 	* <pre>
-	* The string associated with the patset.
+	* String of characters that constitutes a pattern. For more information about the characters that can be used, refer to the character set parameter.
+Note: Minimum length for pattern sets used in rewrite actions of type REPLACE_ALL, DELETE_ALL, INSERT_AFTER_ALL, and INSERT_BEFORE_ALL, is three characters.
 	* </pre>
 	*/
 	public String get_String() throws Exception {
@@ -58,7 +61,25 @@ public class policypatset_pattern_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the patset.<br> Minimum length =  1
+	* Indicates that a variable is a built-in (SYSTEM INTERNAL) type.<br> Possible values = MODIFIABLE, DELETABLE, IMMUTABLE
+	* </pre>
+	*/
+	public void set_builtin(String[] builtin) throws Exception{
+		this.builtin = builtin;
+	}
+
+	/**
+	* <pre>
+	* Indicates that a variable is a built-in (SYSTEM INTERNAL) type.<br> Possible values = MODIFIABLE, DELETABLE, IMMUTABLE
+	* </pre>
+	*/
+	public String[] get_builtin() throws Exception {
+		return this.builtin;
+	}
+
+	/**
+	* <pre>
+	* Name of the pattern set to which to bind the string.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -67,7 +88,7 @@ public class policypatset_pattern_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the patset.<br> Minimum length =  1
+	* Name of the pattern set to which to bind the string.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -76,7 +97,8 @@ public class policypatset_pattern_binding extends base_resource
 
 	/**
 	* <pre>
-	* The character set of the string associated with patset.<br> Possible values = ASCII, UTF_8
+	* Character set associated with the characters in the string.
+Note: UTF-8 characters can be entered directly (if the UI supports it) or can be encoded as a sequence of hexadecimal bytes '\xNN'. For example, the UTF-8 character 'ü' can be encoded as '\xC3\xBC'.<br> Possible values = ASCII, UTF_8
 	* </pre>
 	*/
 	public void set_charset(String charset) throws Exception{
@@ -85,7 +107,8 @@ public class policypatset_pattern_binding extends base_resource
 
 	/**
 	* <pre>
-	* The character set of the string associated with patset.<br> Possible values = ASCII, UTF_8
+	* Character set associated with the characters in the string.
+Note: UTF-8 characters can be entered directly (if the UI supports it) or can be encoded as a sequence of hexadecimal bytes '\xNN'. For example, the UTF-8 character 'ü' can be encoded as '\xC3\xBC'.<br> Possible values = ASCII, UTF_8
 	* </pre>
 	*/
 	public String get_charset() throws Exception {
@@ -284,6 +307,11 @@ public class policypatset_pattern_binding extends base_resource
 		return 0;
 	}
 
+	public static class builtinEnum {
+		public static final String MODIFIABLE = "MODIFIABLE";
+		public static final String DELETABLE = "DELETABLE";
+		public static final String IMMUTABLE = "IMMUTABLE";
+	}
 	public static class charsetEnum {
 		public static final String ASCII = "ASCII";
 		public static final String UTF_8 = "UTF_8";

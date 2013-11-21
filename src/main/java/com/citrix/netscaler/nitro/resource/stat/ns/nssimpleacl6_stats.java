@@ -32,17 +32,36 @@ class nssimpleacl6_response extends base_response
 
 public class nssimpleacl6_stats extends base_resource
 {
+	private String clearstats;
+	private Long sacl6tothits;
+	private Long sacl6hitsrate;
+	private Long sacl6totmisses;
+	private Long sacl6missesrate;
+	private Long sacl6scount;
 	private Long sacl6totpktsallowed;
 	private Long sacl6pktsallowedrate;
 	private Long sacl6totpktsbridged;
 	private Long sacl6pktsbridgedrate;
 	private Long sacl6totpktsdenied;
 	private Long sacl6pktsdeniedrate;
-	private Long sacl6tothits;
-	private Long sacl6hitsrate;
-	private Long sacl6totmisses;
-	private Long sacl6missesrate;
-	private Long sacl6scount;
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters
+	* </pre>
+	*/
+	public void set_clearstats(String clearstats) throws Exception{
+		this.clearstats = clearstats;
+	}
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters.<br> Possible values = basic, full
+	* </pre>
+	*/
+	public String get_clearstats() throws Exception {
+		return this.clearstats;
+	}
 
 	/**
 	* <pre>
@@ -55,7 +74,7 @@ public class nssimpleacl6_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total packets that matched a SimpleACL6 with action BRIDGE and got bridged by NetScaler.
+	* Rate (/s) counter for sacl6totpktsbridged
 	* </pre>
 	*/
 	public Long get_sacl6pktsbridgedrate() throws Exception {
@@ -82,7 +101,7 @@ public class nssimpleacl6_stats extends base_resource
 
 	/**
 	* <pre>
-	* Packets not matching any SimpleACL6.
+	* Rate (/s) counter for sacl6totmisses
 	* </pre>
 	*/
 	public Long get_sacl6missesrate() throws Exception {
@@ -91,7 +110,7 @@ public class nssimpleacl6_stats extends base_resource
 
 	/**
 	* <pre>
-	* Packets matching a SimpleACL6.
+	* Rate (/s) counter for sacl6tothits
 	* </pre>
 	*/
 	public Long get_sacl6hitsrate() throws Exception {
@@ -118,7 +137,7 @@ public class nssimpleacl6_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total packets that matched a SimpleACL6 with action ALLOW and got consumed by NetScaler.
+	* Rate (/s) counter for sacl6totpktsallowed
 	* </pre>
 	*/
 	public Long get_sacl6pktsallowedrate() throws Exception {
@@ -136,7 +155,7 @@ public class nssimpleacl6_stats extends base_resource
 
 	/**
 	* <pre>
-	* Packets dropped because they match SimpleACL6 with processing mode set to DENY.
+	* Rate (/s) counter for sacl6totpktsdenied
 	* </pre>
 	*/
 	public Long get_sacl6pktsdeniedrate() throws Exception {
@@ -197,4 +216,8 @@ public class nssimpleacl6_stats extends base_resource
 		return response[0];
 	}
 
+	public static class clearstatsEnum {
+		public static final String basic = "basic";
+		public static final String full = "full";
+	}
 }

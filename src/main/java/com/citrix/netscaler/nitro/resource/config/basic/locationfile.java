@@ -37,7 +37,7 @@ public class locationfile extends base_resource
 
 	/**
 	* <pre>
-	* The name of the location file. The file name must include the full path. If the full path is not given, the default path /var/netscaler/locdb will be assumed. In high-availability mode, the static database should be stored in the same location on both systems.<br> Minimum length =  1
+	* Name of the location file, with or without absolute path. If the path is not included, the default path (/var/netscaler/locdb) is assumed. In a high availability setup, the static database must be stored in the same location on both NetScaler appliances.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_Locationfile(String Locationfile) throws Exception{
@@ -46,7 +46,7 @@ public class locationfile extends base_resource
 
 	/**
 	* <pre>
-	* The name of the location file. The file name must include the full path. If the full path is not given, the default path /var/netscaler/locdb will be assumed. In high-availability mode, the static database should be stored in the same location on both systems.<br> Minimum length =  1
+	* Name of the location file, with or without absolute path. If the path is not included, the default path (/var/netscaler/locdb) is assumed. In a high availability setup, the static database must be stored in the same location on both NetScaler appliances.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_Locationfile() throws Exception {
@@ -55,10 +55,7 @@ public class locationfile extends base_resource
 
 	/**
 	* <pre>
-	* The format of the location file. This optional argument is used to tell the system how to understand the file.
-The allowable values are:
-format = netscaler, ip-country, ip-country-isp, ip-country-region-city, ip-country-region-city-isp, geoip-country, geoip-region, geoip-city, geoip-country-org, geoip-country-isp, geoip-city-isp-org .
-<br> Default value: NSMAP_FORMAT_NETSCALER<br> Possible values = netscaler, ip-country, ip-country-isp, ip-country-region-city, ip-country-region-city-isp, geoip-country, geoip-region, geoip-city, geoip-country-org, geoip-country-isp, geoip-city-isp-org
+	* Format of the location file. Required for the NetScaler appliance to identify how to read the location file.<br> Default value: netscaler<br> Possible values = netscaler, ip-country, ip-country-isp, ip-country-region-city, ip-country-region-city-isp, geoip-country, geoip-region, geoip-city, geoip-country-org, geoip-country-isp, geoip-city-isp-org
 	* </pre>
 	*/
 	public void set_format(String format) throws Exception{
@@ -67,10 +64,7 @@ format = netscaler, ip-country, ip-country-isp, ip-country-region-city, ip-count
 
 	/**
 	* <pre>
-	* The format of the location file. This optional argument is used to tell the system how to understand the file.
-The allowable values are:
-format = netscaler, ip-country, ip-country-isp, ip-country-region-city, ip-country-region-city-isp, geoip-country, geoip-region, geoip-city, geoip-country-org, geoip-country-isp, geoip-city-isp-org .
-<br> Default value: NSMAP_FORMAT_NETSCALER<br> Possible values = netscaler, ip-country, ip-country-isp, ip-country-region-city, ip-country-region-city-isp, geoip-country, geoip-region, geoip-city, geoip-country-org, geoip-country-isp, geoip-city-isp-org
+	* Format of the location file. Required for the NetScaler appliance to identify how to read the location file.<br> Default value: netscaler<br> Possible values = netscaler, ip-country, ip-country-isp, ip-country-region-city, ip-country-region-city-isp, geoip-country, geoip-region, geoip-city, geoip-country-org, geoip-country-isp, geoip-city-isp-org
 	* </pre>
 	*/
 	public String get_format() throws Exception {

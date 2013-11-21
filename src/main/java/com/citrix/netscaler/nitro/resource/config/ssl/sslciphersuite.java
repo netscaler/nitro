@@ -41,7 +41,7 @@ public class sslciphersuite extends base_resource
 
 	/**
 	* <pre>
-	* Cipher name.
+	* Name of the cipher suite for which to show detailed information.
 	* </pre>
 	*/
 	public void set_ciphername(String ciphername) throws Exception{
@@ -50,7 +50,7 @@ public class sslciphersuite extends base_resource
 
 	/**
 	* <pre>
-	* Cipher name.
+	* Name of the cipher suite for which to show detailed information.
 	* </pre>
 	*/
 	public String get_ciphername() throws Exception {

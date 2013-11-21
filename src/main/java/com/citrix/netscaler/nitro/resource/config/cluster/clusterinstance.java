@@ -50,7 +50,7 @@ public class clusterinstance extends base_resource
 
 	/**
 	* <pre>
-	* A unique number that identifies the cluster.<br> Minimum value =  1<br> Maximum value =  16
+	* Unique number that identifies the cluster.<br> Minimum value =  1<br> Maximum value =  16
 	* </pre>
 	*/
 	public void set_clid(long clid) throws Exception {
@@ -59,7 +59,7 @@ public class clusterinstance extends base_resource
 
 	/**
 	* <pre>
-	* A unique number that identifies the cluster.<br> Minimum value =  1<br> Maximum value =  16
+	* Unique number that identifies the cluster.<br> Minimum value =  1<br> Maximum value =  16
 	* </pre>
 	*/
 	public void set_clid(Long clid) throws Exception{
@@ -68,7 +68,7 @@ public class clusterinstance extends base_resource
 
 	/**
 	* <pre>
-	* A unique number that identifies the cluster.<br> Minimum value =  1<br> Maximum value =  16
+	* Unique number that identifies the cluster.<br> Minimum value =  1<br> Maximum value =  16
 	* </pre>
 	*/
 	public Long get_clid() throws Exception {
@@ -77,7 +77,7 @@ public class clusterinstance extends base_resource
 
 	/**
 	* <pre>
-	* The amount of time (in seconds) after which the nodes that do not respond to the heartbeats are assumed to be down.<br> Default value: 3<br> Minimum value =  3<br> Maximum value =  60
+	* Amount of time, in seconds, after which nodes that do not respond to the heartbeats are assumed to be down.<br> Default value: 3<br> Minimum value =  3<br> Maximum value =  60
 	* </pre>
 	*/
 	public void set_deadinterval(long deadinterval) throws Exception {
@@ -86,7 +86,7 @@ public class clusterinstance extends base_resource
 
 	/**
 	* <pre>
-	* The amount of time (in seconds) after which the nodes that do not respond to the heartbeats are assumed to be down.<br> Default value: 3<br> Minimum value =  3<br> Maximum value =  60
+	* Amount of time, in seconds, after which nodes that do not respond to the heartbeats are assumed to be down.<br> Default value: 3<br> Minimum value =  3<br> Maximum value =  60
 	* </pre>
 	*/
 	public void set_deadinterval(Long deadinterval) throws Exception{
@@ -95,7 +95,7 @@ public class clusterinstance extends base_resource
 
 	/**
 	* <pre>
-	* The amount of time (in seconds) after which the nodes that do not respond to the heartbeats are assumed to be down.<br> Default value: 3<br> Minimum value =  3<br> Maximum value =  60
+	* Amount of time, in seconds, after which nodes that do not respond to the heartbeats are assumed to be down.<br> Default value: 3<br> Minimum value =  3<br> Maximum value =  60
 	* </pre>
 	*/
 	public Long get_deadinterval() throws Exception {
@@ -104,7 +104,7 @@ public class clusterinstance extends base_resource
 
 	/**
 	* <pre>
-	* The amount of time (in milliseconds) after which heartbeats are sent to each cluster node to check the health status.<br> Default value: 200<br> Minimum value =  200<br> Maximum value =  1000
+	* Interval, in milliseconds, at which heartbeats are sent to each cluster node to check the health status.<br> Default value: 200<br> Minimum value =  200<br> Maximum value =  1000
 	* </pre>
 	*/
 	public void set_hellointerval(long hellointerval) throws Exception {
@@ -113,7 +113,7 @@ public class clusterinstance extends base_resource
 
 	/**
 	* <pre>
-	* The amount of time (in milliseconds) after which heartbeats are sent to each cluster node to check the health status.<br> Default value: 200<br> Minimum value =  200<br> Maximum value =  1000
+	* Interval, in milliseconds, at which heartbeats are sent to each cluster node to check the health status.<br> Default value: 200<br> Minimum value =  200<br> Maximum value =  1000
 	* </pre>
 	*/
 	public void set_hellointerval(Long hellointerval) throws Exception{
@@ -122,7 +122,7 @@ public class clusterinstance extends base_resource
 
 	/**
 	* <pre>
-	* The amount of time (in milliseconds) after which heartbeats are sent to each cluster node to check the health status.<br> Default value: 200<br> Minimum value =  200<br> Maximum value =  1000
+	* Interval, in milliseconds, at which heartbeats are sent to each cluster node to check the health status.<br> Default value: 200<br> Minimum value =  200<br> Maximum value =  1000
 	* </pre>
 	*/
 	public Long get_hellointerval() throws Exception {
@@ -131,7 +131,7 @@ public class clusterinstance extends base_resource
 
 	/**
 	* <pre>
-	* Enable or disable the preemption of a cluster node that is configured as SPARE by a node that is configured as ACTIVE. When preemption is enabled, ACTIVE nodes are given precedence over SPARE nodes. This means that when an ACTIVE node comes online and finds that a SPARE node is serving traffic, it preempts the SPARE node and starts serving traffic. When preemption is disabled, the SPARE node continues serving traffic even after an ACTIVE node comes back online.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Preempt a cluster node that is configured as a SPARE if an ACTIVE node becomes available.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_preemption(String preemption) throws Exception{
@@ -140,7 +140,7 @@ public class clusterinstance extends base_resource
 
 	/**
 	* <pre>
-	* Enable or disable the preemption of a cluster node that is configured as SPARE by a node that is configured as ACTIVE. When preemption is enabled, ACTIVE nodes are given precedence over SPARE nodes. This means that when an ACTIVE node comes online and finds that a SPARE node is serving traffic, it preempts the SPARE node and starts serving traffic. When preemption is disabled, the SPARE node continues serving traffic even after an ACTIVE node comes back online.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Preempt a cluster node that is configured as a SPARE if an ACTIVE node becomes available.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_preemption() throws Exception {
@@ -176,7 +176,7 @@ public class clusterinstance extends base_resource
 
 	/**
 	* <pre>
-	* Cluster Operational State.<br> Possible values = DOWN, UP, PARTIAL-UP
+	* Cluster Operational State.<br> Possible values = DOWN, UP, PARTIAL-UP, UNKNOWN
 	* </pre>
 	*/
 	public String get_status() throws Exception {
@@ -363,22 +363,9 @@ public class clusterinstance extends base_resource
 	* Use this API to unset the properties of clusterinstance resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, Long clid, String args[]) throws Exception {
-		clusterinstance unsetresource = new clusterinstance();
-		unsetresource.clid = clid;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of clusterinstance resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, clusterinstance resource, String[] args) throws Exception{
 		clusterinstance unsetresource = new clusterinstance();
 		unsetresource.clid = resource.clid;
-		unsetresource.deadinterval = resource.deadinterval;
-		unsetresource.hellointerval = resource.hellointerval;
-		unsetresource.preemption = resource.preemption;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -410,9 +397,6 @@ public class clusterinstance extends base_resource
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new clusterinstance();
 				unsetresources[i].clid = resources[i].clid;
-				unsetresources[i].deadinterval = resources[i].deadinterval;
-				unsetresources[i].hellointerval = resources[i].hellointerval;
-				unsetresources[i].preemption = resources[i].preemption;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}
@@ -645,6 +629,7 @@ public class clusterinstance extends base_resource
 		public static final String DOWN = "DOWN";
 		public static final String UP = "UP";
 		public static final String PARTIAL_UP = "PARTIAL-UP";
+		public static final String UNKNOWN = "UNKNOWN";
 	}
 	public static class adminstateEnum {
 		public static final String ENABLED = "ENABLED";

@@ -46,7 +46,10 @@ public class snmpmib extends base_resource
 
 	/**
 	* <pre>
-	* The name of the administrator for this NetScaler appliance. Along with the name, you can include information on how to contact this person, such as a phone number or an email address. Can begin and consist of 1 to 127 characters that include letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at sign (@), equals (=), colon (:), and underscore (_).<br> Default value: "WebMaster (default)"<br> Minimum length =  1
+	* Name of the administrator for this NetScaler appliance. Along with the name, you can include information on how to contact this person, such as a phone number or an email address. Can consist of 1 to 127 characters that include uppercase and  lowercase letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at sign (@), equals (=), colon (:), and underscore (_) characters.
+
+The following requirement applies only to the NetScaler CLI:
+If the information includes one or more spaces, enclose it in double or single quotation marks (for example, "my contact" or 'my contact').<br> Default value: "WebMaster (default)"<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_contact(String contact) throws Exception{
@@ -55,7 +58,10 @@ public class snmpmib extends base_resource
 
 	/**
 	* <pre>
-	* The name of the administrator for this NetScaler appliance. Along with the name, you can include information on how to contact this person, such as a phone number or an email address. Can begin and consist of 1 to 127 characters that include letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at sign (@), equals (=), colon (:), and underscore (_).<br> Default value: "WebMaster (default)"<br> Minimum length =  1
+	* Name of the administrator for this NetScaler appliance. Along with the name, you can include information on how to contact this person, such as a phone number or an email address. Can consist of 1 to 127 characters that include uppercase and  lowercase letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at sign (@), equals (=), colon (:), and underscore (_) characters.
+
+The following requirement applies only to the NetScaler CLI:
+If the information includes one or more spaces, enclose it in double or single quotation marks (for example, "my contact" or 'my contact').<br> Default value: "WebMaster (default)"<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_contact() throws Exception {
@@ -64,7 +70,10 @@ public class snmpmib extends base_resource
 
 	/**
 	* <pre>
-	* A name for this NetScaler appliance. Can begin and consist of 1 to 127 characters that include letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at sign (@), equals (=), colon (:), and underscore (_) characters.  You should choose a name that helps identify the NetScaler appliance.<br> Default value: "NetScaler"<br> Minimum length =  1
+	* Name for this NetScaler appliance. Can consist of 1 to 127 characters that include uppercase and lowercase letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at sign (@), equals (=), colon (:), and underscore (_) characters.  You should choose a name that helps identify the NetScaler appliance.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose it in double or single quotation marks (for example, "my name" or 'my name').<br> Default value: "NetScaler"<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -73,7 +82,10 @@ public class snmpmib extends base_resource
 
 	/**
 	* <pre>
-	* A name for this NetScaler appliance. Can begin and consist of 1 to 127 characters that include letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at sign (@), equals (=), colon (:), and underscore (_) characters.  You should choose a name that helps identify the NetScaler appliance.<br> Default value: "NetScaler"<br> Minimum length =  1
+	* Name for this NetScaler appliance. Can consist of 1 to 127 characters that include uppercase and lowercase letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at sign (@), equals (=), colon (:), and underscore (_) characters.  You should choose a name that helps identify the NetScaler appliance.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose it in double or single quotation marks (for example, "my name" or 'my name').<br> Default value: "NetScaler"<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -82,7 +94,10 @@ public class snmpmib extends base_resource
 
 	/**
 	* <pre>
-	* The physical location of the NetScaler appliance. For example, you can specify building name, lab number, and rack number. Can begin and consist of 1 to 127 characters that include letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at sign (@), equals (=), colon (:), and underscore (_) characters.<br> Default value: "POP (default)"<br> Minimum length =  1
+	* Physical location of the NetScaler appliance. For example, you can specify building name, lab number, and rack number. Can consist of 1 to 127 characters that include uppercase and lowercase letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at sign (@), equals (=), colon (:), and underscore (_) characters.
+
+The following requirement applies only to the NetScaler CLI:
+If the location includes one or more spaces, enclose it in double or single quotation marks (for example, "my location" or 'my location').<br> Default value: "POP (default)"<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_location(String location) throws Exception{
@@ -91,7 +106,10 @@ public class snmpmib extends base_resource
 
 	/**
 	* <pre>
-	* The physical location of the NetScaler appliance. For example, you can specify building name, lab number, and rack number. Can begin and consist of 1 to 127 characters that include letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at sign (@), equals (=), colon (:), and underscore (_) characters.<br> Default value: "POP (default)"<br> Minimum length =  1
+	* Physical location of the NetScaler appliance. For example, you can specify building name, lab number, and rack number. Can consist of 1 to 127 characters that include uppercase and lowercase letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at sign (@), equals (=), colon (:), and underscore (_) characters.
+
+The following requirement applies only to the NetScaler CLI:
+If the location includes one or more spaces, enclose it in double or single quotation marks (for example, "my location" or 'my location').<br> Default value: "POP (default)"<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_location() throws Exception {
@@ -100,7 +118,10 @@ public class snmpmib extends base_resource
 
 	/**
 	* <pre>
-	* A custom identification number for the NetScaler appliance. Can begin and consist of 1 to 127 characters that include letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at sign (@), equals (=), colon (:), and underscore (_) characters. You should choose a custom identification that helps identify the NetScaler appliance.<br> Default value: "Default"<br> Minimum length =  1
+	* Custom identification number for the NetScaler appliance. Can consist of 1 to 127 characters that include uppercase and lowercase letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at sign (@), equals (=), colon (:), and underscore (_) characters. You should choose a custom identification that helps identify the NetScaler appliance.
+
+The following requirement applies only to the NetScaler CLI:
+If the ID includes one or more spaces, enclose it in double or single quotation marks (for example, "my ID" or 'my ID').<br> Default value: "Default"<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_customid(String customid) throws Exception{
@@ -109,7 +130,10 @@ public class snmpmib extends base_resource
 
 	/**
 	* <pre>
-	* A custom identification number for the NetScaler appliance. Can begin and consist of 1 to 127 characters that include letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at sign (@), equals (=), colon (:), and underscore (_) characters. You should choose a custom identification that helps identify the NetScaler appliance.<br> Default value: "Default"<br> Minimum length =  1
+	* Custom identification number for the NetScaler appliance. Can consist of 1 to 127 characters that include uppercase and lowercase letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at sign (@), equals (=), colon (:), and underscore (_) characters. You should choose a custom identification that helps identify the NetScaler appliance.
+
+The following requirement applies only to the NetScaler CLI:
+If the ID includes one or more spaces, enclose it in double or single quotation marks (for example, "my ID" or 'my ID').<br> Default value: "Default"<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_customid() throws Exception {
@@ -206,10 +230,6 @@ public class snmpmib extends base_resource
 	*/
 	public static base_response unset(nitro_service client, snmpmib resource, String[] args) throws Exception{
 		snmpmib unsetresource = new snmpmib();
-		unsetresource.contact = resource.contact;
-		unsetresource.name = resource.name;
-		unsetresource.location = resource.location;
-		unsetresource.customid = resource.customid;
 		return unsetresource.unset_resource(client,args);
 	}
 

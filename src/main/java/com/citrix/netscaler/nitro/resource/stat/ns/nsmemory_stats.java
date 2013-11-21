@@ -33,13 +33,14 @@ class nsmemory_response extends base_response
 public class nsmemory_stats extends base_resource
 {
 	private String pool;
+	private String clearstats;
 	private Double allocf;
 	private Double memcurallocper;
 	private Long memcurinkb;
 
 	/**
 	* <pre>
-	* Feature name
+	* Feature name for which to display memory statistics.
 	* </pre>
 	*/
 	public void set_pool(String pool) throws Exception{
@@ -48,11 +49,29 @@ public class nsmemory_stats extends base_resource
 
 	/**
 	* <pre>
-	* Feature name.<br> Minimum length =  1
+	* Feature name for which to display memory statistics.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_pool() throws Exception {
 		return this.pool;
+	}
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters
+	* </pre>
+	*/
+	public void set_clearstats(String clearstats) throws Exception{
+		this.clearstats = clearstats;
+	}
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters.<br> Possible values = basic, full
+	* </pre>
+	*/
+	public String get_clearstats() throws Exception {
+		return this.clearstats;
 	}
 
 	/**
@@ -144,4 +163,8 @@ public class nsmemory_stats extends base_resource
 		return response;
 	}
 
+	public static class clearstatsEnum {
+		public static final String basic = "basic";
+		public static final String full = "full";
+	}
 }

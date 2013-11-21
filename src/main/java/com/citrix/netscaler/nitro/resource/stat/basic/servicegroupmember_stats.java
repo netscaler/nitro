@@ -36,6 +36,7 @@ public class servicegroupmember_stats extends base_resource
 	private String ip;
 	private String servername;
 	private Integer port;
+	private String clearstats;
 	private Long avgsvrttfb;
 	private String primaryipaddress;
 	private Integer primaryport;
@@ -58,7 +59,9 @@ public class servicegroupmember_stats extends base_resource
 
 	/**
 	* <pre>
-	* The name of a service group
+	* Displays statistics for the specified service group.Name of the service group. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at sign (@), equal sign (=), and hyphen (-) characters. 
+
+CLI Users: If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my servicegroup" or 'my servicegroup').
 	* </pre>
 	*/
 	public void set_servicegroupname(String servicegroupname) throws Exception{
@@ -67,7 +70,9 @@ public class servicegroupmember_stats extends base_resource
 
 	/**
 	* <pre>
-	* The name of a service group.<br> Minimum length =  1
+	* Displays statistics for the specified service group.Name of the service group. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at sign (@), equal sign (=), and hyphen (-) characters. 
+
+CLI Users: If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my servicegroup" or 'my servicegroup').<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_servicegroupname() throws Exception {
@@ -76,7 +81,7 @@ public class servicegroupmember_stats extends base_resource
 
 	/**
 	* <pre>
-	* The IP address of the member
+	* IP address of the service group. Mutually exclusive with the server name parameter.
 	* </pre>
 	*/
 	public void set_ip(String ip) throws Exception{
@@ -85,7 +90,7 @@ public class servicegroupmember_stats extends base_resource
 
 	/**
 	* <pre>
-	* The IP address of the member.
+	* IP address of the service group. Mutually exclusive with the server name parameter.
 	* </pre>
 	*/
 	public String get_ip() throws Exception {
@@ -94,7 +99,7 @@ public class servicegroupmember_stats extends base_resource
 
 	/**
 	* <pre>
-	* The name of the Domain based server for which stats are required
+	* Name of the server. Mutually exclusive with the IP address parameter.
 	* </pre>
 	*/
 	public void set_servername(String servername) throws Exception{
@@ -103,7 +108,7 @@ public class servicegroupmember_stats extends base_resource
 
 	/**
 	* <pre>
-	* The name of the Domain based server for which stats are required.<br> Minimum length =  1
+	* Name of the server. Mutually exclusive with the IP address parameter.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_servername() throws Exception {
@@ -112,7 +117,7 @@ public class servicegroupmember_stats extends base_resource
 
 	/**
 	* <pre>
-	* The port number of the member
+	* Port number of the service group member.
 	* </pre>
 	*/
 	public void set_port(int port) throws Exception {
@@ -121,7 +126,7 @@ public class servicegroupmember_stats extends base_resource
 
 	/**
 	* <pre>
-	* The port number of the member
+	* Port number of the service group member.
 	* </pre>
 	*/
 	public void set_port(Integer port) throws Exception{
@@ -130,11 +135,29 @@ public class servicegroupmember_stats extends base_resource
 
 	/**
 	* <pre>
-	* The port number of the member.<br> Range 1 - 65535
+	* Port number of the service group member.<br> Range 1 - 65535
 	* </pre>
 	*/
 	public Integer get_port() throws Exception {
 		return this.port;
+	}
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters
+	* </pre>
+	*/
+	public void set_clearstats(String clearstats) throws Exception{
+		this.clearstats = clearstats;
+	}
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters.<br> Possible values = basic, full
+	* </pre>
+	*/
+	public String get_clearstats() throws Exception {
+		return this.clearstats;
 	}
 
 	/**
@@ -157,7 +180,7 @@ public class servicegroupmember_stats extends base_resource
 
 	/**
 	* <pre>
-	* The service type of this service.
+	* The service type of this service.Possible values are ADNS, DNS, MYSQL, RTSP, SSL_DIAMETER, ADNS_TCP, DNS_TCP, NNTP, SIP_UDP, SSL_TCP, ANY, FTP, RADIUS, SNMP, TCP, DHCPRA, HTTP, RDP, SSL, TFTP, DIAMETER, MSSQL, RPCSVR, SSL_BRIDGE, UDP
 	* </pre>
 	*/
 	public String get_servicetype() throws Exception {
@@ -184,7 +207,7 @@ public class servicegroupmember_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of response bytes received by this service or virtual server.
+	* Rate (/s) counter for totalresponsebytes
 	* </pre>
 	*/
 	public Long get_responsebytesrate() throws Exception {
@@ -202,7 +225,7 @@ public class servicegroupmember_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of request bytes received on this service or virtual server.
+	* Rate (/s) counter for totalrequestbytes
 	* </pre>
 	*/
 	public Long get_requestbytesrate() throws Exception {
@@ -229,7 +252,7 @@ public class servicegroupmember_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of responses received on this service or virtual server. (This applies to HTTP/SSL services and servers.)
+	* Rate (/s) counter for totalresponses
 	* </pre>
 	*/
 	public Long get_responsesrate() throws Exception {
@@ -247,7 +270,7 @@ public class servicegroupmember_stats extends base_resource
 
 	/**
 	* <pre>
-	* Average TTFB between the NetScaler appliance and the server.
+	* Average TTFB between the NetScaler appliance and the server.TTFB is the time interval between sending the request packet to a service and receiving the first response from the service
 	* </pre>
 	*/
 	public Long get_avgsvrttfb() throws Exception {
@@ -274,7 +297,7 @@ public class servicegroupmember_stats extends base_resource
 
 	/**
 	* <pre>
-	* Current state of the server.
+	* Current state of the server. Possible values are UP, DOWN, UNKNOWN, OFS(Out of Service), TROFS(Transition Out of Service), TROFS_DOWN(Down When going Out of Service)
 	* </pre>
 	*/
 	public String get_state() throws Exception {
@@ -301,7 +324,7 @@ public class servicegroupmember_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of requests received on this service or virtual server. (This applies to HTTP/SSL services and servers.)
+	* Rate (/s) counter for totalrequests
 	* </pre>
 	*/
 	public Long get_requestsrate() throws Exception {
@@ -352,4 +375,8 @@ public class servicegroupmember_stats extends base_resource
 		return response;
 	}
 
+	public static class clearstatsEnum {
+		public static final String basic = "basic";
+		public static final String full = "full";
+	}
 }

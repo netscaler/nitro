@@ -50,7 +50,10 @@ public class responderaction extends base_resource
 
 	/**
 	* <pre>
-	* Name of the responder action to be added.
+	* Name for the responder action. Must begin with a letter, number, or the underscore character (_), and must contain only letters, numbers, and the hyphen (-), period (.) hash (#), space ( ), at (@), equals (=), colon (:), and underscore characters. Can be changed after the responder policy is added.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my responder action" or 'my responder action').
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -59,7 +62,10 @@ public class responderaction extends base_resource
 
 	/**
 	* <pre>
-	* Name of the responder action to be added.
+	* Name for the responder action. Must begin with a letter, number, or the underscore character (_), and must contain only letters, numbers, and the hyphen (-), period (.) hash (#), space ( ), at (@), equals (=), colon (:), and underscore characters. Can be changed after the responder policy is added.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my responder action" or 'my responder action').
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -68,18 +74,12 @@ public class responderaction extends base_resource
 
 	/**
 	* <pre>
-	* Type of responder action. It can be: (respondwith|redirect).
-For each action type the <target> is as defined below.
-  o  RESPONDWITH: Send the specified response.
-     <target> = SNIT expression to be sent as the response.
-     <htmlpage> = HTML page to be sent as the response.
-  o  REDIRECT: Generates an 'HTTP Redirect' to a specified URL.
-     <target> = where to redirect to.
-  o  SQLRESPONSE_OK: Generates an OK response.
-     <target> = Message for SQL OK Packet.
-  o  SQLRESPONSE_ERROR: Generates an ERROR response.
-     <target> = Message for SQL ERROR Packet.
-<br> Possible values = noop, respondwith, redirect, respondwithhtmlpage, sqlresponse_ok, sqlresponse_error
+	* Type of responder action. Available settings function as follows:
+* respondwith <target> - Respond to the request with the expression specified as the target.
+* respondwithhtmlpage - Respond to the request with the uploaded HTML page object specified as the target.
+* redirect - Redirect the request to the URL specified as the target.
+* sqlresponse_ok - Send an SQL OK response.
+* sqlresponse_error - Send an SQL ERROR response.<br> Possible values = noop, respondwith, redirect, respondwithhtmlpage, sqlresponse_ok, sqlresponse_error
 	* </pre>
 	*/
 	public void set_type(String type) throws Exception{
@@ -88,18 +88,12 @@ For each action type the <target> is as defined below.
 
 	/**
 	* <pre>
-	* Type of responder action. It can be: (respondwith|redirect).
-For each action type the <target> is as defined below.
-  o  RESPONDWITH: Send the specified response.
-     <target> = SNIT expression to be sent as the response.
-     <htmlpage> = HTML page to be sent as the response.
-  o  REDIRECT: Generates an 'HTTP Redirect' to a specified URL.
-     <target> = where to redirect to.
-  o  SQLRESPONSE_OK: Generates an OK response.
-     <target> = Message for SQL OK Packet.
-  o  SQLRESPONSE_ERROR: Generates an ERROR response.
-     <target> = Message for SQL ERROR Packet.
-<br> Possible values = noop, respondwith, redirect, respondwithhtmlpage, sqlresponse_ok, sqlresponse_error
+	* Type of responder action. Available settings function as follows:
+* respondwith <target> - Respond to the request with the expression specified as the target.
+* respondwithhtmlpage - Respond to the request with the uploaded HTML page object specified as the target.
+* redirect - Redirect the request to the URL specified as the target.
+* sqlresponse_ok - Send an SQL OK response.
+* sqlresponse_error - Send an SQL ERROR response.<br> Possible values = noop, respondwith, redirect, respondwithhtmlpage, sqlresponse_ok, sqlresponse_error
 	* </pre>
 	*/
 	public String get_type() throws Exception {
@@ -108,7 +102,20 @@ For each action type the <target> is as defined below.
 
 	/**
 	* <pre>
-	* Expression specifying what to respond with. Maximum length of the input expression is 8191 bytes. Maximum size of string that can be used inside the expression is 255 bytes.  Multiple string literals can be concatenated using +. For action type SQLRESPONSE_* the maximum length of target string is 511 bytes.
+	* Expression specifying what to respond with. Typically a URL for redirect policies or a default-syntax expression.  In addition to NetScaler default-syntax expressions that refer to information in the request, a stringbuilder expression can contain text and HTML, and simple escape codes that define new lines and paragraphs. Enclose each stringbuilder expression element (either a NetScaler default-syntax expression or a string) in double quotation marks. Use the plus (+) character to join the elements. 
+
+Examples:
+1) Respondwith expression that sends an HTTP 1.1 200 OK response:
+"HTTP/1.1 200 OK\r\n\r\n"
+
+2) Redirect expression that redirects user to the specified web host and appends the request URL to the redirect.
+"http://backupsite2.com" + HTTP.REQ.URL
+
+3) Respondwith expression that sends an HTTP 1.1 404 Not Found response with the request URL included in the response:
+"HTTP/1.1 404 Not Found\r\n\r\n"+ "HTTP.REQ.URL.HTTP_URL_SAFE" + "does not exist on the web server."
+
+The following requirement applies only to the NetScaler CLI:
+Enclose the entire expression in single quotation marks. (NetScaler default expression elements should be included inside the single quotation marks for the entire expression, but do not need to be enclosed in double quotation marks.).
 	* </pre>
 	*/
 	public void set_target(String target) throws Exception{
@@ -117,7 +124,20 @@ For each action type the <target> is as defined below.
 
 	/**
 	* <pre>
-	* Expression specifying what to respond with. Maximum length of the input expression is 8191 bytes. Maximum size of string that can be used inside the expression is 255 bytes.  Multiple string literals can be concatenated using +. For action type SQLRESPONSE_* the maximum length of target string is 511 bytes.
+	* Expression specifying what to respond with. Typically a URL for redirect policies or a default-syntax expression.  In addition to NetScaler default-syntax expressions that refer to information in the request, a stringbuilder expression can contain text and HTML, and simple escape codes that define new lines and paragraphs. Enclose each stringbuilder expression element (either a NetScaler default-syntax expression or a string) in double quotation marks. Use the plus (+) character to join the elements. 
+
+Examples:
+1) Respondwith expression that sends an HTTP 1.1 200 OK response:
+"HTTP/1.1 200 OK\r\n\r\n"
+
+2) Redirect expression that redirects user to the specified web host and appends the request URL to the redirect.
+"http://backupsite2.com" + HTTP.REQ.URL
+
+3) Respondwith expression that sends an HTTP 1.1 404 Not Found response with the request URL included in the response:
+"HTTP/1.1 404 Not Found\r\n\r\n"+ "HTTP.REQ.URL.HTTP_URL_SAFE" + "does not exist on the web server."
+
+The following requirement applies only to the NetScaler CLI:
+Enclose the entire expression in single quotation marks. (NetScaler default expression elements should be included inside the single quotation marks for the entire expression, but do not need to be enclosed in double quotation marks.).
 	* </pre>
 	*/
 	public String get_target() throws Exception {
@@ -126,8 +146,7 @@ For each action type the <target> is as defined below.
 
 	/**
 	* <pre>
-	* Name of the html page. htmlpage has to be imported via the 'import responder htmlpage' command.
-<br> Minimum length =  1
+	* For respondwithhtmlpage policies, name of the HTML page object to use as the response. You must first import the page object.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_htmlpage(String htmlpage) throws Exception{
@@ -136,8 +155,7 @@ For each action type the <target> is as defined below.
 
 	/**
 	* <pre>
-	* Name of the html page. htmlpage has to be imported via the 'import responder htmlpage' command.
-<br> Minimum length =  1
+	* For respondwithhtmlpage policies, name of the HTML page object to use as the response. You must first import the page object.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_htmlpage() throws Exception {
@@ -146,7 +164,7 @@ For each action type the <target> is as defined below.
 
 	/**
 	* <pre>
-	* Bypass the safety check and allow unsafe expressions.<br> Default value: NO<br> Possible values = YES, NO
+	* Bypass the safety check, allowing potentially unsafe expressions. An unsafe expression in a response is one that contains references to request elements that might not be present in all requests. If a response refers to a missing request element, an empty string is used instead.<br> Default value: NO<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public void set_bypasssafetycheck(String bypasssafetycheck) throws Exception{
@@ -155,7 +173,7 @@ For each action type the <target> is as defined below.
 
 	/**
 	* <pre>
-	* Bypass the safety check and allow unsafe expressions.<br> Default value: NO<br> Possible values = YES, NO
+	* Bypass the safety check, allowing potentially unsafe expressions. An unsafe expression in a response is one that contains references to request elements that might not be present in all requests. If a response refers to a missing request element, an empty string is used instead.<br> Default value: NO<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public String get_bypasssafetycheck() throws Exception {
@@ -164,7 +182,7 @@ For each action type the <target> is as defined below.
 
 	/**
 	* <pre>
-	* Comments associated with this responder action.
+	* Comment. Any type of information about this responder action.
 	* </pre>
 	*/
 	public void set_comment(String comment) throws Exception{
@@ -173,7 +191,7 @@ For each action type the <target> is as defined below.
 
 	/**
 	* <pre>
-	* Comments associated with this responder action.
+	* Comment. Any type of information about this responder action.
 	* </pre>
 	*/
 	public String get_comment() throws Exception {
@@ -182,7 +200,11 @@ For each action type the <target> is as defined below.
 
 	/**
 	* <pre>
-	* The new name of the responder action.<br> Minimum length =  1
+	* New name for the responder action.
+Must begin with a letter, number, or the underscore character (_), and must contain only letters, numbers, and the hyphen (-), period (.) hash (#), space ( ), at (@), equals (=), colon (:), and underscore characters.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my responder action" or my responder action').<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_newname(String newname) throws Exception{
@@ -191,7 +213,11 @@ For each action type the <target> is as defined below.
 
 	/**
 	* <pre>
-	* The new name of the responder action.<br> Minimum length =  1
+	* New name for the responder action.
+Must begin with a letter, number, or the underscore character (_), and must contain only letters, numbers, and the hyphen (-), period (.) hash (#), space ( ), at (@), equals (=), colon (:), and underscore characters.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my responder action" or my responder action').<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_newname() throws Exception {
@@ -390,20 +416,9 @@ For each action type the <target> is as defined below.
 	* Use this API to unset the properties of responderaction resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String name, String args[]) throws Exception {
-		responderaction unsetresource = new responderaction();
-		unsetresource.name = name;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of responderaction resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, responderaction resource, String[] args) throws Exception{
 		responderaction unsetresource = new responderaction();
 		unsetresource.name = resource.name;
-		unsetresource.comment = resource.comment;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -435,7 +450,6 @@ For each action type the <target> is as defined below.
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new responderaction();
 				unsetresources[i].name = resources[i].name;
-				unsetresources[i].comment = resources[i].comment;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}

@@ -33,7 +33,7 @@ class channel_interface_binding_response extends base_response
 public class channel_interface_binding extends base_resource
 {
 	private String[] ifnum;
-	private String mode;
+	private String lamode;
 	private Long slavestate;
 	private Long slavemedia;
 	private Long slavespeed;
@@ -45,7 +45,7 @@ public class channel_interface_binding extends base_resource
 
 	/**
 	* <pre>
-	* LA channel name (in form LA/* or CLA/* for Cluster LA).
+	* ID of the LA channel or the cluster LA channel to which you want to bind interfaces. Specify an LA channel in LA/x notation or a cluster LA channel in CLA/x notation, where x can range from 1 to 4.
 	* </pre>
 	*/
 	public void set_id(String id) throws Exception{
@@ -54,7 +54,7 @@ public class channel_interface_binding extends base_resource
 
 	/**
 	* <pre>
-	* LA channel name (in form LA/* or CLA/* for Cluster LA).
+	* ID of the LA channel or the cluster LA channel to which you want to bind interfaces. Specify an LA channel in LA/x notation or a cluster LA channel in CLA/x notation, where x can range from 1 to 4.
 	* </pre>
 	*/
 	public String get_id() throws Exception {
@@ -63,7 +63,16 @@ public class channel_interface_binding extends base_resource
 
 	/**
 	* <pre>
-	* The interfaces to be bound to Link Aggregate channel.
+	* Interfaces to be bound to the LA channel of a NetScaler appliance or to the LA channel of a cluster configuration.
+For an LA channel of a NetScaler appliance, specify an interface in C/U notation (for example, 1/3). 
+For an LA channel of a cluster configuration, specify an interface in N/C/U notation (for example, 2/1/3).
+where C can take one of the following values:
+* 0 - Indicates a management interface.
+* 1 - Indicates a 1 Gbps port.
+* 10 - Indicates a 10 Gbps port.
+U is a unique integer for representing an interface in a particular port group.
+N is the ID of the node to which an interface belongs in a cluster configuration.
+Use spaces to separate multiple entries.
 	* </pre>
 	*/
 	public void set_ifnum(String[] ifnum) throws Exception{
@@ -72,7 +81,16 @@ public class channel_interface_binding extends base_resource
 
 	/**
 	* <pre>
-	* The interfaces to be bound to Link Aggregate channel.
+	* Interfaces to be bound to the LA channel of a NetScaler appliance or to the LA channel of a cluster configuration.
+For an LA channel of a NetScaler appliance, specify an interface in C/U notation (for example, 1/3). 
+For an LA channel of a cluster configuration, specify an interface in N/C/U notation (for example, 2/1/3).
+where C can take one of the following values:
+* 0 - Indicates a management interface.
+* 1 - Indicates a 1 Gbps port.
+* 10 - Indicates a 10 Gbps port.
+U is a unique integer for representing an interface in a particular port group.
+N is the ID of the node to which an interface belongs in a cluster configuration.
+Use spaces to separate multiple entries.
 	* </pre>
 	*/
 	public String[] get_ifnum() throws Exception {
@@ -81,11 +99,11 @@ public class channel_interface_binding extends base_resource
 
 	/**
 	* <pre>
-	* The initital mode for the LA channel.<br> Possible values = MANUAL, AUTO
+	* The  mode(AUTO/MANNUAL) for the LA channel.<br> Possible values = MANUAL, AUTO
 	* </pre>
 	*/
-	public String get_mode() throws Exception {
-		return this.mode;
+	public String get_lamode() throws Exception {
+		return this.lamode;
 	}
 
 	/**
@@ -303,7 +321,7 @@ public class channel_interface_binding extends base_resource
 		return 0;
 	}
 
-	public static class modeEnum {
+	public static class lamodeEnum {
 		public static final String MANUAL = "MANUAL";
 		public static final String AUTO = "AUTO";
 	}

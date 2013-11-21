@@ -33,6 +33,7 @@ class lacp_response extends base_response
 public class lacp extends base_resource
 {
 	private Long syspriority;
+	private Long ownernode;
 
 	//------- Read only Parameter ---------;
 
@@ -46,7 +47,7 @@ public class lacp extends base_resource
 
 	/**
 	* <pre>
-	* LACP system priority.<br> Default value: 32768<br> Minimum value =  1<br> Maximum value =  65535
+	* Priority number that determines which peer device of an LACP LA channel can have control over the LA channel. This parameter is globally applied to all LACP channels on the NetScaler appliance. The lower the number, the higher the priority.<br> Default value: 32768<br> Minimum value =  1<br> Maximum value =  65535
 	* </pre>
 	*/
 	public void set_syspriority(long syspriority) throws Exception {
@@ -55,7 +56,7 @@ public class lacp extends base_resource
 
 	/**
 	* <pre>
-	* LACP system priority.<br> Default value: 32768<br> Minimum value =  1<br> Maximum value =  65535
+	* Priority number that determines which peer device of an LACP LA channel can have control over the LA channel. This parameter is globally applied to all LACP channels on the NetScaler appliance. The lower the number, the higher the priority.<br> Default value: 32768<br> Minimum value =  1<br> Maximum value =  65535
 	* </pre>
 	*/
 	public void set_syspriority(Long syspriority) throws Exception{
@@ -64,11 +65,38 @@ public class lacp extends base_resource
 
 	/**
 	* <pre>
-	* LACP system priority.<br> Default value: 32768<br> Minimum value =  1<br> Maximum value =  65535
+	* Priority number that determines which peer device of an LACP LA channel can have control over the LA channel. This parameter is globally applied to all LACP channels on the NetScaler appliance. The lower the number, the higher the priority.<br> Default value: 32768<br> Minimum value =  1<br> Maximum value =  65535
 	* </pre>
 	*/
 	public Long get_syspriority() throws Exception {
 		return this.syspriority;
+	}
+
+	/**
+	* <pre>
+	* The owner node in a cluster for which we want to set the lacp priority. Owner node can vary from 0 to 31. Ownernode value of 254 is used for Cluster.<br> Default value: 255
+	* </pre>
+	*/
+	public void set_ownernode(long ownernode) throws Exception {
+		this.ownernode = new Long(ownernode);
+	}
+
+	/**
+	* <pre>
+	* The owner node in a cluster for which we want to set the lacp priority. Owner node can vary from 0 to 31. Ownernode value of 254 is used for Cluster.<br> Default value: 255
+	* </pre>
+	*/
+	public void set_ownernode(Long ownernode) throws Exception{
+		this.ownernode = ownernode;
+	}
+
+	/**
+	* <pre>
+	* The owner node in a cluster for which we want to set the lacp priority. Owner node can vary from 0 to 31. Ownernode value of 254 is used for Cluster.<br> Default value: 255
+	* </pre>
+	*/
+	public Long get_ownernode() throws Exception {
+		return this.ownernode;
 	}
 
 	/**
@@ -156,6 +184,9 @@ public class lacp extends base_resource
 	*/
 
 	protected String get_object_name() {
+		if(this.ownernode != null) {
+			return this.ownernode.toString();
+		}
 		return null;
 	}
 
@@ -165,6 +196,7 @@ public class lacp extends base_resource
 	public static base_response update(nitro_service client, lacp resource) throws Exception {
 		lacp updateresource = new lacp();
 		updateresource.syspriority = resource.syspriority;
+		updateresource.ownernode = resource.ownernode;
 		return updateresource.update_resource(client);
 	}
 
@@ -178,6 +210,7 @@ public class lacp extends base_resource
 			for (int i=0;i<resources.length;i++){
 				updateresources[i] = new lacp();
 				updateresources[i].syspriority = resources[i].syspriority;
+				updateresources[i].ownernode = resources[i].ownernode;
 			}
 			result = update_bulk_request(client, updateresources);
 		}
@@ -199,6 +232,32 @@ public class lacp extends base_resource
 		lacp obj = new lacp();
 		lacp[] response = (lacp[])obj.get_resources(service,option);
 		return response;
+	}
+	/**
+	* Use this API to fetch lacp resource of given name .
+	*/
+	public static lacp get(nitro_service service, Long ownernode) throws Exception{
+		lacp obj = new lacp();
+		obj.set_ownernode(ownernode);
+		lacp response = (lacp) obj.get_resource(service);
+		return response;
+	}
+
+	/**
+	* Use this API to fetch lacp resources of given names .
+	*/
+	public static lacp[] get(nitro_service service, Long ownernode[]) throws Exception{
+		if (ownernode !=null && ownernode.length>0) {
+			lacp response[] = new lacp[ownernode.length];
+			lacp obj[] = new lacp[ownernode.length];
+			for (int i=0;i<ownernode.length;i++) {
+				obj[i] = new lacp();
+				obj[i].set_ownernode(ownernode[i]);
+				response[i] = (lacp) obj[i].get_resource(service);
+			}
+			return response;
+		}
+		return null;
 	}
 	/**
 	* Use this API to fetch filtered set of lacp resources.

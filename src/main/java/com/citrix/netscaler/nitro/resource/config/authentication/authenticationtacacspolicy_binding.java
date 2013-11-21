@@ -44,7 +44,7 @@ public class authenticationtacacspolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the TACACS+ policy. If no name is given, all of the configured TACACS+ policies are displayed.<br> Minimum length =  1
+	* Name of the TACACS+ policy.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -53,7 +53,7 @@ public class authenticationtacacspolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the TACACS+ policy. If no name is given, all of the configured TACACS+ policies are displayed.<br> Minimum length =  1
+	* Name of the TACACS+ policy.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {

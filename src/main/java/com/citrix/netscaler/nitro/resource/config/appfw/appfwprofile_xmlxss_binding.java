@@ -60,7 +60,7 @@ public class appfwprofile_xmlxss_binding extends base_resource
 
 	/**
 	* <pre>
-	* Application Firewall profile name.<br> Minimum length =  1
+	* Name of the profile to which to bind an exemption or rule.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -69,7 +69,7 @@ public class appfwprofile_xmlxss_binding extends base_resource
 
 	/**
 	* <pre>
-	* Application Firewall profile name.<br> Minimum length =  1
+	* Name of the profile to which to bind an exemption or rule.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -114,7 +114,7 @@ public class appfwprofile_xmlxss_binding extends base_resource
 
 	/**
 	* <pre>
-	* Comments associated with this profile.
+	* Any comments about the purpose of profile, or other useful information about the profile.
 	* </pre>
 	*/
 	public void set_comment(String comment) throws Exception{
@@ -123,7 +123,7 @@ public class appfwprofile_xmlxss_binding extends base_resource
 
 	/**
 	* <pre>
-	* Comments associated with this profile.
+	* Any comments about the purpose of profile, or other useful information about the profile.
 	* </pre>
 	*/
 	public String get_comment() throws Exception {
@@ -132,7 +132,11 @@ public class appfwprofile_xmlxss_binding extends base_resource
 
 	/**
 	* <pre>
-	* XML XSS Injection exemption field, this can be an element or an attribute name.
+	* Exempt the specified URL from the XML cross-site scripting (XSS) check.
+An XML cross-site scripting exemption (relaxation) consists of the following items:
+* URL. URL to exempt, as a string or a PCRE-format regular expression.
+* ISREGEX flag. REGEX if URL is a regular expression, NOTREGEX if URL is a fixed string.
+* Location. ELEMENT if the attachment is located in an XML element, ATTRIBUTE if located in an XML attribute.
 	* </pre>
 	*/
 	public void set_xmlxss(String xmlxss) throws Exception{
@@ -141,7 +145,11 @@ public class appfwprofile_xmlxss_binding extends base_resource
 
 	/**
 	* <pre>
-	* XML XSS Injection exemption field, this can be an element or an attribute name.
+	* Exempt the specified URL from the XML cross-site scripting (XSS) check.
+An XML cross-site scripting exemption (relaxation) consists of the following items:
+* URL. URL to exempt, as a string or a PCRE-format regular expression.
+* ISREGEX flag. REGEX if URL is a regular expression, NOTREGEX if URL is a fixed string.
+* Location. ELEMENT if the attachment is located in an XML element, ATTRIBUTE if located in an XML attribute.
 	* </pre>
 	*/
 	public String get_xmlxss() throws Exception {

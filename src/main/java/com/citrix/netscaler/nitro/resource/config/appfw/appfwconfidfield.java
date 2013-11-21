@@ -41,7 +41,7 @@ public class appfwconfidfield extends base_resource
 
 	/**
 	* <pre>
-	* Form field name.<br> Minimum length =  1
+	* Name of the form field to designate as confidential.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_fieldname(String fieldname) throws Exception{
@@ -50,7 +50,7 @@ public class appfwconfidfield extends base_resource
 
 	/**
 	* <pre>
-	* Form field name.<br> Minimum length =  1
+	* Name of the form field to designate as confidential.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_fieldname() throws Exception {
@@ -59,7 +59,7 @@ public class appfwconfidfield extends base_resource
 
 	/**
 	* <pre>
-	* Form action URL.<br> Minimum length =  1
+	* URL of the web page that contains the web form.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_url(String url) throws Exception{
@@ -68,7 +68,7 @@ public class appfwconfidfield extends base_resource
 
 	/**
 	* <pre>
-	* Form action URL.<br> Minimum length =  1
+	* URL of the web page that contains the web form.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_url() throws Exception {
@@ -77,7 +77,9 @@ public class appfwconfidfield extends base_resource
 
 	/**
 	* <pre>
-	* Is field name a regular expression?.<br> Default value: NS_NOTREGEX<br> Possible values = REGEX, NOTREGEX
+	* Method of specifying the form field name. Available settings function as follows:
+* REGEX. Form field is a regular expression.
+* NOTREGEX. Form field is a literal string.<br> Default value: NOTREGEX<br> Possible values = REGEX, NOTREGEX
 	* </pre>
 	*/
 	public void set_isregex(String isregex) throws Exception{
@@ -86,7 +88,9 @@ public class appfwconfidfield extends base_resource
 
 	/**
 	* <pre>
-	* Is field name a regular expression?.<br> Default value: NS_NOTREGEX<br> Possible values = REGEX, NOTREGEX
+	* Method of specifying the form field name. Available settings function as follows:
+* REGEX. Form field is a regular expression.
+* NOTREGEX. Form field is a literal string.<br> Default value: NOTREGEX<br> Possible values = REGEX, NOTREGEX
 	* </pre>
 	*/
 	public String get_isregex() throws Exception {
@@ -95,7 +99,7 @@ public class appfwconfidfield extends base_resource
 
 	/**
 	* <pre>
-	* Comments associated with this confidential form field.
+	* Any comments to preserve information about the form field designation.
 	* </pre>
 	*/
 	public void set_comment(String comment) throws Exception{
@@ -104,7 +108,7 @@ public class appfwconfidfield extends base_resource
 
 	/**
 	* <pre>
-	* Comments associated with this confidential form field.
+	* Any comments to preserve information about the form field designation.
 	* </pre>
 	*/
 	public String get_comment() throws Exception {
@@ -113,7 +117,7 @@ public class appfwconfidfield extends base_resource
 
 	/**
 	* <pre>
-	* Enabled.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Enable or disable the confidential field designation.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_state(String state) throws Exception{
@@ -122,7 +126,7 @@ public class appfwconfidfield extends base_resource
 
 	/**
 	* <pre>
-	* Enabled.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Enable or disable the confidential field designation.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_state() throws Exception {
@@ -283,40 +287,11 @@ public class appfwconfidfield extends base_resource
 	* Use this API to unset the properties of appfwconfidfield resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String fieldname, String args[]) throws Exception {
-		appfwconfidfield unsetresource = new appfwconfidfield();
-		unsetresource.fieldname = fieldname;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of appfwconfidfield resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, appfwconfidfield resource, String[] args) throws Exception{
 		appfwconfidfield unsetresource = new appfwconfidfield();
 		unsetresource.fieldname = resource.fieldname;
 		unsetresource.url = resource.url;
-		unsetresource.comment = resource.comment;
-		unsetresource.state = resource.state;
 		return unsetresource.unset_resource(client,args);
-	}
-
-	/**
-	* Use this API to unset the properties of appfwconfidfield resources.
-	* Properties that need to be unset are specified in args array.
-	*/
-	public static base_responses unset(nitro_service client, String fieldname[], String args[]) throws Exception {
-		base_responses result = null;
-		if (fieldname != null && fieldname.length > 0) {
-			appfwconfidfield unsetresources[] = new appfwconfidfield[fieldname.length];
-			for (int i=0;i<fieldname.length;i++){
-				unsetresources[i] = new appfwconfidfield();
-				unsetresources[i].fieldname = fieldname[i];
-			}
-			result = unset_bulk_request(client, unsetresources,args);
-		}
-		return result;
 	}
 
 	/**
@@ -331,8 +306,6 @@ public class appfwconfidfield extends base_resource
 				unsetresources[i] = new appfwconfidfield();
 				unsetresources[i].fieldname = resources[i].fieldname;
 				unsetresources[i].url = resources[i].url;
-				unsetresources[i].comment = resources[i].comment;
-				unsetresources[i].state = resources[i].state;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}

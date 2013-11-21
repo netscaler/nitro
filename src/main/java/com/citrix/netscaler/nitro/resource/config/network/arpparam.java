@@ -37,7 +37,7 @@ public class arpparam extends base_resource
 
 	/**
 	* <pre>
-	* The ARP table entry aging time, in seconds. Dynamic ARP entries are automatically removed after the specified amount of time.<br> Default value: 1200<br> Minimum value =  5<br> Maximum value =  1200
+	* Time-out value (aging time) for the dynamically learned ARP entries, in seconds. The new value applies only to ARP entries that are dynamically learned after the new value is set. Previously existing ARP entries expire after the previously configured aging time.<br> Default value: 1200<br> Minimum value =  5<br> Maximum value =  1200
 	* </pre>
 	*/
 	public void set_timeout(long timeout) throws Exception {
@@ -46,7 +46,7 @@ public class arpparam extends base_resource
 
 	/**
 	* <pre>
-	* The ARP table entry aging time, in seconds. Dynamic ARP entries are automatically removed after the specified amount of time.<br> Default value: 1200<br> Minimum value =  5<br> Maximum value =  1200
+	* Time-out value (aging time) for the dynamically learned ARP entries, in seconds. The new value applies only to ARP entries that are dynamically learned after the new value is set. Previously existing ARP entries expire after the previously configured aging time.<br> Default value: 1200<br> Minimum value =  5<br> Maximum value =  1200
 	* </pre>
 	*/
 	public void set_timeout(Long timeout) throws Exception{
@@ -55,7 +55,7 @@ public class arpparam extends base_resource
 
 	/**
 	* <pre>
-	* The ARP table entry aging time, in seconds. Dynamic ARP entries are automatically removed after the specified amount of time.<br> Default value: 1200<br> Minimum value =  5<br> Maximum value =  1200
+	* Time-out value (aging time) for the dynamically learned ARP entries, in seconds. The new value applies only to ARP entries that are dynamically learned after the new value is set. Previously existing ARP entries expire after the previously configured aging time.<br> Default value: 1200<br> Minimum value =  5<br> Maximum value =  1200
 	* </pre>
 	*/
 	public Long get_timeout() throws Exception {
@@ -132,8 +132,6 @@ public class arpparam extends base_resource
 	*/
 	public static base_response unset(nitro_service client, arpparam resource, String[] args) throws Exception{
 		arpparam unsetresource = new arpparam();
-		unsetresource.timeout = resource.timeout;
-		unsetresource.spoofvalidation = resource.spoofvalidation;
 		return unsetresource.unset_resource(client,args);
 	}
 

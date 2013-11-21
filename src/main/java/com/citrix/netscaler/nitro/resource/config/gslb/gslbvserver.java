@@ -58,6 +58,7 @@ public class gslbvserver extends base_resource
 	private String sopersistence;
 	private Long sopersistencetimeout;
 	private Long sothreshold;
+	private String sobackupaction;
 	private String appflowlog;
 	private String backupvserver;
 	private String servicename;
@@ -76,18 +77,24 @@ public class gslbvserver extends base_resource
 	private Integer status;
 	private Integer lbrrreason;
 	private String iscname;
-	private String sitepersistence;
 	private Long totalservices;
 	private Long activeservices;
 	private String statechangetimesec;
 	private Long statechangetimemsec;
 	private Long tickssincelaststatechange;
 	private Long health;
+	private String policyname;
+	private Long priority;
+	private String gotopriorityexpression;
+	private String type;
 	private Long __count;
 
 	/**
 	* <pre>
-	* The virtual server name.<br> Minimum length =  1
+	* Name for the GSLB virtual server. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Can be changed after the virtual server is created.
+
+CLI Users:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my vserver" or 'my vserver').<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -96,7 +103,10 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* The virtual server name.<br> Minimum length =  1
+	* Name for the GSLB virtual server. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Can be changed after the virtual server is created.
+
+CLI Users:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my vserver" or 'my vserver').<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -105,7 +115,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* The service type of the virtual server.<br> Possible values = HTTP, FTP, TCP, UDP, SSL, SSL_BRIDGE, SSL_TCP, NNTP, ANY, SIP_UDP, RADIUS, RDP, RTSP, MYSQL, MSSQL
+	* Protocol used by services bound to the virtual server.<br> Possible values = HTTP, FTP, TCP, UDP, SSL, SSL_BRIDGE, SSL_TCP, NNTP, ANY, SIP_UDP, RADIUS, RDP, RTSP, MYSQL, MSSQL
 	* </pre>
 	*/
 	public void set_servicetype(String servicetype) throws Exception{
@@ -114,7 +124,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* The service type of the virtual server.<br> Possible values = HTTP, FTP, TCP, UDP, SSL, SSL_BRIDGE, SSL_TCP, NNTP, ANY, SIP_UDP, RADIUS, RDP, RTSP, MYSQL, MSSQL
+	* Protocol used by services bound to the virtual server.<br> Possible values = HTTP, FTP, TCP, UDP, SSL, SSL_BRIDGE, SSL_TCP, NNTP, ANY, SIP_UDP, RADIUS, RDP, RTSP, MYSQL, MSSQL
 	* </pre>
 	*/
 	public String get_servicetype() throws Exception {
@@ -123,7 +133,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* The IP type for this GSLB vserver.<br> Default value: NSGSLB_IPV4<br> Possible values = IPV4, IPV6
+	* The IP type for this GSLB vserver.<br> Default value: IPV4<br> Possible values = IPV4, IPV6
 	* </pre>
 	*/
 	public void set_iptype(String iptype) throws Exception{
@@ -132,7 +142,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* The IP type for this GSLB vserver.<br> Default value: NSGSLB_IPV4<br> Possible values = IPV4, IPV6
+	* The IP type for this GSLB vserver.<br> Default value: IPV4<br> Possible values = IPV4, IPV6
 	* </pre>
 	*/
 	public String get_iptype() throws Exception {
@@ -141,7 +151,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* Record type for GSLB vserver.<br> Default value: NSGSLB_A<br> Possible values = A, AAAA, CNAME
+	* DNS record type to associate with the GSLB virtual server's domain name.<br> Default value: A<br> Possible values = A, AAAA, CNAME
 	* </pre>
 	*/
 	public void set_dnsrecordtype(String dnsrecordtype) throws Exception{
@@ -150,7 +160,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* Record type for GSLB vserver.<br> Default value: NSGSLB_A<br> Possible values = A, AAAA, CNAME
+	* DNS record type to associate with the GSLB virtual server's domain name.<br> Default value: A<br> Possible values = A, AAAA, CNAME
 	* </pre>
 	*/
 	public String get_dnsrecordtype() throws Exception {
@@ -159,7 +169,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* The load balancing method for the virtual server.The valid options for this parameter are: ROUNDROBIN, LEASTCONNECTION, LEASTRESPONSETIME, SOURCEIPHASH, LEASTBANDWIDTH, LEASTPACKETS, STATICPROXIMITY, RTT , CUSTOMLOAD.<br> Default value: PEMGMT_LB_LEASTCONNS<br> Possible values = ROUNDROBIN, LEASTCONNECTION, LEASTRESPONSETIME, SOURCEIPHASH, LEASTBANDWIDTH, LEASTPACKETS, STATICPROXIMITY, RTT, CUSTOMLOAD
+	* Load balancing method for the GSLB virtual server.<br> Default value: LEASTCONNECTION<br> Possible values = ROUNDROBIN, LEASTCONNECTION, LEASTRESPONSETIME, SOURCEIPHASH, LEASTBANDWIDTH, LEASTPACKETS, STATICPROXIMITY, RTT, CUSTOMLOAD
 	* </pre>
 	*/
 	public void set_lbmethod(String lbmethod) throws Exception{
@@ -168,7 +178,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* The load balancing method for the virtual server.The valid options for this parameter are: ROUNDROBIN, LEASTCONNECTION, LEASTRESPONSETIME, SOURCEIPHASH, LEASTBANDWIDTH, LEASTPACKETS, STATICPROXIMITY, RTT , CUSTOMLOAD.<br> Default value: PEMGMT_LB_LEASTCONNS<br> Possible values = ROUNDROBIN, LEASTCONNECTION, LEASTRESPONSETIME, SOURCEIPHASH, LEASTBANDWIDTH, LEASTPACKETS, STATICPROXIMITY, RTT, CUSTOMLOAD
+	* Load balancing method for the GSLB virtual server.<br> Default value: LEASTCONNECTION<br> Possible values = ROUNDROBIN, LEASTCONNECTION, LEASTRESPONSETIME, SOURCEIPHASH, LEASTBANDWIDTH, LEASTPACKETS, STATICPROXIMITY, RTT, CUSTOMLOAD
 	* </pre>
 	*/
 	public String get_lbmethod() throws Exception {
@@ -204,7 +214,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* The load balancing method for the virtual server, in case the primary lb method fails on impossible to perform. The valid options for this parameter are: ROUNDROBIN, LEASTCONNECTION, LEASTRESPONSETIME, SOURCEIPHASH, LEASTBANDWIDTH, LEASTPACKETS, STATICPROXIMITY, RTT , CUSTOMLOAD.<br> Possible values = ROUNDROBIN, LEASTCONNECTION, LEASTRESPONSETIME, SOURCEIPHASH, LEASTBANDWIDTH, LEASTPACKETS, STATICPROXIMITY, RTT, CUSTOMLOAD
+	* Backup load balancing method. Becomes operational if the primary load balancing method fails or cannot be used. Valid only if the primary method is based on either round-trip time (RTT) or static proximity.<br> Possible values = ROUNDROBIN, LEASTCONNECTION, LEASTRESPONSETIME, SOURCEIPHASH, LEASTBANDWIDTH, LEASTPACKETS, STATICPROXIMITY, RTT, CUSTOMLOAD
 	* </pre>
 	*/
 	public void set_backuplbmethod(String backuplbmethod) throws Exception{
@@ -213,7 +223,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* The load balancing method for the virtual server, in case the primary lb method fails on impossible to perform. The valid options for this parameter are: ROUNDROBIN, LEASTCONNECTION, LEASTRESPONSETIME, SOURCEIPHASH, LEASTBANDWIDTH, LEASTPACKETS, STATICPROXIMITY, RTT , CUSTOMLOAD.<br> Possible values = ROUNDROBIN, LEASTCONNECTION, LEASTRESPONSETIME, SOURCEIPHASH, LEASTBANDWIDTH, LEASTPACKETS, STATICPROXIMITY, RTT, CUSTOMLOAD
+	* Backup load balancing method. Becomes operational if the primary load balancing method fails or cannot be used. Valid only if the primary method is based on either round-trip time (RTT) or static proximity.<br> Possible values = ROUNDROBIN, LEASTCONNECTION, LEASTRESPONSETIME, SOURCEIPHASH, LEASTBANDWIDTH, LEASTPACKETS, STATICPROXIMITY, RTT, CUSTOMLOAD
 	* </pre>
 	*/
 	public String get_backuplbmethod() throws Exception {
@@ -222,7 +232,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* The netmask to be used in the SOURCEIPHASH policy. The default is 255.255.255.255 .<br> Minimum length =  1
+	* IPv4 network mask for use in the SOURCEIPHASH load balancing method.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_netmask(String netmask) throws Exception{
@@ -231,7 +241,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* The netmask to be used in the SOURCEIPHASH policy. The default is 255.255.255.255 .<br> Minimum length =  1
+	* IPv4 network mask for use in the SOURCEIPHASH load balancing method.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_netmask() throws Exception {
@@ -240,7 +250,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* The Network mask. Use this parameter if you are setting the DESTINATIONIPHASH or SOURCEIPHASH policy. Enter the netmask to be used in modifying the destination or source IP address or network.<br> Default value: 128<br> Minimum value =  1<br> Maximum value =  128
+	* Number of bits to consider, in an IPv6 source IP address, for creating the hash that is required by the SOURCEIPHASH load balancing method.<br> Default value: 128<br> Minimum value =  1<br> Maximum value =  128
 	* </pre>
 	*/
 	public void set_v6netmasklen(long v6netmasklen) throws Exception {
@@ -249,7 +259,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* The Network mask. Use this parameter if you are setting the DESTINATIONIPHASH or SOURCEIPHASH policy. Enter the netmask to be used in modifying the destination or source IP address or network.<br> Default value: 128<br> Minimum value =  1<br> Maximum value =  128
+	* Number of bits to consider, in an IPv6 source IP address, for creating the hash that is required by the SOURCEIPHASH load balancing method.<br> Default value: 128<br> Minimum value =  1<br> Maximum value =  128
 	* </pre>
 	*/
 	public void set_v6netmasklen(Long v6netmasklen) throws Exception{
@@ -258,7 +268,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* The Network mask. Use this parameter if you are setting the DESTINATIONIPHASH or SOURCEIPHASH policy. Enter the netmask to be used in modifying the destination or source IP address or network.<br> Default value: 128<br> Minimum value =  1<br> Maximum value =  128
+	* Number of bits to consider, in an IPv6 source IP address, for creating the hash that is required by the SOURCEIPHASH load balancing method.<br> Default value: 128<br> Minimum value =  1<br> Maximum value =  128
 	* </pre>
 	*/
 	public Long get_v6netmasklen() throws Exception {
@@ -267,7 +277,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* The Site selection tolerance is the maximum deviation (in milliseconds) in the RTT value, which the system can tolerate, while deciding the best site  for a domain. This value enables the system to implement the Round Robin method of GSLB between sites that have RTT values within this permissible limit. The tolerance value is required only if the LB method is RTT. The default tolerance value is 0.<br> Minimum value =  0<br> Maximum value =  100
+	* Site selection tolerance, in milliseconds, for implementing the RTT load balancing method. If a site's RTT deviates from the lowest RTT by more than the specified tolerance, the site is not considered when the NetScaler appliance makes a GSLB decision. The appliance implements the round robin method of global server load balancing between sites whose RTT values are within the specified tolerance. If the tolerance is 0 (zero), the appliance always sends clients the IP address of the site with the lowest RTT.<br> Minimum value =  0<br> Maximum value =  100
 	* </pre>
 	*/
 	public void set_tolerance(long tolerance) throws Exception {
@@ -276,7 +286,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* The Site selection tolerance is the maximum deviation (in milliseconds) in the RTT value, which the system can tolerate, while deciding the best site  for a domain. This value enables the system to implement the Round Robin method of GSLB between sites that have RTT values within this permissible limit. The tolerance value is required only if the LB method is RTT. The default tolerance value is 0.<br> Minimum value =  0<br> Maximum value =  100
+	* Site selection tolerance, in milliseconds, for implementing the RTT load balancing method. If a site's RTT deviates from the lowest RTT by more than the specified tolerance, the site is not considered when the NetScaler appliance makes a GSLB decision. The appliance implements the round robin method of global server load balancing between sites whose RTT values are within the specified tolerance. If the tolerance is 0 (zero), the appliance always sends clients the IP address of the site with the lowest RTT.<br> Minimum value =  0<br> Maximum value =  100
 	* </pre>
 	*/
 	public void set_tolerance(Long tolerance) throws Exception{
@@ -285,7 +295,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* The Site selection tolerance is the maximum deviation (in milliseconds) in the RTT value, which the system can tolerate, while deciding the best site  for a domain. This value enables the system to implement the Round Robin method of GSLB between sites that have RTT values within this permissible limit. The tolerance value is required only if the LB method is RTT. The default tolerance value is 0.<br> Minimum value =  0<br> Maximum value =  100
+	* Site selection tolerance, in milliseconds, for implementing the RTT load balancing method. If a site's RTT deviates from the lowest RTT by more than the specified tolerance, the site is not considered when the NetScaler appliance makes a GSLB decision. The appliance implements the round robin method of global server load balancing between sites whose RTT values are within the specified tolerance. If the tolerance is 0 (zero), the appliance always sends clients the IP address of the site with the lowest RTT.<br> Minimum value =  0<br> Maximum value =  100
 	* </pre>
 	*/
 	public Long get_tolerance() throws Exception {
@@ -294,7 +304,8 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* The persistence type for the virtual server. This has 2 options: SOURCEIP and NONE .<br> Possible values = SOURCEIP, NONE
+	* Use source IP address based persistence for the virtual server. 
+After the load balancing method selects a service for the first packet, the IP address received in response to the DNS query is used for subsequent requests from the same client.<br> Possible values = SOURCEIP, NONE
 	* </pre>
 	*/
 	public void set_persistencetype(String persistencetype) throws Exception{
@@ -303,7 +314,8 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* The persistence type for the virtual server. This has 2 options: SOURCEIP and NONE .<br> Possible values = SOURCEIP, NONE
+	* Use source IP address based persistence for the virtual server. 
+After the load balancing method selects a service for the first packet, the IP address received in response to the DNS query is used for subsequent requests from the same client.<br> Possible values = SOURCEIP, NONE
 	* </pre>
 	*/
 	public String get_persistencetype() throws Exception {
@@ -312,7 +324,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* The Persistence Id. This parameter is a positive integer which is used to identify the GSLB VIP on all sites. This is a required argument if SOURCEIP based persistency is enabled.<br> Minimum value =  0<br> Maximum value =  65535
+	* The persistence ID for the GSLB virtual server. The ID is a positive integer that enables GSLB sites to identify the GSLB virtual server, and is required if source IP address based or spill over based persistence is enabled on the virtual server.<br> Minimum value =  0<br> Maximum value =  65535
 	* </pre>
 	*/
 	public void set_persistenceid(long persistenceid) throws Exception {
@@ -321,7 +333,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* The Persistence Id. This parameter is a positive integer which is used to identify the GSLB VIP on all sites. This is a required argument if SOURCEIP based persistency is enabled.<br> Minimum value =  0<br> Maximum value =  65535
+	* The persistence ID for the GSLB virtual server. The ID is a positive integer that enables GSLB sites to identify the GSLB virtual server, and is required if source IP address based or spill over based persistence is enabled on the virtual server.<br> Minimum value =  0<br> Maximum value =  65535
 	* </pre>
 	*/
 	public void set_persistenceid(Long persistenceid) throws Exception{
@@ -330,7 +342,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* The Persistence Id. This parameter is a positive integer which is used to identify the GSLB VIP on all sites. This is a required argument if SOURCEIP based persistency is enabled.<br> Minimum value =  0<br> Maximum value =  65535
+	* The persistence ID for the GSLB virtual server. The ID is a positive integer that enables GSLB sites to identify the GSLB virtual server, and is required if source IP address based or spill over based persistence is enabled on the virtual server.<br> Minimum value =  0<br> Maximum value =  65535
 	* </pre>
 	*/
 	public Long get_persistenceid() throws Exception {
@@ -339,7 +351,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* The netmask to be used while SOURCEIP based persistency is ENABLED.This is an optional argument.<br> Minimum length =  1
+	* The optional IPv4 network mask applied to IPv4 addresses to establish source IP address based persistence.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_persistmask(String persistmask) throws Exception{
@@ -348,7 +360,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* The netmask to be used while SOURCEIP based persistency is ENABLED.This is an optional argument.<br> Minimum length =  1
+	* The optional IPv4 network mask applied to IPv4 addresses to establish source IP address based persistence.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_persistmask() throws Exception {
@@ -357,7 +369,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* The persistence mask. Use this parameter if you are using IP based persistence type on a ipv6 vserver.<br> Default value: 128<br> Minimum value =  1<br> Maximum value =  128
+	* Number of bits to consider in an IPv6 source IP address when creating source IP address based persistence sessions.<br> Default value: 128<br> Minimum value =  1<br> Maximum value =  128
 	* </pre>
 	*/
 	public void set_v6persistmasklen(long v6persistmasklen) throws Exception {
@@ -366,7 +378,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* The persistence mask. Use this parameter if you are using IP based persistence type on a ipv6 vserver.<br> Default value: 128<br> Minimum value =  1<br> Maximum value =  128
+	* Number of bits to consider in an IPv6 source IP address when creating source IP address based persistence sessions.<br> Default value: 128<br> Minimum value =  1<br> Maximum value =  128
 	* </pre>
 	*/
 	public void set_v6persistmasklen(Long v6persistmasklen) throws Exception{
@@ -375,7 +387,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* The persistence mask. Use this parameter if you are using IP based persistence type on a ipv6 vserver.<br> Default value: 128<br> Minimum value =  1<br> Maximum value =  128
+	* Number of bits to consider in an IPv6 source IP address when creating source IP address based persistence sessions.<br> Default value: 128<br> Minimum value =  1<br> Maximum value =  128
 	* </pre>
 	*/
 	public Long get_v6persistmasklen() throws Exception {
@@ -384,7 +396,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* The idle time out in minutes for the persistence entries.<br> Default value: 2<br> Minimum value =  2<br> Maximum value =  1440
+	* Idle time, in minutes, after which a persistence entry is cleared.<br> Default value: 2<br> Minimum value =  2<br> Maximum value =  1440
 	* </pre>
 	*/
 	public void set_timeout(long timeout) throws Exception {
@@ -393,7 +405,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* The idle time out in minutes for the persistence entries.<br> Default value: 2<br> Minimum value =  2<br> Maximum value =  1440
+	* Idle time, in minutes, after which a persistence entry is cleared.<br> Default value: 2<br> Minimum value =  2<br> Maximum value =  1440
 	* </pre>
 	*/
 	public void set_timeout(Long timeout) throws Exception{
@@ -402,7 +414,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* The idle time out in minutes for the persistence entries.<br> Default value: 2<br> Minimum value =  2<br> Maximum value =  1440
+	* Idle time, in minutes, after which a persistence entry is cleared.<br> Default value: 2<br> Minimum value =  2<br> Maximum value =  1440
 	* </pre>
 	*/
 	public Long get_timeout() throws Exception {
@@ -411,7 +423,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* Use this parameter to specify whether System will send empty DNS response when all the sites participating in GSLB are down.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Send clients an empty DNS response when the GSLB virtual server is DOWN.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_edr(String edr) throws Exception{
@@ -420,7 +432,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* Use this parameter to specify whether System will send empty DNS response when all the sites participating in GSLB are down.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Send clients an empty DNS response when the GSLB virtual server is DOWN.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_edr() throws Exception {
@@ -429,7 +441,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* Use this parameter to specify whether System can send Multiple IP addresses in the DNS response or not.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Include multiple IP addresses in the DNS responses sent to clients.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_mir(String mir) throws Exception{
@@ -438,7 +450,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* Use this parameter to specify whether System can send Multiple IP addresses in the DNS response or not.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Include multiple IP addresses in the DNS responses sent to clients.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_mir() throws Exception {
@@ -447,7 +459,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* When this feature is enabled we will continue to direct traffic to the backup chain even after the primary comes UP. Ideally one should use backup persistence if they want to stick to the same vserver in the chain.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Continue to direct traffic to the backup chain even after the primary GSLB virtual server returns to the UP state. Used when spillover is configured for the virtual server.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_disableprimaryondown(String disableprimaryondown) throws Exception{
@@ -456,7 +468,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* When this feature is enabled we will continue to direct traffic to the backup chain even after the primary comes UP. Ideally one should use backup persistence if they want to stick to the same vserver in the chain.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Continue to direct traffic to the backup chain even after the primary GSLB virtual server returns to the UP state. Used when spillover is configured for the virtual server.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_disableprimaryondown() throws Exception {
@@ -465,7 +477,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* Specifies whether we want to consider the svc count or the svc weights or ignore both.<br> Default value: DISABLED<br> Possible values = SERVICECOUNT, SERVICEWEIGHT, DISABLED
+	* Specify if the appliance should consider the service count, service weights, or ignore both when using weight-based load balancing methods. The state of the number of services bound to the virtual server help the appliance to select the service.<br> Default value: DISABLED<br> Possible values = SERVICECOUNT, SERVICEWEIGHT, DISABLED
 	* </pre>
 	*/
 	public void set_dynamicweight(String dynamicweight) throws Exception{
@@ -474,7 +486,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* Specifies whether we want to consider the svc count or the svc weights or ignore both.<br> Default value: DISABLED<br> Possible values = SERVICECOUNT, SERVICEWEIGHT, DISABLED
+	* Specify if the appliance should consider the service count, service weights, or ignore both when using weight-based load balancing methods. The state of the number of services bound to the virtual server help the appliance to select the service.<br> Default value: DISABLED<br> Possible values = SERVICECOUNT, SERVICEWEIGHT, DISABLED
 	* </pre>
 	*/
 	public String get_dynamicweight() throws Exception {
@@ -483,7 +495,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* State of the virtual server.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* State of the GSLB virtual server.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_state(String state) throws Exception{
@@ -492,7 +504,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* State of the virtual server.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* State of the GSLB virtual server.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_state() throws Exception {
@@ -501,7 +513,9 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* Specifies which backup to consider when the primary state of all gslb services bound to the vip are down. By specifying NONE we will not consider the effective state of the gslb service to determine the state of the gslb vip. If STATE_ONLY is chosen we will consider the effective state obtained via MEP to determine the state of the gslb vip.<br> Default value: NS_GSLB_DONOT_CONSIDER_BKPS<br> Possible values = NONE, STATE_ONLY
+	* If the primary state of all bound GSLB services is DOWN, consider the effective states of all the GSLB services, obtained through the Metrics Exchange Protocol (MEP), when determining the state of the GSLB virtual server. To consider the effective state, set the parameter to STATE_ONLY. To disregard the effective state, set the parameter to NONE. 
+
+The effective state of a GSLB service is the ability of the corresponding virtual server to serve traffic. The effective state of the load balancing virtual server, which is transferred to the GSLB service, is UP even if only one virtual server in the backup chain of virtual servers is in the UP state.<br> Default value: NONE<br> Possible values = NONE, STATE_ONLY
 	* </pre>
 	*/
 	public void set_considereffectivestate(String considereffectivestate) throws Exception{
@@ -510,7 +524,9 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* Specifies which backup to consider when the primary state of all gslb services bound to the vip are down. By specifying NONE we will not consider the effective state of the gslb service to determine the state of the gslb vip. If STATE_ONLY is chosen we will consider the effective state obtained via MEP to determine the state of the gslb vip.<br> Default value: NS_GSLB_DONOT_CONSIDER_BKPS<br> Possible values = NONE, STATE_ONLY
+	* If the primary state of all bound GSLB services is DOWN, consider the effective states of all the GSLB services, obtained through the Metrics Exchange Protocol (MEP), when determining the state of the GSLB virtual server. To consider the effective state, set the parameter to STATE_ONLY. To disregard the effective state, set the parameter to NONE. 
+
+The effective state of a GSLB service is the ability of the corresponding virtual server to serve traffic. The effective state of the load balancing virtual server, which is transferred to the GSLB service, is UP even if only one virtual server in the backup chain of virtual servers is in the UP state.<br> Default value: NONE<br> Possible values = NONE, STATE_ONLY
 	* </pre>
 	*/
 	public String get_considereffectivestate() throws Exception {
@@ -519,7 +535,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* Comments associated with this virtual server.
+	* Any comments that you might want to associate with the GSLB virtual server.
 	* </pre>
 	*/
 	public void set_comment(String comment) throws Exception{
@@ -528,7 +544,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* Comments associated with this virtual server.
+	* Any comments that you might want to associate with the GSLB virtual server.
 	* </pre>
 	*/
 	public String get_comment() throws Exception {
@@ -537,7 +553,12 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* The spillover factor based on which the traffic will be given to the backupvserver once the main virtual server reaches the spillover threshold.<br> Possible values = CONNECTION, DYNAMICCONNECTION, BANDWIDTH, HEALTH, NONE
+	* Type of threshold that, when exceeded, triggers spillover. Available settings function as follows:
+* CONNECTION - Spillover occurs when the number of client connections exceeds the threshold.
+* DYNAMICCONNECTION - Spillover occurs when the number of client connections at the GSLB virtual server exceeds the sum of the maximum client (Max Clients) settings for bound GSLB services. Do not specify a spillover threshold for this setting, because the threshold is implied by the Max Clients settings of the bound GSLB services.
+* BANDWIDTH - Spillover occurs when the bandwidth consumed by the GSLB virtual server's incoming and outgoing traffic exceeds the threshold. 
+* HEALTH - Spillover occurs when the percentage of weights of the GSLB services that are UP drops below the threshold. For example, if services gslbSvc1, gslbSvc2, and gslbSvc3 are bound to a virtual server, with weights 1, 2, and 3, and the spillover threshold is 50%, spillover occurs if gslbSvc1 and gslbSvc3 or gslbSvc2 and gslbSvc3 transition to DOWN. 
+* NONE - Spillover does not occur.<br> Possible values = CONNECTION, DYNAMICCONNECTION, BANDWIDTH, HEALTH, NONE
 	* </pre>
 	*/
 	public void set_somethod(String somethod) throws Exception{
@@ -546,7 +567,12 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* The spillover factor based on which the traffic will be given to the backupvserver once the main virtual server reaches the spillover threshold.<br> Possible values = CONNECTION, DYNAMICCONNECTION, BANDWIDTH, HEALTH, NONE
+	* Type of threshold that, when exceeded, triggers spillover. Available settings function as follows:
+* CONNECTION - Spillover occurs when the number of client connections exceeds the threshold.
+* DYNAMICCONNECTION - Spillover occurs when the number of client connections at the GSLB virtual server exceeds the sum of the maximum client (Max Clients) settings for bound GSLB services. Do not specify a spillover threshold for this setting, because the threshold is implied by the Max Clients settings of the bound GSLB services.
+* BANDWIDTH - Spillover occurs when the bandwidth consumed by the GSLB virtual server's incoming and outgoing traffic exceeds the threshold. 
+* HEALTH - Spillover occurs when the percentage of weights of the GSLB services that are UP drops below the threshold. For example, if services gslbSvc1, gslbSvc2, and gslbSvc3 are bound to a virtual server, with weights 1, 2, and 3, and the spillover threshold is 50%, spillover occurs if gslbSvc1 and gslbSvc3 or gslbSvc2 and gslbSvc3 transition to DOWN. 
+* NONE - Spillover does not occur.<br> Possible values = CONNECTION, DYNAMICCONNECTION, BANDWIDTH, HEALTH, NONE
 	* </pre>
 	*/
 	public String get_somethod() throws Exception {
@@ -555,7 +581,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* The state of the spillover persistence.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* If spillover occurs, maintain source IP address based persistence for both primary and backup GSLB virtual servers.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_sopersistence(String sopersistence) throws Exception{
@@ -564,7 +590,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* The state of the spillover persistence.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* If spillover occurs, maintain source IP address based persistence for both primary and backup GSLB virtual servers.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_sopersistence() throws Exception {
@@ -573,7 +599,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* The spillover persistency entry timeout.<br> Default value: 2<br> Minimum value =  2<br> Maximum value =  1440
+	* Timeout for spillover persistence, in minutes.<br> Default value: 2<br> Minimum value =  2<br> Maximum value =  1440
 	* </pre>
 	*/
 	public void set_sopersistencetimeout(long sopersistencetimeout) throws Exception {
@@ -582,7 +608,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* The spillover persistency entry timeout.<br> Default value: 2<br> Minimum value =  2<br> Maximum value =  1440
+	* Timeout for spillover persistence, in minutes.<br> Default value: 2<br> Minimum value =  2<br> Maximum value =  1440
 	* </pre>
 	*/
 	public void set_sopersistencetimeout(Long sopersistencetimeout) throws Exception{
@@ -591,7 +617,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* The spillover persistency entry timeout.<br> Default value: 2<br> Minimum value =  2<br> Maximum value =  1440
+	* Timeout for spillover persistence, in minutes.<br> Default value: 2<br> Minimum value =  2<br> Maximum value =  1440
 	* </pre>
 	*/
 	public Long get_sopersistencetimeout() throws Exception {
@@ -600,7 +626,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* In case of CONNECTION (or) DYNAMICCONNECTION type spillover method this value is treated as Maximum number of connections a lb vserver will handle before spillover takes place. In case of BANDWIDTH type spillover method this value is treated as the amount of incoming and outgoing traffic (in Kbps) a Vserver will handle before spillover takes place. In case of HEALTH type spillover method if the percentage of active services (by weight) becomes lower than this value, spillover takes place .<br> Minimum value =  1<br> Maximum value =  4294967287
+	* Threshold at which spillover occurs. Specify an integer for the CONNECTION spillover method, a bandwidth value in kilobits per second for the BANDWIDTH method (do not enter the units), or a percentage for the HEALTH method (do not enter the percentage symbol).<br> Minimum value =  1<br> Maximum value =  4294967287
 	* </pre>
 	*/
 	public void set_sothreshold(long sothreshold) throws Exception {
@@ -609,7 +635,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* In case of CONNECTION (or) DYNAMICCONNECTION type spillover method this value is treated as Maximum number of connections a lb vserver will handle before spillover takes place. In case of BANDWIDTH type spillover method this value is treated as the amount of incoming and outgoing traffic (in Kbps) a Vserver will handle before spillover takes place. In case of HEALTH type spillover method if the percentage of active services (by weight) becomes lower than this value, spillover takes place .<br> Minimum value =  1<br> Maximum value =  4294967287
+	* Threshold at which spillover occurs. Specify an integer for the CONNECTION spillover method, a bandwidth value in kilobits per second for the BANDWIDTH method (do not enter the units), or a percentage for the HEALTH method (do not enter the percentage symbol).<br> Minimum value =  1<br> Maximum value =  4294967287
 	* </pre>
 	*/
 	public void set_sothreshold(Long sothreshold) throws Exception{
@@ -618,11 +644,29 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* In case of CONNECTION (or) DYNAMICCONNECTION type spillover method this value is treated as Maximum number of connections a lb vserver will handle before spillover takes place. In case of BANDWIDTH type spillover method this value is treated as the amount of incoming and outgoing traffic (in Kbps) a Vserver will handle before spillover takes place. In case of HEALTH type spillover method if the percentage of active services (by weight) becomes lower than this value, spillover takes place .<br> Minimum value =  1<br> Maximum value =  4294967287
+	* Threshold at which spillover occurs. Specify an integer for the CONNECTION spillover method, a bandwidth value in kilobits per second for the BANDWIDTH method (do not enter the units), or a percentage for the HEALTH method (do not enter the percentage symbol).<br> Minimum value =  1<br> Maximum value =  4294967287
 	* </pre>
 	*/
 	public Long get_sothreshold() throws Exception {
 		return this.sothreshold;
+	}
+
+	/**
+	* <pre>
+	* Action to be performed if spillover is to take effect, but no backup chain to spillover is usable or exists.<br> Possible values = DROP, ACCEPT, REDIRECT
+	* </pre>
+	*/
+	public void set_sobackupaction(String sobackupaction) throws Exception{
+		this.sobackupaction = sobackupaction;
+	}
+
+	/**
+	* <pre>
+	* Action to be performed if spillover is to take effect, but no backup chain to spillover is usable or exists.<br> Possible values = DROP, ACCEPT, REDIRECT
+	* </pre>
+	*/
+	public String get_sobackupaction() throws Exception {
+		return this.sobackupaction;
 	}
 
 	/**
@@ -645,7 +689,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* Backup server.<br> Minimum length =  1
+	* Name of the backup GSLB virtual server to which the appliance should to forward requests if the status of the primary GSLB virtual server is down or exceeds its spillover threshold.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_backupvserver(String backupvserver) throws Exception{
@@ -654,7 +698,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* Backup server.<br> Minimum length =  1
+	* Name of the backup GSLB virtual server to which the appliance should to forward requests if the status of the primary GSLB virtual server is down or exceeds its spillover threshold.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_backupvserver() throws Exception {
@@ -663,7 +707,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* The service for which the weight needs to be changed.<br> Minimum length =  1
+	* Name of the GSLB service for which to change the weight.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_servicename(String servicename) throws Exception{
@@ -672,7 +716,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* The service for which the weight needs to be changed.<br> Minimum length =  1
+	* Name of the GSLB service for which to change the weight.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_servicename() throws Exception {
@@ -681,7 +725,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* The new weight for the given service.<br> Minimum value =  1<br> Maximum value =  100
+	* Weight to assign to the GSLB service.<br> Minimum value =  1<br> Maximum value =  100
 	* </pre>
 	*/
 	public void set_weight(long weight) throws Exception {
@@ -690,7 +734,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* The new weight for the given service.<br> Minimum value =  1<br> Maximum value =  100
+	* Weight to assign to the GSLB service.<br> Minimum value =  1<br> Maximum value =  100
 	* </pre>
 	*/
 	public void set_weight(Long weight) throws Exception{
@@ -699,7 +743,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* The new weight for the given service.<br> Minimum value =  1<br> Maximum value =  100
+	* Weight to assign to the GSLB service.<br> Minimum value =  1<br> Maximum value =  100
 	* </pre>
 	*/
 	public Long get_weight() throws Exception {
@@ -708,7 +752,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* The name of the domain for which TTL and/or backupIP has to be changed.<br> Minimum length =  1
+	* Domain name for which to change the time to live (TTL) and/or backup service IP address.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_domainname(String domainname) throws Exception{
@@ -717,7 +761,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* The name of the domain for which TTL and/or backupIP has to be changed.<br> Minimum length =  1
+	* Domain name for which to change the time to live (TTL) and/or backup service IP address.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_domainname() throws Exception {
@@ -726,7 +770,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* The TTL for the given domain.<br> Minimum value =  1
+	* Time to live (TTL) for the domain.<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_ttl(long ttl) throws Exception {
@@ -735,7 +779,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* The TTL for the given domain.<br> Minimum value =  1
+	* Time to live (TTL) for the domain.<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_ttl(Long ttl) throws Exception{
@@ -744,7 +788,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* The TTL for the given domain.<br> Minimum value =  1
+	* Time to live (TTL) for the domain.<br> Minimum value =  1
 	* </pre>
 	*/
 	public Long get_ttl() throws Exception {
@@ -753,7 +797,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* The backup IP for the given domain.<br> Minimum length =  1
+	* The IP address of the backup service for the specified domain name. Used when all the services bound to the domain are down, or when the backup chain of virtual servers is down.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_backupip(String backupip) throws Exception{
@@ -762,7 +806,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* The backup IP for the given domain.<br> Minimum length =  1
+	* The IP address of the backup service for the specified domain name. Used when all the services bound to the domain are down, or when the backup chain of virtual servers is down.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_backupip() throws Exception {
@@ -771,7 +815,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* The cookie domain for the GSLB domain. This will be used when inserting the GSLB site cookie in the HTTP response. By default, cookie domain will not be inserted.<br> Minimum length =  1
+	* The cookie domain for the GSLB site. Used when inserting the GSLB site cookie in the HTTP response.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_cookie_domain(String cookie_domain) throws Exception{
@@ -780,7 +824,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* The cookie domain for the GSLB domain. This will be used when inserting the GSLB site cookie in the HTTP response. By default, cookie domain will not be inserted.<br> Minimum length =  1
+	* The cookie domain for the GSLB site. Used when inserting the GSLB site cookie in the HTTP response.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_cookie_domain() throws Exception {
@@ -789,7 +833,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* The timeout (in minutes) for the GSLB site cookie.<br> Minimum value =  0<br> Maximum value =  1440
+	* Timeout, in minutes, for the GSLB site cookie.<br> Minimum value =  0<br> Maximum value =  1440
 	* </pre>
 	*/
 	public void set_cookietimeout(long cookietimeout) throws Exception {
@@ -798,7 +842,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* The timeout (in minutes) for the GSLB site cookie.<br> Minimum value =  0<br> Maximum value =  1440
+	* Timeout, in minutes, for the GSLB site cookie.<br> Minimum value =  0<br> Maximum value =  1440
 	* </pre>
 	*/
 	public void set_cookietimeout(Long cookietimeout) throws Exception{
@@ -807,7 +851,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* The timeout (in minutes) for the GSLB site cookie.<br> Minimum value =  0<br> Maximum value =  1440
+	* Timeout, in minutes, for the GSLB site cookie.<br> Minimum value =  0<br> Maximum value =  1440
 	* </pre>
 	*/
 	public Long get_cookietimeout() throws Exception {
@@ -816,7 +860,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* Modify the TTL of the internally created site domain.<br> Minimum value =  1
+	* TTL, in seconds, for all internally created site domains (created when a site prefix is configured on a GSLB service) that are associated with this virtual server.<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_sitedomainttl(long sitedomainttl) throws Exception {
@@ -825,7 +869,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* Modify the TTL of the internally created site domain.<br> Minimum value =  1
+	* TTL, in seconds, for all internally created site domains (created when a site prefix is configured on a GSLB service) that are associated with this virtual server.<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_sitedomainttl(Long sitedomainttl) throws Exception{
@@ -834,7 +878,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* Modify the TTL of the internally created site domain.<br> Minimum value =  1
+	* TTL, in seconds, for all internally created site domains (created when a site prefix is configured on a GSLB service) that are associated with this virtual server.<br> Minimum value =  1
 	* </pre>
 	*/
 	public Long get_sitedomainttl() throws Exception {
@@ -843,7 +887,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* The new name of the virtual server.<br> Minimum length =  1
+	* New name for the GSLB virtual server.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_newname(String newname) throws Exception{
@@ -852,7 +896,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* The new name of the virtual server.<br> Minimum length =  1
+	* New name for the GSLB virtual server.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_newname() throws Exception {
@@ -861,7 +905,7 @@ public class gslbvserver extends base_resource
 
 	/**
 	* <pre>
-	* State of the gslb vserver.<br> Possible values = UP, DOWN, UNKNOWN, BUSY, OUT OF SERVICE, GOING OUT OF SERVICE, DOWN WHEN GOING OUT OF SERVICE, NS_EMPTY_STR
+	* State of the gslb vserver.<br> Possible values = UP, DOWN, UNKNOWN, BUSY, OUT OF SERVICE, GOING OUT OF SERVICE, DOWN WHEN GOING OUT OF SERVICE, NS_EMPTY_STR, Unknown, DISABLED
 	* </pre>
 	*/
 	public String get_curstate() throws Exception {
@@ -907,15 +951,6 @@ public class gslbvserver extends base_resource
 	*/
 	public String get_iscname() throws Exception {
 		return this.iscname;
-	}
-
-	/**
-	* <pre>
-	* Type of Site Persistence set.<br> Possible values = ConnectionProxy, HTTPRedirect, NONE
-	* </pre>
-	*/
-	public String get_sitepersistence() throws Exception {
-		return this.sitepersistence;
 	}
 
 	/**
@@ -970,6 +1005,52 @@ public class gslbvserver extends base_resource
 	*/
 	public Long get_health() throws Exception {
 		return this.health;
+	}
+
+	/**
+	* <pre>
+	* Name of the policy bound to the GSLB vserver.
+	* </pre>
+	*/
+	public String get_policyname() throws Exception {
+		return this.policyname;
+	}
+
+	/**
+	* <pre>
+	* Priority.<br> Minimum value =  1<br> Maximum value =  2147483647
+	* </pre>
+	*/
+	public Long get_priority() throws Exception {
+		return this.priority;
+	}
+
+	/**
+	* <pre>
+	* Expression specifying the priority of the next policy which will get evaluated if the current policy rule evaluates to TRUE.
+	o	If gotoPriorityExpression is not present or if it is equal to END then the policy bank evaluation ends here
+	o	Else if the gotoPriorityExpression is equal to NEXT then the next policy in the priority order is evaluated.
+	o	Else gotoPriorityExpression is evaluated. The result of gotoPriorityExpression (which has to be a number) is processed as follows:
+		-	An UNDEF event is triggered if
+			.	gotoPriorityExpression cannot be evaluated
+			.	gotoPriorityExpression evaluates to number which is smaller than the maximum priority in the policy bank but is not same as any policy's priority
+			.	gotoPriorityExpression evaluates to a priority that is smaller than the current policy's priority
+		-	If the gotoPriorityExpression evaluates to the priority of the current policy then the next policy in the priority order is evaluated.
+		-	If the gotoPriorityExpression evaluates to the priority of a policy further ahead in the list then that policy will be evaluated next.
+		This field is applicable only to rewrite and responder policies.
+	* </pre>
+	*/
+	public String get_gotopriorityexpression() throws Exception {
+		return this.gotopriorityexpression;
+	}
+
+	/**
+	* <pre>
+	* The bindpoint to which the policy is bound.<br> Possible values = REQUEST, RESPONSE
+	* </pre>
+	*/
+	public String get_type() throws Exception {
+		return this.type;
 	}
 
 	/**
@@ -1037,6 +1118,7 @@ public class gslbvserver extends base_resource
 		addresource.sopersistence = resource.sopersistence;
 		addresource.sopersistencetimeout = resource.sopersistencetimeout;
 		addresource.sothreshold = resource.sothreshold;
+		addresource.sobackupaction = resource.sobackupaction;
 		addresource.appflowlog = resource.appflowlog;
 		return addresource.add_resource(client);
 	}
@@ -1076,6 +1158,7 @@ public class gslbvserver extends base_resource
 				addresources[i].sopersistence = resources[i].sopersistence;
 				addresources[i].sopersistencetimeout = resources[i].sopersistencetimeout;
 				addresources[i].sothreshold = resources[i].sothreshold;
+				addresources[i].sobackupaction = resources[i].sobackupaction;
 				addresources[i].appflowlog = resources[i].appflowlog;
 			}
 			result = add_bulk_request(client, addresources);
@@ -1162,6 +1245,7 @@ public class gslbvserver extends base_resource
 		updateresource.sopersistence = resource.sopersistence;
 		updateresource.sopersistencetimeout = resource.sopersistencetimeout;
 		updateresource.sothreshold = resource.sothreshold;
+		updateresource.sobackupaction = resource.sobackupaction;
 		updateresource.servicename = resource.servicename;
 		updateresource.weight = resource.weight;
 		updateresource.domainname = resource.domainname;
@@ -1208,6 +1292,7 @@ public class gslbvserver extends base_resource
 				updateresources[i].sopersistence = resources[i].sopersistence;
 				updateresources[i].sopersistencetimeout = resources[i].sopersistencetimeout;
 				updateresources[i].sothreshold = resources[i].sothreshold;
+				updateresources[i].sobackupaction = resources[i].sobackupaction;
 				updateresources[i].servicename = resources[i].servicename;
 				updateresources[i].weight = resources[i].weight;
 				updateresources[i].domainname = resources[i].domainname;
@@ -1228,46 +1313,9 @@ public class gslbvserver extends base_resource
 	* Use this API to unset the properties of gslbvserver resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String name, String args[]) throws Exception {
-		gslbvserver unsetresource = new gslbvserver();
-		unsetresource.name = name;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of gslbvserver resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, gslbvserver resource, String[] args) throws Exception{
 		gslbvserver unsetresource = new gslbvserver();
 		unsetresource.name = resource.name;
-		unsetresource.backupvserver = resource.backupvserver;
-		unsetresource.sothreshold = resource.sothreshold;
-		unsetresource.iptype = resource.iptype;
-		unsetresource.dnsrecordtype = resource.dnsrecordtype;
-		unsetresource.backupsessiontimeout = resource.backupsessiontimeout;
-		unsetresource.lbmethod = resource.lbmethod;
-		unsetresource.backuplbmethod = resource.backuplbmethod;
-		unsetresource.netmask = resource.netmask;
-		unsetresource.v6netmasklen = resource.v6netmasklen;
-		unsetresource.tolerance = resource.tolerance;
-		unsetresource.persistencetype = resource.persistencetype;
-		unsetresource.persistenceid = resource.persistenceid;
-		unsetresource.persistmask = resource.persistmask;
-		unsetresource.v6persistmasklen = resource.v6persistmasklen;
-		unsetresource.timeout = resource.timeout;
-		unsetresource.edr = resource.edr;
-		unsetresource.mir = resource.mir;
-		unsetresource.disableprimaryondown = resource.disableprimaryondown;
-		unsetresource.dynamicweight = resource.dynamicweight;
-		unsetresource.considereffectivestate = resource.considereffectivestate;
-		unsetresource.somethod = resource.somethod;
-		unsetresource.sopersistence = resource.sopersistence;
-		unsetresource.sopersistencetimeout = resource.sopersistencetimeout;
-		unsetresource.servicename = resource.servicename;
-		unsetresource.weight = resource.weight;
-		unsetresource.comment = resource.comment;
-		unsetresource.appflowlog = resource.appflowlog;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -1299,33 +1347,6 @@ public class gslbvserver extends base_resource
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new gslbvserver();
 				unsetresources[i].name = resources[i].name;
-				unsetresources[i].backupvserver = resources[i].backupvserver;
-				unsetresources[i].sothreshold = resources[i].sothreshold;
-				unsetresources[i].iptype = resources[i].iptype;
-				unsetresources[i].dnsrecordtype = resources[i].dnsrecordtype;
-				unsetresources[i].backupsessiontimeout = resources[i].backupsessiontimeout;
-				unsetresources[i].lbmethod = resources[i].lbmethod;
-				unsetresources[i].backuplbmethod = resources[i].backuplbmethod;
-				unsetresources[i].netmask = resources[i].netmask;
-				unsetresources[i].v6netmasklen = resources[i].v6netmasklen;
-				unsetresources[i].tolerance = resources[i].tolerance;
-				unsetresources[i].persistencetype = resources[i].persistencetype;
-				unsetresources[i].persistenceid = resources[i].persistenceid;
-				unsetresources[i].persistmask = resources[i].persistmask;
-				unsetresources[i].v6persistmasklen = resources[i].v6persistmasklen;
-				unsetresources[i].timeout = resources[i].timeout;
-				unsetresources[i].edr = resources[i].edr;
-				unsetresources[i].mir = resources[i].mir;
-				unsetresources[i].disableprimaryondown = resources[i].disableprimaryondown;
-				unsetresources[i].dynamicweight = resources[i].dynamicweight;
-				unsetresources[i].considereffectivestate = resources[i].considereffectivestate;
-				unsetresources[i].somethod = resources[i].somethod;
-				unsetresources[i].sopersistence = resources[i].sopersistence;
-				unsetresources[i].sopersistencetimeout = resources[i].sopersistencetimeout;
-				unsetresources[i].servicename = resources[i].servicename;
-				unsetresources[i].weight = resources[i].weight;
-				unsetresources[i].comment = resources[i].comment;
-				unsetresources[i].appflowlog = resources[i].appflowlog;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}
@@ -1603,6 +1624,15 @@ public class gslbvserver extends base_resource
 		public static final String MYSQL = "MYSQL";
 		public static final String MSSQL = "MSSQL";
 	}
+	public static class sobackupactionEnum {
+		public static final String DROP = "DROP";
+		public static final String ACCEPT = "ACCEPT";
+		public static final String REDIRECT = "REDIRECT";
+	}
+	public static class typeEnum {
+		public static final String REQUEST = "REQUEST";
+		public static final String RESPONSE = "RESPONSE";
+	}
 	public static class disableprimaryondownEnum {
 		public static final String ENABLED = "ENABLED";
 		public static final String DISABLED = "DISABLED";
@@ -1637,11 +1667,6 @@ public class gslbvserver extends base_resource
 		public static final String RTT = "RTT";
 		public static final String CUSTOMLOAD = "CUSTOMLOAD";
 	}
-	public static class sitepersistenceEnum {
-		public static final String ConnectionProxy = "ConnectionProxy";
-		public static final String HTTPRedirect = "HTTPRedirect";
-		public static final String NONE = "NONE";
-	}
 	public static class considereffectivestateEnum {
 		public static final String NONE = "NONE";
 		public static final String STATE_ONLY = "STATE_ONLY";
@@ -1663,6 +1688,8 @@ public class gslbvserver extends base_resource
 		public static final String GOING_OUT_OF_SERVICE = "GOING OUT OF SERVICE";
 		public static final String DOWN_WHEN_GOING_OUT_OF_SERVICE = "DOWN WHEN GOING OUT OF SERVICE";
 		public static final String NS_EMPTY_STR = "NS_EMPTY_STR";
+		public static final String Unknown = "Unknown";
+		public static final String DISABLED = "DISABLED";
 	}
 	public static class persistencetypeEnum {
 		public static final String SOURCEIP = "SOURCEIP";

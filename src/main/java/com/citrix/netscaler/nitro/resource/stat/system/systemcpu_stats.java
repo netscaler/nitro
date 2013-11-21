@@ -33,11 +33,12 @@ class systemcpu_response extends base_response
 public class systemcpu_stats extends base_resource
 {
 	private Long id;
+	private String clearstats;
 	private Long percpuuse;
 
 	/**
 	* <pre>
-	* Specifies the  CPU ID.
+	* ID of the CPU for which to display statistics.
 	* </pre>
 	*/
 	public void set_id(long id) throws Exception {
@@ -46,7 +47,7 @@ public class systemcpu_stats extends base_resource
 
 	/**
 	* <pre>
-	* Specifies the  CPU ID.
+	* ID of the CPU for which to display statistics.
 	* </pre>
 	*/
 	public void set_id(Long id) throws Exception{
@@ -55,11 +56,29 @@ public class systemcpu_stats extends base_resource
 
 	/**
 	* <pre>
-	* Specifies the  CPU ID.<br> Default value: 65535<br> Minimum value =  0<br> Maximum value =  65534
+	* ID of the CPU for which to display statistics.<br> Default value: 65535<br> Minimum value =  0<br> Maximum value =  65534
 	* </pre>
 	*/
 	public Long get_id() throws Exception {
 		return this.id;
+	}
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters
+	* </pre>
+	*/
+	public void set_clearstats(String clearstats) throws Exception{
+		this.clearstats = clearstats;
+	}
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters.<br> Possible values = basic, full
+	* </pre>
+	*/
+	public String get_clearstats() throws Exception {
+		return this.clearstats;
 	}
 
 	/**
@@ -136,4 +155,8 @@ public class systemcpu_stats extends base_resource
 		return response;
 	}
 
+	public static class clearstatsEnum {
+		public static final String basic = "basic";
+		public static final String full = "full";
+	}
 }

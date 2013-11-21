@@ -66,7 +66,7 @@ public class systemgroup_systemcmdpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the system group.<br> Minimum length =  1
+	* Name of the system group.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_groupname(String groupname) throws Exception{
@@ -75,7 +75,7 @@ public class systemgroup_systemcmdpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the system group.<br> Minimum length =  1
+	* Name of the system group.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_groupname() throws Exception {

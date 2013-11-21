@@ -41,6 +41,8 @@ public class l3param extends base_resource
 	private String tnlpmtuwoconn;
 	private String usipserverstraypkt;
 	private String forwardicmpfragments;
+	private String dropipfragments;
+	private Long acllogtime;
 
 	/**
 	* <pre>
@@ -217,6 +219,51 @@ public class l3param extends base_resource
 
 	/**
 	* <pre>
+	* Enable dropping of IP fragments.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* </pre>
+	*/
+	public void set_dropipfragments(String dropipfragments) throws Exception{
+		this.dropipfragments = dropipfragments;
+	}
+
+	/**
+	* <pre>
+	* Enable dropping of IP fragments.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* </pre>
+	*/
+	public String get_dropipfragments() throws Exception {
+		return this.dropipfragments;
+	}
+
+	/**
+	* <pre>
+	* Parameter to tune acl logging time.<br> Default value: 5000
+	* </pre>
+	*/
+	public void set_acllogtime(long acllogtime) throws Exception {
+		this.acllogtime = new Long(acllogtime);
+	}
+
+	/**
+	* <pre>
+	* Parameter to tune acl logging time.<br> Default value: 5000
+	* </pre>
+	*/
+	public void set_acllogtime(Long acllogtime) throws Exception{
+		this.acllogtime = acllogtime;
+	}
+
+	/**
+	* <pre>
+	* Parameter to tune acl logging time.<br> Default value: 5000
+	* </pre>
+	*/
+	public Long get_acllogtime() throws Exception {
+		return this.acllogtime;
+	}
+
+	/**
+	* <pre>
 	* converts nitro response into object and returns the object array in case of get request.
 	* </pre>
 	*/
@@ -265,6 +312,8 @@ public class l3param extends base_resource
 		updateresource.tnlpmtuwoconn = resource.tnlpmtuwoconn;
 		updateresource.usipserverstraypkt = resource.usipserverstraypkt;
 		updateresource.forwardicmpfragments = resource.forwardicmpfragments;
+		updateresource.dropipfragments = resource.dropipfragments;
+		updateresource.acllogtime = resource.acllogtime;
 		return updateresource.update_resource(client);
 	}
 
@@ -274,15 +323,6 @@ public class l3param extends base_resource
 	*/
 	public static base_response unset(nitro_service client, l3param resource, String[] args) throws Exception{
 		l3param unsetresource = new l3param();
-		unsetresource.srcnat = resource.srcnat;
-		unsetresource.icmpgenratethreshold = resource.icmpgenratethreshold;
-		unsetresource.overridernat = resource.overridernat;
-		unsetresource.dropdfflag = resource.dropdfflag;
-		unsetresource.miproundrobin = resource.miproundrobin;
-		unsetresource.externalloopback = resource.externalloopback;
-		unsetresource.tnlpmtuwoconn = resource.tnlpmtuwoconn;
-		unsetresource.usipserverstraypkt = resource.usipserverstraypkt;
-		unsetresource.forwardicmpfragments = resource.forwardicmpfragments;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -304,6 +344,10 @@ public class l3param extends base_resource
 		return response[0];
 	}
 
+	public static class dropipfragmentsEnum {
+		public static final String ENABLED = "ENABLED";
+		public static final String DISABLED = "DISABLED";
+	}
 	public static class overridernatEnum {
 		public static final String ENABLED = "ENABLED";
 		public static final String DISABLED = "DISABLED";

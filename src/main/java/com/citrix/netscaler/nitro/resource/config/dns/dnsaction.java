@@ -348,20 +348,9 @@ public class dnsaction extends base_resource
 	* Use this API to unset the properties of dnsaction resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String actionname, String args[]) throws Exception {
-		dnsaction unsetresource = new dnsaction();
-		unsetresource.actionname = actionname;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of dnsaction resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, dnsaction resource, String[] args) throws Exception{
 		dnsaction unsetresource = new dnsaction();
 		unsetresource.actionname = resource.actionname;
-		unsetresource.ttl = resource.ttl;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -393,7 +382,6 @@ public class dnsaction extends base_resource
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new dnsaction();
 				unsetresources[i].actionname = resources[i].actionname;
-				unsetresources[i].ttl = resources[i].ttl;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}

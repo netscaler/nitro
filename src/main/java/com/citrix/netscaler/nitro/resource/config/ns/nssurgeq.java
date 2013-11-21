@@ -38,7 +38,7 @@ public class nssurgeq extends base_resource
 
 	/**
 	* <pre>
-	* The name of the entity.Entity can be a Vserver, Service or a Servicegroup.
+	* Name of a virtual server, service or service group for which the SurgeQ must be flushed.
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -47,7 +47,7 @@ public class nssurgeq extends base_resource
 
 	/**
 	* <pre>
-	* The name of the entity.Entity can be a Vserver, Service or a Servicegroup.
+	* Name of a virtual server, service or service group for which the SurgeQ must be flushed.
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -56,7 +56,7 @@ public class nssurgeq extends base_resource
 
 	/**
 	* <pre>
-	* Name of the Server bound to the entity(Servicegroup).
+	* Name of a service group member. This argument is needed when you want to flush the SurgeQ of a service group.
 	* </pre>
 	*/
 	public void set_servername(String servername) throws Exception{
@@ -65,7 +65,7 @@ public class nssurgeq extends base_resource
 
 	/**
 	* <pre>
-	* Name of the Server bound to the entity(Servicegroup).
+	* Name of a service group member. This argument is needed when you want to flush the SurgeQ of a service group.
 	* </pre>
 	*/
 	public String get_servername() throws Exception {

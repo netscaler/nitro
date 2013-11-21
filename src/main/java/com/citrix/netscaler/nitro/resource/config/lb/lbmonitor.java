@@ -59,6 +59,11 @@ public class lbmonitor extends base_resource
 	private String radkey;
 	private String radnasid;
 	private String radnasip;
+	private Long radaccounttype;
+	private String radframedip;
+	private String radapn;
+	private String radmsisdn;
+	private String radaccountsession;
 	private String lrtm;
 	private Long deviation;
 	private String units1;
@@ -102,6 +107,9 @@ public class lbmonitor extends base_resource
 	private String metrictable;
 	private String application;
 	private String sitepath;
+	private String storename;
+	private String storefrontacctservice;
+	private String hostname;
 	private String netprofile;
 	private String originhost;
 	private String originrealm;
@@ -116,6 +124,8 @@ public class lbmonitor extends base_resource
 	private Long vendorspecificvendorid;
 	private Long[] vendorspecificauthapplicationids;
 	private Long[] vendorspecificacctapplicationids;
+	private String kcdaccount;
+	private String storedb;
 	private String metric;
 	private Long metricthreshold;
 	private Long metricweight;
@@ -127,6 +137,7 @@ public class lbmonitor extends base_resource
 	private Integer lrtmconf;
 	private Integer dynamicresponsetimeout;
 	private Integer dynamicinterval;
+	private String[] multimetrictable;
 	private String dup_state;
 	private Long dup_weight;
 	private Long weight;
@@ -134,7 +145,9 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* The name of the monitor.<br> Minimum length =  1
+	* Name for the monitor. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.
+
+CLI Users:  If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my monitor" or 'my monitor').<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_monitorname(String monitorname) throws Exception{
@@ -143,7 +156,9 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* The name of the monitor.<br> Minimum length =  1
+	* Name for the monitor. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.
+
+CLI Users:  If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my monitor" or 'my monitor').<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_monitorname() throws Exception {
@@ -152,7 +167,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* The type of monitor.<br> Possible values = PING, TCP, HTTP, TCP-ECV, HTTP-ECV, UDP-ECV, DNS, FTP, LDNS-PING, LDNS-TCP, LDNS-DNS, RADIUS, USER, HTTP-INLINE, SIP-UDP, LOAD, FTP-EXTENDED, SMTP, SNMP, NNTP, MYSQL, MYSQL-ECV, MSSQL-ECV, LDAP, POP3, CITRIX-XML-SERVICE, CITRIX-WEB-INTERFACE, DNS-TCP, RTSP, ARP, CITRIX-AG, CITRIX-AAC-LOGINPAGE, CITRIX-AAC-LAS, CITRIX-XD-DDC, ND6, CITRIX-WI-EXTENDED, DIAMETER
+	* Type of monitor that you want to create.<br> Possible values = PING, TCP, HTTP, TCP-ECV, HTTP-ECV, UDP-ECV, DNS, FTP, LDNS-PING, LDNS-TCP, LDNS-DNS, RADIUS, USER, HTTP-INLINE, SIP-UDP, LOAD, FTP-EXTENDED, SMTP, SNMP, NNTP, MYSQL, MYSQL-ECV, MSSQL-ECV, ORACLE-ECV, LDAP, POP3, CITRIX-XML-SERVICE, CITRIX-WEB-INTERFACE, DNS-TCP, RTSP, ARP, CITRIX-AG, CITRIX-AAC-LOGINPAGE, CITRIX-AAC-LAS, CITRIX-XD-DDC, ND6, CITRIX-WI-EXTENDED, DIAMETER, RADIUS_ACCOUNTING, STOREFRONT
 	* </pre>
 	*/
 	public void set_type(String type) throws Exception{
@@ -161,7 +176,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* The type of monitor.<br> Possible values = PING, TCP, HTTP, TCP-ECV, HTTP-ECV, UDP-ECV, DNS, FTP, LDNS-PING, LDNS-TCP, LDNS-DNS, RADIUS, USER, HTTP-INLINE, SIP-UDP, LOAD, FTP-EXTENDED, SMTP, SNMP, NNTP, MYSQL, MYSQL-ECV, MSSQL-ECV, LDAP, POP3, CITRIX-XML-SERVICE, CITRIX-WEB-INTERFACE, DNS-TCP, RTSP, ARP, CITRIX-AG, CITRIX-AAC-LOGINPAGE, CITRIX-AAC-LAS, CITRIX-XD-DDC, ND6, CITRIX-WI-EXTENDED, DIAMETER
+	* Type of monitor that you want to create.<br> Possible values = PING, TCP, HTTP, TCP-ECV, HTTP-ECV, UDP-ECV, DNS, FTP, LDNS-PING, LDNS-TCP, LDNS-DNS, RADIUS, USER, HTTP-INLINE, SIP-UDP, LOAD, FTP-EXTENDED, SMTP, SNMP, NNTP, MYSQL, MYSQL-ECV, MSSQL-ECV, ORACLE-ECV, LDAP, POP3, CITRIX-XML-SERVICE, CITRIX-WEB-INTERFACE, DNS-TCP, RTSP, ARP, CITRIX-AG, CITRIX-AAC-LOGINPAGE, CITRIX-AAC-LAS, CITRIX-XD-DDC, ND6, CITRIX-WI-EXTENDED, DIAMETER, RADIUS_ACCOUNTING, STOREFRONT
 	* </pre>
 	*/
 	public String get_type() throws Exception {
@@ -170,7 +185,11 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* The action to be taken in INLINE monitors.<br> Default value: SM_DOWN<br> Possible values = NONE, LOG, DOWN
+	* Action to perform when the response to an inline monitor (a monitor of type HTTP-INLINE) indicates that the service is down. A service monitored by an inline monitor is considered DOWN if the response code is not one of the codes that have been specified for the Response Code parameter. 
+Available settings function as follows: 
+* NONE - Do not take any action. However, the show service command and the show lb monitor command indicate the total number of responses that were checked and the number of consecutive error responses received after the last successful probe.
+* LOG - Log the event in NSLOG or SYSLOG. 
+* DOWN - Mark the service as being down, and then do not direct any traffic to the service until the configured down time has expired. Persistent connections to the service are terminated as soon as the service is marked as DOWN. Also, log the event in NSLOG or SYSLOG.<br> Default value: DOWN<br> Possible values = NONE, LOG, DOWN
 	* </pre>
 	*/
 	public void set_action(String action) throws Exception{
@@ -179,7 +198,11 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* The action to be taken in INLINE monitors.<br> Default value: SM_DOWN<br> Possible values = NONE, LOG, DOWN
+	* Action to perform when the response to an inline monitor (a monitor of type HTTP-INLINE) indicates that the service is down. A service monitored by an inline monitor is considered DOWN if the response code is not one of the codes that have been specified for the Response Code parameter. 
+Available settings function as follows: 
+* NONE - Do not take any action. However, the show service command and the show lb monitor command indicate the total number of responses that were checked and the number of consecutive error responses received after the last successful probe.
+* LOG - Log the event in NSLOG or SYSLOG. 
+* DOWN - Mark the service as being down, and then do not direct any traffic to the service until the configured down time has expired. Persistent connections to the service are terminated as soon as the service is marked as DOWN. Also, log the event in NSLOG or SYSLOG.<br> Default value: DOWN<br> Possible values = NONE, LOG, DOWN
 	* </pre>
 	*/
 	public String get_action() throws Exception {
@@ -188,7 +211,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* The response codes. For the probe to succeed, the HTTP/RADIUS response from the server must be of one of the types specified.
+	* Response codes for which to mark the service as UP. For any other response code, the action performed depends on the monitor type. HTTP monitors and RADIUS monitors mark the service as DOWN, while HTTP-INLINE monitors perform the action indicated by the Action parameter.
 	* </pre>
 	*/
 	public void set_respcode(String[] respcode) throws Exception{
@@ -197,7 +220,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* The response codes. For the probe to succeed, the HTTP/RADIUS response from the server must be of one of the types specified.
+	* Response codes for which to mark the service as UP. For any other response code, the action performed depends on the monitor type. HTTP monitors and RADIUS monitors mark the service as DOWN, while HTTP-INLINE monitors perform the action indicated by the Action parameter.
 	* </pre>
 	*/
 	public String[] get_respcode() throws Exception {
@@ -206,7 +229,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* The HTTP request that is sent to the server (for example, "HEAD /file.html").
+	* HTTP request to send to the server (for example, "HEAD /file.html").
 	* </pre>
 	*/
 	public void set_httprequest(String httprequest) throws Exception{
@@ -215,7 +238,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* The HTTP request that is sent to the server (for example, "HEAD /file.html").
+	* HTTP request to send to the server (for example, "HEAD /file.html").
 	* </pre>
 	*/
 	public String get_httprequest() throws Exception {
@@ -224,7 +247,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* The RTSP request that is sent to the server (for example, "OPTIONS *").
+	* RTSP request to send to the server (for example, "OPTIONS *").
 	* </pre>
 	*/
 	public void set_rtsprequest(String rtsprequest) throws Exception{
@@ -233,7 +256,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* The RTSP request that is sent to the server (for example, "OPTIONS *").
+	* RTSP request to send to the server (for example, "OPTIONS *").
 	* </pre>
 	*/
 	public String get_rtsprequest() throws Exception {
@@ -242,7 +265,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* The custom header string, attached to the monitoring probes.
+	* Custom header string to include in the monitoring probes.
 	* </pre>
 	*/
 	public void set_customheaders(String customheaders) throws Exception{
@@ -251,7 +274,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* The custom header string, attached to the monitoring probes.
+	* Custom header string to include in the monitoring probes.
 	* </pre>
 	*/
 	public String get_customheaders() throws Exception {
@@ -260,7 +283,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* SIP packet max-forwards.<br> Default value: 1<br> Minimum value =  0<br> Maximum value =  255
+	* Maximum number of hops that the SIP request used for monitoring can traverse to reach the server. Applicable only to monitors of type SIP-UDP.<br> Default value: 1<br> Minimum value =  0<br> Maximum value =  255
 	* </pre>
 	*/
 	public void set_maxforwards(long maxforwards) throws Exception {
@@ -269,7 +292,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* SIP packet max-forwards.<br> Default value: 1<br> Minimum value =  0<br> Maximum value =  255
+	* Maximum number of hops that the SIP request used for monitoring can traverse to reach the server. Applicable only to monitors of type SIP-UDP.<br> Default value: 1<br> Minimum value =  0<br> Maximum value =  255
 	* </pre>
 	*/
 	public void set_maxforwards(Long maxforwards) throws Exception{
@@ -278,7 +301,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* SIP packet max-forwards.<br> Default value: 1<br> Minimum value =  0<br> Maximum value =  255
+	* Maximum number of hops that the SIP request used for monitoring can traverse to reach the server. Applicable only to monitors of type SIP-UDP.<br> Default value: 1<br> Minimum value =  0<br> Maximum value =  255
 	* </pre>
 	*/
 	public Long get_maxforwards() throws Exception {
@@ -287,7 +310,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* SIP method to be used for the query.<br> Possible values = OPTIONS, INVITE, REGISTER
+	* SIP method to use for the query. Applicable only to monitors of type SIP-UDP.<br> Possible values = OPTIONS, INVITE, REGISTER
 	* </pre>
 	*/
 	public void set_sipmethod(String sipmethod) throws Exception{
@@ -296,7 +319,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* SIP method to be used for the query.<br> Possible values = OPTIONS, INVITE, REGISTER
+	* SIP method to use for the query. Applicable only to monitors of type SIP-UDP.<br> Possible values = OPTIONS, INVITE, REGISTER
 	* </pre>
 	*/
 	public String get_sipmethod() throws Exception {
@@ -305,7 +328,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* SIP method string, sent to the server. For example "OPTIONS sip:sip.test".<br> Minimum length =  1
+	* SIP URI string to send to the service (for example, sip:sip.test). Applicable only to monitors of type SIP-UDP.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_sipuri(String sipuri) throws Exception{
@@ -314,7 +337,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* SIP method string, sent to the server. For example "OPTIONS sip:sip.test".<br> Minimum length =  1
+	* SIP URI string to send to the service (for example, sip:sip.test). Applicable only to monitors of type SIP-UDP.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_sipuri() throws Exception {
@@ -323,7 +346,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* SIP user to be registered.<br> Minimum length =  1
+	* SIP user to be registered. Applicable only if the monitor is of type SIP-UDP and the SIP Method parameter is set to REGISTER.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_sipreguri(String sipreguri) throws Exception{
@@ -332,7 +355,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* SIP user to be registered.<br> Minimum length =  1
+	* SIP user to be registered. Applicable only if the monitor is of type SIP-UDP and the SIP Method parameter is set to REGISTER.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_sipreguri() throws Exception {
@@ -341,7 +364,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* The string that is sent to the service. Applicable to TCP-ECV, HTTP-ECV, and UDP-ECV monitor types.
+	* String to send to the service. Applicable to TCP-ECV, HTTP-ECV, and UDP-ECV monitors.
 	* </pre>
 	*/
 	public void set_send(String send) throws Exception{
@@ -350,7 +373,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* The string that is sent to the service. Applicable to TCP-ECV, HTTP-ECV, and UDP-ECV monitor types.
+	* String to send to the service. Applicable to TCP-ECV, HTTP-ECV, and UDP-ECV monitors.
 	* </pre>
 	*/
 	public String get_send() throws Exception {
@@ -359,7 +382,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* The string that is expected from the server to mark the server as UP. Applicable to TCP-ECV, HTTP-ECV, and UDP-ECV monitor types.
+	* String expected from the server for the service to be marked as UP. Applicable to TCP-ECV, HTTP-ECV, and UDP-ECV monitors.
 	* </pre>
 	*/
 	public void set_recv(String recv) throws Exception{
@@ -368,7 +391,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* The string that is expected from the server to mark the server as UP. Applicable to TCP-ECV, HTTP-ECV, and UDP-ECV monitor types.
+	* String expected from the server for the service to be marked as UP. Applicable to TCP-ECV, HTTP-ECV, and UDP-ECV monitors.
 	* </pre>
 	*/
 	public String get_recv() throws Exception {
@@ -377,7 +400,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* The DNS query (domain name) sent to the DNS service that is being monitored.
+	* Domain name to resolve as part of monitoring the DNS service (for example, example.com).
 	* </pre>
 	*/
 	public void set_query(String query) throws Exception{
@@ -386,7 +409,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* The DNS query (domain name) sent to the DNS service that is being monitored.
+	* Domain name to resolve as part of monitoring the DNS service (for example, example.com).
 	* </pre>
 	*/
 	public String get_query() throws Exception {
@@ -395,7 +418,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* The type of DNS query that is sent.<br> Possible values = Address, Zone, AAAA
+	* Type of DNS record for which to send monitoring queries. Set to Address for querying A records, AAAA for querying AAAA records, and Zone for querying the SOA record.<br> Possible values = Address, Zone, AAAA
 	* </pre>
 	*/
 	public void set_querytype(String querytype) throws Exception{
@@ -404,7 +427,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* The type of DNS query that is sent.<br> Possible values = Address, Zone, AAAA
+	* Type of DNS record for which to send monitoring queries. Set to Address for querying A records, AAAA for querying AAAA records, and Zone for querying the SOA record.<br> Possible values = Address, Zone, AAAA
 	* </pre>
 	*/
 	public String get_querytype() throws Exception {
@@ -413,7 +436,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* The path and name of the script to execute.<br> Minimum length =  1
+	* Path and name of the script to execute. The script must be available on the NetScaler appliance, in the /nsconfig/monitors/ directory.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_scriptname(String scriptname) throws Exception{
@@ -422,7 +445,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* The path and name of the script to execute.<br> Minimum length =  1
+	* Path and name of the script to execute. The script must be available on the NetScaler appliance, in the /nsconfig/monitors/ directory.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_scriptname() throws Exception {
@@ -431,7 +454,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* The string that are put in the POST data - they are copied to the request verbatim.
+	* String of arguments for the script. The string is copied verbatim into the request.
 	* </pre>
 	*/
 	public void set_scriptargs(String scriptargs) throws Exception{
@@ -440,7 +463,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* The string that are put in the POST data - they are copied to the request verbatim.
+	* String of arguments for the script. The string is copied verbatim into the request.
 	* </pre>
 	*/
 	public String get_scriptargs() throws Exception {
@@ -449,7 +472,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* The IP Address of the dispatcher to which the probe is sent.
+	* IP address of the dispatcher to which to send the probe.
 	* </pre>
 	*/
 	public void set_dispatcherip(String dispatcherip) throws Exception{
@@ -458,7 +481,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* The IP Address of the dispatcher to which the probe is sent.
+	* IP address of the dispatcher to which to send the probe.
 	* </pre>
 	*/
 	public String get_dispatcherip() throws Exception {
@@ -467,7 +490,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* The port of the dispatcher to which the probe is sent.
+	* Port number on which the dispatcher listens for the monitoring probe.
 	* </pre>
 	*/
 	public void set_dispatcherport(int dispatcherport) throws Exception {
@@ -476,7 +499,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* The port of the dispatcher to which the probe is sent.
+	* Port number on which the dispatcher listens for the monitoring probe.
 	* </pre>
 	*/
 	public void set_dispatcherport(Integer dispatcherport) throws Exception{
@@ -485,7 +508,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* The port of the dispatcher to which the probe is sent.
+	* Port number on which the dispatcher listens for the monitoring probe.
 	* </pre>
 	*/
 	public Integer get_dispatcherport() throws Exception {
@@ -494,7 +517,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* Username on the RADIUS/NNTP/FTP/FTP-EXTENDED/MYSQL/MSSQL/POP3/CITRIX-AG/CITRIX-XD-DDC/CITRIX-WI-EXTENDED server. This user name is used in the probe.<br> Minimum length =  1
+	* User name with which to probe the RADIUS, NNTP, FTP, FTP-EXTENDED, MYSQL, MSSQL, POP3, CITRIX-AG, CITRIX-XD-DDC, or CITRIX-WI-EXTENDED server.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_username(String username) throws Exception{
@@ -503,7 +526,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* Username on the RADIUS/NNTP/FTP/FTP-EXTENDED/MYSQL/MSSQL/POP3/CITRIX-AG/CITRIX-XD-DDC/CITRIX-WI-EXTENDED server. This user name is used in the probe.<br> Minimum length =  1
+	* User name with which to probe the RADIUS, NNTP, FTP, FTP-EXTENDED, MYSQL, MSSQL, POP3, CITRIX-AG, CITRIX-XD-DDC, or CITRIX-WI-EXTENDED server.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_username() throws Exception {
@@ -512,7 +535,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* Password used in  RADIUS/NNTP/FTP/FTP-EXTENDED/MYSQL/POP3/LDAP/CITRIX-AG/CITRIX-XD-DDC/CITRIX-WI-EXTENDED server monitoring.<br> Minimum length =  1
+	* Password that is required for logging on to the RADIUS, NNTP, FTP, FTP-EXTENDED, MYSQL, MSSQL, POP3, CITRIX-AG, CITRIX-XD-DDC, or CITRIX-WI-EXTENDED server. Used in conjunction with the user name specified for the User Name parameter.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_password(String password) throws Exception{
@@ -521,7 +544,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* Password used in  RADIUS/NNTP/FTP/FTP-EXTENDED/MYSQL/POP3/LDAP/CITRIX-AG/CITRIX-XD-DDC/CITRIX-WI-EXTENDED server monitoring.<br> Minimum length =  1
+	* Password that is required for logging on to the RADIUS, NNTP, FTP, FTP-EXTENDED, MYSQL, MSSQL, POP3, CITRIX-AG, CITRIX-XD-DDC, or CITRIX-WI-EXTENDED server. Used in conjunction with the user name specified for the User Name parameter.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_password() throws Exception {
@@ -530,7 +553,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* Secondary password used in Citrix Access Gateway server monitoring.
+	* Secondary password that users might have to provide to log on to the Access Gateway server. Applicable to CITRIX-AG monitors.
 	* </pre>
 	*/
 	public void set_secondarypassword(String secondarypassword) throws Exception{
@@ -539,7 +562,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* Secondary password used in Citrix Access Gateway server monitoring.
+	* Secondary password that users might have to provide to log on to the Access Gateway server. Applicable to CITRIX-AG monitors.
 	* </pre>
 	*/
 	public String get_secondarypassword() throws Exception {
@@ -548,7 +571,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* Logonpoint name used in Citrix AAC login page and logon agent service monitoring.
+	* Name of the logon point that is configured for the Citrix Access Gateway Advanced Access Control software. Required if you want to monitor the associated login page or Logon Agent. Applicable to CITRIX-AAC-LAS and CITRIX-AAC-LOGINPAGE monitors.
 	* </pre>
 	*/
 	public void set_logonpointname(String logonpointname) throws Exception{
@@ -557,7 +580,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* Logonpoint name used in Citrix AAC login page and logon agent service monitoring.
+	* Name of the logon point that is configured for the Citrix Access Gateway Advanced Access Control software. Required if you want to monitor the associated login page or Logon Agent. Applicable to CITRIX-AAC-LAS and CITRIX-AAC-LOGINPAGE monitors.
 	* </pre>
 	*/
 	public String get_logonpointname() throws Exception {
@@ -566,7 +589,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* The version of the Citrix AAC logon agent service required by CITRIX-AAC-LAS monitor.
+	* Version number of the Citrix Advanced Access Control Logon Agent. Required by the CITRIX-AAC-LAS monitor.
 	* </pre>
 	*/
 	public void set_lasversion(String lasversion) throws Exception{
@@ -575,7 +598,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* The version of the Citrix AAC logon agent service required by CITRIX-AAC-LAS monitor.
+	* Version number of the Citrix Advanced Access Control Logon Agent. Required by the CITRIX-AAC-LAS monitor.
 	* </pre>
 	*/
 	public String get_lasversion() throws Exception {
@@ -584,7 +607,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* The radius key.<br> Minimum length =  1
+	* Authentication key (shared secret text string) for RADIUS clients and servers to exchange. Applicable to monitors of type RADIUS and RADIUS_ACCOUNTING.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_radkey(String radkey) throws Exception{
@@ -593,7 +616,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* The radius key.<br> Minimum length =  1
+	* Authentication key (shared secret text string) for RADIUS clients and servers to exchange. Applicable to monitors of type RADIUS and RADIUS_ACCOUNTING.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_radkey() throws Exception {
@@ -602,7 +625,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* The NAS ID to be used in Radius monitoring.<br> Minimum length =  1
+	* NAS-Identifier to send in the Access-Request packet. Applicable to monitors of type RADIUS.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_radnasid(String radnasid) throws Exception{
@@ -611,7 +634,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* The NAS ID to be used in Radius monitoring.<br> Minimum length =  1
+	* NAS-Identifier to send in the Access-Request packet. Applicable to monitors of type RADIUS.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_radnasid() throws Exception {
@@ -620,7 +643,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* The NAS IP to be used in Radius monitoring.
+	* Network Access Server (NAS) IP address to use as the source IP address when monitoring a RADIUS server. Applicable to monitors of type RADIUS and RADIUS_ACCOUNTING.
 	* </pre>
 	*/
 	public void set_radnasip(String radnasip) throws Exception{
@@ -629,7 +652,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* The NAS IP to be used in Radius monitoring.
+	* Network Access Server (NAS) IP address to use as the source IP address when monitoring a RADIUS server. Applicable to monitors of type RADIUS and RADIUS_ACCOUNTING.
 	* </pre>
 	*/
 	public String get_radnasip() throws Exception {
@@ -638,7 +661,106 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* The state of response time calculation of probes.<br> Possible values = ENABLED, DISABLED
+	* Account Type to be used in Account Request Packet. Applicable to monitors of type RADIUS_ACCOUNTING.<br> Default value: 1<br> Minimum value =  0<br> Maximum value =  15
+	* </pre>
+	*/
+	public void set_radaccounttype(long radaccounttype) throws Exception {
+		this.radaccounttype = new Long(radaccounttype);
+	}
+
+	/**
+	* <pre>
+	* Account Type to be used in Account Request Packet. Applicable to monitors of type RADIUS_ACCOUNTING.<br> Default value: 1<br> Minimum value =  0<br> Maximum value =  15
+	* </pre>
+	*/
+	public void set_radaccounttype(Long radaccounttype) throws Exception{
+		this.radaccounttype = radaccounttype;
+	}
+
+	/**
+	* <pre>
+	* Account Type to be used in Account Request Packet. Applicable to monitors of type RADIUS_ACCOUNTING.<br> Default value: 1<br> Minimum value =  0<br> Maximum value =  15
+	* </pre>
+	*/
+	public Long get_radaccounttype() throws Exception {
+		return this.radaccounttype;
+	}
+
+	/**
+	* <pre>
+	* Source ip with which the packet will go out . Applicable to monitors of type RADIUS_ACCOUNTING.
+	* </pre>
+	*/
+	public void set_radframedip(String radframedip) throws Exception{
+		this.radframedip = radframedip;
+	}
+
+	/**
+	* <pre>
+	* Source ip with which the packet will go out . Applicable to monitors of type RADIUS_ACCOUNTING.
+	* </pre>
+	*/
+	public String get_radframedip() throws Exception {
+		return this.radframedip;
+	}
+
+	/**
+	* <pre>
+	* Called Station Id to be used in Account Request Packet. Applicable to monitors of type RADIUS_ACCOUNTING.<br> Minimum length =  1
+	* </pre>
+	*/
+	public void set_radapn(String radapn) throws Exception{
+		this.radapn = radapn;
+	}
+
+	/**
+	* <pre>
+	* Called Station Id to be used in Account Request Packet. Applicable to monitors of type RADIUS_ACCOUNTING.<br> Minimum length =  1
+	* </pre>
+	*/
+	public String get_radapn() throws Exception {
+		return this.radapn;
+	}
+
+	/**
+	* <pre>
+	* Calling Stations Id to be used in Account Request Packet. Applicable to monitors of type RADIUS_ACCOUNTING.<br> Minimum length =  1
+	* </pre>
+	*/
+	public void set_radmsisdn(String radmsisdn) throws Exception{
+		this.radmsisdn = radmsisdn;
+	}
+
+	/**
+	* <pre>
+	* Calling Stations Id to be used in Account Request Packet. Applicable to monitors of type RADIUS_ACCOUNTING.<br> Minimum length =  1
+	* </pre>
+	*/
+	public String get_radmsisdn() throws Exception {
+		return this.radmsisdn;
+	}
+
+	/**
+	* <pre>
+	* Account Session ID to be used in Account Request Packet. Applicable to monitors of type RADIUS_ACCOUNTING.<br> Minimum length =  1
+	* </pre>
+	*/
+	public void set_radaccountsession(String radaccountsession) throws Exception{
+		this.radaccountsession = radaccountsession;
+	}
+
+	/**
+	* <pre>
+	* Account Session ID to be used in Account Request Packet. Applicable to monitors of type RADIUS_ACCOUNTING.<br> Minimum length =  1
+	* </pre>
+	*/
+	public String get_radaccountsession() throws Exception {
+		return this.radaccountsession;
+	}
+
+	/**
+	* <pre>
+	* Calculate the least response times for bound services. If this parameter is not enabled, the appliance does not learn the response times of the bound services. Also used for LRTM load balancing.<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_lrtm(String lrtm) throws Exception{
@@ -647,7 +769,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* The state of response time calculation of probes.<br> Possible values = ENABLED, DISABLED
+	* Calculate the least response times for bound services. If this parameter is not enabled, the appliance does not learn the response times of the bound services. Also used for LRTM load balancing.<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_lrtm() throws Exception {
@@ -656,7 +778,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* Deviation from the learnt response time for Dynamic Response Time monitoring. The maximum value is 20939000 in milliseconds , 20939 in seconds and 348 in minutes.<br> Minimum value =  0<br> Maximum value =  20939000
+	* Time value added to the learned average response time in dynamic response time monitoring (DRTM). When a deviation is specified, the appliance learns the average response time of bound services and adds the deviation to the average. The final value is then continually adjusted to accommodate response time variations over time. Specified in milliseconds, seconds, or minutes.<br> Minimum value =  0<br> Maximum value =  20939000
 	* </pre>
 	*/
 	public void set_deviation(long deviation) throws Exception {
@@ -665,7 +787,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* Deviation from the learnt response time for Dynamic Response Time monitoring. The maximum value is 20939000 in milliseconds , 20939 in seconds and 348 in minutes.<br> Minimum value =  0<br> Maximum value =  20939000
+	* Time value added to the learned average response time in dynamic response time monitoring (DRTM). When a deviation is specified, the appliance learns the average response time of bound services and adds the deviation to the average. The final value is then continually adjusted to accommodate response time variations over time. Specified in milliseconds, seconds, or minutes.<br> Minimum value =  0<br> Maximum value =  20939000
 	* </pre>
 	*/
 	public void set_deviation(Long deviation) throws Exception{
@@ -674,7 +796,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* Deviation from the learnt response time for Dynamic Response Time monitoring. The maximum value is 20939000 in milliseconds , 20939 in seconds and 348 in minutes.<br> Minimum value =  0<br> Maximum value =  20939000
+	* Time value added to the learned average response time in dynamic response time monitoring (DRTM). When a deviation is specified, the appliance learns the average response time of bound services and adds the deviation to the average. The final value is then continually adjusted to accommodate response time variations over time. Specified in milliseconds, seconds, or minutes.<br> Minimum value =  0<br> Maximum value =  20939000
 	* </pre>
 	*/
 	public Long get_deviation() throws Exception {
@@ -683,7 +805,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* Deviation units.<br> Default value: NSTMUNT_SEC<br> Possible values = SEC, MSEC, MIN
+	* Unit of measurement for the Deviation parameter. Cannot be changed after the monitor is created.<br> Default value: SEC<br> Possible values = SEC, MSEC, MIN
 	* </pre>
 	*/
 	public void set_units1(String units1) throws Exception{
@@ -692,7 +814,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* Deviation units.<br> Default value: NSTMUNT_SEC<br> Possible values = SEC, MSEC, MIN
+	* Unit of measurement for the Deviation parameter. Cannot be changed after the monitor is created.<br> Default value: SEC<br> Possible values = SEC, MSEC, MIN
 	* </pre>
 	*/
 	public String get_units1() throws Exception {
@@ -701,8 +823,7 @@ public class lbmonitor extends base_resource
 
 	/**
 	* <pre>
-	* The frequency at which the probe is sent to a service.The interval should be greater than the response timeout.
-The minimum value is 20 msec.The maximum value is 20940000 in milliseconds , 20940 in seconds and 349 in minutes.<br> Default value: 5<br> Minimum value =  1<br> Maximum value =  20940000
+	* Time interval between two successive probes. Must be greater than the value of Response Time-out.<br> Default value: 5<br> Minimum value =  1<br> Maximum value =  20940000
 	* </pre>
 	*/
 	public void set_interval(int interval) throws Exception {
@@ -711,8 +832,7 @@ The minimum value is 20 msec.The maximum value is 20940000 in milliseconds , 209
 
 	/**
 	* <pre>
-	* The frequency at which the probe is sent to a service.The interval should be greater than the response timeout.
-The minimum value is 20 msec.The maximum value is 20940000 in milliseconds , 20940 in seconds and 349 in minutes.<br> Default value: 5<br> Minimum value =  1<br> Maximum value =  20940000
+	* Time interval between two successive probes. Must be greater than the value of Response Time-out.<br> Default value: 5<br> Minimum value =  1<br> Maximum value =  20940000
 	* </pre>
 	*/
 	public void set_interval(Integer interval) throws Exception{
@@ -721,8 +841,7 @@ The minimum value is 20 msec.The maximum value is 20940000 in milliseconds , 209
 
 	/**
 	* <pre>
-	* The frequency at which the probe is sent to a service.The interval should be greater than the response timeout.
-The minimum value is 20 msec.The maximum value is 20940000 in milliseconds , 20940 in seconds and 349 in minutes.<br> Default value: 5<br> Minimum value =  1<br> Maximum value =  20940000
+	* Time interval between two successive probes. Must be greater than the value of Response Time-out.<br> Default value: 5<br> Minimum value =  1<br> Maximum value =  20940000
 	* </pre>
 	*/
 	public Integer get_interval() throws Exception {
@@ -731,7 +850,7 @@ The minimum value is 20 msec.The maximum value is 20940000 in milliseconds , 209
 
 	/**
 	* <pre>
-	* monitor interval units.<br> Default value: NSTMUNT_SEC<br> Possible values = SEC, MSEC, MIN
+	* monitor interval units.<br> Default value: SEC<br> Possible values = SEC, MSEC, MIN
 	* </pre>
 	*/
 	public void set_units3(String units3) throws Exception{
@@ -740,7 +859,7 @@ The minimum value is 20 msec.The maximum value is 20940000 in milliseconds , 209
 
 	/**
 	* <pre>
-	* monitor interval units.<br> Default value: NSTMUNT_SEC<br> Possible values = SEC, MSEC, MIN
+	* monitor interval units.<br> Default value: SEC<br> Possible values = SEC, MSEC, MIN
 	* </pre>
 	*/
 	public String get_units3() throws Exception {
@@ -749,11 +868,9 @@ The minimum value is 20 msec.The maximum value is 20940000 in milliseconds , 209
 
 	/**
 	* <pre>
-	* The interval for which the system waits before it marks the probe as FAILED.  The response timeout should be less than the value specified in -interval parameter.
-The UDP-ECV monitor type does not decide the probe failure by the response timeout. System considers the probe successful for UDP-ECV monitor type, when the server
-response matches the criteria set by the -send and -recv options or if the response is not received from the server (unless the -reverse option is set to yes).
-Note:	The -send option specifies what data is to be sent to the server in the probe and -recv specifies the server response criteria for the probe to succeed.
-The probe failure is caused by the ICMP port unreachable error from the service. The minimum value is 10 msec. The maximum value is 20939000 in milliseconds , 20939 in seconds and 348 in minutes.<br> Default value: 2<br> Minimum value =  1<br> Maximum value =  20939000
+	* Amount of time for which the appliance must wait before it marks a probe as FAILED.  Must be less than the value specified for the Interval parameter.
+
+Note: For UDP-ECV monitors for which a receive string is not configured, response timeout does not apply. For UDP-ECV monitors with no receive string, probe failure is indicated by an ICMP port unreachable error received from the service.<br> Default value: 2<br> Minimum value =  1<br> Maximum value =  20939000
 	* </pre>
 	*/
 	public void set_resptimeout(int resptimeout) throws Exception {
@@ -762,11 +879,9 @@ The probe failure is caused by the ICMP port unreachable error from the service.
 
 	/**
 	* <pre>
-	* The interval for which the system waits before it marks the probe as FAILED.  The response timeout should be less than the value specified in -interval parameter.
-The UDP-ECV monitor type does not decide the probe failure by the response timeout. System considers the probe successful for UDP-ECV monitor type, when the server
-response matches the criteria set by the -send and -recv options or if the response is not received from the server (unless the -reverse option is set to yes).
-Note:	The -send option specifies what data is to be sent to the server in the probe and -recv specifies the server response criteria for the probe to succeed.
-The probe failure is caused by the ICMP port unreachable error from the service. The minimum value is 10 msec. The maximum value is 20939000 in milliseconds , 20939 in seconds and 348 in minutes.<br> Default value: 2<br> Minimum value =  1<br> Maximum value =  20939000
+	* Amount of time for which the appliance must wait before it marks a probe as FAILED.  Must be less than the value specified for the Interval parameter.
+
+Note: For UDP-ECV monitors for which a receive string is not configured, response timeout does not apply. For UDP-ECV monitors with no receive string, probe failure is indicated by an ICMP port unreachable error received from the service.<br> Default value: 2<br> Minimum value =  1<br> Maximum value =  20939000
 	* </pre>
 	*/
 	public void set_resptimeout(Integer resptimeout) throws Exception{
@@ -775,11 +890,9 @@ The probe failure is caused by the ICMP port unreachable error from the service.
 
 	/**
 	* <pre>
-	* The interval for which the system waits before it marks the probe as FAILED.  The response timeout should be less than the value specified in -interval parameter.
-The UDP-ECV monitor type does not decide the probe failure by the response timeout. System considers the probe successful for UDP-ECV monitor type, when the server
-response matches the criteria set by the -send and -recv options or if the response is not received from the server (unless the -reverse option is set to yes).
-Note:	The -send option specifies what data is to be sent to the server in the probe and -recv specifies the server response criteria for the probe to succeed.
-The probe failure is caused by the ICMP port unreachable error from the service. The minimum value is 10 msec. The maximum value is 20939000 in milliseconds , 20939 in seconds and 348 in minutes.<br> Default value: 2<br> Minimum value =  1<br> Maximum value =  20939000
+	* Amount of time for which the appliance must wait before it marks a probe as FAILED.  Must be less than the value specified for the Interval parameter.
+
+Note: For UDP-ECV monitors for which a receive string is not configured, response timeout does not apply. For UDP-ECV monitors with no receive string, probe failure is indicated by an ICMP port unreachable error received from the service.<br> Default value: 2<br> Minimum value =  1<br> Maximum value =  20939000
 	* </pre>
 	*/
 	public Integer get_resptimeout() throws Exception {
@@ -788,7 +901,7 @@ The probe failure is caused by the ICMP port unreachable error from the service.
 
 	/**
 	* <pre>
-	* monitor response timeout units.<br> Default value: NSTMUNT_SEC<br> Possible values = SEC, MSEC, MIN
+	* monitor response timeout units.<br> Default value: SEC<br> Possible values = SEC, MSEC, MIN
 	* </pre>
 	*/
 	public void set_units4(String units4) throws Exception{
@@ -797,7 +910,7 @@ The probe failure is caused by the ICMP port unreachable error from the service.
 
 	/**
 	* <pre>
-	* monitor response timeout units.<br> Default value: NSTMUNT_SEC<br> Possible values = SEC, MSEC, MIN
+	* monitor response timeout units.<br> Default value: SEC<br> Possible values = SEC, MSEC, MIN
 	* </pre>
 	*/
 	public String get_units4() throws Exception {
@@ -806,7 +919,7 @@ The probe failure is caused by the ICMP port unreachable error from the service.
 
 	/**
 	* <pre>
-	* Monitor response timeout threshold , a trap will be sent if the response time for the monitoring probes exceeds the thereshold. It is given in percentage.<br> Minimum value =  0<br> Maximum value =  100
+	* Response time threshold, specified as a percentage of the Response Time-out parameter. If the response to a monitor probe has not arrived when the threshold is reached, the appliance generates an SNMP trap called monRespTimeoutAboveThresh. After the response time returns to a value below the threshold, the appliance generates a monRespTimeoutBelowThresh SNMP trap. For the traps to be generated, the "MONITOR-RTO-THRESHOLD" alarm must also be enabled.<br> Minimum value =  0<br> Maximum value =  100
 	* </pre>
 	*/
 	public void set_resptimeoutthresh(long resptimeoutthresh) throws Exception {
@@ -815,7 +928,7 @@ The probe failure is caused by the ICMP port unreachable error from the service.
 
 	/**
 	* <pre>
-	* Monitor response timeout threshold , a trap will be sent if the response time for the monitoring probes exceeds the thereshold. It is given in percentage.<br> Minimum value =  0<br> Maximum value =  100
+	* Response time threshold, specified as a percentage of the Response Time-out parameter. If the response to a monitor probe has not arrived when the threshold is reached, the appliance generates an SNMP trap called monRespTimeoutAboveThresh. After the response time returns to a value below the threshold, the appliance generates a monRespTimeoutBelowThresh SNMP trap. For the traps to be generated, the "MONITOR-RTO-THRESHOLD" alarm must also be enabled.<br> Minimum value =  0<br> Maximum value =  100
 	* </pre>
 	*/
 	public void set_resptimeoutthresh(Long resptimeoutthresh) throws Exception{
@@ -824,7 +937,7 @@ The probe failure is caused by the ICMP port unreachable error from the service.
 
 	/**
 	* <pre>
-	* Monitor response timeout threshold , a trap will be sent if the response time for the monitoring probes exceeds the thereshold. It is given in percentage.<br> Minimum value =  0<br> Maximum value =  100
+	* Response time threshold, specified as a percentage of the Response Time-out parameter. If the response to a monitor probe has not arrived when the threshold is reached, the appliance generates an SNMP trap called monRespTimeoutAboveThresh. After the response time returns to a value below the threshold, the appliance generates a monRespTimeoutBelowThresh SNMP trap. For the traps to be generated, the "MONITOR-RTO-THRESHOLD" alarm must also be enabled.<br> Minimum value =  0<br> Maximum value =  100
 	* </pre>
 	*/
 	public Long get_resptimeoutthresh() throws Exception {
@@ -833,7 +946,7 @@ The probe failure is caused by the ICMP port unreachable error from the service.
 
 	/**
 	* <pre>
-	* The maximum number of most recent probes considered to decide whether to mark the service as DOWN. Minimum value of retries is 1.<br> Default value: 3<br> Minimum value =  1<br> Maximum value =  127
+	* Maximum number of probes to send to establish the state of a service for which a monitoring probe failed.<br> Default value: 3<br> Minimum value =  1<br> Maximum value =  127
 	* </pre>
 	*/
 	public void set_retries(int retries) throws Exception {
@@ -842,7 +955,7 @@ The probe failure is caused by the ICMP port unreachable error from the service.
 
 	/**
 	* <pre>
-	* The maximum number of most recent probes considered to decide whether to mark the service as DOWN. Minimum value of retries is 1.<br> Default value: 3<br> Minimum value =  1<br> Maximum value =  127
+	* Maximum number of probes to send to establish the state of a service for which a monitoring probe failed.<br> Default value: 3<br> Minimum value =  1<br> Maximum value =  127
 	* </pre>
 	*/
 	public void set_retries(Integer retries) throws Exception{
@@ -851,7 +964,7 @@ The probe failure is caused by the ICMP port unreachable error from the service.
 
 	/**
 	* <pre>
-	* The maximum number of most recent probes considered to decide whether to mark the service as DOWN. Minimum value of retries is 1.<br> Default value: 3<br> Minimum value =  1<br> Maximum value =  127
+	* Maximum number of probes to send to establish the state of a service for which a monitoring probe failed.<br> Default value: 3<br> Minimum value =  1<br> Maximum value =  127
 	* </pre>
 	*/
 	public Integer get_retries() throws Exception {
@@ -860,7 +973,7 @@ The probe failure is caused by the ICMP port unreachable error from the service.
 
 	/**
 	* <pre>
-	* The number of failed probes out of most recent "retries" number of probes required to mark the service as DOWN. By default, the system requires "retries" number of consecutive probe failures to mark the service as DOWN.<br> Minimum value =  0<br> Maximum value =  32
+	* Number of retries that must fail, out of the number specified for the Retries parameter, for a service to be marked as DOWN. For example, if the Retries parameter is set to 10 and the Failure Retries parameter is set to 6, out of the ten probes sent, at least six probes must fail if the service is to be marked as DOWN. The default value of 0 means that all the retries must fail if the service is to be marked as DOWN.<br> Minimum value =  0<br> Maximum value =  32
 	* </pre>
 	*/
 	public void set_failureretries(int failureretries) throws Exception {
@@ -869,7 +982,7 @@ The probe failure is caused by the ICMP port unreachable error from the service.
 
 	/**
 	* <pre>
-	* The number of failed probes out of most recent "retries" number of probes required to mark the service as DOWN. By default, the system requires "retries" number of consecutive probe failures to mark the service as DOWN.<br> Minimum value =  0<br> Maximum value =  32
+	* Number of retries that must fail, out of the number specified for the Retries parameter, for a service to be marked as DOWN. For example, if the Retries parameter is set to 10 and the Failure Retries parameter is set to 6, out of the ten probes sent, at least six probes must fail if the service is to be marked as DOWN. The default value of 0 means that all the retries must fail if the service is to be marked as DOWN.<br> Minimum value =  0<br> Maximum value =  32
 	* </pre>
 	*/
 	public void set_failureretries(Integer failureretries) throws Exception{
@@ -878,7 +991,7 @@ The probe failure is caused by the ICMP port unreachable error from the service.
 
 	/**
 	* <pre>
-	* The number of failed probes out of most recent "retries" number of probes required to mark the service as DOWN. By default, the system requires "retries" number of consecutive probe failures to mark the service as DOWN.<br> Minimum value =  0<br> Maximum value =  32
+	* Number of retries that must fail, out of the number specified for the Retries parameter, for a service to be marked as DOWN. For example, if the Retries parameter is set to 10 and the Failure Retries parameter is set to 6, out of the ten probes sent, at least six probes must fail if the service is to be marked as DOWN. The default value of 0 means that all the retries must fail if the service is to be marked as DOWN.<br> Minimum value =  0<br> Maximum value =  32
 	* </pre>
 	*/
 	public Integer get_failureretries() throws Exception {
@@ -887,7 +1000,7 @@ The probe failure is caused by the ICMP port unreachable error from the service.
 
 	/**
 	* <pre>
-	* The number of probes failures after which the system generates a snmp trap.<br> Minimum value =  0<br> Maximum value =  32
+	* Number of consecutive probe failures after which the appliance generates an SNMP trap called monProbeFailed.<br> Minimum value =  0<br> Maximum value =  32
 	* </pre>
 	*/
 	public void set_alertretries(int alertretries) throws Exception {
@@ -896,7 +1009,7 @@ The probe failure is caused by the ICMP port unreachable error from the service.
 
 	/**
 	* <pre>
-	* The number of probes failures after which the system generates a snmp trap.<br> Minimum value =  0<br> Maximum value =  32
+	* Number of consecutive probe failures after which the appliance generates an SNMP trap called monProbeFailed.<br> Minimum value =  0<br> Maximum value =  32
 	* </pre>
 	*/
 	public void set_alertretries(Integer alertretries) throws Exception{
@@ -905,7 +1018,7 @@ The probe failure is caused by the ICMP port unreachable error from the service.
 
 	/**
 	* <pre>
-	* The number of probes failures after which the system generates a snmp trap.<br> Minimum value =  0<br> Maximum value =  32
+	* Number of consecutive probe failures after which the appliance generates an SNMP trap called monProbeFailed.<br> Minimum value =  0<br> Maximum value =  32
 	* </pre>
 	*/
 	public Integer get_alertretries() throws Exception {
@@ -914,7 +1027,7 @@ The probe failure is caused by the ICMP port unreachable error from the service.
 
 	/**
 	* <pre>
-	* The number of consecutive sucessful probes required to mark the service as UP.<br> Default value: 1<br> Minimum value =  1<br> Maximum value =  32
+	* Number of consecutive successful probes required to transition a service's state from DOWN to UP.<br> Default value: 1<br> Minimum value =  1<br> Maximum value =  32
 	* </pre>
 	*/
 	public void set_successretries(int successretries) throws Exception {
@@ -923,7 +1036,7 @@ The probe failure is caused by the ICMP port unreachable error from the service.
 
 	/**
 	* <pre>
-	* The number of consecutive sucessful probes required to mark the service as UP.<br> Default value: 1<br> Minimum value =  1<br> Maximum value =  32
+	* Number of consecutive successful probes required to transition a service's state from DOWN to UP.<br> Default value: 1<br> Minimum value =  1<br> Maximum value =  32
 	* </pre>
 	*/
 	public void set_successretries(Integer successretries) throws Exception{
@@ -932,7 +1045,7 @@ The probe failure is caused by the ICMP port unreachable error from the service.
 
 	/**
 	* <pre>
-	* The number of consecutive sucessful probes required to mark the service as UP.<br> Default value: 1<br> Minimum value =  1<br> Maximum value =  32
+	* Number of consecutive successful probes required to transition a service's state from DOWN to UP.<br> Default value: 1<br> Minimum value =  1<br> Maximum value =  32
 	* </pre>
 	*/
 	public Integer get_successretries() throws Exception {
@@ -941,7 +1054,7 @@ The probe failure is caused by the ICMP port unreachable error from the service.
 
 	/**
 	* <pre>
-	* The duration for which the system waits to make the next probe once the service is marked as DOWN. The minimum value is 10 msec. The maximum value is 20939000 in milliseconds , 20939 in seconds and 348 in minutes.<br> Default value: 30<br> Minimum value =  1<br> Maximum value =  20939000
+	* Time duration for which to wait before probing a service that has been marked as DOWN. Expressed in milliseconds, seconds, or minutes.<br> Default value: 30<br> Minimum value =  1<br> Maximum value =  20939000
 	* </pre>
 	*/
 	public void set_downtime(int downtime) throws Exception {
@@ -950,7 +1063,7 @@ The probe failure is caused by the ICMP port unreachable error from the service.
 
 	/**
 	* <pre>
-	* The duration for which the system waits to make the next probe once the service is marked as DOWN. The minimum value is 10 msec. The maximum value is 20939000 in milliseconds , 20939 in seconds and 348 in minutes.<br> Default value: 30<br> Minimum value =  1<br> Maximum value =  20939000
+	* Time duration for which to wait before probing a service that has been marked as DOWN. Expressed in milliseconds, seconds, or minutes.<br> Default value: 30<br> Minimum value =  1<br> Maximum value =  20939000
 	* </pre>
 	*/
 	public void set_downtime(Integer downtime) throws Exception{
@@ -959,7 +1072,7 @@ The probe failure is caused by the ICMP port unreachable error from the service.
 
 	/**
 	* <pre>
-	* The duration for which the system waits to make the next probe once the service is marked as DOWN. The minimum value is 10 msec. The maximum value is 20939000 in milliseconds , 20939 in seconds and 348 in minutes.<br> Default value: 30<br> Minimum value =  1<br> Maximum value =  20939000
+	* Time duration for which to wait before probing a service that has been marked as DOWN. Expressed in milliseconds, seconds, or minutes.<br> Default value: 30<br> Minimum value =  1<br> Maximum value =  20939000
 	* </pre>
 	*/
 	public Integer get_downtime() throws Exception {
@@ -968,7 +1081,7 @@ The probe failure is caused by the ICMP port unreachable error from the service.
 
 	/**
 	* <pre>
-	* monitor downtime units.<br> Default value: NSTMUNT_SEC<br> Possible values = SEC, MSEC, MIN
+	* Unit of measurement for the Down Time parameter. Cannot be changed after the monitor is created.<br> Default value: SEC<br> Possible values = SEC, MSEC, MIN
 	* </pre>
 	*/
 	public void set_units2(String units2) throws Exception{
@@ -977,7 +1090,7 @@ The probe failure is caused by the ICMP port unreachable error from the service.
 
 	/**
 	* <pre>
-	* monitor downtime units.<br> Default value: NSTMUNT_SEC<br> Possible values = SEC, MSEC, MIN
+	* Unit of measurement for the Down Time parameter. Cannot be changed after the monitor is created.<br> Default value: SEC<br> Possible values = SEC, MSEC, MIN
 	* </pre>
 	*/
 	public String get_units2() throws Exception {
@@ -986,7 +1099,7 @@ The probe failure is caused by the ICMP port unreachable error from the service.
 
 	/**
 	* <pre>
-	* The IP address to which the probe is sent. If the destination IP address is set to 0, the destination IP address is that of the server to which the monitor is bound.
+	* IP address of the service to which to send probes. If the parameter is set to 0, the IP address of the server to which the monitor is bound is considered the destination IP address.
 	* </pre>
 	*/
 	public void set_destip(String destip) throws Exception{
@@ -995,7 +1108,7 @@ The probe failure is caused by the ICMP port unreachable error from the service.
 
 	/**
 	* <pre>
-	* The IP address to which the probe is sent. If the destination IP address is set to 0, the destination IP address is that of the server to which the monitor is bound.
+	* IP address of the service to which to send probes. If the parameter is set to 0, the IP address of the server to which the monitor is bound is considered the destination IP address.
 	* </pre>
 	*/
 	public String get_destip() throws Exception {
@@ -1004,7 +1117,7 @@ The probe failure is caused by the ICMP port unreachable error from the service.
 
 	/**
 	* <pre>
-	* The TCP/UDP port to which the probe is sent. If the destination port is set to 0, the destination port is of the service to which the monitor is bound. For a USER monitor, however, this will be the port sent in the HTTP request to the dispatcher. This option is ignored if the monitor is of the PING type.
+	* TCP or UDP port to which to send the probe. If the parameter is set to 0, the port number of the service to which the monitor is bound is considered the destination port. For a monitor of type USER, however, the destination port is the port number that is included in the HTTP request sent to the dispatcher. Does not apply to monitors of type PING.
 	* </pre>
 	*/
 	public void set_destport(int destport) throws Exception {
@@ -1013,7 +1126,7 @@ The probe failure is caused by the ICMP port unreachable error from the service.
 
 	/**
 	* <pre>
-	* The TCP/UDP port to which the probe is sent. If the destination port is set to 0, the destination port is of the service to which the monitor is bound. For a USER monitor, however, this will be the port sent in the HTTP request to the dispatcher. This option is ignored if the monitor is of the PING type.
+	* TCP or UDP port to which to send the probe. If the parameter is set to 0, the port number of the service to which the monitor is bound is considered the destination port. For a monitor of type USER, however, the destination port is the port number that is included in the HTTP request sent to the dispatcher. Does not apply to monitors of type PING.
 	* </pre>
 	*/
 	public void set_destport(Integer destport) throws Exception{
@@ -1022,7 +1135,7 @@ The probe failure is caused by the ICMP port unreachable error from the service.
 
 	/**
 	* <pre>
-	* The TCP/UDP port to which the probe is sent. If the destination port is set to 0, the destination port is of the service to which the monitor is bound. For a USER monitor, however, this will be the port sent in the HTTP request to the dispatcher. This option is ignored if the monitor is of the PING type.
+	* TCP or UDP port to which to send the probe. If the parameter is set to 0, the port number of the service to which the monitor is bound is considered the destination port. For a monitor of type USER, however, the destination port is the port number that is included in the HTTP request sent to the dispatcher. Does not apply to monitors of type PING.
 	* </pre>
 	*/
 	public Integer get_destport() throws Exception {
@@ -1031,9 +1144,7 @@ The probe failure is caused by the ICMP port unreachable error from the service.
 
 	/**
 	* <pre>
-	* The state of the monitor.
-	If the monitor is disabled, this monitor-type probe is not sent for all services.
-	If the monitor is bound, the state of this monitor is not taken into account when the service of this state is determined.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* State of the monitor. The DISABLED setting disables not only the monitor being configured, but all monitors of the same type, until the parameter is set to ENABLED. If the monitor is bound to a service, the state of the monitor is not taken into account when the state of the service is determined.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_state(String state) throws Exception{
@@ -1042,9 +1153,7 @@ The probe failure is caused by the ICMP port unreachable error from the service.
 
 	/**
 	* <pre>
-	* The state of the monitor.
-	If the monitor is disabled, this monitor-type probe is not sent for all services.
-	If the monitor is bound, the state of this monitor is not taken into account when the service of this state is determined.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* State of the monitor. The DISABLED setting disables not only the monitor being configured, but all monitors of the same type, until the parameter is set to ENABLED. If the monitor is bound to a service, the state of the monitor is not taken into account when the state of the service is determined.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_state() throws Exception {
@@ -1053,7 +1162,7 @@ The probe failure is caused by the ICMP port unreachable error from the service.
 
 	/**
 	* <pre>
-	* The state of reverse probe's criterion check.<br> Default value: NO<br> Possible values = YES, NO
+	* Mark a service as DOWN, instead of UP, when probe criteria are satisfied, and as UP instead of DOWN when probe criteria are not satisfied.<br> Default value: NO<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public void set_reverse(String reverse) throws Exception{
@@ -1062,7 +1171,7 @@ The probe failure is caused by the ICMP port unreachable error from the service.
 
 	/**
 	* <pre>
-	* The state of reverse probe's criterion check.<br> Default value: NO<br> Possible values = YES, NO
+	* Mark a service as DOWN, instead of UP, when probe criteria are satisfied, and as UP instead of DOWN when probe criteria are not satisfied.<br> Default value: NO<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public String get_reverse() throws Exception {
@@ -1071,8 +1180,7 @@ The probe failure is caused by the ICMP port unreachable error from the service.
 
 	/**
 	* <pre>
-	* The state of  the monitor for transparent devices, such as firewalls, based on the responsiveness of the services behind them. If the monitoring of transparent devices is enabled, the destination IP address should be specified.
-The probe is sent to the specified destination IP address using the MAC address of the transparent device.<br> Default value: NO<br> Possible values = YES, NO
+	* The monitor is bound to a transparent device such as a firewall or router. The state of a transparent device depends on the responsiveness of the services behind it. If a transparent device is being monitored, a destination IP address must be specified. The probe is sent to the specified IP address by using the MAC address of the transparent device.<br> Default value: NO<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public void set_transparent(String transparent) throws Exception{
@@ -1081,8 +1189,7 @@ The probe is sent to the specified destination IP address using the MAC address 
 
 	/**
 	* <pre>
-	* The state of  the monitor for transparent devices, such as firewalls, based on the responsiveness of the services behind them. If the monitoring of transparent devices is enabled, the destination IP address should be specified.
-The probe is sent to the specified destination IP address using the MAC address of the transparent device.<br> Default value: NO<br> Possible values = YES, NO
+	* The monitor is bound to a transparent device such as a firewall or router. The state of a transparent device depends on the responsiveness of the services behind it. If a transparent device is being monitored, a destination IP address must be specified. The probe is sent to the specified IP address by using the MAC address of the transparent device.<br> Default value: NO<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public String get_transparent() throws Exception {
@@ -1091,8 +1198,7 @@ The probe is sent to the specified destination IP address using the MAC address 
 
 	/**
 	* <pre>
-	* The state of the monitor for tunneled devices. If the monitoring of tunneled devices is enabled, the destination IP address should be specified.
-The probe is sent to the specified destination IP address by tunneling it to the device.<br> Default value: NO<br> Possible values = YES, NO
+	* Send the monitoring probe to the service through an IP tunnel. A destination IP address must be specified.<br> Default value: NO<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public void set_iptunnel(String iptunnel) throws Exception{
@@ -1101,8 +1207,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* The state of the monitor for tunneled devices. If the monitoring of tunneled devices is enabled, the destination IP address should be specified.
-The probe is sent to the specified destination IP address by tunneling it to the device.<br> Default value: NO<br> Possible values = YES, NO
+	* Send the monitoring probe to the service through an IP tunnel. A destination IP address must be specified.<br> Default value: NO<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public String get_iptunnel() throws Exception {
@@ -1111,7 +1216,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* If enabled, the probe is sent to the service by encoding the specified destination IP address in the IP TOS (6)bits.<br> Possible values = YES, NO
+	* Probe the service by encoding the destination IP address in the IP TOS (6) bits.<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public void set_tos(String tos) throws Exception{
@@ -1120,7 +1225,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* If enabled, the probe is sent to the service by encoding the specified destination IP address in the IP TOS (6)bits.<br> Possible values = YES, NO
+	* Probe the service by encoding the destination IP address in the IP TOS (6) bits.<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public String get_tos() throws Exception {
@@ -1129,7 +1234,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* Use this parameter to specify the TOS ID of the specified destination IP. Applicable only when the -tos is enabled.<br> Minimum value =  1<br> Maximum value =  63
+	* The TOS ID of the specified destination IP. Applicable only when the TOS parameter is set.<br> Minimum value =  1<br> Maximum value =  63
 	* </pre>
 	*/
 	public void set_tosid(long tosid) throws Exception {
@@ -1138,7 +1243,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* Use this parameter to specify the TOS ID of the specified destination IP. Applicable only when the -tos is enabled.<br> Minimum value =  1<br> Maximum value =  63
+	* The TOS ID of the specified destination IP. Applicable only when the TOS parameter is set.<br> Minimum value =  1<br> Maximum value =  63
 	* </pre>
 	*/
 	public void set_tosid(Long tosid) throws Exception{
@@ -1147,7 +1252,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* Use this parameter to specify the TOS ID of the specified destination IP. Applicable only when the -tos is enabled.<br> Minimum value =  1<br> Maximum value =  63
+	* The TOS ID of the specified destination IP. Applicable only when the TOS parameter is set.<br> Minimum value =  1<br> Maximum value =  63
 	* </pre>
 	*/
 	public Long get_tosid() throws Exception {
@@ -1156,7 +1261,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* The state of  the secure monitoring of services.  SSL handshake will be done on the TCP connection established. Applicable only for TCP based monitors. This option can't be used in conjuction with CITRIX-AG monitor as this monitor is a secure monitor by default. .<br> Default value: NO<br> Possible values = YES, NO
+	* Use a secure SSL connection when monitoring a service. Applicable only to TCP based monitors. The secure option cannot be used with a CITRIX-AG monitor, because a CITRIX-AG monitor uses a secure connection by default.<br> Default value: NO<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public void set_secure(String secure) throws Exception{
@@ -1165,7 +1270,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* The state of  the secure monitoring of services.  SSL handshake will be done on the TCP connection established. Applicable only for TCP based monitors. This option can't be used in conjuction with CITRIX-AG monitor as this monitor is a secure monitor by default. .<br> Default value: NO<br> Possible values = YES, NO
+	* Use a secure SSL connection when monitoring a service. Applicable only to TCP based monitors. The secure option cannot be used with a CITRIX-AG monitor, because a CITRIX-AG monitor uses a secure connection by default.<br> Default value: NO<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public String get_secure() throws Exception {
@@ -1174,7 +1279,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* Setting this field causes the monitor to send probe which validate the credentials of the Xen Desktop DDC.<br> Default value: NO<br> Possible values = YES, NO
+	* Validate the credentials of the Xen Desktop DDC server user. Applicable to monitors of type CITRIX-XD-DDC.<br> Default value: NO<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public void set_validatecred(String validatecred) throws Exception{
@@ -1183,7 +1288,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* Setting this field causes the monitor to send probe which validate the credentials of the Xen Desktop DDC.<br> Default value: NO<br> Possible values = YES, NO
+	* Validate the credentials of the Xen Desktop DDC server user. Applicable to monitors of type CITRIX-XD-DDC.<br> Default value: NO<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public String get_validatecred() throws Exception {
@@ -1192,7 +1297,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* Domain name required by the monitors. This is for the Xen Desktop DDC monitor to validate the credentials and CITRIX-WI-EXTENDED monitor for logon process.
+	* Domain in which the XenDesktop Desktop Delivery Controller (DDC) servers or Web Interface servers are present. Required by CITRIX-XD-DDC and CITRIX-WI-EXTENDED monitors for logging on to the DDC servers and Web Interface servers, respectively.
 	* </pre>
 	*/
 	public void set_domain(String domain) throws Exception{
@@ -1201,7 +1306,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* Domain name required by the monitors. This is for the Xen Desktop DDC monitor to validate the credentials and CITRIX-WI-EXTENDED monitor for logon process.
+	* Domain in which the XenDesktop Desktop Delivery Controller (DDC) servers or Web Interface servers are present. Required by CITRIX-XD-DDC and CITRIX-WI-EXTENDED monitors for logging on to the DDC servers and Web Interface servers, respectively.
 	* </pre>
 	*/
 	public String get_domain() throws Exception {
@@ -1210,7 +1315,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* List of IP address to be checked against the response to the DNS monitoring probe. Applicable only to the DNS monitors.<br> Minimum length =  1
+	* Set of IP addresses expected in the monitoring response from the DNS server, if the record type is A or AAAA. Applicable to DNS monitors.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_ipaddress(String[] ipaddress) throws Exception{
@@ -1219,7 +1324,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* List of IP address to be checked against the response to the DNS monitoring probe. Applicable only to the DNS monitors.<br> Minimum length =  1
+	* Set of IP addresses expected in the monitoring response from the DNS server, if the record type is A or AAAA. Applicable to DNS monitors.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String[] get_ipaddress() throws Exception {
@@ -1228,7 +1333,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* Group name to be queried for NNTP monitor.<br> Minimum length =  1
+	* Name of a newsgroup available on the NNTP service that is to be monitored. The appliance periodically generates an NNTP query for the name of the newsgroup and evaluates the response. If the newsgroup is found on the server, the service is marked as UP. If the newsgroup does not exist or if the search fails, the service is marked as DOWN. Applicable to NNTP monitors.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_group(String group) throws Exception{
@@ -1237,7 +1342,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* Group name to be queried for NNTP monitor.<br> Minimum length =  1
+	* Name of a newsgroup available on the NNTP service that is to be monitored. The appliance periodically generates an NNTP query for the name of the newsgroup and evaluates the response. If the newsgroup is found on the server, the service is marked as UP. If the newsgroup does not exist or if the search fails, the service is marked as DOWN. Applicable to NNTP monitors.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_group() throws Exception {
@@ -1246,7 +1351,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* File name to be used for FTP-EXTENDED monitor.<br> Minimum length =  1
+	* Name of a file on the FTP server. The appliance monitors the FTP service by periodically checking the existence of the file on the server. Applicable to FTP-EXTENDED monitors.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_filename(String filename) throws Exception{
@@ -1255,7 +1360,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* File name to be used for FTP-EXTENDED monitor.<br> Minimum length =  1
+	* Name of a file on the FTP server. The appliance monitors the FTP service by periodically checking the existence of the file on the server. Applicable to FTP-EXTENDED monitors.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_filename() throws Exception {
@@ -1264,7 +1369,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* Base name for the LDAP monitor.<br> Minimum length =  1
+	* The base distinguished name of the LDAP service, from where the LDAP server can begin the search for the attributes in the monitoring query. Required for LDAP service monitoring.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_basedn(String basedn) throws Exception{
@@ -1273,7 +1378,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* Base name for the LDAP monitor.<br> Minimum length =  1
+	* The base distinguished name of the LDAP service, from where the LDAP server can begin the search for the attributes in the monitoring query. Required for LDAP service monitoring.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_basedn() throws Exception {
@@ -1282,7 +1387,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* BDN name for the LDAP monitor.<br> Minimum length =  1
+	* The distinguished name with which an LDAP monitor can perform the Bind operation on the LDAP server. Optional. Applicable to LDAP monitors.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_binddn(String binddn) throws Exception{
@@ -1291,7 +1396,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* BDN name for the LDAP monitor.<br> Minimum length =  1
+	* The distinguished name with which an LDAP monitor can perform the Bind operation on the LDAP server. Optional. Applicable to LDAP monitors.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_binddn() throws Exception {
@@ -1300,7 +1405,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* Filter for the LDAP monitor.<br> Minimum length =  1
+	* Filter criteria for the LDAP query. Optional.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_filter(String filter) throws Exception{
@@ -1309,7 +1414,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* Filter for the LDAP monitor.<br> Minimum length =  1
+	* Filter criteria for the LDAP query. Optional.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_filter() throws Exception {
@@ -1318,7 +1423,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* Attribute for the LDAP monitor.<br> Minimum length =  1
+	* Attribute to evaluate when the LDAP server responds to the query. Success or failure of the monitoring probe depends on whether the attribute exists in the response. Optional.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_attribute(String attribute) throws Exception{
@@ -1327,7 +1432,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* Attribute for the LDAP monitor.<br> Minimum length =  1
+	* Attribute to evaluate when the LDAP server responds to the query. Success or failure of the monitoring probe depends on whether the attribute exists in the response. Optional.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_attribute() throws Exception {
@@ -1336,7 +1441,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* Database to be used for the MYSQL/MSSQL monitor.<br> Minimum length =  1
+	* Name of the database to probe. The name is used to connect to the database during authentication.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_database(String database) throws Exception{
@@ -1345,7 +1450,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* Database to be used for the MYSQL/MSSQL monitor.<br> Minimum length =  1
+	* Name of the database to probe. The name is used to connect to the database during authentication.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_database() throws Exception {
@@ -1354,7 +1459,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* SQL query to be used for the MYSQL/MSSQL monitor.<br> Minimum length =  1
+	* SQL query for a MYSQL-ECV or MSSQL-ECV monitor. Sent to the database server after the server authenticates the connection.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_sqlquery(String sqlquery) throws Exception{
@@ -1363,7 +1468,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* SQL query to be used for the MYSQL/MSSQL monitor.<br> Minimum length =  1
+	* SQL query for a MYSQL-ECV or MSSQL-ECV monitor. Sent to the database server after the server authenticates the connection.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_sqlquery() throws Exception {
@@ -1372,7 +1477,8 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* Rule evaluated to determine the state of MYSQL/MSSQL monitor.
+	* Default syntax expression that evaluates the database server's response to a MYSQL-ECV or MSSQL-ECV monitoring query. Must produce a Boolean result. The result determines the state of the server. If the expression returns TRUE, the probe succeeds. 
+For example, if you want the appliance to evaluate the error message to determine the state of the server, use the rule MYSQL.RES.ROW(10) .TEXT_ELEM(2).EQ("MySQL").
 	* </pre>
 	*/
 	public void set_evalrule(String evalrule) throws Exception{
@@ -1381,7 +1487,8 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* Rule evaluated to determine the state of MYSQL/MSSQL monitor.
+	* Default syntax expression that evaluates the database server's response to a MYSQL-ECV or MSSQL-ECV monitoring query. Must produce a Boolean result. The result determines the state of the server. If the expression returns TRUE, the probe succeeds. 
+For example, if you want the appliance to evaluate the error message to determine the state of the server, use the rule MYSQL.RES.ROW(10) .TEXT_ELEM(2).EQ("MySQL").
 	* </pre>
 	*/
 	public String get_evalrule() throws Exception {
@@ -1390,7 +1497,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* Protocol Version used by MSSQL monitor.<br> Default value: TDS_PROT_70<br> Possible values = 70, 2000, 2000SP1, 2005, 2008, 2008R2
+	* Version of MSSQL server that is to be monitored.<br> Default value: 70<br> Possible values = 70, 2000, 2000SP1, 2005, 2008, 2008R2, 2012
 	* </pre>
 	*/
 	public void set_mssqlprotocolversion(String mssqlprotocolversion) throws Exception{
@@ -1399,7 +1506,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* Protocol Version used by MSSQL monitor.<br> Default value: TDS_PROT_70<br> Possible values = 70, 2000, 2000SP1, 2005, 2008, 2008R2
+	* Version of MSSQL server that is to be monitored.<br> Default value: 70<br> Possible values = 70, 2000, 2000SP1, 2005, 2008, 2008R2, 2012
 	* </pre>
 	*/
 	public String get_mssqlprotocolversion() throws Exception {
@@ -1408,7 +1515,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* OID to be used for the SNMP monitor.<br> Minimum length =  1
+	* SNMP OID for SNMP monitors.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_Snmpoid(String Snmpoid) throws Exception{
@@ -1417,7 +1524,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* OID to be used for the SNMP monitor.<br> Minimum length =  1
+	* SNMP OID for SNMP monitors.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_Snmpoid() throws Exception {
@@ -1426,7 +1533,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* Community to be used for the SNMP monitor.<br> Minimum length =  1
+	* Community name for SNMP monitors.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_snmpcommunity(String snmpcommunity) throws Exception{
@@ -1435,7 +1542,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* Community to be used for the SNMP monitor.<br> Minimum length =  1
+	* Community name for SNMP monitors.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_snmpcommunity() throws Exception {
@@ -1444,7 +1551,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* Threshold to be used for the SNMP monitor.<br> Minimum length =  1
+	* Threshold for SNMP monitors.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_snmpthreshold(String snmpthreshold) throws Exception{
@@ -1453,7 +1560,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* Threshold to be used for the SNMP monitor.<br> Minimum length =  1
+	* Threshold for SNMP monitors.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_snmpthreshold() throws Exception {
@@ -1462,7 +1569,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* SNMP version to be used for LOAD monitoring.<br> Possible values = V1, V2
+	* SNMP version to be used for SNMP monitors.<br> Possible values = V1, V2
 	* </pre>
 	*/
 	public void set_snmpversion(String snmpversion) throws Exception{
@@ -1471,7 +1578,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* SNMP version to be used for LOAD monitoring.<br> Possible values = V1, V2
+	* SNMP version to be used for SNMP monitors.<br> Possible values = V1, V2
 	* </pre>
 	*/
 	public String get_snmpversion() throws Exception {
@@ -1480,7 +1587,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* Metric table to use for the metrics that are going to be bound.<br> Minimum length =  1<br> Maximum length =  99
+	* Metric table to which to bind metrics.<br> Minimum length =  1<br> Maximum length =  99
 	* </pre>
 	*/
 	public void set_metrictable(String metrictable) throws Exception{
@@ -1489,7 +1596,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* Metric table to use for the metrics that are going to be bound.<br> Minimum length =  1<br> Maximum length =  99
+	* Metric table to which to bind metrics.<br> Minimum length =  1<br> Maximum length =  99
 	* </pre>
 	*/
 	public String get_metrictable() throws Exception {
@@ -1498,7 +1605,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* Name of the application that has to be executed to check the state of the service.<br> Minimum length =  1
+	* Name of the application used to determine the state of the service. Applicable to monitors of type CITRIX-XML-SERVICE.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_application(String application) throws Exception{
@@ -1507,7 +1614,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* Name of the application that has to be executed to check the state of the service.<br> Minimum length =  1
+	* Name of the application used to determine the state of the service. Applicable to monitors of type CITRIX-XML-SERVICE.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_application() throws Exception {
@@ -1516,7 +1623,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* URL of the logon page. To get the dynamic page under sitepath, this sitepath must be specified ending with "/".<br> Minimum length =  1
+	* URL of the logon page. For monitors of type CITRIX-WEB-INTERFACE, to monitor a dynamic page under the site path, terminate the site path with a slash (/). Applicable to CITRIX-WEB-INTERFACE and CITRIX-WI-EXTENDED monitors.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_sitepath(String sitepath) throws Exception{
@@ -1525,7 +1632,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* URL of the logon page. To get the dynamic page under sitepath, this sitepath must be specified ending with "/".<br> Minimum length =  1
+	* URL of the logon page. For monitors of type CITRIX-WEB-INTERFACE, to monitor a dynamic page under the site path, terminate the site path with a slash (/). Applicable to CITRIX-WEB-INTERFACE and CITRIX-WI-EXTENDED monitors.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_sitepath() throws Exception {
@@ -1534,7 +1641,61 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* The name of the network profile.<br> Minimum length =  1<br> Maximum length =  127
+	* Store Name. For monitors of type STOREFRONT, STORENAME is an optional argument defining storefront service store name. Applicable to STOREFRONT monitors.<br> Minimum length =  1
+	* </pre>
+	*/
+	public void set_storename(String storename) throws Exception{
+		this.storename = storename;
+	}
+
+	/**
+	* <pre>
+	* Store Name. For monitors of type STOREFRONT, STORENAME is an optional argument defining storefront service store name. Applicable to STOREFRONT monitors.<br> Minimum length =  1
+	* </pre>
+	*/
+	public String get_storename() throws Exception {
+		return this.storename;
+	}
+
+	/**
+	* <pre>
+	* Enable/Disable probing for Account Service. Applicable only to Store Front monitors. For multi-tenancy configuration users my skip account service.<br> Default value: YES<br> Possible values = YES, NO
+	* </pre>
+	*/
+	public void set_storefrontacctservice(String storefrontacctservice) throws Exception{
+		this.storefrontacctservice = storefrontacctservice;
+	}
+
+	/**
+	* <pre>
+	* Enable/Disable probing for Account Service. Applicable only to Store Front monitors. For multi-tenancy configuration users my skip account service.<br> Default value: YES<br> Possible values = YES, NO
+	* </pre>
+	*/
+	public String get_storefrontacctservice() throws Exception {
+		return this.storefrontacctservice;
+	}
+
+	/**
+	* <pre>
+	* Hostname in the FQDN format (Example: porche.cars.org). Applicable to STOREFRONT monitors.<br> Minimum length =  1
+	* </pre>
+	*/
+	public void set_hostname(String hostname) throws Exception{
+		this.hostname = hostname;
+	}
+
+	/**
+	* <pre>
+	* Hostname in the FQDN format (Example: porche.cars.org). Applicable to STOREFRONT monitors.<br> Minimum length =  1
+	* </pre>
+	*/
+	public String get_hostname() throws Exception {
+		return this.hostname;
+	}
+
+	/**
+	* <pre>
+	* Name of the network profile.<br> Minimum length =  1<br> Maximum length =  127
 	* </pre>
 	*/
 	public void set_netprofile(String netprofile) throws Exception{
@@ -1543,7 +1704,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* The name of the network profile.<br> Minimum length =  1<br> Maximum length =  127
+	* Name of the network profile.<br> Minimum length =  1<br> Maximum length =  127
 	* </pre>
 	*/
 	public String get_netprofile() throws Exception {
@@ -1552,7 +1713,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* Origin Host to be put in CER message.<br> Minimum length =  1
+	* Origin-Host value for the Capabilities-Exchange-Request (CER) message to use for monitoring Diameter servers.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_originhost(String originhost) throws Exception{
@@ -1561,7 +1722,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* Origin Host to be put in CER message.<br> Minimum length =  1
+	* Origin-Host value for the Capabilities-Exchange-Request (CER) message to use for monitoring Diameter servers.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_originhost() throws Exception {
@@ -1570,7 +1731,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* Origin realm to be put in CER message.<br> Minimum length =  1
+	* Origin-Realm value for the Capabilities-Exchange-Request (CER) message to use for monitoring Diameter servers.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_originrealm(String originrealm) throws Exception{
@@ -1579,7 +1740,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* Origin realm to be put in CER message.<br> Minimum length =  1
+	* Origin-Realm value for the Capabilities-Exchange-Request (CER) message to use for monitoring Diameter servers.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_originrealm() throws Exception {
@@ -1588,7 +1749,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* Host IP Address to be put in CER message.<br> Minimum length =  1
+	* Host-IP-Address value for the Capabilities-Exchange-Request (CER) message to use for monitoring Diameter servers. If Host-IP-Address is not specified, the appliance inserts the mapped IP (MIP) address or subnet IP (SNIP) address from which the CER request (the monitoring probe) is sent.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_hostipaddress(String hostipaddress) throws Exception{
@@ -1597,7 +1758,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* Host IP Address to be put in CER message.<br> Minimum length =  1
+	* Host-IP-Address value for the Capabilities-Exchange-Request (CER) message to use for monitoring Diameter servers. If Host-IP-Address is not specified, the appliance inserts the mapped IP (MIP) address or subnet IP (SNIP) address from which the CER request (the monitoring probe) is sent.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_hostipaddress() throws Exception {
@@ -1606,7 +1767,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* Vendor ID to be put in CER message.
+	* Vendor-Id value for the Capabilities-Exchange-Request (CER) message to use for monitoring Diameter servers.
 	* </pre>
 	*/
 	public void set_vendorid(long vendorid) throws Exception {
@@ -1615,7 +1776,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* Vendor ID to be put in CER message.
+	* Vendor-Id value for the Capabilities-Exchange-Request (CER) message to use for monitoring Diameter servers.
 	* </pre>
 	*/
 	public void set_vendorid(Long vendorid) throws Exception{
@@ -1624,7 +1785,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* Vendor ID to be put in CER message.
+	* Vendor-Id value for the Capabilities-Exchange-Request (CER) message to use for monitoring Diameter servers.
 	* </pre>
 	*/
 	public Long get_vendorid() throws Exception {
@@ -1633,7 +1794,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* Product Name to be put in CER message.<br> Minimum length =  1
+	* Product-Name value for the Capabilities-Exchange-Request (CER) message to use for monitoring Diameter servers.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_productname(String productname) throws Exception{
@@ -1642,7 +1803,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* Product Name to be put in CER message.<br> Minimum length =  1
+	* Product-Name value for the Capabilities-Exchange-Request (CER) message to use for monitoring Diameter servers.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_productname() throws Exception {
@@ -1651,7 +1812,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* FIRMWARE-REVISION to be put in CER message.
+	* Firmware-Revision value for the Capabilities-Exchange-Request (CER) message to use for monitoring Diameter servers.
 	* </pre>
 	*/
 	public void set_firmwarerevision(long firmwarerevision) throws Exception {
@@ -1660,7 +1821,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* FIRMWARE-REVISION to be put in CER message.
+	* Firmware-Revision value for the Capabilities-Exchange-Request (CER) message to use for monitoring Diameter servers.
 	* </pre>
 	*/
 	public void set_firmwarerevision(Long firmwarerevision) throws Exception{
@@ -1669,7 +1830,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* FIRMWARE-REVISION to be put in CER message.
+	* Firmware-Revision value for the Capabilities-Exchange-Request (CER) message to use for monitoring Diameter servers.
 	* </pre>
 	*/
 	public Long get_firmwarerevision() throws Exception {
@@ -1678,7 +1839,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* list of Auth-Application-Ids to be put in CER message. maximum 8 such auth application id are supported in monitoring message.<br> Minimum value =  0<br> Maximum value =  4294967295
+	* List of Auth-Application-Id attribute value pairs (AVPs) for the Capabilities-Exchange-Request (CER) message to use for monitoring Diameter servers. A maximum of eight of these AVPs are supported in a monitoring CER message.<br> Minimum value =  0<br> Maximum value =  4294967295
 	* </pre>
 	*/
 	public void set_authapplicationid(Long[] authapplicationid) throws Exception{
@@ -1687,7 +1848,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* list of Auth-Application-Ids to be put in CER message. maximum 8 such auth application id are supported in monitoring message.<br> Minimum value =  0<br> Maximum value =  4294967295
+	* List of Auth-Application-Id attribute value pairs (AVPs) for the Capabilities-Exchange-Request (CER) message to use for monitoring Diameter servers. A maximum of eight of these AVPs are supported in a monitoring CER message.<br> Minimum value =  0<br> Maximum value =  4294967295
 	* </pre>
 	*/
 	public Long[] get_authapplicationid() throws Exception {
@@ -1696,7 +1857,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* list of ACCT-APPLICATION-IDs to be put in CER message. maximum 8 such acct application id are supported in monitoring message.<br> Minimum value =  0<br> Maximum value =  4294967295
+	* List of Acct-Application-Id attribute value pairs (AVPs) for the Capabilities-Exchange-Request (CER) message to use for monitoring Diameter servers. A maximum of eight of these AVPs are supported in a monitoring message.<br> Minimum value =  0<br> Maximum value =  4294967295
 	* </pre>
 	*/
 	public void set_acctapplicationid(Long[] acctapplicationid) throws Exception{
@@ -1705,7 +1866,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* list of ACCT-APPLICATION-IDs to be put in CER message. maximum 8 such acct application id are supported in monitoring message.<br> Minimum value =  0<br> Maximum value =  4294967295
+	* List of Acct-Application-Id attribute value pairs (AVPs) for the Capabilities-Exchange-Request (CER) message to use for monitoring Diameter servers. A maximum of eight of these AVPs are supported in a monitoring message.<br> Minimum value =  0<br> Maximum value =  4294967295
 	* </pre>
 	*/
 	public Long[] get_acctapplicationid() throws Exception {
@@ -1714,7 +1875,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* INBAND-SECURITY-ID to be put in CER message.<br> Possible values = NO_INBAND_SECURITY, TLS
+	* Inband-Security-Id for the Capabilities-Exchange-Request (CER) message to use for monitoring Diameter servers.<br> Possible values = NO_INBAND_SECURITY, TLS
 	* </pre>
 	*/
 	public void set_inbandsecurityid(String inbandsecurityid) throws Exception{
@@ -1723,7 +1884,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* INBAND-SECURITY-ID to be put in CER message.<br> Possible values = NO_INBAND_SECURITY, TLS
+	* Inband-Security-Id for the Capabilities-Exchange-Request (CER) message to use for monitoring Diameter servers.<br> Possible values = NO_INBAND_SECURITY, TLS
 	* </pre>
 	*/
 	public String get_inbandsecurityid() throws Exception {
@@ -1732,7 +1893,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* list of SUPPORTED-VENDOR-ID to be put in CER message. maximum 8 such supported Vendor id are supported in monitoring message.<br> Minimum value =  1<br> Maximum value =  4294967295
+	* List of Supported-Vendor-Id attribute value pairs (AVPs) for the Capabilities-Exchange-Request (CER) message to use for monitoring Diameter servers. A maximum eight of these AVPs are supported in a monitoring message.<br> Minimum value =  1<br> Maximum value =  4294967295
 	* </pre>
 	*/
 	public void set_supportedvendorids(Long[] supportedvendorids) throws Exception{
@@ -1741,7 +1902,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* list of SUPPORTED-VENDOR-ID to be put in CER message. maximum 8 such supported Vendor id are supported in monitoring message.<br> Minimum value =  1<br> Maximum value =  4294967295
+	* List of Supported-Vendor-Id attribute value pairs (AVPs) for the Capabilities-Exchange-Request (CER) message to use for monitoring Diameter servers. A maximum eight of these AVPs are supported in a monitoring message.<br> Minimum value =  1<br> Maximum value =  4294967295
 	* </pre>
 	*/
 	public Long[] get_supportedvendorids() throws Exception {
@@ -1750,7 +1911,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* Vendor Id to be used in Vendor-Specific-Application-Id in monitoring CER message. Only 1 such vendor id is supported.<br> Minimum value =  1
+	* Vendor-Id to use in the Vendor-Specific-Application-Id grouped attribute-value pair (AVP) in the monitoring CER message. To specify Auth-Application-Id or Acct-Application-Id in Vendor-Specific-Application-Id, use vendorSpecificAuthApplicationIds or vendorSpecificAcctApplicationIds, respectively. Only one Vendor-Id is supported for all the Vendor-Specific-Application-Id AVPs in a CER monitoring message.<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_vendorspecificvendorid(long vendorspecificvendorid) throws Exception {
@@ -1759,7 +1920,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* Vendor Id to be used in Vendor-Specific-Application-Id in monitoring CER message. Only 1 such vendor id is supported.<br> Minimum value =  1
+	* Vendor-Id to use in the Vendor-Specific-Application-Id grouped attribute-value pair (AVP) in the monitoring CER message. To specify Auth-Application-Id or Acct-Application-Id in Vendor-Specific-Application-Id, use vendorSpecificAuthApplicationIds or vendorSpecificAcctApplicationIds, respectively. Only one Vendor-Id is supported for all the Vendor-Specific-Application-Id AVPs in a CER monitoring message.<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_vendorspecificvendorid(Long vendorspecificvendorid) throws Exception{
@@ -1768,7 +1929,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* Vendor Id to be used in Vendor-Specific-Application-Id in monitoring CER message. Only 1 such vendor id is supported.<br> Minimum value =  1
+	* Vendor-Id to use in the Vendor-Specific-Application-Id grouped attribute-value pair (AVP) in the monitoring CER message. To specify Auth-Application-Id or Acct-Application-Id in Vendor-Specific-Application-Id, use vendorSpecificAuthApplicationIds or vendorSpecificAcctApplicationIds, respectively. Only one Vendor-Id is supported for all the Vendor-Specific-Application-Id AVPs in a CER monitoring message.<br> Minimum value =  1
 	* </pre>
 	*/
 	public Long get_vendorspecificvendorid() throws Exception {
@@ -1777,7 +1938,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* list of Vendor-Specific-Auth-Application-Ids to be put in CER message. maximum 8 such supported Vendor specific auth application id are supported in monitoring message.<br> Minimum value =  0<br> Maximum value =  4294967295
+	* List of Vendor-Specific-Auth-Application-Id attribute value pairs (AVPs) for the Capabilities-Exchange-Request (CER) message to use for monitoring Diameter servers. A maximum of eight of these AVPs are supported in a monitoring message. The specified value is combined with the value of vendorSpecificVendorId to obtain the Vendor-Specific-Application-Id AVP in the CER monitoring message.<br> Minimum value =  0<br> Maximum value =  4294967295
 	* </pre>
 	*/
 	public void set_vendorspecificauthapplicationids(Long[] vendorspecificauthapplicationids) throws Exception{
@@ -1786,7 +1947,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* list of Vendor-Specific-Auth-Application-Ids to be put in CER message. maximum 8 such supported Vendor specific auth application id are supported in monitoring message.<br> Minimum value =  0<br> Maximum value =  4294967295
+	* List of Vendor-Specific-Auth-Application-Id attribute value pairs (AVPs) for the Capabilities-Exchange-Request (CER) message to use for monitoring Diameter servers. A maximum of eight of these AVPs are supported in a monitoring message. The specified value is combined with the value of vendorSpecificVendorId to obtain the Vendor-Specific-Application-Id AVP in the CER monitoring message.<br> Minimum value =  0<br> Maximum value =  4294967295
 	* </pre>
 	*/
 	public Long[] get_vendorspecificauthapplicationids() throws Exception {
@@ -1795,7 +1956,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* list of Vendor-Specific-Acct-Application-Ids to be put in CER message. maximum 8 such supported Vendor specific accounting application id are supported in monitoring message.<br> Minimum value =  0<br> Maximum value =  4294967295
+	* List of Vendor-Specific-Acct-Application-Id attribute value pairs (AVPs) to use for monitoring Diameter servers. A maximum of eight of these AVPs are supported in a monitoring message. The specified value is combined with the value of vendorSpecificVendorId to obtain the Vendor-Specific-Application-Id AVP in the CER monitoring message.<br> Minimum value =  0<br> Maximum value =  4294967295
 	* </pre>
 	*/
 	public void set_vendorspecificacctapplicationids(Long[] vendorspecificacctapplicationids) throws Exception{
@@ -1804,11 +1965,47 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
-	* list of Vendor-Specific-Acct-Application-Ids to be put in CER message. maximum 8 such supported Vendor specific accounting application id are supported in monitoring message.<br> Minimum value =  0<br> Maximum value =  4294967295
+	* List of Vendor-Specific-Acct-Application-Id attribute value pairs (AVPs) to use for monitoring Diameter servers. A maximum of eight of these AVPs are supported in a monitoring message. The specified value is combined with the value of vendorSpecificVendorId to obtain the Vendor-Specific-Application-Id AVP in the CER monitoring message.<br> Minimum value =  0<br> Maximum value =  4294967295
 	* </pre>
 	*/
 	public Long[] get_vendorspecificacctapplicationids() throws Exception {
 		return this.vendorspecificacctapplicationids;
+	}
+
+	/**
+	* <pre>
+	* KCD Account used by MSSQL monitor.<br> Minimum length =  1<br> Maximum length =  32
+	* </pre>
+	*/
+	public void set_kcdaccount(String kcdaccount) throws Exception{
+		this.kcdaccount = kcdaccount;
+	}
+
+	/**
+	* <pre>
+	* KCD Account used by MSSQL monitor.<br> Minimum length =  1<br> Maximum length =  32
+	* </pre>
+	*/
+	public String get_kcdaccount() throws Exception {
+		return this.kcdaccount;
+	}
+
+	/**
+	* <pre>
+	* Used in case of DB specific LB.If enalbed then we store the database list populated from monitors responses.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* </pre>
+	*/
+	public void set_storedb(String storedb) throws Exception{
+		this.storedb = storedb;
+	}
+
+	/**
+	* <pre>
+	* Used in case of DB specific LB.If enalbed then we store the database list populated from monitors responses.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* </pre>
+	*/
+	public String get_storedb() throws Exception {
+		return this.storedb;
 	}
 
 	/**
@@ -1948,6 +2145,15 @@ The probe is sent to the specified destination IP address by tunneling it to the
 
 	/**
 	* <pre>
+	* Metric table to which to bind metrics, to be used only for output purposes.
+	* </pre>
+	*/
+	public String[] get_multimetrictable() throws Exception {
+		return this.multimetrictable;
+	}
+
+	/**
+	* <pre>
 	* .<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
@@ -2039,6 +2245,11 @@ The probe is sent to the specified destination IP address by tunneling it to the
 		addresource.radkey = resource.radkey;
 		addresource.radnasid = resource.radnasid;
 		addresource.radnasip = resource.radnasip;
+		addresource.radaccounttype = resource.radaccounttype;
+		addresource.radframedip = resource.radframedip;
+		addresource.radapn = resource.radapn;
+		addresource.radmsisdn = resource.radmsisdn;
+		addresource.radaccountsession = resource.radaccountsession;
 		addresource.lrtm = resource.lrtm;
 		addresource.deviation = resource.deviation;
 		addresource.units1 = resource.units1;
@@ -2082,6 +2293,9 @@ The probe is sent to the specified destination IP address by tunneling it to the
 		addresource.metrictable = resource.metrictable;
 		addresource.application = resource.application;
 		addresource.sitepath = resource.sitepath;
+		addresource.storename = resource.storename;
+		addresource.storefrontacctservice = resource.storefrontacctservice;
+		addresource.hostname = resource.hostname;
 		addresource.netprofile = resource.netprofile;
 		addresource.originhost = resource.originhost;
 		addresource.originrealm = resource.originrealm;
@@ -2096,6 +2310,8 @@ The probe is sent to the specified destination IP address by tunneling it to the
 		addresource.vendorspecificvendorid = resource.vendorspecificvendorid;
 		addresource.vendorspecificauthapplicationids = resource.vendorspecificauthapplicationids;
 		addresource.vendorspecificacctapplicationids = resource.vendorspecificacctapplicationids;
+		addresource.kcdaccount = resource.kcdaccount;
+		addresource.storedb = resource.storedb;
 		return addresource.add_resource(client);
 	}
 
@@ -2135,6 +2351,11 @@ The probe is sent to the specified destination IP address by tunneling it to the
 				addresources[i].radkey = resources[i].radkey;
 				addresources[i].radnasid = resources[i].radnasid;
 				addresources[i].radnasip = resources[i].radnasip;
+				addresources[i].radaccounttype = resources[i].radaccounttype;
+				addresources[i].radframedip = resources[i].radframedip;
+				addresources[i].radapn = resources[i].radapn;
+				addresources[i].radmsisdn = resources[i].radmsisdn;
+				addresources[i].radaccountsession = resources[i].radaccountsession;
 				addresources[i].lrtm = resources[i].lrtm;
 				addresources[i].deviation = resources[i].deviation;
 				addresources[i].units1 = resources[i].units1;
@@ -2178,6 +2399,9 @@ The probe is sent to the specified destination IP address by tunneling it to the
 				addresources[i].metrictable = resources[i].metrictable;
 				addresources[i].application = resources[i].application;
 				addresources[i].sitepath = resources[i].sitepath;
+				addresources[i].storename = resources[i].storename;
+				addresources[i].storefrontacctservice = resources[i].storefrontacctservice;
+				addresources[i].hostname = resources[i].hostname;
 				addresources[i].netprofile = resources[i].netprofile;
 				addresources[i].originhost = resources[i].originhost;
 				addresources[i].originrealm = resources[i].originrealm;
@@ -2192,6 +2416,8 @@ The probe is sent to the specified destination IP address by tunneling it to the
 				addresources[i].vendorspecificvendorid = resources[i].vendorspecificvendorid;
 				addresources[i].vendorspecificauthapplicationids = resources[i].vendorspecificauthapplicationids;
 				addresources[i].vendorspecificacctapplicationids = resources[i].vendorspecificacctapplicationids;
+				addresources[i].kcdaccount = resources[i].kcdaccount;
+				addresources[i].storedb = resources[i].storedb;
 			}
 			result = add_bulk_request(client, addresources);
 		}
@@ -2280,6 +2506,11 @@ The probe is sent to the specified destination IP address by tunneling it to the
 		updateresource.radkey = resource.radkey;
 		updateresource.radnasid = resource.radnasid;
 		updateresource.radnasip = resource.radnasip;
+		updateresource.radaccounttype = resource.radaccounttype;
+		updateresource.radframedip = resource.radframedip;
+		updateresource.radapn = resource.radapn;
+		updateresource.radmsisdn = resource.radmsisdn;
+		updateresource.radaccountsession = resource.radaccountsession;
 		updateresource.lrtm = resource.lrtm;
 		updateresource.deviation = resource.deviation;
 		updateresource.units1 = resource.units1;
@@ -2329,6 +2560,9 @@ The probe is sent to the specified destination IP address by tunneling it to the
 		updateresource.metricweight = resource.metricweight;
 		updateresource.application = resource.application;
 		updateresource.sitepath = resource.sitepath;
+		updateresource.storename = resource.storename;
+		updateresource.storefrontacctservice = resource.storefrontacctservice;
+		updateresource.hostname = resource.hostname;
 		updateresource.netprofile = resource.netprofile;
 		updateresource.mssqlprotocolversion = resource.mssqlprotocolversion;
 		updateresource.originhost = resource.originhost;
@@ -2344,6 +2578,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 		updateresource.vendorspecificvendorid = resource.vendorspecificvendorid;
 		updateresource.vendorspecificauthapplicationids = resource.vendorspecificauthapplicationids;
 		updateresource.vendorspecificacctapplicationids = resource.vendorspecificacctapplicationids;
+		updateresource.kcdaccount = resource.kcdaccount;
 		return updateresource.update_resource(client);
 	}
 
@@ -2379,6 +2614,11 @@ The probe is sent to the specified destination IP address by tunneling it to the
 				updateresources[i].radkey = resources[i].radkey;
 				updateresources[i].radnasid = resources[i].radnasid;
 				updateresources[i].radnasip = resources[i].radnasip;
+				updateresources[i].radaccounttype = resources[i].radaccounttype;
+				updateresources[i].radframedip = resources[i].radframedip;
+				updateresources[i].radapn = resources[i].radapn;
+				updateresources[i].radmsisdn = resources[i].radmsisdn;
+				updateresources[i].radaccountsession = resources[i].radaccountsession;
 				updateresources[i].lrtm = resources[i].lrtm;
 				updateresources[i].deviation = resources[i].deviation;
 				updateresources[i].units1 = resources[i].units1;
@@ -2428,6 +2668,9 @@ The probe is sent to the specified destination IP address by tunneling it to the
 				updateresources[i].metricweight = resources[i].metricweight;
 				updateresources[i].application = resources[i].application;
 				updateresources[i].sitepath = resources[i].sitepath;
+				updateresources[i].storename = resources[i].storename;
+				updateresources[i].storefrontacctservice = resources[i].storefrontacctservice;
+				updateresources[i].hostname = resources[i].hostname;
 				updateresources[i].netprofile = resources[i].netprofile;
 				updateresources[i].mssqlprotocolversion = resources[i].mssqlprotocolversion;
 				updateresources[i].originhost = resources[i].originhost;
@@ -2443,20 +2686,11 @@ The probe is sent to the specified destination IP address by tunneling it to the
 				updateresources[i].vendorspecificvendorid = resources[i].vendorspecificvendorid;
 				updateresources[i].vendorspecificauthapplicationids = resources[i].vendorspecificauthapplicationids;
 				updateresources[i].vendorspecificacctapplicationids = resources[i].vendorspecificacctapplicationids;
+				updateresources[i].kcdaccount = resources[i].kcdaccount;
 			}
 			result = update_bulk_request(client, updateresources);
 		}
 		return result;
-	}
-
-	/**
-	* Use this API to unset the properties of lbmonitor resource.
-	* Properties that need to be unset are specified in args array.
-	*/
-	public static base_response unset(nitro_service client, String monitorname, String args[]) throws Exception {
-		lbmonitor unsetresource = new lbmonitor();
-		unsetresource.monitorname = monitorname;
-		return unsetresource.unset_resource(client, args);
 	}
 
 	/**
@@ -2468,98 +2702,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 		unsetresource.monitorname = resource.monitorname;
 		unsetresource.type = resource.type;
 		unsetresource.ipaddress = resource.ipaddress;
-		unsetresource.scriptname = resource.scriptname;
-		unsetresource.destport = resource.destport;
-		unsetresource.netprofile = resource.netprofile;
-		unsetresource.action = resource.action;
-		unsetresource.respcode = resource.respcode;
-		unsetresource.httprequest = resource.httprequest;
-		unsetresource.rtsprequest = resource.rtsprequest;
-		unsetresource.customheaders = resource.customheaders;
-		unsetresource.maxforwards = resource.maxforwards;
-		unsetresource.sipmethod = resource.sipmethod;
-		unsetresource.sipreguri = resource.sipreguri;
-		unsetresource.send = resource.send;
-		unsetresource.recv = resource.recv;
-		unsetresource.query = resource.query;
-		unsetresource.querytype = resource.querytype;
-		unsetresource.username = resource.username;
-		unsetresource.password = resource.password;
-		unsetresource.secondarypassword = resource.secondarypassword;
-		unsetresource.logonpointname = resource.logonpointname;
-		unsetresource.lasversion = resource.lasversion;
-		unsetresource.radkey = resource.radkey;
-		unsetresource.radnasid = resource.radnasid;
-		unsetresource.radnasip = resource.radnasip;
-		unsetresource.lrtm = resource.lrtm;
-		unsetresource.deviation = resource.deviation;
-		unsetresource.scriptargs = resource.scriptargs;
-		unsetresource.validatecred = resource.validatecred;
-		unsetresource.domain = resource.domain;
-		unsetresource.dispatcherip = resource.dispatcherip;
-		unsetresource.dispatcherport = resource.dispatcherport;
-		unsetresource.interval = resource.interval;
-		unsetresource.resptimeout = resource.resptimeout;
-		unsetresource.resptimeoutthresh = resource.resptimeoutthresh;
-		unsetresource.retries = resource.retries;
-		unsetresource.failureretries = resource.failureretries;
-		unsetresource.alertretries = resource.alertretries;
-		unsetresource.successretries = resource.successretries;
-		unsetresource.downtime = resource.downtime;
-		unsetresource.destip = resource.destip;
-		unsetresource.state = resource.state;
-		unsetresource.reverse = resource.reverse;
-		unsetresource.transparent = resource.transparent;
-		unsetresource.iptunnel = resource.iptunnel;
-		unsetresource.tos = resource.tos;
-		unsetresource.tosid = resource.tosid;
-		unsetresource.secure = resource.secure;
-		unsetresource.group = resource.group;
-		unsetresource.filename = resource.filename;
-		unsetresource.basedn = resource.basedn;
-		unsetresource.binddn = resource.binddn;
-		unsetresource.filter = resource.filter;
-		unsetresource.attribute = resource.attribute;
-		unsetresource.database = resource.database;
-		unsetresource.sqlquery = resource.sqlquery;
-		unsetresource.evalrule = resource.evalrule;
-		unsetresource.Snmpoid = resource.Snmpoid;
-		unsetresource.snmpcommunity = resource.snmpcommunity;
-		unsetresource.snmpthreshold = resource.snmpthreshold;
-		unsetresource.snmpversion = resource.snmpversion;
-		unsetresource.metrictable = resource.metrictable;
-		unsetresource.mssqlprotocolversion = resource.mssqlprotocolversion;
-		unsetresource.originhost = resource.originhost;
-		unsetresource.originrealm = resource.originrealm;
-		unsetresource.hostipaddress = resource.hostipaddress;
-		unsetresource.vendorid = resource.vendorid;
-		unsetresource.productname = resource.productname;
-		unsetresource.firmwarerevision = resource.firmwarerevision;
-		unsetresource.authapplicationid = resource.authapplicationid;
-		unsetresource.acctapplicationid = resource.acctapplicationid;
-		unsetresource.inbandsecurityid = resource.inbandsecurityid;
-		unsetresource.supportedvendorids = resource.supportedvendorids;
-		unsetresource.vendorspecificvendorid = resource.vendorspecificvendorid;
-		unsetresource.vendorspecificauthapplicationids = resource.vendorspecificauthapplicationids;
-		unsetresource.vendorspecificacctapplicationids = resource.vendorspecificacctapplicationids;
 		return unsetresource.unset_resource(client,args);
-	}
-
-	/**
-	* Use this API to unset the properties of lbmonitor resources.
-	* Properties that need to be unset are specified in args array.
-	*/
-	public static base_responses unset(nitro_service client, String monitorname[], String args[]) throws Exception {
-		base_responses result = null;
-		if (monitorname != null && monitorname.length > 0) {
-			lbmonitor unsetresources[] = new lbmonitor[monitorname.length];
-			for (int i=0;i<monitorname.length;i++){
-				unsetresources[i] = new lbmonitor();
-				unsetresources[i].monitorname = monitorname[i];
-			}
-			result = unset_bulk_request(client, unsetresources,args);
-		}
-		return result;
 	}
 
 	/**
@@ -2575,80 +2718,6 @@ The probe is sent to the specified destination IP address by tunneling it to the
 				unsetresources[i].monitorname = resources[i].monitorname;
 				unsetresources[i].type = resources[i].type;
 				unsetresources[i].ipaddress = resources[i].ipaddress;
-				unsetresources[i].scriptname = resources[i].scriptname;
-				unsetresources[i].destport = resources[i].destport;
-				unsetresources[i].netprofile = resources[i].netprofile;
-				unsetresources[i].action = resources[i].action;
-				unsetresources[i].respcode = resources[i].respcode;
-				unsetresources[i].httprequest = resources[i].httprequest;
-				unsetresources[i].rtsprequest = resources[i].rtsprequest;
-				unsetresources[i].customheaders = resources[i].customheaders;
-				unsetresources[i].maxforwards = resources[i].maxforwards;
-				unsetresources[i].sipmethod = resources[i].sipmethod;
-				unsetresources[i].sipreguri = resources[i].sipreguri;
-				unsetresources[i].send = resources[i].send;
-				unsetresources[i].recv = resources[i].recv;
-				unsetresources[i].query = resources[i].query;
-				unsetresources[i].querytype = resources[i].querytype;
-				unsetresources[i].username = resources[i].username;
-				unsetresources[i].password = resources[i].password;
-				unsetresources[i].secondarypassword = resources[i].secondarypassword;
-				unsetresources[i].logonpointname = resources[i].logonpointname;
-				unsetresources[i].lasversion = resources[i].lasversion;
-				unsetresources[i].radkey = resources[i].radkey;
-				unsetresources[i].radnasid = resources[i].radnasid;
-				unsetresources[i].radnasip = resources[i].radnasip;
-				unsetresources[i].lrtm = resources[i].lrtm;
-				unsetresources[i].deviation = resources[i].deviation;
-				unsetresources[i].scriptargs = resources[i].scriptargs;
-				unsetresources[i].validatecred = resources[i].validatecred;
-				unsetresources[i].domain = resources[i].domain;
-				unsetresources[i].dispatcherip = resources[i].dispatcherip;
-				unsetresources[i].dispatcherport = resources[i].dispatcherport;
-				unsetresources[i].interval = resources[i].interval;
-				unsetresources[i].resptimeout = resources[i].resptimeout;
-				unsetresources[i].resptimeoutthresh = resources[i].resptimeoutthresh;
-				unsetresources[i].retries = resources[i].retries;
-				unsetresources[i].failureretries = resources[i].failureretries;
-				unsetresources[i].alertretries = resources[i].alertretries;
-				unsetresources[i].successretries = resources[i].successretries;
-				unsetresources[i].downtime = resources[i].downtime;
-				unsetresources[i].destip = resources[i].destip;
-				unsetresources[i].state = resources[i].state;
-				unsetresources[i].reverse = resources[i].reverse;
-				unsetresources[i].transparent = resources[i].transparent;
-				unsetresources[i].iptunnel = resources[i].iptunnel;
-				unsetresources[i].tos = resources[i].tos;
-				unsetresources[i].tosid = resources[i].tosid;
-				unsetresources[i].secure = resources[i].secure;
-				unsetresources[i].group = resources[i].group;
-				unsetresources[i].filename = resources[i].filename;
-				unsetresources[i].basedn = resources[i].basedn;
-				unsetresources[i].binddn = resources[i].binddn;
-				unsetresources[i].filter = resources[i].filter;
-				unsetresources[i].attribute = resources[i].attribute;
-				unsetresources[i].database = resources[i].database;
-				unsetresources[i].sqlquery = resources[i].sqlquery;
-				unsetresources[i].evalrule = resources[i].evalrule;
-				unsetresources[i].Snmpoid = resources[i].Snmpoid;
-				unsetresources[i].snmpcommunity = resources[i].snmpcommunity;
-				unsetresources[i].snmpthreshold = resources[i].snmpthreshold;
-				unsetresources[i].snmpversion = resources[i].snmpversion;
-				unsetresources[i].metrictable = resources[i].metrictable;
-				unsetresources[i].mssqlprotocolversion = resources[i].mssqlprotocolversion;
-				unsetresources[i].originhost = resources[i].originhost;
-				unsetresources[i].originrealm = resources[i].originrealm;
-				unsetresources[i].hostipaddress = resources[i].hostipaddress;
-				unsetresources[i].vendorid = resources[i].vendorid;
-				unsetresources[i].productname = resources[i].productname;
-				unsetresources[i].firmwarerevision = resources[i].firmwarerevision;
-				unsetresources[i].authapplicationid = resources[i].authapplicationid;
-				unsetresources[i].acctapplicationid = resources[i].acctapplicationid;
-				unsetresources[i].inbandsecurityid = resources[i].inbandsecurityid;
-				unsetresources[i].supportedvendorids = resources[i].supportedvendorids;
-				unsetresources[i].vendorspecificvendorid = resources[i].vendorspecificvendorid;
-				unsetresources[i].vendorspecificauthapplicationids = resources[i].vendorspecificauthapplicationids;
-				unsetresources[i].vendorspecificacctapplicationids = resources[i].vendorspecificacctapplicationids;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}
@@ -2916,6 +2985,10 @@ The probe is sent to the specified destination IP address by tunneling it to the
 		public static final String NO_INBAND_SECURITY = "NO_INBAND_SECURITY";
 		public static final String TLS = "TLS";
 	}
+	public static class storedbEnum {
+		public static final String ENABLED = "ENABLED";
+		public static final String DISABLED = "DISABLED";
+	}
 	public static class transparentEnum {
 		public static final String YES = "YES";
 		public static final String NO = "NO";
@@ -2928,6 +3001,10 @@ The probe is sent to the specified destination IP address by tunneling it to the
 	public static class dup_stateEnum {
 		public static final String ENABLED = "ENABLED";
 		public static final String DISABLED = "DISABLED";
+	}
+	public static class storefrontacctserviceEnum {
+		public static final String YES = "YES";
+		public static final String NO = "NO";
 	}
 	public static class units2Enum {
 		public static final String SEC = "SEC";
@@ -2960,6 +3037,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 		public static final String _2005 = "2005";
 		public static final String _2008 = "2008";
 		public static final String _2008R2 = "2008R2";
+		public static final String _2012 = "2012";
 	}
 	public static class typeEnum {
 		public static final String PING = "PING";
@@ -2985,6 +3063,7 @@ The probe is sent to the specified destination IP address by tunneling it to the
 		public static final String MYSQL = "MYSQL";
 		public static final String MYSQL_ECV = "MYSQL-ECV";
 		public static final String MSSQL_ECV = "MSSQL-ECV";
+		public static final String ORACLE_ECV = "ORACLE-ECV";
 		public static final String LDAP = "LDAP";
 		public static final String POP3 = "POP3";
 		public static final String CITRIX_XML_SERVICE = "CITRIX-XML-SERVICE";
@@ -2999,6 +3078,8 @@ The probe is sent to the specified destination IP address by tunneling it to the
 		public static final String ND6 = "ND6";
 		public static final String CITRIX_WI_EXTENDED = "CITRIX-WI-EXTENDED";
 		public static final String DIAMETER = "DIAMETER";
+		public static final String RADIUS_ACCOUNTING = "RADIUS_ACCOUNTING";
+		public static final String STOREFRONT = "STOREFRONT";
 	}
 	public static class snmpversionEnum {
 		public static final String V1 = "V1";

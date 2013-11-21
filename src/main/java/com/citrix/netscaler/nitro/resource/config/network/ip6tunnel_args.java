@@ -26,7 +26,7 @@ public class ip6tunnel_args
 
 	/**
 	* <pre>
-	* The remote IP address or subnet of the tunnel.<br> Minimum length =  1
+	* The IPv6 address at which the remote NetScaler appliance connects to the tunnel.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_remote(String remote) throws Exception{
@@ -35,7 +35,7 @@ public class ip6tunnel_args
 
 	/**
 	* <pre>
-	* The remote IP address or subnet of the tunnel.<br> Minimum length =  1
+	* The IPv6 address at which the remote NetScaler appliance connects to the tunnel.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_remote() throws Exception {

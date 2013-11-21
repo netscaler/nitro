@@ -50,11 +50,16 @@ public class cmppolicy extends base_resource
 	private Long servertransactions;
 	private String description;
 	private String[] builtin;
+	private Boolean isdefault;
 	private Long __count;
 
 	/**
 	* <pre>
-	* The name of the HTTP compression policy to be created.<br> Minimum length =  1
+	* Name of the HTTP compression policy. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.
+Can be changed after the policy is created. 
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my cmp policy" or 'my cmp policy').<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -63,7 +68,11 @@ public class cmppolicy extends base_resource
 
 	/**
 	* <pre>
-	* The name of the HTTP compression policy to be created.<br> Minimum length =  1
+	* Name of the HTTP compression policy. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.
+Can be changed after the policy is created. 
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my cmp policy" or 'my cmp policy').<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -72,7 +81,14 @@ public class cmppolicy extends base_resource
 
 	/**
 	* <pre>
-	* The rule associated with the HTTP compression policy.
+	* Expression that determines which HTTP requests or responses match the compression policy. Can be a classic expression or a default-syntax expression.  
+Note:
+Maximum length of a string literal in the expression is 255 characters. A longer string can be split into smaller strings of up to 255 characters each, and the smaller strings concatenated with the + operator. For example, you can create a 500-character string as follows: '"<string of 255 characters>" + "<string of 245 characters>"'
+
+The following requirements apply only to the NetScaler CLI:
+* If the expression includes one or more spaces, enclose the entire expression in double quotation marks.
+* If the expression itself includes double quotation marks, escape the quotations by using the \ character. 
+* Alternatively, you can use single quotation marks to enclose the rule, in which case you do not have to escape the double quotation marks.
 	* </pre>
 	*/
 	public void set_rule(String rule) throws Exception{
@@ -81,7 +97,14 @@ public class cmppolicy extends base_resource
 
 	/**
 	* <pre>
-	* The rule associated with the HTTP compression policy.
+	* Expression that determines which HTTP requests or responses match the compression policy. Can be a classic expression or a default-syntax expression.  
+Note:
+Maximum length of a string literal in the expression is 255 characters. A longer string can be split into smaller strings of up to 255 characters each, and the smaller strings concatenated with the + operator. For example, you can create a 500-character string as follows: '"<string of 255 characters>" + "<string of 245 characters>"'
+
+The following requirements apply only to the NetScaler CLI:
+* If the expression includes one or more spaces, enclose the entire expression in double quotation marks.
+* If the expression itself includes double quotation marks, escape the quotations by using the \ character. 
+* Alternatively, you can use single quotation marks to enclose the rule, in which case you do not have to escape the double quotation marks.
 	* </pre>
 	*/
 	public String get_rule() throws Exception {
@@ -90,10 +113,7 @@ public class cmppolicy extends base_resource
 
 	/**
 	* <pre>
-	* The compression action that needs to be performed when the rule matches. The string value can be either be a created compression action (user-defined) or one of the following built-in compression actions:
-	NOCOMPRESS action - can be used to define a policy that disables compression for the matching policy.COMPRESS action - can be used to enable compression for a specific policy.  This action will do GZIP or DEFLATE, based on the browser.
-GZIP action - can be used to enable GZIP compression for a specific policy.  With this action, GZIP compression will be performed if the browser supports GZIP, other wise compression is disabled.
-DEFLATE action - can be used to enable DEFLATE compression for a specific policy. With this action, DEFLATE compression will be performed if the browser supports DEFLATE, otherwise compression is disabled.<br> Minimum length =  1
+	* The built-in or user-defined compression action to apply to the response when the policy matches a request or response.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_resaction(String resaction) throws Exception{
@@ -102,10 +122,7 @@ DEFLATE action - can be used to enable DEFLATE compression for a specific policy
 
 	/**
 	* <pre>
-	* The compression action that needs to be performed when the rule matches. The string value can be either be a created compression action (user-defined) or one of the following built-in compression actions:
-	NOCOMPRESS action - can be used to define a policy that disables compression for the matching policy.COMPRESS action - can be used to enable compression for a specific policy.  This action will do GZIP or DEFLATE, based on the browser.
-GZIP action - can be used to enable GZIP compression for a specific policy.  With this action, GZIP compression will be performed if the browser supports GZIP, other wise compression is disabled.
-DEFLATE action - can be used to enable DEFLATE compression for a specific policy. With this action, DEFLATE compression will be performed if the browser supports DEFLATE, otherwise compression is disabled.<br> Minimum length =  1
+	* The built-in or user-defined compression action to apply to the response when the policy matches a request or response.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_resaction() throws Exception {
@@ -114,7 +131,11 @@ DEFLATE action - can be used to enable DEFLATE compression for a specific policy
 
 	/**
 	* <pre>
-	* The new name of the cmp policy.<br> Minimum length =  1
+	* New name for the compression policy. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.
+Choose a name that reflects the function that the policy performs. 
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my cmp policy" or 'my cmp policy').<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_newname(String newname) throws Exception{
@@ -123,7 +144,11 @@ DEFLATE action - can be used to enable DEFLATE compression for a specific policy
 
 	/**
 	* <pre>
-	* The new name of the cmp policy.<br> Minimum length =  1
+	* New name for the compression policy. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.
+Choose a name that reflects the function that the policy performs. 
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my cmp policy" or 'my cmp policy').<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_newname() throws Exception {
@@ -227,6 +252,15 @@ DEFLATE action - can be used to enable DEFLATE compression for a specific policy
 	*/
 	public String[] get_builtin() throws Exception {
 		return this.builtin;
+	}
+
+	/**
+	* <pre>
+	* A value of true is returned if it is a default policy.
+	* </pre>
+	*/
+	public Boolean get_isdefault() throws Exception {
+		return this.isdefault;
 	}
 
 	/**
@@ -367,64 +401,6 @@ DEFLATE action - can be used to enable DEFLATE compression for a specific policy
 				updateresources[i].resaction = resources[i].resaction;
 			}
 			result = update_bulk_request(client, updateresources);
-		}
-		return result;
-	}
-
-	/**
-	* Use this API to unset the properties of cmppolicy resource.
-	* Properties that need to be unset are specified in args array.
-	*/
-	public static base_response unset(nitro_service client, String name, String args[]) throws Exception {
-		cmppolicy unsetresource = new cmppolicy();
-		unsetresource.name = name;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of cmppolicy resource.
-	* Properties that need to be unset are specified in args array.
-	*/
-	public static base_response unset(nitro_service client, cmppolicy resource, String[] args) throws Exception{
-		cmppolicy unsetresource = new cmppolicy();
-		unsetresource.name = resource.name;
-		unsetresource.rule = resource.rule;
-		unsetresource.resaction = resource.resaction;
-		return unsetresource.unset_resource(client,args);
-	}
-
-	/**
-	* Use this API to unset the properties of cmppolicy resources.
-	* Properties that need to be unset are specified in args array.
-	*/
-	public static base_responses unset(nitro_service client, String name[], String args[]) throws Exception {
-		base_responses result = null;
-		if (name != null && name.length > 0) {
-			cmppolicy unsetresources[] = new cmppolicy[name.length];
-			for (int i=0;i<name.length;i++){
-				unsetresources[i] = new cmppolicy();
-				unsetresources[i].name = name[i];
-			}
-			result = unset_bulk_request(client, unsetresources,args);
-		}
-		return result;
-	}
-
-	/**
-	* Use this API to unset the properties of cmppolicy resources.
-	* Properties that need to be unset are specified in args array.
-	*/
-	public static base_responses unset(nitro_service client, cmppolicy resources[],  String[] args) throws Exception {
-		base_responses result = null;
-		if (resources != null && resources.length > 0) {
-			cmppolicy unsetresources[] = new cmppolicy[resources.length];
-			for (int i=0;i<resources.length;i++){
-				unsetresources[i] = new cmppolicy();
-				unsetresources[i].name = resources[i].name;
-				unsetresources[i].rule = resources[i].rule;
-				unsetresources[i].resaction = resources[i].resaction;
-			}
-			result = unset_bulk_request(client, unsetresources,args);
 		}
 		return result;
 	}

@@ -37,7 +37,7 @@ public class scparameter extends base_resource
 
 	/**
 	* <pre>
-	* The time between the first time and next time the sureconnect alternet window display.The SureConnect alternate content window is displayed only once during a session. For the same browser accessing a configured URL.The value is in seconds.<br> Default value: 300<br> Minimum value =  1<br> Maximum value =  4294967294
+	* Time, in seconds, between the first time and the next time the SureConnect alternative content window is displayed. The alternative content window is displayed only once during a session for the same browser accessing a configured URL, so this parameter determines the length of a session.<br> Default value: 300<br> Minimum value =  1<br> Maximum value =  4294967294
 	* </pre>
 	*/
 	public void set_sessionlife(long sessionlife) throws Exception {
@@ -46,7 +46,7 @@ public class scparameter extends base_resource
 
 	/**
 	* <pre>
-	* The time between the first time and next time the sureconnect alternet window display.The SureConnect alternate content window is displayed only once during a session. For the same browser accessing a configured URL.The value is in seconds.<br> Default value: 300<br> Minimum value =  1<br> Maximum value =  4294967294
+	* Time, in seconds, between the first time and the next time the SureConnect alternative content window is displayed. The alternative content window is displayed only once during a session for the same browser accessing a configured URL, so this parameter determines the length of a session.<br> Default value: 300<br> Minimum value =  1<br> Maximum value =  4294967294
 	* </pre>
 	*/
 	public void set_sessionlife(Long sessionlife) throws Exception{
@@ -55,7 +55,7 @@ public class scparameter extends base_resource
 
 	/**
 	* <pre>
-	* The time between the first time and next time the sureconnect alternet window display.The SureConnect alternate content window is displayed only once during a session. For the same browser accessing a configured URL.The value is in seconds.<br> Default value: 300<br> Minimum value =  1<br> Maximum value =  4294967294
+	* Time, in seconds, between the first time and the next time the SureConnect alternative content window is displayed. The alternative content window is displayed only once during a session for the same browser accessing a configured URL, so this parameter determines the length of a session.<br> Default value: 300<br> Minimum value =  1<br> Maximum value =  4294967294
 	* </pre>
 	*/
 	public Long get_sessionlife() throws Exception {
@@ -64,7 +64,7 @@ public class scparameter extends base_resource
 
 	/**
 	* <pre>
-	* The file containing the customized response that is to be displayed with ACTION as NS in the SureConnect policy.<br> Default value: "DEFAULT"<br> Minimum length =  1
+	* File containing the customized response to be displayed when the ACTION in the SureConnect policy is set to NS.<br> Default value: "DEFAULT"<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_vsr(String vsr) throws Exception{
@@ -73,7 +73,7 @@ public class scparameter extends base_resource
 
 	/**
 	* <pre>
-	* The file containing the customized response that is to be displayed with ACTION as NS in the SureConnect policy.<br> Default value: "DEFAULT"<br> Minimum length =  1
+	* File containing the customized response to be displayed when the ACTION in the SureConnect policy is set to NS.<br> Default value: "DEFAULT"<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_vsr() throws Exception {
@@ -132,8 +132,6 @@ public class scparameter extends base_resource
 	*/
 	public static base_response unset(nitro_service client, scparameter resource, String[] args) throws Exception{
 		scparameter unsetresource = new scparameter();
-		unsetresource.sessionlife = resource.sessionlife;
-		unsetresource.vsr = resource.vsr;
 		return unsetresource.unset_resource(client,args);
 	}
 

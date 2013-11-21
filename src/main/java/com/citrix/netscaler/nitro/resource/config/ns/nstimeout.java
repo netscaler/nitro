@@ -48,7 +48,7 @@ public class nstimeout extends base_resource
 
 	/**
 	* <pre>
-	* Timer interval(in seconds) for zombie process that cleanup inactive TCP connections.<br> Default value: 120<br> Minimum value =  1<br> Maximum value =  600
+	* Interval, in seconds, at which the NetScaler zombie cleanup process must run. This process cleans up inactive TCP connections.<br> Default value: 120<br> Minimum value =  1<br> Maximum value =  600
 	* </pre>
 	*/
 	public void set_zombie(long zombie) throws Exception {
@@ -57,7 +57,7 @@ public class nstimeout extends base_resource
 
 	/**
 	* <pre>
-	* Timer interval(in seconds) for zombie process that cleanup inactive TCP connections.<br> Default value: 120<br> Minimum value =  1<br> Maximum value =  600
+	* Interval, in seconds, at which the NetScaler zombie cleanup process must run. This process cleans up inactive TCP connections.<br> Default value: 120<br> Minimum value =  1<br> Maximum value =  600
 	* </pre>
 	*/
 	public void set_zombie(Long zombie) throws Exception{
@@ -66,7 +66,7 @@ public class nstimeout extends base_resource
 
 	/**
 	* <pre>
-	* Timer interval(in seconds) for zombie process that cleanup inactive TCP connections.<br> Default value: 120<br> Minimum value =  1<br> Maximum value =  600
+	* Interval, in seconds, at which the NetScaler zombie cleanup process must run. This process cleans up inactive TCP connections.<br> Default value: 120<br> Minimum value =  1<br> Maximum value =  600
 	* </pre>
 	*/
 	public Long get_zombie() throws Exception {
@@ -129,7 +129,7 @@ public class nstimeout extends base_resource
 
 	/**
 	* <pre>
-	* HTTP client idle timeout (in seconds).<br> Minimum value =  0<br> Maximum value =  18000
+	* Global idle timeout, in seconds, for client connections of HTTP service type. This value is over ridden by the client timeout that is configured on individual entities.<br> Minimum value =  0<br> Maximum value =  18000
 	* </pre>
 	*/
 	public void set_httpclient(long httpclient) throws Exception {
@@ -138,7 +138,7 @@ public class nstimeout extends base_resource
 
 	/**
 	* <pre>
-	* HTTP client idle timeout (in seconds).<br> Minimum value =  0<br> Maximum value =  18000
+	* Global idle timeout, in seconds, for client connections of HTTP service type. This value is over ridden by the client timeout that is configured on individual entities.<br> Minimum value =  0<br> Maximum value =  18000
 	* </pre>
 	*/
 	public void set_httpclient(Long httpclient) throws Exception{
@@ -147,7 +147,7 @@ public class nstimeout extends base_resource
 
 	/**
 	* <pre>
-	* HTTP client idle timeout (in seconds).<br> Minimum value =  0<br> Maximum value =  18000
+	* Global idle timeout, in seconds, for client connections of HTTP service type. This value is over ridden by the client timeout that is configured on individual entities.<br> Minimum value =  0<br> Maximum value =  18000
 	* </pre>
 	*/
 	public Long get_httpclient() throws Exception {
@@ -156,7 +156,7 @@ public class nstimeout extends base_resource
 
 	/**
 	* <pre>
-	* HTTP server idle timeout (in seconds).<br> Minimum value =  0<br> Maximum value =  18000
+	* Global idle timeout, in seconds, for server connections of HTTP service type. This value is over ridden by the server timeout that is configured on individual entities.<br> Minimum value =  0<br> Maximum value =  18000
 	* </pre>
 	*/
 	public void set_httpserver(long httpserver) throws Exception {
@@ -165,7 +165,7 @@ public class nstimeout extends base_resource
 
 	/**
 	* <pre>
-	* HTTP server idle timeout (in seconds).<br> Minimum value =  0<br> Maximum value =  18000
+	* Global idle timeout, in seconds, for server connections of HTTP service type. This value is over ridden by the server timeout that is configured on individual entities.<br> Minimum value =  0<br> Maximum value =  18000
 	* </pre>
 	*/
 	public void set_httpserver(Long httpserver) throws Exception{
@@ -174,7 +174,7 @@ public class nstimeout extends base_resource
 
 	/**
 	* <pre>
-	* HTTP server idle timeout (in seconds).<br> Minimum value =  0<br> Maximum value =  18000
+	* Global idle timeout, in seconds, for server connections of HTTP service type. This value is over ridden by the server timeout that is configured on individual entities.<br> Minimum value =  0<br> Maximum value =  18000
 	* </pre>
 	*/
 	public Long get_httpserver() throws Exception {
@@ -183,7 +183,7 @@ public class nstimeout extends base_resource
 
 	/**
 	* <pre>
-	* TCP client idle timeout (in seconds).<br> Minimum value =  0<br> Maximum value =  18000
+	* Global idle timeout, in seconds, for non-HTTP client connections of TCP service type. This value is over ridden by the client timeout that is configured on individual entities.<br> Minimum value =  0<br> Maximum value =  18000
 	* </pre>
 	*/
 	public void set_tcpclient(long tcpclient) throws Exception {
@@ -192,7 +192,7 @@ public class nstimeout extends base_resource
 
 	/**
 	* <pre>
-	* TCP client idle timeout (in seconds).<br> Minimum value =  0<br> Maximum value =  18000
+	* Global idle timeout, in seconds, for non-HTTP client connections of TCP service type. This value is over ridden by the client timeout that is configured on individual entities.<br> Minimum value =  0<br> Maximum value =  18000
 	* </pre>
 	*/
 	public void set_tcpclient(Long tcpclient) throws Exception{
@@ -201,7 +201,7 @@ public class nstimeout extends base_resource
 
 	/**
 	* <pre>
-	* TCP client idle timeout (in seconds).<br> Minimum value =  0<br> Maximum value =  18000
+	* Global idle timeout, in seconds, for non-HTTP client connections of TCP service type. This value is over ridden by the client timeout that is configured on individual entities.<br> Minimum value =  0<br> Maximum value =  18000
 	* </pre>
 	*/
 	public Long get_tcpclient() throws Exception {
@@ -210,7 +210,7 @@ public class nstimeout extends base_resource
 
 	/**
 	* <pre>
-	* TCP server idle timeout (in seconds).<br> Minimum value =  0<br> Maximum value =  18000
+	* Global idle timeout, in seconds, for non-HTTP server connections of TCP service type. This value is over ridden by the server timeout that is configured on entities.<br> Minimum value =  0<br> Maximum value =  18000
 	* </pre>
 	*/
 	public void set_tcpserver(long tcpserver) throws Exception {
@@ -219,7 +219,7 @@ public class nstimeout extends base_resource
 
 	/**
 	* <pre>
-	* TCP server idle timeout (in seconds).<br> Minimum value =  0<br> Maximum value =  18000
+	* Global idle timeout, in seconds, for non-HTTP server connections of TCP service type. This value is over ridden by the server timeout that is configured on entities.<br> Minimum value =  0<br> Maximum value =  18000
 	* </pre>
 	*/
 	public void set_tcpserver(Long tcpserver) throws Exception{
@@ -228,7 +228,7 @@ public class nstimeout extends base_resource
 
 	/**
 	* <pre>
-	* TCP server idle timeout (in seconds).<br> Minimum value =  0<br> Maximum value =  18000
+	* Global idle timeout, in seconds, for non-HTTP server connections of TCP service type. This value is over ridden by the server timeout that is configured on entities.<br> Minimum value =  0<br> Maximum value =  18000
 	* </pre>
 	*/
 	public Long get_tcpserver() throws Exception {
@@ -237,7 +237,7 @@ public class nstimeout extends base_resource
 
 	/**
 	* <pre>
-	* ANY client idle timeout (in seconds).<br> Minimum value =  0<br> Maximum value =  31536000
+	* Global idle timeout, in seconds, for non-TCP client connections. This value is over ridden by the client timeout that is configured on individual entities.<br> Minimum value =  0<br> Maximum value =  31536000
 	* </pre>
 	*/
 	public void set_anyclient(long anyclient) throws Exception {
@@ -246,7 +246,7 @@ public class nstimeout extends base_resource
 
 	/**
 	* <pre>
-	* ANY client idle timeout (in seconds).<br> Minimum value =  0<br> Maximum value =  31536000
+	* Global idle timeout, in seconds, for non-TCP client connections. This value is over ridden by the client timeout that is configured on individual entities.<br> Minimum value =  0<br> Maximum value =  31536000
 	* </pre>
 	*/
 	public void set_anyclient(Long anyclient) throws Exception{
@@ -255,7 +255,7 @@ public class nstimeout extends base_resource
 
 	/**
 	* <pre>
-	* ANY client idle timeout (in seconds).<br> Minimum value =  0<br> Maximum value =  31536000
+	* Global idle timeout, in seconds, for non-TCP client connections. This value is over ridden by the client timeout that is configured on individual entities.<br> Minimum value =  0<br> Maximum value =  31536000
 	* </pre>
 	*/
 	public Long get_anyclient() throws Exception {
@@ -264,7 +264,7 @@ public class nstimeout extends base_resource
 
 	/**
 	* <pre>
-	* ANY server idle timeout (in seconds).<br> Minimum value =  0<br> Maximum value =  31536000
+	* Global idle timeout, in seconds, for non TCP server connections. This value is over ridden by the server timeout that is configured on individual entities.<br> Minimum value =  0<br> Maximum value =  31536000
 	* </pre>
 	*/
 	public void set_anyserver(long anyserver) throws Exception {
@@ -273,7 +273,7 @@ public class nstimeout extends base_resource
 
 	/**
 	* <pre>
-	* ANY server idle timeout (in seconds).<br> Minimum value =  0<br> Maximum value =  31536000
+	* Global idle timeout, in seconds, for non TCP server connections. This value is over ridden by the server timeout that is configured on individual entities.<br> Minimum value =  0<br> Maximum value =  31536000
 	* </pre>
 	*/
 	public void set_anyserver(Long anyserver) throws Exception{
@@ -282,7 +282,7 @@ public class nstimeout extends base_resource
 
 	/**
 	* <pre>
-	* ANY server idle timeout (in seconds).<br> Minimum value =  0<br> Maximum value =  31536000
+	* Global idle timeout, in seconds, for non TCP server connections. This value is over ridden by the server timeout that is configured on individual entities.<br> Minimum value =  0<br> Maximum value =  31536000
 	* </pre>
 	*/
 	public Long get_anyserver() throws Exception {
@@ -291,7 +291,7 @@ public class nstimeout extends base_resource
 
 	/**
 	* <pre>
-	* Half-closed connection timeout (in seconds).<br> Default value: 10<br> Minimum value =  1<br> Maximum value =  600
+	* Idle timeout, in seconds, for connections that are in TCP half-closed state.<br> Default value: 10<br> Minimum value =  1<br> Maximum value =  600
 	* </pre>
 	*/
 	public void set_halfclose(long halfclose) throws Exception {
@@ -300,7 +300,7 @@ public class nstimeout extends base_resource
 
 	/**
 	* <pre>
-	* Half-closed connection timeout (in seconds).<br> Default value: 10<br> Minimum value =  1<br> Maximum value =  600
+	* Idle timeout, in seconds, for connections that are in TCP half-closed state.<br> Default value: 10<br> Minimum value =  1<br> Maximum value =  600
 	* </pre>
 	*/
 	public void set_halfclose(Long halfclose) throws Exception{
@@ -309,7 +309,7 @@ public class nstimeout extends base_resource
 
 	/**
 	* <pre>
-	* Half-closed connection timeout (in seconds).<br> Default value: 10<br> Minimum value =  1<br> Maximum value =  600
+	* Idle timeout, in seconds, for connections that are in TCP half-closed state.<br> Default value: 10<br> Minimum value =  1<br> Maximum value =  600
 	* </pre>
 	*/
 	public Long get_halfclose() throws Exception {
@@ -318,7 +318,7 @@ public class nstimeout extends base_resource
 
 	/**
 	* <pre>
-	* Timer interval(in seconds) for zombie process that cleanup inactive IP NAT connections.<br> Default value: 60<br> Minimum value =  1<br> Maximum value =  600
+	* Interval at which the zombie clean-up process for non-TCP connections should run. Inactive IP NAT connections will be cleaned up.<br> Default value: 60<br> Minimum value =  1<br> Maximum value =  600
 	* </pre>
 	*/
 	public void set_nontcpzombie(long nontcpzombie) throws Exception {
@@ -327,7 +327,7 @@ public class nstimeout extends base_resource
 
 	/**
 	* <pre>
-	* Timer interval(in seconds) for zombie process that cleanup inactive IP NAT connections.<br> Default value: 60<br> Minimum value =  1<br> Maximum value =  600
+	* Interval at which the zombie clean-up process for non-TCP connections should run. Inactive IP NAT connections will be cleaned up.<br> Default value: 60<br> Minimum value =  1<br> Maximum value =  600
 	* </pre>
 	*/
 	public void set_nontcpzombie(Long nontcpzombie) throws Exception{
@@ -336,7 +336,7 @@ public class nstimeout extends base_resource
 
 	/**
 	* <pre>
-	* Timer interval(in seconds) for zombie process that cleanup inactive IP NAT connections.<br> Default value: 60<br> Minimum value =  1<br> Maximum value =  600
+	* Interval at which the zombie clean-up process for non-TCP connections should run. Inactive IP NAT connections will be cleaned up.<br> Default value: 60<br> Minimum value =  1<br> Maximum value =  600
 	* </pre>
 	*/
 	public Long get_nontcpzombie() throws Exception {
@@ -345,7 +345,7 @@ public class nstimeout extends base_resource
 
 	/**
 	* <pre>
-	* Timer interval(in seconds) for NATPCB for tcp flow.<br> Default value: 30<br> Minimum value =  1<br> Maximum value =  300
+	* Alternative idle timeout for new TCP NATPCB connections.<br> Default value: 30<br> Minimum value =  1<br> Maximum value =  300
 	* </pre>
 	*/
 	public void set_reducedfintimeout(long reducedfintimeout) throws Exception {
@@ -354,7 +354,7 @@ public class nstimeout extends base_resource
 
 	/**
 	* <pre>
-	* Timer interval(in seconds) for NATPCB for tcp flow.<br> Default value: 30<br> Minimum value =  1<br> Maximum value =  300
+	* Alternative idle timeout for new TCP NATPCB connections.<br> Default value: 30<br> Minimum value =  1<br> Maximum value =  300
 	* </pre>
 	*/
 	public void set_reducedfintimeout(Long reducedfintimeout) throws Exception{
@@ -363,7 +363,7 @@ public class nstimeout extends base_resource
 
 	/**
 	* <pre>
-	* Timer interval(in seconds) for NATPCB for tcp flow.<br> Default value: 30<br> Minimum value =  1<br> Maximum value =  300
+	* Alternative idle timeout for new TCP NATPCB connections.<br> Default value: 30<br> Minimum value =  1<br> Maximum value =  300
 	* </pre>
 	*/
 	public Long get_reducedfintimeout() throws Exception {
@@ -460,19 +460,6 @@ public class nstimeout extends base_resource
 	*/
 	public static base_response unset(nitro_service client, nstimeout resource, String[] args) throws Exception{
 		nstimeout unsetresource = new nstimeout();
-		unsetresource.zombie = resource.zombie;
-		unsetresource.client = resource.client;
-		unsetresource.server = resource.server;
-		unsetresource.httpclient = resource.httpclient;
-		unsetresource.httpserver = resource.httpserver;
-		unsetresource.tcpclient = resource.tcpclient;
-		unsetresource.tcpserver = resource.tcpserver;
-		unsetresource.anyclient = resource.anyclient;
-		unsetresource.anyserver = resource.anyserver;
-		unsetresource.halfclose = resource.halfclose;
-		unsetresource.nontcpzombie = resource.nontcpzombie;
-		unsetresource.reducedfintimeout = resource.reducedfintimeout;
-		unsetresource.newconnidletimeout = resource.newconnidletimeout;
 		return unsetresource.unset_resource(client,args);
 	}
 

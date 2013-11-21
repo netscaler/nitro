@@ -86,7 +86,7 @@ public class crvserver_cspolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the cache redirection virtual server to which the cache redirection policy will be bound.<br> Minimum length =  1
+	* Name of the cache redirection virtual server to which to bind the cache redirection policy.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -95,7 +95,7 @@ public class crvserver_cspolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the cache redirection virtual server to which the cache redirection policy will be bound.<br> Minimum length =  1
+	* Name of the cache redirection virtual server to which to bind the cache redirection policy.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {

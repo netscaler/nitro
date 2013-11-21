@@ -43,7 +43,7 @@ public class aaapreauthenticationparameter extends base_resource
 
 	/**
 	* <pre>
-	* Deny or allow login after end point analysis results.<br> Possible values = ALLOW, DENY
+	* Deny or allow login on the basis of end point analysis results.<br> Possible values = ALLOW, DENY
 	* </pre>
 	*/
 	public void set_preauthenticationaction(String preauthenticationaction) throws Exception{
@@ -52,7 +52,7 @@ public class aaapreauthenticationparameter extends base_resource
 
 	/**
 	* <pre>
-	* Deny or allow login after end point analysis results.<br> Possible values = ALLOW, DENY
+	* Deny or allow login on the basis of end point analysis results.<br> Possible values = ALLOW, DENY
 	* </pre>
 	*/
 	public String get_preauthenticationaction() throws Exception {
@@ -61,7 +61,7 @@ public class aaapreauthenticationparameter extends base_resource
 
 	/**
 	* <pre>
-	* The name of the rule, or expression, to be evaluated by the EPA tool.
+	* Name of the NetScaler named rule, or a default syntax expression, to be evaluated by the EPA tool.
 	* </pre>
 	*/
 	public void set_rule(String rule) throws Exception{
@@ -70,7 +70,7 @@ public class aaapreauthenticationparameter extends base_resource
 
 	/**
 	* <pre>
-	* The name of the rule, or expression, to be evaluated by the EPA tool.
+	* Name of the NetScaler named rule, or a default syntax expression, to be evaluated by the EPA tool.
 	* </pre>
 	*/
 	public String get_rule() throws Exception {
@@ -79,7 +79,7 @@ public class aaapreauthenticationparameter extends base_resource
 
 	/**
 	* <pre>
-	* Processes to be killed by the EPA tool.
+	* String specifying the name of a process to be terminated by the EPA tool.
 	* </pre>
 	*/
 	public void set_killprocess(String killprocess) throws Exception{
@@ -88,7 +88,7 @@ public class aaapreauthenticationparameter extends base_resource
 
 	/**
 	* <pre>
-	* Processes to be killed by the EPA tool.
+	* String specifying the name of a process to be terminated by the EPA tool.
 	* </pre>
 	*/
 	public String get_killprocess() throws Exception {
@@ -97,7 +97,7 @@ public class aaapreauthenticationparameter extends base_resource
 
 	/**
 	* <pre>
-	* Files to be deleted by the EPA tool.
+	* String specifying the path(s) to and name(s) of the files to be deleted by the EPA tool, as a string of between 1 and 1023 characters.
 	* </pre>
 	*/
 	public void set_deletefiles(String deletefiles) throws Exception{
@@ -106,7 +106,7 @@ public class aaapreauthenticationparameter extends base_resource
 
 	/**
 	* <pre>
-	* Files to be deleted by the EPA tool.
+	* String specifying the path(s) to and name(s) of the files to be deleted by the EPA tool, as a string of between 1 and 1023 characters.
 	* </pre>
 	*/
 	public String get_deletefiles() throws Exception {
@@ -176,10 +176,6 @@ public class aaapreauthenticationparameter extends base_resource
 	*/
 	public static base_response unset(nitro_service client, aaapreauthenticationparameter resource, String[] args) throws Exception{
 		aaapreauthenticationparameter unsetresource = new aaapreauthenticationparameter();
-		unsetresource.rule = resource.rule;
-		unsetresource.preauthenticationaction = resource.preauthenticationaction;
-		unsetresource.killprocess = resource.killprocess;
-		unsetresource.deletefiles = resource.deletefiles;
 		return unsetresource.unset_resource(client,args);
 	}
 

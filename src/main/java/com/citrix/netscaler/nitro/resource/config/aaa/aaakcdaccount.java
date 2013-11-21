@@ -34,10 +34,16 @@ public class aaakcdaccount extends base_resource
 {
 	private String kcdaccount;
 	private String keytab;
+	private String realmstr;
+	private String delegateduser;
+	private String kcdpassword;
+	private String usercert;
+	private String cacert;
 
 	//------- Read only Parameter ---------;
 
 	private String principle;
+	private String kcdspn;
 	private Long __count;
 
 	/**
@@ -60,7 +66,7 @@ public class aaakcdaccount extends base_resource
 
 	/**
 	* <pre>
-	* The path to the keytab file.
+	* The path to the keytab file. If specified other parameters in this command need not be given.
 	* </pre>
 	*/
 	public void set_keytab(String keytab) throws Exception{
@@ -69,7 +75,7 @@ public class aaakcdaccount extends base_resource
 
 	/**
 	* <pre>
-	* The path to the keytab file.
+	* The path to the keytab file. If specified other parameters in this command need not be given.
 	* </pre>
 	*/
 	public String get_keytab() throws Exception {
@@ -78,11 +84,110 @@ public class aaakcdaccount extends base_resource
 
 	/**
 	* <pre>
-	* Vserver principle.
+	* Kerberos Realm.
+	* </pre>
+	*/
+	public void set_realmstr(String realmstr) throws Exception{
+		this.realmstr = realmstr;
+	}
+
+	/**
+	* <pre>
+	* Kerberos Realm.
+	* </pre>
+	*/
+	public String get_realmstr() throws Exception {
+		return this.realmstr;
+	}
+
+	/**
+	* <pre>
+	* Username that can perform kerberos constrained delegation.
+	* </pre>
+	*/
+	public void set_delegateduser(String delegateduser) throws Exception{
+		this.delegateduser = delegateduser;
+	}
+
+	/**
+	* <pre>
+	* Username that can perform kerberos constrained delegation.
+	* </pre>
+	*/
+	public String get_delegateduser() throws Exception {
+		return this.delegateduser;
+	}
+
+	/**
+	* <pre>
+	* Password for Delegated User.
+	* </pre>
+	*/
+	public void set_kcdpassword(String kcdpassword) throws Exception{
+		this.kcdpassword = kcdpassword;
+	}
+
+	/**
+	* <pre>
+	* Password for Delegated User.
+	* </pre>
+	*/
+	public String get_kcdpassword() throws Exception {
+		return this.kcdpassword;
+	}
+
+	/**
+	* <pre>
+	* SSL Cert (including private key) for Delegated User.
+	* </pre>
+	*/
+	public void set_usercert(String usercert) throws Exception{
+		this.usercert = usercert;
+	}
+
+	/**
+	* <pre>
+	* SSL Cert (including private key) for Delegated User.
+	* </pre>
+	*/
+	public String get_usercert() throws Exception {
+		return this.usercert;
+	}
+
+	/**
+	* <pre>
+	* CA Cert for UserCert or when doing PKINIT backchannel.
+	* </pre>
+	*/
+	public void set_cacert(String cacert) throws Exception{
+		this.cacert = cacert;
+	}
+
+	/**
+	* <pre>
+	* CA Cert for UserCert or when doing PKINIT backchannel.
+	* </pre>
+	*/
+	public String get_cacert() throws Exception {
+		return this.cacert;
+	}
+
+	/**
+	* <pre>
+	* SPN extracted from keytab file.
 	* </pre>
 	*/
 	public String get_principle() throws Exception {
 		return this.principle;
+	}
+
+	/**
+	* <pre>
+	* Host SPN extracted from keytab file.
+	* </pre>
+	*/
+	public String get_kcdspn() throws Exception {
+		return this.kcdspn;
 	}
 
 	/**
@@ -126,6 +231,11 @@ public class aaakcdaccount extends base_resource
 		aaakcdaccount addresource = new aaakcdaccount();
 		addresource.kcdaccount = resource.kcdaccount;
 		addresource.keytab = resource.keytab;
+		addresource.realmstr = resource.realmstr;
+		addresource.delegateduser = resource.delegateduser;
+		addresource.kcdpassword = resource.kcdpassword;
+		addresource.usercert = resource.usercert;
+		addresource.cacert = resource.cacert;
 		return addresource.add_resource(client);
 	}
 
@@ -140,6 +250,11 @@ public class aaakcdaccount extends base_resource
 				addresources[i] = new aaakcdaccount();
 				addresources[i].kcdaccount = resources[i].kcdaccount;
 				addresources[i].keytab = resources[i].keytab;
+				addresources[i].realmstr = resources[i].realmstr;
+				addresources[i].delegateduser = resources[i].delegateduser;
+				addresources[i].kcdpassword = resources[i].kcdpassword;
+				addresources[i].usercert = resources[i].usercert;
+				addresources[i].cacert = resources[i].cacert;
 			}
 			result = add_bulk_request(client, addresources);
 		}
@@ -203,6 +318,11 @@ public class aaakcdaccount extends base_resource
 		aaakcdaccount updateresource = new aaakcdaccount();
 		updateresource.kcdaccount = resource.kcdaccount;
 		updateresource.keytab = resource.keytab;
+		updateresource.realmstr = resource.realmstr;
+		updateresource.delegateduser = resource.delegateduser;
+		updateresource.kcdpassword = resource.kcdpassword;
+		updateresource.usercert = resource.usercert;
+		updateresource.cacert = resource.cacert;
 		return updateresource.update_resource(client);
 	}
 
@@ -217,6 +337,11 @@ public class aaakcdaccount extends base_resource
 				updateresources[i] = new aaakcdaccount();
 				updateresources[i].kcdaccount = resources[i].kcdaccount;
 				updateresources[i].keytab = resources[i].keytab;
+				updateresources[i].realmstr = resources[i].realmstr;
+				updateresources[i].delegateduser = resources[i].delegateduser;
+				updateresources[i].kcdpassword = resources[i].kcdpassword;
+				updateresources[i].usercert = resources[i].usercert;
+				updateresources[i].cacert = resources[i].cacert;
 			}
 			result = update_bulk_request(client, updateresources);
 		}
@@ -227,20 +352,12 @@ public class aaakcdaccount extends base_resource
 	* Use this API to unset the properties of aaakcdaccount resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String kcdaccount, String args[]) throws Exception {
-		aaakcdaccount unsetresource = new aaakcdaccount();
-		unsetresource.kcdaccount = kcdaccount;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of aaakcdaccount resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, aaakcdaccount resource, String[] args) throws Exception{
 		aaakcdaccount unsetresource = new aaakcdaccount();
 		unsetresource.kcdaccount = resource.kcdaccount;
 		unsetresource.keytab = resource.keytab;
+		unsetresource.usercert = resource.usercert;
+		unsetresource.cacert = resource.cacert;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -273,6 +390,8 @@ public class aaakcdaccount extends base_resource
 				unsetresources[i] = new aaakcdaccount();
 				unsetresources[i].kcdaccount = resources[i].kcdaccount;
 				unsetresources[i].keytab = resources[i].keytab;
+				unsetresources[i].usercert = resources[i].usercert;
+				unsetresources[i].cacert = resources[i].cacert;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}

@@ -42,7 +42,7 @@ public class vrid_binding extends base_resource
 
 	/**
 	* <pre>
-	* An integer value that uniquely identifies the VMAC address.<br> Minimum value =  1<br> Maximum value =  255
+	* Integer value that uniquely identifies the VMAC address.<br> Minimum value =  1<br> Maximum value =  255
 	* </pre>
 	*/
 	public void set_id(long id) throws Exception {
@@ -51,7 +51,7 @@ public class vrid_binding extends base_resource
 
 	/**
 	* <pre>
-	* An integer value that uniquely identifies the VMAC address.<br> Minimum value =  1<br> Maximum value =  255
+	* Integer value that uniquely identifies the VMAC address.<br> Minimum value =  1<br> Maximum value =  255
 	* </pre>
 	*/
 	public void set_id(Long id) throws Exception{
@@ -60,7 +60,7 @@ public class vrid_binding extends base_resource
 
 	/**
 	* <pre>
-	* An integer value that uniquely identifies the VMAC address.<br> Minimum value =  1<br> Maximum value =  255
+	* Integer value that uniquely identifies the VMAC address.<br> Minimum value =  1<br> Maximum value =  255
 	* </pre>
 	*/
 	public Long get_id() throws Exception {

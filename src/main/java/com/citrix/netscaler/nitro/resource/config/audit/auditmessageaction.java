@@ -48,7 +48,10 @@ public class auditmessageaction extends base_resource
 
 	/**
 	* <pre>
-	* The name of the audit message action.<br> Minimum length =  1
+	* Name of the audit message action. Must begin with a letter, number, or the underscore character (_), and must contain only letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at (@), equals (=), colon (:), and underscore characters. Cannot be changed after the message action is added.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, “my message action” or ‘my message action’).<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -57,7 +60,10 @@ public class auditmessageaction extends base_resource
 
 	/**
 	* <pre>
-	* The name of the audit message action.<br> Minimum length =  1
+	* Name of the audit message action. Must begin with a letter, number, or the underscore character (_), and must contain only letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at (@), equals (=), colon (:), and underscore characters. Cannot be changed after the message action is added.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, “my message action” or ‘my message action’).<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -66,7 +72,16 @@ public class auditmessageaction extends base_resource
 
 	/**
 	* <pre>
-	* The audit logLevel.<br> Possible values = EMERGENCY, ALERT, CRITICAL, ERROR, WARNING, NOTICE, INFORMATIONAL, DEBUG, NONE
+	* Audit log level, which specifies the severity level of the log message being generated.. 
+The following loglevels are valid: 
+* EMERGENCY - Events that indicate an immediate crisis on the server.
+* ALERT - Events that might require action.
+* CRITICAL - Events that indicate an imminent server crisis.
+* ERROR - Events that indicate some type of error.
+* WARNING - Events that require action in the near future.
+* NOTICE - Events that the administrator should know about.
+* INFORMATIONAL - All but low-level events.
+* DEBUG - All events, in extreme detail.<br> Possible values = EMERGENCY, ALERT, CRITICAL, ERROR, WARNING, NOTICE, INFORMATIONAL, DEBUG
 	* </pre>
 	*/
 	public void set_loglevel(String loglevel) throws Exception{
@@ -75,7 +90,16 @@ public class auditmessageaction extends base_resource
 
 	/**
 	* <pre>
-	* The audit logLevel.<br> Possible values = EMERGENCY, ALERT, CRITICAL, ERROR, WARNING, NOTICE, INFORMATIONAL, DEBUG, NONE
+	* Audit log level, which specifies the severity level of the log message being generated.. 
+The following loglevels are valid: 
+* EMERGENCY - Events that indicate an immediate crisis on the server.
+* ALERT - Events that might require action.
+* CRITICAL - Events that indicate an imminent server crisis.
+* ERROR - Events that indicate some type of error.
+* WARNING - Events that require action in the near future.
+* NOTICE - Events that the administrator should know about.
+* INFORMATIONAL - All but low-level events.
+* DEBUG - All events, in extreme detail.<br> Possible values = EMERGENCY, ALERT, CRITICAL, ERROR, WARNING, NOTICE, INFORMATIONAL, DEBUG
 	* </pre>
 	*/
 	public String get_loglevel() throws Exception {
@@ -84,7 +108,7 @@ public class auditmessageaction extends base_resource
 
 	/**
 	* <pre>
-	* String builder expression which is a regular expression which will be used to build the log message.
+	* Default-syntax expression that defines the format and content of the log message.
 	* </pre>
 	*/
 	public void set_stringbuilderexpr(String stringbuilderexpr) throws Exception{
@@ -93,7 +117,7 @@ public class auditmessageaction extends base_resource
 
 	/**
 	* <pre>
-	* String builder expression which is a regular expression which will be used to build the log message.
+	* Default-syntax expression that defines the format and content of the log message.
 	* </pre>
 	*/
 	public String get_stringbuilderexpr() throws Exception {
@@ -102,7 +126,7 @@ public class auditmessageaction extends base_resource
 
 	/**
 	* <pre>
-	* The flag to control whether the message should go to the newnslog or not.<br> Possible values = YES, NO
+	* Send the message to the new nslog.<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public void set_logtonewnslog(String logtonewnslog) throws Exception{
@@ -111,7 +135,7 @@ public class auditmessageaction extends base_resource
 
 	/**
 	* <pre>
-	* The flag to control whether the message should go to the newnslog or not.<br> Possible values = YES, NO
+	* Send the message to the new nslog.<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public String get_logtonewnslog() throws Exception {
@@ -326,21 +350,9 @@ public class auditmessageaction extends base_resource
 	* Use this API to unset the properties of auditmessageaction resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String name, String args[]) throws Exception {
-		auditmessageaction unsetresource = new auditmessageaction();
-		unsetresource.name = name;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of auditmessageaction resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, auditmessageaction resource, String[] args) throws Exception{
 		auditmessageaction unsetresource = new auditmessageaction();
 		unsetresource.name = resource.name;
-		unsetresource.logtonewnslog = resource.logtonewnslog;
-		unsetresource.bypasssafetycheck = resource.bypasssafetycheck;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -372,8 +384,6 @@ public class auditmessageaction extends base_resource
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new auditmessageaction();
 				unsetresources[i].name = resources[i].name;
-				unsetresources[i].logtonewnslog = resources[i].logtonewnslog;
-				unsetresources[i].bypasssafetycheck = resources[i].bypasssafetycheck;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}
@@ -513,7 +523,6 @@ public class auditmessageaction extends base_resource
 		public static final String NOTICE = "NOTICE";
 		public static final String INFORMATIONAL = "INFORMATIONAL";
 		public static final String DEBUG = "DEBUG";
-		public static final String NONE = "NONE";
 	}
 	public static class bypasssafetycheckEnum {
 		public static final String YES = "YES";

@@ -38,7 +38,7 @@ public class ipset_nsip6_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the IP set.<br> Minimum length =  1
+	* Name of the IP set to which to bind IP addresses.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -47,7 +47,7 @@ public class ipset_nsip6_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the IP set.<br> Minimum length =  1
+	* Name of the IP set to which to bind IP addresses.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -104,6 +104,48 @@ public class ipset_nsip6_binding extends base_resource
 
 	protected String get_object_name() {
 		return this.name;
+	}
+
+	public static base_response add(nitro_service client, ipset_nsip6_binding resource) throws Exception {
+		ipset_nsip6_binding updateresource = new ipset_nsip6_binding();
+		updateresource.name = resource.name;
+		updateresource.ipaddress = resource.ipaddress;
+		return updateresource.update_resource(client);
+	}
+
+	public static base_responses add(nitro_service client, ipset_nsip6_binding resources[]) throws Exception {
+		base_responses result = null;
+		if (resources != null && resources.length > 0) {
+			ipset_nsip6_binding updateresources[] = new ipset_nsip6_binding[resources.length];
+			for (int i=0;i<resources.length;i++){
+				updateresources[i] = new ipset_nsip6_binding();
+				updateresources[i].name = resources[i].name;
+				updateresources[i].ipaddress = resources[i].ipaddress;
+			}
+			result = update_bulk_request(client, updateresources);
+		}
+		return result;
+	}
+
+	public static base_response delete(nitro_service client, ipset_nsip6_binding resource) throws Exception {
+		ipset_nsip6_binding deleteresource = new ipset_nsip6_binding();
+		deleteresource.name = resource.name;
+		deleteresource.ipaddress = resource.ipaddress;
+		return deleteresource.delete_resource(client);
+	}
+
+	public static base_responses delete(nitro_service client, ipset_nsip6_binding resources[]) throws Exception {
+		base_responses result = null;
+		if (resources != null && resources.length > 0) {
+			ipset_nsip6_binding deleteresources[] = new ipset_nsip6_binding[resources.length];
+			for (int i=0;i<resources.length;i++){
+				deleteresources[i] = new ipset_nsip6_binding();
+				deleteresources[i].name = resources[i].name;
+				deleteresources[i].ipaddress = resources[i].ipaddress;
+			}
+			result = delete_bulk_request(client, deleteresources);
+		}
+		return result;
 	}
 
 	/**

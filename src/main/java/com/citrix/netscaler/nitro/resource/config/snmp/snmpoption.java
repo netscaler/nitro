@@ -55,7 +55,7 @@ public class snmpoption extends base_resource
 
 	/**
 	* <pre>
-	* Enable the NetScaler appliance to log any SNMP trap events (for SNMP alarms in which logging is enabled) even when no trap listeners are configured. With the default setting, SNMP trap events are logged if at least one trap listener is configured on the appliance.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Log any SNMP trap events (for SNMP alarms in which logging is enabled) even if no trap listeners are configured. With the default setting, SNMP trap events are logged if at least one trap listener is configured on the appliance.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_snmptraplogging(String snmptraplogging) throws Exception{
@@ -64,7 +64,7 @@ public class snmpoption extends base_resource
 
 	/**
 	* <pre>
-	* Enable the NetScaler appliance to log any SNMP trap events (for SNMP alarms in which logging is enabled) even when no trap listeners are configured. With the default setting, SNMP trap events are logged if at least one trap listener is configured on the appliance.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Log any SNMP trap events (for SNMP alarms in which logging is enabled) even if no trap listeners are configured. With the default setting, SNMP trap events are logged if at least one trap listener is configured on the appliance.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_snmptraplogging() throws Exception {
@@ -123,8 +123,6 @@ public class snmpoption extends base_resource
 	*/
 	public static base_response unset(nitro_service client, snmpoption resource, String[] args) throws Exception{
 		snmpoption unsetresource = new snmpoption();
-		unsetresource.snmpset = resource.snmpset;
-		unsetresource.snmptraplogging = resource.snmptraplogging;
 		return unsetresource.unset_resource(client,args);
 	}
 

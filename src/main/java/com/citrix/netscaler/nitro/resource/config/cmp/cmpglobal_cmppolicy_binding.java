@@ -36,12 +36,14 @@ public class cmpglobal_cmppolicy_binding extends base_resource
 	private Long priority;
 	private String state;
 	private String type;
+	private Long numpol;
 	private String policytype;
 	private Long __count;
 
 	/**
 	* <pre>
-	* The priority assigned to the policy binding.
+	* Positive integer specifying the priority of the policy. The lower the number, the higher the priority. By default, polices within a label are evaluated in the order of their priority numbers.
+In the configuration utility, you can click the Priority field and edit the priority level or drag the entry to a new position in the list. If you drag the entry to a new position, the priority level is updated automatically.
 	* </pre>
 	*/
 	public void set_priority(long priority) throws Exception {
@@ -50,7 +52,8 @@ public class cmpglobal_cmppolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The priority assigned to the policy binding.
+	* Positive integer specifying the priority of the policy. The lower the number, the higher the priority. By default, polices within a label are evaluated in the order of their priority numbers.
+In the configuration utility, you can click the Priority field and edit the priority level or drag the entry to a new position in the list. If you drag the entry to a new position, the priority level is updated automatically.
 	* </pre>
 	*/
 	public void set_priority(Long priority) throws Exception{
@@ -59,7 +62,8 @@ public class cmpglobal_cmppolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The priority assigned to the policy binding.
+	* Positive integer specifying the priority of the policy. The lower the number, the higher the priority. By default, polices within a label are evaluated in the order of their priority numbers.
+In the configuration utility, you can click the Priority field and edit the priority level or drag the entry to a new position in the list. If you drag the entry to a new position, the priority level is updated automatically.
 	* </pre>
 	*/
 	public Long get_priority() throws Exception {
@@ -104,7 +108,7 @@ public class cmpglobal_cmppolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The bindpoint to which the policy is bound.<br> Possible values = REQ_OVERRIDE, REQ_DEFAULT, RES_OVERRIDE, RES_DEFAULT
+	* Bind point to which the policy is bound.<br> Possible values = REQ_OVERRIDE, REQ_DEFAULT, RES_OVERRIDE, RES_DEFAULT
 	* </pre>
 	*/
 	public void set_type(String type) throws Exception{
@@ -113,11 +117,20 @@ public class cmpglobal_cmppolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The bindpoint to which the policy is bound.<br> Possible values = REQ_OVERRIDE, REQ_DEFAULT, RES_OVERRIDE, RES_DEFAULT
+	* Bind point to which the policy is bound.<br> Possible values = REQ_OVERRIDE, REQ_DEFAULT, RES_OVERRIDE, RES_DEFAULT
 	* </pre>
 	*/
 	public String get_type() throws Exception {
 		return this.type;
+	}
+
+	/**
+	* <pre>
+	* The number of policies bound to the bindpoint.
+	* </pre>
+	*/
+	public Long get_numpol() throws Exception {
+		return this.numpol;
 	}
 
 	/**

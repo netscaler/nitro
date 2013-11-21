@@ -124,7 +124,7 @@ public class cmppolicylabel_policybinding_binding extends base_resource
 
 	/**
 	* <pre>
-	* Name of the HTTP compression policy label.<br> Minimum length =  1
+	* Name of the HTTP compression policy label to which to bind the policy.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_labelname(String labelname) throws Exception{
@@ -133,7 +133,7 @@ public class cmppolicylabel_policybinding_binding extends base_resource
 
 	/**
 	* <pre>
-	* Name of the HTTP compression policy label.<br> Minimum length =  1
+	* Name of the HTTP compression policy label to which to bind the policy.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_labelname() throws Exception {
@@ -142,7 +142,7 @@ public class cmppolicylabel_policybinding_binding extends base_resource
 
 	/**
 	* <pre>
-	* Name of the label to invoke if the current policy rule evaluates to TRUE.
+	* Name of the label to invoke if the current policy evaluates to TRUE.
 	* </pre>
 	*/
 	public void set_invoke_labelname(String invoke_labelname) throws Exception{
@@ -151,7 +151,7 @@ public class cmppolicylabel_policybinding_binding extends base_resource
 
 	/**
 	* <pre>
-	* Name of the label to invoke if the current policy rule evaluates to TRUE.
+	* Name of the label to invoke if the current policy evaluates to TRUE.
 	* </pre>
 	*/
 	public String get_invoke_labelname() throws Exception {
@@ -160,7 +160,7 @@ public class cmppolicylabel_policybinding_binding extends base_resource
 
 	/**
 	* <pre>
-	* Invoke flag.
+	* Invoke policies bound to a virtual server or a user-defined policy label. After the invoked policies are evaluated, the flow returns to the policy with the next higher priority number in the original label.
 	* </pre>
 	*/
 	public void set_invoke(boolean invoke) throws Exception {
@@ -169,7 +169,7 @@ public class cmppolicylabel_policybinding_binding extends base_resource
 
 	/**
 	* <pre>
-	* Invoke flag.
+	* Invoke policies bound to a virtual server or a user-defined policy label. After the invoked policies are evaluated, the flow returns to the policy with the next higher priority number in the original label.
 	* </pre>
 	*/
 	public void set_invoke(Boolean invoke) throws Exception{
@@ -178,7 +178,7 @@ public class cmppolicylabel_policybinding_binding extends base_resource
 
 	/**
 	* <pre>
-	* Invoke flag.
+	* Invoke policies bound to a virtual server or a user-defined policy label. After the invoked policies are evaluated, the flow returns to the policy with the next higher priority number in the original label.
 	* </pre>
 	*/
 	public Boolean get_invoke() throws Exception {

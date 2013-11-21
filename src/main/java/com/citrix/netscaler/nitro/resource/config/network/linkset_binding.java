@@ -40,7 +40,7 @@ public class linkset_binding extends base_resource
 
 	/**
 	* <pre>
-	* The ID of the linkset whose details must be displayed. If an ID is not provided, details of all linksets available in the cluster are displayed.
+	* ID of the linkset for which to display information. If an ID is not provided, the display includes information about all linksets that are available in the cluster.
 	* </pre>
 	*/
 	public void set_id(String id) throws Exception{
@@ -49,7 +49,7 @@ public class linkset_binding extends base_resource
 
 	/**
 	* <pre>
-	* The ID of the linkset whose details must be displayed. If an ID is not provided, details of all linksets available in the cluster are displayed.
+	* ID of the linkset for which to display information. If an ID is not provided, the display includes information about all linksets that are available in the cluster.
 	* </pre>
 	*/
 	public String get_id() throws Exception {

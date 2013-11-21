@@ -33,6 +33,7 @@ class nsacl_response extends base_response
 public class nsacl_stats extends base_resource
 {
 	private String aclname;
+	private String clearstats;
 	private Long acltotpktsbridged;
 	private Long aclpktsbridgedrate;
 	private Long acltotpktsdenied;
@@ -45,12 +46,13 @@ public class nsacl_stats extends base_resource
 	private Long aclhitsrate;
 	private Long acltotmisses;
 	private Long aclmissesrate;
+	private Long acltotcount;
 	private Long aclperhits;
 	private Long aclperhitsrate;
 
 	/**
 	* <pre>
-	* The ACL.
+	* Name of the extended ACL rule whose statistics you want the NetScaler appliance to display.
 	* </pre>
 	*/
 	public void set_aclname(String aclname) throws Exception{
@@ -59,11 +61,29 @@ public class nsacl_stats extends base_resource
 
 	/**
 	* <pre>
-	* The ACL.<br> Minimum length =  1
+	* Name of the extended ACL rule whose statistics you want the NetScaler appliance to display.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_aclname() throws Exception {
 		return this.aclname;
+	}
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters
+	* </pre>
+	*/
+	public void set_clearstats(String clearstats) throws Exception{
+		this.clearstats = clearstats;
+	}
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters.<br> Possible values = basic, full
+	* </pre>
+	*/
+	public String get_clearstats() throws Exception {
+		return this.clearstats;
 	}
 
 	/**
@@ -104,7 +124,7 @@ public class nsacl_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of times the acl was hit
+	* Rate (/s) counter for aclperhits
 	* </pre>
 	*/
 	public Long get_aclperhitsrate() throws Exception {
@@ -113,7 +133,7 @@ public class nsacl_stats extends base_resource
 
 	/**
 	* <pre>
-	* Packets dropped because they match ACLs with processing mode set to DENY.
+	* Rate (/s) counter for acltotpktsdenied
 	* </pre>
 	*/
 	public Long get_aclpktsdeniedrate() throws Exception {
@@ -122,7 +142,7 @@ public class nsacl_stats extends base_resource
 
 	/**
 	* <pre>
-	* Packets matching an ACL.
+	* Rate (/s) counter for acltothits
 	* </pre>
 	*/
 	public Long get_aclhitsrate() throws Exception {
@@ -131,7 +151,7 @@ public class nsacl_stats extends base_resource
 
 	/**
 	* <pre>
-	* Packets matching ACLs with processing mode set to ALLOW. NetScaler processes these packets.
+	* Rate (/s) counter for acltotpktsallowed
 	* </pre>
 	*/
 	public Long get_aclpktsallowedrate() throws Exception {
@@ -140,11 +160,20 @@ public class nsacl_stats extends base_resource
 
 	/**
 	* <pre>
-	* Packets matching a NAT ACL, resulting in a NAT session.
+	* Rate (/s) counter for acltotpktsnat
 	* </pre>
 	*/
 	public Long get_aclpktsnatrate() throws Exception {
 		return this.aclpktsnatrate;
+	}
+
+	/**
+	* <pre>
+	* Total number of ACL rules configured.
+	* </pre>
+	*/
+	public Long get_acltotcount() throws Exception {
+		return this.acltotcount;
 	}
 
 	/**
@@ -167,7 +196,7 @@ public class nsacl_stats extends base_resource
 
 	/**
 	* <pre>
-	* Packets matching a bridge ACL, which is in transparent mode and bypasses service processing.
+	* Rate (/s) counter for acltotpktsbridged
 	* </pre>
 	*/
 	public Long get_aclpktsbridgedrate() throws Exception {
@@ -185,7 +214,7 @@ public class nsacl_stats extends base_resource
 
 	/**
 	* <pre>
-	* Packets not matching any ACL.
+	* Rate (/s) counter for acltotmisses
 	* </pre>
 	*/
 	public Long get_aclmissesrate() throws Exception {
@@ -254,4 +283,8 @@ public class nsacl_stats extends base_resource
 		return response;
 	}
 
+	public static class clearstatsEnum {
+		public static final String basic = "basic";
+		public static final String full = "full";
+	}
 }

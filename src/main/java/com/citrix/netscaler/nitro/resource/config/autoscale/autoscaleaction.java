@@ -61,7 +61,7 @@ public class autoscaleaction extends base_resource
 
 	/**
 	* <pre>
-	* The type of action.<br> Possible values = 
+	* The type of action.<br> Possible values = SCALE_UP, SCALE_DOWN
 	* </pre>
 	*/
 	public void set_type(String type) throws Exception{
@@ -70,7 +70,7 @@ public class autoscaleaction extends base_resource
 
 	/**
 	* <pre>
-	* The type of action.<br> Possible values = 
+	* The type of action.<br> Possible values = SCALE_UP, SCALE_DOWN
 	* </pre>
 	*/
 	public String get_type() throws Exception {
@@ -345,21 +345,9 @@ public class autoscaleaction extends base_resource
 	* Use this API to unset the properties of autoscaleaction resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String name, String args[]) throws Exception {
-		autoscaleaction unsetresource = new autoscaleaction();
-		unsetresource.name = name;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of autoscaleaction resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, autoscaleaction resource, String[] args) throws Exception{
 		autoscaleaction unsetresource = new autoscaleaction();
 		unsetresource.name = resource.name;
-		unsetresource.vmdestroygraceperiod = resource.vmdestroygraceperiod;
-		unsetresource.quiettime = resource.quiettime;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -391,8 +379,6 @@ public class autoscaleaction extends base_resource
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new autoscaleaction();
 				unsetresources[i].name = resources[i].name;
-				unsetresources[i].vmdestroygraceperiod = resources[i].vmdestroygraceperiod;
-				unsetresources[i].quiettime = resources[i].quiettime;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}
@@ -511,4 +497,8 @@ public class autoscaleaction extends base_resource
 		return 0;
 	}
 
+	public static class typeEnum {
+		public static final String SCALE_UP = "SCALE_UP";
+		public static final String SCALE_DOWN = "SCALE_DOWN";
+	}
 }

@@ -41,7 +41,7 @@ public class ssldsakey extends base_resource
 
 	/**
 	* <pre>
-	* The name of the output file where the generated DSA key is stored. The default output path for the DH file is /nsconfig/ssl/.<br> Maximum length =  63
+	* Name for and, optionally, path to the DSA key file. /nsconfig/ssl/ is the default path.<br> Maximum length =  63
 	* </pre>
 	*/
 	public void set_keyfile(String keyfile) throws Exception{
@@ -50,7 +50,7 @@ public class ssldsakey extends base_resource
 
 	/**
 	* <pre>
-	* The name of the output file where the generated DSA key is stored. The default output path for the DH file is /nsconfig/ssl/.<br> Maximum length =  63
+	* Name for and, optionally, path to the DSA key file. /nsconfig/ssl/ is the default path.<br> Maximum length =  63
 	* </pre>
 	*/
 	public String get_keyfile() throws Exception {
@@ -59,7 +59,7 @@ public class ssldsakey extends base_resource
 
 	/**
 	* <pre>
-	* The bit value (key length) for the DSA key.<br> Minimum value =  512<br> Maximum value =  2048
+	* Size, in bits, of the DSA key.<br> Minimum value =  512<br> Maximum value =  2048
 	* </pre>
 	*/
 	public void set_bits(long bits) throws Exception {
@@ -68,7 +68,7 @@ public class ssldsakey extends base_resource
 
 	/**
 	* <pre>
-	* The bit value (key length) for the DSA key.<br> Minimum value =  512<br> Maximum value =  2048
+	* Size, in bits, of the DSA key.<br> Minimum value =  512<br> Maximum value =  2048
 	* </pre>
 	*/
 	public void set_bits(Long bits) throws Exception{
@@ -77,7 +77,7 @@ public class ssldsakey extends base_resource
 
 	/**
 	* <pre>
-	* The bit value (key length) for the DSA key.<br> Minimum value =  512<br> Maximum value =  2048
+	* Size, in bits, of the DSA key.<br> Minimum value =  512<br> Maximum value =  2048
 	* </pre>
 	*/
 	public Long get_bits() throws Exception {
@@ -86,9 +86,7 @@ public class ssldsakey extends base_resource
 
 	/**
 	* <pre>
-	* The format of the key file:
-	PEM: Privacy Enhanced Mail
-	DER: Distinguished Encoding Rule.<br> Default value: FORMAT_PEM<br> Possible values = DER, PEM
+	* Format in which the DSA key file is stored on the appliance.<br> Default value: PEM<br> Possible values = DER, PEM
 	* </pre>
 	*/
 	public void set_keyform(String keyform) throws Exception{
@@ -97,9 +95,7 @@ public class ssldsakey extends base_resource
 
 	/**
 	* <pre>
-	* The format of the key file:
-	PEM: Privacy Enhanced Mail
-	DER: Distinguished Encoding Rule.<br> Default value: FORMAT_PEM<br> Possible values = DER, PEM
+	* Format in which the DSA key file is stored on the appliance.<br> Default value: PEM<br> Possible values = DER, PEM
 	* </pre>
 	*/
 	public String get_keyform() throws Exception {
@@ -108,7 +104,7 @@ public class ssldsakey extends base_resource
 
 	/**
 	* <pre>
-	* Encrypt the generated DSA key using the DES algorithm. It prompts you to enter the pass-phrase (password) that is used to encrypt the key.
+	* Encrypt the generated DSA key by using the DES algorithm. On the command line, you are prompted to enter the pass phrase (password) that will be used to encrypt the key.
 	* </pre>
 	*/
 	public void set_des(boolean des) throws Exception {
@@ -117,7 +113,7 @@ public class ssldsakey extends base_resource
 
 	/**
 	* <pre>
-	* Encrypt the generated DSA key using the DES algorithm. It prompts you to enter the pass-phrase (password) that is used to encrypt the key.
+	* Encrypt the generated DSA key by using the DES algorithm. On the command line, you are prompted to enter the pass phrase (password) that will be used to encrypt the key.
 	* </pre>
 	*/
 	public void set_des(Boolean des) throws Exception{
@@ -126,7 +122,7 @@ public class ssldsakey extends base_resource
 
 	/**
 	* <pre>
-	* Encrypt the generated DSA key using the DES algorithm. It prompts you to enter the pass-phrase (password) that is used to encrypt the key.
+	* Encrypt the generated DSA key by using the DES algorithm. On the command line, you are prompted to enter the pass phrase (password) that will be used to encrypt the key.
 	* </pre>
 	*/
 	public Boolean get_des() throws Exception {
@@ -135,7 +131,7 @@ public class ssldsakey extends base_resource
 
 	/**
 	* <pre>
-	* Encrypt the generated DSA key using Triple-DES algorithm. You will be prompted to enter the pass-phrase (password) that is used to encrypt the key.
+	* Encrypt the generated DSA key by using the Triple-DES algorithm. On the command line, you are prompted to enter the pass phrase (password) that will be used to encrypt the key.
 	* </pre>
 	*/
 	public void set_des3(boolean des3) throws Exception {
@@ -144,7 +140,7 @@ public class ssldsakey extends base_resource
 
 	/**
 	* <pre>
-	* Encrypt the generated DSA key using Triple-DES algorithm. You will be prompted to enter the pass-phrase (password) that is used to encrypt the key.
+	* Encrypt the generated DSA key by using the Triple-DES algorithm. On the command line, you are prompted to enter the pass phrase (password) that will be used to encrypt the key.
 	* </pre>
 	*/
 	public void set_des3(Boolean des3) throws Exception{
@@ -153,7 +149,7 @@ public class ssldsakey extends base_resource
 
 	/**
 	* <pre>
-	* Encrypt the generated DSA key using Triple-DES algorithm. You will be prompted to enter the pass-phrase (password) that is used to encrypt the key.
+	* Encrypt the generated DSA key by using the Triple-DES algorithm. On the command line, you are prompted to enter the pass phrase (password) that will be used to encrypt the key.
 	* </pre>
 	*/
 	public Boolean get_des3() throws Exception {
@@ -162,7 +158,7 @@ public class ssldsakey extends base_resource
 
 	/**
 	* <pre>
-	* The pass-phrase to use for encryption if '-des' or '-des3' option is selected.<br> Minimum length =  1<br> Maximum length =  31
+	* Pass phrase to use for encryption if DES or DES3 option is selected.<br> Minimum length =  1<br> Maximum length =  31
 	* </pre>
 	*/
 	public void set_password(String password) throws Exception{
@@ -171,7 +167,7 @@ public class ssldsakey extends base_resource
 
 	/**
 	* <pre>
-	* The pass-phrase to use for encryption if '-des' or '-des3' option is selected.<br> Minimum length =  1<br> Maximum length =  31
+	* Pass phrase to use for encryption if DES or DES3 option is selected.<br> Minimum length =  1<br> Maximum length =  31
 	* </pre>
 	*/
 	public String get_password() throws Exception {

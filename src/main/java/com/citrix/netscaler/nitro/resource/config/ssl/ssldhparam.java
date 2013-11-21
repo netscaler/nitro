@@ -38,7 +38,7 @@ public class ssldhparam extends base_resource
 
 	/**
 	* <pre>
-	* The name of the output file where the generated DH parameter is stored.<br> Maximum length =  63
+	* Name of and, optionally, path to the DH key file. /nsconfig/ssl/ is the default path.<br> Maximum length =  63
 	* </pre>
 	*/
 	public void set_dhfile(String dhfile) throws Exception{
@@ -47,7 +47,7 @@ public class ssldhparam extends base_resource
 
 	/**
 	* <pre>
-	* The name of the output file where the generated DH parameter is stored.<br> Maximum length =  63
+	* Name of and, optionally, path to the DH key file. /nsconfig/ssl/ is the default path.<br> Maximum length =  63
 	* </pre>
 	*/
 	public String get_dhfile() throws Exception {
@@ -56,7 +56,7 @@ public class ssldhparam extends base_resource
 
 	/**
 	* <pre>
-	* The bit value for the DH parameters.Maximum bit value allowed is 2048.<br> Minimum value =  512<br> Maximum value =  2048
+	* Size, in bits, of the DH key being generated.<br> Minimum value =  512<br> Maximum value =  2048
 	* </pre>
 	*/
 	public void set_bits(long bits) throws Exception {
@@ -65,7 +65,7 @@ public class ssldhparam extends base_resource
 
 	/**
 	* <pre>
-	* The bit value for the DH parameters.Maximum bit value allowed is 2048.<br> Minimum value =  512<br> Maximum value =  2048
+	* Size, in bits, of the DH key being generated.<br> Minimum value =  512<br> Maximum value =  2048
 	* </pre>
 	*/
 	public void set_bits(Long bits) throws Exception{
@@ -74,7 +74,7 @@ public class ssldhparam extends base_resource
 
 	/**
 	* <pre>
-	* The bit value for the DH parameters.Maximum bit value allowed is 2048.<br> Minimum value =  512<br> Maximum value =  2048
+	* Size, in bits, of the DH key being generated.<br> Minimum value =  512<br> Maximum value =  2048
 	* </pre>
 	*/
 	public Long get_bits() throws Exception {
@@ -83,7 +83,7 @@ public class ssldhparam extends base_resource
 
 	/**
 	* <pre>
-	* The DH generator value (g) to be used.<br> Default value: 2<br> Possible values = 2, 5
+	* Random number required for generating the DH key. Required as part of the DH key generation algorithm.<br> Default value: 2<br> Possible values = 2, 5
 	* </pre>
 	*/
 	public void set_gen(String gen) throws Exception{
@@ -92,7 +92,7 @@ public class ssldhparam extends base_resource
 
 	/**
 	* <pre>
-	* The DH generator value (g) to be used.<br> Default value: 2<br> Possible values = 2, 5
+	* Random number required for generating the DH key. Required as part of the DH key generation algorithm.<br> Default value: 2<br> Possible values = 2, 5
 	* </pre>
 	*/
 	public String get_gen() throws Exception {

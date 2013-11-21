@@ -57,7 +57,7 @@ public class vpnvserver_vpnurl_binding extends base_resource
 
 	/**
 	* <pre>
-	* The vserver to which this command shall bind parameters.<br> Minimum length =  1
+	* Name of the virtual server.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -66,7 +66,7 @@ public class vpnvserver_vpnurl_binding extends base_resource
 
 	/**
 	* <pre>
-	* The vserver to which this command shall bind parameters.<br> Minimum length =  1
+	* Name of the virtual server.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -246,6 +246,8 @@ public class vpnvserver_vpnurl_binding extends base_resource
 	public static class bindpointEnum {
 		public static final String REQUEST = "REQUEST";
 		public static final String RESPONSE = "RESPONSE";
+		public static final String ICA_REQUEST = "ICA_REQUEST";
+		public static final String OTHERTCP_REQUEST = "OTHERTCP_REQUEST";
 	}
 
 }

@@ -39,7 +39,7 @@ public class nsxmlnamespace extends base_resource
 
 	/**
 	* <pre>
-	* The prefix of a namespace. The name must not exceed 31 characters.<br> Minimum length =  1
+	* XML prefix.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_prefix(String prefix) throws Exception{
@@ -48,7 +48,7 @@ public class nsxmlnamespace extends base_resource
 
 	/**
 	* <pre>
-	* The prefix of a namespace. The name must not exceed 31 characters.<br> Minimum length =  1
+	* XML prefix.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_prefix() throws Exception {
@@ -57,7 +57,7 @@ public class nsxmlnamespace extends base_resource
 
 	/**
 	* <pre>
-	* The expanded namespace.<br> Minimum length =  1
+	* Expanded namespace for which the XML prefix is provided.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_Namespace(String Namespace) throws Exception{
@@ -66,7 +66,7 @@ public class nsxmlnamespace extends base_resource
 
 	/**
 	* <pre>
-	* The expanded namespace.<br> Minimum length =  1
+	* Expanded namespace for which the XML prefix is provided.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_Namespace() throws Exception {
@@ -235,21 +235,9 @@ public class nsxmlnamespace extends base_resource
 	* Use this API to unset the properties of nsxmlnamespace resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String prefix, String args[]) throws Exception {
-		nsxmlnamespace unsetresource = new nsxmlnamespace();
-		unsetresource.prefix = prefix;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of nsxmlnamespace resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, nsxmlnamespace resource, String[] args) throws Exception{
 		nsxmlnamespace unsetresource = new nsxmlnamespace();
 		unsetresource.prefix = resource.prefix;
-		unsetresource.Namespace = resource.Namespace;
-		unsetresource.description = resource.description;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -281,8 +269,6 @@ public class nsxmlnamespace extends base_resource
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new nsxmlnamespace();
 				unsetresources[i].prefix = resources[i].prefix;
-				unsetresources[i].Namespace = resources[i].Namespace;
-				unsetresources[i].description = resources[i].description;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}

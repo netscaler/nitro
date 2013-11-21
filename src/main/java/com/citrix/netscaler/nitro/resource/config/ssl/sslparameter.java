@@ -49,7 +49,7 @@ public class sslparameter extends base_resource
 
 	/**
 	* <pre>
-	* SSL quantum size configures the amount of data to be collected before we push the data to the crypto hardware for encryption. Setting the right quantum size based on the application requirements will help to better utilize the crypto resources. For example, in case of large downloads, larger quantum size is beneficial.<br> Default value: 8192<br> Possible values = 4096, 8192, 16384
+	* Amount of data to collect before the data is pushed to the crypto hardware for encryption. For large downloads, a larger quantum size better utilizes the crypto resources.<br> Default value: 8192<br> Possible values = 4096, 8192, 16384
 	* </pre>
 	*/
 	public void set_quantumsize(String quantumsize) throws Exception{
@@ -58,7 +58,7 @@ public class sslparameter extends base_resource
 
 	/**
 	* <pre>
-	* SSL quantum size configures the amount of data to be collected before we push the data to the crypto hardware for encryption. Setting the right quantum size based on the application requirements will help to better utilize the crypto resources. For example, in case of large downloads, larger quantum size is beneficial.<br> Default value: 8192<br> Possible values = 4096, 8192, 16384
+	* Amount of data to collect before the data is pushed to the crypto hardware for encryption. For large downloads, a larger quantum size better utilizes the crypto resources.<br> Default value: 8192<br> Possible values = 4096, 8192, 16384
 	* </pre>
 	*/
 	public String get_quantumsize() throws Exception {
@@ -67,7 +67,7 @@ public class sslparameter extends base_resource
 
 	/**
 	* <pre>
-	* Memory size to use for CRLs. Set the maximum system memory size, the CRL(s) can consume. This setting will not reserve the memory for CRL, but will set the max limit all CRL(s) loaded in the system can consume.<br> Default value: 256<br> Minimum value =  10<br> Maximum value =  1024
+	* Maximum memory size to use for certificate revocation lists (CRLs). This parameter reserves memory for a CRL but sets a limit to the maximum memory that the CRLs loaded on the appliance can consume.<br> Default value: 256<br> Minimum value =  10<br> Maximum value =  1024
 	* </pre>
 	*/
 	public void set_crlmemorysizemb(long crlmemorysizemb) throws Exception {
@@ -76,7 +76,7 @@ public class sslparameter extends base_resource
 
 	/**
 	* <pre>
-	* Memory size to use for CRLs. Set the maximum system memory size, the CRL(s) can consume. This setting will not reserve the memory for CRL, but will set the max limit all CRL(s) loaded in the system can consume.<br> Default value: 256<br> Minimum value =  10<br> Maximum value =  1024
+	* Maximum memory size to use for certificate revocation lists (CRLs). This parameter reserves memory for a CRL but sets a limit to the maximum memory that the CRLs loaded on the appliance can consume.<br> Default value: 256<br> Minimum value =  10<br> Maximum value =  1024
 	* </pre>
 	*/
 	public void set_crlmemorysizemb(Long crlmemorysizemb) throws Exception{
@@ -85,7 +85,7 @@ public class sslparameter extends base_resource
 
 	/**
 	* <pre>
-	* Memory size to use for CRLs. Set the maximum system memory size, the CRL(s) can consume. This setting will not reserve the memory for CRL, but will set the max limit all CRL(s) loaded in the system can consume.<br> Default value: 256<br> Minimum value =  10<br> Maximum value =  1024
+	* Maximum memory size to use for certificate revocation lists (CRLs). This parameter reserves memory for a CRL but sets a limit to the maximum memory that the CRLs loaded on the appliance can consume.<br> Default value: 256<br> Minimum value =  10<br> Maximum value =  1024
 	* </pre>
 	*/
 	public Long get_crlmemorysizemb() throws Exception {
@@ -94,7 +94,7 @@ public class sslparameter extends base_resource
 
 	/**
 	* <pre>
-	* Enable strict CA certificate checks.<br> Default value: NO<br> Possible values = YES, NO
+	* Enable strict CA certificate checks on the appliance.<br> Default value: NO<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public void set_strictcachecks(String strictcachecks) throws Exception{
@@ -103,7 +103,7 @@ public class sslparameter extends base_resource
 
 	/**
 	* <pre>
-	* Enable strict CA certificate checks.<br> Default value: NO<br> Possible values = YES, NO
+	* Enable strict CA certificate checks on the appliance.<br> Default value: NO<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public String get_strictcachecks() throws Exception {
@@ -112,7 +112,7 @@ public class sslparameter extends base_resource
 
 	/**
 	* <pre>
-	* Encryption trigger timer. Set the encryption trigger timeout for transactions, which are not trackable by Netscaler. NetScaler will use this setting to accumulate data received from the server for the configured time period before pushing it to the crypto hardware for encryption.<br> Default value: 100<br> Minimum value =  1<br> Maximum value =  200
+	* Time, in milliseconds, after which encryption is triggered for transactions that are not tracked on the NetScaler appliance because their length is not known. There can be a delay of up to 10ms from the specified timeout value before the packet is pushed into the queue.<br> Default value: 100<br> Minimum value =  1<br> Maximum value =  200
 	* </pre>
 	*/
 	public void set_ssltriggertimeout(long ssltriggertimeout) throws Exception {
@@ -121,7 +121,7 @@ public class sslparameter extends base_resource
 
 	/**
 	* <pre>
-	* Encryption trigger timer. Set the encryption trigger timeout for transactions, which are not trackable by Netscaler. NetScaler will use this setting to accumulate data received from the server for the configured time period before pushing it to the crypto hardware for encryption.<br> Default value: 100<br> Minimum value =  1<br> Maximum value =  200
+	* Time, in milliseconds, after which encryption is triggered for transactions that are not tracked on the NetScaler appliance because their length is not known. There can be a delay of up to 10ms from the specified timeout value before the packet is pushed into the queue.<br> Default value: 100<br> Minimum value =  1<br> Maximum value =  200
 	* </pre>
 	*/
 	public void set_ssltriggertimeout(Long ssltriggertimeout) throws Exception{
@@ -130,7 +130,7 @@ public class sslparameter extends base_resource
 
 	/**
 	* <pre>
-	* Encryption trigger timer. Set the encryption trigger timeout for transactions, which are not trackable by Netscaler. NetScaler will use this setting to accumulate data received from the server for the configured time period before pushing it to the crypto hardware for encryption.<br> Default value: 100<br> Minimum value =  1<br> Maximum value =  200
+	* Time, in milliseconds, after which encryption is triggered for transactions that are not tracked on the NetScaler appliance because their length is not known. There can be a delay of up to 10ms from the specified timeout value before the packet is pushed into the queue.<br> Default value: 100<br> Minimum value =  1<br> Maximum value =  200
 	* </pre>
 	*/
 	public Long get_ssltriggertimeout() throws Exception {
@@ -139,7 +139,7 @@ public class sslparameter extends base_resource
 
 	/**
 	* <pre>
-	* Enable sending SSL Close-Notify at the end of a transaction.<br> Default value: YES<br> Possible values = YES, NO
+	* Send an SSL Close-Notify message to the client at the end of a transaction.<br> Default value: YES<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public void set_sendclosenotify(String sendclosenotify) throws Exception{
@@ -148,7 +148,7 @@ public class sslparameter extends base_resource
 
 	/**
 	* <pre>
-	* Enable sending SSL Close-Notify at the end of a transaction.<br> Default value: YES<br> Possible values = YES, NO
+	* Send an SSL Close-Notify message to the client at the end of a transaction.<br> Default value: YES<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public String get_sendclosenotify() throws Exception {
@@ -157,7 +157,7 @@ public class sslparameter extends base_resource
 
 	/**
 	* <pre>
-	* Number of queued packets that force encryption to occur. Set the maximum number of packets to accumulate before triggering encryption to the crypto hardware. Default setting is 45 packets. This setting can be used for non-trackable transactions which generates small size packets from server to NetScaler.<br> Default value: 45<br> Minimum value =  10<br> Maximum value =  50
+	* Maximum number of queued packets after which encryption is triggered. Use this setting for SSL transactions that send small packets from server to NetScaler.<br> Default value: 45<br> Minimum value =  10<br> Maximum value =  50
 	* </pre>
 	*/
 	public void set_encrypttriggerpktcount(long encrypttriggerpktcount) throws Exception {
@@ -166,7 +166,7 @@ public class sslparameter extends base_resource
 
 	/**
 	* <pre>
-	* Number of queued packets that force encryption to occur. Set the maximum number of packets to accumulate before triggering encryption to the crypto hardware. Default setting is 45 packets. This setting can be used for non-trackable transactions which generates small size packets from server to NetScaler.<br> Default value: 45<br> Minimum value =  10<br> Maximum value =  50
+	* Maximum number of queued packets after which encryption is triggered. Use this setting for SSL transactions that send small packets from server to NetScaler.<br> Default value: 45<br> Minimum value =  10<br> Maximum value =  50
 	* </pre>
 	*/
 	public void set_encrypttriggerpktcount(Long encrypttriggerpktcount) throws Exception{
@@ -175,7 +175,7 @@ public class sslparameter extends base_resource
 
 	/**
 	* <pre>
-	* Number of queued packets that force encryption to occur. Set the maximum number of packets to accumulate before triggering encryption to the crypto hardware. Default setting is 45 packets. This setting can be used for non-trackable transactions which generates small size packets from server to NetScaler.<br> Default value: 45<br> Minimum value =  10<br> Maximum value =  50
+	* Maximum number of queued packets after which encryption is triggered. Use this setting for SSL transactions that send small packets from server to NetScaler.<br> Default value: 45<br> Minimum value =  10<br> Maximum value =  50
 	* </pre>
 	*/
 	public Long get_encrypttriggerpktcount() throws Exception {
@@ -184,13 +184,12 @@ public class sslparameter extends base_resource
 
 	/**
 	* <pre>
-	* SSL Renegotiation setting
-NO: Allow SSL renegotiation to work.
-FRONTEND_CLIENT: Deny SSL renegotiation initiated by the client.
-FRONTEND_CLIENTSERVER: Deny SSL renegotiation initiated by the client and by NS (during policy-based clientAuth).
-NONSECURE. Deny nonsecure SSL renegotiation. This option will only allow clients which support RFC 5746.
-ALL: Deny SSL renegotiation for above two cases and for server initiated renegotiation on the backend side.
-<br> Default value: NO<br> Possible values = NO, FRONTEND_CLIENT, FRONTEND_CLIENTSERVER, ALL, NONSECURE
+	* Deny renegotiation in specified circumstances. Available settings function as follows:
+* NO - Allow SSL renegotiation.
+* FRONTEND_CLIENT - Deny secure and nonsecure SSL renegotiation initiated by the client.
+* FRONTEND_CLIENTSERVER - Deny secure and nonsecure SSL renegotiation initiated by the client or the NetScaler during policy-based client authentication. 
+* ALL - Deny all secure and nonsecure SSL renegotiation.
+* NONSECURE - Deny nonsecure SSL renegotiation. Allows only clients that support RFC 5746.<br> Default value: NO<br> Possible values = NO, FRONTEND_CLIENT, FRONTEND_CLIENTSERVER, ALL, NONSECURE
 	* </pre>
 	*/
 	public void set_denysslreneg(String denysslreneg) throws Exception{
@@ -199,13 +198,12 @@ ALL: Deny SSL renegotiation for above two cases and for server initiated renegot
 
 	/**
 	* <pre>
-	* SSL Renegotiation setting
-NO: Allow SSL renegotiation to work.
-FRONTEND_CLIENT: Deny SSL renegotiation initiated by the client.
-FRONTEND_CLIENTSERVER: Deny SSL renegotiation initiated by the client and by NS (during policy-based clientAuth).
-NONSECURE. Deny nonsecure SSL renegotiation. This option will only allow clients which support RFC 5746.
-ALL: Deny SSL renegotiation for above two cases and for server initiated renegotiation on the backend side.
-<br> Default value: NO<br> Possible values = NO, FRONTEND_CLIENT, FRONTEND_CLIENTSERVER, ALL, NONSECURE
+	* Deny renegotiation in specified circumstances. Available settings function as follows:
+* NO - Allow SSL renegotiation.
+* FRONTEND_CLIENT - Deny secure and nonsecure SSL renegotiation initiated by the client.
+* FRONTEND_CLIENTSERVER - Deny secure and nonsecure SSL renegotiation initiated by the client or the NetScaler during policy-based client authentication. 
+* ALL - Deny all secure and nonsecure SSL renegotiation.
+* NONSECURE - Deny nonsecure SSL renegotiation. Allows only clients that support RFC 5746.<br> Default value: NO<br> Possible values = NO, FRONTEND_CLIENT, FRONTEND_CLIENTSERVER, ALL, NONSECURE
 	* </pre>
 	*/
 	public String get_denysslreneg() throws Exception {
@@ -214,7 +212,7 @@ ALL: Deny SSL renegotiation for above two cases and for server initiated renegot
 
 	/**
 	* <pre>
-	* Encoding method used to insert Subject/Issuer in HTTP Request to backend servers.<br> Default value: UNICODE_INSERTION<br> Possible values = Unicode, UTF-8
+	* Encoding method used to insert the subject or issuer's name in HTTP requests to servers.<br> Default value: Unicode<br> Possible values = Unicode, UTF-8
 	* </pre>
 	*/
 	public void set_insertionencoding(String insertionencoding) throws Exception{
@@ -223,7 +221,7 @@ ALL: Deny SSL renegotiation for above two cases and for server initiated renegot
 
 	/**
 	* <pre>
-	* Encoding method used to insert Subject/Issuer in HTTP Request to backend servers.<br> Default value: UNICODE_INSERTION<br> Possible values = Unicode, UTF-8
+	* Encoding method used to insert the subject or issuer's name in HTTP requests to servers.<br> Default value: Unicode<br> Possible values = Unicode, UTF-8
 	* </pre>
 	*/
 	public String get_insertionencoding() throws Exception {
@@ -232,7 +230,7 @@ ALL: Deny SSL renegotiation for above two cases and for server initiated renegot
 
 	/**
 	* <pre>
-	* Size, per packet engine, in megabytes of the OCSP cache.  The actual maximum value for this value is clamped at 10% of packet engine memory.  Maximum packet engine memory is 4GB; thus, if you have enough memory to give all packet engines 4GB of memory, the maximum value here would be approximately 410 MB.<br> Default value: 10<br> Minimum value =  0<br> Maximum value =  512
+	* Size, per packet engine, in megabytes, of the OCSP cache. A maximum of 10% of the packet engine memory can be assigned. Because the maximum allowed packet engine memory is 4GB, the maximum value that can be assigned to the OCSP cache is approximately 410 MB.<br> Default value: 10<br> Minimum value =  0<br> Maximum value =  512
 	* </pre>
 	*/
 	public void set_ocspcachesize(long ocspcachesize) throws Exception {
@@ -241,7 +239,7 @@ ALL: Deny SSL renegotiation for above two cases and for server initiated renegot
 
 	/**
 	* <pre>
-	* Size, per packet engine, in megabytes of the OCSP cache.  The actual maximum value for this value is clamped at 10% of packet engine memory.  Maximum packet engine memory is 4GB; thus, if you have enough memory to give all packet engines 4GB of memory, the maximum value here would be approximately 410 MB.<br> Default value: 10<br> Minimum value =  0<br> Maximum value =  512
+	* Size, per packet engine, in megabytes, of the OCSP cache. A maximum of 10% of the packet engine memory can be assigned. Because the maximum allowed packet engine memory is 4GB, the maximum value that can be assigned to the OCSP cache is approximately 410 MB.<br> Default value: 10<br> Minimum value =  0<br> Maximum value =  512
 	* </pre>
 	*/
 	public void set_ocspcachesize(Long ocspcachesize) throws Exception{
@@ -250,7 +248,7 @@ ALL: Deny SSL renegotiation for above two cases and for server initiated renegot
 
 	/**
 	* <pre>
-	* Size, per packet engine, in megabytes of the OCSP cache.  The actual maximum value for this value is clamped at 10% of packet engine memory.  Maximum packet engine memory is 4GB; thus, if you have enough memory to give all packet engines 4GB of memory, the maximum value here would be approximately 410 MB.<br> Default value: 10<br> Minimum value =  0<br> Maximum value =  512
+	* Size, per packet engine, in megabytes, of the OCSP cache. A maximum of 10% of the packet engine memory can be assigned. Because the maximum allowed packet engine memory is 4GB, the maximum value that can be assigned to the OCSP cache is approximately 410 MB.<br> Default value: 10<br> Minimum value =  0<br> Maximum value =  512
 	* </pre>
 	*/
 	public Long get_ocspcachesize() throws Exception {
@@ -259,7 +257,11 @@ ALL: Deny SSL renegotiation for above two cases and for server initiated renegot
 
 	/**
 	* <pre>
-	* PUSH insertion cotnrol flags (Can be ORed): 0 auto, 0x1 = every decrypted record, 0x2 = every encrypted record.<br> Minimum value =  0<br> Maximum value =  3
+	* Insert PUSH flag into decrypted, encrypted, or all records. If the PUSH flag is set to a value other than 0, the buffered records are forwarded on the basis of the value of the PUSH flag. Available settings function as follows:
+0 - Auto (PUSH flag is not set.)
+1 - Insert PUSH flag into every decrypted record.
+2 -Insert PUSH flag into every encrypted record.
+3 - Insert PUSH flag into every decrypted and encrypted record.<br> Minimum value =  0<br> Maximum value =  3
 	* </pre>
 	*/
 	public void set_pushflag(long pushflag) throws Exception {
@@ -268,7 +270,11 @@ ALL: Deny SSL renegotiation for above two cases and for server initiated renegot
 
 	/**
 	* <pre>
-	* PUSH insertion cotnrol flags (Can be ORed): 0 auto, 0x1 = every decrypted record, 0x2 = every encrypted record.<br> Minimum value =  0<br> Maximum value =  3
+	* Insert PUSH flag into decrypted, encrypted, or all records. If the PUSH flag is set to a value other than 0, the buffered records are forwarded on the basis of the value of the PUSH flag. Available settings function as follows:
+0 - Auto (PUSH flag is not set.)
+1 - Insert PUSH flag into every decrypted record.
+2 -Insert PUSH flag into every encrypted record.
+3 - Insert PUSH flag into every decrypted and encrypted record.<br> Minimum value =  0<br> Maximum value =  3
 	* </pre>
 	*/
 	public void set_pushflag(Long pushflag) throws Exception{
@@ -277,7 +283,11 @@ ALL: Deny SSL renegotiation for above two cases and for server initiated renegot
 
 	/**
 	* <pre>
-	* PUSH insertion cotnrol flags (Can be ORed): 0 auto, 0x1 = every decrypted record, 0x2 = every encrypted record.<br> Minimum value =  0<br> Maximum value =  3
+	* Insert PUSH flag into decrypted, encrypted, or all records. If the PUSH flag is set to a value other than 0, the buffered records are forwarded on the basis of the value of the PUSH flag. Available settings function as follows:
+0 - Auto (PUSH flag is not set.)
+1 - Insert PUSH flag into every decrypted record.
+2 -Insert PUSH flag into every encrypted record.
+3 - Insert PUSH flag into every decrypted and encrypted record.<br> Minimum value =  0<br> Maximum value =  3
 	* </pre>
 	*/
 	public Long get_pushflag() throws Exception {
@@ -286,7 +296,7 @@ ALL: Deny SSL renegotiation for above two cases and for server initiated renegot
 
 	/**
 	* <pre>
-	* Host header check for SNI enabled sessions. If this check is enabled and if the HTTP request does not contain the Host header for SNI enabled session, then the request will be dropped.<br> Default value: NO<br> Possible values = YES, NO
+	* Host header check for SNI enabled sessions. If this check is enabled and the HTTP request does not contain the host header for SNI enabled sessions, the request is dropped.<br> Default value: NO<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public void set_dropreqwithnohostheader(String dropreqwithnohostheader) throws Exception{
@@ -295,7 +305,7 @@ ALL: Deny SSL renegotiation for above two cases and for server initiated renegot
 
 	/**
 	* <pre>
-	* Host header check for SNI enabled sessions. If this check is enabled and if the HTTP request does not contain the Host header for SNI enabled session, then the request will be dropped.<br> Default value: NO<br> Possible values = YES, NO
+	* Host header check for SNI enabled sessions. If this check is enabled and the HTTP request does not contain the host header for SNI enabled sessions, the request is dropped.<br> Default value: NO<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public String get_dropreqwithnohostheader() throws Exception {
@@ -304,7 +314,7 @@ ALL: Deny SSL renegotiation for above two cases and for server initiated renegot
 
 	/**
 	* <pre>
-	* PUSH encryption trigger timer.<br> Default value: 1<br> Minimum value =  1<br> Maximum value =  200
+	* PUSH encryption trigger timeout value. The timeout value is applied only if you set the Push Encryption Trigger parameter to Timer in the SSL virtual server settings.<br> Default value: 1<br> Minimum value =  1<br> Maximum value =  200
 	* </pre>
 	*/
 	public void set_pushenctriggertimeout(long pushenctriggertimeout) throws Exception {
@@ -313,7 +323,7 @@ ALL: Deny SSL renegotiation for above two cases and for server initiated renegot
 
 	/**
 	* <pre>
-	* PUSH encryption trigger timer.<br> Default value: 1<br> Minimum value =  1<br> Maximum value =  200
+	* PUSH encryption trigger timeout value. The timeout value is applied only if you set the Push Encryption Trigger parameter to Timer in the SSL virtual server settings.<br> Default value: 1<br> Minimum value =  1<br> Maximum value =  200
 	* </pre>
 	*/
 	public void set_pushenctriggertimeout(Long pushenctriggertimeout) throws Exception{
@@ -322,7 +332,7 @@ ALL: Deny SSL renegotiation for above two cases and for server initiated renegot
 
 	/**
 	* <pre>
-	* PUSH encryption trigger timer.<br> Default value: 1<br> Minimum value =  1<br> Maximum value =  200
+	* PUSH encryption trigger timeout value. The timeout value is applied only if you set the Push Encryption Trigger parameter to Timer in the SSL virtual server settings.<br> Default value: 1<br> Minimum value =  1<br> Maximum value =  200
 	* </pre>
 	*/
 	public Long get_pushenctriggertimeout() throws Exception {
@@ -331,7 +341,7 @@ ALL: Deny SSL renegotiation for above two cases and for server initiated renegot
 
 	/**
 	* <pre>
-	* Name of undef action. It can be SSL control builtin action like CLIENTAUTH, NOCLIENTAUTH or an action like NOOP, RESET, DROP.<br> Default value: "CLIENTAUTH"
+	* Name of the undefined built-in control action: CLIENTAUTH, NOCLIENTAUTH, NOOP, RESET, or DROP.<br> Default value: "CLIENTAUTH"
 	* </pre>
 	*/
 	public void set_undefactioncontrol(String undefactioncontrol) throws Exception{
@@ -340,7 +350,7 @@ ALL: Deny SSL renegotiation for above two cases and for server initiated renegot
 
 	/**
 	* <pre>
-	* Name of undef action. It can be SSL control builtin action like CLIENTAUTH, NOCLIENTAUTH or an action like NOOP, RESET, DROP.<br> Default value: "CLIENTAUTH"
+	* Name of the undefined built-in control action: CLIENTAUTH, NOCLIENTAUTH, NOOP, RESET, or DROP.<br> Default value: "CLIENTAUTH"
 	* </pre>
 	*/
 	public String get_undefactioncontrol() throws Exception {
@@ -349,7 +359,7 @@ ALL: Deny SSL renegotiation for above two cases and for server initiated renegot
 
 	/**
 	* <pre>
-	* Name of undef action. It can be NOOP, RESET or DROP.<br> Default value: "NOOP"
+	* Name of the undefined built-in data action: NOOP, RESET or DROP.<br> Default value: "NOOP"
 	* </pre>
 	*/
 	public void set_undefactiondata(String undefactiondata) throws Exception{
@@ -358,7 +368,7 @@ ALL: Deny SSL renegotiation for above two cases and for server initiated renegot
 
 	/**
 	* <pre>
-	* Name of undef action. It can be NOOP, RESET or DROP.<br> Default value: "NOOP"
+	* Name of the undefined built-in data action: NOOP, RESET or DROP.<br> Default value: "NOOP"
 	* </pre>
 	*/
 	public String get_undefactiondata() throws Exception {
@@ -429,20 +439,6 @@ ALL: Deny SSL renegotiation for above two cases and for server initiated renegot
 	*/
 	public static base_response unset(nitro_service client, sslparameter resource, String[] args) throws Exception{
 		sslparameter unsetresource = new sslparameter();
-		unsetresource.quantumsize = resource.quantumsize;
-		unsetresource.crlmemorysizemb = resource.crlmemorysizemb;
-		unsetresource.strictcachecks = resource.strictcachecks;
-		unsetresource.ssltriggertimeout = resource.ssltriggertimeout;
-		unsetresource.sendclosenotify = resource.sendclosenotify;
-		unsetresource.encrypttriggerpktcount = resource.encrypttriggerpktcount;
-		unsetresource.denysslreneg = resource.denysslreneg;
-		unsetresource.insertionencoding = resource.insertionencoding;
-		unsetresource.ocspcachesize = resource.ocspcachesize;
-		unsetresource.pushflag = resource.pushflag;
-		unsetresource.dropreqwithnohostheader = resource.dropreqwithnohostheader;
-		unsetresource.pushenctriggertimeout = resource.pushenctriggertimeout;
-		unsetresource.undefactioncontrol = resource.undefactioncontrol;
-		unsetresource.undefactiondata = resource.undefactiondata;
 		return unsetresource.unset_resource(client,args);
 	}
 

@@ -32,17 +32,36 @@ class nssimpleacl_response extends base_response
 
 public class nssimpleacl_stats extends base_resource
 {
+	private String clearstats;
+	private Long sacltothits;
+	private Long saclhitsrate;
+	private Long sacltotmisses;
+	private Long saclmissesrate;
+	private Long saclscount;
 	private Long sacltotpktsallowed;
 	private Long saclpktsallowedrate;
 	private Long sacltotpktsbridged;
 	private Long saclpktsbridgedrate;
 	private Long sacltotpktsdenied;
 	private Long saclpktsdeniedrate;
-	private Long sacltothits;
-	private Long saclhitsrate;
-	private Long sacltotmisses;
-	private Long saclmissesrate;
-	private Long saclscount;
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters
+	* </pre>
+	*/
+	public void set_clearstats(String clearstats) throws Exception{
+		this.clearstats = clearstats;
+	}
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters.<br> Possible values = basic, full
+	* </pre>
+	*/
+	public String get_clearstats() throws Exception {
+		return this.clearstats;
+	}
 
 	/**
 	* <pre>
@@ -64,7 +83,7 @@ public class nssimpleacl_stats extends base_resource
 
 	/**
 	* <pre>
-	* Packets matching a SimpleACL.
+	* Rate (/s) counter for sacltothits
 	* </pre>
 	*/
 	public Long get_saclhitsrate() throws Exception {
@@ -73,7 +92,7 @@ public class nssimpleacl_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total packets that matched a SimpleACL with action BRIDGE and got bridged by NetScaler.
+	* Rate (/s) counter for sacltotpktsbridged
 	* </pre>
 	*/
 	public Long get_saclpktsbridgedrate() throws Exception {
@@ -100,7 +119,7 @@ public class nssimpleacl_stats extends base_resource
 
 	/**
 	* <pre>
-	* Packets not matching any SimpleACL.
+	* Rate (/s) counter for sacltotmisses
 	* </pre>
 	*/
 	public Long get_saclmissesrate() throws Exception {
@@ -109,7 +128,7 @@ public class nssimpleacl_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total packets that matched a SimpleACL with action ALLOW and got consumed by NetScaler.
+	* Rate (/s) counter for sacltotpktsallowed
 	* </pre>
 	*/
 	public Long get_saclpktsallowedrate() throws Exception {
@@ -127,7 +146,7 @@ public class nssimpleacl_stats extends base_resource
 
 	/**
 	* <pre>
-	* Packets dropped because they match SimpleACL (Access Control List) with processing mode set to DENY.
+	* Rate (/s) counter for sacltotpktsdenied
 	* </pre>
 	*/
 	public Long get_saclpktsdeniedrate() throws Exception {
@@ -197,4 +216,8 @@ public class nssimpleacl_stats extends base_resource
 		return response[0];
 	}
 
+	public static class clearstatsEnum {
+		public static final String basic = "basic";
+		public static final String full = "full";
+	}
 }

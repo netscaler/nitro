@@ -37,6 +37,7 @@ public class vpnvserver_auditnslogpolicy_binding extends base_resource
 	private Long acttype;
 	private String name;
 	private Boolean secondary;
+	private Boolean groupextraction;
 	private String gotopriorityexpression;
 	private String bindpoint;
 	private Long __count;
@@ -70,17 +71,19 @@ public class vpnvserver_auditnslogpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Expression specifying the priority of the next policy which will get evaluated if the current policy rule evaluates to TRUE.
-	o	If gotoPriorityExpression is not present or if it is equal to END then the policy bank evaluation ends here
-	o	Else if the gotoPriorityExpression is equal to NEXT then the next policy in the priority order is evaluated.
-	o	Else gotoPriorityExpression is evaluated. The result of gotoPriorityExpression (which has to be a number) is processed as follows:
-		-	An UNDEF event is triggered if
-			.	gotoPriorityExpression cannot be evaluated
-			.	gotoPriorityExpression evaluates to number which is smaller than the maximum priority in the policy bank but is not same as any policy's priority
-			.	gotoPriorityExpression evaluates to a priority that is smaller than the current policy's priority
-		-	If the gotoPriorityExpression evaluates to the priority of the current policy then the next policy in the priority order is evaluated.
-		-	If the gotoPriorityExpression evaluates to the priority of a policy further ahead in the list then that policy will be evaluated next.
-		This field is applicable only to rewrite and responder policies.
+	* Expression or other value specifying the next policy to evaluate if the current policy evaluates to TRUE.  Specify one of the following values:
+* NEXT - Evaluate the policy with the next higher priority number.
+* END - End policy evaluation.
+* USE_INVOCATION_RESULT - Applicable if this policy invokes another policy label. If the final goto in the invoked policy label has a value of END, the evaluation stops. If the final goto is anything other than END, the current policy label performs a NEXT.
+* A default syntax or classic expression that evaluates to a number.
+If you specify an expression, the number to which it evaluates determines the next policy to evaluate, as follows:
+*  If the expression evaluates to a higher numbered priority, the policy with that priority is evaluated next.
+* If the expression evaluates to the priority of the current policy, the policy with the next higher numbered priority is evaluated next.
+* If the expression evaluates to a number that is larger than the largest numbered priority, policy evaluation ends.
+An UNDEF event is triggered if:
+* The expression is invalid.
+* The expression evaluates to a priority number that is numerically lower than the current policy's priority.
+* The expression evaluates to a priority number that is between the current policy's priority number (say, 30) and the highest priority number (say, 100), but does not match any configured priority number (for example, the expression evaluates to the number 85). This example assumes that the priority number increments by 10 for every successive policy, and therefore a priority number of 85 does not exist in the policy label.
 	* </pre>
 	*/
 	public void set_gotopriorityexpression(String gotopriorityexpression) throws Exception{
@@ -89,17 +92,19 @@ public class vpnvserver_auditnslogpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Expression specifying the priority of the next policy which will get evaluated if the current policy rule evaluates to TRUE.
-	o	If gotoPriorityExpression is not present or if it is equal to END then the policy bank evaluation ends here
-	o	Else if the gotoPriorityExpression is equal to NEXT then the next policy in the priority order is evaluated.
-	o	Else gotoPriorityExpression is evaluated. The result of gotoPriorityExpression (which has to be a number) is processed as follows:
-		-	An UNDEF event is triggered if
-			.	gotoPriorityExpression cannot be evaluated
-			.	gotoPriorityExpression evaluates to number which is smaller than the maximum priority in the policy bank but is not same as any policy's priority
-			.	gotoPriorityExpression evaluates to a priority that is smaller than the current policy's priority
-		-	If the gotoPriorityExpression evaluates to the priority of the current policy then the next policy in the priority order is evaluated.
-		-	If the gotoPriorityExpression evaluates to the priority of a policy further ahead in the list then that policy will be evaluated next.
-		This field is applicable only to rewrite and responder policies.
+	* Expression or other value specifying the next policy to evaluate if the current policy evaluates to TRUE.  Specify one of the following values:
+* NEXT - Evaluate the policy with the next higher priority number.
+* END - End policy evaluation.
+* USE_INVOCATION_RESULT - Applicable if this policy invokes another policy label. If the final goto in the invoked policy label has a value of END, the evaluation stops. If the final goto is anything other than END, the current policy label performs a NEXT.
+* A default syntax or classic expression that evaluates to a number.
+If you specify an expression, the number to which it evaluates determines the next policy to evaluate, as follows:
+*  If the expression evaluates to a higher numbered priority, the policy with that priority is evaluated next.
+* If the expression evaluates to the priority of the current policy, the policy with the next higher numbered priority is evaluated next.
+* If the expression evaluates to a number that is larger than the largest numbered priority, policy evaluation ends.
+An UNDEF event is triggered if:
+* The expression is invalid.
+* The expression evaluates to a priority number that is numerically lower than the current policy's priority.
+* The expression evaluates to a priority number that is between the current policy's priority number (say, 30) and the highest priority number (say, 100), but does not match any configured priority number (for example, the expression evaluates to the number 85). This example assumes that the priority number increments by 10 for every successive policy, and therefore a priority number of 85 does not exist in the policy label.
 	* </pre>
 	*/
 	public String get_gotopriorityexpression() throws Exception {
@@ -126,7 +131,34 @@ public class vpnvserver_auditnslogpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The vserver to which this command shall bind parameters.<br> Minimum length =  1
+	* Bind the Authentication policy to a tertiary chain which will be used only for group extraction.  The user will not authenticate against this server, and this will only be called if primary and/or secondary authentication has succeeded.
+	* </pre>
+	*/
+	public void set_groupextraction(boolean groupextraction) throws Exception {
+		this.groupextraction = new Boolean(groupextraction);
+	}
+
+	/**
+	* <pre>
+	* Bind the Authentication policy to a tertiary chain which will be used only for group extraction.  The user will not authenticate against this server, and this will only be called if primary and/or secondary authentication has succeeded.
+	* </pre>
+	*/
+	public void set_groupextraction(Boolean groupextraction) throws Exception{
+		this.groupextraction = groupextraction;
+	}
+
+	/**
+	* <pre>
+	* Bind the Authentication policy to a tertiary chain which will be used only for group extraction.  The user will not authenticate against this server, and this will only be called if primary and/or secondary authentication has succeeded.
+	* </pre>
+	*/
+	public Boolean get_groupextraction() throws Exception {
+		return this.groupextraction;
+	}
+
+	/**
+	* <pre>
+	* Name of the virtual server.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -135,7 +167,7 @@ public class vpnvserver_auditnslogpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The vserver to which this command shall bind parameters.<br> Minimum length =  1
+	* Name of the virtual server.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -144,7 +176,7 @@ public class vpnvserver_auditnslogpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Bind the Authentication policy to the secondary chain. This provides for multifactor authentication in which a user must not only authenticate to a primary authentication server but also a server in the secondary chain.  User groups are aggregated across both authentication systems and while user may use different passwords in each system their username must be exactly the same.
+	* Bind the authentication policy as the secondary policy to use in a two-factor configuration. A user must then authenticate not only via a primary authentication method but also via a secondary authentication method. User groups are aggregated across both. The user name must be exactly the same for both authentication methods, but they can require different passwords.
 	* </pre>
 	*/
 	public void set_secondary(boolean secondary) throws Exception {
@@ -153,7 +185,7 @@ public class vpnvserver_auditnslogpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Bind the Authentication policy to the secondary chain. This provides for multifactor authentication in which a user must not only authenticate to a primary authentication server but also a server in the secondary chain.  User groups are aggregated across both authentication systems and while user may use different passwords in each system their username must be exactly the same.
+	* Bind the authentication policy as the secondary policy to use in a two-factor configuration. A user must then authenticate not only via a primary authentication method but also via a secondary authentication method. User groups are aggregated across both. The user name must be exactly the same for both authentication methods, but they can require different passwords.
 	* </pre>
 	*/
 	public void set_secondary(Boolean secondary) throws Exception{
@@ -162,7 +194,7 @@ public class vpnvserver_auditnslogpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Bind the Authentication policy to the secondary chain. This provides for multifactor authentication in which a user must not only authenticate to a primary authentication server but also a server in the secondary chain.  User groups are aggregated across both authentication systems and while user may use different passwords in each system their username must be exactly the same.
+	* Bind the authentication policy as the secondary policy to use in a two-factor configuration. A user must then authenticate not only via a primary authentication method but also via a secondary authentication method. User groups are aggregated across both. The user name must be exactly the same for both authentication methods, but they can require different passwords.
 	* </pre>
 	*/
 	public Boolean get_secondary() throws Exception {
@@ -171,7 +203,7 @@ public class vpnvserver_auditnslogpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Bindpoint, specifying where to bind the policy. This field is applicable only to rewrite and cache policies.<br> Possible values = REQUEST, RESPONSE
+	* Bind point to which to bind the policy. Applies only to rewrite and cache policies. If you do not set this parameter, the policy is bound to REQ_DEFAULT or RES_DEFAULT, depending on whether the policy rule is a response-time or a request-time expression.<br> Possible values = REQUEST, RESPONSE, ICA_REQUEST, OTHERTCP_REQUEST
 	* </pre>
 	*/
 	public void set_bindpoint(String bindpoint) throws Exception{
@@ -180,7 +212,7 @@ public class vpnvserver_auditnslogpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Bindpoint, specifying where to bind the policy. This field is applicable only to rewrite and cache policies.<br> Possible values = REQUEST, RESPONSE
+	* Bind point to which to bind the policy. Applies only to rewrite and cache policies. If you do not set this parameter, the policy is bound to REQ_DEFAULT or RES_DEFAULT, depending on whether the policy rule is a response-time or a request-time expression.<br> Possible values = REQUEST, RESPONSE, ICA_REQUEST, OTHERTCP_REQUEST
 	* </pre>
 	*/
 	public String get_bindpoint() throws Exception {
@@ -236,6 +268,7 @@ public class vpnvserver_auditnslogpolicy_binding extends base_resource
 		updateresource.policy = resource.policy;
 		updateresource.priority = resource.priority;
 		updateresource.secondary = resource.secondary;
+		updateresource.groupextraction = resource.groupextraction;
 		updateresource.gotopriorityexpression = resource.gotopriorityexpression;
 		updateresource.bindpoint = resource.bindpoint;
 		return updateresource.update_resource(client);
@@ -251,6 +284,7 @@ public class vpnvserver_auditnslogpolicy_binding extends base_resource
 				updateresources[i].policy = resources[i].policy;
 				updateresources[i].priority = resources[i].priority;
 				updateresources[i].secondary = resources[i].secondary;
+				updateresources[i].groupextraction = resources[i].groupextraction;
 				updateresources[i].gotopriorityexpression = resources[i].gotopriorityexpression;
 				updateresources[i].bindpoint = resources[i].bindpoint;
 			}
@@ -264,6 +298,7 @@ public class vpnvserver_auditnslogpolicy_binding extends base_resource
 		deleteresource.name = resource.name;
 		deleteresource.policy = resource.policy;
 		deleteresource.secondary = resource.secondary;
+		deleteresource.groupextraction = resource.groupextraction;
 		deleteresource.bindpoint = resource.bindpoint;
 		return deleteresource.delete_resource(client);
 	}
@@ -277,6 +312,7 @@ public class vpnvserver_auditnslogpolicy_binding extends base_resource
 				deleteresources[i].name = resources[i].name;
 				deleteresources[i].policy = resources[i].policy;
 				deleteresources[i].secondary = resources[i].secondary;
+				deleteresources[i].groupextraction = resources[i].groupextraction;
 				deleteresources[i].bindpoint = resources[i].bindpoint;
 			}
 			result = delete_bulk_request(client, deleteresources);
@@ -372,6 +408,8 @@ public class vpnvserver_auditnslogpolicy_binding extends base_resource
 	public static class bindpointEnum {
 		public static final String REQUEST = "REQUEST";
 		public static final String RESPONSE = "RESPONSE";
+		public static final String ICA_REQUEST = "ICA_REQUEST";
+		public static final String OTHERTCP_REQUEST = "OTHERTCP_REQUEST";
 	}
 
 }

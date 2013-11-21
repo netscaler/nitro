@@ -33,10 +33,13 @@ class gslbvserver_response extends base_response
 public class gslbvserver_stats extends base_resource
 {
 	private String name;
+	private String clearstats;
 	private Long establishedconn;
+	private Long inactsvcs;
 	private Long vslbhealth;
 	private String type;
 	private String state;
+	private Long actsvcs;
 	private Long tothits;
 	private Long hitsrate;
 	private Long totalrequestbytes;
@@ -51,11 +54,10 @@ public class gslbvserver_stats extends base_resource
 	private Long responsesrate;
 	private Long curclntconnections;
 	private Long cursrvrconnections;
-	private Long svrestablishedconn;
 
 	/**
 	* <pre>
-	* The name of the gslb vserver for which statistics will be displayed.  If not given statistics are shown for all gslb vservers.
+	* Name of the GSLB virtual server for which to display statistics. If you do not specify a name, statistics are displayed for all GSLB virtual servers.
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -64,7 +66,7 @@ public class gslbvserver_stats extends base_resource
 
 	/**
 	* <pre>
-	* The name of the gslb vserver for which statistics will be displayed.  If not given statistics are shown for all gslb vservers.<br> Minimum length =  1
+	* Name of the GSLB virtual server for which to display statistics. If you do not specify a name, statistics are displayed for all GSLB virtual servers.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -73,11 +75,20 @@ public class gslbvserver_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of server connections in ESTABLISHED state.
+	* Clear the statsistics / counters
 	* </pre>
 	*/
-	public Long get_svrestablishedconn() throws Exception {
-		return this.svrestablishedconn;
+	public void set_clearstats(String clearstats) throws Exception{
+		this.clearstats = clearstats;
+	}
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters.<br> Possible values = basic, full
+	* </pre>
+	*/
+	public String get_clearstats() throws Exception {
+		return this.clearstats;
 	}
 
 	/**
@@ -127,7 +138,7 @@ public class gslbvserver_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of response bytes received by this service or virtual server.
+	* Rate (/s) counter for totalresponsebytes
 	* </pre>
 	*/
 	public Long get_responsebytesrate() throws Exception {
@@ -145,7 +156,7 @@ public class gslbvserver_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of request bytes received on this service or virtual server.
+	* Rate (/s) counter for totalrequestbytes
 	* </pre>
 	*/
 	public Long get_requestbytesrate() throws Exception {
@@ -163,7 +174,7 @@ public class gslbvserver_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total vserver hits
+	* Rate (/s) counter for tothits
 	* </pre>
 	*/
 	public Long get_hitsrate() throws Exception {
@@ -181,7 +192,7 @@ public class gslbvserver_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of responses received on this service or virtual server. (This applies to HTTP/SSL services and servers.)
+	* Rate (/s) counter for totalresponses
 	* </pre>
 	*/
 	public Long get_responsesrate() throws Exception {
@@ -208,7 +219,7 @@ public class gslbvserver_stats extends base_resource
 
 	/**
 	* <pre>
-	* Current state of the server.
+	* Current state of the server. Possible values are UP, DOWN, UNKNOWN, OFS(Out of Service), TROFS(Transition Out of Service), TROFS_DOWN(Down When going Out of Service)
 	* </pre>
 	*/
 	public String get_state() throws Exception {
@@ -226,6 +237,15 @@ public class gslbvserver_stats extends base_resource
 
 	/**
 	* <pre>
+	* number of ACTIVE services bound to a vserver
+	* </pre>
+	*/
+	public Long get_actsvcs() throws Exception {
+		return this.actsvcs;
+	}
+
+	/**
+	* <pre>
 	* Number of response bytes received by this service or virtual server.
 	* </pre>
 	*/
@@ -235,11 +255,20 @@ public class gslbvserver_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of requests received on this service or virtual server. (This applies to HTTP/SSL services and servers.)
+	* Rate (/s) counter for totalrequests
 	* </pre>
 	*/
 	public Long get_requestsrate() throws Exception {
 		return this.requestsrate;
+	}
+
+	/**
+	* <pre>
+	* number of INACTIVE services bound to a vserver
+	* </pre>
+	*/
+	public Long get_inactsvcs() throws Exception {
+		return this.inactsvcs;
 	}
 
 	/**
@@ -304,4 +333,8 @@ public class gslbvserver_stats extends base_resource
 		return response;
 	}
 
+	public static class clearstatsEnum {
+		public static final String basic = "basic";
+		public static final String full = "full";
+	}
 }

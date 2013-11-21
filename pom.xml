@@ -4,8 +4,8 @@
   <artifactId>nitro</artifactId>
   <packaging>jar</packaging>
   <name>NetScaler NITRO API client</name>
-  <version>10.1</version>
-  <description>The Citrix® NetScaler® NITRO client for Java allows you to configure and monitor the NetScaler appliance programmatically in Java based applications. Source code taken from Build 71 of NetScaler release 10.0.e which was the first Apache licensed</description>
+  <version>10.1-SNAPSHOT</version>
+  <description>The Citrix® NetScaler® NITRO client for Java allows you to configure and monitor the NetScaler appliance programmatically in Java based applications. Source code taken from Build 121 of NetScaler release 10.1</description>
   <url>http://www.citrix.com/netscaler</url>
   <parent>
     <groupId>org.sonatype.oss</groupId>
@@ -85,24 +85,37 @@
           <maxmemory>512m</maxmemory>
 		  </configuration>
       </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-gpg-plugin</artifactId>
-	     <version>1.4</version>
-        <executions>
-          <execution>
-            <id>sign-artifacts</id>
-            <phase>verify</phase>
-            <goals>
-              <goal>sign</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
     </plugins>
   </build>
 <profiles>
-    <profile>
+  <profile>
+    <id>release-sign-artifacts</id>
+    <activation>
+      <property>
+        <name>performRelease</name>
+        <value>true</value>
+      </property>
+    </activation>
+    <build>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-gpg-plugin</artifactId>
+          <version>1.1</version>
+          <executions>
+            <execution>
+              <id>sign-artifacts</id>
+              <phase>verify</phase>
+              <goals>
+                <goal>sign</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+      </plugins>
+    </build>
+  </profile>
+  <profile>
         <id>nitro-release</id>
         <build>
             <plugins>

@@ -41,7 +41,6 @@ public class cacheglobal_cachepolicy_binding extends base_resource
 	private String labelname;
 	private Long numpol;
 	private Long flowtype;
-	private Long flags;
 	private String precededefrules;
 	private Long __count;
 
@@ -110,7 +109,7 @@ public class cacheglobal_cachepolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The bindpoint to which policy is bound.<br> Possible values = REQ_OVERRIDE, REQ_DEFAULT, RES_OVERRIDE, RES_DEFAULT
+	* The bind point to which policy is bound. When you specify the type, detailed information about that bind point appears.<br> Possible values = REQ_OVERRIDE, REQ_DEFAULT, RES_OVERRIDE, RES_DEFAULT
 	* </pre>
 	*/
 	public void set_type(String type) throws Exception{
@@ -119,7 +118,7 @@ public class cacheglobal_cachepolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The bindpoint to which policy is bound.<br> Possible values = REQ_OVERRIDE, REQ_DEFAULT, RES_OVERRIDE, RES_DEFAULT
+	* The bind point to which policy is bound. When you specify the type, detailed information about that bind point appears.<br> Possible values = REQ_OVERRIDE, REQ_DEFAULT, RES_OVERRIDE, RES_DEFAULT
 	* </pre>
 	*/
 	public String get_type() throws Exception {
@@ -146,7 +145,7 @@ public class cacheglobal_cachepolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Type of policy label invocation.<br> Possible values = reqvserver, resvserver, policylabel
+	* Type of policy label to invoke.<br> Possible values = reqvserver, resvserver, policylabel
 	* </pre>
 	*/
 	public void set_labeltype(String labeltype) throws Exception{
@@ -155,7 +154,7 @@ public class cacheglobal_cachepolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Type of policy label invocation.<br> Possible values = reqvserver, resvserver, policylabel
+	* Type of policy label to invoke.<br> Possible values = reqvserver, resvserver, policylabel
 	* </pre>
 	*/
 	public String get_labeltype() throws Exception {
@@ -164,7 +163,7 @@ public class cacheglobal_cachepolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Name of the label to invoke if the current policy rule evaluates to TRUE.
+	* Name of the label to invoke if the current policy rule evaluates to TRUE. (To invoke a label associated with a virtual server, specify the name of the virtual server.).
 	* </pre>
 	*/
 	public void set_labelname(String labelname) throws Exception{
@@ -173,7 +172,7 @@ public class cacheglobal_cachepolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Name of the label to invoke if the current policy rule evaluates to TRUE.
+	* Name of the label to invoke if the current policy rule evaluates to TRUE. (To invoke a label associated with a virtual server, specify the name of the virtual server.).
 	* </pre>
 	*/
 	public String get_labelname() throws Exception {
@@ -182,7 +181,7 @@ public class cacheglobal_cachepolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Invoke flag.
+	* Invoke policies bound to a virtual server or a user-defined policy label. After the invoked policies are evaluated, the flow returns to the policy with the next priority. Applicable only to default-syntax policies.
 	* </pre>
 	*/
 	public void set_invoke(boolean invoke) throws Exception {
@@ -191,7 +190,7 @@ public class cacheglobal_cachepolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Invoke flag.
+	* Invoke policies bound to a virtual server or a user-defined policy label. After the invoked policies are evaluated, the flow returns to the policy with the next priority. Applicable only to default-syntax policies.
 	* </pre>
 	*/
 	public void set_invoke(Boolean invoke) throws Exception{
@@ -200,7 +199,7 @@ public class cacheglobal_cachepolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Invoke flag.
+	* Invoke policies bound to a virtual server or a user-defined policy label. After the invoked policies are evaluated, the flow returns to the policy with the next priority. Applicable only to default-syntax policies.
 	* </pre>
 	*/
 	public Boolean get_invoke() throws Exception {
@@ -214,15 +213,6 @@ public class cacheglobal_cachepolicy_binding extends base_resource
 	*/
 	public Long get_flowtype() throws Exception {
 		return this.flowtype;
-	}
-
-	/**
-	* <pre>
-	* Flags.
-	* </pre>
-	*/
-	public Long get_flags() throws Exception {
-		return this.flags;
 	}
 
 	/**

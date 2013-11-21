@@ -45,7 +45,7 @@ public class dnsaddrec extends base_resource
 
 	/**
 	* <pre>
-	* The domain name for which the address record is being added.<br> Minimum length =  1
+	* Domain name.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_hostname(String hostname) throws Exception{
@@ -54,7 +54,7 @@ public class dnsaddrec extends base_resource
 
 	/**
 	* <pre>
-	* The domain name for which the address record is being added.<br> Minimum length =  1
+	* Domain name.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_hostname() throws Exception {
@@ -63,7 +63,7 @@ public class dnsaddrec extends base_resource
 
 	/**
 	* <pre>
-	* One or more IP addresses for the domain name.<br> Minimum length =  1
+	* One or more IPv4 addresses to assign to the domain name.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_ipaddress(String ipaddress) throws Exception{
@@ -72,7 +72,7 @@ public class dnsaddrec extends base_resource
 
 	/**
 	* <pre>
-	* One or more IP addresses for the domain name.<br> Minimum length =  1
+	* One or more IPv4 addresses to assign to the domain name.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_ipaddress() throws Exception {
@@ -81,7 +81,7 @@ public class dnsaddrec extends base_resource
 
 	/**
 	* <pre>
-	* Time to live, in seconds.<br> Default value: 3600<br> Minimum value =  0<br> Maximum value =  2147483647
+	* Time to Live (TTL), in seconds, for the record. TTL is the time for which the record must be cached by DNS proxies. The specified TTL is applied to all the resource records that are of the same record type and belong to the specified domain name. For example, if you add an address record, with a TTL of 36000, to the domain name example.com, the TTLs of all the address records of example.com are changed to 36000. If the TTL is not specified, the NetScaler appliance uses either the DNS zone's minimum TTL or, if the SOA record is not available on the appliance, the default value of 3600.<br> Default value: 3600<br> Minimum value =  0<br> Maximum value =  2147483647
 	* </pre>
 	*/
 	public void set_ttl(long ttl) throws Exception {
@@ -90,7 +90,7 @@ public class dnsaddrec extends base_resource
 
 	/**
 	* <pre>
-	* Time to live, in seconds.<br> Default value: 3600<br> Minimum value =  0<br> Maximum value =  2147483647
+	* Time to Live (TTL), in seconds, for the record. TTL is the time for which the record must be cached by DNS proxies. The specified TTL is applied to all the resource records that are of the same record type and belong to the specified domain name. For example, if you add an address record, with a TTL of 36000, to the domain name example.com, the TTLs of all the address records of example.com are changed to 36000. If the TTL is not specified, the NetScaler appliance uses either the DNS zone's minimum TTL or, if the SOA record is not available on the appliance, the default value of 3600.<br> Default value: 3600<br> Minimum value =  0<br> Maximum value =  2147483647
 	* </pre>
 	*/
 	public void set_ttl(Long ttl) throws Exception{
@@ -99,7 +99,7 @@ public class dnsaddrec extends base_resource
 
 	/**
 	* <pre>
-	* Time to live, in seconds.<br> Default value: 3600<br> Minimum value =  0<br> Maximum value =  2147483647
+	* Time to Live (TTL), in seconds, for the record. TTL is the time for which the record must be cached by DNS proxies. The specified TTL is applied to all the resource records that are of the same record type and belong to the specified domain name. For example, if you add an address record, with a TTL of 36000, to the domain name example.com, the TTLs of all the address records of example.com are changed to 36000. If the TTL is not specified, the NetScaler appliance uses either the DNS zone's minimum TTL or, if the SOA record is not available on the appliance, the default value of 3600.<br> Default value: 3600<br> Minimum value =  0<br> Maximum value =  2147483647
 	* </pre>
 	*/
 	public Long get_ttl() throws Exception {

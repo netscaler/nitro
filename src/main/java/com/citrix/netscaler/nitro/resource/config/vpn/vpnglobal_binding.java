@@ -20,20 +20,22 @@ import com.citrix.netscaler.nitro.resource.config.vpn.vpnglobal_auditnslogpolicy
 import com.citrix.netscaler.nitro.resource.config.vpn.vpnglobal_authenticationradiuspolicy_binding;
 import com.citrix.netscaler.nitro.resource.config.vpn.vpnglobal_vpnsessionpolicy_binding;
 import com.citrix.netscaler.nitro.resource.config.vpn.vpnglobal_vpnclientlessaccesspolicy_binding;
+import com.citrix.netscaler.nitro.resource.config.vpn.vpnglobal_authenticationtacacspolicy_binding;
 import com.citrix.netscaler.nitro.resource.config.vpn.vpnglobal_intranetip_binding;
+import com.citrix.netscaler.nitro.resource.config.vpn.vpnglobal_authenticationsamlpolicy_binding;
 import com.citrix.netscaler.nitro.resource.config.vpn.vpnglobal_vpnnexthopserver_binding;
+import com.citrix.netscaler.nitro.resource.config.vpn.vpnglobal_staserver_binding;
 import com.citrix.netscaler.nitro.resource.config.vpn.vpnglobal_authenticationldappolicy_binding;
+import com.citrix.netscaler.nitro.resource.config.vpn.vpnglobal_auditsyslogpolicy_binding;
 import com.citrix.netscaler.nitro.resource.config.vpn.vpnglobal_domain_binding;
+import com.citrix.netscaler.nitro.resource.config.vpn.vpnglobal_authenticationcertpolicy_binding;
 import com.citrix.netscaler.nitro.resource.config.vpn.vpnglobal_sharefileserver_binding;
 import com.citrix.netscaler.nitro.resource.config.vpn.vpnglobal_vpntrafficpolicy_binding;
 import com.citrix.netscaler.nitro.resource.config.vpn.vpnglobal_authenticationlocalpolicy_binding;
+import com.citrix.netscaler.nitro.resource.config.vpn.vpnglobal_vpnurl_binding;
 import com.citrix.netscaler.nitro.resource.config.vpn.vpnglobal_vpnintranetapplication_binding;
 import com.citrix.netscaler.nitro.resource.config.vpn.vpnglobal_appcontroller_binding;
-import com.citrix.netscaler.nitro.resource.config.vpn.vpnglobal_authenticationtacacspolicy_binding;
-import com.citrix.netscaler.nitro.resource.config.vpn.vpnglobal_auditsyslogpolicy_binding;
-import com.citrix.netscaler.nitro.resource.config.vpn.vpnglobal_staserver_binding;
-import com.citrix.netscaler.nitro.resource.config.vpn.vpnglobal_authenticationcertpolicy_binding;
-import com.citrix.netscaler.nitro.resource.config.vpn.vpnglobal_vpnurl_binding;
+import com.citrix.netscaler.nitro.resource.config.vpn.vpnglobal_authenticationnegotiatepolicy_binding;
 import com.citrix.netscaler.nitro.resource.base.*;
 import com.citrix.netscaler.nitro.service.nitro_service;
 import com.citrix.netscaler.nitro.service.options;
@@ -54,20 +56,22 @@ public class vpnglobal_binding extends base_resource
 	private vpnglobal_authenticationradiuspolicy_binding	vpnglobal_authenticationradiuspolicy_binding[] = null;
 	private vpnglobal_vpnsessionpolicy_binding	vpnglobal_vpnsessionpolicy_binding[] = null;
 	private vpnglobal_vpnclientlessaccesspolicy_binding	vpnglobal_vpnclientlessaccesspolicy_binding[] = null;
+	private vpnglobal_authenticationtacacspolicy_binding	vpnglobal_authenticationtacacspolicy_binding[] = null;
 	private vpnglobal_intranetip_binding	vpnglobal_intranetip_binding[] = null;
+	private vpnglobal_authenticationsamlpolicy_binding	vpnglobal_authenticationsamlpolicy_binding[] = null;
 	private vpnglobal_vpnnexthopserver_binding	vpnglobal_vpnnexthopserver_binding[] = null;
+	private vpnglobal_staserver_binding	vpnglobal_staserver_binding[] = null;
 	private vpnglobal_authenticationldappolicy_binding	vpnglobal_authenticationldappolicy_binding[] = null;
+	private vpnglobal_auditsyslogpolicy_binding	vpnglobal_auditsyslogpolicy_binding[] = null;
 	private vpnglobal_domain_binding	vpnglobal_domain_binding[] = null;
+	private vpnglobal_authenticationcertpolicy_binding	vpnglobal_authenticationcertpolicy_binding[] = null;
 	private vpnglobal_sharefileserver_binding	vpnglobal_sharefileserver_binding[] = null;
 	private vpnglobal_vpntrafficpolicy_binding	vpnglobal_vpntrafficpolicy_binding[] = null;
 	private vpnglobal_authenticationlocalpolicy_binding	vpnglobal_authenticationlocalpolicy_binding[] = null;
+	private vpnglobal_vpnurl_binding	vpnglobal_vpnurl_binding[] = null;
 	private vpnglobal_vpnintranetapplication_binding	vpnglobal_vpnintranetapplication_binding[] = null;
 	private vpnglobal_appcontroller_binding	vpnglobal_appcontroller_binding[] = null;
-	private vpnglobal_authenticationtacacspolicy_binding	vpnglobal_authenticationtacacspolicy_binding[] = null;
-	private vpnglobal_auditsyslogpolicy_binding	vpnglobal_auditsyslogpolicy_binding[] = null;
-	private vpnglobal_staserver_binding	vpnglobal_staserver_binding[] = null;
-	private vpnglobal_authenticationcertpolicy_binding	vpnglobal_authenticationcertpolicy_binding[] = null;
-	private vpnglobal_vpnurl_binding	vpnglobal_vpnurl_binding[] = null;
+	private vpnglobal_authenticationnegotiatepolicy_binding	vpnglobal_authenticationnegotiatepolicy_binding[] = null;
 
 	/**
 	* <pre>
@@ -76,6 +80,15 @@ public class vpnglobal_binding extends base_resource
 	*/
 	public vpnglobal_vpnintranetapplication_binding[] get_vpnglobal_vpnintranetapplication_bindings() throws Exception {
 		return this.vpnglobal_vpnintranetapplication_binding;
+	}
+
+	/**
+	* <pre>
+	* authenticationsamlpolicy that can be bound to vpnglobal.
+	* </pre>
+	*/
+	public vpnglobal_authenticationsamlpolicy_binding[] get_vpnglobal_authenticationsamlpolicy_bindings() throws Exception {
+		return this.vpnglobal_authenticationsamlpolicy_binding;
 	}
 
 	/**
@@ -175,6 +188,15 @@ public class vpnglobal_binding extends base_resource
 	*/
 	public vpnglobal_vpnsessionpolicy_binding[] get_vpnglobal_vpnsessionpolicy_bindings() throws Exception {
 		return this.vpnglobal_vpnsessionpolicy_binding;
+	}
+
+	/**
+	* <pre>
+	* authenticationnegotiatepolicy that can be bound to vpnglobal.
+	* </pre>
+	*/
+	public vpnglobal_authenticationnegotiatepolicy_binding[] get_vpnglobal_authenticationnegotiatepolicy_bindings() throws Exception {
+		return this.vpnglobal_authenticationnegotiatepolicy_binding;
 	}
 
 	/**

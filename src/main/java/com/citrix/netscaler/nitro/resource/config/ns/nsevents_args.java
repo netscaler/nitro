@@ -26,7 +26,7 @@ public class nsevents_args
 
 	/**
 	* <pre>
-	* Last retrieved event no. This command will return all events after that.
+	* Event number starting from which events must be shown.
 	* </pre>
 	*/
 	public void set_eventno(long eventno) throws Exception {
@@ -35,7 +35,7 @@ public class nsevents_args
 
 	/**
 	* <pre>
-	* Last retrieved event no. This command will return all events after that.
+	* Event number starting from which events must be shown.
 	* </pre>
 	*/
 	public void set_eventno(Long eventno) throws Exception{
@@ -44,7 +44,7 @@ public class nsevents_args
 
 	/**
 	* <pre>
-	* Last retrieved event no. This command will return all events after that.
+	* Event number starting from which events must be shown.
 	* </pre>
 	*/
 	public Long get_eventno() throws Exception {

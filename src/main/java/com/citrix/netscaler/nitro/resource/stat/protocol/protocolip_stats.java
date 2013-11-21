@@ -32,6 +32,7 @@ class protocolip_response extends base_response
 
 public class protocolip_stats extends base_resource
 {
+	private String clearstats;
 	private Long iptotrxpkts;
 	private Long iprxpktsrate;
 	private Long iptotrxbytes;
@@ -80,7 +81,25 @@ public class protocolip_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total routed packets.
+	* Clear the statsistics / counters
+	* </pre>
+	*/
+	public void set_clearstats(String clearstats) throws Exception{
+		this.clearstats = clearstats;
+	}
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters.<br> Possible values = basic, full
+	* </pre>
+	*/
+	public String get_clearstats() throws Exception {
+		return this.clearstats;
+	}
+
+	/**
+	* <pre>
+	* Rate (/s) counter for iptotroutedpkts
 	* </pre>
 	*/
 	public Long get_iproutedpktsrate() throws Exception {
@@ -125,7 +144,7 @@ public class protocolip_stats extends base_resource
 
 	/**
 	* <pre>
-	* Bytes of IP data transmitted.
+	* Rate (/s) counter for iptottxbytes
 	* </pre>
 	*/
 	public Long get_iptxbytesrate() throws Exception {
@@ -152,7 +171,7 @@ public class protocolip_stats extends base_resource
 
 	/**
 	* <pre>
-	* Megabits of IP data received.
+	* Rate (/s) counter for iptotrxmbits
 	* </pre>
 	*/
 	public Long get_iprxmbitsrate() throws Exception {
@@ -161,7 +180,7 @@ public class protocolip_stats extends base_resource
 
 	/**
 	* <pre>
-	* IP packets received.
+	* Rate (/s) counter for iptotrxpkts
 	* </pre>
 	*/
 	public Long get_iprxpktsrate() throws Exception {
@@ -170,7 +189,7 @@ public class protocolip_stats extends base_resource
 
 	/**
 	* <pre>
-	* Megabits of IP data transmitted.
+	* Rate (/s) counter for iptottxmbits
 	* </pre>
 	*/
 	public Long get_iptxmbitsrate() throws Exception {
@@ -323,7 +342,7 @@ public class protocolip_stats extends base_resource
 
 	/**
 	* <pre>
-	* Bytes of IP data received.
+	* Rate (/s) counter for iptotrxbytes
 	* </pre>
 	*/
 	public Long get_iprxbytesrate() throws Exception {
@@ -440,7 +459,7 @@ public class protocolip_stats extends base_resource
 
 	/**
 	* <pre>
-	* IP packets transmitted.
+	* Rate (/s) counter for iptottxpkts
 	* </pre>
 	*/
 	public Long get_iptxpktsrate() throws Exception {
@@ -467,7 +486,7 @@ public class protocolip_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total routed Mbits
+	* Rate (/s) counter for iptotroutedmbits
 	* </pre>
 	*/
 	public Long get_iproutedmbitsrate() throws Exception {
@@ -537,4 +556,8 @@ public class protocolip_stats extends base_resource
 		return response[0];
 	}
 
+	public static class clearstatsEnum {
+		public static final String basic = "basic";
+		public static final String full = "full";
+	}
 }

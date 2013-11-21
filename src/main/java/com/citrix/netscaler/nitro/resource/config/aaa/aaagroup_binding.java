@@ -18,13 +18,13 @@ package com.citrix.netscaler.nitro.resource.config.aaa;
 
 import com.citrix.netscaler.nitro.resource.config.aaa.aaagroup_auditnslogpolicy_binding;
 import com.citrix.netscaler.nitro.resource.config.aaa.aaagroup_vpnsessionpolicy_binding;
+import com.citrix.netscaler.nitro.resource.config.aaa.aaagroup_authorizationpolicy_binding;
 import com.citrix.netscaler.nitro.resource.config.aaa.aaagroup_intranetip_binding;
+import com.citrix.netscaler.nitro.resource.config.aaa.aaagroup_auditsyslogpolicy_binding;
 import com.citrix.netscaler.nitro.resource.config.aaa.aaagroup_aaauser_binding;
+import com.citrix.netscaler.nitro.resource.config.aaa.aaagroup_vpnurl_binding;
 import com.citrix.netscaler.nitro.resource.config.aaa.aaagroup_vpntrafficpolicy_binding;
 import com.citrix.netscaler.nitro.resource.config.aaa.aaagroup_vpnintranetapplication_binding;
-import com.citrix.netscaler.nitro.resource.config.aaa.aaagroup_authorizationpolicy_binding;
-import com.citrix.netscaler.nitro.resource.config.aaa.aaagroup_auditsyslogpolicy_binding;
-import com.citrix.netscaler.nitro.resource.config.aaa.aaagroup_vpnurl_binding;
 import com.citrix.netscaler.nitro.resource.config.aaa.aaagroup_tmsessionpolicy_binding;
 import com.citrix.netscaler.nitro.resource.base.*;
 import com.citrix.netscaler.nitro.service.nitro_service;
@@ -45,18 +45,18 @@ public class aaagroup_binding extends base_resource
 	private String groupname;
 	private aaagroup_auditnslogpolicy_binding	aaagroup_auditnslogpolicy_binding[] = null;
 	private aaagroup_vpnsessionpolicy_binding	aaagroup_vpnsessionpolicy_binding[] = null;
+	private aaagroup_authorizationpolicy_binding	aaagroup_authorizationpolicy_binding[] = null;
 	private aaagroup_intranetip_binding	aaagroup_intranetip_binding[] = null;
+	private aaagroup_auditsyslogpolicy_binding	aaagroup_auditsyslogpolicy_binding[] = null;
 	private aaagroup_aaauser_binding	aaagroup_aaauser_binding[] = null;
+	private aaagroup_vpnurl_binding	aaagroup_vpnurl_binding[] = null;
 	private aaagroup_vpntrafficpolicy_binding	aaagroup_vpntrafficpolicy_binding[] = null;
 	private aaagroup_vpnintranetapplication_binding	aaagroup_vpnintranetapplication_binding[] = null;
-	private aaagroup_authorizationpolicy_binding	aaagroup_authorizationpolicy_binding[] = null;
-	private aaagroup_auditsyslogpolicy_binding	aaagroup_auditsyslogpolicy_binding[] = null;
-	private aaagroup_vpnurl_binding	aaagroup_vpnurl_binding[] = null;
 	private aaagroup_tmsessionpolicy_binding	aaagroup_tmsessionpolicy_binding[] = null;
 
 	/**
 	* <pre>
-	* The group name.<br> Minimum length =  1
+	* Name of the group.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_groupname(String groupname) throws Exception{
@@ -65,7 +65,7 @@ public class aaagroup_binding extends base_resource
 
 	/**
 	* <pre>
-	* The group name.<br> Minimum length =  1
+	* Name of the group.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_groupname() throws Exception {
@@ -119,20 +119,20 @@ public class aaagroup_binding extends base_resource
 
 	/**
 	* <pre>
-	* auditsyslogpolicy that can be bound to aaagroup.
-	* </pre>
-	*/
-	public aaagroup_auditsyslogpolicy_binding[] get_aaagroup_auditsyslogpolicy_bindings() throws Exception {
-		return this.aaagroup_auditsyslogpolicy_binding;
-	}
-
-	/**
-	* <pre>
 	* aaauser that can be bound to aaagroup.
 	* </pre>
 	*/
 	public aaagroup_aaauser_binding[] get_aaagroup_aaauser_bindings() throws Exception {
 		return this.aaagroup_aaauser_binding;
+	}
+
+	/**
+	* <pre>
+	* auditsyslogpolicy that can be bound to aaagroup.
+	* </pre>
+	*/
+	public aaagroup_auditsyslogpolicy_binding[] get_aaagroup_auditsyslogpolicy_bindings() throws Exception {
+		return this.aaagroup_auditsyslogpolicy_binding;
 	}
 
 	/**

@@ -49,7 +49,10 @@ public class transformprofile extends base_resource
 
 	/**
 	* <pre>
-	* URL Transformation profile name.<br> Minimum length =  1
+	* Name for the URL transformation profile. Must begin with a letter, number, or the underscore character (_), and must contain only letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at (@), equals (=), colon (:), and underscore characters. Cannot be changed after the URL transformation profile is added.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, my transform profile or my transform profile).<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -58,7 +61,10 @@ public class transformprofile extends base_resource
 
 	/**
 	* <pre>
-	* URL Transformation profile name.<br> Minimum length =  1
+	* Name for the URL transformation profile. Must begin with a letter, number, or the underscore character (_), and must contain only letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at (@), equals (=), colon (:), and underscore characters. Cannot be changed after the URL transformation profile is added.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, my transform profile or my transform profile).<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -67,7 +73,7 @@ public class transformprofile extends base_resource
 
 	/**
 	* <pre>
-	* Type of transformation.<br> Possible values = URL
+	* Type of transformation. Always URL for URL Transformation profiles.<br> Possible values = URL
 	* </pre>
 	*/
 	public void set_type(String type) throws Exception{
@@ -76,7 +82,7 @@ public class transformprofile extends base_resource
 
 	/**
 	* <pre>
-	* Type of transformation.<br> Possible values = URL
+	* Type of transformation. Always URL for URL Transformation profiles.<br> Possible values = URL
 	* </pre>
 	*/
 	public String get_type() throws Exception {
@@ -85,7 +91,7 @@ public class transformprofile extends base_resource
 
 	/**
 	* <pre>
-	* Flag to only perform transformations of absolute URLs in HTTP body.<br> Possible values = ON, OFF
+	* In the HTTP body, transform only absolute URLs. Relative URLs are ignored.<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_onlytransformabsurlinbody(String onlytransformabsurlinbody) throws Exception{
@@ -94,7 +100,7 @@ public class transformprofile extends base_resource
 
 	/**
 	* <pre>
-	* Flag to only perform transformations of absolute URLs in HTTP body.<br> Possible values = ON, OFF
+	* In the HTTP body, transform only absolute URLs. Relative URLs are ignored.<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_onlytransformabsurlinbody() throws Exception {
@@ -103,7 +109,7 @@ public class transformprofile extends base_resource
 
 	/**
 	* <pre>
-	* Comments.
+	* Any comments to preserve information about this URL Transformation profile.
 	* </pre>
 	*/
 	public void set_comment(String comment) throws Exception{
@@ -112,7 +118,7 @@ public class transformprofile extends base_resource
 
 	/**
 	* <pre>
-	* Comments.
+	* Any comments to preserve information about this URL Transformation profile.
 	* </pre>
 	*/
 	public String get_comment() throws Exception {
@@ -319,22 +325,9 @@ public class transformprofile extends base_resource
 	* Use this API to unset the properties of transformprofile resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String name, String args[]) throws Exception {
-		transformprofile unsetresource = new transformprofile();
-		unsetresource.name = name;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of transformprofile resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, transformprofile resource, String[] args) throws Exception{
 		transformprofile unsetresource = new transformprofile();
 		unsetresource.name = resource.name;
-		unsetresource.type = resource.type;
-		unsetresource.onlytransformabsurlinbody = resource.onlytransformabsurlinbody;
-		unsetresource.comment = resource.comment;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -366,9 +359,6 @@ public class transformprofile extends base_resource
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new transformprofile();
 				unsetresources[i].name = resources[i].name;
-				unsetresources[i].type = resources[i].type;
-				unsetresources[i].onlytransformabsurlinbody = resources[i].onlytransformabsurlinbody;
-				unsetresources[i].comment = resources[i].comment;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}

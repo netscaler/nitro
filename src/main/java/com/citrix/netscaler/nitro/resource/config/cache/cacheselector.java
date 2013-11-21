@@ -42,7 +42,7 @@ public class cacheselector extends base_resource
 
 	/**
 	* <pre>
-	* The name of the Integrated Cache selector.
+	* Name for the selector.  Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.
 	* </pre>
 	*/
 	public void set_selectorname(String selectorname) throws Exception{
@@ -51,7 +51,7 @@ public class cacheselector extends base_resource
 
 	/**
 	* <pre>
-	* The name of the Integrated Cache selector.
+	* Name for the selector.  Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.
 	* </pre>
 	*/
 	public String get_selectorname() throws Exception {
@@ -60,7 +60,7 @@ public class cacheselector extends base_resource
 
 	/**
 	* <pre>
-	* The set of PIXL expressions.<br> Minimum length =  1
+	* One or multiple PIXL expressions for evaluating an HTTP request or response.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_rule(String[] rule) throws Exception{
@@ -69,7 +69,7 @@ public class cacheselector extends base_resource
 
 	/**
 	* <pre>
-	* The set of PIXL expressions.<br> Minimum length =  1
+	* One or multiple PIXL expressions for evaluating an HTTP request or response.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String[] get_rule() throws Exception {

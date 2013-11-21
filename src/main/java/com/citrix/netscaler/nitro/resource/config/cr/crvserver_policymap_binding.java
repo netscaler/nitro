@@ -40,7 +40,7 @@ public class crvserver_policymap_binding extends base_resource
 
 	/**
 	* <pre>
-	* The priority of the policy.
+	* An unsigned integer that determines the priority of the policy relative to other policies bound to this cache redirection virtual server. The lower the value, higher the priority. Note: This option is available only when binding content switching, filtering, and compression policies to a cache redirection virtual server.
 	* </pre>
 	*/
 	public void set_priority(long priority) throws Exception {
@@ -49,7 +49,7 @@ public class crvserver_policymap_binding extends base_resource
 
 	/**
 	* <pre>
-	* The priority of the policy.
+	* An unsigned integer that determines the priority of the policy relative to other policies bound to this cache redirection virtual server. The lower the value, higher the priority. Note: This option is available only when binding content switching, filtering, and compression policies to a cache redirection virtual server.
 	* </pre>
 	*/
 	public void set_priority(Long priority) throws Exception{
@@ -58,7 +58,7 @@ public class crvserver_policymap_binding extends base_resource
 
 	/**
 	* <pre>
-	* The priority of the policy.
+	* An unsigned integer that determines the priority of the policy relative to other policies bound to this cache redirection virtual server. The lower the value, higher the priority. Note: This option is available only when binding content switching, filtering, and compression policies to a cache redirection virtual server.
 	* </pre>
 	*/
 	public Long get_priority() throws Exception {
@@ -85,7 +85,7 @@ public class crvserver_policymap_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the cache redirection virtual server to which the cache redirection policy will be bound.<br> Minimum length =  1
+	* Name of the cache redirection virtual server to which to bind the cache redirection policy.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -94,7 +94,7 @@ public class crvserver_policymap_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the cache redirection virtual server to which the cache redirection policy will be bound.<br> Minimum length =  1
+	* Name of the cache redirection virtual server to which to bind the cache redirection policy.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {

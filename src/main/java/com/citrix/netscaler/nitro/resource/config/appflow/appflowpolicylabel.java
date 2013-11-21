@@ -51,7 +51,11 @@ public class appflowpolicylabel extends base_resource
 
 	/**
 	* <pre>
-	* The name of the AppFlow policy label to be created.<br> Minimum length =  1
+	* Name of the AppFlow policy label. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at
+(@), equals (=), and hyphen (-) characters.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my appflow policylabel" or 'my appflow policylabel').<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_labelname(String labelname) throws Exception{
@@ -60,7 +64,11 @@ public class appflowpolicylabel extends base_resource
 
 	/**
 	* <pre>
-	* The name of the AppFlow policy label to be created.<br> Minimum length =  1
+	* Name of the AppFlow policy label. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at
+(@), equals (=), and hyphen (-) characters.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my appflow policylabel" or 'my appflow policylabel').<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_labelname() throws Exception {
@@ -69,7 +77,7 @@ public class appflowpolicylabel extends base_resource
 
 	/**
 	* <pre>
-	* The type of the policy label.<br> Default value: NS_PLTMAP_APPFLOW_REQ<br> Possible values = HTTP, OTHERTCP
+	* Type of traffic evaluated by the policies bound to the policy label.<br> Default value: HTTP<br> Possible values = HTTP, OTHERTCP
 	* </pre>
 	*/
 	public void set_policylabeltype(String policylabeltype) throws Exception{
@@ -78,7 +86,7 @@ public class appflowpolicylabel extends base_resource
 
 	/**
 	* <pre>
-	* The type of the policy label.<br> Default value: NS_PLTMAP_APPFLOW_REQ<br> Possible values = HTTP, OTHERTCP
+	* Type of traffic evaluated by the policies bound to the policy label.<br> Default value: HTTP<br> Possible values = HTTP, OTHERTCP
 	* </pre>
 	*/
 	public String get_policylabeltype() throws Exception {
@@ -87,7 +95,10 @@ public class appflowpolicylabel extends base_resource
 
 	/**
 	* <pre>
-	* The new name of the AppFlow policylabel.<br> Minimum length =  1
+	* New name for the policy label. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. 
+                    
+                    The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my appflow policylabel" or 'my appflow policylabel').<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_newname(String newname) throws Exception{
@@ -96,7 +107,10 @@ public class appflowpolicylabel extends base_resource
 
 	/**
 	* <pre>
-	* The new name of the AppFlow policylabel.<br> Minimum length =  1
+	* New name for the policy label. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. 
+                    
+                    The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my appflow policylabel" or 'my appflow policylabel').<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_newname() throws Exception {
@@ -150,7 +164,7 @@ public class appflowpolicylabel extends base_resource
 
 	/**
 	* <pre>
-	* Type of policy label invocation.<br> Possible values = vserver, policylabel
+	* Type of policy label to be invoked.<br> Possible values = vserver, policylabel
 	* </pre>
 	*/
 	public String get_labeltype() throws Exception {
@@ -159,7 +173,7 @@ public class appflowpolicylabel extends base_resource
 
 	/**
 	* <pre>
-	* Name of the label to invoke if the current policy rule evaluates to TRUE.
+	* Name of the label to invoke if the current policy evaluates to TRUE.
 	* </pre>
 	*/
 	public String get_invoke_labelname() throws Exception {

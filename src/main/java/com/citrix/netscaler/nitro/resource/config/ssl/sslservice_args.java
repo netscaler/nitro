@@ -26,7 +26,7 @@ public class sslservice_args
 
 	/**
 	* <pre>
-	* Details of the individual ciphers bound to the SSL service. Select this flag value to display the details of the individual ciphers bound to the SSL service.
+	* Display details of the individual ciphers bound to the SSL service.
 	* </pre>
 	*/
 	public void set_cipherdetails(boolean cipherdetails) throws Exception {
@@ -35,7 +35,7 @@ public class sslservice_args
 
 	/**
 	* <pre>
-	* Details of the individual ciphers bound to the SSL service. Select this flag value to display the details of the individual ciphers bound to the SSL service.
+	* Display details of the individual ciphers bound to the SSL service.
 	* </pre>
 	*/
 	public void set_cipherdetails(Boolean cipherdetails) throws Exception{
@@ -44,7 +44,7 @@ public class sslservice_args
 
 	/**
 	* <pre>
-	* Details of the individual ciphers bound to the SSL service. Select this flag value to display the details of the individual ciphers bound to the SSL service.
+	* Display details of the individual ciphers bound to the SSL service.
 	* </pre>
 	*/
 	public Boolean get_cipherdetails() throws Exception {

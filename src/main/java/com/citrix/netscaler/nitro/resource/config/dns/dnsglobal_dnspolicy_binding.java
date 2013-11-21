@@ -108,7 +108,19 @@ public class dnsglobal_dnspolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Expression which evaluates to a priority which must be executed next. By default it goes to priority 65535.<br> Minimum length =  1
+	* Expression or other value specifying the next policy to be evaluated if the current policy evaluates to TRUE.  Specify one of the following values:
+* NEXT - Evaluate the policy with the next higher priority number.
+* END - End policy evaluation.
+* USE_INVOCATION_RESULT - Applicable if this policy invokes another policy label. If the final goto in the invoked policy label has a value of END, the evaluation stops. If the final goto is anything other than END, the current policy label performs a NEXT.
+* A default syntax expression that evaluates to a number.
+If you specify an expression, the number to which it evaluates determines the next policy to evaluate, as follows:
+* If the expression evaluates to a higher numbered priority, the policy with that priority is evaluated next.
+* If the expression evaluates to the priority of the current policy, the policy with the next higher numbered priority is evaluated next.
+* If the expression evaluates to a priority number that is numerically higher than the highest numbered priority, policy evaluation ends.
+An UNDEF event is triggered if:
+* The expression is invalid.
+* The expression evaluates to a priority number that is numerically lower than the current policy's priority.
+* The expression evaluates to a priority number that is between the current policy's priority number (say, 30) and the highest priority number (say, 100), but does not match any configured priority number (for example, the expression evaluates to the number 85). This example assumes that the priority number increments by 10 for every successive policy, and therefore a priority number of 85 does not exist in the policy label.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_gotopriorityexpression(String gotopriorityexpression) throws Exception{
@@ -117,7 +129,19 @@ public class dnsglobal_dnspolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Expression which evaluates to a priority which must be executed next. By default it goes to priority 65535.<br> Minimum length =  1
+	* Expression or other value specifying the next policy to be evaluated if the current policy evaluates to TRUE.  Specify one of the following values:
+* NEXT - Evaluate the policy with the next higher priority number.
+* END - End policy evaluation.
+* USE_INVOCATION_RESULT - Applicable if this policy invokes another policy label. If the final goto in the invoked policy label has a value of END, the evaluation stops. If the final goto is anything other than END, the current policy label performs a NEXT.
+* A default syntax expression that evaluates to a number.
+If you specify an expression, the number to which it evaluates determines the next policy to evaluate, as follows:
+* If the expression evaluates to a higher numbered priority, the policy with that priority is evaluated next.
+* If the expression evaluates to the priority of the current policy, the policy with the next higher numbered priority is evaluated next.
+* If the expression evaluates to a priority number that is numerically higher than the highest numbered priority, policy evaluation ends.
+An UNDEF event is triggered if:
+* The expression is invalid.
+* The expression evaluates to a priority number that is numerically lower than the current policy's priority.
+* The expression evaluates to a priority number that is between the current policy's priority number (say, 30) and the highest priority number (say, 100), but does not match any configured priority number (for example, the expression evaluates to the number 85). This example assumes that the priority number increments by 10 for every successive policy, and therefore a priority number of 85 does not exist in the policy label.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_gotopriorityexpression() throws Exception {
@@ -153,7 +177,7 @@ public class dnsglobal_dnspolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Bindpoint, specifying where to bind the policy.<br> Possible values = REQ_OVERRIDE, REQ_DEFAULT, RES_OVERRIDE, RES_DEFAULT
+	* Type of global bind point for which to show bound policies.<br> Possible values = REQ_OVERRIDE, REQ_DEFAULT, RES_OVERRIDE, RES_DEFAULT
 	* </pre>
 	*/
 	public void set_type(String type) throws Exception{
@@ -162,7 +186,7 @@ public class dnsglobal_dnspolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Bindpoint, specifying where to bind the policy.<br> Possible values = REQ_OVERRIDE, REQ_DEFAULT, RES_OVERRIDE, RES_DEFAULT
+	* Type of global bind point for which to show bound policies.<br> Possible values = REQ_OVERRIDE, REQ_DEFAULT, RES_OVERRIDE, RES_DEFAULT
 	* </pre>
 	*/
 	public String get_type() throws Exception {

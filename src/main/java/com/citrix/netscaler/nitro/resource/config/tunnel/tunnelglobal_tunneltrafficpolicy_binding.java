@@ -35,6 +35,7 @@ public class tunnelglobal_tunneltrafficpolicy_binding extends base_resource
 	private String policyname;
 	private Long priority;
 	private String state;
+	private String[] builtin;
 	private Long __count;
 
 	/**
@@ -66,6 +67,24 @@ public class tunnelglobal_tunneltrafficpolicy_binding extends base_resource
 
 	/**
 	* <pre>
+	* Indicates that a variable is a built-in (SYSTEM INTERNAL) type.<br> Possible values = MODIFIABLE, DELETABLE, IMMUTABLE
+	* </pre>
+	*/
+	public void set_builtin(String[] builtin) throws Exception{
+		this.builtin = builtin;
+	}
+
+	/**
+	* <pre>
+	* Indicates that a variable is a built-in (SYSTEM INTERNAL) type.<br> Possible values = MODIFIABLE, DELETABLE, IMMUTABLE
+	* </pre>
+	*/
+	public String[] get_builtin() throws Exception {
+		return this.builtin;
+	}
+
+	/**
+	* <pre>
 	* Policy name.
 	* </pre>
 	*/
@@ -84,7 +103,7 @@ public class tunnelglobal_tunneltrafficpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The current state of the binding.<br> Possible values = ENABLED, DISABLED
+	* Current state of the binding. If the binding is enabled, the policy is active.<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_state(String state) throws Exception{
@@ -93,7 +112,7 @@ public class tunnelglobal_tunneltrafficpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The current state of the binding.<br> Possible values = ENABLED, DISABLED
+	* Current state of the binding. If the binding is enabled, the policy is active.<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_state() throws Exception {
@@ -255,6 +274,11 @@ public class tunnelglobal_tunneltrafficpolicy_binding extends base_resource
 		return 0;
 	}
 
+	public static class builtinEnum {
+		public static final String MODIFIABLE = "MODIFIABLE";
+		public static final String DELETABLE = "DELETABLE";
+		public static final String IMMUTABLE = "IMMUTABLE";
+	}
 	public static class stateEnum {
 		public static final String ENABLED = "ENABLED";
 		public static final String DISABLED = "DISABLED";

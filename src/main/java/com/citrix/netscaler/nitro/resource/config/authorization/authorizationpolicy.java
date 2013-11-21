@@ -35,11 +35,20 @@ public class authorizationpolicy extends base_resource
 	private String name;
 	private String rule;
 	private String action;
+	private String newname;
+
+	//------- Read only Parameter ---------;
+
+	private Long activepolicy;
 	private Long __count;
 
 	/**
 	* <pre>
-	* The name for the new authorization policy.<br> Minimum length =  1
+	* Name for the new authorization policy. 
+Must begin with a letter, number, or the underscore character (_), and must contain only letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at (@), equals (=), colon (:), and underscore characters. Cannot be changed after the authorization policy is added.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, “my authorization policy” or ‘my authorization policy’).<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -48,7 +57,11 @@ public class authorizationpolicy extends base_resource
 
 	/**
 	* <pre>
-	* The name for the new authorization policy.<br> Minimum length =  1
+	* Name for the new authorization policy. 
+Must begin with a letter, number, or the underscore character (_), and must contain only letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at (@), equals (=), colon (:), and underscore characters. Cannot be changed after the authorization policy is added.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, “my authorization policy” or ‘my authorization policy’).<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -57,7 +70,7 @@ public class authorizationpolicy extends base_resource
 
 	/**
 	* <pre>
-	* The rule or expression for conditional evaluation of the policy. This rule can be an expression specified by "add policy expression." or it may be an inline expression.
+	* Name of the NetScaler named rule, or a default syntax expression, that the policy uses to perform the authentication.
 	* </pre>
 	*/
 	public void set_rule(String rule) throws Exception{
@@ -66,7 +79,7 @@ public class authorizationpolicy extends base_resource
 
 	/**
 	* <pre>
-	* The rule or expression for conditional evaluation of the policy. This rule can be an expression specified by "add policy expression." or it may be an inline expression.
+	* Name of the NetScaler named rule, or a default syntax expression, that the policy uses to perform the authentication.
 	* </pre>
 	*/
 	public String get_rule() throws Exception {
@@ -75,7 +88,7 @@ public class authorizationpolicy extends base_resource
 
 	/**
 	* <pre>
-	* The action to be taken when the expression is satisfied. The allowed actions are ALLOW or DENY.<br> Minimum length =  1
+	* Action to perform if the policy matches: either allow or deny the request.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_action(String action) throws Exception{
@@ -84,11 +97,38 @@ public class authorizationpolicy extends base_resource
 
 	/**
 	* <pre>
-	* The action to be taken when the expression is satisfied. The allowed actions are ALLOW or DENY.<br> Minimum length =  1
+	* Action to perform if the policy matches: either allow or deny the request.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_action() throws Exception {
 		return this.action;
+	}
+
+	/**
+	* <pre>
+	* The new name of the author policy.<br> Minimum length =  1
+	* </pre>
+	*/
+	public void set_newname(String newname) throws Exception{
+		this.newname = newname;
+	}
+
+	/**
+	* <pre>
+	* The new name of the author policy.<br> Minimum length =  1
+	* </pre>
+	*/
+	public String get_newname() throws Exception {
+		return this.newname;
+	}
+
+	/**
+	* <pre>
+	* .
+	* </pre>
+	*/
+	public Long get_activepolicy() throws Exception {
+		return this.activepolicy;
 	}
 
 	/**
@@ -234,61 +274,21 @@ public class authorizationpolicy extends base_resource
 	}
 
 	/**
-	* Use this API to unset the properties of authorizationpolicy resource.
-	* Properties that need to be unset are specified in args array.
+	* Use this API to rename a authorizationpolicy resource.
 	*/
-	public static base_response unset(nitro_service client, String name, String args[]) throws Exception {
-		authorizationpolicy unsetresource = new authorizationpolicy();
-		unsetresource.name = name;
-		return unsetresource.unset_resource(client, args);
+	public static base_response rename(nitro_service client, authorizationpolicy resource, String new_name) throws Exception {
+		authorizationpolicy renameresource = new authorizationpolicy();
+		renameresource.name = resource.name;
+		return renameresource.rename_resource(client,new_name);
 	}
 
 	/**
-	* Use this API to unset the properties of authorizationpolicy resource.
-	* Properties that need to be unset are specified in args array.
+	* Use this API to rename a authorizationpolicy resource.
 	*/
-	public static base_response unset(nitro_service client, authorizationpolicy resource, String[] args) throws Exception{
-		authorizationpolicy unsetresource = new authorizationpolicy();
-		unsetresource.name = resource.name;
-		unsetresource.rule = resource.rule;
-		unsetresource.action = resource.action;
-		return unsetresource.unset_resource(client,args);
-	}
-
-	/**
-	* Use this API to unset the properties of authorizationpolicy resources.
-	* Properties that need to be unset are specified in args array.
-	*/
-	public static base_responses unset(nitro_service client, String name[], String args[]) throws Exception {
-		base_responses result = null;
-		if (name != null && name.length > 0) {
-			authorizationpolicy unsetresources[] = new authorizationpolicy[name.length];
-			for (int i=0;i<name.length;i++){
-				unsetresources[i] = new authorizationpolicy();
-				unsetresources[i].name = name[i];
-			}
-			result = unset_bulk_request(client, unsetresources,args);
-		}
-		return result;
-	}
-
-	/**
-	* Use this API to unset the properties of authorizationpolicy resources.
-	* Properties that need to be unset are specified in args array.
-	*/
-	public static base_responses unset(nitro_service client, authorizationpolicy resources[],  String[] args) throws Exception {
-		base_responses result = null;
-		if (resources != null && resources.length > 0) {
-			authorizationpolicy unsetresources[] = new authorizationpolicy[resources.length];
-			for (int i=0;i<resources.length;i++){
-				unsetresources[i] = new authorizationpolicy();
-				unsetresources[i].name = resources[i].name;
-				unsetresources[i].rule = resources[i].rule;
-				unsetresources[i].action = resources[i].action;
-			}
-			result = unset_bulk_request(client, unsetresources,args);
-		}
-		return result;
+	public static base_response rename(nitro_service client, String name, String new_name) throws Exception {
+		authorizationpolicy renameresource = new authorizationpolicy();
+		renameresource.name = name;
+		return renameresource.rename_resource(client,new_name);
 	}
 
 	/**

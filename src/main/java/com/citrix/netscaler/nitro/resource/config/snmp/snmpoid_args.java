@@ -26,7 +26,7 @@ public class snmpoid_args
 
 	/**
 	* <pre>
-	* The type of entity whose SNMP OIDs you want the NetScaler appliance to display.<br> Possible values = VSERVER, SERVICE, SERVICEGROUP
+	* The type of entity whose SNMP OIDs you want to displayType of entity whose SNMP OIDs you want the NetScaler appliance to display.<br> Possible values = VSERVER, SERVICE, SERVICEGROUP
 	* </pre>
 	*/
 	public void set_entitytype(String entitytype) throws Exception{
@@ -35,7 +35,7 @@ public class snmpoid_args
 
 	/**
 	* <pre>
-	* The type of entity whose SNMP OIDs you want the NetScaler appliance to display.<br> Possible values = VSERVER, SERVICE, SERVICEGROUP
+	* The type of entity whose SNMP OIDs you want to displayType of entity whose SNMP OIDs you want the NetScaler appliance to display.<br> Possible values = VSERVER, SERVICE, SERVICEGROUP
 	* </pre>
 	*/
 	public String get_entitytype() throws Exception {

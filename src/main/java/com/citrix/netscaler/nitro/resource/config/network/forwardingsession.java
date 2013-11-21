@@ -35,13 +35,16 @@ public class forwardingsession extends base_resource
 	private String name;
 	private String network;
 	private String netmask;
+	private String acl6name;
 	private String aclname;
 	private String connfailover;
 	private Long __count;
 
 	/**
 	* <pre>
-	* Name of forwarding session. .<br> Minimum length =  1
+	* Name for the forwarding session rule. Can begin with a letter, number, or the underscore character (_), and can consist of letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at (@), equals (=), colon (:), and underscore characters. Cannot be changed after the rule is created.
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my rule" or 'my rule').<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -50,7 +53,9 @@ public class forwardingsession extends base_resource
 
 	/**
 	* <pre>
-	* Name of forwarding session. .<br> Minimum length =  1
+	* Name for the forwarding session rule. Can begin with a letter, number, or the underscore character (_), and can consist of letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at (@), equals (=), colon (:), and underscore characters. Cannot be changed after the rule is created.
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my rule" or 'my rule').<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -59,7 +64,7 @@ public class forwardingsession extends base_resource
 
 	/**
 	* <pre>
-	* The network or subnet from/to which the traffic is flowing.<br> Minimum length =  1
+	* Network address from which the forwarded traffic originates or to which it is destined.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_network(String network) throws Exception{
@@ -68,7 +73,7 @@ public class forwardingsession extends base_resource
 
 	/**
 	* <pre>
-	* The network or subnet from/to which the traffic is flowing.<br> Minimum length =  1
+	* Network address from which the forwarded traffic originates or to which it is destined.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_network() throws Exception {
@@ -77,7 +82,7 @@ public class forwardingsession extends base_resource
 
 	/**
 	* <pre>
-	* The subnet mask for the network.<br> Minimum length =  1
+	* Subnet mask associated with the network.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_netmask(String netmask) throws Exception{
@@ -86,7 +91,7 @@ public class forwardingsession extends base_resource
 
 	/**
 	* <pre>
-	* The subnet mask for the network.<br> Minimum length =  1
+	* Subnet mask associated with the network.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_netmask() throws Exception {
@@ -95,7 +100,25 @@ public class forwardingsession extends base_resource
 
 	/**
 	* <pre>
-	* The ACL name.<br> Minimum length =  1
+	* Name of any configured ACL6 whose action is ALLOW. The rule of the ACL6 is used as an forwarding session rule.<br> Minimum length =  1
+	* </pre>
+	*/
+	public void set_acl6name(String acl6name) throws Exception{
+		this.acl6name = acl6name;
+	}
+
+	/**
+	* <pre>
+	* Name of any configured ACL6 whose action is ALLOW. The rule of the ACL6 is used as an forwarding session rule.<br> Minimum length =  1
+	* </pre>
+	*/
+	public String get_acl6name() throws Exception {
+		return this.acl6name;
+	}
+
+	/**
+	* <pre>
+	* Name of an extended ACL with action set to ALLOW. The rule specified in the ACL is used as a forwarding-session rule.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_aclname(String aclname) throws Exception{
@@ -104,7 +127,7 @@ public class forwardingsession extends base_resource
 
 	/**
 	* <pre>
-	* The ACL name.<br> Minimum length =  1
+	* Name of an extended ACL with action set to ALLOW. The rule specified in the ACL is used as a forwarding-session rule.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_aclname() throws Exception {
@@ -113,7 +136,7 @@ public class forwardingsession extends base_resource
 
 	/**
 	* <pre>
-	* Specifies the connection failover mode of the forwarding session.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Synchronize connection information with the secondary appliance in a high availability (HA) pair. That is, synchronize all connection-related information for the forwarding session.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_connfailover(String connfailover) throws Exception{
@@ -122,7 +145,7 @@ public class forwardingsession extends base_resource
 
 	/**
 	* <pre>
-	* Specifies the connection failover mode of the forwarding session.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Synchronize connection information with the secondary appliance in a high availability (HA) pair. That is, synchronize all connection-related information for the forwarding session.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_connfailover() throws Exception {
@@ -171,6 +194,7 @@ public class forwardingsession extends base_resource
 		addresource.name = resource.name;
 		addresource.network = resource.network;
 		addresource.netmask = resource.netmask;
+		addresource.acl6name = resource.acl6name;
 		addresource.aclname = resource.aclname;
 		addresource.connfailover = resource.connfailover;
 		return addresource.add_resource(client);
@@ -188,6 +212,7 @@ public class forwardingsession extends base_resource
 				addresources[i].name = resources[i].name;
 				addresources[i].network = resources[i].network;
 				addresources[i].netmask = resources[i].netmask;
+				addresources[i].acl6name = resources[i].acl6name;
 				addresources[i].aclname = resources[i].aclname;
 				addresources[i].connfailover = resources[i].connfailover;
 			}

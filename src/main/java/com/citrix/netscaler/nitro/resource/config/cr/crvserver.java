@@ -33,6 +33,7 @@ class crvserver_response extends base_response
 public class crvserver extends base_resource
 {
 	private String name;
+	private Long td;
 	private String servicetype;
 	private String ipv46;
 	private Integer port;
@@ -60,6 +61,7 @@ public class crvserver extends base_resource
 	private String backupvserver;
 	private String disableprimaryondown;
 	private String l2conn;
+	private String backendssl;
 	private String listenpolicy;
 	private Long listenpriority;
 	private String tcpprofilename;
@@ -77,6 +79,7 @@ public class crvserver extends base_resource
 
 	private String ip;
 	private String value;
+	private String ngname;
 	private String type;
 	private String curstate;
 	private Integer status;
@@ -84,18 +87,20 @@ public class crvserver extends base_resource
 	private String homepage;
 	private String rule;
 	private String policyname;
-	private Long hits;
 	private String servicename;
 	private Long weight;
 	private String targetvserver;
 	private Long priority;
 	private String somethod;
 	private String sopersistence;
+	private String lbvserver;
 	private Long __count;
 
 	/**
 	* <pre>
-	* Name of the cache redirection virtual server.<br> Minimum length =  1
+	* Name for the cache redirection virtual server. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at sign (@), equal sign (=), and hyphen (-) characters. Can be changed after the cache redirection virtual server is created.
+The following requirement applies only to the NetScaler CLI:  
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, “my server” or ‘my server’).<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -104,7 +109,9 @@ public class crvserver extends base_resource
 
 	/**
 	* <pre>
-	* Name of the cache redirection virtual server.<br> Minimum length =  1
+	* Name for the cache redirection virtual server. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at sign (@), equal sign (=), and hyphen (-) characters. Can be changed after the cache redirection virtual server is created.
+The following requirement applies only to the NetScaler CLI:  
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, “my server” or ‘my server’).<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -113,8 +120,34 @@ public class crvserver extends base_resource
 
 	/**
 	* <pre>
-	* The type of service handled by the virtual server.
-Note:	Use service type HTTP to configure content switching on this virtual server.<br> Possible values = HTTP, SSL, NNTP
+	* Traffic Domain ID.<br> Minimum value =  0<br> Maximum value =  4094
+	* </pre>
+	*/
+	public void set_td(long td) throws Exception {
+		this.td = new Long(td);
+	}
+
+	/**
+	* <pre>
+	* Traffic Domain ID.<br> Minimum value =  0<br> Maximum value =  4094
+	* </pre>
+	*/
+	public void set_td(Long td) throws Exception{
+		this.td = td;
+	}
+
+	/**
+	* <pre>
+	* Traffic Domain ID.<br> Minimum value =  0<br> Maximum value =  4094
+	* </pre>
+	*/
+	public Long get_td() throws Exception {
+		return this.td;
+	}
+
+	/**
+	* <pre>
+	* Protocol (type of service) handled by the virtual server.<br> Possible values = HTTP, SSL, NNTP
 	* </pre>
 	*/
 	public void set_servicetype(String servicetype) throws Exception{
@@ -123,8 +156,7 @@ Note:	Use service type HTTP to configure content switching on this virtual serve
 
 	/**
 	* <pre>
-	* The type of service handled by the virtual server.
-Note:	Use service type HTTP to configure content switching on this virtual server.<br> Possible values = HTTP, SSL, NNTP
+	* Protocol (type of service) handled by the virtual server.<br> Possible values = HTTP, SSL, NNTP
 	* </pre>
 	*/
 	public String get_servicetype() throws Exception {
@@ -133,9 +165,8 @@ Note:	Use service type HTTP to configure content switching on this virtual serve
 
 	/**
 	* <pre>
-	* The IP address of the cache redirection virtual server.
-1.	To specify a specific virtual server address, type its numeric value.
-2.	To specify a wildcard virtual server address, type an asterisk (*).
+	* IPv4 or IPv6 address of the cache redirection virtual server. Usually a public IP address. Clients send connection requests to this IP address.
+Note: For a transparent cache redirection virtual server, use an asterisk (*) to specify a wildcard virtual server address.
 	* </pre>
 	*/
 	public void set_ipv46(String ipv46) throws Exception{
@@ -144,9 +175,8 @@ Note:	Use service type HTTP to configure content switching on this virtual serve
 
 	/**
 	* <pre>
-	* The IP address of the cache redirection virtual server.
-1.	To specify a specific virtual server address, type its numeric value.
-2.	To specify a wildcard virtual server address, type an asterisk (*).
+	* IPv4 or IPv6 address of the cache redirection virtual server. Usually a public IP address. Clients send connection requests to this IP address.
+Note: For a transparent cache redirection virtual server, use an asterisk (*) to specify a wildcard virtual server address.
 	* </pre>
 	*/
 	public String get_ipv46() throws Exception {
@@ -155,7 +185,7 @@ Note:	Use service type HTTP to configure content switching on this virtual serve
 
 	/**
 	* <pre>
-	* The port number of a service, or a virtual server, or a wildcard virtual server configured in the system.<br> Default value: 80<br> Minimum value =  1<br> Maximum value =  65534
+	* Port number of the virtual server.<br> Default value: 80<br> Minimum value =  1<br> Maximum value =  65534
 	* </pre>
 	*/
 	public void set_port(int port) throws Exception {
@@ -164,7 +194,7 @@ Note:	Use service type HTTP to configure content switching on this virtual serve
 
 	/**
 	* <pre>
-	* The port number of a service, or a virtual server, or a wildcard virtual server configured in the system.<br> Default value: 80<br> Minimum value =  1<br> Maximum value =  65534
+	* Port number of the virtual server.<br> Default value: 80<br> Minimum value =  1<br> Maximum value =  65534
 	* </pre>
 	*/
 	public void set_port(Integer port) throws Exception{
@@ -173,7 +203,7 @@ Note:	Use service type HTTP to configure content switching on this virtual serve
 
 	/**
 	* <pre>
-	* The port number of a service, or a virtual server, or a wildcard virtual server configured in the system.<br> Default value: 80<br> Minimum value =  1<br> Maximum value =  65534
+	* Port number of the virtual server.<br> Default value: 80<br> Minimum value =  1<br> Maximum value =  65534
 	* </pre>
 	*/
 	public Integer get_port() throws Exception {
@@ -182,7 +212,7 @@ Note:	Use service type HTTP to configure content switching on this virtual serve
 
 	/**
 	* <pre>
-	* Defines an IP address range.<br> Default value: 1<br> Minimum value =  1<br> Maximum value =  254
+	* Number of consecutive IP addresses, starting with the address specified by the IPAddress parameter, to include in a range of addresses assigned to this virtual server.<br> Default value: 1<br> Minimum value =  1<br> Maximum value =  254
 	* </pre>
 	*/
 	public void set_range(long range) throws Exception {
@@ -191,7 +221,7 @@ Note:	Use service type HTTP to configure content switching on this virtual serve
 
 	/**
 	* <pre>
-	* Defines an IP address range.<br> Default value: 1<br> Minimum value =  1<br> Maximum value =  254
+	* Number of consecutive IP addresses, starting with the address specified by the IPAddress parameter, to include in a range of addresses assigned to this virtual server.<br> Default value: 1<br> Minimum value =  1<br> Maximum value =  254
 	* </pre>
 	*/
 	public void set_range(Long range) throws Exception{
@@ -200,7 +230,7 @@ Note:	Use service type HTTP to configure content switching on this virtual serve
 
 	/**
 	* <pre>
-	* Defines an IP address range.<br> Default value: 1<br> Minimum value =  1<br> Maximum value =  254
+	* Number of consecutive IP addresses, starting with the address specified by the IPAddress parameter, to include in a range of addresses assigned to this virtual server.<br> Default value: 1<br> Minimum value =  1<br> Maximum value =  254
 	* </pre>
 	*/
 	public Long get_range() throws Exception {
@@ -209,8 +239,10 @@ Note:	Use service type HTTP to configure content switching on this virtual serve
 
 	/**
 	* <pre>
-	* The supported cache server type.
-Note:	For this command to work, you must select one of the cache types.<br> Default value: CRD_TRANSPARENT<br> Possible values = TRANSPARENT, REVERSE, FORWARD
+	* Mode of operation for the cache redirection virtual server. Available settings function as follows:
+* TRANSPARENT - Intercept all traffic flowing to the appliance and apply cache redirection policies to determine whether content should be served from the cache or from the origin server.
+* FORWARD - Resolve the hostname of the incoming request, by using a DNS server, and forward requests for non-cacheable content to the resolved origin servers. Cacheable requests are sent to the configured cache servers.
+* REVERSE - Configure reverse proxy caches for specific origin servers. Incoming traffic directed to the reverse proxy can either be served from a cache server or be sent to the origin server with or without modification to the URL.<br> Default value: TRANSPARENT<br> Possible values = TRANSPARENT, REVERSE, FORWARD
 	* </pre>
 	*/
 	public void set_cachetype(String cachetype) throws Exception{
@@ -219,8 +251,10 @@ Note:	For this command to work, you must select one of the cache types.<br> Defa
 
 	/**
 	* <pre>
-	* The supported cache server type.
-Note:	For this command to work, you must select one of the cache types.<br> Default value: CRD_TRANSPARENT<br> Possible values = TRANSPARENT, REVERSE, FORWARD
+	* Mode of operation for the cache redirection virtual server. Available settings function as follows:
+* TRANSPARENT - Intercept all traffic flowing to the appliance and apply cache redirection policies to determine whether content should be served from the cache or from the origin server.
+* FORWARD - Resolve the hostname of the incoming request, by using a DNS server, and forward requests for non-cacheable content to the resolved origin servers. Cacheable requests are sent to the configured cache servers.
+* REVERSE - Configure reverse proxy caches for specific origin servers. Incoming traffic directed to the reverse proxy can either be served from a cache server or be sent to the origin server with or without modification to the URL.<br> Default value: TRANSPARENT<br> Possible values = TRANSPARENT, REVERSE, FORWARD
 	* </pre>
 	*/
 	public String get_cachetype() throws Exception {
@@ -229,11 +263,10 @@ Note:	For this command to work, you must select one of the cache types.<br> Defa
 
 	/**
 	* <pre>
-	* The redirect policy.
-The valid redirect policies are:
-l.	CACHE - Directs all requests to the cache.
-2.	POLICY - Applies the cache redirection policy to determine whether the request should be directed to the cache or to the origin. This is the default setting.
-3.	ORIGIN - Directs all requests to the origin server.<br> Default value: CRD_POLICY<br> Possible values = CACHE, POLICY, ORIGIN
+	* Type of cache server to which to redirect HTTP requests. Available settings function as follows:
+* CACHE - Direct all requests to the cache.
+* POLICY - Apply the cache redirection policy to determine whether the request should be directed to the cache or to the origin.
+* ORIGIN - Direct all requests to the origin server.<br> Default value: POLICY<br> Possible values = CACHE, POLICY, ORIGIN
 	* </pre>
 	*/
 	public void set_redirect(String redirect) throws Exception{
@@ -242,11 +275,10 @@ l.	CACHE - Directs all requests to the cache.
 
 	/**
 	* <pre>
-	* The redirect policy.
-The valid redirect policies are:
-l.	CACHE - Directs all requests to the cache.
-2.	POLICY - Applies the cache redirection policy to determine whether the request should be directed to the cache or to the origin. This is the default setting.
-3.	ORIGIN - Directs all requests to the origin server.<br> Default value: CRD_POLICY<br> Possible values = CACHE, POLICY, ORIGIN
+	* Type of cache server to which to redirect HTTP requests. Available settings function as follows:
+* CACHE - Direct all requests to the cache.
+* POLICY - Apply the cache redirection policy to determine whether the request should be directed to the cache or to the origin.
+* ORIGIN - Direct all requests to the origin server.<br> Default value: POLICY<br> Possible values = CACHE, POLICY, ORIGIN
 	* </pre>
 	*/
 	public String get_redirect() throws Exception {
@@ -255,11 +287,8 @@ l.	CACHE - Directs all requests to the cache.
 
 	/**
 	* <pre>
-	* Decide where to redirect the requests if the cache redirection policy is hit.
-The valid options are:
-1.	CACHE - Directs all the requests to the cache if cache redirection policy is hit.
-2.	ORIGIN - Directs all requests to the origing server if the cache redirection policy is hit.
-Note: For this option to work, you must select the cache redirection type as POLICY.<br> Default value: CRD_ORIGIN<br> Possible values = CACHE, ORIGIN
+	* Redirect requests that match the policy to either the cache or the origin server, as specified.
+Note: For this option to work, you must set the cache redirection type to POLICY.<br> Default value: ORIGIN<br> Possible values = CACHE, ORIGIN
 	* </pre>
 	*/
 	public void set_onpolicymatch(String onpolicymatch) throws Exception{
@@ -268,11 +297,8 @@ Note: For this option to work, you must select the cache redirection type as POL
 
 	/**
 	* <pre>
-	* Decide where to redirect the requests if the cache redirection policy is hit.
-The valid options are:
-1.	CACHE - Directs all the requests to the cache if cache redirection policy is hit.
-2.	ORIGIN - Directs all requests to the origing server if the cache redirection policy is hit.
-Note: For this option to work, you must select the cache redirection type as POLICY.<br> Default value: CRD_ORIGIN<br> Possible values = CACHE, ORIGIN
+	* Redirect requests that match the policy to either the cache or the origin server, as specified.
+Note: For this option to work, you must set the cache redirection type to POLICY.<br> Default value: ORIGIN<br> Possible values = CACHE, ORIGIN
 	* </pre>
 	*/
 	public String get_onpolicymatch() throws Exception {
@@ -281,7 +307,7 @@ Note: For this option to work, you must select the cache redirection type as POL
 
 	/**
 	* <pre>
-	* The URL where traffic is redirected if the virtual server in the system becomes unavailable. You can enter up to 127 characters as the URL argument.WARNING!Make sure that the domain you specify in the URL does not match the domain specified in the -d domainName argument of the add cs policy CLI command. If the same domain is specified in both arguments, the request will be continuously redirected to the same unavailable virtual server in the system  -  then the user may not get the requested content.<br> Minimum length =  1<br> Maximum length =  128
+	* URL of the server to which to redirect traffic if the cache redirection virtual server configured on the NetScaler appliance becomes unavailable.<br> Minimum length =  1<br> Maximum length =  128
 	* </pre>
 	*/
 	public void set_redirecturl(String redirecturl) throws Exception{
@@ -290,7 +316,7 @@ Note: For this option to work, you must select the cache redirection type as POL
 
 	/**
 	* <pre>
-	* The URL where traffic is redirected if the virtual server in the system becomes unavailable. You can enter up to 127 characters as the URL argument.WARNING!Make sure that the domain you specify in the URL does not match the domain specified in the -d domainName argument of the add cs policy CLI command. If the same domain is specified in both arguments, the request will be continuously redirected to the same unavailable virtual server in the system  -  then the user may not get the requested content.<br> Minimum length =  1<br> Maximum length =  128
+	* URL of the server to which to redirect traffic if the cache redirection virtual server configured on the NetScaler appliance becomes unavailable.<br> Minimum length =  1<br> Maximum length =  128
 	* </pre>
 	*/
 	public String get_redirecturl() throws Exception {
@@ -299,7 +325,7 @@ Note: For this option to work, you must select the cache redirection type as POL
 
 	/**
 	* <pre>
-	* The timeout value in seconds for idle client connection.<br> Minimum value =  0<br> Maximum value =  31536000
+	* Time-out value, in seconds, after which to terminate an idle client connection.<br> Minimum value =  0<br> Maximum value =  31536000
 	* </pre>
 	*/
 	public void set_clttimeout(long clttimeout) throws Exception {
@@ -308,7 +334,7 @@ Note: For this option to work, you must select the cache redirection type as POL
 
 	/**
 	* <pre>
-	* The timeout value in seconds for idle client connection.<br> Minimum value =  0<br> Maximum value =  31536000
+	* Time-out value, in seconds, after which to terminate an idle client connection.<br> Minimum value =  0<br> Maximum value =  31536000
 	* </pre>
 	*/
 	public void set_clttimeout(Long clttimeout) throws Exception{
@@ -317,7 +343,7 @@ Note: For this option to work, you must select the cache redirection type as POL
 
 	/**
 	* <pre>
-	* The timeout value in seconds for idle client connection.<br> Minimum value =  0<br> Maximum value =  31536000
+	* Time-out value, in seconds, after which to terminate an idle client connection.<br> Minimum value =  0<br> Maximum value =  31536000
 	* </pre>
 	*/
 	public Long get_clttimeout() throws Exception {
@@ -326,21 +352,18 @@ Note: For this option to work, you must select the cache redirection type as POL
 
 	/**
 	* <pre>
-	* You can use this argument only when configuring content switching on the specified virtual server. This argument applies only if the URL- and RULE-based policies have both been configured on the same virtual server.
-This argument specifies the type of policy (URL or RULE) that takes precedence on the content switching virtual server. The default setting is RULE.
-l	URL - In this case, the incoming request is matched against the URL-based policies before it is matched against the rule-based policies.
-l	RULE - In this case, the incoming request is matched against the rule-based policies before it is matched against the URL-based policies.
-For all URL-based policies, the precedence hierarchy is:
-1.	Domain and exact URL
-2.	Domain, prefix and suffix
-3.	Domain and suffix
-4.	Domain and prefix
-5.	Domain only
-6.	Exact URL
-7.	Prefix and suffix
-8.	Suffix only
-9.	Prefix only
-10.	Default.<br> Default value: CS_PRIORITY_RULE<br> Possible values = RULE, URL
+	* Type of policy (URL or RULE) that takes precedence on the cache redirection virtual server. Applies only to cache redirection virtual servers that have both URL and RULE based policies. If you specify URL, URL based policies are applied first, in the following order:
+1.   Domain and exact URL
+2.   Domain, prefix and suffix
+3.   Domain and suffix
+4.   Domain and prefix
+5.   Domain only
+6.   Exact URL
+7.   Prefix and suffix
+8.   Suffix only
+9.   Prefix only
+10.  Default
+If you specify RULE, the rule based policies are applied before URL based policies are applied.<br> Default value: RULE<br> Possible values = RULE, URL
 	* </pre>
 	*/
 	public void set_precedence(String precedence) throws Exception{
@@ -349,21 +372,18 @@ For all URL-based policies, the precedence hierarchy is:
 
 	/**
 	* <pre>
-	* You can use this argument only when configuring content switching on the specified virtual server. This argument applies only if the URL- and RULE-based policies have both been configured on the same virtual server.
-This argument specifies the type of policy (URL or RULE) that takes precedence on the content switching virtual server. The default setting is RULE.
-l	URL - In this case, the incoming request is matched against the URL-based policies before it is matched against the rule-based policies.
-l	RULE - In this case, the incoming request is matched against the rule-based policies before it is matched against the URL-based policies.
-For all URL-based policies, the precedence hierarchy is:
-1.	Domain and exact URL
-2.	Domain, prefix and suffix
-3.	Domain and suffix
-4.	Domain and prefix
-5.	Domain only
-6.	Exact URL
-7.	Prefix and suffix
-8.	Suffix only
-9.	Prefix only
-10.	Default.<br> Default value: CS_PRIORITY_RULE<br> Possible values = RULE, URL
+	* Type of policy (URL or RULE) that takes precedence on the cache redirection virtual server. Applies only to cache redirection virtual servers that have both URL and RULE based policies. If you specify URL, URL based policies are applied first, in the following order:
+1.   Domain and exact URL
+2.   Domain, prefix and suffix
+3.   Domain and suffix
+4.   Domain and prefix
+5.   Domain only
+6.   Exact URL
+7.   Prefix and suffix
+8.   Suffix only
+9.   Prefix only
+10.  Default
+If you specify RULE, the rule based policies are applied before URL based policies are applied.<br> Default value: RULE<br> Possible values = RULE, URL
 	* </pre>
 	*/
 	public String get_precedence() throws Exception {
@@ -372,7 +392,7 @@ For all URL-based policies, the precedence hierarchy is:
 
 	/**
 	* <pre>
-	* .<br> Possible values = ON, OFF
+	* Use ARP to determine the destination MAC address.<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_arp(String arp) throws Exception{
@@ -381,7 +401,7 @@ For all URL-based policies, the precedence hierarchy is:
 
 	/**
 	* <pre>
-	* .<br> Possible values = ON, OFF
+	* Use ARP to determine the destination MAC address.<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_arp() throws Exception {
@@ -408,7 +428,7 @@ For all URL-based policies, the precedence hierarchy is:
 
 	/**
 	* <pre>
-	* .<br> Possible values = ON, OFF
+	* Obsolete.<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_map(String map) throws Exception{
@@ -417,7 +437,7 @@ For all URL-based policies, the precedence hierarchy is:
 
 	/**
 	* <pre>
-	* .<br> Possible values = ON, OFF
+	* Obsolete.<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_map() throws Exception {
@@ -444,7 +464,7 @@ For all URL-based policies, the precedence hierarchy is:
 
 	/**
 	* <pre>
-	* Determines whether the system will insert a Via: header in the HTTP requests.<br> Default value: ON<br> Possible values = ON, OFF
+	* Insert a via header in each HTTP request. In the case of a cache miss, the request is redirected from the cache server to the origin server. This header indicates whether the request is being sent from a cache server.<br> Default value: ON<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_via(String via) throws Exception{
@@ -453,7 +473,7 @@ For all URL-based policies, the precedence hierarchy is:
 
 	/**
 	* <pre>
-	* Determines whether the system will insert a Via: header in the HTTP requests.<br> Default value: ON<br> Possible values = ON, OFF
+	* Insert a via header in each HTTP request. In the case of a cache miss, the request is redirected from the cache server to the origin server. This header indicates whether the request is being sent from a cache server.<br> Default value: ON<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_via() throws Exception {
@@ -462,7 +482,7 @@ For all URL-based policies, the precedence hierarchy is:
 
 	/**
 	* <pre>
-	* The name of the default target cache virtual server to which requests are redirected.<br> Minimum length =  1
+	* Name of the default cache virtual server to which to redirect requests (the default target of the cache redirection virtual server).<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_cachevserver(String cachevserver) throws Exception{
@@ -471,7 +491,7 @@ For all URL-based policies, the precedence hierarchy is:
 
 	/**
 	* <pre>
-	* The name of the default target cache virtual server to which requests are redirected.<br> Minimum length =  1
+	* Name of the default cache virtual server to which to redirect requests (the default target of the cache redirection virtual server).<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_cachevserver() throws Exception {
@@ -480,8 +500,8 @@ For all URL-based policies, the precedence hierarchy is:
 
 	/**
 	* <pre>
-	* The name of the DNS virtual server used to resolve domain names arriving at the forward proxy virtual server.
-Note:	This parameter applies only to forward proxy virtual servers, not reverse and transparent.<br> Minimum length =  1
+	* Name of the DNS virtual server that resolves domain names arriving at the forward proxy virtual server.
+Note: This parameter applies only to forward proxy virtual servers, not reverse or transparent.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_dnsvservername(String dnsvservername) throws Exception{
@@ -490,8 +510,8 @@ Note:	This parameter applies only to forward proxy virtual servers, not reverse 
 
 	/**
 	* <pre>
-	* The name of the DNS virtual server used to resolve domain names arriving at the forward proxy virtual server.
-Note:	This parameter applies only to forward proxy virtual servers, not reverse and transparent.<br> Minimum length =  1
+	* Name of the DNS virtual server that resolves domain names arriving at the forward proxy virtual server.
+Note: This parameter applies only to forward proxy virtual servers, not reverse or transparent.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_dnsvservername() throws Exception {
@@ -500,7 +520,7 @@ Note:	This parameter applies only to forward proxy virtual servers, not reverse 
 
 	/**
 	* <pre>
-	* The destination virtual server for a transparent or forward proxy cache redirection virtual server. All requests to the transparent or forward proxy cache redirection virtual server are directed to this destination virtual server.<br> Minimum length =  1
+	* Destination virtual server for a transparent or forward proxy cache redirection virtual server.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_destinationvserver(String destinationvserver) throws Exception{
@@ -509,7 +529,7 @@ Note:	This parameter applies only to forward proxy virtual servers, not reverse 
 
 	/**
 	* <pre>
-	* The destination virtual server for a transparent or forward proxy cache redirection virtual server. All requests to the transparent or forward proxy cache redirection virtual server are directed to this destination virtual server.<br> Minimum length =  1
+	* Destination virtual server for a transparent or forward proxy cache redirection virtual server.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_destinationvserver() throws Exception {
@@ -518,8 +538,7 @@ Note:	This parameter applies only to forward proxy virtual servers, not reverse 
 
 	/**
 	* <pre>
-	* The default domain for reverse proxies. Domains are configured in the system so that they direct an incoming request from a particular configured source domain to a particular configured target domain.
-There may be several configured pairs of source and target domains. You can select one pair to be the default. Then, if a source domain is not present in the host header or URL of an incoming request, the request will be sent to the target domain of the selected default pair.<br> Minimum length =  1
+	* Default domain for reverse proxies. Domains are configured to direct an incoming request from a specified source domain to a specified target domain. There can be several configured pairs of source and target domains. You can select one pair to be the default. If the host header or URL of an incoming request does not include a source domain, this option sends the request to the specified target domain.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_domain(String domain) throws Exception{
@@ -528,8 +547,7 @@ There may be several configured pairs of source and target domains. You can sele
 
 	/**
 	* <pre>
-	* The default domain for reverse proxies. Domains are configured in the system so that they direct an incoming request from a particular configured source domain to a particular configured target domain.
-There may be several configured pairs of source and target domains. You can select one pair to be the default. Then, if a source domain is not present in the host header or URL of an incoming request, the request will be sent to the target domain of the selected default pair.<br> Minimum length =  1
+	* Default domain for reverse proxies. Domains are configured to direct an incoming request from a specified source domain to a specified target domain. There can be several configured pairs of source and target domains. You can select one pair to be the default. If the host header or URL of an incoming request does not include a source domain, this option sends the request to the specified target domain.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_domain() throws Exception {
@@ -538,7 +556,7 @@ There may be several configured pairs of source and target domains. You can sele
 
 	/**
 	* <pre>
-	* .<br> Minimum value =  2<br> Maximum value =  24
+	* Time-out, in minutes, for spillover persistence.<br> Minimum value =  2<br> Maximum value =  24
 	* </pre>
 	*/
 	public void set_sopersistencetimeout(long sopersistencetimeout) throws Exception {
@@ -547,7 +565,7 @@ There may be several configured pairs of source and target domains. You can sele
 
 	/**
 	* <pre>
-	* .<br> Minimum value =  2<br> Maximum value =  24
+	* Time-out, in minutes, for spillover persistence.<br> Minimum value =  2<br> Maximum value =  24
 	* </pre>
 	*/
 	public void set_sopersistencetimeout(Long sopersistencetimeout) throws Exception{
@@ -556,7 +574,7 @@ There may be several configured pairs of source and target domains. You can sele
 
 	/**
 	* <pre>
-	* .<br> Minimum value =  2<br> Maximum value =  24
+	* Time-out, in minutes, for spillover persistence.<br> Minimum value =  2<br> Maximum value =  24
 	* </pre>
 	*/
 	public Long get_sopersistencetimeout() throws Exception {
@@ -565,7 +583,7 @@ There may be several configured pairs of source and target domains. You can sele
 
 	/**
 	* <pre>
-	* .<br> Minimum value =  1
+	* For CONNECTION (or) DYNAMICCONNECTION spillover, the number of connections above which the virtual server enters spillover mode. For BANDWIDTH spillover, the amount of incoming and outgoing traffic (in Kbps) before spillover. For HEALTH spillover, the percentage of active services (by weight) below which spillover occurs.<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_sothreshold(long sothreshold) throws Exception {
@@ -574,7 +592,7 @@ There may be several configured pairs of source and target domains. You can sele
 
 	/**
 	* <pre>
-	* .<br> Minimum value =  1
+	* For CONNECTION (or) DYNAMICCONNECTION spillover, the number of connections above which the virtual server enters spillover mode. For BANDWIDTH spillover, the amount of incoming and outgoing traffic (in Kbps) before spillover. For HEALTH spillover, the percentage of active services (by weight) below which spillover occurs.<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_sothreshold(Long sothreshold) throws Exception{
@@ -583,7 +601,7 @@ There may be several configured pairs of source and target domains. You can sele
 
 	/**
 	* <pre>
-	* .<br> Minimum value =  1
+	* For CONNECTION (or) DYNAMICCONNECTION spillover, the number of connections above which the virtual server enters spillover mode. For BANDWIDTH spillover, the amount of incoming and outgoing traffic (in Kbps) before spillover. For HEALTH spillover, the percentage of active services (by weight) below which spillover occurs.<br> Minimum value =  1
 	* </pre>
 	*/
 	public Long get_sothreshold() throws Exception {
@@ -592,15 +610,11 @@ There may be several configured pairs of source and target domains. You can sele
 
 	/**
 	* <pre>
-	* Specifies whether TCP connections to cache or origin servers will be reused across client connections.
-
-Note:	You should include this argument only if the service type argument is set to HTTP.
-The default setting is ON.
-If you set this argument to OFF and:
-	-redirect is set to CACHE: TCP connections to the cache servers are not reused.
-	-redirect is set to ORIGIN:  TCP connections to the origin servers are not reused.
-	-redirect is set to POLICY: TCP connections to the origin servers are not reused.
-If you set this argument to ON, connections are reused to both origin and cache servers.<br> Default value: ON<br> Possible values = ON, OFF
+	* Reuse TCP connections to the origin server across client connections. Do not set this parameter unless the Service Type parameter is set to HTTP. If you set this parameter to OFF, the possible settings of the Redirect parameter function as follows:
+* CACHE - TCP connections to the cache servers are not reused.
+* ORIGIN - TCP connections to the origin servers are not reused. 
+* POLICY - TCP connections to the origin servers are not reused.
+If you set the Reuse parameter to ON, connections to origin servers and connections to cache servers are reused.<br> Default value: ON<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_reuse(String reuse) throws Exception{
@@ -609,15 +623,11 @@ If you set this argument to ON, connections are reused to both origin and cache 
 
 	/**
 	* <pre>
-	* Specifies whether TCP connections to cache or origin servers will be reused across client connections.
-
-Note:	You should include this argument only if the service type argument is set to HTTP.
-The default setting is ON.
-If you set this argument to OFF and:
-	-redirect is set to CACHE: TCP connections to the cache servers are not reused.
-	-redirect is set to ORIGIN:  TCP connections to the origin servers are not reused.
-	-redirect is set to POLICY: TCP connections to the origin servers are not reused.
-If you set this argument to ON, connections are reused to both origin and cache servers.<br> Default value: ON<br> Possible values = ON, OFF
+	* Reuse TCP connections to the origin server across client connections. Do not set this parameter unless the Service Type parameter is set to HTTP. If you set this parameter to OFF, the possible settings of the Redirect parameter function as follows:
+* CACHE - TCP connections to the cache servers are not reused.
+* ORIGIN - TCP connections to the origin servers are not reused. 
+* POLICY - TCP connections to the origin servers are not reused.
+If you set the Reuse parameter to ON, connections to origin servers and connections to cache servers are reused.<br> Default value: ON<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_reuse() throws Exception {
@@ -626,7 +636,7 @@ If you set this argument to ON, connections are reused to both origin and cache 
 
 	/**
 	* <pre>
-	* The initial state (enabled or disabled) of the cache redirection virtual server.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Initial state of the cache redirection virtual server.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_state(String state) throws Exception{
@@ -635,7 +645,7 @@ If you set this argument to ON, connections are reused to both origin and cache 
 
 	/**
 	* <pre>
-	* The initial state (enabled or disabled) of the cache redirection virtual server.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Initial state of the cache redirection virtual server.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_state() throws Exception {
@@ -644,7 +654,7 @@ If you set this argument to ON, connections are reused to both origin and cache 
 
 	/**
 	* <pre>
-	* Perform delayed cleanup of connections on this vserver.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Perform delayed cleanup of connections to this virtual server.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_downstateflush(String downstateflush) throws Exception{
@@ -653,7 +663,7 @@ If you set this argument to ON, connections are reused to both origin and cache 
 
 	/**
 	* <pre>
-	* Perform delayed cleanup of connections on this vserver.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Perform delayed cleanup of connections to this virtual server.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_downstateflush() throws Exception {
@@ -662,7 +672,7 @@ If you set this argument to ON, connections are reused to both origin and cache 
 
 	/**
 	* <pre>
-	* The Backup Virtual Server.<br> Minimum length =  1
+	* Name of the backup virtual server to which traffic is forwarded if the active server becomes unavailable.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_backupvserver(String backupvserver) throws Exception{
@@ -671,7 +681,7 @@ If you set this argument to ON, connections are reused to both origin and cache 
 
 	/**
 	* <pre>
-	* The Backup Virtual Server.<br> Minimum length =  1
+	* Name of the backup virtual server to which traffic is forwarded if the active server becomes unavailable.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_backupvserver() throws Exception {
@@ -680,7 +690,7 @@ If you set this argument to ON, connections are reused to both origin and cache 
 
 	/**
 	* <pre>
-	* When this argument is enabled, traffic will continue reaching backup vservers even after primary comes UP from DOWN state.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Continue sending traffic to a backup virtual server even after the primary virtual server comes UP from the DOWN state.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_disableprimaryondown(String disableprimaryondown) throws Exception{
@@ -689,7 +699,7 @@ If you set this argument to ON, connections are reused to both origin and cache 
 
 	/**
 	* <pre>
-	* When this argument is enabled, traffic will continue reaching backup vservers even after primary comes UP from DOWN state.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Continue sending traffic to a backup virtual server even after the primary virtual server comes UP from the DOWN state.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_disableprimaryondown() throws Exception {
@@ -698,7 +708,7 @@ If you set this argument to ON, connections are reused to both origin and cache 
 
 	/**
 	* <pre>
-	* Use L2 Parameters to identify a connection.<br> Possible values = ON, OFF
+	* Use L2 parameters, such as MAC, VLAN, and channel to identify a connection.<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_l2conn(String l2conn) throws Exception{
@@ -707,7 +717,7 @@ If you set this argument to ON, connections are reused to both origin and cache 
 
 	/**
 	* <pre>
-	* Use L2 Parameters to identify a connection.<br> Possible values = ON, OFF
+	* Use L2 parameters, such as MAC, VLAN, and channel to identify a connection.<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_l2conn() throws Exception {
@@ -716,8 +726,25 @@ If you set this argument to ON, connections are reused to both origin and cache 
 
 	/**
 	* <pre>
-	* Use this parameter to specify the listen policy for CR Vserver.
-The string can be either an existing expression name (configured using add policy expression command) or else it can be an in-line expression with a maximum of 1499 characters.<br> Default value: "none"
+	* Decides whether the backend connection made by NS to the origin server will be HTTP or SSL. Applicable only for SSL type CR Forward proxy vserver.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* </pre>
+	*/
+	public void set_backendssl(String backendssl) throws Exception{
+		this.backendssl = backendssl;
+	}
+
+	/**
+	* <pre>
+	* Decides whether the backend connection made by NS to the origin server will be HTTP or SSL. Applicable only for SSL type CR Forward proxy vserver.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* </pre>
+	*/
+	public String get_backendssl() throws Exception {
+		return this.backendssl;
+	}
+
+	/**
+	* <pre>
+	* String specifying the listen policy for the cache redirection virtual server. Can be either an in-line expression or the name of a named expression.<br> Default value: "none"
 	* </pre>
 	*/
 	public void set_listenpolicy(String listenpolicy) throws Exception{
@@ -726,8 +753,7 @@ The string can be either an existing expression name (configured using add polic
 
 	/**
 	* <pre>
-	* Use this parameter to specify the listen policy for CR Vserver.
-The string can be either an existing expression name (configured using add policy expression command) or else it can be an in-line expression with a maximum of 1499 characters.<br> Default value: "none"
+	* String specifying the listen policy for the cache redirection virtual server. Can be either an in-line expression or the name of a named expression.<br> Default value: "none"
 	* </pre>
 	*/
 	public String get_listenpolicy() throws Exception {
@@ -736,7 +762,7 @@ The string can be either an existing expression name (configured using add polic
 
 	/**
 	* <pre>
-	* Use this parameter to specify the priority for listen policy of CR Vserver.<br> Default value: 101<br> Minimum value =  0<br> Maximum value =  100
+	* Priority of the listen policy specified by the Listen Policy parameter. The lower the number, higher the priority.<br> Default value: 101<br> Minimum value =  0<br> Maximum value =  100
 	* </pre>
 	*/
 	public void set_listenpriority(long listenpriority) throws Exception {
@@ -745,7 +771,7 @@ The string can be either an existing expression name (configured using add polic
 
 	/**
 	* <pre>
-	* Use this parameter to specify the priority for listen policy of CR Vserver.<br> Default value: 101<br> Minimum value =  0<br> Maximum value =  100
+	* Priority of the listen policy specified by the Listen Policy parameter. The lower the number, higher the priority.<br> Default value: 101<br> Minimum value =  0<br> Maximum value =  100
 	* </pre>
 	*/
 	public void set_listenpriority(Long listenpriority) throws Exception{
@@ -754,7 +780,7 @@ The string can be either an existing expression name (configured using add polic
 
 	/**
 	* <pre>
-	* Use this parameter to specify the priority for listen policy of CR Vserver.<br> Default value: 101<br> Minimum value =  0<br> Maximum value =  100
+	* Priority of the listen policy specified by the Listen Policy parameter. The lower the number, higher the priority.<br> Default value: 101<br> Minimum value =  0<br> Maximum value =  100
 	* </pre>
 	*/
 	public Long get_listenpriority() throws Exception {
@@ -763,7 +789,7 @@ The string can be either an existing expression name (configured using add polic
 
 	/**
 	* <pre>
-	* The name of the TCP profile.<br> Minimum length =  1<br> Maximum length =  127
+	* Name of the profile containing TCP configuration information for the cache redirection virtual server.<br> Minimum length =  1<br> Maximum length =  127
 	* </pre>
 	*/
 	public void set_tcpprofilename(String tcpprofilename) throws Exception{
@@ -772,7 +798,7 @@ The string can be either an existing expression name (configured using add polic
 
 	/**
 	* <pre>
-	* The name of the TCP profile.<br> Minimum length =  1<br> Maximum length =  127
+	* Name of the profile containing TCP configuration information for the cache redirection virtual server.<br> Minimum length =  1<br> Maximum length =  127
 	* </pre>
 	*/
 	public String get_tcpprofilename() throws Exception {
@@ -781,7 +807,7 @@ The string can be either an existing expression name (configured using add polic
 
 	/**
 	* <pre>
-	* Name of the HTTP profile.<br> Minimum length =  1<br> Maximum length =  127
+	* Name of the profile containing HTTP configuration information for cache redirection virtual server.<br> Minimum length =  1<br> Maximum length =  127
 	* </pre>
 	*/
 	public void set_httpprofilename(String httpprofilename) throws Exception{
@@ -790,7 +816,7 @@ The string can be either an existing expression name (configured using add polic
 
 	/**
 	* <pre>
-	* Name of the HTTP profile.<br> Minimum length =  1<br> Maximum length =  127
+	* Name of the profile containing HTTP configuration information for cache redirection virtual server.<br> Minimum length =  1<br> Maximum length =  127
 	* </pre>
 	*/
 	public String get_httpprofilename() throws Exception {
@@ -817,8 +843,7 @@ The string can be either an existing expression name (configured using add polic
 
 	/**
 	* <pre>
-	* Use this parameter to specify the expression used to extract the Source IP to be used from the requests coming from the Cache.
-The string can be either an existing expression name (configured using add policy expression command) or else it can be an in-line expression with a maximum of 1499 characters.<br> Minimum length =  1<br> Maximum length =  1500
+	* Expression used to extract the source IP addresses from the requests originating from the cache. Can be either an in-line expression or the name of a named expression.<br> Minimum length =  1<br> Maximum length =  1500
 	* </pre>
 	*/
 	public void set_srcipexpr(String srcipexpr) throws Exception{
@@ -827,8 +852,7 @@ The string can be either an existing expression name (configured using add polic
 
 	/**
 	* <pre>
-	* Use this parameter to specify the expression used to extract the Source IP to be used from the requests coming from the Cache.
-The string can be either an existing expression name (configured using add policy expression command) or else it can be an in-line expression with a maximum of 1499 characters.<br> Minimum length =  1<br> Maximum length =  1500
+	* Expression used to extract the source IP addresses from the requests originating from the cache. Can be either an in-line expression or the name of a named expression.<br> Minimum length =  1<br> Maximum length =  1500
 	* </pre>
 	*/
 	public String get_srcipexpr() throws Exception {
@@ -837,7 +861,8 @@ The string can be either an existing expression name (configured using add polic
 
 	/**
 	* <pre>
-	* For requests going to the Origin specify whether to use the SourceIP or not.<br> Default value: OFF<br> Possible values = ON, OFF
+	* Use the client’s IP address as the source IP address in requests sent to the origin server.  
+Note: You can enable this parameter to implement fully transparent CR deployment.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_originusip(String originusip) throws Exception{
@@ -846,7 +871,8 @@ The string can be either an existing expression name (configured using add polic
 
 	/**
 	* <pre>
-	* For requests going to the Origin specify whether to use the SourceIP or not.<br> Default value: OFF<br> Possible values = ON, OFF
+	* Use the client’s IP address as the source IP address in requests sent to the origin server.  
+Note: You can enable this parameter to implement fully transparent CR deployment.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_originusip() throws Exception {
@@ -855,7 +881,7 @@ The string can be either an existing expression name (configured using add polic
 
 	/**
 	* <pre>
-	* Select the source port for requests going to the origin.<br> Default value: OFF<br> Possible values = ON, OFF
+	* Use a port number from the port range (set by using the set ns param command, or in the Create Virtual Server (Cache Redirection) dialog box) as the source port in the requests sent to the origin server.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_useportrange(String useportrange) throws Exception{
@@ -864,7 +890,7 @@ The string can be either an existing expression name (configured using add polic
 
 	/**
 	* <pre>
-	* Select the source port for requests going to the origin.<br> Default value: OFF<br> Possible values = ON, OFF
+	* Use a port number from the port range (set by using the set ns param command, or in the Create Virtual Server (Cache Redirection) dialog box) as the source port in the requests sent to the origin server.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_useportrange() throws Exception {
@@ -873,7 +899,7 @@ The string can be either an existing expression name (configured using add polic
 
 	/**
 	* <pre>
-	* Enable logging appflow flow information.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Enable logging of AppFlow information.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_appflowlog(String appflowlog) throws Exception{
@@ -882,7 +908,7 @@ The string can be either an existing expression name (configured using add polic
 
 	/**
 	* <pre>
-	* Enable logging appflow flow information.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Enable logging of AppFlow information.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_appflowlog() throws Exception {
@@ -891,7 +917,7 @@ The string can be either an existing expression name (configured using add polic
 
 	/**
 	* <pre>
-	* The name of the network profile.<br> Minimum length =  1<br> Maximum length =  127
+	* Name of the network profile containing network configurations for the cache redirection virtual server.<br> Minimum length =  1<br> Maximum length =  127
 	* </pre>
 	*/
 	public void set_netprofile(String netprofile) throws Exception{
@@ -900,7 +926,7 @@ The string can be either an existing expression name (configured using add polic
 
 	/**
 	* <pre>
-	* The name of the network profile.<br> Minimum length =  1<br> Maximum length =  127
+	* Name of the network profile containing network configurations for the cache redirection virtual server.<br> Minimum length =  1<br> Maximum length =  127
 	* </pre>
 	*/
 	public String get_netprofile() throws Exception {
@@ -909,7 +935,7 @@ The string can be either an existing expression name (configured using add polic
 
 	/**
 	* <pre>
-	* Can be active or passive.<br> Default value: NS_VSR_PASSIVE<br> Possible values = PASSIVE, ACTIVE
+	* Criterion for responding to PING requests sent to this virtual server. If ACTIVE, respond only if the virtual server is available. If PASSIVE, respond even if the virtual server is not available.<br> Default value: PASSIVE<br> Possible values = PASSIVE, ACTIVE
 	* </pre>
 	*/
 	public void set_icmpvsrresponse(String icmpvsrresponse) throws Exception{
@@ -918,7 +944,7 @@ The string can be either an existing expression name (configured using add polic
 
 	/**
 	* <pre>
-	* Can be active or passive.<br> Default value: NS_VSR_PASSIVE<br> Possible values = PASSIVE, ACTIVE
+	* Criterion for responding to PING requests sent to this virtual server. If ACTIVE, respond only if the virtual server is available. If PASSIVE, respond even if the virtual server is not available.<br> Default value: PASSIVE<br> Possible values = PASSIVE, ACTIVE
 	* </pre>
 	*/
 	public String get_icmpvsrresponse() throws Exception {
@@ -927,7 +953,7 @@ The string can be either an existing expression name (configured using add polic
 
 	/**
 	* <pre>
-	* The new name of the virtual server.<br> Minimum length =  1
+	* New name for the cache redirection virtual server. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at sign (@), equal sign (=), and hyphen (-) characters. If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, “my name” or ‘my name’).<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_newname(String newname) throws Exception{
@@ -936,7 +962,7 @@ The string can be either an existing expression name (configured using add polic
 
 	/**
 	* <pre>
-	* The new name of the virtual server.<br> Minimum length =  1
+	* New name for the cache redirection virtual server. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at sign (@), equal sign (=), and hyphen (-) characters. If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, “my name” or ‘my name’).<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_newname() throws Exception {
@@ -963,6 +989,15 @@ The string can be either an existing expression name (configured using add polic
 
 	/**
 	* <pre>
+	* Nodegroup devno to which this crvserver belongs to.
+	* </pre>
+	*/
+	public String get_ngname() throws Exception {
+		return this.ngname;
+	}
+
+	/**
+	* <pre>
 	* Virtual server type.<br> Possible values = CONTENT, ADDRESS
 	* </pre>
 	*/
@@ -972,7 +1007,7 @@ The string can be either an existing expression name (configured using add polic
 
 	/**
 	* <pre>
-	* The state of the cr vserver.<br> Possible values = UP, DOWN, UNKNOWN, BUSY, OUT OF SERVICE, GOING OUT OF SERVICE, DOWN WHEN GOING OUT OF SERVICE, NS_EMPTY_STR
+	* The state of the cr vserver.<br> Possible values = UP, DOWN, UNKNOWN, BUSY, OUT OF SERVICE, GOING OUT OF SERVICE, DOWN WHEN GOING OUT OF SERVICE, NS_EMPTY_STR, Unknown, DISABLED
 	* </pre>
 	*/
 	public String get_curstate() throws Exception {
@@ -1022,15 +1057,6 @@ The string can be either an existing expression name (configured using add polic
 	*/
 	public String get_policyname() throws Exception {
 		return this.policyname;
-	}
-
-	/**
-	* <pre>
-	* Number of hits.
-	* </pre>
-	*/
-	public Long get_hits() throws Exception {
-		return this.hits;
 	}
 
 	/**
@@ -1089,6 +1115,15 @@ The string can be either an existing expression name (configured using add polic
 
 	/**
 	* <pre>
+	* The Default target server name.<br> Minimum length =  1
+	* </pre>
+	*/
+	public String get_lbvserver() throws Exception {
+		return this.lbvserver;
+	}
+
+	/**
+	* <pre>
 	* converts nitro response into object and returns the object array in case of get request.
 	* </pre>
 	*/
@@ -1127,6 +1162,7 @@ The string can be either an existing expression name (configured using add polic
 	public static base_response add(nitro_service client, crvserver resource) throws Exception {
 		crvserver addresource = new crvserver();
 		addresource.name = resource.name;
+		addresource.td = resource.td;
 		addresource.servicetype = resource.servicetype;
 		addresource.ipv46 = resource.ipv46;
 		addresource.port = resource.port;
@@ -1154,6 +1190,7 @@ The string can be either an existing expression name (configured using add polic
 		addresource.backupvserver = resource.backupvserver;
 		addresource.disableprimaryondown = resource.disableprimaryondown;
 		addresource.l2conn = resource.l2conn;
+		addresource.backendssl = resource.backendssl;
 		addresource.listenpolicy = resource.listenpolicy;
 		addresource.listenpriority = resource.listenpriority;
 		addresource.tcpprofilename = resource.tcpprofilename;
@@ -1178,6 +1215,7 @@ The string can be either an existing expression name (configured using add polic
 			for (int i=0;i<resources.length;i++){
 				addresources[i] = new crvserver();
 				addresources[i].name = resources[i].name;
+				addresources[i].td = resources[i].td;
 				addresources[i].servicetype = resources[i].servicetype;
 				addresources[i].ipv46 = resources[i].ipv46;
 				addresources[i].port = resources[i].port;
@@ -1205,6 +1243,7 @@ The string can be either an existing expression name (configured using add polic
 				addresources[i].backupvserver = resources[i].backupvserver;
 				addresources[i].disableprimaryondown = resources[i].disableprimaryondown;
 				addresources[i].l2conn = resources[i].l2conn;
+				addresources[i].backendssl = resources[i].backendssl;
 				addresources[i].listenpolicy = resources[i].listenpolicy;
 				addresources[i].listenpriority = resources[i].listenpriority;
 				addresources[i].tcpprofilename = resources[i].tcpprofilename;
@@ -1295,6 +1334,7 @@ The string can be either an existing expression name (configured using add polic
 		updateresource.clttimeout = resource.clttimeout;
 		updateresource.downstateflush = resource.downstateflush;
 		updateresource.l2conn = resource.l2conn;
+		updateresource.backendssl = resource.backendssl;
 		updateresource.listenpolicy = resource.listenpolicy;
 		updateresource.listenpriority = resource.listenpriority;
 		updateresource.tcpprofilename = resource.tcpprofilename;
@@ -1336,6 +1376,7 @@ The string can be either an existing expression name (configured using add polic
 				updateresources[i].clttimeout = resources[i].clttimeout;
 				updateresources[i].downstateflush = resources[i].downstateflush;
 				updateresources[i].l2conn = resources[i].l2conn;
+				updateresources[i].backendssl = resources[i].backendssl;
 				updateresources[i].listenpolicy = resources[i].listenpolicy;
 				updateresources[i].listenpriority = resources[i].listenpriority;
 				updateresources[i].tcpprofilename = resources[i].tcpprofilename;
@@ -1357,46 +1398,9 @@ The string can be either an existing expression name (configured using add polic
 	* Use this API to unset the properties of crvserver resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String name, String args[]) throws Exception {
-		crvserver unsetresource = new crvserver();
-		unsetresource.name = name;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of crvserver resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, crvserver resource, String[] args) throws Exception{
 		crvserver unsetresource = new crvserver();
 		unsetresource.name = resource.name;
-		unsetresource.cachevserver = resource.cachevserver;
-		unsetresource.dnsvservername = resource.dnsvservername;
-		unsetresource.destinationvserver = resource.destinationvserver;
-		unsetresource.domain = resource.domain;
-		unsetresource.backupvserver = resource.backupvserver;
-		unsetresource.clttimeout = resource.clttimeout;
-		unsetresource.redirecturl = resource.redirecturl;
-		unsetresource.l2conn = resource.l2conn;
-		unsetresource.originusip = resource.originusip;
-		unsetresource.useportrange = resource.useportrange;
-		unsetresource.srcipexpr = resource.srcipexpr;
-		unsetresource.tcpprofilename = resource.tcpprofilename;
-		unsetresource.httpprofilename = resource.httpprofilename;
-		unsetresource.appflowlog = resource.appflowlog;
-		unsetresource.netprofile = resource.netprofile;
-		unsetresource.icmpvsrresponse = resource.icmpvsrresponse;
-		unsetresource.redirect = resource.redirect;
-		unsetresource.onpolicymatch = resource.onpolicymatch;
-		unsetresource.precedence = resource.precedence;
-		unsetresource.arp = resource.arp;
-		unsetresource.via = resource.via;
-		unsetresource.reuse = resource.reuse;
-		unsetresource.disableprimaryondown = resource.disableprimaryondown;
-		unsetresource.downstateflush = resource.downstateflush;
-		unsetresource.listenpolicy = resource.listenpolicy;
-		unsetresource.listenpriority = resource.listenpriority;
-		unsetresource.comment = resource.comment;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -1428,33 +1432,6 @@ The string can be either an existing expression name (configured using add polic
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new crvserver();
 				unsetresources[i].name = resources[i].name;
-				unsetresources[i].cachevserver = resources[i].cachevserver;
-				unsetresources[i].dnsvservername = resources[i].dnsvservername;
-				unsetresources[i].destinationvserver = resources[i].destinationvserver;
-				unsetresources[i].domain = resources[i].domain;
-				unsetresources[i].backupvserver = resources[i].backupvserver;
-				unsetresources[i].clttimeout = resources[i].clttimeout;
-				unsetresources[i].redirecturl = resources[i].redirecturl;
-				unsetresources[i].l2conn = resources[i].l2conn;
-				unsetresources[i].originusip = resources[i].originusip;
-				unsetresources[i].useportrange = resources[i].useportrange;
-				unsetresources[i].srcipexpr = resources[i].srcipexpr;
-				unsetresources[i].tcpprofilename = resources[i].tcpprofilename;
-				unsetresources[i].httpprofilename = resources[i].httpprofilename;
-				unsetresources[i].appflowlog = resources[i].appflowlog;
-				unsetresources[i].netprofile = resources[i].netprofile;
-				unsetresources[i].icmpvsrresponse = resources[i].icmpvsrresponse;
-				unsetresources[i].redirect = resources[i].redirect;
-				unsetresources[i].onpolicymatch = resources[i].onpolicymatch;
-				unsetresources[i].precedence = resources[i].precedence;
-				unsetresources[i].arp = resources[i].arp;
-				unsetresources[i].via = resources[i].via;
-				unsetresources[i].reuse = resources[i].reuse;
-				unsetresources[i].disableprimaryondown = resources[i].disableprimaryondown;
-				unsetresources[i].downstateflush = resources[i].downstateflush;
-				unsetresources[i].listenpolicy = resources[i].listenpolicy;
-				unsetresources[i].listenpriority = resources[i].listenpriority;
-				unsetresources[i].comment = resources[i].comment;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}
@@ -1790,6 +1767,8 @@ The string can be either an existing expression name (configured using add polic
 		public static final String GOING_OUT_OF_SERVICE = "GOING OUT OF SERVICE";
 		public static final String DOWN_WHEN_GOING_OUT_OF_SERVICE = "DOWN WHEN GOING OUT OF SERVICE";
 		public static final String NS_EMPTY_STR = "NS_EMPTY_STR";
+		public static final String Unknown = "Unknown";
+		public static final String DISABLED = "DISABLED";
 	}
 	public static class reuseEnum {
 		public static final String ON = "ON";
@@ -1802,5 +1781,9 @@ The string can be either an existing expression name (configured using add polic
 	public static class formatEnum {
 		public static final String ON = "ON";
 		public static final String OFF = "OFF";
+	}
+	public static class backendsslEnum {
+		public static final String ENABLED = "ENABLED";
+		public static final String DISABLED = "DISABLED";
 	}
 }

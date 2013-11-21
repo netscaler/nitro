@@ -51,7 +51,7 @@ public class vrid extends base_resource
 
 	/**
 	* <pre>
-	* An integer value that uniquely identifies the VMAC address. The generic VMAC address is in the form of 00:00:5e:00:01:<VRID>. For example, if you add a VRID with a value of 60 and bind it to an interface, the resulting VMAC address is 00:00:5e:00:01:3c, where 3c is the hexadecimal representation of 60. Minimum value: 1. Maximum value: 255. .<br> Minimum value =  1<br> Maximum value =  255
+	* Integer that uniquely identifies the VMAC address. The generic VMAC address is in the form of 00:00:5e:00:01:<VRID>. For example, if you add a VRID with a value of 60 and bind it to an interface, the resulting VMAC address is 00:00:5e:00:01:3c, where 3c is the hexadecimal representation of 60.<br> Minimum value =  1<br> Maximum value =  255
 	* </pre>
 	*/
 	public void set_id(long id) throws Exception {
@@ -60,7 +60,7 @@ public class vrid extends base_resource
 
 	/**
 	* <pre>
-	* An integer value that uniquely identifies the VMAC address. The generic VMAC address is in the form of 00:00:5e:00:01:<VRID>. For example, if you add a VRID with a value of 60 and bind it to an interface, the resulting VMAC address is 00:00:5e:00:01:3c, where 3c is the hexadecimal representation of 60. Minimum value: 1. Maximum value: 255. .<br> Minimum value =  1<br> Maximum value =  255
+	* Integer that uniquely identifies the VMAC address. The generic VMAC address is in the form of 00:00:5e:00:01:<VRID>. For example, if you add a VRID with a value of 60 and bind it to an interface, the resulting VMAC address is 00:00:5e:00:01:3c, where 3c is the hexadecimal representation of 60.<br> Minimum value =  1<br> Maximum value =  255
 	* </pre>
 	*/
 	public void set_id(Long id) throws Exception{
@@ -69,7 +69,7 @@ public class vrid extends base_resource
 
 	/**
 	* <pre>
-	* An integer value that uniquely identifies the VMAC address. The generic VMAC address is in the form of 00:00:5e:00:01:<VRID>. For example, if you add a VRID with a value of 60 and bind it to an interface, the resulting VMAC address is 00:00:5e:00:01:3c, where 3c is the hexadecimal representation of 60. Minimum value: 1. Maximum value: 255. .<br> Minimum value =  1<br> Maximum value =  255
+	* Integer that uniquely identifies the VMAC address. The generic VMAC address is in the form of 00:00:5e:00:01:<VRID>. For example, if you add a VRID with a value of 60 and bind it to an interface, the resulting VMAC address is 00:00:5e:00:01:3c, where 3c is the hexadecimal representation of 60.<br> Minimum value =  1<br> Maximum value =  255
 	* </pre>
 	*/
 	public Long get_id() throws Exception {
@@ -78,7 +78,7 @@ public class vrid extends base_resource
 
 	/**
 	* <pre>
-	* Base priority (BP) that determines the master VIP address. Set this parameter only if you are configuring the appliance in the active-active mode.<br> Default value: 255<br> Minimum value =  1<br> Maximum value =  255
+	* Base priority (BP), in an active-active mode configuration, which ordinarily determines the master VIP address.<br> Default value: 255<br> Minimum value =  1<br> Maximum value =  255
 	* </pre>
 	*/
 	public void set_priority(long priority) throws Exception {
@@ -87,7 +87,7 @@ public class vrid extends base_resource
 
 	/**
 	* <pre>
-	* Base priority (BP) that determines the master VIP address. Set this parameter only if you are configuring the appliance in the active-active mode.<br> Default value: 255<br> Minimum value =  1<br> Maximum value =  255
+	* Base priority (BP), in an active-active mode configuration, which ordinarily determines the master VIP address.<br> Default value: 255<br> Minimum value =  1<br> Maximum value =  255
 	* </pre>
 	*/
 	public void set_priority(Long priority) throws Exception{
@@ -96,7 +96,7 @@ public class vrid extends base_resource
 
 	/**
 	* <pre>
-	* Base priority (BP) that determines the master VIP address. Set this parameter only if you are configuring the appliance in the active-active mode.<br> Default value: 255<br> Minimum value =  1<br> Maximum value =  255
+	* Base priority (BP), in an active-active mode configuration, which ordinarily determines the master VIP address.<br> Default value: 255<br> Minimum value =  1<br> Maximum value =  255
 	* </pre>
 	*/
 	public Long get_priority() throws Exception {
@@ -105,7 +105,8 @@ public class vrid extends base_resource
 
 	/**
 	* <pre>
-	* Make a backup VIP address the master if its priority becomes higher than that of a master VIP address bound to this VMAC address. Set this parameter only if you are configuring the appliance in the active-active mode.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* In an active-active mode configuration, make a backup VIP address the master if its priority becomes higher than that of a master VIP address bound to this VMAC address. 
+If you disable pre-emption while a backup VIP address is the master, the backup VIP address remains master until the original master VIP's priority becomes higher than that of the current master.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_preemption(String preemption) throws Exception{
@@ -114,7 +115,8 @@ public class vrid extends base_resource
 
 	/**
 	* <pre>
-	* Make a backup VIP address the master if its priority becomes higher than that of a master VIP address bound to this VMAC address. Set this parameter only if you are configuring the appliance in the active-active mode.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* In an active-active mode configuration, make a backup VIP address the master if its priority becomes higher than that of a master VIP address bound to this VMAC address. 
+If you disable pre-emption while a backup VIP address is the master, the backup VIP address remains master until the original master VIP's priority becomes higher than that of the current master.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_preemption() throws Exception {
@@ -123,7 +125,7 @@ public class vrid extends base_resource
 
 	/**
 	* <pre>
-	* Enable the backup VIP address to process any traffic, instead of dropping the traffic. Set this parameter only if you are configuring the appliance in the active-active mode.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* In an active-active mode configuration, enable the backup VIP address to process any traffic instead of dropping it.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_sharing(String sharing) throws Exception{
@@ -132,7 +134,7 @@ public class vrid extends base_resource
 
 	/**
 	* <pre>
-	* Enable the backup VIP address to process any traffic, instead of dropping the traffic. Set this parameter only if you are configuring the appliance in the active-active mode.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* In an active-active mode configuration, enable the backup VIP address to process any traffic instead of dropping it.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_sharing() throws Exception {
@@ -141,14 +143,13 @@ public class vrid extends base_resource
 
 	/**
 	* <pre>
-	* The effective priority (EP) value, relative to the base priority (BP) value. Set this parameter only if you are configuring the appliance in the active-active mode.
-When EP is set to a value other than None, it is EP, not BP, which determines the master VIP address.
-For example, if a VIP address on NetScaler appliance NS1 has a priority of 101, and the same VIP address on NS2 has a priority of 99, the VIP address on NS1 is active. However, if  two virtual servers are using the VIP address on NS1, and one of them is DOWN, health tracking can reduce the EP of VIP on NS1. VRRP then makes the VIP address on NS2 the active VIP address.
-Possible values for EP are:
-                          NONE. No tracking. EP=BP. (This is the default.)
-                          ALL. If the status of all virtual servers is UP, EP=BP.  Otherwise, EP=0.
-                          ONE. If the status of at least one virtual server is UP, EP=BP. Otherwise, EP=0.
-                          PROGRESSIVE. If the status of all virtual servers is UP, EP=BP. If the status of all virtual servers is DOWN, EP=0. Otherwise EP=BP (1 - K/N), where N is the total number of virtual servers associated with the VIP address and K is the number of virtual servers whose status is DOWN.<br> Default value: TRACK_NONE<br> Possible values = NONE, ONE, ALL, PROGRESSIVE
+	* The effective priority (EP) value, relative to the base priority (BP) value in an active-active mode configuration. When EP is set to a value other than None, it is EP, not BP, which determines the master VIP address.
+Available settings function as follows:
+* NONE - No tracking. EP = BP
+* ALL -  If the status of all virtual servers is UP, EP = BP. Otherwise, EP = 0.
+* ONE - If the status of at least one virtual server is UP, EP = BP. Otherwise, EP = 0.
+* PROGRESSIVE - If the status of all virtual servers is UP, EP = BP. If the status of all virtual servers is DOWN, EP = 0. Otherwise EP = BP (1 - K/N), where N is the total number of virtual servers associated with the VIP address and K is the number of virtual servers for which the status is DOWN.
+Default: NONE.<br> Default value: NONE<br> Possible values = NONE, ONE, ALL, PROGRESSIVE
 	* </pre>
 	*/
 	public void set_tracking(String tracking) throws Exception{
@@ -157,14 +158,13 @@ Possible values for EP are:
 
 	/**
 	* <pre>
-	* The effective priority (EP) value, relative to the base priority (BP) value. Set this parameter only if you are configuring the appliance in the active-active mode.
-When EP is set to a value other than None, it is EP, not BP, which determines the master VIP address.
-For example, if a VIP address on NetScaler appliance NS1 has a priority of 101, and the same VIP address on NS2 has a priority of 99, the VIP address on NS1 is active. However, if  two virtual servers are using the VIP address on NS1, and one of them is DOWN, health tracking can reduce the EP of VIP on NS1. VRRP then makes the VIP address on NS2 the active VIP address.
-Possible values for EP are:
-                          NONE. No tracking. EP=BP. (This is the default.)
-                          ALL. If the status of all virtual servers is UP, EP=BP.  Otherwise, EP=0.
-                          ONE. If the status of at least one virtual server is UP, EP=BP. Otherwise, EP=0.
-                          PROGRESSIVE. If the status of all virtual servers is UP, EP=BP. If the status of all virtual servers is DOWN, EP=0. Otherwise EP=BP (1 - K/N), where N is the total number of virtual servers associated with the VIP address and K is the number of virtual servers whose status is DOWN.<br> Default value: TRACK_NONE<br> Possible values = NONE, ONE, ALL, PROGRESSIVE
+	* The effective priority (EP) value, relative to the base priority (BP) value in an active-active mode configuration. When EP is set to a value other than None, it is EP, not BP, which determines the master VIP address.
+Available settings function as follows:
+* NONE - No tracking. EP = BP
+* ALL -  If the status of all virtual servers is UP, EP = BP. Otherwise, EP = 0.
+* ONE - If the status of at least one virtual server is UP, EP = BP. Otherwise, EP = 0.
+* PROGRESSIVE - If the status of all virtual servers is UP, EP = BP. If the status of all virtual servers is DOWN, EP = 0. Otherwise EP = BP (1 - K/N), where N is the total number of virtual servers associated with the VIP address and K is the number of virtual servers for which the status is DOWN.
+Default: NONE.<br> Default value: NONE<br> Possible values = NONE, ONE, ALL, PROGRESSIVE
 	* </pre>
 	*/
 	public String get_tracking() throws Exception {
@@ -411,23 +411,9 @@ Possible values for EP are:
 	* Use this API to unset the properties of vrid resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, Long id, String args[]) throws Exception {
-		vrid unsetresource = new vrid();
-		unsetresource.id = id;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of vrid resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, vrid resource, String[] args) throws Exception{
 		vrid unsetresource = new vrid();
 		unsetresource.id = resource.id;
-		unsetresource.priority = resource.priority;
-		unsetresource.preemption = resource.preemption;
-		unsetresource.sharing = resource.sharing;
-		unsetresource.tracking = resource.tracking;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -459,10 +445,6 @@ Possible values for EP are:
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new vrid();
 				unsetresources[i].id = resources[i].id;
-				unsetresources[i].priority = resources[i].priority;
-				unsetresources[i].preemption = resources[i].preemption;
-				unsetresources[i].sharing = resources[i].sharing;
-				unsetresources[i].tracking = resources[i].tracking;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}

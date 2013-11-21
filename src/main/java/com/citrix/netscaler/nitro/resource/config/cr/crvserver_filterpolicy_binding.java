@@ -85,7 +85,7 @@ public class crvserver_filterpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the cache redirection virtual server to which the cache redirection policy will be bound.<br> Minimum length =  1
+	* Name of the cache redirection virtual server to which to bind the cache redirection policy.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -94,7 +94,7 @@ public class crvserver_filterpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the cache redirection virtual server to which the cache redirection policy will be bound.<br> Minimum length =  1
+	* Name of the cache redirection virtual server to which to bind the cache redirection policy.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -103,9 +103,7 @@ public class crvserver_filterpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* An address-based virtual server. The server can only be specified
-					    -for a map policy created using the add policy map command.
-					    -when the cache redirection virtual server is of the type REVERSE.<br> Minimum length =  1
+	* Name of the virtual server to which content is forwarded. Applicable only if the policy is a map policy and the cache redirection virtual server is of type REVERSE.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_targetvserver(String targetvserver) throws Exception{
@@ -114,9 +112,7 @@ public class crvserver_filterpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* An address-based virtual server. The server can only be specified
-					    -for a map policy created using the add policy map command.
-					    -when the cache redirection virtual server is of the type REVERSE.<br> Minimum length =  1
+	* Name of the virtual server to which content is forwarded. Applicable only if the policy is a map policy and the cache redirection virtual server is of type REVERSE.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_targetvserver() throws Exception {

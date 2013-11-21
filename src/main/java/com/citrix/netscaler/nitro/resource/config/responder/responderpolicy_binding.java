@@ -18,8 +18,8 @@ package com.citrix.netscaler.nitro.resource.config.responder;
 
 import com.citrix.netscaler.nitro.resource.config.responder.responderpolicy_responderpolicylabel_binding;
 import com.citrix.netscaler.nitro.resource.config.responder.responderpolicy_csvserver_binding;
-import com.citrix.netscaler.nitro.resource.config.responder.responderpolicy_lbvserver_binding;
 import com.citrix.netscaler.nitro.resource.config.responder.responderpolicy_responderglobal_binding;
+import com.citrix.netscaler.nitro.resource.config.responder.responderpolicy_lbvserver_binding;
 import com.citrix.netscaler.nitro.resource.base.*;
 import com.citrix.netscaler.nitro.service.nitro_service;
 import com.citrix.netscaler.nitro.service.options;
@@ -39,12 +39,12 @@ public class responderpolicy_binding extends base_resource
 	private String name;
 	private responderpolicy_responderpolicylabel_binding	responderpolicy_responderpolicylabel_binding[] = null;
 	private responderpolicy_csvserver_binding	responderpolicy_csvserver_binding[] = null;
-	private responderpolicy_lbvserver_binding	responderpolicy_lbvserver_binding[] = null;
 	private responderpolicy_responderglobal_binding	responderpolicy_responderglobal_binding[] = null;
+	private responderpolicy_lbvserver_binding	responderpolicy_lbvserver_binding[] = null;
 
 	/**
 	* <pre>
-	* Name of the responder policy.
+	* Name of the responder policy for which to display settings.
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -53,7 +53,7 @@ public class responderpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Name of the responder policy.
+	* Name of the responder policy for which to display settings.
 	* </pre>
 	*/
 	public String get_name() throws Exception {

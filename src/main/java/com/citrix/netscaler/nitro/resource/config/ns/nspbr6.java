@@ -33,6 +33,7 @@ class nspbr6_response extends base_response
 public class nspbr6 extends base_resource
 {
 	private String name;
+	private Long td;
 	private String action;
 	private Boolean srcipv6;
 	private String srcipop;
@@ -77,7 +78,7 @@ public class nspbr6 extends base_resource
 
 	/**
 	* <pre>
-	* Alphanumeric name of the PBR6.<br> Minimum length =  1
+	* Name for the PBR6. Must begin with an ASCII alphabetic or underscore \(_\) character, and must contain only ASCII alphanumeric, underscore, hash \(\#\), period \(.\), space, colon \(:\), at \(@\), equals \(=\), and hyphen \(-\) characters. Can be changed after the PBR6 is created.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -86,7 +87,7 @@ public class nspbr6 extends base_resource
 
 	/**
 	* <pre>
-	* Alphanumeric name of the PBR6.<br> Minimum length =  1
+	* Name for the PBR6. Must begin with an ASCII alphabetic or underscore \(_\) character, and must contain only ASCII alphanumeric, underscore, hash \(\#\), period \(.\), space, colon \(:\), at \(@\), equals \(=\), and hyphen \(-\) characters. Can be changed after the PBR6 is created.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -95,7 +96,38 @@ public class nspbr6 extends base_resource
 
 	/**
 	* <pre>
-	* Action associated with the PBR6.<br> Possible values = ALLOW, DENY
+	* Traffic Domain Id.<br> Minimum value =  0<br> Maximum value =  4094
+	* </pre>
+	*/
+	public void set_td(long td) throws Exception {
+		this.td = new Long(td);
+	}
+
+	/**
+	* <pre>
+	* Traffic Domain Id.<br> Minimum value =  0<br> Maximum value =  4094
+	* </pre>
+	*/
+	public void set_td(Long td) throws Exception{
+		this.td = td;
+	}
+
+	/**
+	* <pre>
+	* Traffic Domain Id.<br> Minimum value =  0<br> Maximum value =  4094
+	* </pre>
+	*/
+	public Long get_td() throws Exception {
+		return this.td;
+	}
+
+	/**
+	* <pre>
+	* Action to perform on the outgoing IPv6 packets that match the PBR6. 
+
+Available settings function as follows:
+* ALLOW - The NetScaler appliance sends the packet to the designated next-hop router.
+* DENY - The NetScaler appliance applies the routing table for normal destination-based routing.<br> Possible values = ALLOW, DENY
 	* </pre>
 	*/
 	public void set_action(String action) throws Exception{
@@ -104,7 +136,11 @@ public class nspbr6 extends base_resource
 
 	/**
 	* <pre>
-	* Action associated with the PBR6.<br> Possible values = ALLOW, DENY
+	* Action to perform on the outgoing IPv6 packets that match the PBR6. 
+
+Available settings function as follows:
+* ALLOW - The NetScaler appliance sends the packet to the designated next-hop router.
+* DENY - The NetScaler appliance applies the routing table for normal destination-based routing.<br> Possible values = ALLOW, DENY
 	* </pre>
 	*/
 	public String get_action() throws Exception {
@@ -113,7 +149,7 @@ public class nspbr6 extends base_resource
 
 	/**
 	* <pre>
-	* Source IPv6 address (range).
+	* IP address or range of IP addresses to match against the source IP address of an outgoing IPv6 packet. In the command line interface, separate the range with a hyphen and enclose within brackets.
 	* </pre>
 	*/
 	public void set_srcipv6(boolean srcipv6) throws Exception {
@@ -122,7 +158,7 @@ public class nspbr6 extends base_resource
 
 	/**
 	* <pre>
-	* Source IPv6 address (range).
+	* IP address or range of IP addresses to match against the source IP address of an outgoing IPv6 packet. In the command line interface, separate the range with a hyphen and enclose within brackets.
 	* </pre>
 	*/
 	public void set_srcipv6(Boolean srcipv6) throws Exception{
@@ -131,7 +167,7 @@ public class nspbr6 extends base_resource
 
 	/**
 	* <pre>
-	* Source IPv6 address (range).
+	* IP address or range of IP addresses to match against the source IP address of an outgoing IPv6 packet. In the command line interface, separate the range with a hyphen and enclose within brackets.
 	* </pre>
 	*/
 	public Boolean get_srcipv6() throws Exception {
@@ -140,7 +176,7 @@ public class nspbr6 extends base_resource
 
 	/**
 	* <pre>
-	* Logical operator.<br> Possible values = =, !=, EQ, NEQ
+	* Either the equals (=) or does not equal (!=) logical operator.<br> Possible values = =, !=, EQ, NEQ
 	* </pre>
 	*/
 	public void set_srcipop(String srcipop) throws Exception{
@@ -149,7 +185,7 @@ public class nspbr6 extends base_resource
 
 	/**
 	* <pre>
-	* Logical operator.<br> Possible values = =, !=, EQ, NEQ
+	* Either the equals (=) or does not equal (!=) logical operator.<br> Possible values = =, !=, EQ, NEQ
 	* </pre>
 	*/
 	public String get_srcipop() throws Exception {
@@ -158,7 +194,7 @@ public class nspbr6 extends base_resource
 
 	/**
 	* <pre>
-	* Source IPv6 address (range).
+	* IP address or range of IP addresses to match against the source IP address of an outgoing IPv6 packet. In the command line interface, separate the range with a hyphen and enclose within brackets.
 	* </pre>
 	*/
 	public void set_srcipv6val(String srcipv6val) throws Exception{
@@ -167,7 +203,7 @@ public class nspbr6 extends base_resource
 
 	/**
 	* <pre>
-	* Source IPv6 address (range).
+	* IP address or range of IP addresses to match against the source IP address of an outgoing IPv6 packet. In the command line interface, separate the range with a hyphen and enclose within brackets.
 	* </pre>
 	*/
 	public String get_srcipv6val() throws Exception {
@@ -176,7 +212,7 @@ public class nspbr6 extends base_resource
 
 	/**
 	* <pre>
-	* Source port (range).
+	* Port number or range of port numbers to match against the source port number of an outgoing IPv6 packet. In the command line interface, separate the range with a hyphen and enclose within brackets. For example: [40-90].
 	* </pre>
 	*/
 	public void set_srcport(boolean srcport) throws Exception {
@@ -185,7 +221,7 @@ public class nspbr6 extends base_resource
 
 	/**
 	* <pre>
-	* Source port (range).
+	* Port number or range of port numbers to match against the source port number of an outgoing IPv6 packet. In the command line interface, separate the range with a hyphen and enclose within brackets. For example: [40-90].
 	* </pre>
 	*/
 	public void set_srcport(Boolean srcport) throws Exception{
@@ -194,7 +230,7 @@ public class nspbr6 extends base_resource
 
 	/**
 	* <pre>
-	* Source port (range).
+	* Port number or range of port numbers to match against the source port number of an outgoing IPv6 packet. In the command line interface, separate the range with a hyphen and enclose within brackets. For example: [40-90].
 	* </pre>
 	*/
 	public Boolean get_srcport() throws Exception {
@@ -239,7 +275,7 @@ public class nspbr6 extends base_resource
 
 	/**
 	* <pre>
-	* Destination IPv6 address (range).
+	* IP address or range of IP addresses to match against the destination IP address of an outgoing IPv6 packet.  In the command line interface, separate the range with a hyphen and enclose within brackets.
 	* </pre>
 	*/
 	public void set_destipv6(boolean destipv6) throws Exception {
@@ -248,7 +284,7 @@ public class nspbr6 extends base_resource
 
 	/**
 	* <pre>
-	* Destination IPv6 address (range).
+	* IP address or range of IP addresses to match against the destination IP address of an outgoing IPv6 packet.  In the command line interface, separate the range with a hyphen and enclose within brackets.
 	* </pre>
 	*/
 	public void set_destipv6(Boolean destipv6) throws Exception{
@@ -257,7 +293,7 @@ public class nspbr6 extends base_resource
 
 	/**
 	* <pre>
-	* Destination IPv6 address (range).
+	* IP address or range of IP addresses to match against the destination IP address of an outgoing IPv6 packet.  In the command line interface, separate the range with a hyphen and enclose within brackets.
 	* </pre>
 	*/
 	public Boolean get_destipv6() throws Exception {
@@ -284,7 +320,7 @@ public class nspbr6 extends base_resource
 
 	/**
 	* <pre>
-	* Destination IPv6 address (range).
+	* IP address or range of IP addresses to match against the destination IP address of an outgoing IPv6 packet.  In the command line interface, separate the range with a hyphen and enclose within brackets.
 	* </pre>
 	*/
 	public void set_destipv6val(String destipv6val) throws Exception{
@@ -293,7 +329,7 @@ public class nspbr6 extends base_resource
 
 	/**
 	* <pre>
-	* Destination IPv6 address (range).
+	* IP address or range of IP addresses to match against the destination IP address of an outgoing IPv6 packet.  In the command line interface, separate the range with a hyphen and enclose within brackets.
 	* </pre>
 	*/
 	public String get_destipv6val() throws Exception {
@@ -302,7 +338,9 @@ public class nspbr6 extends base_resource
 
 	/**
 	* <pre>
-	* Destination port (range).
+	* Port number or range of port numbers to match against the destination port number of an outgoing IPv6 packet. In the command line interface, separate the range with a hyphen and enclose within brackets. For example: [40-90]. 
+
+Note: The destination port can be specified only for TCP and UDP protocols.
 	* </pre>
 	*/
 	public void set_destport(boolean destport) throws Exception {
@@ -311,7 +349,9 @@ public class nspbr6 extends base_resource
 
 	/**
 	* <pre>
-	* Destination port (range).
+	* Port number or range of port numbers to match against the destination port number of an outgoing IPv6 packet. In the command line interface, separate the range with a hyphen and enclose within brackets. For example: [40-90]. 
+
+Note: The destination port can be specified only for TCP and UDP protocols.
 	* </pre>
 	*/
 	public void set_destport(Boolean destport) throws Exception{
@@ -320,7 +360,9 @@ public class nspbr6 extends base_resource
 
 	/**
 	* <pre>
-	* Destination port (range).
+	* Port number or range of port numbers to match against the destination port number of an outgoing IPv6 packet. In the command line interface, separate the range with a hyphen and enclose within brackets. For example: [40-90]. 
+
+Note: The destination port can be specified only for TCP and UDP protocols.
 	* </pre>
 	*/
 	public Boolean get_destport() throws Exception {
@@ -365,7 +407,7 @@ public class nspbr6 extends base_resource
 
 	/**
 	* <pre>
-	* Source MAC address.
+	* MAC address to match against the source MAC address of an outgoing IPv6 packet.
 	* </pre>
 	*/
 	public void set_srcmac(String srcmac) throws Exception{
@@ -374,7 +416,7 @@ public class nspbr6 extends base_resource
 
 	/**
 	* <pre>
-	* Source MAC address.
+	* MAC address to match against the source MAC address of an outgoing IPv6 packet.
 	* </pre>
 	*/
 	public String get_srcmac() throws Exception {
@@ -383,7 +425,7 @@ public class nspbr6 extends base_resource
 
 	/**
 	* <pre>
-	* IPv6 protocol name.<br> Possible values = ICMPV6, TCP, UDP
+	* Protocol, identified by protocol name, to match against the protocol of an outgoing IPv6 packet.<br> Possible values = ICMPV6, TCP, UDP
 	* </pre>
 	*/
 	public void set_protocol(String protocol) throws Exception{
@@ -392,7 +434,7 @@ public class nspbr6 extends base_resource
 
 	/**
 	* <pre>
-	* IPv6 protocol name.<br> Possible values = ICMPV6, TCP, UDP
+	* Protocol, identified by protocol name, to match against the protocol of an outgoing IPv6 packet.<br> Possible values = ICMPV6, TCP, UDP
 	* </pre>
 	*/
 	public String get_protocol() throws Exception {
@@ -401,7 +443,7 @@ public class nspbr6 extends base_resource
 
 	/**
 	* <pre>
-	* IPv6 protocol number (decimal).<br> Minimum value =  1<br> Maximum value =  255
+	* Protocol, identified by protocol number, to match against the protocol of an outgoing IPv6 packet.<br> Minimum value =  1<br> Maximum value =  255
 	* </pre>
 	*/
 	public void set_protocolnumber(long protocolnumber) throws Exception {
@@ -410,7 +452,7 @@ public class nspbr6 extends base_resource
 
 	/**
 	* <pre>
-	* IPv6 protocol number (decimal).<br> Minimum value =  1<br> Maximum value =  255
+	* Protocol, identified by protocol number, to match against the protocol of an outgoing IPv6 packet.<br> Minimum value =  1<br> Maximum value =  255
 	* </pre>
 	*/
 	public void set_protocolnumber(Long protocolnumber) throws Exception{
@@ -419,7 +461,7 @@ public class nspbr6 extends base_resource
 
 	/**
 	* <pre>
-	* IPv6 protocol number (decimal).<br> Minimum value =  1<br> Maximum value =  255
+	* Protocol, identified by protocol number, to match against the protocol of an outgoing IPv6 packet.<br> Minimum value =  1<br> Maximum value =  255
 	* </pre>
 	*/
 	public Long get_protocolnumber() throws Exception {
@@ -428,7 +470,7 @@ public class nspbr6 extends base_resource
 
 	/**
 	* <pre>
-	* VLAN number.<br> Minimum value =  1<br> Maximum value =  4094
+	* ID of the VLAN. The NetScaler appliance compares the PBR6 only to the outgoing packets on the specified VLAN. If you do not specify an interface ID, the appliance compares the PBR6 to the outgoing packets on all VLANs.<br> Minimum value =  1<br> Maximum value =  4094
 	* </pre>
 	*/
 	public void set_vlan(long vlan) throws Exception {
@@ -437,7 +479,7 @@ public class nspbr6 extends base_resource
 
 	/**
 	* <pre>
-	* VLAN number.<br> Minimum value =  1<br> Maximum value =  4094
+	* ID of the VLAN. The NetScaler appliance compares the PBR6 only to the outgoing packets on the specified VLAN. If you do not specify an interface ID, the appliance compares the PBR6 to the outgoing packets on all VLANs.<br> Minimum value =  1<br> Maximum value =  4094
 	* </pre>
 	*/
 	public void set_vlan(Long vlan) throws Exception{
@@ -446,7 +488,7 @@ public class nspbr6 extends base_resource
 
 	/**
 	* <pre>
-	* VLAN number.<br> Minimum value =  1<br> Maximum value =  4094
+	* ID of the VLAN. The NetScaler appliance compares the PBR6 only to the outgoing packets on the specified VLAN. If you do not specify an interface ID, the appliance compares the PBR6 to the outgoing packets on all VLANs.<br> Minimum value =  1<br> Maximum value =  4094
 	* </pre>
 	*/
 	public Long get_vlan() throws Exception {
@@ -455,7 +497,7 @@ public class nspbr6 extends base_resource
 
 	/**
 	* <pre>
-	* Physical interface name.
+	* ID of an interface. The NetScaler appliance compares the PBR6 only to the outgoing packets on the specified interface. If you do not specify a value, the appliance compares the PBR6 to the outgoing packets on all interfaces.
 	* </pre>
 	*/
 	public void set_Interface(String Interface) throws Exception{
@@ -464,7 +506,7 @@ public class nspbr6 extends base_resource
 
 	/**
 	* <pre>
-	* Physical interface name.
+	* ID of an interface. The NetScaler appliance compares the PBR6 only to the outgoing packets on the specified interface. If you do not specify a value, the appliance compares the PBR6 to the outgoing packets on all interfaces.
 	* </pre>
 	*/
 	public String get_Interface() throws Exception {
@@ -473,7 +515,7 @@ public class nspbr6 extends base_resource
 
 	/**
 	* <pre>
-	* Priority of the PBR6. (Sequence of execution).<br> Minimum value =  1<br> Maximum value =  80000
+	* Priority of the PBR6, which determines the order in which it is evaluated relative to the other PBR6s. If you do not specify priorities while creating PBR6s, the PBR6s are evaluated in the order in which they are created.<br> Minimum value =  1<br> Maximum value =  80000
 	* </pre>
 	*/
 	public void set_priority(long priority) throws Exception {
@@ -482,7 +524,7 @@ public class nspbr6 extends base_resource
 
 	/**
 	* <pre>
-	* Priority of the PBR6. (Sequence of execution).<br> Minimum value =  1<br> Maximum value =  80000
+	* Priority of the PBR6, which determines the order in which it is evaluated relative to the other PBR6s. If you do not specify priorities while creating PBR6s, the PBR6s are evaluated in the order in which they are created.<br> Minimum value =  1<br> Maximum value =  80000
 	* </pre>
 	*/
 	public void set_priority(Long priority) throws Exception{
@@ -491,7 +533,7 @@ public class nspbr6 extends base_resource
 
 	/**
 	* <pre>
-	* Priority of the PBR6. (Sequence of execution).<br> Minimum value =  1<br> Maximum value =  80000
+	* Priority of the PBR6, which determines the order in which it is evaluated relative to the other PBR6s. If you do not specify priorities while creating PBR6s, the PBR6s are evaluated in the order in which they are created.<br> Minimum value =  1<br> Maximum value =  80000
 	* </pre>
 	*/
 	public Long get_priority() throws Exception {
@@ -500,7 +542,7 @@ public class nspbr6 extends base_resource
 
 	/**
 	* <pre>
-	* State of the PBR6.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED, REMOVED
+	* Enable or disable the PBR6. After you apply the PBR6s, the NetScaler appliance compares outgoing packets to the enabled PBR6s.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_state(String state) throws Exception{
@@ -509,7 +551,7 @@ public class nspbr6 extends base_resource
 
 	/**
 	* <pre>
-	* State of the PBR6.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED, REMOVED
+	* Enable or disable the PBR6. After you apply the PBR6s, the NetScaler appliance compares outgoing packets to the enabled PBR6s.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_state() throws Exception {
@@ -518,7 +560,7 @@ public class nspbr6 extends base_resource
 
 	/**
 	* <pre>
-	* Enable/disable Monitored Static Route(MSR) on this route.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Monitor the route specified by the Next Hop parameter.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_msr(String msr) throws Exception{
@@ -527,7 +569,7 @@ public class nspbr6 extends base_resource
 
 	/**
 	* <pre>
-	* Enable/disable Monitored Static Route(MSR) on this route.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Monitor the route specified by the Next Hop parameter.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_msr() throws Exception {
@@ -554,7 +596,7 @@ public class nspbr6 extends base_resource
 
 	/**
 	* <pre>
-	* The Next Hop IPv6 address.
+	* IP address of the next hop router to which to send matching packets if action is set to ALLOW. This next hop should be directly reachable from the appliance.
 	* </pre>
 	*/
 	public void set_nexthop(boolean nexthop) throws Exception {
@@ -563,7 +605,7 @@ public class nspbr6 extends base_resource
 
 	/**
 	* <pre>
-	* The Next Hop IPv6 address.
+	* IP address of the next hop router to which to send matching packets if action is set to ALLOW. This next hop should be directly reachable from the appliance.
 	* </pre>
 	*/
 	public void set_nexthop(Boolean nexthop) throws Exception{
@@ -572,7 +614,7 @@ public class nspbr6 extends base_resource
 
 	/**
 	* <pre>
-	* The Next Hop IPv6 address.
+	* IP address of the next hop router to which to send matching packets if action is set to ALLOW. This next hop should be directly reachable from the appliance.
 	* </pre>
 	*/
 	public Boolean get_nexthop() throws Exception {
@@ -653,7 +695,7 @@ public class nspbr6 extends base_resource
 
 	/**
 	* <pre>
-	* Commit status of the PBR6.<br> Default value: ACL6NAPPLIED<br> Possible values = APPLIED, NOTAPPLIED, RE-APPLY, SFAPPLIED, SFNOTAPPLIED
+	* Commit status of the PBR6.<br> Default value: NOTAPPLIED<br> Possible values = APPLIED, NOTAPPLIED, RE-APPLY, SFAPPLIED, SFNOTAPPLIED
 	* </pre>
 	*/
 	public String get_kernelstate() throws Exception {
@@ -790,6 +832,7 @@ public class nspbr6 extends base_resource
 	public static base_response add(nitro_service client, nspbr6 resource) throws Exception {
 		nspbr6 addresource = new nspbr6();
 		addresource.name = resource.name;
+		addresource.td = resource.td;
 		addresource.action = resource.action;
 		addresource.srcipv6 = resource.srcipv6;
 		addresource.srcipop = resource.srcipop;
@@ -828,6 +871,7 @@ public class nspbr6 extends base_resource
 			for (int i=0;i<resources.length;i++){
 				addresources[i] = new nspbr6();
 				addresources[i].name = resources[i].name;
+				addresources[i].td = resources[i].td;
 				addresources[i].action = resources[i].action;
 				addresources[i].srcipv6 = resources[i].srcipv6;
 				addresources[i].srcipop = resources[i].srcipop;
@@ -1009,31 +1053,9 @@ public class nspbr6 extends base_resource
 	* Use this API to unset the properties of nspbr6 resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String name, String args[]) throws Exception {
-		nspbr6 unsetresource = new nspbr6();
-		unsetresource.name = name;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of nspbr6 resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, nspbr6 resource, String[] args) throws Exception{
 		nspbr6 unsetresource = new nspbr6();
 		unsetresource.name = resource.name;
-		unsetresource.srcipv6 = resource.srcipv6;
-		unsetresource.srcport = resource.srcport;
-		unsetresource.destipv6 = resource.destipv6;
-		unsetresource.destport = resource.destport;
-		unsetresource.srcmac = resource.srcmac;
-		unsetresource.protocol = resource.protocol;
-		unsetresource.Interface = resource.Interface;
-		unsetresource.vlan = resource.vlan;
-		unsetresource.msr = resource.msr;
-		unsetresource.monitor = resource.monitor;
-		unsetresource.nexthop = resource.nexthop;
-		unsetresource.nexthopvlan = resource.nexthopvlan;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -1065,18 +1087,6 @@ public class nspbr6 extends base_resource
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new nspbr6();
 				unsetresources[i].name = resources[i].name;
-				unsetresources[i].srcipv6 = resources[i].srcipv6;
-				unsetresources[i].srcport = resources[i].srcport;
-				unsetresources[i].destipv6 = resources[i].destipv6;
-				unsetresources[i].destport = resources[i].destport;
-				unsetresources[i].srcmac = resources[i].srcmac;
-				unsetresources[i].protocol = resources[i].protocol;
-				unsetresources[i].Interface = resources[i].Interface;
-				unsetresources[i].vlan = resources[i].vlan;
-				unsetresources[i].msr = resources[i].msr;
-				unsetresources[i].monitor = resources[i].monitor;
-				unsetresources[i].nexthop = resources[i].nexthop;
-				unsetresources[i].nexthopvlan = resources[i].nexthopvlan;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}
@@ -1367,7 +1377,6 @@ public class nspbr6 extends base_resource
 	public static class stateEnum {
 		public static final String ENABLED = "ENABLED";
 		public static final String DISABLED = "DISABLED";
-		public static final String REMOVED = "REMOVED";
 	}
 	public static class kernelstateEnum {
 		public static final String APPLIED = "APPLIED";

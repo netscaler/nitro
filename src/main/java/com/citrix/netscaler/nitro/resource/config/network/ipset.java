@@ -33,11 +33,12 @@ class ipset_response extends base_response
 public class ipset extends base_resource
 {
 	private String name;
+	private Long td;
 	private Long __count;
 
 	/**
 	* <pre>
-	* The name of the IP set.<br> Minimum length =  1
+	* Name for the IP set. Must begin with a letter, number, or the underscore character (_), and can consist of letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at sign (@), equals (=), colon (:), and underscore characters. Cannot be changed after the IP set is created. Choose a name that helps identify the IP set.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -46,11 +47,38 @@ public class ipset extends base_resource
 
 	/**
 	* <pre>
-	* The name of the IP set.<br> Minimum length =  1
+	* Name for the IP set. Must begin with a letter, number, or the underscore character (_), and can consist of letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at sign (@), equals (=), colon (:), and underscore characters. Cannot be changed after the IP set is created. Choose a name that helps identify the IP set.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
 		return this.name;
+	}
+
+	/**
+	* <pre>
+	* Traffic Domain Id.<br> Minimum value =  0<br> Maximum value =  4094
+	* </pre>
+	*/
+	public void set_td(long td) throws Exception {
+		this.td = new Long(td);
+	}
+
+	/**
+	* <pre>
+	* Traffic Domain Id.<br> Minimum value =  0<br> Maximum value =  4094
+	* </pre>
+	*/
+	public void set_td(Long td) throws Exception{
+		this.td = td;
+	}
+
+	/**
+	* <pre>
+	* Traffic Domain Id.<br> Minimum value =  0<br> Maximum value =  4094
+	* </pre>
+	*/
+	public Long get_td() throws Exception {
+		return this.td;
 	}
 
 	/**
@@ -93,6 +121,7 @@ public class ipset extends base_resource
 	public static base_response add(nitro_service client, ipset resource) throws Exception {
 		ipset addresource = new ipset();
 		addresource.name = resource.name;
+		addresource.td = resource.td;
 		return addresource.add_resource(client);
 	}
 
@@ -106,6 +135,7 @@ public class ipset extends base_resource
 			for (int i=0;i<resources.length;i++){
 				addresources[i] = new ipset();
 				addresources[i].name = resources[i].name;
+				addresources[i].td = resources[i].td;
 			}
 			result = add_bulk_request(client, addresources);
 		}

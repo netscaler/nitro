@@ -50,7 +50,7 @@ public class dnssoarec extends base_resource
 
 	/**
 	* <pre>
-	* The domain name for which the SOA record is added.<br> Minimum length =  1
+	* Domain name for which to add the SOA record.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_domain(String domain) throws Exception{
@@ -59,7 +59,7 @@ public class dnssoarec extends base_resource
 
 	/**
 	* <pre>
-	* The domain name for which the SOA record is added.<br> Minimum length =  1
+	* Domain name for which to add the SOA record.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_domain() throws Exception {
@@ -68,7 +68,7 @@ public class dnssoarec extends base_resource
 
 	/**
 	* <pre>
-	* The name of the origin server for the given domain.<br> Minimum length =  1
+	* Domain name of the name server that responds authoritatively for the domain.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_originserver(String originserver) throws Exception{
@@ -77,7 +77,7 @@ public class dnssoarec extends base_resource
 
 	/**
 	* <pre>
-	* The name of the origin server for the given domain.<br> Minimum length =  1
+	* Domain name of the name server that responds authoritatively for the domain.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_originserver() throws Exception {
@@ -86,7 +86,7 @@ public class dnssoarec extends base_resource
 
 	/**
 	* <pre>
-	* The contact person for this ADNS. Typically this is an email address for which the at sign (@) has been replaced by a period (.).<br> Minimum length =  1
+	* Email address of the contact to whom domain issues can be addressed. In the email address, replace the @ sign with a period (.). For example, enter domainadmin.example.com instead of domainadmin@example.com.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_contact(String contact) throws Exception{
@@ -95,7 +95,7 @@ public class dnssoarec extends base_resource
 
 	/**
 	* <pre>
-	* The contact person for this ADNS. Typically this is an email address for which the at sign (@) has been replaced by a period (.).<br> Minimum length =  1
+	* Email address of the contact to whom domain issues can be addressed. In the email address, replace the @ sign with a period (.). For example, enter domainadmin.example.com instead of domainadmin@example.com.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_contact() throws Exception {
@@ -104,7 +104,7 @@ public class dnssoarec extends base_resource
 
 	/**
 	* <pre>
-	* The secondary server uses this parameter to determine if it requires a zone transfer from the primary server. If the secondary server's number is lower than the primary's, the secondary server knows that its records are out of date. This parameter is not used by a primary server.<br> Default value: 100<br> Minimum value =  0<br> Maximum value =  4294967294
+	* The secondary server uses this parameter to determine whether it requires a zone transfer from the primary server.<br> Default value: 100<br> Minimum value =  0<br> Maximum value =  4294967294
 	* </pre>
 	*/
 	public void set_serial(long serial) throws Exception {
@@ -113,7 +113,7 @@ public class dnssoarec extends base_resource
 
 	/**
 	* <pre>
-	* The secondary server uses this parameter to determine if it requires a zone transfer from the primary server. If the secondary server's number is lower than the primary's, the secondary server knows that its records are out of date. This parameter is not used by a primary server.<br> Default value: 100<br> Minimum value =  0<br> Maximum value =  4294967294
+	* The secondary server uses this parameter to determine whether it requires a zone transfer from the primary server.<br> Default value: 100<br> Minimum value =  0<br> Maximum value =  4294967294
 	* </pre>
 	*/
 	public void set_serial(Long serial) throws Exception{
@@ -122,7 +122,7 @@ public class dnssoarec extends base_resource
 
 	/**
 	* <pre>
-	* The secondary server uses this parameter to determine if it requires a zone transfer from the primary server. If the secondary server's number is lower than the primary's, the secondary server knows that its records are out of date. This parameter is not used by a primary server.<br> Default value: 100<br> Minimum value =  0<br> Maximum value =  4294967294
+	* The secondary server uses this parameter to determine whether it requires a zone transfer from the primary server.<br> Default value: 100<br> Minimum value =  0<br> Maximum value =  4294967294
 	* </pre>
 	*/
 	public Long get_serial() throws Exception {
@@ -131,7 +131,7 @@ public class dnssoarec extends base_resource
 
 	/**
 	* <pre>
-	* The number of seconds between a successful serial number check on the primary server's zone, and the next attempt. It is usually 2-24 hours. This value is not used by a primary server.<br> Default value: 3600<br> Minimum value =  0<br> Maximum value =  4294967294
+	* Time, in seconds, for which a secondary server must wait between successive checks on the value of the serial number.<br> Default value: 3600<br> Minimum value =  0<br> Maximum value =  4294967294
 	* </pre>
 	*/
 	public void set_refresh(long refresh) throws Exception {
@@ -140,7 +140,7 @@ public class dnssoarec extends base_resource
 
 	/**
 	* <pre>
-	* The number of seconds between a successful serial number check on the primary server's zone, and the next attempt. It is usually 2-24 hours. This value is not used by a primary server.<br> Default value: 3600<br> Minimum value =  0<br> Maximum value =  4294967294
+	* Time, in seconds, for which a secondary server must wait between successive checks on the value of the serial number.<br> Default value: 3600<br> Minimum value =  0<br> Maximum value =  4294967294
 	* </pre>
 	*/
 	public void set_refresh(Long refresh) throws Exception{
@@ -149,7 +149,7 @@ public class dnssoarec extends base_resource
 
 	/**
 	* <pre>
-	* The number of seconds between a successful serial number check on the primary server's zone, and the next attempt. It is usually 2-24 hours. This value is not used by a primary server.<br> Default value: 3600<br> Minimum value =  0<br> Maximum value =  4294967294
+	* Time, in seconds, for which a secondary server must wait between successive checks on the value of the serial number.<br> Default value: 3600<br> Minimum value =  0<br> Maximum value =  4294967294
 	* </pre>
 	*/
 	public Long get_refresh() throws Exception {
@@ -158,7 +158,7 @@ public class dnssoarec extends base_resource
 
 	/**
 	* <pre>
-	* When a refresh attempt fails, a server will retry after the specified number of seconds. This parameter is not used by a primary server.<br> Default value: 3<br> Minimum value =  0<br> Maximum value =  4294967294
+	* Time, in seconds, between retries if a secondary server's attempt to contact the primary server for a zone refresh fails.<br> Default value: 3<br> Minimum value =  0<br> Maximum value =  4294967294
 	* </pre>
 	*/
 	public void set_retry(long retry) throws Exception {
@@ -167,7 +167,7 @@ public class dnssoarec extends base_resource
 
 	/**
 	* <pre>
-	* When a refresh attempt fails, a server will retry after the specified number of seconds. This parameter is not used by a primary server.<br> Default value: 3<br> Minimum value =  0<br> Maximum value =  4294967294
+	* Time, in seconds, between retries if a secondary server's attempt to contact the primary server for a zone refresh fails.<br> Default value: 3<br> Minimum value =  0<br> Maximum value =  4294967294
 	* </pre>
 	*/
 	public void set_retry(Long retry) throws Exception{
@@ -176,7 +176,7 @@ public class dnssoarec extends base_resource
 
 	/**
 	* <pre>
-	* When a refresh attempt fails, a server will retry after the specified number of seconds. This parameter is not used by a primary server.<br> Default value: 3<br> Minimum value =  0<br> Maximum value =  4294967294
+	* Time, in seconds, between retries if a secondary server's attempt to contact the primary server for a zone refresh fails.<br> Default value: 3<br> Minimum value =  0<br> Maximum value =  4294967294
 	* </pre>
 	*/
 	public Long get_retry() throws Exception {
@@ -185,7 +185,7 @@ public class dnssoarec extends base_resource
 
 	/**
 	* <pre>
-	* Measured in seconds. If the refresh and retry attempts fail after the specified number of seconds, the server will stop serving the zone. The typical value is 1 week. This parameter is not used by a primary server.<br> Default value: 3600<br> Minimum value =  0<br> Maximum value =  4294967294
+	* Time, in seconds, after which the zone data on a secondary name server can no longer be considered authoritative because all refresh and retry attempts made during the period have failed. After the expiry period, the secondary server stops serving the zone. Typically one week. Not used by the primary server.<br> Default value: 3600<br> Minimum value =  0<br> Maximum value =  4294967294
 	* </pre>
 	*/
 	public void set_expire(long expire) throws Exception {
@@ -194,7 +194,7 @@ public class dnssoarec extends base_resource
 
 	/**
 	* <pre>
-	* Measured in seconds. If the refresh and retry attempts fail after the specified number of seconds, the server will stop serving the zone. The typical value is 1 week. This parameter is not used by a primary server.<br> Default value: 3600<br> Minimum value =  0<br> Maximum value =  4294967294
+	* Time, in seconds, after which the zone data on a secondary name server can no longer be considered authoritative because all refresh and retry attempts made during the period have failed. After the expiry period, the secondary server stops serving the zone. Typically one week. Not used by the primary server.<br> Default value: 3600<br> Minimum value =  0<br> Maximum value =  4294967294
 	* </pre>
 	*/
 	public void set_expire(Long expire) throws Exception{
@@ -203,7 +203,7 @@ public class dnssoarec extends base_resource
 
 	/**
 	* <pre>
-	* Measured in seconds. If the refresh and retry attempts fail after the specified number of seconds, the server will stop serving the zone. The typical value is 1 week. This parameter is not used by a primary server.<br> Default value: 3600<br> Minimum value =  0<br> Maximum value =  4294967294
+	* Time, in seconds, after which the zone data on a secondary name server can no longer be considered authoritative because all refresh and retry attempts made during the period have failed. After the expiry period, the secondary server stops serving the zone. Typically one week. Not used by the primary server.<br> Default value: 3600<br> Minimum value =  0<br> Maximum value =  4294967294
 	* </pre>
 	*/
 	public Long get_expire() throws Exception {
@@ -212,7 +212,7 @@ public class dnssoarec extends base_resource
 
 	/**
 	* <pre>
-	* The default TTL for every record in the zone. You can override this value for a particular record. Typical values range from eight hours to four days. This value is often set at ten minutes or less when changes are being made to a zone.<br> Default value: 5<br> Minimum value =  0<br> Maximum value =  2147483647
+	* Default time to live (TTL) for all records in the zone. Can be overridden for individual records.<br> Default value: 5<br> Minimum value =  0<br> Maximum value =  2147483647
 	* </pre>
 	*/
 	public void set_minimum(long minimum) throws Exception {
@@ -221,7 +221,7 @@ public class dnssoarec extends base_resource
 
 	/**
 	* <pre>
-	* The default TTL for every record in the zone. You can override this value for a particular record. Typical values range from eight hours to four days. This value is often set at ten minutes or less when changes are being made to a zone.<br> Default value: 5<br> Minimum value =  0<br> Maximum value =  2147483647
+	* Default time to live (TTL) for all records in the zone. Can be overridden for individual records.<br> Default value: 5<br> Minimum value =  0<br> Maximum value =  2147483647
 	* </pre>
 	*/
 	public void set_minimum(Long minimum) throws Exception{
@@ -230,7 +230,7 @@ public class dnssoarec extends base_resource
 
 	/**
 	* <pre>
-	* The default TTL for every record in the zone. You can override this value for a particular record. Typical values range from eight hours to four days. This value is often set at ten minutes or less when changes are being made to a zone.<br> Default value: 5<br> Minimum value =  0<br> Maximum value =  2147483647
+	* Default time to live (TTL) for all records in the zone. Can be overridden for individual records.<br> Default value: 5<br> Minimum value =  0<br> Maximum value =  2147483647
 	* </pre>
 	*/
 	public Long get_minimum() throws Exception {
@@ -239,7 +239,7 @@ public class dnssoarec extends base_resource
 
 	/**
 	* <pre>
-	* The time to live, in seconds.<br> Default value: 3600<br> Minimum value =  0<br> Maximum value =  2147483647
+	* Time to Live (TTL), in seconds, for the record. TTL is the time for which the record must be cached by DNS proxies. The specified TTL is applied to all the resource records that are of the same record type and belong to the specified domain name. For example, if you add an address record, with a TTL of 36000, to the domain name example.com, the TTLs of all the address records of example.com are changed to 36000. If the TTL is not specified, the NetScaler appliance uses either the DNS zone's minimum TTL or, if the SOA record is not available on the appliance, the default value of 3600.<br> Default value: 3600<br> Minimum value =  0<br> Maximum value =  2147483647
 	* </pre>
 	*/
 	public void set_ttl(long ttl) throws Exception {
@@ -248,7 +248,7 @@ public class dnssoarec extends base_resource
 
 	/**
 	* <pre>
-	* The time to live, in seconds.<br> Default value: 3600<br> Minimum value =  0<br> Maximum value =  2147483647
+	* Time to Live (TTL), in seconds, for the record. TTL is the time for which the record must be cached by DNS proxies. The specified TTL is applied to all the resource records that are of the same record type and belong to the specified domain name. For example, if you add an address record, with a TTL of 36000, to the domain name example.com, the TTLs of all the address records of example.com are changed to 36000. If the TTL is not specified, the NetScaler appliance uses either the DNS zone's minimum TTL or, if the SOA record is not available on the appliance, the default value of 3600.<br> Default value: 3600<br> Minimum value =  0<br> Maximum value =  2147483647
 	* </pre>
 	*/
 	public void set_ttl(Long ttl) throws Exception{
@@ -257,7 +257,7 @@ public class dnssoarec extends base_resource
 
 	/**
 	* <pre>
-	* The time to live, in seconds.<br> Default value: 3600<br> Minimum value =  0<br> Maximum value =  2147483647
+	* Time to Live (TTL), in seconds, for the record. TTL is the time for which the record must be cached by DNS proxies. The specified TTL is applied to all the resource records that are of the same record type and belong to the specified domain name. For example, if you add an address record, with a TTL of 36000, to the domain name example.com, the TTLs of all the address records of example.com are changed to 36000. If the TTL is not specified, the NetScaler appliance uses either the DNS zone's minimum TTL or, if the SOA record is not available on the appliance, the default value of 3600.<br> Default value: 3600<br> Minimum value =  0<br> Maximum value =  2147483647
 	* </pre>
 	*/
 	public Long get_ttl() throws Exception {
@@ -266,10 +266,10 @@ public class dnssoarec extends base_resource
 
 	/**
 	* <pre>
-	* The SOA record type. The type can take 3 values :
-ADNS -  If this is specified, all of the authoritative SOA records will be displayed.
-PROXY - If this is specified, all the proxy SOA records will be displayed.
-ALL  -  If this is specified, all the SOA records will be displayed.<br> Possible values = ALL, ADNS, PROXY
+	* Type of records to display. Available settings function as follows:
+* ADNS - Display all authoritative address records.
+* PROXY - Display all proxy address records.
+* ALL - Display all address records.<br> Possible values = ALL, ADNS, PROXY
 	* </pre>
 	*/
 	public void set_type(String type) throws Exception{
@@ -278,10 +278,10 @@ ALL  -  If this is specified, all the SOA records will be displayed.<br> Possibl
 
 	/**
 	* <pre>
-	* The SOA record type. The type can take 3 values :
-ADNS -  If this is specified, all of the authoritative SOA records will be displayed.
-PROXY - If this is specified, all the proxy SOA records will be displayed.
-ALL  -  If this is specified, all the SOA records will be displayed.<br> Possible values = ALL, ADNS, PROXY
+	* Type of records to display. Available settings function as follows:
+* ADNS - Display all authoritative address records.
+* PROXY - Display all proxy address records.
+* ALL - Display all address records.<br> Possible values = ALL, ADNS, PROXY
 	* </pre>
 	*/
 	public String get_type() throws Exception {
@@ -467,25 +467,9 @@ ALL  -  If this is specified, all the SOA records will be displayed.<br> Possibl
 	* Use this API to unset the properties of dnssoarec resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String domain, String args[]) throws Exception {
-		dnssoarec unsetresource = new dnssoarec();
-		unsetresource.domain = domain;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of dnssoarec resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, dnssoarec resource, String[] args) throws Exception{
 		dnssoarec unsetresource = new dnssoarec();
 		unsetresource.domain = resource.domain;
-		unsetresource.serial = resource.serial;
-		unsetresource.refresh = resource.refresh;
-		unsetresource.retry = resource.retry;
-		unsetresource.expire = resource.expire;
-		unsetresource.minimum = resource.minimum;
-		unsetresource.ttl = resource.ttl;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -517,12 +501,6 @@ ALL  -  If this is specified, all the SOA records will be displayed.<br> Possibl
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new dnssoarec();
 				unsetresources[i].domain = resources[i].domain;
-				unsetresources[i].serial = resources[i].serial;
-				unsetresources[i].refresh = resources[i].refresh;
-				unsetresources[i].retry = resources[i].retry;
-				unsetresources[i].expire = resources[i].expire;
-				unsetresources[i].minimum = resources[i].minimum;
-				unsetresources[i].ttl = resources[i].ttl;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}

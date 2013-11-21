@@ -40,7 +40,7 @@ public class vpnnexthopserver extends base_resource
 
 	/**
 	* <pre>
-	* Configures new vpn next hop server.<br> Minimum length =  1
+	* Name for the Access Gateway appliance in the first DMZ.<br> Minimum length =  1<br> Maximum length =  32
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -49,7 +49,7 @@ public class vpnnexthopserver extends base_resource
 
 	/**
 	* <pre>
-	* Configures new vpn next hop server.<br> Minimum length =  1
+	* Name for the Access Gateway appliance in the first DMZ.<br> Minimum length =  1<br> Maximum length =  32
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -58,7 +58,7 @@ public class vpnnexthopserver extends base_resource
 
 	/**
 	* <pre>
-	* Configures next hop IP address.
+	* IP address or FQDN of the Access Gateway proxy in the second DMZ.
 	* </pre>
 	*/
 	public void set_nexthopip(String nexthopip) throws Exception{
@@ -67,7 +67,7 @@ public class vpnnexthopserver extends base_resource
 
 	/**
 	* <pre>
-	* Configures next hop IP address.
+	* IP address or FQDN of the Access Gateway proxy in the second DMZ.
 	* </pre>
 	*/
 	public String get_nexthopip() throws Exception {
@@ -76,7 +76,7 @@ public class vpnnexthopserver extends base_resource
 
 	/**
 	* <pre>
-	* Configures next hop port number.
+	* Port number of the Access Gateway proxy in the second DMZ.
 	* </pre>
 	*/
 	public void set_nexthopport(int nexthopport) throws Exception {
@@ -85,7 +85,7 @@ public class vpnnexthopserver extends base_resource
 
 	/**
 	* <pre>
-	* Configures next hop port number.
+	* Port number of the Access Gateway proxy in the second DMZ.
 	* </pre>
 	*/
 	public void set_nexthopport(Integer nexthopport) throws Exception{
@@ -94,7 +94,7 @@ public class vpnnexthopserver extends base_resource
 
 	/**
 	* <pre>
-	* Configures next hop port number.
+	* Port number of the Access Gateway proxy in the second DMZ.
 	* </pre>
 	*/
 	public Integer get_nexthopport() throws Exception {
@@ -103,7 +103,7 @@ public class vpnnexthopserver extends base_resource
 
 	/**
 	* <pre>
-	* Configures next hop over secure connection.<br> Default value: OFF<br> Possible values = ON, OFF
+	* Use of a secure port, such as 443, for the double-hop configuration.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_secure(String secure) throws Exception{
@@ -112,7 +112,7 @@ public class vpnnexthopserver extends base_resource
 
 	/**
 	* <pre>
-	* Configures next hop over secure connection.<br> Default value: OFF<br> Possible values = ON, OFF
+	* Use of a secure port, such as 443, for the double-hop configuration.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_secure() throws Exception {

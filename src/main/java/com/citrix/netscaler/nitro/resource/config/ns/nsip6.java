@@ -35,6 +35,7 @@ public class nsip6 extends base_resource
 	private String ipv6address;
 	private String scope;
 	private String type;
+	private Long vlan;
 	private String nd;
 	private String icmp;
 	private String vserver;
@@ -55,6 +56,7 @@ public class nsip6 extends base_resource
 	private String state;
 	private String map;
 	private Long ownernode;
+	private Long td;
 
 	//------- Read only Parameter ---------;
 
@@ -68,7 +70,7 @@ public class nsip6 extends base_resource
 
 	/**
 	* <pre>
-	* The IPV6 address.<br> Minimum length =  1
+	* IPv6 address to create on the NetScaler appliance.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_ipv6address(String ipv6address) throws Exception{
@@ -77,7 +79,7 @@ public class nsip6 extends base_resource
 
 	/**
 	* <pre>
-	* The IPV6 address.<br> Minimum length =  1
+	* IPv6 address to create on the NetScaler appliance.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_ipv6address() throws Exception {
@@ -86,7 +88,7 @@ public class nsip6 extends base_resource
 
 	/**
 	* <pre>
-	* The scope of the IPV6 address.<br> Default value: NS_GLOBAL<br> Possible values = global, link-local
+	* Scope of the IPv6 address to be created. Cannot be changed after the IP address is created.<br> Default value: global<br> Possible values = global, link-local
 	* </pre>
 	*/
 	public void set_scope(String scope) throws Exception{
@@ -95,7 +97,7 @@ public class nsip6 extends base_resource
 
 	/**
 	* <pre>
-	* The scope of the IPV6 address.<br> Default value: NS_GLOBAL<br> Possible values = global, link-local
+	* Scope of the IPv6 address to be created. Cannot be changed after the IP address is created.<br> Default value: global<br> Possible values = global, link-local
 	* </pre>
 	*/
 	public String get_scope() throws Exception {
@@ -104,7 +106,7 @@ public class nsip6 extends base_resource
 
 	/**
 	* <pre>
-	* The type of the IPV6 address.<br> Default value: NS_IPV6_SNIP<br> Possible values = NSIP, VIP, SNIP, GSLBsiteIP, ADNSsvcIP, CLIP
+	* Type of IP address to be created on the NetScaler appliance. Cannot be changed after the IP address is created.<br> Default value: SNIP<br> Possible values = NSIP, VIP, SNIP, GSLBsiteIP, ADNSsvcIP, CLIP
 	* </pre>
 	*/
 	public void set_type(String type) throws Exception{
@@ -113,7 +115,7 @@ public class nsip6 extends base_resource
 
 	/**
 	* <pre>
-	* The type of the IPV6 address.<br> Default value: NS_IPV6_SNIP<br> Possible values = NSIP, VIP, SNIP, GSLBsiteIP, ADNSsvcIP, CLIP
+	* Type of IP address to be created on the NetScaler appliance. Cannot be changed after the IP address is created.<br> Default value: SNIP<br> Possible values = NSIP, VIP, SNIP, GSLBsiteIP, ADNSsvcIP, CLIP
 	* </pre>
 	*/
 	public String get_type() throws Exception {
@@ -122,7 +124,34 @@ public class nsip6 extends base_resource
 
 	/**
 	* <pre>
-	* Use this option to set (enable or disable) ND responses for the entity.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* The VLAN number.<br> Minimum value =  0<br> Maximum value =  4094
+	* </pre>
+	*/
+	public void set_vlan(long vlan) throws Exception {
+		this.vlan = new Long(vlan);
+	}
+
+	/**
+	* <pre>
+	* The VLAN number.<br> Minimum value =  0<br> Maximum value =  4094
+	* </pre>
+	*/
+	public void set_vlan(Long vlan) throws Exception{
+		this.vlan = vlan;
+	}
+
+	/**
+	* <pre>
+	* The VLAN number.<br> Minimum value =  0<br> Maximum value =  4094
+	* </pre>
+	*/
+	public Long get_vlan() throws Exception {
+		return this.vlan;
+	}
+
+	/**
+	* <pre>
+	* Respond to Neighbor Discovery (ND) requests for this IP address.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_nd(String nd) throws Exception{
@@ -131,7 +160,7 @@ public class nsip6 extends base_resource
 
 	/**
 	* <pre>
-	* Use this option to set (enable or disable) ND responses for the entity.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Respond to Neighbor Discovery (ND) requests for this IP address.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_nd() throws Exception {
@@ -140,7 +169,7 @@ public class nsip6 extends base_resource
 
 	/**
 	* <pre>
-	* Use this option to set (enable or disable) ICMP responses for the entity.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Respond to ICMP requests for this IP address.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_icmp(String icmp) throws Exception{
@@ -149,7 +178,7 @@ public class nsip6 extends base_resource
 
 	/**
 	* <pre>
-	* Use this option to set (enable or disable) ICMP responses for the entity.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Respond to ICMP requests for this IP address.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_icmp() throws Exception {
@@ -158,7 +187,7 @@ public class nsip6 extends base_resource
 
 	/**
 	* <pre>
-	* Use this option to set (enable or disable) the vserver attribute for this IP entity.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Enable or disable the state of all the virtual servers associated with this VIP6 address.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_vserver(String vserver) throws Exception{
@@ -167,7 +196,7 @@ public class nsip6 extends base_resource
 
 	/**
 	* <pre>
-	* Use this option to set (enable or disable) the vserver attribute for this IP entity.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Enable or disable the state of all the virtual servers associated with this VIP6 address.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_vserver() throws Exception {
@@ -176,7 +205,7 @@ public class nsip6 extends base_resource
 
 	/**
 	* <pre>
-	* Use this option to set (enable or disable) the state of telnet access to this IP entity.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Allow Telnet access to this IP address.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_telnet(String telnet) throws Exception{
@@ -185,7 +214,7 @@ public class nsip6 extends base_resource
 
 	/**
 	* <pre>
-	* Use this option to set (enable or disable) the state of telnet access to this IP entity.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Allow Telnet access to this IP address.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_telnet() throws Exception {
@@ -194,7 +223,7 @@ public class nsip6 extends base_resource
 
 	/**
 	* <pre>
-	* Use this option to set (enable or disable) the state of ftp access to this IP entity.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Allow File Transfer Protocol (FTP) access to this IP address.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_ftp(String ftp) throws Exception{
@@ -203,7 +232,7 @@ public class nsip6 extends base_resource
 
 	/**
 	* <pre>
-	* Use this option to set (enable or disable) the state of ftp access to this IP entity.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Allow File Transfer Protocol (FTP) access to this IP address.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_ftp() throws Exception {
@@ -212,7 +241,7 @@ public class nsip6 extends base_resource
 
 	/**
 	* <pre>
-	* Use this option to set (enable|Secureonly|disable) GUI access to this IP entity.<br> Default value: ENABLED<br> Possible values = ENABLED, SECUREONLY, DISABLED
+	* Allow graphical user interface (GUI) access to this IP address.<br> Default value: ENABLED<br> Possible values = ENABLED, SECUREONLY, DISABLED
 	* </pre>
 	*/
 	public void set_gui(String gui) throws Exception{
@@ -221,7 +250,7 @@ public class nsip6 extends base_resource
 
 	/**
 	* <pre>
-	* Use this option to set (enable|Secureonly|disable) GUI access to this IP entity.<br> Default value: ENABLED<br> Possible values = ENABLED, SECUREONLY, DISABLED
+	* Allow graphical user interface (GUI) access to this IP address.<br> Default value: ENABLED<br> Possible values = ENABLED, SECUREONLY, DISABLED
 	* </pre>
 	*/
 	public String get_gui() throws Exception {
@@ -230,7 +259,7 @@ public class nsip6 extends base_resource
 
 	/**
 	* <pre>
-	* Use this option to set (enable or disable) the state of SSH access to this IP entity.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Allow secure Shell (SSH) access to this IP address.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_ssh(String ssh) throws Exception{
@@ -239,7 +268,7 @@ public class nsip6 extends base_resource
 
 	/**
 	* <pre>
-	* Use this option to set (enable or disable) the state of SSH access to this IP entity.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Allow secure Shell (SSH) access to this IP address.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_ssh() throws Exception {
@@ -248,7 +277,7 @@ public class nsip6 extends base_resource
 
 	/**
 	* <pre>
-	* Use this option to set (enable or disable) the state of SNMP access to this IP entity.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Allow Simple Network Management Protocol (SNMP) access to this IP address.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_snmp(String snmp) throws Exception{
@@ -257,7 +286,7 @@ public class nsip6 extends base_resource
 
 	/**
 	* <pre>
-	* Use this option to set (enable or disable) the state of SNMP access to this IP entity.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Allow Simple Network Management Protocol (SNMP) access to this IP address.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_snmp() throws Exception {
@@ -266,7 +295,7 @@ public class nsip6 extends base_resource
 
 	/**
 	* <pre>
-	* Use this option to set (enable or disable) the state of management access to this IP entity.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Allow access to management applications on this IP address.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_mgmtaccess(String mgmtaccess) throws Exception{
@@ -275,7 +304,7 @@ public class nsip6 extends base_resource
 
 	/**
 	* <pre>
-	* Use this option to set (enable or disable) the state of management access to this IP entity.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Allow access to management applications on this IP address.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_mgmtaccess() throws Exception {
@@ -284,7 +313,7 @@ public class nsip6 extends base_resource
 
 	/**
 	* <pre>
-	* Enable or disable blocking of all ports not used for management access.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Block access to nonmanagement applications on this IP address. This option is applicable forMIP6s, SNIP6s, and NSIP6s, and is disabled by default. Nonmanagement applications can run on the underlying NetScaler Free BSD operating system.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_restrictaccess(String restrictaccess) throws Exception{
@@ -293,7 +322,7 @@ public class nsip6 extends base_resource
 
 	/**
 	* <pre>
-	* Enable or disable blocking of all ports not used for management access.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Block access to nonmanagement applications on this IP address. This option is applicable forMIP6s, SNIP6s, and NSIP6s, and is disabled by default. Nonmanagement applications can run on the underlying NetScaler Free BSD operating system.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_restrictaccess() throws Exception {
@@ -302,7 +331,7 @@ public class nsip6 extends base_resource
 
 	/**
 	* <pre>
-	* Use this option to enable or disable dynamic routing on this IP address for the entity.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Allow dynamic routing on the IP address. Specific to SNIP6 address.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_dynamicrouting(String dynamicrouting) throws Exception{
@@ -311,7 +340,7 @@ public class nsip6 extends base_resource
 
 	/**
 	* <pre>
-	* Use this option to enable or disable dynamic routing on this IP address for the entity.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Allow dynamic routing on the IP address. Specific to SNIP6 address.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_dynamicrouting() throws Exception {
@@ -320,7 +349,7 @@ public class nsip6 extends base_resource
 
 	/**
 	* <pre>
-	* The state of advertisement of a hostroute to this IPv6 entity.<br> Possible values = ENABLED, DISABLED
+	* Advertise a route for the VIP6 address by using the dynamic routing protocols running on the NetScaler appliance.<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_hostroute(String hostroute) throws Exception{
@@ -329,7 +358,7 @@ public class nsip6 extends base_resource
 
 	/**
 	* <pre>
-	* The state of advertisement of a hostroute to this IPv6 entity.<br> Possible values = ENABLED, DISABLED
+	* Advertise a route for the VIP6 address by using the dynamic routing protocols running on the NetScaler appliance.<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_hostroute() throws Exception {
@@ -338,7 +367,7 @@ public class nsip6 extends base_resource
 
 	/**
 	* <pre>
-	* The gateway for the hostroute to be advertised for this IPv6 entity.
+	* IPv6 address of the gateway for the route.
 	* </pre>
 	*/
 	public void set_ip6hostrtgw(String ip6hostrtgw) throws Exception{
@@ -347,7 +376,7 @@ public class nsip6 extends base_resource
 
 	/**
 	* <pre>
-	* The gateway for the hostroute to be advertised for this IPv6 entity.
+	* IPv6 address of the gateway for the route.
 	* </pre>
 	*/
 	public String get_ip6hostrtgw() throws Exception {
@@ -356,7 +385,7 @@ public class nsip6 extends base_resource
 
 	/**
 	* <pre>
-	* The metric value to be added or subtracted from the cost of the hostroute advertised for this IP entity.<br> Minimum value =  -16777215
+	* Integer value to add to or subtract from the cost of the route advertised for the VIP6 address.<br> Minimum value =  -16777215
 	* </pre>
 	*/
 	public void set_metric(int metric) throws Exception {
@@ -365,7 +394,7 @@ public class nsip6 extends base_resource
 
 	/**
 	* <pre>
-	* The metric value to be added or subtracted from the cost of the hostroute advertised for this IP entity.<br> Minimum value =  -16777215
+	* Integer value to add to or subtract from the cost of the route advertised for the VIP6 address.<br> Minimum value =  -16777215
 	* </pre>
 	*/
 	public void set_metric(Integer metric) throws Exception{
@@ -374,7 +403,7 @@ public class nsip6 extends base_resource
 
 	/**
 	* <pre>
-	* The metric value to be added or subtracted from the cost of the hostroute advertised for this IP entity.<br> Minimum value =  -16777215
+	* Integer value to add to or subtract from the cost of the route advertised for the VIP6 address.<br> Minimum value =  -16777215
 	* </pre>
 	*/
 	public Integer get_metric() throws Exception {
@@ -383,7 +412,10 @@ public class nsip6 extends base_resource
 
 	/**
 	* <pre>
-	* The state of per VIP RHI controls.<br> Default value: RHI_STATE_ONE<br> Possible values = ONE_VSERVER, ALL_VSERVERS, NONE
+	* Advertise or do not advertise the route for the Virtual IP (VIP6) address on the basis of the state of the virtual servers associated with that VIP6.
+* NONE - Advertise the route for the VIP6 address, irrespective of the state of the virtual servers associated with the address.
+* ONE VSERVER - Advertise the route for the VIP6 address if at least one of the associated virtual servers is in UP state.
+* ALL VSERVER - Advertise the route for the VIP6 address if all of the associated virtual servers are in UP state.<br> Default value: ONE_VSERVER<br> Possible values = ONE_VSERVER, ALL_VSERVERS, NONE
 	* </pre>
 	*/
 	public void set_vserverrhilevel(String vserverrhilevel) throws Exception{
@@ -392,7 +424,10 @@ public class nsip6 extends base_resource
 
 	/**
 	* <pre>
-	* The state of per VIP RHI controls.<br> Default value: RHI_STATE_ONE<br> Possible values = ONE_VSERVER, ALL_VSERVERS, NONE
+	* Advertise or do not advertise the route for the Virtual IP (VIP6) address on the basis of the state of the virtual servers associated with that VIP6.
+* NONE - Advertise the route for the VIP6 address, irrespective of the state of the virtual servers associated with the address.
+* ONE VSERVER - Advertise the route for the VIP6 address if at least one of the associated virtual servers is in UP state.
+* ALL VSERVER - Advertise the route for the VIP6 address if all of the associated virtual servers are in UP state.<br> Default value: ONE_VSERVER<br> Possible values = ONE_VSERVER, ALL_VSERVERS, NONE
 	* </pre>
 	*/
 	public String get_vserverrhilevel() throws Exception {
@@ -401,7 +436,7 @@ public class nsip6 extends base_resource
 
 	/**
 	* <pre>
-	* The OSPF6's route advertisement type.<br> Default value: DISABLED<br> Possible values = INTRA_AREA, EXTERNAL
+	* Type of LSAs to be used by the IPv6 OSPF protocol, running on the NetScaler appliance, for advertising the route for the VIP6 address.<br> Default value: EXTERNAL<br> Possible values = INTRA_AREA, EXTERNAL
 	* </pre>
 	*/
 	public void set_ospf6lsatype(String ospf6lsatype) throws Exception{
@@ -410,7 +445,7 @@ public class nsip6 extends base_resource
 
 	/**
 	* <pre>
-	* The OSPF6's route advertisement type.<br> Default value: DISABLED<br> Possible values = INTRA_AREA, EXTERNAL
+	* Type of LSAs to be used by the IPv6 OSPF protocol, running on the NetScaler appliance, for advertising the route for the VIP6 address.<br> Default value: EXTERNAL<br> Possible values = INTRA_AREA, EXTERNAL
 	* </pre>
 	*/
 	public String get_ospf6lsatype() throws Exception {
@@ -419,7 +454,7 @@ public class nsip6 extends base_resource
 
 	/**
 	* <pre>
-	* The area ID of the area in which OSPF intra area prefix LSAs should be advertised.<br> Default value: -1<br> Minimum value =  0<br> Maximum value =  4294967294LU
+	* ID of the area in which the Intra-Area-Prefix LSAs are to be advertised for the VIP6 address by the IPv6 OSPF protocol running on the NetScaler appliance.<br> Default value: -1<br> Minimum value =  0<br> Maximum value =  4294967294LU
 	* </pre>
 	*/
 	public void set_ospfarea(long ospfarea) throws Exception {
@@ -428,7 +463,7 @@ public class nsip6 extends base_resource
 
 	/**
 	* <pre>
-	* The area ID of the area in which OSPF intra area prefix LSAs should be advertised.<br> Default value: -1<br> Minimum value =  0<br> Maximum value =  4294967294LU
+	* ID of the area in which the Intra-Area-Prefix LSAs are to be advertised for the VIP6 address by the IPv6 OSPF protocol running on the NetScaler appliance.<br> Default value: -1<br> Minimum value =  0<br> Maximum value =  4294967294LU
 	* </pre>
 	*/
 	public void set_ospfarea(Long ospfarea) throws Exception{
@@ -437,7 +472,7 @@ public class nsip6 extends base_resource
 
 	/**
 	* <pre>
-	* The area ID of the area in which OSPF intra area prefix LSAs should be advertised.<br> Default value: -1<br> Minimum value =  0<br> Maximum value =  4294967294LU
+	* ID of the area in which the Intra-Area-Prefix LSAs are to be advertised for the VIP6 address by the IPv6 OSPF protocol running on the NetScaler appliance.<br> Default value: -1<br> Minimum value =  0<br> Maximum value =  4294967294LU
 	* </pre>
 	*/
 	public Long get_ospfarea() throws Exception {
@@ -446,7 +481,7 @@ public class nsip6 extends base_resource
 
 	/**
 	* <pre>
-	* Use this option to enable or disable the entity.<br> Default value: ENABLED<br> Possible values = DISABLED, ENABLED
+	* Enable or disable the IP address.<br> Default value: ENABLED<br> Possible values = DISABLED, ENABLED
 	* </pre>
 	*/
 	public void set_state(String state) throws Exception{
@@ -455,7 +490,7 @@ public class nsip6 extends base_resource
 
 	/**
 	* <pre>
-	* Use this option to enable or disable the entity.<br> Default value: ENABLED<br> Possible values = DISABLED, ENABLED
+	* Enable or disable the IP address.<br> Default value: ENABLED<br> Possible values = DISABLED, ENABLED
 	* </pre>
 	*/
 	public String get_state() throws Exception {
@@ -464,7 +499,7 @@ public class nsip6 extends base_resource
 
 	/**
 	* <pre>
-	* The mapped IPV4 address for IPV6.
+	* Mapped IPV4 address for the IPV6 address.
 	* </pre>
 	*/
 	public void set_map(String map) throws Exception{
@@ -473,7 +508,7 @@ public class nsip6 extends base_resource
 
 	/**
 	* <pre>
-	* The mapped IPV4 address for IPV6.
+	* Mapped IPV4 address for the IPV6 address.
 	* </pre>
 	*/
 	public String get_map() throws Exception {
@@ -482,7 +517,7 @@ public class nsip6 extends base_resource
 
 	/**
 	* <pre>
-	* The owner node in a Cluster for this IPv6 address.<br> Default value: 255
+	* ID of the cluster node for which you are adding the IP address. Must be used if you want the IP address to be active only on the specific node. Can be configured only through the cluster IP address. Cannot be changed after the IP address is created.<br> Default value: 255
 	* </pre>
 	*/
 	public void set_ownernode(long ownernode) throws Exception {
@@ -491,7 +526,7 @@ public class nsip6 extends base_resource
 
 	/**
 	* <pre>
-	* The owner node in a Cluster for this IPv6 address.<br> Default value: 255
+	* ID of the cluster node for which you are adding the IP address. Must be used if you want the IP address to be active only on the specific node. Can be configured only through the cluster IP address. Cannot be changed after the IP address is created.<br> Default value: 255
 	* </pre>
 	*/
 	public void set_ownernode(Long ownernode) throws Exception{
@@ -500,11 +535,38 @@ public class nsip6 extends base_resource
 
 	/**
 	* <pre>
-	* The owner node in a Cluster for this IPv6 address.<br> Default value: 255
+	* ID of the cluster node for which you are adding the IP address. Must be used if you want the IP address to be active only on the specific node. Can be configured only through the cluster IP address. Cannot be changed after the IP address is created.<br> Default value: 255
 	* </pre>
 	*/
 	public Long get_ownernode() throws Exception {
 		return this.ownernode;
+	}
+
+	/**
+	* <pre>
+	* Traffic Domain Id.<br> Minimum value =  0<br> Maximum value =  4094
+	* </pre>
+	*/
+	public void set_td(long td) throws Exception {
+		this.td = new Long(td);
+	}
+
+	/**
+	* <pre>
+	* Traffic Domain Id.<br> Minimum value =  0<br> Maximum value =  4094
+	* </pre>
+	*/
+	public void set_td(Long td) throws Exception{
+		this.td = td;
+	}
+
+	/**
+	* <pre>
+	* Traffic Domain Id.<br> Minimum value =  0<br> Maximum value =  4094
+	* </pre>
+	*/
+	public Long get_td() throws Exception {
+		return this.td;
 	}
 
 	/**
@@ -603,6 +665,7 @@ public class nsip6 extends base_resource
 		addresource.ipv6address = resource.ipv6address;
 		addresource.scope = resource.scope;
 		addresource.type = resource.type;
+		addresource.vlan = resource.vlan;
 		addresource.nd = resource.nd;
 		addresource.icmp = resource.icmp;
 		addresource.vserver = resource.vserver;
@@ -623,6 +686,7 @@ public class nsip6 extends base_resource
 		addresource.state = resource.state;
 		addresource.map = resource.map;
 		addresource.ownernode = resource.ownernode;
+		addresource.td = resource.td;
 		return addresource.add_resource(client);
 	}
 
@@ -638,6 +702,7 @@ public class nsip6 extends base_resource
 				addresources[i].ipv6address = resources[i].ipv6address;
 				addresources[i].scope = resources[i].scope;
 				addresources[i].type = resources[i].type;
+				addresources[i].vlan = resources[i].vlan;
 				addresources[i].nd = resources[i].nd;
 				addresources[i].icmp = resources[i].icmp;
 				addresources[i].vserver = resources[i].vserver;
@@ -658,6 +723,7 @@ public class nsip6 extends base_resource
 				addresources[i].state = resources[i].state;
 				addresources[i].map = resources[i].map;
 				addresources[i].ownernode = resources[i].ownernode;
+				addresources[i].td = resources[i].td;
 			}
 			result = add_bulk_request(client, addresources);
 		}
@@ -679,6 +745,7 @@ public class nsip6 extends base_resource
 	public static base_response delete(nitro_service client, nsip6 resource) throws Exception {
 		nsip6 deleteresource = new nsip6();
 		deleteresource.ipv6address = resource.ipv6address;
+		deleteresource.td = resource.td;
 		return deleteresource.delete_resource(client);
 	}
 
@@ -708,6 +775,7 @@ public class nsip6 extends base_resource
 			for (int i=0;i<resources.length;i++){
 				deleteresources[i] = new nsip6();
 				deleteresources[i].ipv6address = resources[i].ipv6address;
+				deleteresources[i].td = resources[i].td;
 			}
 			result = delete_bulk_request(client, deleteresources);
 		}
@@ -720,6 +788,7 @@ public class nsip6 extends base_resource
 	public static base_response update(nitro_service client, nsip6 resource) throws Exception {
 		nsip6 updateresource = new nsip6();
 		updateresource.ipv6address = resource.ipv6address;
+		updateresource.td = resource.td;
 		updateresource.nd = resource.nd;
 		updateresource.icmp = resource.icmp;
 		updateresource.vserver = resource.vserver;
@@ -752,6 +821,7 @@ public class nsip6 extends base_resource
 			for (int i=0;i<resources.length;i++){
 				updateresources[i] = new nsip6();
 				updateresources[i].ipv6address = resources[i].ipv6address;
+				updateresources[i].td = resources[i].td;
 				updateresources[i].nd = resources[i].nd;
 				updateresources[i].icmp = resources[i].icmp;
 				updateresources[i].vserver = resources[i].vserver;
@@ -781,38 +851,10 @@ public class nsip6 extends base_resource
 	* Use this API to unset the properties of nsip6 resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String ipv6address, String args[]) throws Exception {
-		nsip6 unsetresource = new nsip6();
-		unsetresource.ipv6address = ipv6address;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of nsip6 resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, nsip6 resource, String[] args) throws Exception{
 		nsip6 unsetresource = new nsip6();
 		unsetresource.ipv6address = resource.ipv6address;
-		unsetresource.nd = resource.nd;
-		unsetresource.icmp = resource.icmp;
-		unsetresource.vserver = resource.vserver;
-		unsetresource.telnet = resource.telnet;
-		unsetresource.ftp = resource.ftp;
-		unsetresource.gui = resource.gui;
-		unsetresource.ssh = resource.ssh;
-		unsetresource.snmp = resource.snmp;
-		unsetresource.mgmtaccess = resource.mgmtaccess;
-		unsetresource.restrictaccess = resource.restrictaccess;
-		unsetresource.state = resource.state;
-		unsetresource.map = resource.map;
-		unsetresource.dynamicrouting = resource.dynamicrouting;
-		unsetresource.hostroute = resource.hostroute;
-		unsetresource.ip6hostrtgw = resource.ip6hostrtgw;
-		unsetresource.metric = resource.metric;
-		unsetresource.vserverrhilevel = resource.vserverrhilevel;
-		unsetresource.ospf6lsatype = resource.ospf6lsatype;
-		unsetresource.ospfarea = resource.ospfarea;
+		unsetresource.td = resource.td;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -844,25 +886,7 @@ public class nsip6 extends base_resource
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new nsip6();
 				unsetresources[i].ipv6address = resources[i].ipv6address;
-				unsetresources[i].nd = resources[i].nd;
-				unsetresources[i].icmp = resources[i].icmp;
-				unsetresources[i].vserver = resources[i].vserver;
-				unsetresources[i].telnet = resources[i].telnet;
-				unsetresources[i].ftp = resources[i].ftp;
-				unsetresources[i].gui = resources[i].gui;
-				unsetresources[i].ssh = resources[i].ssh;
-				unsetresources[i].snmp = resources[i].snmp;
-				unsetresources[i].mgmtaccess = resources[i].mgmtaccess;
-				unsetresources[i].restrictaccess = resources[i].restrictaccess;
-				unsetresources[i].state = resources[i].state;
-				unsetresources[i].map = resources[i].map;
-				unsetresources[i].dynamicrouting = resources[i].dynamicrouting;
-				unsetresources[i].hostroute = resources[i].hostroute;
-				unsetresources[i].ip6hostrtgw = resources[i].ip6hostrtgw;
-				unsetresources[i].metric = resources[i].metric;
-				unsetresources[i].vserverrhilevel = resources[i].vserverrhilevel;
-				unsetresources[i].ospf6lsatype = resources[i].ospf6lsatype;
-				unsetresources[i].ospfarea = resources[i].ospfarea;
+				unsetresources[i].td = resources[i].td;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}
@@ -886,26 +910,25 @@ public class nsip6 extends base_resource
 		return response;
 	}
 	/**
-	* Use this API to fetch nsip6 resource of given name .
+	* Use this API to fetch a nsip6 resource.
 	*/
-	public static nsip6 get(nitro_service service, String ipv6address) throws Exception{
-		nsip6 obj = new nsip6();
-		obj.set_ipv6address(ipv6address);
-		nsip6 response = (nsip6) obj.get_resource(service);
+	public static nsip6 get(nitro_service service, nsip6 obj) throws Exception{
+		options option = new options();
+		option.set_args(nitro_util.object_to_string_withoutquotes(obj));
+		nsip6 response = (nsip6) obj.get_resource(service,option);
 		return response;
 	}
 
 	/**
-	* Use this API to fetch nsip6 resources of given names .
+	* Use this API to fetch a nsip6 resources.
 	*/
-	public static nsip6[] get(nitro_service service, String ipv6address[]) throws Exception{
-		if (ipv6address !=null && ipv6address.length>0) {
-			nsip6 response[] = new nsip6[ipv6address.length];
-			nsip6 obj[] = new nsip6[ipv6address.length];
-			for (int i=0;i<ipv6address.length;i++) {
-				obj[i] = new nsip6();
-				obj[i].set_ipv6address(ipv6address[i]);
-				response[i] = (nsip6) obj[i].get_resource(service);
+	public static nsip6[] get(nitro_service service, nsip6 obj[]) throws Exception{
+		if (obj != null && obj.length > 0) {
+			nsip6 response[] = new nsip6[obj.length];
+			for (int i=0;i<obj.length;i++) {
+				options option = new options();
+				option.set_args(nitro_util.object_to_string_withoutquotes(obj[i]));
+				response[i] = (nsip6) obj[i].get_resource(service,option);
 			}
 			return response;
 		}

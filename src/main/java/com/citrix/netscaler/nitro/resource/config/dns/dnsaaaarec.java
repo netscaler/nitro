@@ -45,7 +45,7 @@ public class dnsaaaarec extends base_resource
 
 	/**
 	* <pre>
-	* The domain name for which the address record is added.<br> Minimum length =  1
+	* Domain name.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_hostname(String hostname) throws Exception{
@@ -54,7 +54,7 @@ public class dnsaaaarec extends base_resource
 
 	/**
 	* <pre>
-	* The domain name for which the address record is added.<br> Minimum length =  1
+	* Domain name.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_hostname() throws Exception {
@@ -63,7 +63,7 @@ public class dnsaaaarec extends base_resource
 
 	/**
 	* <pre>
-	* Specify one or more IP addresses for the domain name.<br> Minimum length =  1
+	* One or more IPv6 addresses to assign to the domain name.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_ipv6address(String ipv6address) throws Exception{
@@ -72,7 +72,7 @@ public class dnsaaaarec extends base_resource
 
 	/**
 	* <pre>
-	* Specify one or more IP addresses for the domain name.<br> Minimum length =  1
+	* One or more IPv6 addresses to assign to the domain name.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_ipv6address() throws Exception {
@@ -81,7 +81,7 @@ public class dnsaaaarec extends base_resource
 
 	/**
 	* <pre>
-	* Specify the time to live, in seconds.<br> Default value: 3600<br> Minimum value =  0<br> Maximum value =  2147483647
+	* Time to Live (TTL), in seconds, for the record. TTL is the time for which the record must be cached by DNS proxies. The specified TTL is applied to all the resource records that are of the same record type and belong to the specified domain name. For example, if you add an address record, with a TTL of 36000, to the domain name example.com, the TTLs of all the address records of example.com are changed to 36000. If the TTL is not specified, the NetScaler appliance uses either the DNS zone's minimum TTL or, if the SOA record is not available on the appliance, the default value of 3600.<br> Default value: 3600<br> Minimum value =  0<br> Maximum value =  2147483647
 	* </pre>
 	*/
 	public void set_ttl(long ttl) throws Exception {
@@ -90,7 +90,7 @@ public class dnsaaaarec extends base_resource
 
 	/**
 	* <pre>
-	* Specify the time to live, in seconds.<br> Default value: 3600<br> Minimum value =  0<br> Maximum value =  2147483647
+	* Time to Live (TTL), in seconds, for the record. TTL is the time for which the record must be cached by DNS proxies. The specified TTL is applied to all the resource records that are of the same record type and belong to the specified domain name. For example, if you add an address record, with a TTL of 36000, to the domain name example.com, the TTLs of all the address records of example.com are changed to 36000. If the TTL is not specified, the NetScaler appliance uses either the DNS zone's minimum TTL or, if the SOA record is not available on the appliance, the default value of 3600.<br> Default value: 3600<br> Minimum value =  0<br> Maximum value =  2147483647
 	* </pre>
 	*/
 	public void set_ttl(Long ttl) throws Exception{
@@ -99,7 +99,7 @@ public class dnsaaaarec extends base_resource
 
 	/**
 	* <pre>
-	* Specify the time to live, in seconds.<br> Default value: 3600<br> Minimum value =  0<br> Maximum value =  2147483647
+	* Time to Live (TTL), in seconds, for the record. TTL is the time for which the record must be cached by DNS proxies. The specified TTL is applied to all the resource records that are of the same record type and belong to the specified domain name. For example, if you add an address record, with a TTL of 36000, to the domain name example.com, the TTLs of all the address records of example.com are changed to 36000. If the TTL is not specified, the NetScaler appliance uses either the DNS zone's minimum TTL or, if the SOA record is not available on the appliance, the default value of 3600.<br> Default value: 3600<br> Minimum value =  0<br> Maximum value =  2147483647
 	* </pre>
 	*/
 	public Long get_ttl() throws Exception {
@@ -108,10 +108,10 @@ public class dnsaaaarec extends base_resource
 
 	/**
 	* <pre>
-	* Specify the address record type. The record type can take 3 values:
-ADNS -  If this is specified, all of the authoritative address records will be displayed.
-PROXY - If this is specified, all of the proxy address records will be displayed.
-ALL  -  If this is specified, all of the address records will be displayed.<br> Possible values = ALL, ADNS, PROXY
+	* Type of records to display. Available settings function as follows:
+* ADNS - Display all authoritative address records.
+* PROXY - Display all proxy address records.
+* ALL - Display all address records.<br> Possible values = ALL, ADNS, PROXY
 	* </pre>
 	*/
 	public void set_type(String type) throws Exception{
@@ -120,10 +120,10 @@ ALL  -  If this is specified, all of the address records will be displayed.<br> 
 
 	/**
 	* <pre>
-	* Specify the address record type. The record type can take 3 values:
-ADNS -  If this is specified, all of the authoritative address records will be displayed.
-PROXY - If this is specified, all of the proxy address records will be displayed.
-ALL  -  If this is specified, all of the address records will be displayed.<br> Possible values = ALL, ADNS, PROXY
+	* Type of records to display. Available settings function as follows:
+* ADNS - Display all authoritative address records.
+* PROXY - Display all proxy address records.
+* ALL - Display all address records.<br> Possible values = ALL, ADNS, PROXY
 	* </pre>
 	*/
 	public String get_type() throws Exception {

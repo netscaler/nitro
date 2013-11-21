@@ -47,7 +47,7 @@ public class snmpalarm extends base_resource
 
 	/**
 	* <pre>
-	* The name of the SNMP alarm. This parameter is required for identifying the SNMP alarm and cannot be modified.<br> Possible values = CPU-USAGE, AVERAGE-CPU, MEMORY, MGMT-CPU-USAGE, SYNFLOOD, VSERVER-REQRATE, SERVICE-REQRATE, ENTITY-RXRATE, ENTITY-TXRATE, ENTITY-SYNFLOOD, SERVICE-MAXCLIENTS, HA-STATE-CHANGE, ENTITY-STATE, CONFIG-CHANGE, CONFIG-SAVE, SERVICEGROUP-MEMBER-REQRATE, SERVICEGROUP-MEMBER-MAXCLIENTS, MONITOR-RTO-THRESHOLD, LOGIN-FAILURE, SSL-CERT-EXPIRY, FAN-SPEED-LOW, VOLTAGE-LOW, VOLTAGE-HIGH, TEMPERATURE-HIGH, CPU-TEMPERATURE-HIGH, POWER-SUPPLY-FAILURE, DISK-USAGE-HIGH, INTERFACE-THROUGHPUT-LOW, MON_PROBE_FAILED, HA-VERSION-MISMATCH, HA-SYNC-FAILURE, HA-NO-HEARTBEATS, HA-BAD-SECONDARY-STATE, INTERFACE-BW-USAGE, RATE-LIMIT-THRESHOLD-EXCEEDED, ENTITY-NAME-CHANGE, HA-PROP-FAILURE, IP-CONFLICT, PF-RL-RATE-THRESHOLD, PF-RL-PPS-THRESHOLD, PF-RL-RATE-PKTS-DROPPED, PF-RL-PPS-PKTS-DROPPED, APPFW-START-URL, APPFW-DENY-URL, APPFW-REFERER-HEADER, APPFW-CSRF-TAG, APPFW-COOKIE, APPFW-FIELD-CONSISTENCY, APPFW-BUFFER-OVERFLOW, APPFW-FIELD-FORMAT, APPFW-SAFE-COMMERCE, APPFW-SAFE-OBJECT, APPFW-POLICY-HIT, APPFW-XSS, APPFW-XML-XSS, APPFW-SQL, APPFW-XML-SQL, APPFW-XML-ATTACHMENT, APPFW-XML-DOS, APPFW-XML-VALIDATION, APPFW-XML-WSI, APPFW-XML-SCHEMA-COMPILE, APPFW-XML-SOAP-FAULT, DNSKEY-EXPIRY, DATASTREAM-RATE-LIMIT-HIT, HA-LICENSE-MISMATCH, SSL-CARD-FAILED, SSL-CARD-NORMAL, WARM-RESTART-EVENT, HARD-DISK-DRIVE-ERRORS, COMPACT-FLASH-ERRORS, CALLHOME-UPLOAD-EVENT, 1024KEY-EXCHANGE-RATE, 2048KEY-EXCHANGE-RATE, 4096KEY-EXCHANGE-RATE, SSL-CUR-SESSION-INUSE, CLUSTER-NODE-HEALTH, CLUSTER-NODE-QUORUM, CLUSTER-VERSION-MISMATCH, CLUSTER-CCO-CHANGE, CLUSTER-OVS-CHANGE, CLUSTER-SYNC-FAILURE, CLUSTER-PROP-FAILURE
+	* Name of the SNMP alarm. This parameter is required for identifying the SNMP alarm and cannot be modified.<br> Possible values = CPU-USAGE, AVERAGE-CPU, MEMORY, MGMT-CPU-USAGE, SYNFLOOD, VSERVER-REQRATE, SERVICE-REQRATE, ENTITY-RXRATE, ENTITY-TXRATE, ENTITY-SYNFLOOD, SERVICE-MAXCLIENTS, HA-STATE-CHANGE, ENTITY-STATE, CONFIG-CHANGE, CONFIG-SAVE, SERVICEGROUP-MEMBER-REQRATE, SERVICEGROUP-MEMBER-MAXCLIENTS, MONITOR-RTO-THRESHOLD, LOGIN-FAILURE, SSL-CERT-EXPIRY, FAN-SPEED-LOW, VOLTAGE-LOW, VOLTAGE-HIGH, TEMPERATURE-HIGH, CPU-TEMPERATURE-HIGH, POWER-SUPPLY-FAILURE, DISK-USAGE-HIGH, INTERFACE-THROUGHPUT-LOW, MON_PROBE_FAILED, HA-VERSION-MISMATCH, HA-SYNC-FAILURE, HA-NO-HEARTBEATS, HA-BAD-SECONDARY-STATE, INTERFACE-BW-USAGE, RATE-LIMIT-THRESHOLD-EXCEEDED, ENTITY-NAME-CHANGE, HA-PROP-FAILURE, IP-CONFLICT, PF-RL-RATE-THRESHOLD, PF-RL-PPS-THRESHOLD, PF-RL-RATE-PKTS-DROPPED, PF-RL-PPS-PKTS-DROPPED, APPFW-START-URL, APPFW-DENY-URL, APPFW-VIOLATIONS-TYPE, APPFW-REFERER-HEADER, APPFW-CSRF-TAG, APPFW-COOKIE, APPFW-FIELD-CONSISTENCY, APPFW-BUFFER-OVERFLOW, APPFW-FIELD-FORMAT, APPFW-SAFE-COMMERCE, APPFW-SAFE-OBJECT, APPFW-POLICY-HIT, APPFW-XSS, APPFW-XML-XSS, APPFW-SQL, APPFW-XML-SQL, APPFW-XML-ATTACHMENT, APPFW-XML-DOS, APPFW-XML-VALIDATION, APPFW-XML-WSI, APPFW-XML-SCHEMA-COMPILE, APPFW-XML-SOAP-FAULT, DNSKEY-EXPIRY, DATASTREAM-RATE-LIMIT-HIT, HA-LICENSE-MISMATCH, SSL-CARD-FAILED, SSL-CARD-NORMAL, WARM-RESTART-EVENT, HARD-DISK-DRIVE-ERRORS, COMPACT-FLASH-ERRORS, CALLHOME-UPLOAD-EVENT, 1024KEY-EXCHANGE-RATE, 2048KEY-EXCHANGE-RATE, 4096KEY-EXCHANGE-RATE, SSL-CUR-SESSION-INUSE, CLUSTER-NODE-HEALTH, CLUSTER-NODE-QUORUM, CLUSTER-VERSION-MISMATCH, CLUSTER-CCO-CHANGE, CLUSTER-OVS-CHANGE, CLUSTER-SYNC-FAILURE, CLUSTER-PROP-FAILURE, HA-STICKY-PRIMARY, INBAND-PROTOCOL-VERSION-MISMATCH, SSL-CHIP-REINIT, VRID-STATE-CHANGE
 	* </pre>
 	*/
 	public void set_trapname(String trapname) throws Exception{
@@ -56,7 +56,7 @@ public class snmpalarm extends base_resource
 
 	/**
 	* <pre>
-	* The name of the SNMP alarm. This parameter is required for identifying the SNMP alarm and cannot be modified.<br> Possible values = CPU-USAGE, AVERAGE-CPU, MEMORY, MGMT-CPU-USAGE, SYNFLOOD, VSERVER-REQRATE, SERVICE-REQRATE, ENTITY-RXRATE, ENTITY-TXRATE, ENTITY-SYNFLOOD, SERVICE-MAXCLIENTS, HA-STATE-CHANGE, ENTITY-STATE, CONFIG-CHANGE, CONFIG-SAVE, SERVICEGROUP-MEMBER-REQRATE, SERVICEGROUP-MEMBER-MAXCLIENTS, MONITOR-RTO-THRESHOLD, LOGIN-FAILURE, SSL-CERT-EXPIRY, FAN-SPEED-LOW, VOLTAGE-LOW, VOLTAGE-HIGH, TEMPERATURE-HIGH, CPU-TEMPERATURE-HIGH, POWER-SUPPLY-FAILURE, DISK-USAGE-HIGH, INTERFACE-THROUGHPUT-LOW, MON_PROBE_FAILED, HA-VERSION-MISMATCH, HA-SYNC-FAILURE, HA-NO-HEARTBEATS, HA-BAD-SECONDARY-STATE, INTERFACE-BW-USAGE, RATE-LIMIT-THRESHOLD-EXCEEDED, ENTITY-NAME-CHANGE, HA-PROP-FAILURE, IP-CONFLICT, PF-RL-RATE-THRESHOLD, PF-RL-PPS-THRESHOLD, PF-RL-RATE-PKTS-DROPPED, PF-RL-PPS-PKTS-DROPPED, APPFW-START-URL, APPFW-DENY-URL, APPFW-REFERER-HEADER, APPFW-CSRF-TAG, APPFW-COOKIE, APPFW-FIELD-CONSISTENCY, APPFW-BUFFER-OVERFLOW, APPFW-FIELD-FORMAT, APPFW-SAFE-COMMERCE, APPFW-SAFE-OBJECT, APPFW-POLICY-HIT, APPFW-XSS, APPFW-XML-XSS, APPFW-SQL, APPFW-XML-SQL, APPFW-XML-ATTACHMENT, APPFW-XML-DOS, APPFW-XML-VALIDATION, APPFW-XML-WSI, APPFW-XML-SCHEMA-COMPILE, APPFW-XML-SOAP-FAULT, DNSKEY-EXPIRY, DATASTREAM-RATE-LIMIT-HIT, HA-LICENSE-MISMATCH, SSL-CARD-FAILED, SSL-CARD-NORMAL, WARM-RESTART-EVENT, HARD-DISK-DRIVE-ERRORS, COMPACT-FLASH-ERRORS, CALLHOME-UPLOAD-EVENT, 1024KEY-EXCHANGE-RATE, 2048KEY-EXCHANGE-RATE, 4096KEY-EXCHANGE-RATE, SSL-CUR-SESSION-INUSE, CLUSTER-NODE-HEALTH, CLUSTER-NODE-QUORUM, CLUSTER-VERSION-MISMATCH, CLUSTER-CCO-CHANGE, CLUSTER-OVS-CHANGE, CLUSTER-SYNC-FAILURE, CLUSTER-PROP-FAILURE
+	* Name of the SNMP alarm. This parameter is required for identifying the SNMP alarm and cannot be modified.<br> Possible values = CPU-USAGE, AVERAGE-CPU, MEMORY, MGMT-CPU-USAGE, SYNFLOOD, VSERVER-REQRATE, SERVICE-REQRATE, ENTITY-RXRATE, ENTITY-TXRATE, ENTITY-SYNFLOOD, SERVICE-MAXCLIENTS, HA-STATE-CHANGE, ENTITY-STATE, CONFIG-CHANGE, CONFIG-SAVE, SERVICEGROUP-MEMBER-REQRATE, SERVICEGROUP-MEMBER-MAXCLIENTS, MONITOR-RTO-THRESHOLD, LOGIN-FAILURE, SSL-CERT-EXPIRY, FAN-SPEED-LOW, VOLTAGE-LOW, VOLTAGE-HIGH, TEMPERATURE-HIGH, CPU-TEMPERATURE-HIGH, POWER-SUPPLY-FAILURE, DISK-USAGE-HIGH, INTERFACE-THROUGHPUT-LOW, MON_PROBE_FAILED, HA-VERSION-MISMATCH, HA-SYNC-FAILURE, HA-NO-HEARTBEATS, HA-BAD-SECONDARY-STATE, INTERFACE-BW-USAGE, RATE-LIMIT-THRESHOLD-EXCEEDED, ENTITY-NAME-CHANGE, HA-PROP-FAILURE, IP-CONFLICT, PF-RL-RATE-THRESHOLD, PF-RL-PPS-THRESHOLD, PF-RL-RATE-PKTS-DROPPED, PF-RL-PPS-PKTS-DROPPED, APPFW-START-URL, APPFW-DENY-URL, APPFW-VIOLATIONS-TYPE, APPFW-REFERER-HEADER, APPFW-CSRF-TAG, APPFW-COOKIE, APPFW-FIELD-CONSISTENCY, APPFW-BUFFER-OVERFLOW, APPFW-FIELD-FORMAT, APPFW-SAFE-COMMERCE, APPFW-SAFE-OBJECT, APPFW-POLICY-HIT, APPFW-XSS, APPFW-XML-XSS, APPFW-SQL, APPFW-XML-SQL, APPFW-XML-ATTACHMENT, APPFW-XML-DOS, APPFW-XML-VALIDATION, APPFW-XML-WSI, APPFW-XML-SCHEMA-COMPILE, APPFW-XML-SOAP-FAULT, DNSKEY-EXPIRY, DATASTREAM-RATE-LIMIT-HIT, HA-LICENSE-MISMATCH, SSL-CARD-FAILED, SSL-CARD-NORMAL, WARM-RESTART-EVENT, HARD-DISK-DRIVE-ERRORS, COMPACT-FLASH-ERRORS, CALLHOME-UPLOAD-EVENT, 1024KEY-EXCHANGE-RATE, 2048KEY-EXCHANGE-RATE, 4096KEY-EXCHANGE-RATE, SSL-CUR-SESSION-INUSE, CLUSTER-NODE-HEALTH, CLUSTER-NODE-QUORUM, CLUSTER-VERSION-MISMATCH, CLUSTER-CCO-CHANGE, CLUSTER-OVS-CHANGE, CLUSTER-SYNC-FAILURE, CLUSTER-PROP-FAILURE, HA-STICKY-PRIMARY, INBAND-PROTOCOL-VERSION-MISMATCH, SSL-CHIP-REINIT, VRID-STATE-CHANGE
 	* </pre>
 	*/
 	public String get_trapname() throws Exception {
@@ -65,7 +65,7 @@ public class snmpalarm extends base_resource
 
 	/**
 	* <pre>
-	* A value for the high threshold. The NetScaler appliance generates an SNMP trap message when the value of the respective entity is greater than or equal to the specified high threshold value.<br> Minimum value =  1
+	* Value for the high threshold. The NetScaler appliance generates an SNMP trap message when the value of the attribute associated with the alarm is greater than or equal to the specified high threshold value.<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_thresholdvalue(long thresholdvalue) throws Exception {
@@ -74,7 +74,7 @@ public class snmpalarm extends base_resource
 
 	/**
 	* <pre>
-	* A value for the high threshold. The NetScaler appliance generates an SNMP trap message when the value of the respective entity is greater than or equal to the specified high threshold value.<br> Minimum value =  1
+	* Value for the high threshold. The NetScaler appliance generates an SNMP trap message when the value of the attribute associated with the alarm is greater than or equal to the specified high threshold value.<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_thresholdvalue(Long thresholdvalue) throws Exception{
@@ -83,7 +83,7 @@ public class snmpalarm extends base_resource
 
 	/**
 	* <pre>
-	* A value for the high threshold. The NetScaler appliance generates an SNMP trap message when the value of the respective entity is greater than or equal to the specified high threshold value.<br> Minimum value =  1
+	* Value for the high threshold. The NetScaler appliance generates an SNMP trap message when the value of the attribute associated with the alarm is greater than or equal to the specified high threshold value.<br> Minimum value =  1
 	* </pre>
 	*/
 	public Long get_thresholdvalue() throws Exception {
@@ -92,7 +92,7 @@ public class snmpalarm extends base_resource
 
 	/**
 	* <pre>
-	* A value for the normal threshold. When the value of the respective attribute becomes less than or equal to the specified normal threshold after exceeding the high threshold, the NetScaler appliance generates an SNMP trap message to indicate that the attribute has returned to the normal state.<br> Minimum value =  1
+	* Value for the normal threshold. A trap message is generated if the value of the respective attribute falls to or below this value after exceeding the high threshold.<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_normalvalue(long normalvalue) throws Exception {
@@ -101,7 +101,7 @@ public class snmpalarm extends base_resource
 
 	/**
 	* <pre>
-	* A value for the normal threshold. When the value of the respective attribute becomes less than or equal to the specified normal threshold after exceeding the high threshold, the NetScaler appliance generates an SNMP trap message to indicate that the attribute has returned to the normal state.<br> Minimum value =  1
+	* Value for the normal threshold. A trap message is generated if the value of the respective attribute falls to or below this value after exceeding the high threshold.<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_normalvalue(Long normalvalue) throws Exception{
@@ -110,7 +110,7 @@ public class snmpalarm extends base_resource
 
 	/**
 	* <pre>
-	* A value for the normal threshold. When the value of the respective attribute becomes less than or equal to the specified normal threshold after exceeding the high threshold, the NetScaler appliance generates an SNMP trap message to indicate that the attribute has returned to the normal state.<br> Minimum value =  1
+	* Value for the normal threshold. A trap message is generated if the value of the respective attribute falls to or below this value after exceeding the high threshold.<br> Minimum value =  1
 	* </pre>
 	*/
 	public Long get_normalvalue() throws Exception {
@@ -119,7 +119,7 @@ public class snmpalarm extends base_resource
 
 	/**
 	* <pre>
-	* The interval, in seconds, at which the NetScaler appliance generates SNMP trap messages when the conditions specified in the SNMP alarm are met. This parameter can be specified for the following SNMP alarms: SYNFLOOD, HA-VERSION-MISMATCH, HA-SYNC-FAILURE, HA-NO-HEARTBEATS, HA-BAD-SECONDARY-STATE, HA-PROP-FAILURE, HA-LICENSE-MISMATCH, IP-CONFLICT, APPFW, CLUSTER-NODE-HEALTH, CLUSTER-NODE-QUORUM and CLUSTER-VERSION-MISMATCH.<br> Default value: 1
+	* Interval, in seconds, at which the NetScaler appliance generates SNMP trap messages when the conditions specified in the SNMP alarm are met. Can be specified for the following alarms: SYNFLOOD, HA-VERSION-MISMATCH, HA-SYNC-FAILURE, HA-NO-HEARTBEATS, HA-BAD-SECONDARY-STATE, HA-PROP-FAILURE, IP-CONFLICT, and APPFW.<br> Default value: 1
 	* </pre>
 	*/
 	public void set_time(long time) throws Exception {
@@ -128,7 +128,7 @@ public class snmpalarm extends base_resource
 
 	/**
 	* <pre>
-	* The interval, in seconds, at which the NetScaler appliance generates SNMP trap messages when the conditions specified in the SNMP alarm are met. This parameter can be specified for the following SNMP alarms: SYNFLOOD, HA-VERSION-MISMATCH, HA-SYNC-FAILURE, HA-NO-HEARTBEATS, HA-BAD-SECONDARY-STATE, HA-PROP-FAILURE, HA-LICENSE-MISMATCH, IP-CONFLICT, APPFW, CLUSTER-NODE-HEALTH, CLUSTER-NODE-QUORUM and CLUSTER-VERSION-MISMATCH.<br> Default value: 1
+	* Interval, in seconds, at which the NetScaler appliance generates SNMP trap messages when the conditions specified in the SNMP alarm are met. Can be specified for the following alarms: SYNFLOOD, HA-VERSION-MISMATCH, HA-SYNC-FAILURE, HA-NO-HEARTBEATS, HA-BAD-SECONDARY-STATE, HA-PROP-FAILURE, IP-CONFLICT, and APPFW.<br> Default value: 1
 	* </pre>
 	*/
 	public void set_time(Long time) throws Exception{
@@ -137,7 +137,7 @@ public class snmpalarm extends base_resource
 
 	/**
 	* <pre>
-	* The interval, in seconds, at which the NetScaler appliance generates SNMP trap messages when the conditions specified in the SNMP alarm are met. This parameter can be specified for the following SNMP alarms: SYNFLOOD, HA-VERSION-MISMATCH, HA-SYNC-FAILURE, HA-NO-HEARTBEATS, HA-BAD-SECONDARY-STATE, HA-PROP-FAILURE, HA-LICENSE-MISMATCH, IP-CONFLICT, APPFW, CLUSTER-NODE-HEALTH, CLUSTER-NODE-QUORUM and CLUSTER-VERSION-MISMATCH.<br> Default value: 1
+	* Interval, in seconds, at which the NetScaler appliance generates SNMP trap messages when the conditions specified in the SNMP alarm are met. Can be specified for the following alarms: SYNFLOOD, HA-VERSION-MISMATCH, HA-SYNC-FAILURE, HA-NO-HEARTBEATS, HA-BAD-SECONDARY-STATE, HA-PROP-FAILURE, IP-CONFLICT, and APPFW.<br> Default value: 1
 	* </pre>
 	*/
 	public Long get_time() throws Exception {
@@ -146,7 +146,7 @@ public class snmpalarm extends base_resource
 
 	/**
 	* <pre>
-	* The current state of the SNMP alarm. The NetScaler appliance generates trap messages only for SNMP alarms that are enabled. Some alarms are enabled by default, but you can disable them.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Current state of the SNMP alarm. The NetScaler appliance generates trap messages only for SNMP alarms that are enabled. Some alarms are enabled by default, but you can disable them.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED, UNSET
 	* </pre>
 	*/
 	public void set_state(String state) throws Exception{
@@ -155,7 +155,7 @@ public class snmpalarm extends base_resource
 
 	/**
 	* <pre>
-	* The current state of the SNMP alarm. The NetScaler appliance generates trap messages only for SNMP alarms that are enabled. Some alarms are enabled by default, but you can disable them.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Current state of the SNMP alarm. The NetScaler appliance generates trap messages only for SNMP alarms that are enabled. Some alarms are enabled by default, but you can disable them.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED, UNSET
 	* </pre>
 	*/
 	public String get_state() throws Exception {
@@ -164,13 +164,8 @@ public class snmpalarm extends base_resource
 
 	/**
 	* <pre>
-	* The severity level assigned to trap messages generated by this alarm. The severity levels defined on the NetScaler appliance are, in increasing order of severity, Informational, Warning, Minor, Major, and Critical.
-
-For example, if you set a Warning severity level for the SNMP alarm named LOGIN-FAILURE, the trap messages generated when a login attempt fails are assigned the Warning severity level. The default is no severity level, which means that the NetScaler appliance does not assign any severity level to the generated SNMP traps messages.
-
-This parameter is useful when you want the NetScaler appliance to send trap messages to a trap listener on the basis of severity level. Trap messages with a severity level lower than the specified level (in the trap listener entry) are not sent. 
-
-For example, if you set the severity level as Minor for a trap listener, all trap messages assigned severity level equal to or greater than Minor (Minor, Major, and Critical) are sent to the trap listener. .<br> Default value: SNMP_SEV_UNKNOWN<br> Possible values = Critical, Major, Minor, Warning, Informational
+	* Severity level assigned to trap messages generated by this alarm. The severity levels are, in increasing order of severity, Informational, Warning, Minor, Major, and Critical.
+This parameter is useful when you want the NetScaler appliance to send trap messages to a trap listener on the basis of severity level. Trap messages with a severity level lower than the specified level (in the trap listener entry) are not sent.<br> Default value: Unknown<br> Possible values = Critical, Major, Minor, Warning, Informational
 	* </pre>
 	*/
 	public void set_severity(String severity) throws Exception{
@@ -179,13 +174,8 @@ For example, if you set the severity level as Minor for a trap listener, all tra
 
 	/**
 	* <pre>
-	* The severity level assigned to trap messages generated by this alarm. The severity levels defined on the NetScaler appliance are, in increasing order of severity, Informational, Warning, Minor, Major, and Critical.
-
-For example, if you set a Warning severity level for the SNMP alarm named LOGIN-FAILURE, the trap messages generated when a login attempt fails are assigned the Warning severity level. The default is no severity level, which means that the NetScaler appliance does not assign any severity level to the generated SNMP traps messages.
-
-This parameter is useful when you want the NetScaler appliance to send trap messages to a trap listener on the basis of severity level. Trap messages with a severity level lower than the specified level (in the trap listener entry) are not sent. 
-
-For example, if you set the severity level as Minor for a trap listener, all trap messages assigned severity level equal to or greater than Minor (Minor, Major, and Critical) are sent to the trap listener. .<br> Default value: SNMP_SEV_UNKNOWN<br> Possible values = Critical, Major, Minor, Warning, Informational
+	* Severity level assigned to trap messages generated by this alarm. The severity levels are, in increasing order of severity, Informational, Warning, Minor, Major, and Critical.
+This parameter is useful when you want the NetScaler appliance to send trap messages to a trap listener on the basis of severity level. Trap messages with a severity level lower than the specified level (in the trap listener entry) are not sent.<br> Default value: Unknown<br> Possible values = Critical, Major, Minor, Warning, Informational
 	* </pre>
 	*/
 	public String get_severity() throws Exception {
@@ -194,7 +184,7 @@ For example, if you set the severity level as Minor for a trap listener, all tra
 
 	/**
 	* <pre>
-	* The logging status of the alarm. When logging is enabled, the NetScaler appliance logs every trap messages that is generated for this alarm.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Logging status of the alarm. When logging is enabled, the NetScaler appliance logs every trap message that is generated for this alarm.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_logging(String logging) throws Exception{
@@ -203,7 +193,7 @@ For example, if you set the severity level as Minor for a trap listener, all tra
 
 	/**
 	* <pre>
-	* The logging status of the alarm. When logging is enabled, the NetScaler appliance logs every trap messages that is generated for this alarm.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Logging status of the alarm. When logging is enabled, the NetScaler appliance logs every trap message that is generated for this alarm.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_logging() throws Exception {
@@ -294,25 +284,9 @@ For example, if you set the severity level as Minor for a trap listener, all tra
 	* Use this API to unset the properties of snmpalarm resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String trapname, String args[]) throws Exception {
-		snmpalarm unsetresource = new snmpalarm();
-		unsetresource.trapname = trapname;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of snmpalarm resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, snmpalarm resource, String[] args) throws Exception{
 		snmpalarm unsetresource = new snmpalarm();
 		unsetresource.trapname = resource.trapname;
-		unsetresource.thresholdvalue = resource.thresholdvalue;
-		unsetresource.normalvalue = resource.normalvalue;
-		unsetresource.time = resource.time;
-		unsetresource.state = resource.state;
-		unsetresource.severity = resource.severity;
-		unsetresource.logging = resource.logging;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -344,12 +318,6 @@ For example, if you set the severity level as Minor for a trap listener, all tra
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new snmpalarm();
 				unsetresources[i].trapname = resources[i].trapname;
-				unsetresources[i].thresholdvalue = resources[i].thresholdvalue;
-				unsetresources[i].normalvalue = resources[i].normalvalue;
-				unsetresources[i].time = resources[i].time;
-				unsetresources[i].state = resources[i].state;
-				unsetresources[i].severity = resources[i].severity;
-				unsetresources[i].logging = resources[i].logging;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}
@@ -613,6 +581,7 @@ For example, if you set the severity level as Minor for a trap listener, all tra
 		public static final String PF_RL_PPS_PKTS_DROPPED = "PF-RL-PPS-PKTS-DROPPED";
 		public static final String APPFW_START_URL = "APPFW-START-URL";
 		public static final String APPFW_DENY_URL = "APPFW-DENY-URL";
+		public static final String APPFW_VIOLATIONS_TYPE = "APPFW-VIOLATIONS-TYPE";
 		public static final String APPFW_REFERER_HEADER = "APPFW-REFERER-HEADER";
 		public static final String APPFW_CSRF_TAG = "APPFW-CSRF-TAG";
 		public static final String APPFW_COOKIE = "APPFW-COOKIE";
@@ -652,10 +621,15 @@ For example, if you set the severity level as Minor for a trap listener, all tra
 		public static final String CLUSTER_OVS_CHANGE = "CLUSTER-OVS-CHANGE";
 		public static final String CLUSTER_SYNC_FAILURE = "CLUSTER-SYNC-FAILURE";
 		public static final String CLUSTER_PROP_FAILURE = "CLUSTER-PROP-FAILURE";
+		public static final String HA_STICKY_PRIMARY = "HA-STICKY-PRIMARY";
+		public static final String INBAND_PROTOCOL_VERSION_MISMATCH = "INBAND-PROTOCOL-VERSION-MISMATCH";
+		public static final String SSL_CHIP_REINIT = "SSL-CHIP-REINIT";
+		public static final String VRID_STATE_CHANGE = "VRID-STATE-CHANGE";
 	}
 	public static class stateEnum {
 		public static final String ENABLED = "ENABLED";
 		public static final String DISABLED = "DISABLED";
+		public static final String UNSET = "UNSET";
 	}
 	public static class severityEnum {
 		public static final String Critical = "Critical";

@@ -29,6 +29,7 @@ class dns_response extends base_response
 
 public class dns_stats extends base_resource
 {
+	private String clearstats;
 	private Long dnstotqueries;
 	private Long dnsqueriesrate;
 	private Long dnstotmultiquery;
@@ -56,6 +57,29 @@ public class dns_stats extends base_resource
 	private Long dnstotnodataresps;
 	private Long dnstotmultiquerydisableerror;
 	private Long dnstotothererrors;
+	private Long dns64totqueries;
+	private Long dns64queriesrate;
+	private Long dns64totanswers;
+	private Long dns64answersrate;
+	private Long dns64totrwanswers;
+	private Long dns64rwanswersrate;
+	private Long dns64totresponses;
+	private Long dns64responsesrate;
+	private Long dns64totgslbqueries;
+	private Long dns64gslbqueriesrate;
+	private Long dns64totgslbanswers;
+	private Long dns64gslbanswersrate;
+	private Long dns64tottcanswers;
+	private Long dns64tcanswersrate;
+	private Long dns64totsvraqueries;
+	private Long dns64svraqueriesrate;
+	private Long dns64totaaaabypass;
+	private Long dns64aaaabypassrate;
+	private Long dns64tottcpqueries;
+	private Long dns64tcpqueriesrate;
+	private Long dns64activepolicies;
+	private Long dns64totnodataresp;
+	private Long dns64nodataresprate;
 	private Long dnstotnsrecqueries;
 	private Long dnsnsrecqueriesrate;
 	private Long dnstotsoarecqueries;
@@ -121,6 +145,24 @@ public class dns_stats extends base_resource
 
 	/**
 	* <pre>
+	* Clear the statsistics / counters
+	* </pre>
+	*/
+	public void set_clearstats(String clearstats) throws Exception{
+		this.clearstats = clearstats;
+	}
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters.<br> Possible values = basic, full
+	* </pre>
+	*/
+	public String get_clearstats() throws Exception {
+		return this.clearstats;
+	}
+
+	/**
+	* <pre>
 	* Total number of CNAME responses received.
 	* </pre>
 	*/
@@ -130,11 +172,20 @@ public class dns_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of A responses received.
+	* Rate (/s) counter for dnstotaresponse
 	* </pre>
 	*/
 	public Long get_dnsaresponserate() throws Exception {
 		return this.dnsaresponserate;
+	}
+
+	/**
+	* <pre>
+	* Rate (/s) counter for dns64totrwanswers
+	* </pre>
+	*/
+	public Long get_dns64rwanswersrate() throws Exception {
+		return this.dns64rwanswersrate;
 	}
 
 	/**
@@ -153,6 +204,15 @@ public class dns_stats extends base_resource
 	*/
 	public Long get_dnstotptrrecupdate() throws Exception {
 		return this.dnstotptrrecupdate;
+	}
+
+	/**
+	* <pre>
+	* Rate (/s) counter for dns64totnodataresp
+	* </pre>
+	*/
+	public Long get_dns64nodataresprate() throws Exception {
+		return this.dns64nodataresprate;
 	}
 
 	/**
@@ -193,6 +253,15 @@ public class dns_stats extends base_resource
 
 	/**
 	* <pre>
+	* Total number of DNS64 answers served after rewriting the response.
+	* </pre>
+	*/
+	public Long get_dns64totrwanswers() throws Exception {
+		return this.dns64totrwanswers;
+	}
+
+	/**
+	* <pre>
 	* Total number of stray answers.
 	* </pre>
 	*/
@@ -207,6 +276,15 @@ public class dns_stats extends base_resource
 	*/
 	public Long get_dnstotptrrecfailed() throws Exception {
 		return this.dnstotptrrecfailed;
+	}
+
+	/**
+	* <pre>
+	* Total number of active dns64 policies
+	* </pre>
+	*/
+	public Long get_dns64activepolicies() throws Exception {
+		return this.dns64activepolicies;
 	}
 
 	/**
@@ -238,7 +316,7 @@ public class dns_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of AAAA responses received.
+	* Rate (/s) counter for dnstotaaaaresponse
 	* </pre>
 	*/
 	public Long get_dnsaaaaresponserate() throws Exception {
@@ -247,7 +325,7 @@ public class dns_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of AAAA queries received.
+	* Rate (/s) counter for dnstotaaaarecqueries
 	* </pre>
 	*/
 	public Long get_dnsaaaarecqueriesrate() throws Exception {
@@ -301,7 +379,7 @@ public class dns_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of A queries received.
+	* Rate (/s) counter for dnstotarecqueries
 	* </pre>
 	*/
 	public Long get_dnsarecqueriesrate() throws Exception {
@@ -328,7 +406,7 @@ public class dns_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of ANY queries received.
+	* Rate (/s) counter for dnstotanyqueries
 	* </pre>
 	*/
 	public Long get_dnsanyqueriesrate() throws Exception {
@@ -373,7 +451,7 @@ public class dns_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of PTR responses received.
+	* Rate (/s) counter for dnstotptrresponse
 	* </pre>
 	*/
 	public Long get_dnsptrresponserate() throws Exception {
@@ -382,7 +460,7 @@ public class dns_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of SOA queries received.
+	* Rate (/s) counter for dnstotsoarecqueries
 	* </pre>
 	*/
 	public Long get_dnssoarecqueriesrate() throws Exception {
@@ -391,7 +469,34 @@ public class dns_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of PTR queries received.
+	* Total number of DNS64 queries served.
+	* </pre>
+	*/
+	public Long get_dns64totgslbanswers() throws Exception {
+		return this.dns64totgslbanswers;
+	}
+
+	/**
+	* <pre>
+	* Rate (/s) counter for dns64totanswers
+	* </pre>
+	*/
+	public Long get_dns64answersrate() throws Exception {
+		return this.dns64answersrate;
+	}
+
+	/**
+	* <pre>
+	* Total number of DNS64 queries recieved.
+	* </pre>
+	*/
+	public Long get_dns64totqueries() throws Exception {
+		return this.dns64totqueries;
+	}
+
+	/**
+	* <pre>
+	* Rate (/s) counter for dnstotptrrecqueries
 	* </pre>
 	*/
 	public Long get_dnsptrrecqueriesrate() throws Exception {
@@ -409,11 +514,29 @@ public class dns_stats extends base_resource
 
 	/**
 	* <pre>
+	* Total number of dns64 queries over TCP
+	* </pre>
+	*/
+	public Long get_dns64tottcpqueries() throws Exception {
+		return this.dns64tottcpqueries;
+	}
+
+	/**
+	* <pre>
 	* Total number of AAAA queries received.
 	* </pre>
 	*/
 	public Long get_dnstotaaaarecqueries() throws Exception {
 		return this.dnstotaaaarecqueries;
+	}
+
+	/**
+	* <pre>
+	* Rate (/s) counter for dns64totresponses
+	* </pre>
+	*/
+	public Long get_dns64responsesrate() throws Exception {
+		return this.dns64responsesrate;
 	}
 
 	/**
@@ -427,6 +550,15 @@ public class dns_stats extends base_resource
 
 	/**
 	* <pre>
+	* Total number of Answers served with TC bit set in DNS64 context.
+	* </pre>
+	*/
+	public Long get_dns64tottcanswers() throws Exception {
+		return this.dns64tottcanswers;
+	}
+
+	/**
+	* <pre>
 	* Total number of times AAAA record lookup failed.
 	* </pre>
 	*/
@@ -436,7 +568,7 @@ public class dns_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of SRV responses received.
+	* Rate (/s) counter for dnstotsrvresponse
 	* </pre>
 	*/
 	public Long get_dnssrvresponserate() throws Exception {
@@ -445,7 +577,7 @@ public class dns_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of NS queries received.
+	* Rate (/s) counter for dnstotnsrecqueries
 	* </pre>
 	*/
 	public Long get_dnsnsrecqueriesrate() throws Exception {
@@ -463,7 +595,7 @@ public class dns_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of SOA responses received.
+	* Rate (/s) counter for dnstotsoaresponse
 	* </pre>
 	*/
 	public Long get_dnssoaresponserate() throws Exception {
@@ -490,7 +622,7 @@ public class dns_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of DNS queries received.
+	* Rate (/s) counter for dnstotqueries
 	* </pre>
 	*/
 	public Long get_dnsqueriesrate() throws Exception {
@@ -499,7 +631,16 @@ public class dns_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of ANY responses received.
+	* Rate (/s) counter for dns64totgslbqueries
+	* </pre>
+	*/
+	public Long get_dns64gslbqueriesrate() throws Exception {
+		return this.dns64gslbqueriesrate;
+	}
+
+	/**
+	* <pre>
+	* Rate (/s) counter for dnstotanyresponse
 	* </pre>
 	*/
 	public Long get_dnsanyresponserate() throws Exception {
@@ -508,7 +649,7 @@ public class dns_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of DNS responses received.
+	* Rate (/s) counter for dnstotanswers
 	* </pre>
 	*/
 	public Long get_dnsanswersrate() throws Exception {
@@ -526,7 +667,7 @@ public class dns_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of CNAME responses received.
+	* Rate (/s) counter for dnstotcnameresponse
 	* </pre>
 	*/
 	public Long get_dnscnameresponserate() throws Exception {
@@ -580,11 +721,38 @@ public class dns_stats extends base_resource
 
 	/**
 	* <pre>
+	* Total number of times AAAA query has been bypassed in DNS64 trnsaction.
+	* </pre>
+	*/
+	public Long get_dns64totaaaabypass() throws Exception {
+		return this.dns64totaaaabypass;
+	}
+
+	/**
+	* <pre>
+	* Rate (/s) counter for dns64tottcpqueries
+	* </pre>
+	*/
+	public Long get_dns64tcpqueriesrate() throws Exception {
+		return this.dns64tcpqueriesrate;
+	}
+
+	/**
+	* <pre>
 	* Total number of AAAA responses received.
 	* </pre>
 	*/
 	public Long get_dnstotaaaaresponse() throws Exception {
 		return this.dnstotaaaaresponse;
+	}
+
+	/**
+	* <pre>
+	* Rate (/s) counter for dns64totgslbanswers
+	* </pre>
+	*/
+	public Long get_dns64gslbanswersrate() throws Exception {
+		return this.dns64gslbanswersrate;
 	}
 
 	/**
@@ -598,11 +766,38 @@ public class dns_stats extends base_resource
 
 	/**
 	* <pre>
+	* Total number of Queries sent by DNS64 module to backend.
+	* </pre>
+	*/
+	public Long get_dns64totsvraqueries() throws Exception {
+		return this.dns64totsvraqueries;
+	}
+
+	/**
+	* <pre>
+	* Total number of responses recieved from backend in DNS64 context.
+	* </pre>
+	*/
+	public Long get_dns64totresponses() throws Exception {
+		return this.dns64totresponses;
+	}
+
+	/**
+	* <pre>
 	* Total number of NS queries received.
 	* </pre>
 	*/
 	public Long get_dnstotnsrecqueries() throws Exception {
 		return this.dnstotnsrecqueries;
+	}
+
+	/**
+	* <pre>
+	* Total number of DNS64 answers served.
+	* </pre>
+	*/
+	public Long get_dns64totanswers() throws Exception {
+		return this.dns64totanswers;
 	}
 
 	/**
@@ -643,6 +838,15 @@ public class dns_stats extends base_resource
 
 	/**
 	* <pre>
+	* Rate (/s) counter for dns64totaaaabypass
+	* </pre>
+	*/
+	public Long get_dns64aaaabypassrate() throws Exception {
+		return this.dns64aaaabypassrate;
+	}
+
+	/**
+	* <pre>
 	* Total number of NS responses received.
 	* </pre>
 	*/
@@ -652,7 +856,7 @@ public class dns_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of SRV queries received.
+	* Rate (/s) counter for dnstotsrvrecqueries
 	* </pre>
 	*/
 	public Long get_dnssrvrecqueriesrate() throws Exception {
@@ -697,7 +901,7 @@ public class dns_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of Server responses received.
+	* Rate (/s) counter for dnstotserverresponse
 	* </pre>
 	*/
 	public Long get_dnsserverresponserate() throws Exception {
@@ -706,7 +910,7 @@ public class dns_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of NS responses received.
+	* Rate (/s) counter for dnstotnsresponse
 	* </pre>
 	*/
 	public Long get_dnsnsresponserate() throws Exception {
@@ -724,7 +928,7 @@ public class dns_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of MX queries received.
+	* Rate (/s) counter for dnstotmxrecqueries
 	* </pre>
 	*/
 	public Long get_dnsmxrecqueriesrate() throws Exception {
@@ -760,11 +964,20 @@ public class dns_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of CNAME queries received.
+	* Rate (/s) counter for dnstotcnamerecqueries
 	* </pre>
 	*/
 	public Long get_dnscnamerecqueriesrate() throws Exception {
 		return this.dnscnamerecqueriesrate;
+	}
+
+	/**
+	* <pre>
+	* Total number of responses recieved from backend with ancount 0
+	* </pre>
+	*/
+	public Long get_dns64totnodataresp() throws Exception {
+		return this.dns64totnodataresp;
 	}
 
 	/**
@@ -823,7 +1036,16 @@ public class dns_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of Server queries sent.
+	* Rate (/s) counter for dns64totsvraqueries
+	* </pre>
+	*/
+	public Long get_dns64svraqueriesrate() throws Exception {
+		return this.dns64svraqueriesrate;
+	}
+
+	/**
+	* <pre>
+	* Rate (/s) counter for dnstotserverquery
 	* </pre>
 	*/
 	public Long get_dnsserverqueryrate() throws Exception {
@@ -846,6 +1068,15 @@ public class dns_stats extends base_resource
 	*/
 	public Long get_dnstotsoarecupdate() throws Exception {
 		return this.dnstotsoarecupdate;
+	}
+
+	/**
+	* <pre>
+	* Rate (/s) counter for dns64totqueries
+	* </pre>
+	*/
+	public Long get_dns64queriesrate() throws Exception {
+		return this.dns64queriesrate;
 	}
 
 	/**
@@ -886,11 +1117,29 @@ public class dns_stats extends base_resource
 
 	/**
 	* <pre>
+	* Rate (/s) counter for dns64tottcanswers
+	* </pre>
+	*/
+	public Long get_dns64tcanswersrate() throws Exception {
+		return this.dns64tcanswersrate;
+	}
+
+	/**
+	* <pre>
 	* Total number of record updates.
 	* </pre>
 	*/
 	public Long get_dnstotrecupdate() throws Exception {
 		return this.dnstotrecupdate;
+	}
+
+	/**
+	* <pre>
+	* Total number of DNS64 queries for GSLB domain
+	* </pre>
+	*/
+	public Long get_dns64totgslbqueries() throws Exception {
+		return this.dns64totgslbqueries;
 	}
 
 	/**
@@ -913,7 +1162,7 @@ public class dns_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of MX responses received.
+	* Rate (/s) counter for dnstotmxresponse
 	* </pre>
 	*/
 	public Long get_dnsmxresponserate() throws Exception {
@@ -974,4 +1223,8 @@ public class dns_stats extends base_resource
 		return response[0];
 	}
 
+	public static class clearstatsEnum {
+		public static final String basic = "basic";
+		public static final String full = "full";
+	}
 }

@@ -33,7 +33,6 @@ class cspolicy_crvserver_binding_response extends base_response
 public class cspolicy_crvserver_binding extends base_resource
 {
 	private String domain;
-	private String target;
 	private String url;
 	private Long priority;
 	private Long hits;
@@ -44,7 +43,7 @@ public class cspolicy_crvserver_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the policy to be displayed. if no name is given then all policies will be displayed.<br> Minimum length =  1
+	* Name of the content switching policy to display. If this parameter is omitted, details of all the policies are displayed.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_policyname(String policyname) throws Exception{
@@ -53,7 +52,7 @@ public class cspolicy_crvserver_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the policy to be displayed. if no name is given then all policies will be displayed.<br> Minimum length =  1
+	* Name of the content switching policy to display. If this parameter is omitted, details of all the policies are displayed.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_policyname() throws Exception {
@@ -107,18 +106,7 @@ public class cspolicy_crvserver_binding extends base_resource
 
 	/**
 	* <pre>
-	* Target flag.
-	* </pre>
-	*/
-	public String get_target() throws Exception {
-		return this.target;
-	}
-
-	/**
-	* <pre>
-	* The URL, with wildcards.
-Specify the string value in this format:
-// [[prefix ] [*]] [.suffix].<br> Minimum length =  1<br> Maximum length =  208
+	* URL string that is matched with the URL of a request. Can contain a wildcard character. Specify the string value in the following format: [[prefix] [*]] [.suffix].<br> Minimum length =  1<br> Maximum length =  208
 	* </pre>
 	*/
 	public String get_url() throws Exception {

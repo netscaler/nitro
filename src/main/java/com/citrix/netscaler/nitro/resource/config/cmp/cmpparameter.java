@@ -47,7 +47,10 @@ public class cmpparameter extends base_resource
 
 	/**
 	* <pre>
-	* Compression level.<br> Default value: NSCMPLVL_OPTIMAL<br> Possible values = optimal, bestspeed, bestcompression
+	* Specify a compression level. Available settings function as follows:
+ * Optimal - Corresponds to a gzip GZIP level of 5-7.
+ * Best speed - Corresponds to a gzip level of 1.
+ * Best compression - Corresponds to a gzip level of 9.<br> Default value: optimal<br> Possible values = optimal, bestspeed, bestcompression, spdy
 	* </pre>
 	*/
 	public void set_cmplevel(String cmplevel) throws Exception{
@@ -56,7 +59,10 @@ public class cmpparameter extends base_resource
 
 	/**
 	* <pre>
-	* Compression level.<br> Default value: NSCMPLVL_OPTIMAL<br> Possible values = optimal, bestspeed, bestcompression
+	* Specify a compression level. Available settings function as follows:
+ * Optimal - Corresponds to a gzip GZIP level of 5-7.
+ * Best speed - Corresponds to a gzip level of 1.
+ * Best compression - Corresponds to a gzip level of 9.<br> Default value: optimal<br> Possible values = optimal, bestspeed, bestcompression, spdy
 	* </pre>
 	*/
 	public String get_cmplevel() throws Exception {
@@ -65,7 +71,7 @@ public class cmpparameter extends base_resource
 
 	/**
 	* <pre>
-	* Minimum amount of data to compress as one unit.<br> Default value: 57344<br> Minimum value =  8<br> Maximum value =  63488
+	* Minimum quantum of data to be filled before compression begins.<br> Default value: 57344<br> Minimum value =  8<br> Maximum value =  63488
 	* </pre>
 	*/
 	public void set_quantumsize(long quantumsize) throws Exception {
@@ -74,7 +80,7 @@ public class cmpparameter extends base_resource
 
 	/**
 	* <pre>
-	* Minimum amount of data to compress as one unit.<br> Default value: 57344<br> Minimum value =  8<br> Maximum value =  63488
+	* Minimum quantum of data to be filled before compression begins.<br> Default value: 57344<br> Minimum value =  8<br> Maximum value =  63488
 	* </pre>
 	*/
 	public void set_quantumsize(Long quantumsize) throws Exception{
@@ -83,7 +89,7 @@ public class cmpparameter extends base_resource
 
 	/**
 	* <pre>
-	* Minimum amount of data to compress as one unit.<br> Default value: 57344<br> Minimum value =  8<br> Maximum value =  63488
+	* Minimum quantum of data to be filled before compression begins.<br> Default value: 57344<br> Minimum value =  8<br> Maximum value =  63488
 	* </pre>
 	*/
 	public Long get_quantumsize() throws Exception {
@@ -92,7 +98,7 @@ public class cmpparameter extends base_resource
 
 	/**
 	* <pre>
-	* Compression at back-end server.<br> Default value: ON<br> Possible values = ON, OFF
+	* Allow the server to send compressed data to the NetScaler appliance. With the default setting, the NetScaler appliance handles all compression.<br> Default value: ON<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_servercmp(String servercmp) throws Exception{
@@ -101,7 +107,7 @@ public class cmpparameter extends base_resource
 
 	/**
 	* <pre>
-	* Compression at back-end server.<br> Default value: ON<br> Possible values = ON, OFF
+	* Allow the server to send compressed data to the NetScaler appliance. With the default setting, the NetScaler appliance handles all compression.<br> Default value: ON<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_servercmp() throws Exception {
@@ -182,7 +188,7 @@ public class cmpparameter extends base_resource
 
 	/**
 	* <pre>
-	* Size of the smallest HTTP response that will be compressed.
+	* Smallest response size, in bytes, to be compressed.
 	* </pre>
 	*/
 	public void set_minressize(long minressize) throws Exception {
@@ -191,7 +197,7 @@ public class cmpparameter extends base_resource
 
 	/**
 	* <pre>
-	* Size of the smallest HTTP response that will be compressed.
+	* Smallest response size, in bytes, to be compressed.
 	* </pre>
 	*/
 	public void set_minressize(Long minressize) throws Exception{
@@ -200,7 +206,7 @@ public class cmpparameter extends base_resource
 
 	/**
 	* <pre>
-	* Size of the smallest HTTP response that will be compressed.
+	* Smallest response size, in bytes, to be compressed.
 	* </pre>
 	*/
 	public Long get_minressize() throws Exception {
@@ -209,7 +215,7 @@ public class cmpparameter extends base_resource
 
 	/**
 	* <pre>
-	* CPU usage (%) at which NetScaler should start progressively bypassing compression on HTTP requests.<br> Default value: 100<br> Minimum value =  0<br> Maximum value =  100
+	* NetScaler CPU threshold after which compression is not performed. Range: 0 - 100.<br> Default value: 100<br> Minimum value =  0<br> Maximum value =  100
 	* </pre>
 	*/
 	public void set_cmpbypasspct(long cmpbypasspct) throws Exception {
@@ -218,7 +224,7 @@ public class cmpparameter extends base_resource
 
 	/**
 	* <pre>
-	* CPU usage (%) at which NetScaler should start progressively bypassing compression on HTTP requests.<br> Default value: 100<br> Minimum value =  0<br> Maximum value =  100
+	* NetScaler CPU threshold after which compression is not performed. Range: 0 - 100.<br> Default value: 100<br> Minimum value =  0<br> Maximum value =  100
 	* </pre>
 	*/
 	public void set_cmpbypasspct(Long cmpbypasspct) throws Exception{
@@ -227,7 +233,7 @@ public class cmpparameter extends base_resource
 
 	/**
 	* <pre>
-	* CPU usage (%) at which NetScaler should start progressively bypassing compression on HTTP requests.<br> Default value: 100<br> Minimum value =  0<br> Maximum value =  100
+	* NetScaler CPU threshold after which compression is not performed. Range: 0 - 100.<br> Default value: 100<br> Minimum value =  0<br> Maximum value =  100
 	* </pre>
 	*/
 	public Long get_cmpbypasspct() throws Exception {
@@ -236,7 +242,7 @@ public class cmpparameter extends base_resource
 
 	/**
 	* <pre>
-	* Enable/disable compression on PUSH packet.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* NetScaler appliance does not wait for the quantum to be filled before starting to compress data. Upon receipt of a packet with a PUSH flag, the appliance immediately begins compression of the accumulated packets.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_cmponpush(String cmponpush) throws Exception{
@@ -245,7 +251,7 @@ public class cmpparameter extends base_resource
 
 	/**
 	* <pre>
-	* Enable/disable compression on PUSH packet.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* NetScaler appliance does not wait for the quantum to be filled before starting to compress data. Upon receipt of a packet with a PUSH flag, the appliance immediately begins compression of the accumulated packets.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_cmponpush() throws Exception {
@@ -254,7 +260,9 @@ public class cmpparameter extends base_resource
 
 	/**
 	* <pre>
-	* The type of the HTTP compression global policy bindings to be used for virtual servers that have no HTTP compression policies bound.<br> Default value: CLASSIC<br> Possible values = CLASSIC, ADVANCED
+	* Type of policy. Available settings function as follows:
+ * Classic -  Classic policies evaluate basic characteristics of traffic and other data.
+ * Advanced -  Advanced policies (which have been renamed as default syntax policies) can perform the same type of evaluations as classic policies. They also enable you to analyze more data (for example, the body of an HTTP request) and to configure more operations in the policy rule (for example, transforming data in the body of a request into an HTTP header).<br> Default value: CLASSIC<br> Possible values = CLASSIC, ADVANCED
 	* </pre>
 	*/
 	public void set_policytype(String policytype) throws Exception{
@@ -263,7 +271,9 @@ public class cmpparameter extends base_resource
 
 	/**
 	* <pre>
-	* The type of the HTTP compression global policy bindings to be used for virtual servers that have no HTTP compression policies bound.<br> Default value: CLASSIC<br> Possible values = CLASSIC, ADVANCED
+	* Type of policy. Available settings function as follows:
+ * Classic -  Classic policies evaluate basic characteristics of traffic and other data.
+ * Advanced -  Advanced policies (which have been renamed as default syntax policies) can perform the same type of evaluations as classic policies. They also enable you to analyze more data (for example, the body of an HTTP request) and to configure more operations in the policy rule (for example, transforming data in the body of a request into an HTTP header).<br> Default value: CLASSIC<br> Possible values = CLASSIC, ADVANCED
 	* </pre>
 	*/
 	public String get_policytype() throws Exception {
@@ -272,7 +282,7 @@ public class cmpparameter extends base_resource
 
 	/**
 	* <pre>
-	* Enable/disable vary header insertion during compression for HTTP/1.1 client.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Add the Vary header to HTTP responses being compressed. To HTTP 1.1 responses, add a Vary: User-Agent, Accept-Encoding header. Intermediate caches store different versions of the response for different values of the headers present in the Vary response header.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_addvaryheader(String addvaryheader) throws Exception{
@@ -281,7 +291,7 @@ public class cmpparameter extends base_resource
 
 	/**
 	* <pre>
-	* Enable/disable vary header insertion during compression for HTTP/1.1 client.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Add the Vary header to HTTP responses being compressed. To HTTP 1.1 responses, add a Vary: User-Agent, Accept-Encoding header. Intermediate caches store different versions of the response for different values of the headers present in the Vary response header.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_addvaryheader() throws Exception {
@@ -368,18 +378,6 @@ public class cmpparameter extends base_resource
 	*/
 	public static base_response unset(nitro_service client, cmpparameter resource, String[] args) throws Exception{
 		cmpparameter unsetresource = new cmpparameter();
-		unsetresource.cmplevel = resource.cmplevel;
-		unsetresource.quantumsize = resource.quantumsize;
-		unsetresource.servercmp = resource.servercmp;
-		unsetresource.heurexpiry = resource.heurexpiry;
-		unsetresource.heurexpirythres = resource.heurexpirythres;
-		unsetresource.heurexpiryhistwt = resource.heurexpiryhistwt;
-		unsetresource.minressize = resource.minressize;
-		unsetresource.cmpbypasspct = resource.cmpbypasspct;
-		unsetresource.cmponpush = resource.cmponpush;
-		unsetresource.policytype = resource.policytype;
-		unsetresource.addvaryheader = resource.addvaryheader;
-		unsetresource.externalcache = resource.externalcache;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -417,6 +415,7 @@ public class cmpparameter extends base_resource
 		public static final String optimal = "optimal";
 		public static final String bestspeed = "bestspeed";
 		public static final String bestcompression = "bestcompression";
+		public static final String spdy = "spdy";
 	}
 	public static class policytypeEnum {
 		public static final String CLASSIC = "CLASSIC";

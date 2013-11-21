@@ -40,7 +40,7 @@ public class appfwxmlschema extends base_resource
 
 	/**
 	* <pre>
-	* Indicates name of the imported xmlschema to be displayed.<br> Minimum length =  1<br> Maximum length =  31
+	* Name of the XML Schema object to display.<br> Minimum length =  1<br> Maximum length =  31
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -49,7 +49,7 @@ public class appfwxmlschema extends base_resource
 
 	/**
 	* <pre>
-	* Indicates name of the imported xmlschema to be displayed.<br> Minimum length =  1<br> Maximum length =  31
+	* Name of the XML Schema object to display.<br> Minimum length =  1<br> Maximum length =  31
 	* </pre>
 	*/
 	public String get_name() throws Exception {

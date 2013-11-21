@@ -39,7 +39,7 @@ public class ip6tunnelparam extends base_resource
 
 	/**
 	* <pre>
-	* The source IP address used for all IPv6 tunnels, except those configured by using the add iptunnel command.<br> Minimum length =  1
+	* Common source IPv6 address for all IPv6 tunnels. Must be a SNIP6 or VIP6 address.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_srcip(String srcip) throws Exception{
@@ -48,7 +48,7 @@ public class ip6tunnelparam extends base_resource
 
 	/**
 	* <pre>
-	* The source IP address used for all IPv6 tunnels, except those configured by using the add iptunnel command.<br> Minimum length =  1
+	* Common source IPv6 address for all IPv6 tunnels. Must be a SNIP6 or VIP6 address.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_srcip() throws Exception {
@@ -57,7 +57,7 @@ public class ip6tunnelparam extends base_resource
 
 	/**
 	* <pre>
-	* Drop an IPv6 packet if fragmentation is required to tunnel it.<br> Default value: NO<br> Possible values = YES, NO
+	* Drop any packet that requires fragmentation.<br> Default value: NO<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public void set_dropfrag(String dropfrag) throws Exception{
@@ -66,7 +66,7 @@ public class ip6tunnelparam extends base_resource
 
 	/**
 	* <pre>
-	* Drop an IPv6 packet if fragmentation is required to tunnel it.<br> Default value: NO<br> Possible values = YES, NO
+	* Drop any packet that requires fragmentation.<br> Default value: NO<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public String get_dropfrag() throws Exception {
@@ -75,7 +75,7 @@ public class ip6tunnelparam extends base_resource
 
 	/**
 	* <pre>
-	* Drop an IP6 packet if fragmentation is required to tunnel it and CPU usage is above this threshold.<br> Minimum value =  1<br> Maximum value =  100
+	* Threshold value, as a percentage of CPU usage, at which to drop packets that require fragmentation. Applies only if dropFragparameter is set to NO.<br> Minimum value =  1<br> Maximum value =  100
 	* </pre>
 	*/
 	public void set_dropfragcputhreshold(long dropfragcputhreshold) throws Exception {
@@ -84,7 +84,7 @@ public class ip6tunnelparam extends base_resource
 
 	/**
 	* <pre>
-	* Drop an IP6 packet if fragmentation is required to tunnel it and CPU usage is above this threshold.<br> Minimum value =  1<br> Maximum value =  100
+	* Threshold value, as a percentage of CPU usage, at which to drop packets that require fragmentation. Applies only if dropFragparameter is set to NO.<br> Minimum value =  1<br> Maximum value =  100
 	* </pre>
 	*/
 	public void set_dropfragcputhreshold(Long dropfragcputhreshold) throws Exception{
@@ -93,7 +93,7 @@ public class ip6tunnelparam extends base_resource
 
 	/**
 	* <pre>
-	* Drop an IP6 packet if fragmentation is required to tunnel it and CPU usage is above this threshold.<br> Minimum value =  1<br> Maximum value =  100
+	* Threshold value, as a percentage of CPU usage, at which to drop packets that require fragmentation. Applies only if dropFragparameter is set to NO.<br> Minimum value =  1<br> Maximum value =  100
 	* </pre>
 	*/
 	public Long get_dropfragcputhreshold() throws Exception {
@@ -102,7 +102,7 @@ public class ip6tunnelparam extends base_resource
 
 	/**
 	* <pre>
-	* If the source IP address is not configured, apply round-robin selection from the configured SNIPs.<br> Default value: NO<br> Possible values = YES, NO
+	* Use a different source IPv6 address for each new session through a particular IPv6 tunnel, as determined by round robin selection of one of the SNIP6 addresses. This setting is ignored if a common global source IPv6 address has been specified for all the IPv6 tunnels. This setting does not apply to a tunnel for which a source IPv6 address has been specified.<br> Default value: NO<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public void set_srciproundrobin(String srciproundrobin) throws Exception{
@@ -111,7 +111,7 @@ public class ip6tunnelparam extends base_resource
 
 	/**
 	* <pre>
-	* If the source IP address is not configured, apply round-robin selection from the configured SNIPs.<br> Default value: NO<br> Possible values = YES, NO
+	* Use a different source IPv6 address for each new session through a particular IPv6 tunnel, as determined by round robin selection of one of the SNIP6 addresses. This setting is ignored if a common global source IPv6 address has been specified for all the IPv6 tunnels. This setting does not apply to a tunnel for which a source IPv6 address has been specified.<br> Default value: NO<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public String get_srciproundrobin() throws Exception {
@@ -172,10 +172,6 @@ public class ip6tunnelparam extends base_resource
 	*/
 	public static base_response unset(nitro_service client, ip6tunnelparam resource, String[] args) throws Exception{
 		ip6tunnelparam unsetresource = new ip6tunnelparam();
-		unsetresource.srcip = resource.srcip;
-		unsetresource.dropfrag = resource.dropfrag;
-		unsetresource.dropfragcputhreshold = resource.dropfragcputhreshold;
-		unsetresource.srciproundrobin = resource.srciproundrobin;
 		return unsetresource.unset_resource(client,args);
 	}
 

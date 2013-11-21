@@ -34,6 +34,7 @@ public class csaction extends base_resource
 {
 	private String name;
 	private String targetlbvserver;
+	private String targetvserverexpr;
 	private String comment;
 	private String newname;
 
@@ -42,11 +43,14 @@ public class csaction extends base_resource
 	private Long hits;
 	private Long referencecount;
 	private Long undefhits;
+	private String[] builtin;
 	private Long __count;
 
 	/**
 	* <pre>
-	* Name of the cs action to be added.
+	* Name for the content switching action. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at sign (@), equal sign (=), and hyphen (-) characters. Can be changed after the content switching action is created.
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, “my action” or ‘my action’).
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -55,7 +59,9 @@ public class csaction extends base_resource
 
 	/**
 	* <pre>
-	* Name of the cs action to be added.
+	* Name for the content switching action. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at sign (@), equal sign (=), and hyphen (-) characters. Can be changed after the content switching action is created.
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, “my action” or ‘my action’).
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -64,7 +70,7 @@ public class csaction extends base_resource
 
 	/**
 	* <pre>
-	* Name of the Target lb vserver.
+	* Name of the load balancing virtual server to which the content is switched.
 	* </pre>
 	*/
 	public void set_targetlbvserver(String targetlbvserver) throws Exception{
@@ -73,11 +79,29 @@ public class csaction extends base_resource
 
 	/**
 	* <pre>
-	* Name of the Target lb vserver.
+	* Name of the load balancing virtual server to which the content is switched.
 	* </pre>
 	*/
 	public String get_targetlbvserver() throws Exception {
 		return this.targetlbvserver;
+	}
+
+	/**
+	* <pre>
+	* Information about this content switching action.
+	* </pre>
+	*/
+	public void set_targetvserverexpr(String targetvserverexpr) throws Exception{
+		this.targetvserverexpr = targetvserverexpr;
+	}
+
+	/**
+	* <pre>
+	* Information about this content switching action.
+	* </pre>
+	*/
+	public String get_targetvserverexpr() throws Exception {
+		return this.targetvserverexpr;
 	}
 
 	/**
@@ -100,7 +124,9 @@ public class csaction extends base_resource
 
 	/**
 	* <pre>
-	* The new name of the Content Switching action.<br> Minimum length =  1
+	* New name for the content switching action. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at sign (@), equal sign (=), and hyphen (-) characters. 
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, “my name” or ‘my name’).<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_newname(String newname) throws Exception{
@@ -109,7 +135,9 @@ public class csaction extends base_resource
 
 	/**
 	* <pre>
-	* The new name of the Content Switching action.<br> Minimum length =  1
+	* New name for the content switching action. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at sign (@), equal sign (=), and hyphen (-) characters. 
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, “my name” or ‘my name’).<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_newname() throws Exception {
@@ -141,6 +169,15 @@ public class csaction extends base_resource
 	*/
 	public Long get_undefhits() throws Exception {
 		return this.undefhits;
+	}
+
+	/**
+	* <pre>
+	* .<br> Possible values = MODIFIABLE, DELETABLE, IMMUTABLE
+	* </pre>
+	*/
+	public String[] get_builtin() throws Exception {
+		return this.builtin;
 	}
 
 	/**
@@ -184,6 +221,7 @@ public class csaction extends base_resource
 		csaction addresource = new csaction();
 		addresource.name = resource.name;
 		addresource.targetlbvserver = resource.targetlbvserver;
+		addresource.targetvserverexpr = resource.targetvserverexpr;
 		addresource.comment = resource.comment;
 		return addresource.add_resource(client);
 	}
@@ -199,6 +237,7 @@ public class csaction extends base_resource
 				addresources[i] = new csaction();
 				addresources[i].name = resources[i].name;
 				addresources[i].targetlbvserver = resources[i].targetlbvserver;
+				addresources[i].targetvserverexpr = resources[i].targetvserverexpr;
 				addresources[i].comment = resources[i].comment;
 			}
 			result = add_bulk_request(client, addresources);
@@ -263,6 +302,7 @@ public class csaction extends base_resource
 		csaction updateresource = new csaction();
 		updateresource.name = resource.name;
 		updateresource.targetlbvserver = resource.targetlbvserver;
+		updateresource.targetvserverexpr = resource.targetvserverexpr;
 		updateresource.comment = resource.comment;
 		return updateresource.update_resource(client);
 	}
@@ -278,6 +318,7 @@ public class csaction extends base_resource
 				updateresources[i] = new csaction();
 				updateresources[i].name = resources[i].name;
 				updateresources[i].targetlbvserver = resources[i].targetlbvserver;
+				updateresources[i].targetvserverexpr = resources[i].targetvserverexpr;
 				updateresources[i].comment = resources[i].comment;
 			}
 			result = update_bulk_request(client, updateresources);
@@ -289,20 +330,9 @@ public class csaction extends base_resource
 	* Use this API to unset the properties of csaction resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String name, String args[]) throws Exception {
-		csaction unsetresource = new csaction();
-		unsetresource.name = name;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of csaction resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, csaction resource, String[] args) throws Exception{
 		csaction unsetresource = new csaction();
 		unsetresource.name = resource.name;
-		unsetresource.comment = resource.comment;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -334,7 +364,6 @@ public class csaction extends base_resource
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new csaction();
 				unsetresources[i].name = resources[i].name;
-				unsetresources[i].comment = resources[i].comment;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}
@@ -471,4 +500,9 @@ public class csaction extends base_resource
 		return 0;
 	}
 
+	public static class builtinEnum {
+		public static final String MODIFIABLE = "MODIFIABLE";
+		public static final String DELETABLE = "DELETABLE";
+		public static final String IMMUTABLE = "IMMUTABLE";
+	}
 }

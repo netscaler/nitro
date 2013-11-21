@@ -55,7 +55,7 @@ public class nsmode extends base_resource
 
 	/**
 	* <pre>
-	* The name of the mode to be enabled.<br> Possible values = FR, FastRamp, L2, L2mode, L3, L3mode, USIP, UseSourceIP, CKA, ClientKeepAlive, TCPB, TCPBuffering, MBF, MACbasedforwarding, Edge, USNIP, SRADV, DRADV, IRADV, SRADV6, DRADV6, PMTUD, BridgeBPDUs
+	* Mode to be enabled. Multiple modes can be specified by providing a blank space between each mode.<br> Possible values = FR, FastRamp, L2, L2mode, L3, L3mode, USIP, UseSourceIP, CKA, ClientKeepAlive, TCPB, TCPBuffering, MBF, MACbasedforwarding, Edge, USNIP, SRADV, DRADV, IRADV, SRADV6, DRADV6, PMTUD, BridgeBPDUs
 	* </pre>
 	*/
 	public void set_mode(String[] mode) throws Exception{
@@ -64,7 +64,7 @@ public class nsmode extends base_resource
 
 	/**
 	* <pre>
-	* The name of the mode to be enabled.<br> Possible values = FR, FastRamp, L2, L2mode, L3, L3mode, USIP, UseSourceIP, CKA, ClientKeepAlive, TCPB, TCPBuffering, MBF, MACbasedforwarding, Edge, USNIP, SRADV, DRADV, IRADV, SRADV6, DRADV6, PMTUD, BridgeBPDUs
+	* Mode to be enabled. Multiple modes can be specified by providing a blank space between each mode.<br> Possible values = FR, FastRamp, L2, L2mode, L3, L3mode, USIP, UseSourceIP, CKA, ClientKeepAlive, TCPB, TCPBuffering, MBF, MACbasedforwarding, Edge, USNIP, SRADV, DRADV, IRADV, SRADV6, DRADV6, PMTUD, BridgeBPDUs
 	* </pre>
 	*/
 	public String[] get_mode() throws Exception {

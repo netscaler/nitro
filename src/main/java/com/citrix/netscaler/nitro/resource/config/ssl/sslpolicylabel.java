@@ -51,7 +51,10 @@ public class sslpolicylabel extends base_resource
 
 	/**
 	* <pre>
-	* The name of the SSL policy label to be created.
+	* Name for the SSL policy label.  Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Cannot be changed after the policy label is created.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my label" or 'my label').
 	* </pre>
 	*/
 	public void set_labelname(String labelname) throws Exception{
@@ -60,7 +63,10 @@ public class sslpolicylabel extends base_resource
 
 	/**
 	* <pre>
-	* The name of the SSL policy label to be created.
+	* Name for the SSL policy label.  Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Cannot be changed after the policy label is created.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my label" or 'my label').
 	* </pre>
 	*/
 	public String get_labelname() throws Exception {
@@ -69,7 +75,7 @@ public class sslpolicylabel extends base_resource
 
 	/**
 	* <pre>
-	* Specifies when policies bound to this policy label will be evaluated.<br> Possible values = CONTROL, DATA
+	* Type of policies that the policy label can contain.<br> Possible values = CONTROL, DATA
 	* </pre>
 	*/
 	public void set_type(String type) throws Exception{
@@ -78,7 +84,7 @@ public class sslpolicylabel extends base_resource
 
 	/**
 	* <pre>
-	* Specifies when policies bound to this policy label will be evaluated.<br> Possible values = CONTROL, DATA
+	* Type of policies that the policy label can contain.<br> Possible values = CONTROL, DATA
 	* </pre>
 	*/
 	public String get_type() throws Exception {
@@ -105,7 +111,7 @@ public class sslpolicylabel extends base_resource
 
 	/**
 	* <pre>
-	* The SSL policy name.
+	* Name of the SSL policy to bind to the policy label.
 	* </pre>
 	*/
 	public String get_policyname() throws Exception {

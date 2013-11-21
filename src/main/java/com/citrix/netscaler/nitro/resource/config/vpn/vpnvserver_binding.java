@@ -22,6 +22,7 @@ import com.citrix.netscaler.nitro.resource.config.vpn.vpnvserver_vpnsessionpolic
 import com.citrix.netscaler.nitro.resource.config.vpn.vpnvserver_vpnclientlessaccesspolicy_binding;
 import com.citrix.netscaler.nitro.resource.config.vpn.vpnvserver_intranetip_binding;
 import com.citrix.netscaler.nitro.resource.config.vpn.vpnvserver_vpnnexthopserver_binding;
+import com.citrix.netscaler.nitro.resource.config.vpn.vpnvserver_appflowpolicy_binding;
 import com.citrix.netscaler.nitro.resource.config.vpn.vpnvserver_authenticationldappolicy_binding;
 import com.citrix.netscaler.nitro.resource.config.vpn.vpnvserver_responderpolicy_binding;
 import com.citrix.netscaler.nitro.resource.config.vpn.vpnvserver_sharefileserver_binding;
@@ -29,10 +30,12 @@ import com.citrix.netscaler.nitro.resource.config.vpn.vpnvserver_vpntrafficpolic
 import com.citrix.netscaler.nitro.resource.config.vpn.vpnvserver_authenticationlocalpolicy_binding;
 import com.citrix.netscaler.nitro.resource.config.vpn.vpnvserver_vpnintranetapplication_binding;
 import com.citrix.netscaler.nitro.resource.config.vpn.vpnvserver_appcontroller_binding;
+import com.citrix.netscaler.nitro.resource.config.vpn.vpnvserver_authenticationnegotiatepolicy_binding;
 import com.citrix.netscaler.nitro.resource.config.vpn.vpnvserver_aaapreauthenticationpolicy_binding;
 import com.citrix.netscaler.nitro.resource.config.vpn.vpnvserver_cachepolicy_binding;
 import com.citrix.netscaler.nitro.resource.config.vpn.vpnvserver_rewritepolicy_binding;
 import com.citrix.netscaler.nitro.resource.config.vpn.vpnvserver_authenticationtacacspolicy_binding;
+import com.citrix.netscaler.nitro.resource.config.vpn.vpnvserver_authenticationsamlpolicy_binding;
 import com.citrix.netscaler.nitro.resource.config.vpn.vpnvserver_staserver_binding;
 import com.citrix.netscaler.nitro.resource.config.vpn.vpnvserver_auditsyslogpolicy_binding;
 import com.citrix.netscaler.nitro.resource.config.vpn.vpnvserver_authenticationcertpolicy_binding;
@@ -60,6 +63,7 @@ public class vpnvserver_binding extends base_resource
 	private vpnvserver_vpnclientlessaccesspolicy_binding	vpnvserver_vpnclientlessaccesspolicy_binding[] = null;
 	private vpnvserver_intranetip_binding	vpnvserver_intranetip_binding[] = null;
 	private vpnvserver_vpnnexthopserver_binding	vpnvserver_vpnnexthopserver_binding[] = null;
+	private vpnvserver_appflowpolicy_binding	vpnvserver_appflowpolicy_binding[] = null;
 	private vpnvserver_authenticationldappolicy_binding	vpnvserver_authenticationldappolicy_binding[] = null;
 	private vpnvserver_responderpolicy_binding	vpnvserver_responderpolicy_binding[] = null;
 	private vpnvserver_sharefileserver_binding	vpnvserver_sharefileserver_binding[] = null;
@@ -67,10 +71,12 @@ public class vpnvserver_binding extends base_resource
 	private vpnvserver_authenticationlocalpolicy_binding	vpnvserver_authenticationlocalpolicy_binding[] = null;
 	private vpnvserver_vpnintranetapplication_binding	vpnvserver_vpnintranetapplication_binding[] = null;
 	private vpnvserver_appcontroller_binding	vpnvserver_appcontroller_binding[] = null;
+	private vpnvserver_authenticationnegotiatepolicy_binding	vpnvserver_authenticationnegotiatepolicy_binding[] = null;
 	private vpnvserver_aaapreauthenticationpolicy_binding	vpnvserver_aaapreauthenticationpolicy_binding[] = null;
 	private vpnvserver_cachepolicy_binding	vpnvserver_cachepolicy_binding[] = null;
 	private vpnvserver_rewritepolicy_binding	vpnvserver_rewritepolicy_binding[] = null;
 	private vpnvserver_authenticationtacacspolicy_binding	vpnvserver_authenticationtacacspolicy_binding[] = null;
+	private vpnvserver_authenticationsamlpolicy_binding	vpnvserver_authenticationsamlpolicy_binding[] = null;
 	private vpnvserver_staserver_binding	vpnvserver_staserver_binding[] = null;
 	private vpnvserver_auditsyslogpolicy_binding	vpnvserver_auditsyslogpolicy_binding[] = null;
 	private vpnvserver_authenticationcertpolicy_binding	vpnvserver_authenticationcertpolicy_binding[] = null;
@@ -78,7 +84,7 @@ public class vpnvserver_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the VPN vserver.<br> Minimum length =  1
+	* Name of the Access Gateway virtual server for which to show detailed information.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -87,7 +93,7 @@ public class vpnvserver_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the VPN vserver.<br> Minimum length =  1
+	* Name of the Access Gateway virtual server for which to show detailed information.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -132,6 +138,15 @@ public class vpnvserver_binding extends base_resource
 
 	/**
 	* <pre>
+	* authenticationsamlpolicy that can be bound to vpnvserver.
+	* </pre>
+	*/
+	public vpnvserver_authenticationsamlpolicy_binding[] get_vpnvserver_authenticationsamlpolicy_bindings() throws Exception {
+		return this.vpnvserver_authenticationsamlpolicy_binding;
+	}
+
+	/**
+	* <pre>
 	* auditnslogpolicy that can be bound to vpnvserver.
 	* </pre>
 	*/
@@ -164,6 +179,15 @@ public class vpnvserver_binding extends base_resource
 	*/
 	public vpnvserver_responderpolicy_binding[] get_vpnvserver_responderpolicy_bindings() throws Exception {
 		return this.vpnvserver_responderpolicy_binding;
+	}
+
+	/**
+	* <pre>
+	* appflowpolicy that can be bound to vpnvserver.
+	* </pre>
+	*/
+	public vpnvserver_appflowpolicy_binding[] get_vpnvserver_appflowpolicy_bindings() throws Exception {
+		return this.vpnvserver_appflowpolicy_binding;
 	}
 
 	/**
@@ -254,6 +278,15 @@ public class vpnvserver_binding extends base_resource
 	*/
 	public vpnvserver_authenticationldappolicy_binding[] get_vpnvserver_authenticationldappolicy_bindings() throws Exception {
 		return this.vpnvserver_authenticationldappolicy_binding;
+	}
+
+	/**
+	* <pre>
+	* authenticationnegotiatepolicy that can be bound to vpnvserver.
+	* </pre>
+	*/
+	public vpnvserver_authenticationnegotiatepolicy_binding[] get_vpnvserver_authenticationnegotiatepolicy_bindings() throws Exception {
+		return this.vpnvserver_authenticationnegotiatepolicy_binding;
 	}
 
 	/**

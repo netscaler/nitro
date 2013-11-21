@@ -33,6 +33,9 @@ class callhome_response extends base_response
 public class callhome extends base_resource
 {
 	private String emailaddress;
+	private String proxymode;
+	private String ipaddress;
+	private Integer port;
 
 	//------- Read only Parameter ---------;
 
@@ -63,6 +66,69 @@ public class callhome extends base_resource
 	*/
 	public String get_emailaddress() throws Exception {
 		return this.emailaddress;
+	}
+
+	/**
+	* <pre>
+	* Deploy the callhome proxy mode.<br> Default value: NO<br> Possible values = YES, NO
+	* </pre>
+	*/
+	public void set_proxymode(String proxymode) throws Exception{
+		this.proxymode = proxymode;
+	}
+
+	/**
+	* <pre>
+	* Deploy the callhome proxy mode.<br> Default value: NO<br> Possible values = YES, NO
+	* </pre>
+	*/
+	public String get_proxymode() throws Exception {
+		return this.proxymode;
+	}
+
+	/**
+	* <pre>
+	* Proxy Server IP address.<br> Minimum length =  1
+	* </pre>
+	*/
+	public void set_ipaddress(String ipaddress) throws Exception{
+		this.ipaddress = ipaddress;
+	}
+
+	/**
+	* <pre>
+	* Proxy Server IP address.<br> Minimum length =  1
+	* </pre>
+	*/
+	public String get_ipaddress() throws Exception {
+		return this.ipaddress;
+	}
+
+	/**
+	* <pre>
+	* Proxy Server Port.<br> Minimum value =  1<br> Range 1 - 65535
+	* </pre>
+	*/
+	public void set_port(int port) throws Exception {
+		this.port = new Integer(port);
+	}
+
+	/**
+	* <pre>
+	* Proxy Server Port.<br> Minimum value =  1<br> Range 1 - 65535
+	* </pre>
+	*/
+	public void set_port(Integer port) throws Exception{
+		this.port = port;
+	}
+
+	/**
+	* <pre>
+	* Proxy Server Port.<br> Minimum value =  1<br> Range 1 - 65535
+	* </pre>
+	*/
+	public Integer get_port() throws Exception {
+		return this.port;
 	}
 
 	/**
@@ -197,6 +263,9 @@ public class callhome extends base_resource
 	public static base_response update(nitro_service client, callhome resource) throws Exception {
 		callhome updateresource = new callhome();
 		updateresource.emailaddress = resource.emailaddress;
+		updateresource.proxymode = resource.proxymode;
+		updateresource.ipaddress = resource.ipaddress;
+		updateresource.port = resource.port;
 		return updateresource.update_resource(client);
 	}
 
@@ -206,7 +275,6 @@ public class callhome extends base_resource
 	*/
 	public static base_response unset(nitro_service client, callhome resource, String[] args) throws Exception{
 		callhome unsetresource = new callhome();
-		unsetresource.emailaddress = resource.emailaddress;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -233,5 +301,9 @@ public class callhome extends base_resource
 		public static final String DISABLED = "DISABLED";
 		public static final String SUCCESSFUL = "SUCCESSFUL";
 		public static final String FAILED = "FAILED";
+	}
+	public static class proxymodeEnum {
+		public static final String YES = "YES";
+		public static final String NO = "NO";
 	}
 }

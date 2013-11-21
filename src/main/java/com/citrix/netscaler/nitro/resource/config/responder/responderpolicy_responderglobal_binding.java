@@ -43,7 +43,7 @@ public class responderpolicy_responderglobal_binding extends base_resource
 
 	/**
 	* <pre>
-	* Name of the responder policy.
+	* Name of the responder policy for which to display settings.
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -52,7 +52,7 @@ public class responderpolicy_responderglobal_binding extends base_resource
 
 	/**
 	* <pre>
-	* Name of the responder policy.
+	* Name of the responder policy for which to display settings.
 	* </pre>
 	*/
 	public String get_name() throws Exception {

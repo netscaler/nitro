@@ -48,6 +48,9 @@ public class nitro_service
 	private ipayload_formatter format;
 	private Long timeout;
 	private OnerrorEnum onerror;
+	private Boolean certvalidation = true;
+	private Boolean hostnameverification = true;
+	
 	
 	public enum OnerrorEnum {
 	    EXIT, CONTINUE, ROLLBACK 
@@ -113,7 +116,7 @@ public class nitro_service
 	}
 	
 	/**
-	 * sets the credentials for the netscaler. 
+	 * sets the session inactivity timeout for the netscaler. 
 	 * @param timeout session timeout of the netscaler.Default is 30mins.
 	 */
 	public void set_timeout(long timeout)
@@ -122,7 +125,7 @@ public class nitro_service
 	}
 	
 	/**
-	 * sets the credentials for the netscaler. 
+	 * sets the session inactivity timeout for the netscaler. 
 	 * @param timeout session timeout of the netscaler.Default is 30mins.
 	 */
 	public void set_timeout(Long timeout)
@@ -148,6 +151,41 @@ public class nitro_service
 		return this.warning;
 	}
 	
+	/**
+	 * sets the flag for certificate validation. 
+	 * @param certvalidation set this to true for validating server certificates.
+	 */
+	public void set_certvalidation(Boolean certvalidate)
+	{
+		this.certvalidation = certvalidate;
+	}
+	
+	/**
+	 * Gets certificate validation flag status. 
+	 * @return certvalidation status
+	 */
+	public Boolean get_certvalidation()
+	{
+		return this.certvalidation;
+	}
+	
+	/**
+	 * sets the flag for host name verification. 
+	 * @param hostnameverifier set this to true for verifying certificate host name.
+	 */
+	public void set_hostnameverification(Boolean hostnameverification)
+	{
+		this.hostnameverification = hostnameverification;
+	}
+	
+	/**
+	 * Gets host name verification flag status. 
+	 * @return hostnameverification status
+	 */
+	public Boolean get_hostnameverification()
+	{
+		return this.hostnameverification;
+	}
 
 	/**
 	 * Checks login status.
@@ -185,15 +223,15 @@ public class nitro_service
 	
 	/**
 	 * Sets the onerror status of the netscaler.
-	 * @param onerror This option is applicable for bulk requests.
+	 * @set onerror This option is applicable for bulk requests.
 	 * possible values: EXIT, CONTINUE, ROLLBACK.
 	 * if set with EXIT: exists on the first encountered error.
 	 * if set with CONTINUE: executes all the requests irrespective of individual response status.
 	 * if set with ROLLBACK: rolls back the successful requests upon encountering an error. 
 	 */
-	public void set_onerror(OnerrorEnum onerror)
+	public void set_onerror(OnerrorEnum val)
 	{
-		this.onerror = onerror;
+		this.onerror = val;
 	}
 	
 	/**
@@ -419,7 +457,7 @@ public class nitro_service
 	
 	/**
 	 * Use this API to enable the feature on Netscaler.
-	 * @param features features to be enabled.
+	 * @param feature feature to be enabled.
 	 * @return status of the operation performed.
 	 * @throws Exception Nitro exception. 
 	 */
@@ -436,7 +474,7 @@ public class nitro_service
 
 	/**
 	 * Use this API to disable the feature on Netscaler.
-	 * @param features feature to be enabled.
+	 * @param feature feature to be enabled.
 	 * @return status of the operation performed.
 	 * @throws Exception Nitro exception. 
 	 */
@@ -513,7 +551,7 @@ public class nitro_service
 	
 	/**
 	 * Use this API to enable the mode on Netscaler.
-	 * @param modes modes to be enabled.
+	 * @param mode mode to be enabled.
 	 * @return status of the operation performed.
 	 * @throws Exception Nitro exception. 
 	 */
@@ -530,7 +568,7 @@ public class nitro_service
 
 	/**
 	 * Use this API to disable the mode on Netscaler.
-	 * @param modes modes to be enabled.
+	 * @param mode mode to be enabled.
 	 * @return status of the operation performed.
 	 * @throws Exception Nitro exception. 
 	 */

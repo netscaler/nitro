@@ -33,6 +33,7 @@ class tunnelip6_response extends base_response
 public class tunnelip6_stats extends base_resource
 {
 	private String tunnelip6;
+	private String clearstats;
 	private Long tnltotrxpkts;
 	private Long tnlrxpktsrate;
 	private Long tnltottxpkts;
@@ -62,7 +63,25 @@ public class tunnelip6_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of bytes transmitted on the tunnel.
+	* Clear the statsistics / counters
+	* </pre>
+	*/
+	public void set_clearstats(String clearstats) throws Exception{
+		this.clearstats = clearstats;
+	}
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters.<br> Possible values = basic, full
+	* </pre>
+	*/
+	public String get_clearstats() throws Exception {
+		return this.clearstats;
+	}
+
+	/**
+	* <pre>
+	* Rate (/s) counter for tnltottxbytes
 	* </pre>
 	*/
 	public Long get_tnltxbytesrate() throws Exception {
@@ -89,7 +108,7 @@ public class tunnelip6_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of bytes received on the tunnel.
+	* Rate (/s) counter for tnltotrxbytes
 	* </pre>
 	*/
 	public Long get_tnlrxbytesrate() throws Exception {
@@ -107,7 +126,7 @@ public class tunnelip6_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of packets transmitted on the tunnel.
+	* Rate (/s) counter for tnltottxpkts
 	* </pre>
 	*/
 	public Long get_tnltxpktsrate() throws Exception {
@@ -116,7 +135,7 @@ public class tunnelip6_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of packets received on the tunnel.
+	* Rate (/s) counter for tnltotrxpkts
 	* </pre>
 	*/
 	public Long get_tnlrxpktsrate() throws Exception {
@@ -194,4 +213,8 @@ public class tunnelip6_stats extends base_resource
 		return response;
 	}
 
+	public static class clearstatsEnum {
+		public static final String basic = "basic";
+		public static final String full = "full";
+	}
 }

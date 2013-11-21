@@ -38,7 +38,9 @@ public class lbgroup_lbvserver_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the group. A maximum of 127 characters can be used to specify a new name to a group of virtual servers that you are creating (or to specify an existing group name if you are adding the virtual server to an existing group of virtual servers.<br> Minimum length =  1
+	* Name for the load balancing virtual server group. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Can be changed after the virtual server is created.
+
+CLI Users: If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my lbgroup" or 'my lbgroup').<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -47,7 +49,9 @@ public class lbgroup_lbvserver_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the group. A maximum of 127 characters can be used to specify a new name to a group of virtual servers that you are creating (or to specify an existing group name if you are adding the virtual server to an existing group of virtual servers.<br> Minimum length =  1
+	* Name for the load balancing virtual server group. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Can be changed after the virtual server is created.
+
+CLI Users: If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my lbgroup" or 'my lbgroup').<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {

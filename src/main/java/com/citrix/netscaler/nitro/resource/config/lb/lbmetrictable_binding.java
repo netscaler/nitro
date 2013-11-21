@@ -38,7 +38,7 @@ public class lbmetrictable_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the metric table.<br> Minimum length =  1<br> Maximum length =  31
+	* Name of the metric table.<br> Minimum length =  1<br> Maximum length =  31
 	* </pre>
 	*/
 	public void set_metrictable(String metrictable) throws Exception{
@@ -47,7 +47,7 @@ public class lbmetrictable_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the metric table.<br> Minimum length =  1<br> Maximum length =  31
+	* Name of the metric table.<br> Minimum length =  1<br> Maximum length =  31
 	* </pre>
 	*/
 	public String get_metrictable() throws Exception {

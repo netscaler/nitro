@@ -40,13 +40,14 @@ public class lbvserver_servicegroupmember_binding extends base_resource
 	private Long weight;
 	private Long dynamicweight;
 	private String cookieipport;
+	private String cookiename;
 	private String vserverid;
 	private String name;
 	private Long __count;
 
 	/**
 	* <pre>
-	* The weight for the specified service.<br> Minimum value =  1<br> Maximum value =  100
+	* Weight to assign to the specified service.<br> Minimum value =  1<br> Maximum value =  100
 	* </pre>
 	*/
 	public void set_weight(long weight) throws Exception {
@@ -55,7 +56,7 @@ public class lbvserver_servicegroupmember_binding extends base_resource
 
 	/**
 	* <pre>
-	* The weight for the specified service.<br> Minimum value =  1<br> Maximum value =  100
+	* Weight to assign to the specified service.<br> Minimum value =  1<br> Maximum value =  100
 	* </pre>
 	*/
 	public void set_weight(Long weight) throws Exception{
@@ -64,7 +65,7 @@ public class lbvserver_servicegroupmember_binding extends base_resource
 
 	/**
 	* <pre>
-	* The weight for the specified service.<br> Minimum value =  1<br> Maximum value =  100
+	* Weight to assign to the specified service.<br> Minimum value =  1<br> Maximum value =  100
 	* </pre>
 	*/
 	public Long get_weight() throws Exception {
@@ -73,7 +74,9 @@ public class lbvserver_servicegroupmember_binding extends base_resource
 
 	/**
 	* <pre>
-	* The virtual server name to which the service is bound.<br> Minimum length =  1
+	* Name for the virtual server. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at sign (@), equal sign (=), and hyphen (-) characters. Can be changed after the virtual server is created.
+
+CLI Users: If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my vserver" or 'my vserver'). .<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -82,7 +85,9 @@ public class lbvserver_servicegroupmember_binding extends base_resource
 
 	/**
 	* <pre>
-	* The virtual server name to which the service is bound.<br> Minimum length =  1
+	* Name for the virtual server. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at sign (@), equal sign (=), and hyphen (-) characters. Can be changed after the virtual server is created.
+
+CLI Users: If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my vserver" or 'my vserver'). .<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -118,7 +123,7 @@ public class lbvserver_servicegroupmember_binding extends base_resource
 
 	/**
 	* <pre>
-	* A port number for the virtual server.<br> Range 1 - 65535
+	* Port number for the virtual server.<br> Range 1 - 65535
 	* </pre>
 	*/
 	public Integer get_port() throws Exception {
@@ -127,7 +132,7 @@ public class lbvserver_servicegroupmember_binding extends base_resource
 
 	/**
 	* <pre>
-	* Current LB vserver state.<br> Possible values = UP, DOWN, UNKNOWN, BUSY, OUT OF SERVICE, GOING OUT OF SERVICE, DOWN WHEN GOING OUT OF SERVICE, NS_EMPTY_STR
+	* Current LB vserver state.<br> Possible values = UP, DOWN, UNKNOWN, BUSY, OUT OF SERVICE, GOING OUT OF SERVICE, DOWN WHEN GOING OUT OF SERVICE, NS_EMPTY_STR, Unknown, DISABLED
 	* </pre>
 	*/
 	public String get_curstate() throws Exception {
@@ -145,11 +150,20 @@ public class lbvserver_servicegroupmember_binding extends base_resource
 
 	/**
 	* <pre>
-	* The IP address of the virtual server.
+	* IPv4 or IPv6 address to assign to the virtual server.
 	* </pre>
 	*/
 	public String get_ipv46() throws Exception {
 		return this.ipv46;
+	}
+
+	/**
+	* <pre>
+	* Use this parameter to specify the cookie name for COOKIE peristence type. It specifies the name of cookie with a maximum of 32 characters. If not specified, cookie name is internally generated.
+	* </pre>
+	*/
+	public String get_cookiename() throws Exception {
+		return this.cookiename;
 	}
 
 	/**
@@ -163,7 +177,7 @@ public class lbvserver_servicegroupmember_binding extends base_resource
 
 	/**
 	* <pre>
-	* The service type.<br> Possible values = HTTP, FTP, TCP, UDP, SSL, SSL_BRIDGE, SSL_TCP, NNTP, DNS, DHCPRA, ANY, SIP_UDP, DNS_TCP, RTSP, PUSH, SSL_PUSH, RADIUS, RDP, MYSQL, MSSQL, DIAMETER, SSL_DIAMETER
+	* Protocol used by the service (also called the service type).<br> Possible values = HTTP, FTP, TCP, UDP, SSL, SSL_BRIDGE, SSL_TCP, DTLS, NNTP, DNS, DHCPRA, ANY, SIP_UDP, DNS_TCP, RTSP, PUSH, SSL_PUSH, RADIUS, RDP, MYSQL, MSSQL, DIAMETER, SSL_DIAMETER, TFTP
 	* </pre>
 	*/
 	public String get_servicetype() throws Exception {
@@ -297,6 +311,7 @@ public class lbvserver_servicegroupmember_binding extends base_resource
 		public static final String SSL = "SSL";
 		public static final String SSL_BRIDGE = "SSL_BRIDGE";
 		public static final String SSL_TCP = "SSL_TCP";
+		public static final String DTLS = "DTLS";
 		public static final String NNTP = "NNTP";
 		public static final String DNS = "DNS";
 		public static final String DHCPRA = "DHCPRA";
@@ -312,6 +327,7 @@ public class lbvserver_servicegroupmember_binding extends base_resource
 		public static final String MSSQL = "MSSQL";
 		public static final String DIAMETER = "DIAMETER";
 		public static final String SSL_DIAMETER = "SSL_DIAMETER";
+		public static final String TFTP = "TFTP";
 	}
 	public static class bindpointEnum {
 		public static final String REQUEST = "REQUEST";
@@ -331,6 +347,8 @@ public class lbvserver_servicegroupmember_binding extends base_resource
 		public static final String GOING_OUT_OF_SERVICE = "GOING OUT OF SERVICE";
 		public static final String DOWN_WHEN_GOING_OUT_OF_SERVICE = "DOWN WHEN GOING OUT OF SERVICE";
 		public static final String NS_EMPTY_STR = "NS_EMPTY_STR";
+		public static final String Unknown = "Unknown";
+		public static final String DISABLED = "DISABLED";
 	}
 
 }

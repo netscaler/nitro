@@ -50,7 +50,10 @@ public class cmppolicylabel extends base_resource
 
 	/**
 	* <pre>
-	* The name of the HTTP compression policy label to be created.<br> Minimum length =  1
+	* Name of the HTTP compression policy label. Must begin with a letter, number, or the underscore character (_). Additional characters allowed, after the first character, are the hyphen (-), period (.) pound sign (#), space ( ), at sign (@), equals (=), and colon (:). The name must be unique within the list of policy labels for compression policies. Can be renamed after the policy label is created. 
+            
+            The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my cmp policylabel" or 'my cmp policylabel').<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_labelname(String labelname) throws Exception{
@@ -59,7 +62,10 @@ public class cmppolicylabel extends base_resource
 
 	/**
 	* <pre>
-	* The name of the HTTP compression policy label to be created.<br> Minimum length =  1
+	* Name of the HTTP compression policy label. Must begin with a letter, number, or the underscore character (_). Additional characters allowed, after the first character, are the hyphen (-), period (.) pound sign (#), space ( ), at sign (@), equals (=), and colon (:). The name must be unique within the list of policy labels for compression policies. Can be renamed after the policy label is created. 
+            
+            The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my cmp policylabel" or 'my cmp policylabel').<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_labelname() throws Exception {
@@ -68,7 +74,7 @@ public class cmppolicylabel extends base_resource
 
 	/**
 	* <pre>
-	* Specifies when policies bound to this policy label will be evaluated.<br> Possible values = REQ, RES
+	* Type of packets (request packets or response) against which to match the policies bound to this policy label.<br> Possible values = REQ, RES
 	* </pre>
 	*/
 	public void set_type(String type) throws Exception{
@@ -77,7 +83,7 @@ public class cmppolicylabel extends base_resource
 
 	/**
 	* <pre>
-	* Specifies when policies bound to this policy label will be evaluated.<br> Possible values = REQ, RES
+	* Type of packets (request packets or response) against which to match the policies bound to this policy label.<br> Possible values = REQ, RES
 	* </pre>
 	*/
 	public String get_type() throws Exception {
@@ -86,7 +92,10 @@ public class cmppolicylabel extends base_resource
 
 	/**
 	* <pre>
-	* The new name of the cmp policylabel.<br> Minimum length =  1
+	* New name for the compression policy label. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.
+                        
+                        The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my cmp policylabel" or 'my cmp policylabel').<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_newname(String newname) throws Exception{
@@ -95,7 +104,10 @@ public class cmppolicylabel extends base_resource
 
 	/**
 	* <pre>
-	* The new name of the cmp policylabel.<br> Minimum length =  1
+	* New name for the compression policy label. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.
+                        
+                        The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my cmp policylabel" or 'my cmp policylabel').<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_newname() throws Exception {
@@ -149,7 +161,7 @@ public class cmppolicylabel extends base_resource
 
 	/**
 	* <pre>
-	* Name of the label to invoke if the current policy rule evaluates to TRUE.
+	* Name of the label to invoke if the current policy evaluates to TRUE.
 	* </pre>
 	*/
 	public String get_invoke_labelname() throws Exception {

@@ -158,7 +158,7 @@ public class sslcertkey_service_binding extends base_resource
 
 	/**
 	* <pre>
-	* The object name for the certificate-key pair.<br> Minimum length =  1
+	* Name of the certificate-key pair.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_certkey(String certkey) throws Exception{
@@ -167,7 +167,7 @@ public class sslcertkey_service_binding extends base_resource
 
 	/**
 	* <pre>
-	* The object name for the certificate-key pair.<br> Minimum length =  1
+	* Name of the certificate-key pair.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_certkey() throws Exception {

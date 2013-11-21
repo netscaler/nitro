@@ -36,13 +36,12 @@ public class dnsview extends base_resource
 
 	//------- Read only Parameter ---------;
 
-	private String servicename;
 	private Long flags;
 	private Long __count;
 
 	/**
 	* <pre>
-	* Name of the view name.<br> Minimum length =  1
+	* Name for the DNS view.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_viewname(String viewname) throws Exception{
@@ -51,20 +50,11 @@ public class dnsview extends base_resource
 
 	/**
 	* <pre>
-	* Name of the view name.<br> Minimum length =  1
+	* Name for the DNS view.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_viewname() throws Exception {
 		return this.viewname;
-	}
-
-	/**
-	* <pre>
-	* Service name of the service using this view.
-	* </pre>
-	*/
-	public String get_servicename() throws Exception {
-		return this.servicename;
 	}
 
 	/**

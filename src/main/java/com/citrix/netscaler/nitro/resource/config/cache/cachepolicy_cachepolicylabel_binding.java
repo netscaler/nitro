@@ -43,7 +43,7 @@ public class cachepolicy_cachepolicylabel_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the cache policy to be displayed.<br> Minimum length =  1
+	* Name of the cache policy about which to display details.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_policyname(String policyname) throws Exception{
@@ -52,7 +52,7 @@ public class cachepolicy_cachepolicylabel_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the cache policy to be displayed.<br> Minimum length =  1
+	* Name of the cache policy about which to display details.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_policyname() throws Exception {

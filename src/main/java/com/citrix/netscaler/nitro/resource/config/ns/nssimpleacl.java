@@ -34,6 +34,7 @@ public class nssimpleacl extends base_resource
 {
 	private String aclname;
 	private String aclaction;
+	private Long td;
 	private String srcip;
 	private Integer destport;
 	private String protocol;
@@ -47,7 +48,7 @@ public class nssimpleacl extends base_resource
 
 	/**
 	* <pre>
-	* Alphanumeric name of the ACL rule.<br> Minimum length =  1
+	* Name for the simple ACL rule. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Cannot be changed after the simple ACL rule is created.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_aclname(String aclname) throws Exception{
@@ -56,7 +57,7 @@ public class nssimpleacl extends base_resource
 
 	/**
 	* <pre>
-	* Alphanumeric name of the ACL rule.<br> Minimum length =  1
+	* Name for the simple ACL rule. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Cannot be changed after the simple ACL rule is created.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_aclname() throws Exception {
@@ -65,7 +66,7 @@ public class nssimpleacl extends base_resource
 
 	/**
 	* <pre>
-	* Action associated with the ACL rule.<br> Possible values = DENY
+	* Drop incoming IPv4 packets that match the simple ACL rule.<br> Possible values = DENY
 	* </pre>
 	*/
 	public void set_aclaction(String aclaction) throws Exception{
@@ -74,7 +75,7 @@ public class nssimpleacl extends base_resource
 
 	/**
 	* <pre>
-	* Action associated with the ACL rule.<br> Possible values = DENY
+	* Drop incoming IPv4 packets that match the simple ACL rule.<br> Possible values = DENY
 	* </pre>
 	*/
 	public String get_aclaction() throws Exception {
@@ -83,7 +84,34 @@ public class nssimpleacl extends base_resource
 
 	/**
 	* <pre>
-	* Source ip for the ACL rule.
+	* Traffic Domain Id.<br> Minimum value =  0<br> Maximum value =  4094
+	* </pre>
+	*/
+	public void set_td(long td) throws Exception {
+		this.td = new Long(td);
+	}
+
+	/**
+	* <pre>
+	* Traffic Domain Id.<br> Minimum value =  0<br> Maximum value =  4094
+	* </pre>
+	*/
+	public void set_td(Long td) throws Exception{
+		this.td = td;
+	}
+
+	/**
+	* <pre>
+	* Traffic Domain Id.<br> Minimum value =  0<br> Maximum value =  4094
+	* </pre>
+	*/
+	public Long get_td() throws Exception {
+		return this.td;
+	}
+
+	/**
+	* <pre>
+	* IP address to match against the source IP address of an incoming IPv4 packet.
 	* </pre>
 	*/
 	public void set_srcip(String srcip) throws Exception{
@@ -92,7 +120,7 @@ public class nssimpleacl extends base_resource
 
 	/**
 	* <pre>
-	* Source ip for the ACL rule.
+	* IP address to match against the source IP address of an incoming IPv4 packet.
 	* </pre>
 	*/
 	public String get_srcip() throws Exception {
@@ -101,7 +129,9 @@ public class nssimpleacl extends base_resource
 
 	/**
 	* <pre>
-	* Destination port for the ACL rule.
+	* Port number to match against the destination port number of an incoming IPv4 packet. 
+
+Omitting the port number creates an all-ports simple ACL rule, which matches any port. In that case, you cannot create another simple ACL rule specifying a specific port and the same source IPv4 address.
 	* </pre>
 	*/
 	public void set_destport(int destport) throws Exception {
@@ -110,7 +140,9 @@ public class nssimpleacl extends base_resource
 
 	/**
 	* <pre>
-	* Destination port for the ACL rule.
+	* Port number to match against the destination port number of an incoming IPv4 packet. 
+
+Omitting the port number creates an all-ports simple ACL rule, which matches any port. In that case, you cannot create another simple ACL rule specifying a specific port and the same source IPv4 address.
 	* </pre>
 	*/
 	public void set_destport(Integer destport) throws Exception{
@@ -119,7 +151,9 @@ public class nssimpleacl extends base_resource
 
 	/**
 	* <pre>
-	* Destination port for the ACL rule.
+	* Port number to match against the destination port number of an incoming IPv4 packet. 
+
+Omitting the port number creates an all-ports simple ACL rule, which matches any port. In that case, you cannot create another simple ACL rule specifying a specific port and the same source IPv4 address.
 	* </pre>
 	*/
 	public Integer get_destport() throws Exception {
@@ -128,7 +162,7 @@ public class nssimpleacl extends base_resource
 
 	/**
 	* <pre>
-	* Protocol associated with the ACL rule.<br> Possible values = TCP, UDP
+	* Protocol to match against the protocol of an incoming IPv4 packet. You must set this parameter if you have set the Destination Port parameter.<br> Possible values = TCP, UDP
 	* </pre>
 	*/
 	public void set_protocol(String protocol) throws Exception{
@@ -137,7 +171,7 @@ public class nssimpleacl extends base_resource
 
 	/**
 	* <pre>
-	* Protocol associated with the ACL rule.<br> Possible values = TCP, UDP
+	* Protocol to match against the protocol of an incoming IPv4 packet. You must set this parameter if you have set the Destination Port parameter.<br> Possible values = TCP, UDP
 	* </pre>
 	*/
 	public String get_protocol() throws Exception {
@@ -146,7 +180,7 @@ public class nssimpleacl extends base_resource
 
 	/**
 	* <pre>
-	* Time to expire this ACL rule(in seconds). Timer granularity is 4 seconds.<br> Minimum value =  4<br> Maximum value =  2147483647
+	* Number of seconds, in multiples of four, after which the simple ACL rule expires. If you do not want the simple ACL rule to expire, do not specify a TTL value.<br> Minimum value =  4<br> Maximum value =  2147483647
 	* </pre>
 	*/
 	public void set_ttl(long ttl) throws Exception {
@@ -155,7 +189,7 @@ public class nssimpleacl extends base_resource
 
 	/**
 	* <pre>
-	* Time to expire this ACL rule(in seconds). Timer granularity is 4 seconds.<br> Minimum value =  4<br> Maximum value =  2147483647
+	* Number of seconds, in multiples of four, after which the simple ACL rule expires. If you do not want the simple ACL rule to expire, do not specify a TTL value.<br> Minimum value =  4<br> Maximum value =  2147483647
 	* </pre>
 	*/
 	public void set_ttl(Long ttl) throws Exception{
@@ -164,7 +198,7 @@ public class nssimpleacl extends base_resource
 
 	/**
 	* <pre>
-	* Time to expire this ACL rule(in seconds). Timer granularity is 4 seconds.<br> Minimum value =  4<br> Maximum value =  2147483647
+	* Number of seconds, in multiples of four, after which the simple ACL rule expires. If you do not want the simple ACL rule to expire, do not specify a TTL value.<br> Minimum value =  4<br> Maximum value =  2147483647
 	* </pre>
 	*/
 	public Long get_ttl() throws Exception {
@@ -248,6 +282,7 @@ public class nssimpleacl extends base_resource
 		nssimpleacl addresource = new nssimpleacl();
 		addresource.aclname = resource.aclname;
 		addresource.aclaction = resource.aclaction;
+		addresource.td = resource.td;
 		addresource.srcip = resource.srcip;
 		addresource.destport = resource.destport;
 		addresource.protocol = resource.protocol;
@@ -266,6 +301,7 @@ public class nssimpleacl extends base_resource
 				addresources[i] = new nssimpleacl();
 				addresources[i].aclname = resources[i].aclname;
 				addresources[i].aclaction = resources[i].aclaction;
+				addresources[i].td = resources[i].td;
 				addresources[i].srcip = resources[i].srcip;
 				addresources[i].destport = resources[i].destport;
 				addresources[i].protocol = resources[i].protocol;

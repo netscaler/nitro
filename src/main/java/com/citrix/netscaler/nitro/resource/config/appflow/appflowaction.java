@@ -46,7 +46,10 @@ public class appflowaction extends base_resource
 
 	/**
 	* <pre>
-	* Name of the AppFlow action to be added.
+	* Name for the action. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my appflow action" or 'my appflow action').
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -55,7 +58,10 @@ public class appflowaction extends base_resource
 
 	/**
 	* <pre>
-	* Name of the AppFlow action to be added.
+	* Name for the action. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my appflow action" or 'my appflow action').
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -64,7 +70,7 @@ public class appflowaction extends base_resource
 
 	/**
 	* <pre>
-	* The names of AppFlow collectors associated with the AppFlow action.<br> Minimum length =  1
+	* Name(s) of collector(s) to be associated with the AppFlow action.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_collectors(String[] collectors) throws Exception{
@@ -73,7 +79,7 @@ public class appflowaction extends base_resource
 
 	/**
 	* <pre>
-	* The names of AppFlow collectors associated with the AppFlow action.<br> Minimum length =  1
+	* Name(s) of collector(s) to be associated with the AppFlow action.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String[] get_collectors() throws Exception {
@@ -82,7 +88,7 @@ public class appflowaction extends base_resource
 
 	/**
 	* <pre>
-	* Comments associated with this AppFlow action.
+	* Any comments about this action.  In the CLI, if including spaces between words, enclose the comment in quotation marks. (The quotation marks are not required in the configuration utility.).
 	* </pre>
 	*/
 	public void set_comment(String comment) throws Exception{
@@ -91,7 +97,7 @@ public class appflowaction extends base_resource
 
 	/**
 	* <pre>
-	* Comments associated with this AppFlow action.
+	* Any comments about this action.  In the CLI, if including spaces between words, enclose the comment in quotation marks. (The quotation marks are not required in the configuration utility.).
 	* </pre>
 	*/
 	public String get_comment() throws Exception {
@@ -100,7 +106,11 @@ public class appflowaction extends base_resource
 
 	/**
 	* <pre>
-	* The new name of the AppFlow action.<br> Minimum length =  1
+	* New name for the AppFlow action. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at
+(@), equals (=), and hyphen (-) characters. 
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my appflow action" or 'my appflow action').<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_newname(String newname) throws Exception{
@@ -109,7 +119,11 @@ public class appflowaction extends base_resource
 
 	/**
 	* <pre>
-	* The new name of the AppFlow action.<br> Minimum length =  1
+	* New name for the AppFlow action. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at
+(@), equals (=), and hyphen (-) characters. 
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my appflow action" or 'my appflow action').<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_newname() throws Exception {
@@ -289,20 +303,9 @@ public class appflowaction extends base_resource
 	* Use this API to unset the properties of appflowaction resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String name, String args[]) throws Exception {
-		appflowaction unsetresource = new appflowaction();
-		unsetresource.name = name;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of appflowaction resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, appflowaction resource, String[] args) throws Exception{
 		appflowaction unsetresource = new appflowaction();
 		unsetresource.name = resource.name;
-		unsetresource.comment = resource.comment;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -334,7 +337,6 @@ public class appflowaction extends base_resource
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new appflowaction();
 				unsetresources[i].name = resources[i].name;
-				unsetresources[i].comment = resources[i].comment;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}

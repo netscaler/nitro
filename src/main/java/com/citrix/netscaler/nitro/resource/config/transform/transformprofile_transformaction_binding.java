@@ -48,7 +48,7 @@ public class transformprofile_transformaction_binding extends base_resource
 
 	/**
 	* <pre>
-	* URL Transformation profile name.<br> Minimum length =  1
+	* Name of the profile.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -57,7 +57,7 @@ public class transformprofile_transformaction_binding extends base_resource
 
 	/**
 	* <pre>
-	* URL Transformation profile name.<br> Minimum length =  1
+	* Name of the profile.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {

@@ -38,7 +38,7 @@ public class linkset_interface_binding extends base_resource
 
 	/**
 	* <pre>
-	* The ID of the linkset to which you want to bind the interfaces.
+	* ID of the linkset to which to bind the interfaces.
 	* </pre>
 	*/
 	public void set_id(String id) throws Exception{
@@ -47,7 +47,7 @@ public class linkset_interface_binding extends base_resource
 
 	/**
 	* <pre>
-	* The ID of the linkset to which you want to bind the interfaces.
+	* ID of the linkset to which to bind the interfaces.
 	* </pre>
 	*/
 	public String get_id() throws Exception {

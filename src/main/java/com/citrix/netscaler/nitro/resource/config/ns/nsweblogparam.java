@@ -33,10 +33,12 @@ class nsweblogparam_response extends base_response
 public class nsweblogparam extends base_resource
 {
 	private Long buffersizemb;
+	private String[] customreqhdrs;
+	private String[] customrsphdrs;
 
 	/**
 	* <pre>
-	* The buffer size (in MB) allocated for log transaction data on the system. Maximum value is limited by the memory available in the system.<br> Minimum value =  1<br> Maximum value =  4294967294LU
+	* Buffer size, in MB, allocated for log transaction data on the system. The maximum value is limited to the memory available on the system. Note: For the change in buffer size to take effect, you must disable and then re-enable the Web Server Logging feature on the appliance.<br> Default value: 16<br> Minimum value =  1<br> Maximum value =  4294967294LU
 	* </pre>
 	*/
 	public void set_buffersizemb(long buffersizemb) throws Exception {
@@ -45,7 +47,7 @@ public class nsweblogparam extends base_resource
 
 	/**
 	* <pre>
-	* The buffer size (in MB) allocated for log transaction data on the system. Maximum value is limited by the memory available in the system.<br> Minimum value =  1<br> Maximum value =  4294967294LU
+	* Buffer size, in MB, allocated for log transaction data on the system. The maximum value is limited to the memory available on the system. Note: For the change in buffer size to take effect, you must disable and then re-enable the Web Server Logging feature on the appliance.<br> Default value: 16<br> Minimum value =  1<br> Maximum value =  4294967294LU
 	* </pre>
 	*/
 	public void set_buffersizemb(Long buffersizemb) throws Exception{
@@ -54,11 +56,47 @@ public class nsweblogparam extends base_resource
 
 	/**
 	* <pre>
-	* The buffer size (in MB) allocated for log transaction data on the system. Maximum value is limited by the memory available in the system.<br> Minimum value =  1<br> Maximum value =  4294967294LU
+	* Buffer size, in MB, allocated for log transaction data on the system. The maximum value is limited to the memory available on the system. Note: For the change in buffer size to take effect, you must disable and then re-enable the Web Server Logging feature on the appliance.<br> Default value: 16<br> Minimum value =  1<br> Maximum value =  4294967294LU
 	* </pre>
 	*/
 	public Long get_buffersizemb() throws Exception {
 		return this.buffersizemb;
+	}
+
+	/**
+	* <pre>
+	* Name(s) of HTTP request headers whose values should be exported by the Web Logging feature. A maximum of two header names can be configured, with each header name having a maximum length of 31 characters.<br> Minimum length =  1
+	* </pre>
+	*/
+	public void set_customreqhdrs(String[] customreqhdrs) throws Exception{
+		this.customreqhdrs = customreqhdrs;
+	}
+
+	/**
+	* <pre>
+	* Name(s) of HTTP request headers whose values should be exported by the Web Logging feature. A maximum of two header names can be configured, with each header name having a maximum length of 31 characters.<br> Minimum length =  1
+	* </pre>
+	*/
+	public String[] get_customreqhdrs() throws Exception {
+		return this.customreqhdrs;
+	}
+
+	/**
+	* <pre>
+	* Name(s) of HTTP response headers whose values should be exported by the Web Logging feature. A maximum of two header names can be configured, with each header name having a maximum length of 31 characters.<br> Minimum length =  1
+	* </pre>
+	*/
+	public void set_customrsphdrs(String[] customrsphdrs) throws Exception{
+		this.customrsphdrs = customrsphdrs;
+	}
+
+	/**
+	* <pre>
+	* Name(s) of HTTP response headers whose values should be exported by the Web Logging feature. A maximum of two header names can be configured, with each header name having a maximum length of 31 characters.<br> Minimum length =  1
+	* </pre>
+	*/
+	public String[] get_customrsphdrs() throws Exception {
+		return this.customrsphdrs;
 	}
 
 	/**
@@ -103,7 +141,18 @@ public class nsweblogparam extends base_resource
 	public static base_response update(nitro_service client, nsweblogparam resource) throws Exception {
 		nsweblogparam updateresource = new nsweblogparam();
 		updateresource.buffersizemb = resource.buffersizemb;
+		updateresource.customreqhdrs = resource.customreqhdrs;
+		updateresource.customrsphdrs = resource.customrsphdrs;
 		return updateresource.update_resource(client);
+	}
+
+	/**
+	* Use this API to unset the properties of nsweblogparam resource.
+	* Properties that need to be unset are specified in args array.
+	*/
+	public static base_response unset(nitro_service client, nsweblogparam resource, String[] args) throws Exception{
+		nsweblogparam unsetresource = new nsweblogparam();
+		return unsetresource.unset_resource(client,args);
 	}
 
 	/**

@@ -41,7 +41,10 @@ public class authenticationvserver extends base_resource
 	private String authentication;
 	private String authenticationdomain;
 	private String comment;
+	private Long td;
 	private String appflowlog;
+	private Long maxloginattempts;
+	private Long failedlogintimeout;
 	private String newname;
 
 	//------- Read only Parameter ---------;
@@ -57,7 +60,6 @@ public class authenticationvserver extends base_resource
 	private String redirecturl;
 	private Long curaaausers;
 	private String rule;
-	private String policyname;
 	private String policy;
 	private String servicename;
 	private Long weight;
@@ -75,11 +77,19 @@ public class authenticationvserver extends base_resource
 	private Long listenpriority;
 	private String tcpprofilename;
 	private String httpprofilename;
+	private Long vstype;
+	private String ngname;
+	private Boolean secondary;
+	private Boolean groupextraction;
 	private Long __count;
 
 	/**
 	* <pre>
-	* The name for the new authentication vserver.<br> Minimum length =  1
+	* Name for the new authentication virtual server. 
+Must begin with a letter, number, or the underscore character (_), and must contain only letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at (@), equals (=), colon (:), and underscore characters. Can be changed after the authentication virtual server is added by using the rename authentication vserver command.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, “my authentication policy” or ‘my authentication policy’).<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -88,7 +98,11 @@ public class authenticationvserver extends base_resource
 
 	/**
 	* <pre>
-	* The name for the new authentication vserver.<br> Minimum length =  1
+	* Name for the new authentication virtual server. 
+Must begin with a letter, number, or the underscore character (_), and must contain only letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at (@), equals (=), colon (:), and underscore characters. Can be changed after the authentication virtual server is added by using the rename authentication vserver command.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, “my authentication policy” or ‘my authentication policy’).<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -97,7 +111,7 @@ public class authenticationvserver extends base_resource
 
 	/**
 	* <pre>
-	* The authentication vserver's protocol type, e.g. SSL.<br> Default value: SSL<br> Possible values = SSL
+	* Protocol type of the authentication virtual server. Always SSL.<br> Default value: SSL<br> Possible values = SSL
 	* </pre>
 	*/
 	public void set_servicetype(String servicetype) throws Exception{
@@ -106,7 +120,7 @@ public class authenticationvserver extends base_resource
 
 	/**
 	* <pre>
-	* The authentication vserver's protocol type, e.g. SSL.<br> Default value: SSL<br> Possible values = SSL
+	* Protocol type of the authentication virtual server. Always SSL.<br> Default value: SSL<br> Possible values = SSL
 	* </pre>
 	*/
 	public String get_servicetype() throws Exception {
@@ -115,7 +129,7 @@ public class authenticationvserver extends base_resource
 
 	/**
 	* <pre>
-	* The IP address for the authentication vserver.<br> Minimum length =  1
+	* IP address of the authentication virtual server, if a single IP address is assigned to the virtual server.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_ipv46(String ipv46) throws Exception{
@@ -124,7 +138,7 @@ public class authenticationvserver extends base_resource
 
 	/**
 	* <pre>
-	* The IP address for the authentication vserver.<br> Minimum length =  1
+	* IP address of the authentication virtual server, if a single IP address is assigned to the virtual server.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_ipv46() throws Exception {
@@ -133,7 +147,8 @@ public class authenticationvserver extends base_resource
 
 	/**
 	* <pre>
-	* Range of authentication vserver IP addresses. The new range of authentication vservers will have IP addresses consecutively numbered, starting with the primary address specified with the <ipaddress> argument.<br> Default value: 1<br> Minimum value =  1
+	* If you are creating a series of virtual servers with a range of IP addresses assigned to them, the length of the range. 
+The new range of authentication virtual servers will have IP addresses consecutively numbered, starting with the primary address specified with the IP Address parameter.<br> Default value: 1<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_range(long range) throws Exception {
@@ -142,7 +157,8 @@ public class authenticationvserver extends base_resource
 
 	/**
 	* <pre>
-	* Range of authentication vserver IP addresses. The new range of authentication vservers will have IP addresses consecutively numbered, starting with the primary address specified with the <ipaddress> argument.<br> Default value: 1<br> Minimum value =  1
+	* If you are creating a series of virtual servers with a range of IP addresses assigned to them, the length of the range. 
+The new range of authentication virtual servers will have IP addresses consecutively numbered, starting with the primary address specified with the IP Address parameter.<br> Default value: 1<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_range(Long range) throws Exception{
@@ -151,7 +167,8 @@ public class authenticationvserver extends base_resource
 
 	/**
 	* <pre>
-	* Range of authentication vserver IP addresses. The new range of authentication vservers will have IP addresses consecutively numbered, starting with the primary address specified with the <ipaddress> argument.<br> Default value: 1<br> Minimum value =  1
+	* If you are creating a series of virtual servers with a range of IP addresses assigned to them, the length of the range. 
+The new range of authentication virtual servers will have IP addresses consecutively numbered, starting with the primary address specified with the IP Address parameter.<br> Default value: 1<br> Minimum value =  1
 	* </pre>
 	*/
 	public Long get_range() throws Exception {
@@ -160,7 +177,7 @@ public class authenticationvserver extends base_resource
 
 	/**
 	* <pre>
-	* The TCP port on which the vserver listens.<br> Minimum value =  1<br> Range 1 - 65535
+	* TCP port on which the virtual server accepts connections.<br> Minimum value =  1<br> Range 1 - 65535
 	* </pre>
 	*/
 	public void set_port(int port) throws Exception {
@@ -169,7 +186,7 @@ public class authenticationvserver extends base_resource
 
 	/**
 	* <pre>
-	* The TCP port on which the vserver listens.<br> Minimum value =  1<br> Range 1 - 65535
+	* TCP port on which the virtual server accepts connections.<br> Minimum value =  1<br> Range 1 - 65535
 	* </pre>
 	*/
 	public void set_port(Integer port) throws Exception{
@@ -178,7 +195,7 @@ public class authenticationvserver extends base_resource
 
 	/**
 	* <pre>
-	* The TCP port on which the vserver listens.<br> Minimum value =  1<br> Range 1 - 65535
+	* TCP port on which the virtual server accepts connections.<br> Minimum value =  1<br> Range 1 - 65535
 	* </pre>
 	*/
 	public Integer get_port() throws Exception {
@@ -187,7 +204,7 @@ public class authenticationvserver extends base_resource
 
 	/**
 	* <pre>
-	* The intital vserver server state, e.g. ENABLED or DISABLED.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Initial state of the new virtual server.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_state(String state) throws Exception{
@@ -196,7 +213,7 @@ public class authenticationvserver extends base_resource
 
 	/**
 	* <pre>
-	* The intital vserver server state, e.g. ENABLED or DISABLED.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Initial state of the new virtual server.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_state() throws Exception {
@@ -205,7 +222,7 @@ public class authenticationvserver extends base_resource
 
 	/**
 	* <pre>
-	* Indicates whether or not authentication is being applied to incoming users to the vserver.<br> Default value: ON<br> Possible values = ON, OFF
+	* Require users to be authenticated before sending traffic through this virtual server.<br> Default value: ON<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_authentication(String authentication) throws Exception{
@@ -214,7 +231,7 @@ public class authenticationvserver extends base_resource
 
 	/**
 	* <pre>
-	* Indicates whether or not authentication is being applied to incoming users to the vserver.<br> Default value: ON<br> Possible values = ON, OFF
+	* Require users to be authenticated before sending traffic through this virtual server.<br> Default value: ON<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_authentication() throws Exception {
@@ -223,7 +240,7 @@ public class authenticationvserver extends base_resource
 
 	/**
 	* <pre>
-	* Domain of authentication vserver FQDN.<br> Minimum length =  3<br> Maximum length =  252
+	* Fully-qualified domain name (FQDN) of the authentication virtual server.<br> Minimum length =  3<br> Maximum length =  252
 	* </pre>
 	*/
 	public void set_authenticationdomain(String authenticationdomain) throws Exception{
@@ -232,7 +249,7 @@ public class authenticationvserver extends base_resource
 
 	/**
 	* <pre>
-	* Domain of authentication vserver FQDN.<br> Minimum length =  3<br> Maximum length =  252
+	* Fully-qualified domain name (FQDN) of the authentication virtual server.<br> Minimum length =  3<br> Maximum length =  252
 	* </pre>
 	*/
 	public String get_authenticationdomain() throws Exception {
@@ -241,7 +258,7 @@ public class authenticationvserver extends base_resource
 
 	/**
 	* <pre>
-	* Comments associated with this vserver.
+	* Any comments associated with this virtual server.
 	* </pre>
 	*/
 	public void set_comment(String comment) throws Exception{
@@ -250,7 +267,7 @@ public class authenticationvserver extends base_resource
 
 	/**
 	* <pre>
-	* Comments associated with this vserver.
+	* Any comments associated with this virtual server.
 	* </pre>
 	*/
 	public String get_comment() throws Exception {
@@ -259,7 +276,34 @@ public class authenticationvserver extends base_resource
 
 	/**
 	* <pre>
-	* Enable logging appflow flow information.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Traffic Domain ID.<br> Minimum value =  0<br> Maximum value =  4094
+	* </pre>
+	*/
+	public void set_td(long td) throws Exception {
+		this.td = new Long(td);
+	}
+
+	/**
+	* <pre>
+	* Traffic Domain ID.<br> Minimum value =  0<br> Maximum value =  4094
+	* </pre>
+	*/
+	public void set_td(Long td) throws Exception{
+		this.td = td;
+	}
+
+	/**
+	* <pre>
+	* Traffic Domain ID.<br> Minimum value =  0<br> Maximum value =  4094
+	* </pre>
+	*/
+	public Long get_td() throws Exception {
+		return this.td;
+	}
+
+	/**
+	* <pre>
+	* Log AppFlow flow information.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_appflowlog(String appflowlog) throws Exception{
@@ -268,7 +312,7 @@ public class authenticationvserver extends base_resource
 
 	/**
 	* <pre>
-	* Enable logging appflow flow information.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Log AppFlow flow information.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_appflowlog() throws Exception {
@@ -277,7 +321,65 @@ public class authenticationvserver extends base_resource
 
 	/**
 	* <pre>
-	* The new name of the authentication virtual server.<br> Minimum length =  1
+	* Maximum Number of login Attempts.<br> Minimum value =  1<br> Maximum value =  255
+	* </pre>
+	*/
+	public void set_maxloginattempts(long maxloginattempts) throws Exception {
+		this.maxloginattempts = new Long(maxloginattempts);
+	}
+
+	/**
+	* <pre>
+	* Maximum Number of login Attempts.<br> Minimum value =  1<br> Maximum value =  255
+	* </pre>
+	*/
+	public void set_maxloginattempts(Long maxloginattempts) throws Exception{
+		this.maxloginattempts = maxloginattempts;
+	}
+
+	/**
+	* <pre>
+	* Maximum Number of login Attempts.<br> Minimum value =  1<br> Maximum value =  255
+	* </pre>
+	*/
+	public Long get_maxloginattempts() throws Exception {
+		return this.maxloginattempts;
+	}
+
+	/**
+	* <pre>
+	* Failed Login timeout.<br> Minimum value =  1
+	* </pre>
+	*/
+	public void set_failedlogintimeout(long failedlogintimeout) throws Exception {
+		this.failedlogintimeout = new Long(failedlogintimeout);
+	}
+
+	/**
+	* <pre>
+	* Failed Login timeout.<br> Minimum value =  1
+	* </pre>
+	*/
+	public void set_failedlogintimeout(Long failedlogintimeout) throws Exception{
+		this.failedlogintimeout = failedlogintimeout;
+	}
+
+	/**
+	* <pre>
+	* Failed Login timeout.<br> Minimum value =  1
+	* </pre>
+	*/
+	public Long get_failedlogintimeout() throws Exception {
+		return this.failedlogintimeout;
+	}
+
+	/**
+	* <pre>
+	* New name of the authentication virtual server. 
+Must begin with a letter, number, or the underscore character (_), and must contain only letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at (@), equals (=), colon (:), and underscore characters.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, “my authentication policy” or ‘my authentication policy’).<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_newname(String newname) throws Exception{
@@ -286,7 +388,11 @@ public class authenticationvserver extends base_resource
 
 	/**
 	* <pre>
-	* The new name of the authentication virtual server.<br> Minimum length =  1
+	* New name of the authentication virtual server. 
+Must begin with a letter, number, or the underscore character (_), and must contain only letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at (@), equals (=), colon (:), and underscore characters.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, “my authentication policy” or ‘my authentication policy’).<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_newname() throws Exception {
@@ -322,7 +428,7 @@ public class authenticationvserver extends base_resource
 
 	/**
 	* <pre>
-	* The current state of the Virtual server, e.g. UP, DOWN, BUSY, etc.<br> Possible values = UP, DOWN, UNKNOWN, BUSY, OUT OF SERVICE, GOING OUT OF SERVICE, DOWN WHEN GOING OUT OF SERVICE, NS_EMPTY_STR
+	* The current state of the Virtual server, e.g. UP, DOWN, BUSY, etc.<br> Possible values = UP, DOWN, UNKNOWN, BUSY, OUT OF SERVICE, GOING OUT OF SERVICE, DOWN WHEN GOING OUT OF SERVICE, NS_EMPTY_STR, Unknown, DISABLED
 	* </pre>
 	*/
 	public String get_curstate() throws Exception {
@@ -409,15 +515,6 @@ For all URL-based policies, the precedence hierarchy is:
 	*/
 	public String get_rule() throws Exception {
 		return this.rule;
-	}
-
-	/**
-	* <pre>
-	* The name of the policy, if any, bound to the authentication vserver.
-	* </pre>
-	*/
-	public String get_policyname() throws Exception {
-		return this.policyname;
 	}
 
 	/**
@@ -584,6 +681,44 @@ as the client source IP address instead of an address from the allocated block o
 
 	/**
 	* <pre>
+	* Virtual Server Type, e.g. Load Balancing, Content Switch, Cache Redirection.
+	* </pre>
+	*/
+	public Long get_vstype() throws Exception {
+		return this.vstype;
+	}
+
+	/**
+	* <pre>
+	* Nodegroup devno to which this lbvsever belongs to.
+	* </pre>
+	*/
+	public String get_ngname() throws Exception {
+		return this.ngname;
+	}
+
+	/**
+	* <pre>
+	* Bind the authentication policy to the secondary chain.
+Provides for multifactor authentication in which a user must authenticate via both a primary authentication method and, afterward, via a secondary authentication method.
+Because user groups are aggregated across authentication systems, usernames must be the same on all authentication servers. Passwords can be different.
+	* </pre>
+	*/
+	public Boolean get_secondary() throws Exception {
+		return this.secondary;
+	}
+
+	/**
+	* <pre>
+	* Bind the Authentication policy to a tertiary chain which will be used only for group extraction.  The user will not authenticate against this server, and this will only be called if primary and/or secondary authentication has succeeded.
+	* </pre>
+	*/
+	public Boolean get_groupextraction() throws Exception {
+		return this.groupextraction;
+	}
+
+	/**
+	* <pre>
 	* converts nitro response into object and returns the object array in case of get request.
 	* </pre>
 	*/
@@ -630,7 +765,10 @@ as the client source IP address instead of an address from the allocated block o
 		addresource.authentication = resource.authentication;
 		addresource.authenticationdomain = resource.authenticationdomain;
 		addresource.comment = resource.comment;
+		addresource.td = resource.td;
 		addresource.appflowlog = resource.appflowlog;
+		addresource.maxloginattempts = resource.maxloginattempts;
+		addresource.failedlogintimeout = resource.failedlogintimeout;
 		return addresource.add_resource(client);
 	}
 
@@ -652,7 +790,10 @@ as the client source IP address instead of an address from the allocated block o
 				addresources[i].authentication = resources[i].authentication;
 				addresources[i].authenticationdomain = resources[i].authenticationdomain;
 				addresources[i].comment = resources[i].comment;
+				addresources[i].td = resources[i].td;
 				addresources[i].appflowlog = resources[i].appflowlog;
+				addresources[i].maxloginattempts = resources[i].maxloginattempts;
+				addresources[i].failedlogintimeout = resources[i].failedlogintimeout;
 			}
 			result = add_bulk_request(client, addresources);
 		}
@@ -720,6 +861,8 @@ as the client source IP address instead of an address from the allocated block o
 		updateresource.authenticationdomain = resource.authenticationdomain;
 		updateresource.comment = resource.comment;
 		updateresource.appflowlog = resource.appflowlog;
+		updateresource.maxloginattempts = resource.maxloginattempts;
+		updateresource.failedlogintimeout = resource.failedlogintimeout;
 		return updateresource.update_resource(client);
 	}
 
@@ -738,6 +881,8 @@ as the client source IP address instead of an address from the allocated block o
 				updateresources[i].authenticationdomain = resources[i].authenticationdomain;
 				updateresources[i].comment = resources[i].comment;
 				updateresources[i].appflowlog = resources[i].appflowlog;
+				updateresources[i].maxloginattempts = resources[i].maxloginattempts;
+				updateresources[i].failedlogintimeout = resources[i].failedlogintimeout;
 			}
 			result = update_bulk_request(client, updateresources);
 		}
@@ -748,23 +893,9 @@ as the client source IP address instead of an address from the allocated block o
 	* Use this API to unset the properties of authenticationvserver resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String name, String args[]) throws Exception {
-		authenticationvserver unsetresource = new authenticationvserver();
-		unsetresource.name = name;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of authenticationvserver resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, authenticationvserver resource, String[] args) throws Exception{
 		authenticationvserver unsetresource = new authenticationvserver();
 		unsetresource.name = resource.name;
-		unsetresource.authenticationdomain = resource.authenticationdomain;
-		unsetresource.authentication = resource.authentication;
-		unsetresource.comment = resource.comment;
-		unsetresource.appflowlog = resource.appflowlog;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -796,10 +927,6 @@ as the client source IP address instead of an address from the allocated block o
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new authenticationvserver();
 				unsetresources[i].name = resources[i].name;
-				unsetresources[i].authenticationdomain = resources[i].authenticationdomain;
-				unsetresources[i].authentication = resources[i].authentication;
-				unsetresources[i].comment = resources[i].comment;
-				unsetresources[i].appflowlog = resources[i].appflowlog;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}
@@ -1093,6 +1220,8 @@ as the client source IP address instead of an address from the allocated block o
 		public static final String GOING_OUT_OF_SERVICE = "GOING OUT OF SERVICE";
 		public static final String DOWN_WHEN_GOING_OUT_OF_SERVICE = "DOWN WHEN GOING OUT OF SERVICE";
 		public static final String NS_EMPTY_STR = "NS_EMPTY_STR";
+		public static final String Unknown = "Unknown";
+		public static final String DISABLED = "DISABLED";
 	}
 	public static class disableprimaryondownEnum {
 		public static final String ENABLED = "ENABLED";

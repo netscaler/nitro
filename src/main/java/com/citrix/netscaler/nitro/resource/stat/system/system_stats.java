@@ -29,7 +29,9 @@ class system_response extends base_response
 
 public class system_stats extends base_resource
 {
-	private Long memtotavail;
+	private String clearstats;
+	private Double voltagev12n;
+	private Double voltagev5n;
 	private Long cpuusage;
 	private Long rescpuusage;
 	private Long slavecpuusage;
@@ -46,9 +48,7 @@ public class system_stats extends base_resource
 	private Double voltagev5sb;
 	private Double voltagevtt;
 	private Double voltagevbat;
-	private Double voltagev12n;
 	private Double voltagev12p;
-	private Double voltagev5n;
 	private Double voltagev5p;
 	private Double voltagev33stby;
 	private Double voltagev33main;
@@ -72,8 +72,8 @@ public class system_stats extends base_resource
 	private Long cpu0temp;
 	private Long cpu1temp;
 	private Long internaltemp;
-	private String powersupply1failure;
-	private String powersupply2failure;
+	private String powersupply1status;
+	private String powersupply2status;
 	private Long disk0size;
 	private Long disk0used;
 	private Long disk0avail;
@@ -88,20 +88,27 @@ public class system_stats extends base_resource
 	private Long auxtemp1;
 	private Long auxtemp2;
 	private Long auxtemp3;
+	private String powersupply3status;
+	private String powersupply4status;
 	private String timesincestart;
 	private Long memsizemb;
-	private Long cpuuse;
-	private Long mgmtcpuuse;
-	private Long mastercpuuse;
-	private Long slavecpuuse;
 
 	/**
 	* <pre>
-	* CPU1 utilization, percentage * 10.
+	* Clear the statsistics / counters
 	* </pre>
 	*/
-	public Long get_slavecpuuse() throws Exception {
-		return this.slavecpuuse;
+	public void set_clearstats(String clearstats) throws Exception{
+		this.clearstats = clearstats;
+	}
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters.<br> Possible values = basic, full
+	* </pre>
+	*/
+	public String get_clearstats() throws Exception {
+		return this.clearstats;
 	}
 
 	/**
@@ -171,7 +178,7 @@ You can configure CPU 0 Temperature by using the Set snmp alarm TEMPERATURE-HIGH
 
 	/**
 	* <pre>
-	* Average CPU utilization percentage.
+	* Average CPU utilization percentage. Not applicable for a single-CPU system.
 	* </pre>
 	*/
 	public Double get_rescpuusagepcnt() throws Exception {
@@ -207,11 +214,20 @@ You can configure CPU 0 Temperature by using the Set snmp alarm TEMPERATURE-HIGH
 
 	/**
 	* <pre>
-	* Average CPU utilization percentage.
+	* Shows average CPU utilization percentage if more than 1 CPU is present.
 	* </pre>
 	*/
 	public Long get_rescpuusage() throws Exception {
 		return this.rescpuusage;
+	}
+
+	/**
+	* <pre>
+	* Power supply 3 failure status.
+	* </pre>
+	*/
+	public String get_powersupply3status() throws Exception {
+		return this.powersupply3status;
 	}
 
 	/**
@@ -254,11 +270,11 @@ You can configure /flash Used (%) by using the Set snmp alarm DISK-USAGE-HIGH co
 
 	/**
 	* <pre>
-	* Power supply 2 failure status.
+	* Power supply 4 failure status.
 	* </pre>
 	*/
-	public String get_powersupply2failure() throws Exception {
-		return this.powersupply2failure;
+	public String get_powersupply4status() throws Exception {
+		return this.powersupply4status;
 	}
 
 	/**
@@ -335,6 +351,15 @@ You can configure /flash Used (%) by using the Set snmp alarm DISK-USAGE-HIGH co
 
 	/**
 	* <pre>
+	* Power supply 1 failure status.
+	* </pre>
+	*/
+	public String get_powersupply1status() throws Exception {
+		return this.powersupply1status;
+	}
+
+	/**
+	* <pre>
 	* CPU Fan 0 speed. Acceptable range is 3000 through 6000 RPM. This is a critical counter.
 You can configure CPU Fan 0 Speed by using the Set snmp alarm FAN-SPEED-LOW command to set the lower limit.
 
@@ -373,7 +398,7 @@ You can configure CPU Fan 0 Speed by using the Set snmp alarm FAN-SPEED-LOW comm
 
 	/**
 	* <pre>
-	* Packet CPU utilization percentage.
+	* Average CPU utilization percentage for all packet engines excluding management PE.
 	* </pre>
 	*/
 	public Double get_pktcpuusagepcnt() throws Exception {
@@ -400,29 +425,11 @@ You can configure CPU Fan 0 Speed by using the Set snmp alarm FAN-SPEED-LOW comm
 
 	/**
 	* <pre>
-	* CPU0 utilization: percentage * 10.
-	* </pre>
-	*/
-	public Long get_mastercpuuse() throws Exception {
-		return this.mastercpuuse;
-	}
-
-	/**
-	* <pre>
 	* Voltage of a device connected to health monitoring chip through pin 0.
 	* </pre>
 	*/
 	public Double get_auxvolt0() throws Exception {
 		return this.auxvolt0;
-	}
-
-	/**
-	* <pre>
-	* CPU utilization: percentage * 10.
-	* </pre>
-	*/
-	public Long get_cpuuse() throws Exception {
-		return this.cpuuse;
 	}
 
 	/**
@@ -552,15 +559,6 @@ You can configure Standby 3.3V Supply Voltage by using the Set snmp alarm VOLTAG
 
 	/**
 	* <pre>
-	* Power supply 1 failure status.
-	* </pre>
-	*/
-	public String get_powersupply1failure() throws Exception {
-		return this.powersupply1failure;
-	}
-
-	/**
-	* <pre>
 	* Intel CPU Vtt power. Currently only 13k Platforms will have valid value for this counter and for older platforms this will be 0.
 	* </pre>
 	*/
@@ -617,15 +615,6 @@ You can configure CPU Fan 1 Speed by using the Set snmp alarm FAN-SPEED-LOW comm
 
 	/**
 	* <pre>
-	* Total system memory available for PE to grab from the system.
-	* </pre>
-	*/
-	public Long get_memtotavail() throws Exception {
-		return this.memtotavail;
-	}
-
-	/**
-	* <pre>
 	* System fan speed. Acceptable range is 3000 through 6000 RPM. This is a critical counter.
 You can configure System Fan Speed by using the Set snmp alarm FAN-SPEED-LOW command to set the lower limit.
 
@@ -651,15 +640,6 @@ You can configure System Fan Speed by using the Set snmp alarm FAN-SPEED-LOW com
 	*/
 	public Long get_mastercpuusage() throws Exception {
 		return this.mastercpuusage;
-	}
-
-	/**
-	* <pre>
-	* Management CPU utilization: percentage * 10.
-	* </pre>
-	*/
-	public Long get_mgmtcpuuse() throws Exception {
-		return this.mgmtcpuuse;
 	}
 
 	/**
@@ -696,6 +676,15 @@ You can configure System Fan Speed by using the Set snmp alarm FAN-SPEED-LOW com
 	*/
 	public Double get_memusagepcnt() throws Exception {
 		return this.memusagepcnt;
+	}
+
+	/**
+	* <pre>
+	* Power supply 2 failure status.
+	* </pre>
+	*/
+	public String get_powersupply2status() throws Exception {
+		return this.powersupply2status;
 	}
 
 	/**
@@ -752,4 +741,8 @@ You can configure System Fan Speed by using the Set snmp alarm FAN-SPEED-LOW com
 		return response[0];
 	}
 
+	public static class clearstatsEnum {
+		public static final String basic = "basic";
+		public static final String full = "full";
+	}
 }

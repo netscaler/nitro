@@ -39,10 +39,11 @@ public class aaatacacsparams extends base_resource
 	private String authorization;
 	private String accounting;
 	private String auditfailedcmds;
+	private String defaultauthenticationgroup;
 
 	/**
 	* <pre>
-	* The IP address of the TACACS+ server.<br> Minimum length =  1
+	* IP address of your TACACS+ server.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_serverip(String serverip) throws Exception{
@@ -51,7 +52,7 @@ public class aaatacacsparams extends base_resource
 
 	/**
 	* <pre>
-	* The IP address of the TACACS+ server.<br> Minimum length =  1
+	* IP address of your TACACS+ server.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_serverip() throws Exception {
@@ -60,7 +61,7 @@ public class aaatacacsparams extends base_resource
 
 	/**
 	* <pre>
-	* The port on which the TACACS+ server is running.<br> Default value: 49<br> Minimum value =  1
+	* Port number on which the TACACS+ server listens for connections.<br> Default value: 49<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_serverport(int serverport) throws Exception {
@@ -69,7 +70,7 @@ public class aaatacacsparams extends base_resource
 
 	/**
 	* <pre>
-	* The port on which the TACACS+ server is running.<br> Default value: 49<br> Minimum value =  1
+	* Port number on which the TACACS+ server listens for connections.<br> Default value: 49<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_serverport(Integer serverport) throws Exception{
@@ -78,7 +79,7 @@ public class aaatacacsparams extends base_resource
 
 	/**
 	* <pre>
-	* The port on which the TACACS+ server is running.<br> Default value: 49<br> Minimum value =  1
+	* Port number on which the TACACS+ server listens for connections.<br> Default value: 49<br> Minimum value =  1
 	* </pre>
 	*/
 	public Integer get_serverport() throws Exception {
@@ -87,7 +88,7 @@ public class aaatacacsparams extends base_resource
 
 	/**
 	* <pre>
-	* The maximum number of seconds the system will wait for a response from the TACACS+ server.<br> Default value: 3<br> Minimum value =  1
+	* Maximum number of seconds that the NetScaler appliance waits for a response from the TACACS+ server.<br> Default value: 3<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_authtimeout(long authtimeout) throws Exception {
@@ -96,7 +97,7 @@ public class aaatacacsparams extends base_resource
 
 	/**
 	* <pre>
-	* The maximum number of seconds the system will wait for a response from the TACACS+ server.<br> Default value: 3<br> Minimum value =  1
+	* Maximum number of seconds that the NetScaler appliance waits for a response from the TACACS+ server.<br> Default value: 3<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_authtimeout(Long authtimeout) throws Exception{
@@ -105,7 +106,7 @@ public class aaatacacsparams extends base_resource
 
 	/**
 	* <pre>
-	* The maximum number of seconds the system will wait for a response from the TACACS+ server.<br> Default value: 3<br> Minimum value =  1
+	* Maximum number of seconds that the NetScaler appliance waits for a response from the TACACS+ server.<br> Default value: 3<br> Minimum value =  1
 	* </pre>
 	*/
 	public Long get_authtimeout() throws Exception {
@@ -114,8 +115,7 @@ public class aaatacacsparams extends base_resource
 
 	/**
 	* <pre>
-	* The key shared between the client and the server. This information is required for the system to
-communicate with the TACACS+ server.<br> Minimum length =  1
+	* Key shared between the TACACS+ server and clients. Required for allowing the NetScaler appliance to communicate with the TACACS+ server.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_tacacssecret(String tacacssecret) throws Exception{
@@ -124,8 +124,7 @@ communicate with the TACACS+ server.<br> Minimum length =  1
 
 	/**
 	* <pre>
-	* The key shared between the client and the server. This information is required for the system to
-communicate with the TACACS+ server.<br> Minimum length =  1
+	* Key shared between the TACACS+ server and clients. Required for allowing the NetScaler appliance to communicate with the TACACS+ server.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_tacacssecret() throws Exception {
@@ -134,7 +133,7 @@ communicate with the TACACS+ server.<br> Minimum length =  1
 
 	/**
 	* <pre>
-	* The option for streaming authorization for the TACACS+ server.<br> Possible values = ON, OFF
+	* Use streaming authorization on the TACACS+ server.<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_authorization(String authorization) throws Exception{
@@ -143,7 +142,7 @@ communicate with the TACACS+ server.<br> Minimum length =  1
 
 	/**
 	* <pre>
-	* The option for streaming authorization for the TACACS+ server.<br> Possible values = ON, OFF
+	* Use streaming authorization on the TACACS+ server.<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_authorization() throws Exception {
@@ -152,7 +151,7 @@ communicate with the TACACS+ server.<br> Minimum length =  1
 
 	/**
 	* <pre>
-	* The option for sending accounting messages to the TACACS+ server.<br> Possible values = ON, OFF
+	* Send accounting messages to the TACACS+ server.<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_accounting(String accounting) throws Exception{
@@ -161,7 +160,7 @@ communicate with the TACACS+ server.<br> Minimum length =  1
 
 	/**
 	* <pre>
-	* The option for sending accounting messages to the TACACS+ server.<br> Possible values = ON, OFF
+	* Send accounting messages to the TACACS+ server.<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_accounting() throws Exception {
@@ -184,6 +183,24 @@ communicate with the TACACS+ server.<br> Minimum length =  1
 	*/
 	public String get_auditfailedcmds() throws Exception {
 		return this.auditfailedcmds;
+	}
+
+	/**
+	* <pre>
+	* This is the default group that is chosen when the authentication succeeds in addition to extracted groups.<br> Maximum length =  64
+	* </pre>
+	*/
+	public void set_defaultauthenticationgroup(String defaultauthenticationgroup) throws Exception{
+		this.defaultauthenticationgroup = defaultauthenticationgroup;
+	}
+
+	/**
+	* <pre>
+	* This is the default group that is chosen when the authentication succeeds in addition to extracted groups.<br> Maximum length =  64
+	* </pre>
+	*/
+	public String get_defaultauthenticationgroup() throws Exception {
+		return this.defaultauthenticationgroup;
 	}
 
 	/**
@@ -234,6 +251,7 @@ communicate with the TACACS+ server.<br> Minimum length =  1
 		updateresource.authorization = resource.authorization;
 		updateresource.accounting = resource.accounting;
 		updateresource.auditfailedcmds = resource.auditfailedcmds;
+		updateresource.defaultauthenticationgroup = resource.defaultauthenticationgroup;
 		return updateresource.update_resource(client);
 	}
 
@@ -243,13 +261,6 @@ communicate with the TACACS+ server.<br> Minimum length =  1
 	*/
 	public static base_response unset(nitro_service client, aaatacacsparams resource, String[] args) throws Exception{
 		aaatacacsparams unsetresource = new aaatacacsparams();
-		unsetresource.serverip = resource.serverip;
-		unsetresource.serverport = resource.serverport;
-		unsetresource.authtimeout = resource.authtimeout;
-		unsetresource.tacacssecret = resource.tacacssecret;
-		unsetresource.authorization = resource.authorization;
-		unsetresource.accounting = resource.accounting;
-		unsetresource.auditfailedcmds = resource.auditfailedcmds;
 		return unsetresource.unset_resource(client,args);
 	}
 

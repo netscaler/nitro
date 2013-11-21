@@ -27,7 +27,7 @@ public class appfwlearningdata_args
 
 	/**
 	* <pre>
-	* Application Firewall profile name.
+	* Name of the profile.
 	* </pre>
 	*/
 	public void set_profilename(String profilename) throws Exception{
@@ -36,7 +36,7 @@ public class appfwlearningdata_args
 
 	/**
 	* <pre>
-	* Application Firewall profile name.
+	* Name of the profile.
 	* </pre>
 	*/
 	public String get_profilename() throws Exception {
@@ -45,7 +45,7 @@ public class appfwlearningdata_args
 
 	/**
 	* <pre>
-	* Security check.<br> Possible values = startURL, cookieConsistency, fieldConsistency, crossSiteScripting, SQLInjection, fieldFormat, CSRFtag, XMLDoSCheck, XMLWSICheck, XMLAttachmentCheck, TotalXMLRequests
+	* Name of the security check.<br> Possible values = startURL, cookieConsistency, fieldConsistency, crossSiteScripting, SQLInjection, fieldFormat, CSRFtag, XMLDoSCheck, XMLWSICheck, XMLAttachmentCheck, TotalXMLRequests
 	* </pre>
 	*/
 	public void set_securitycheck(String securitycheck) throws Exception{
@@ -54,7 +54,7 @@ public class appfwlearningdata_args
 
 	/**
 	* <pre>
-	* Security check.<br> Possible values = startURL, cookieConsistency, fieldConsistency, crossSiteScripting, SQLInjection, fieldFormat, CSRFtag, XMLDoSCheck, XMLWSICheck, XMLAttachmentCheck, TotalXMLRequests
+	* Name of the security check.<br> Possible values = startURL, cookieConsistency, fieldConsistency, crossSiteScripting, SQLInjection, fieldFormat, CSRFtag, XMLDoSCheck, XMLWSICheck, XMLAttachmentCheck, TotalXMLRequests
 	* </pre>
 	*/
 	public String get_securitycheck() throws Exception {

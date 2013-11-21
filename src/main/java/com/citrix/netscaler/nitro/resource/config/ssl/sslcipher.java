@@ -39,9 +39,10 @@ public class sslcipher extends base_resource
 
 	/**
 	* <pre>
-	* The name of the user-defined cipher group.
-	If the cipher group does not exist on the system, a new group is created with the specified name. The ciphers are added to this group.
-	If a group identified by cipherGroupName already exists on the system, the ciphers are added to it.<br> Minimum length =  1
+	* Name for the user-defined cipher group. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Cannot be changed after the cipher group is created.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my ciphergroup" or 'my ciphergroup').<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_ciphergroupname(String ciphergroupname) throws Exception{
@@ -50,9 +51,10 @@ public class sslcipher extends base_resource
 
 	/**
 	* <pre>
-	* The name of the user-defined cipher group.
-	If the cipher group does not exist on the system, a new group is created with the specified name. The ciphers are added to this group.
-	If a group identified by cipherGroupName already exists on the system, the ciphers are added to it.<br> Minimum length =  1
+	* Name for the user-defined cipher group. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Cannot be changed after the cipher group is created.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my ciphergroup" or 'my ciphergroup').<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_ciphergroupname() throws Exception {

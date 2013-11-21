@@ -47,7 +47,6 @@ public class nsfeature extends base_resource
 	private Boolean ssl;
 	private Boolean gslb;
 	private Boolean hdosp;
-	private Boolean routing;
 	private Boolean cf;
 	private Boolean ic;
 	private Boolean sslvpn;
@@ -65,10 +64,12 @@ public class nsfeature extends base_resource
 	private Boolean cloudbridge;
 	private Boolean isis;
 	private Boolean ch;
+	private Boolean appqoe;
+	private Boolean vpath;
 
 	/**
 	* <pre>
-	* Name of the feature(s).
+	* Feature to be enabled. Multiple features can be specified by providing a blank space between each feature.
 	* </pre>
 	*/
 	public void set_feature(String[] feature) throws Exception{
@@ -77,7 +78,7 @@ public class nsfeature extends base_resource
 
 	/**
 	* <pre>
-	* Name of the feature(s).
+	* Feature to be enabled. Multiple features can be specified by providing a blank space between each feature.
 	* </pre>
 	*/
 	public String[] get_feature() throws Exception {
@@ -181,15 +182,6 @@ public class nsfeature extends base_resource
 	*/
 	public Boolean get_hdosp() throws Exception {
 		return this.hdosp;
-	}
-
-	/**
-	* <pre>
-	* Routing.
-	* </pre>
-	*/
-	public Boolean get_routing() throws Exception {
-		return this.routing;
 	}
 
 	/**
@@ -347,6 +339,24 @@ public class nsfeature extends base_resource
 
 	/**
 	* <pre>
+	* AppQoS.
+	* </pre>
+	*/
+	public Boolean get_appqoe() throws Exception {
+		return this.appqoe;
+	}
+
+	/**
+	* <pre>
+	* Vpath.
+	* </pre>
+	*/
+	public Boolean get_vpath() throws Exception {
+		return this.vpath;
+	}
+
+	/**
+	* <pre>
 	* converts nitro response into object and returns the object array in case of get request.
 	* </pre>
 	*/
@@ -469,5 +479,8 @@ public class nsfeature extends base_resource
 		public static final String ISIS = "ISIS";
 		public static final String ISISRouting = "ISISRouting";
 		public static final String CH = "CH";
+		public static final String CallHome = "CallHome";
+		public static final String AppQoE = "AppQoE";
+		public static final String Vpath = "Vpath";
 	}
 }

@@ -39,7 +39,9 @@ public class systemgroup extends base_resource
 
 	/**
 	* <pre>
-	* The name of system group.<br> Minimum length =  1
+	* Name for the group. Must begin with a letter, number, or the underscore (_) character, and must contain only alphanumeric, hyphen (-), period (.), hash (#), space ( ), at (@), equal (=), colon (:), and underscore characters. Cannot be changed after the group is created.
+
+CLI Users: If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my group" or 'my group').<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_groupname(String groupname) throws Exception{
@@ -48,7 +50,9 @@ public class systemgroup extends base_resource
 
 	/**
 	* <pre>
-	* The name of system group.<br> Minimum length =  1
+	* Name for the group. Must begin with a letter, number, or the underscore (_) character, and must contain only alphanumeric, hyphen (-), period (.), hash (#), space ( ), at (@), equal (=), colon (:), and underscore characters. Cannot be changed after the group is created.
+
+CLI Users: If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my group" or 'my group').<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_groupname() throws Exception {
@@ -57,7 +61,15 @@ public class systemgroup extends base_resource
 
 	/**
 	* <pre>
-	* The system group's prompt.<br> Minimum length =  1
+	* String to display at the command-line prompt. Can consist of letters, numbers, hyphen (-), period (.), hash (#), space ( ), at (@), equal (=), colon (:), underscore (_), and the following variables: 
+* %u - Will be replaced by the user name.
+* %h - Will be replaced by the hostname of the NetScaler appliance.
+* %t - Will be replaced by the current time in 12-hour format.
+* %T - Will be replaced by the current time in 24-hour format.
+* %d - Will be replaced by the current date.
+* %s - Will be replaced by the state of the NetScaler appliance.
+
+Note: The 63-character limit for the length of the string does not apply to the characters that replace the variables.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_promptstring(String promptstring) throws Exception{
@@ -66,7 +78,15 @@ public class systemgroup extends base_resource
 
 	/**
 	* <pre>
-	* The system group's prompt.<br> Minimum length =  1
+	* String to display at the command-line prompt. Can consist of letters, numbers, hyphen (-), period (.), hash (#), space ( ), at (@), equal (=), colon (:), underscore (_), and the following variables: 
+* %u - Will be replaced by the user name.
+* %h - Will be replaced by the hostname of the NetScaler appliance.
+* %t - Will be replaced by the current time in 12-hour format.
+* %T - Will be replaced by the current time in 24-hour format.
+* %d - Will be replaced by the current date.
+* %s - Will be replaced by the state of the NetScaler appliance.
+
+Note: The 63-character limit for the length of the string does not apply to the characters that replace the variables.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_promptstring() throws Exception {
@@ -246,21 +266,9 @@ public class systemgroup extends base_resource
 	* Use this API to unset the properties of systemgroup resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String groupname, String args[]) throws Exception {
-		systemgroup unsetresource = new systemgroup();
-		unsetresource.groupname = groupname;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of systemgroup resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, systemgroup resource, String[] args) throws Exception{
 		systemgroup unsetresource = new systemgroup();
 		unsetresource.groupname = resource.groupname;
-		unsetresource.promptstring = resource.promptstring;
-		unsetresource.timeout = resource.timeout;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -292,8 +300,6 @@ public class systemgroup extends base_resource
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new systemgroup();
 				unsetresources[i].groupname = resources[i].groupname;
-				unsetresources[i].promptstring = resources[i].promptstring;
-				unsetresources[i].timeout = resources[i].timeout;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}

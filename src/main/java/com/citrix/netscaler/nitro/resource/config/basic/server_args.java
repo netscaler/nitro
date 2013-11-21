@@ -26,7 +26,7 @@ public class server_args
 
 	/**
 	* <pre>
-	* Display internally created named servers.
+	* Display names of the servers that have been created for internal use.
 	* </pre>
 	*/
 	public void set_Internal(boolean Internal) throws Exception {
@@ -35,7 +35,7 @@ public class server_args
 
 	/**
 	* <pre>
-	* Display internally created named servers.
+	* Display names of the servers that have been created for internal use.
 	* </pre>
 	*/
 	public void set_Internal(Boolean Internal) throws Exception{
@@ -44,7 +44,7 @@ public class server_args
 
 	/**
 	* <pre>
-	* Display internally created named servers.
+	* Display names of the servers that have been created for internal use.
 	* </pre>
 	*/
 	public Boolean get_Internal() throws Exception {

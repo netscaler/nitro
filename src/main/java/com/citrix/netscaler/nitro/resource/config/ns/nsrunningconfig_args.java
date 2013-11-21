@@ -26,7 +26,7 @@ public class nsrunningconfig_args
 
 	/**
 	* <pre>
-	* .
+	* Include default values of parameters that have not been explicitly configured. If this argument is disabled, such parameters are not included.
 	* </pre>
 	*/
 	public void set_withdefaults(boolean withdefaults) throws Exception {
@@ -35,7 +35,7 @@ public class nsrunningconfig_args
 
 	/**
 	* <pre>
-	* .
+	* Include default values of parameters that have not been explicitly configured. If this argument is disabled, such parameters are not included.
 	* </pre>
 	*/
 	public void set_withdefaults(Boolean withdefaults) throws Exception{
@@ -44,7 +44,7 @@ public class nsrunningconfig_args
 
 	/**
 	* <pre>
-	* .
+	* Include default values of parameters that have not been explicitly configured. If this argument is disabled, such parameters are not included.
 	* </pre>
 	*/
 	public Boolean get_withdefaults() throws Exception {

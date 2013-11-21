@@ -61,10 +61,21 @@ public class nstcpparam extends base_resource
 	private String synattackdetection;
 	private String connflushifnomem;
 	private Long connflushthres;
+	private String mptcpconcloseonpassivesf;
+	private String mptcpchecksum;
+	private Long mptcpsftimeout;
+	private Long mptcpsfreplacetimeout;
+	private Long mptcpmaxsf;
+	private Long mptcpmaxpendingsf;
+	private Long mptcppendingjointhreshold;
+	private Long mptcprtostoswitchsf;
+	private String mptcpusebackupondss;
+	private Long tcpmaxretries;
+	private String mptcpimmediatesfcloseonfin;
 
 	/**
 	* <pre>
-	* The state of WS.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Enable or disable window scaling.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_ws(String ws) throws Exception{
@@ -73,7 +84,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* The state of WS.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Enable or disable window scaling.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_ws() throws Exception {
@@ -82,7 +93,8 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* Window Scaling Factor used.<br> Default value: 4<br> Minimum value =  0<br> Maximum value =  8
+	* Factor used to calculate the new window size.
+This argument is needed only when the window scaling is enabled.<br> Default value: 4<br> Minimum value =  0<br> Maximum value =  8
 	* </pre>
 	*/
 	public void set_wsval(long wsval) throws Exception {
@@ -91,7 +103,8 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* Window Scaling Factor used.<br> Default value: 4<br> Minimum value =  0<br> Maximum value =  8
+	* Factor used to calculate the new window size.
+This argument is needed only when the window scaling is enabled.<br> Default value: 4<br> Minimum value =  0<br> Maximum value =  8
 	* </pre>
 	*/
 	public void set_wsval(Long wsval) throws Exception{
@@ -100,7 +113,8 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* Window Scaling Factor used.<br> Default value: 4<br> Minimum value =  0<br> Maximum value =  8
+	* Factor used to calculate the new window size.
+This argument is needed only when the window scaling is enabled.<br> Default value: 4<br> Minimum value =  0<br> Maximum value =  8
 	* </pre>
 	*/
 	public Long get_wsval() throws Exception {
@@ -109,7 +123,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* The state of SACK.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Enable or disable Selective ACKnowledgement (SACK).<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_sack(String sack) throws Exception{
@@ -118,7 +132,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* The state of SACK.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Enable or disable Selective ACKnowledgement (SACK).<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_sack() throws Exception {
@@ -127,7 +141,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* enable/disable MSS learning for vservers.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Enable or disable maximum segment size (MSS) learning for virtual servers.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_learnvsvrmss(String learnvsvrmss) throws Exception{
@@ -136,7 +150,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* enable/disable MSS learning for vservers.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Enable or disable maximum segment size (MSS) learning for virtual servers.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_learnvsvrmss() throws Exception {
@@ -145,7 +159,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* Max-Burst Factor used.<br> Default value: 6<br> Minimum value =  1<br> Maximum value =  255
+	* Maximum number of TCP segments allowed in a burst.<br> Default value: 6<br> Minimum value =  1<br> Maximum value =  255
 	* </pre>
 	*/
 	public void set_maxburst(long maxburst) throws Exception {
@@ -154,7 +168,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* Max-Burst Factor used.<br> Default value: 6<br> Minimum value =  1<br> Maximum value =  255
+	* Maximum number of TCP segments allowed in a burst.<br> Default value: 6<br> Minimum value =  1<br> Maximum value =  255
 	* </pre>
 	*/
 	public void set_maxburst(Long maxburst) throws Exception{
@@ -163,7 +177,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* Max-Burst Factor used.<br> Default value: 6<br> Minimum value =  1<br> Maximum value =  255
+	* Maximum number of TCP segments allowed in a burst.<br> Default value: 6<br> Minimum value =  1<br> Maximum value =  255
 	* </pre>
 	*/
 	public Long get_maxburst() throws Exception {
@@ -172,7 +186,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* Intial value of TCP cwnd used.<br> Default value: 4<br> Minimum value =  1<br> Maximum value =  44
+	* Initial maximum upper limit on the number of TCP packets that can be outstanding on the TCP link to the server.<br> Default value: 4<br> Minimum value =  1<br> Maximum value =  44
 	* </pre>
 	*/
 	public void set_initialcwnd(long initialcwnd) throws Exception {
@@ -181,7 +195,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* Intial value of TCP cwnd used.<br> Default value: 4<br> Minimum value =  1<br> Maximum value =  44
+	* Initial maximum upper limit on the number of TCP packets that can be outstanding on the TCP link to the server.<br> Default value: 4<br> Minimum value =  1<br> Maximum value =  44
 	* </pre>
 	*/
 	public void set_initialcwnd(Long initialcwnd) throws Exception{
@@ -190,7 +204,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* Intial value of TCP cwnd used.<br> Default value: 4<br> Minimum value =  1<br> Maximum value =  44
+	* Initial maximum upper limit on the number of TCP packets that can be outstanding on the TCP link to the server.<br> Default value: 4<br> Minimum value =  1<br> Maximum value =  44
 	* </pre>
 	*/
 	public Long get_initialcwnd() throws Exception {
@@ -226,7 +240,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* Delayed acknowledgement timeout (in millisec).<br> Default value: 100<br> Minimum value =  10<br> Maximum value =  300
+	* Timeout for TCP delayed ACK, in milliseconds.<br> Default value: 100<br> Minimum value =  10<br> Maximum value =  300
 	* </pre>
 	*/
 	public void set_delayedack(long delayedack) throws Exception {
@@ -235,7 +249,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* Delayed acknowledgement timeout (in millisec).<br> Default value: 100<br> Minimum value =  10<br> Maximum value =  300
+	* Timeout for TCP delayed ACK, in milliseconds.<br> Default value: 100<br> Minimum value =  10<br> Maximum value =  300
 	* </pre>
 	*/
 	public void set_delayedack(Long delayedack) throws Exception{
@@ -244,7 +258,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* Delayed acknowledgement timeout (in millisec).<br> Default value: 100<br> Minimum value =  10<br> Maximum value =  300
+	* Timeout for TCP delayed ACK, in milliseconds.<br> Default value: 100<br> Minimum value =  10<br> Maximum value =  300
 	* </pre>
 	*/
 	public Long get_delayedack() throws Exception {
@@ -271,7 +285,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* Whether to enable Nagle's algorithm on connections.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Enable or disable the Nagle algorithm on TCP connections.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_nagle(String nagle) throws Exception{
@@ -280,7 +294,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* Whether to enable Nagle's algorithm on connections.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Enable or disable the Nagle algorithm on TCP connections.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_nagle() throws Exception {
@@ -289,7 +303,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* Whether to limit the number of persist(zero window) probes.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Limit the number of persist (zero window) probes.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_limitedpersist(String limitedpersist) throws Exception{
@@ -298,7 +312,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* Whether to limit the number of persist(zero window) probes.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Limit the number of persist (zero window) probes.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_limitedpersist() throws Exception {
@@ -307,7 +321,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* Maximum size of out-of-order packet queue (0 means infinite).<br> Default value: 64<br> Minimum value =  0<br> Maximum value =  65535
+	* Maximum size of out-of-order packets queue. A value of 0 means infinite.<br> Default value: 64<br> Minimum value =  0<br> Maximum value =  65535
 	* </pre>
 	*/
 	public void set_oooqsize(long oooqsize) throws Exception {
@@ -316,7 +330,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* Maximum size of out-of-order packet queue (0 means infinite).<br> Default value: 64<br> Minimum value =  0<br> Maximum value =  65535
+	* Maximum size of out-of-order packets queue. A value of 0 means infinite.<br> Default value: 64<br> Minimum value =  0<br> Maximum value =  65535
 	* </pre>
 	*/
 	public void set_oooqsize(Long oooqsize) throws Exception{
@@ -325,7 +339,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* Maximum size of out-of-order packet queue (0 means infinite).<br> Default value: 64<br> Minimum value =  0<br> Maximum value =  65535
+	* Maximum size of out-of-order packets queue. A value of 0 means infinite.<br> Default value: 64<br> Minimum value =  0<br> Maximum value =  65535
 	* </pre>
 	*/
 	public Long get_oooqsize() throws Exception {
@@ -334,7 +348,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* Enable immediate ACK on receiving packet with PUSH flag.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Send immediate positive acknowledgement (ACK) on receipt of TCP packets when doing Web 2.0 PUSH.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_ackonpush(String ackonpush) throws Exception{
@@ -343,7 +357,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* Enable immediate ACK on receiving packet with PUSH flag.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Send immediate positive acknowledgement (ACK) on receipt of TCP packets when doing Web 2.0 PUSH.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_ackonpush() throws Exception {
@@ -352,7 +366,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* Set maximum packtes to be sent for each MSS in CWND for packet count based congestion control.<br> Minimum value =  0<br> Maximum value =  1460
+	* Maximum number of TCP packets allowed per maximum segment size (MSS).<br> Minimum value =  0<br> Maximum value =  1460
 	* </pre>
 	*/
 	public void set_maxpktpermss(int maxpktpermss) throws Exception {
@@ -361,7 +375,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* Set maximum packtes to be sent for each MSS in CWND for packet count based congestion control.<br> Minimum value =  0<br> Maximum value =  1460
+	* Maximum number of TCP packets allowed per maximum segment size (MSS).<br> Minimum value =  0<br> Maximum value =  1460
 	* </pre>
 	*/
 	public void set_maxpktpermss(Integer maxpktpermss) throws Exception{
@@ -370,7 +384,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* Set maximum packtes to be sent for each MSS in CWND for packet count based congestion control.<br> Minimum value =  0<br> Maximum value =  1460
+	* Maximum number of TCP packets allowed per maximum segment size (MSS).<br> Minimum value =  0<br> Maximum value =  1460
 	* </pre>
 	*/
 	public Integer get_maxpktpermss() throws Exception {
@@ -379,7 +393,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* Set maximum packets should be retransmitted on partial ACK case.<br> Default value: 1<br> Minimum value =  1<br> Maximum value =  100
+	* Maximum limit on the number of packets that should be retransmitted on receiving a partial ACK.<br> Default value: 1<br> Minimum value =  1<br> Maximum value =  100
 	* </pre>
 	*/
 	public void set_pktperretx(int pktperretx) throws Exception {
@@ -388,7 +402,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* Set maximum packets should be retransmitted on partial ACK case.<br> Default value: 1<br> Minimum value =  1<br> Maximum value =  100
+	* Maximum limit on the number of packets that should be retransmitted on receiving a partial ACK.<br> Default value: 1<br> Minimum value =  1<br> Maximum value =  100
 	* </pre>
 	*/
 	public void set_pktperretx(Integer pktperretx) throws Exception{
@@ -397,7 +411,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* Set maximum packets should be retransmitted on partial ACK case.<br> Default value: 1<br> Minimum value =  1<br> Maximum value =  100
+	* Maximum limit on the number of packets that should be retransmitted on receiving a partial ACK.<br> Default value: 1<br> Minimum value =  1<br> Maximum value =  100
 	* </pre>
 	*/
 	public Integer get_pktperretx() throws Exception {
@@ -406,7 +420,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* Minimum TCP RTO(in millisec).<br> Default value: 1000<br> Minimum value =  10<br> Maximum value =  64000
+	* Minimum retransmission timeout, in milliseconds.<br> Default value: 1000<br> Minimum value =  10<br> Maximum value =  64000
 	* </pre>
 	*/
 	public void set_minrto(int minrto) throws Exception {
@@ -415,7 +429,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* Minimum TCP RTO(in millisec).<br> Default value: 1000<br> Minimum value =  10<br> Maximum value =  64000
+	* Minimum retransmission timeout, in milliseconds.<br> Default value: 1000<br> Minimum value =  10<br> Maximum value =  64000
 	* </pre>
 	*/
 	public void set_minrto(Integer minrto) throws Exception{
@@ -424,7 +438,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* Minimum TCP RTO(in millisec).<br> Default value: 1000<br> Minimum value =  10<br> Maximum value =  64000
+	* Minimum retransmission timeout, in milliseconds.<br> Default value: 1000<br> Minimum value =  10<br> Maximum value =  64000
 	* </pre>
 	*/
 	public Integer get_minrto() throws Exception {
@@ -433,7 +447,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* Set TCP slow start increment factor.<br> Default value: 2<br> Minimum value =  1<br> Maximum value =  100
+	* Multiplier that determines the rate at which slow start increases the size of the TCP transmission window after each acknowledgement of successful transmission.<br> Default value: 2<br> Minimum value =  1<br> Maximum value =  100
 	* </pre>
 	*/
 	public void set_slowstartincr(int slowstartincr) throws Exception {
@@ -442,7 +456,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* Set TCP slow start increment factor.<br> Default value: 2<br> Minimum value =  1<br> Maximum value =  100
+	* Multiplier that determines the rate at which slow start increases the size of the TCP transmission window after each acknowledgement of successful transmission.<br> Default value: 2<br> Minimum value =  1<br> Maximum value =  100
 	* </pre>
 	*/
 	public void set_slowstartincr(Integer slowstartincr) throws Exception{
@@ -451,7 +465,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* Set TCP slow start increment factor.<br> Default value: 2<br> Minimum value =  1<br> Maximum value =  100
+	* Multiplier that determines the rate at which slow start increases the size of the TCP transmission window after each acknowledgement of successful transmission.<br> Default value: 2<br> Minimum value =  1<br> Maximum value =  100
 	* </pre>
 	*/
 	public Integer get_slowstartincr() throws Exception {
@@ -460,7 +474,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* Max server probes in 10ms.<br> Default value: 7<br> Minimum value =  1<br> Maximum value =  65535
+	* Maximum number of probes that NetScaler can send out in 10 milliseconds, to dynamically learn a service. NetScaler probes for the existence of the origin in case of wildcard virtual server or services.<br> Default value: 7<br> Minimum value =  1<br> Maximum value =  65535
 	* </pre>
 	*/
 	public void set_maxdynserverprobes(long maxdynserverprobes) throws Exception {
@@ -469,7 +483,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* Max server probes in 10ms.<br> Default value: 7<br> Minimum value =  1<br> Maximum value =  65535
+	* Maximum number of probes that NetScaler can send out in 10 milliseconds, to dynamically learn a service. NetScaler probes for the existence of the origin in case of wildcard virtual server or services.<br> Default value: 7<br> Minimum value =  1<br> Maximum value =  65535
 	* </pre>
 	*/
 	public void set_maxdynserverprobes(Long maxdynserverprobes) throws Exception{
@@ -478,7 +492,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* Max server probes in 10ms.<br> Default value: 7<br> Minimum value =  1<br> Maximum value =  65535
+	* Maximum number of probes that NetScaler can send out in 10 milliseconds, to dynamically learn a service. NetScaler probes for the existence of the origin in case of wildcard virtual server or services.<br> Default value: 7<br> Minimum value =  1<br> Maximum value =  65535
 	* </pre>
 	*/
 	public Long get_maxdynserverprobes() throws Exception {
@@ -487,7 +501,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* Max threshold after which NetScaler reduces the number of retries for server probes.<br> Default value: 1024<br> Minimum value =  256<br> Maximum value =  65535
+	* Maximum threshold. After crossing this threshold number of outstanding probes for origin, the NetScaler reduces the number of connection retries for probe connections.<br> Default value: 1024<br> Minimum value =  256<br> Maximum value =  65535
 	* </pre>
 	*/
 	public void set_synholdfastgiveup(long synholdfastgiveup) throws Exception {
@@ -496,7 +510,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* Max threshold after which NetScaler reduces the number of retries for server probes.<br> Default value: 1024<br> Minimum value =  256<br> Maximum value =  65535
+	* Maximum threshold. After crossing this threshold number of outstanding probes for origin, the NetScaler reduces the number of connection retries for probe connections.<br> Default value: 1024<br> Minimum value =  256<br> Maximum value =  65535
 	* </pre>
 	*/
 	public void set_synholdfastgiveup(Long synholdfastgiveup) throws Exception{
@@ -505,7 +519,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* Max threshold after which NetScaler reduces the number of retries for server probes.<br> Default value: 1024<br> Minimum value =  256<br> Maximum value =  65535
+	* Maximum threshold. After crossing this threshold number of outstanding probes for origin, the NetScaler reduces the number of connection retries for probe connections.<br> Default value: 1024<br> Minimum value =  256<br> Maximum value =  65535
 	* </pre>
 	*/
 	public Long get_synholdfastgiveup() throws Exception {
@@ -514,7 +528,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* Maximum number of SYN allowed to be queued per probe PCB.<br> Default value: 128<br> Minimum value =  1<br> Maximum value =  255
+	* Limit the number of client connections (SYN) waiting for status of single probe. Any new SYN packets will be dropped.<br> Default value: 128<br> Minimum value =  1<br> Maximum value =  255
 	* </pre>
 	*/
 	public void set_maxsynholdperprobe(long maxsynholdperprobe) throws Exception {
@@ -523,7 +537,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* Maximum number of SYN allowed to be queued per probe PCB.<br> Default value: 128<br> Minimum value =  1<br> Maximum value =  255
+	* Limit the number of client connections (SYN) waiting for status of single probe. Any new SYN packets will be dropped.<br> Default value: 128<br> Minimum value =  1<br> Maximum value =  255
 	* </pre>
 	*/
 	public void set_maxsynholdperprobe(Long maxsynholdperprobe) throws Exception{
@@ -532,7 +546,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* Maximum number of SYN allowed to be queued per probe PCB.<br> Default value: 128<br> Minimum value =  1<br> Maximum value =  255
+	* Limit the number of client connections (SYN) waiting for status of single probe. Any new SYN packets will be dropped.<br> Default value: 128<br> Minimum value =  1<br> Maximum value =  255
 	* </pre>
 	*/
 	public Long get_maxsynholdperprobe() throws Exception {
@@ -541,7 +555,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* Maximum number of SYN that NetScaler can hold while probing for backend services.<br> Default value: 16384<br> Minimum value =  256<br> Maximum value =  65535
+	* Limit the number of client connections (SYN) waiting for status of probe system wide. Any new SYN packets will be dropped.<br> Default value: 16384<br> Minimum value =  256<br> Maximum value =  65535
 	* </pre>
 	*/
 	public void set_maxsynhold(long maxsynhold) throws Exception {
@@ -550,7 +564,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* Maximum number of SYN that NetScaler can hold while probing for backend services.<br> Default value: 16384<br> Minimum value =  256<br> Maximum value =  65535
+	* Limit the number of client connections (SYN) waiting for status of probe system wide. Any new SYN packets will be dropped.<br> Default value: 16384<br> Minimum value =  256<br> Maximum value =  65535
 	* </pre>
 	*/
 	public void set_maxsynhold(Long maxsynhold) throws Exception{
@@ -559,7 +573,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* Maximum number of SYN that NetScaler can hold while probing for backend services.<br> Default value: 16384<br> Minimum value =  256<br> Maximum value =  65535
+	* Limit the number of client connections (SYN) waiting for status of probe system wide. Any new SYN packets will be dropped.<br> Default value: 16384<br> Minimum value =  256<br> Maximum value =  65535
 	* </pre>
 	*/
 	public Long get_maxsynhold() throws Exception {
@@ -568,7 +582,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* Time period (in seconds) for which the backend service MSS are sampled for Vserver MSS learning.<br> Default value: 180<br> Minimum value =  1<br> Maximum value =  1048576
+	* Duration, in seconds, to sample the Maximum Segment Size (MSS) of the services. The NetScaler appliance determines the best MSS to set for the virtual server based on this sampling. The argument to enable maximum segment size (MSS) for virtual servers must be enabled.<br> Default value: 180<br> Minimum value =  1<br> Maximum value =  1048576
 	* </pre>
 	*/
 	public void set_msslearninterval(long msslearninterval) throws Exception {
@@ -577,7 +591,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* Time period (in seconds) for which the backend service MSS are sampled for Vserver MSS learning.<br> Default value: 180<br> Minimum value =  1<br> Maximum value =  1048576
+	* Duration, in seconds, to sample the Maximum Segment Size (MSS) of the services. The NetScaler appliance determines the best MSS to set for the virtual server based on this sampling. The argument to enable maximum segment size (MSS) for virtual servers must be enabled.<br> Default value: 180<br> Minimum value =  1<br> Maximum value =  1048576
 	* </pre>
 	*/
 	public void set_msslearninterval(Long msslearninterval) throws Exception{
@@ -586,7 +600,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* Time period (in seconds) for which the backend service MSS are sampled for Vserver MSS learning.<br> Default value: 180<br> Minimum value =  1<br> Maximum value =  1048576
+	* Duration, in seconds, to sample the Maximum Segment Size (MSS) of the services. The NetScaler appliance determines the best MSS to set for the virtual server based on this sampling. The argument to enable maximum segment size (MSS) for virtual servers must be enabled.<br> Default value: 180<br> Minimum value =  1<br> Maximum value =  1048576
 	* </pre>
 	*/
 	public Long get_msslearninterval() throws Exception {
@@ -595,7 +609,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* Vserver MSS learning delay(seconds).<br> Default value: 3600<br> Minimum value =  1<br> Maximum value =  1048576
+	* Frequency, in seconds, at which the virtual servers learn the Maximum segment size (MSS) from the services. The argument to enable maximum segment size (MSS) for virtual servers must be enabled.<br> Default value: 3600<br> Minimum value =  1<br> Maximum value =  1048576
 	* </pre>
 	*/
 	public void set_msslearndelay(long msslearndelay) throws Exception {
@@ -604,7 +618,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* Vserver MSS learning delay(seconds).<br> Default value: 3600<br> Minimum value =  1<br> Maximum value =  1048576
+	* Frequency, in seconds, at which the virtual servers learn the Maximum segment size (MSS) from the services. The argument to enable maximum segment size (MSS) for virtual servers must be enabled.<br> Default value: 3600<br> Minimum value =  1<br> Maximum value =  1048576
 	* </pre>
 	*/
 	public void set_msslearndelay(Long msslearndelay) throws Exception{
@@ -613,7 +627,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* Vserver MSS learning delay(seconds).<br> Default value: 3600<br> Minimum value =  1<br> Maximum value =  1048576
+	* Frequency, in seconds, at which the virtual servers learn the Maximum segment size (MSS) from the services. The argument to enable maximum segment size (MSS) for virtual servers must be enabled.<br> Default value: 3600<br> Minimum value =  1<br> Maximum value =  1048576
 	* </pre>
 	*/
 	public Long get_msslearndelay() throws Exception {
@@ -622,7 +636,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* max connection limit for FIN TIME WAIT.<br> Default value: 7000<br> Minimum value =  1
+	* Maximum number of connections to hold in the TCP TIME_WAIT state. New connections entering TIME_WAIT state are proactively cleaned up.<br> Default value: 7000<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_maxtimewaitconn(long maxtimewaitconn) throws Exception {
@@ -631,7 +645,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* max connection limit for FIN TIME WAIT.<br> Default value: 7000<br> Minimum value =  1
+	* Maximum number of connections to hold in the TCP TIME_WAIT state. New connections entering TIME_WAIT state are proactively cleaned up.<br> Default value: 7000<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_maxtimewaitconn(Long maxtimewaitconn) throws Exception{
@@ -640,7 +654,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* max connection limit for FIN TIME WAIT.<br> Default value: 7000<br> Minimum value =  1
+	* Maximum number of connections to hold in the TCP TIME_WAIT state. New connections entering TIME_WAIT state are proactively cleaned up.<br> Default value: 7000<br> Minimum value =  1
 	* </pre>
 	*/
 	public Long get_maxtimewaitconn() throws Exception {
@@ -667,7 +681,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* Max limit for syn+ack retransmissions in a given interval.<br> Default value: 100<br> Minimum value =  100<br> Maximum value =  1048576
+	* When 'syncookie' is disabled in the TCP profile that is bound to the virtual server or service, and the number of TCP SYN+ACK retransmission by NetScaler for that virtual server or service crosses this threshold, the NetScaler appliance responds by using the TCP SYN-Cookie mechanism.<br> Default value: 100<br> Minimum value =  100<br> Maximum value =  1048576
 	* </pre>
 	*/
 	public void set_maxsynackretx(long maxsynackretx) throws Exception {
@@ -676,7 +690,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* Max limit for syn+ack retransmissions in a given interval.<br> Default value: 100<br> Minimum value =  100<br> Maximum value =  1048576
+	* When 'syncookie' is disabled in the TCP profile that is bound to the virtual server or service, and the number of TCP SYN+ACK retransmission by NetScaler for that virtual server or service crosses this threshold, the NetScaler appliance responds by using the TCP SYN-Cookie mechanism.<br> Default value: 100<br> Minimum value =  100<br> Maximum value =  1048576
 	* </pre>
 	*/
 	public void set_maxsynackretx(Long maxsynackretx) throws Exception{
@@ -685,7 +699,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* Max limit for syn+ack retransmissions in a given interval.<br> Default value: 100<br> Minimum value =  100<br> Maximum value =  1048576
+	* When 'syncookie' is disabled in the TCP profile that is bound to the virtual server or service, and the number of TCP SYN+ACK retransmission by NetScaler for that virtual server or service crosses this threshold, the NetScaler appliance responds by using the TCP SYN-Cookie mechanism.<br> Default value: 100<br> Minimum value =  100<br> Maximum value =  1048576
 	* </pre>
 	*/
 	public Long get_maxsynackretx() throws Exception {
@@ -694,7 +708,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* Enable/disable synattack detection.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Detect TCP SYN packet flood and send an SNMP trap.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_synattackdetection(String synattackdetection) throws Exception{
@@ -703,7 +717,7 @@ public class nstcpparam extends base_resource
 
 	/**
 	* <pre>
-	* Enable/disable synattack detection.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Detect TCP SYN packet flood and send an SNMP trap.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_synattackdetection() throws Exception {
@@ -721,7 +735,7 @@ FIFO: If no half-closed or idle connection can be found, flush the oldest non-ma
 Note: If you enable this setting, you should also consider lowering the zombie timeout and half-close timeout (see NSCLI command: set ns timeout).
 
 See Also: connFlushThres argument below.
-<br> Default value: 5<br> Possible values = 
+<br> Default value: 5<br> Possible values = NONE, HALFCLOSED_AND_IDLE, FIFO
 	* </pre>
 	*/
 	public void set_connflushifnomem(String connflushifnomem) throws Exception{
@@ -739,7 +753,7 @@ FIFO: If no half-closed or idle connection can be found, flush the oldest non-ma
 Note: If you enable this setting, you should also consider lowering the zombie timeout and half-close timeout (see NSCLI command: set ns timeout).
 
 See Also: connFlushThres argument below.
-<br> Default value: 5<br> Possible values = 
+<br> Default value: 5<br> Possible values = NONE, HALFCLOSED_AND_IDLE, FIFO
 	* </pre>
 	*/
 	public String get_connflushifnomem() throws Exception {
@@ -771,6 +785,267 @@ See Also: connFlushThres argument below.
 	*/
 	public Long get_connflushthres() throws Exception {
 		return this.connflushthres;
+	}
+
+	/**
+	* <pre>
+	* Accept DATA_FIN/FAST_CLOSE on passive subflow.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* </pre>
+	*/
+	public void set_mptcpconcloseonpassivesf(String mptcpconcloseonpassivesf) throws Exception{
+		this.mptcpconcloseonpassivesf = mptcpconcloseonpassivesf;
+	}
+
+	/**
+	* <pre>
+	* Accept DATA_FIN/FAST_CLOSE on passive subflow.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* </pre>
+	*/
+	public String get_mptcpconcloseonpassivesf() throws Exception {
+		return this.mptcpconcloseonpassivesf;
+	}
+
+	/**
+	* <pre>
+	* Use MPTCP DSS checksum.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* </pre>
+	*/
+	public void set_mptcpchecksum(String mptcpchecksum) throws Exception{
+		this.mptcpchecksum = mptcpchecksum;
+	}
+
+	/**
+	* <pre>
+	* Use MPTCP DSS checksum.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* </pre>
+	*/
+	public String get_mptcpchecksum() throws Exception {
+		return this.mptcpchecksum;
+	}
+
+	/**
+	* <pre>
+	* The timeout value in seconds for idle mptcp subflows. If this timeout is not set, idle subflows are cleared after cltTimeout of vserver.<br> Minimum value =  0<br> Maximum value =  31536000
+	* </pre>
+	*/
+	public void set_mptcpsftimeout(long mptcpsftimeout) throws Exception {
+		this.mptcpsftimeout = new Long(mptcpsftimeout);
+	}
+
+	/**
+	* <pre>
+	* The timeout value in seconds for idle mptcp subflows. If this timeout is not set, idle subflows are cleared after cltTimeout of vserver.<br> Minimum value =  0<br> Maximum value =  31536000
+	* </pre>
+	*/
+	public void set_mptcpsftimeout(Long mptcpsftimeout) throws Exception{
+		this.mptcpsftimeout = mptcpsftimeout;
+	}
+
+	/**
+	* <pre>
+	* The timeout value in seconds for idle mptcp subflows. If this timeout is not set, idle subflows are cleared after cltTimeout of vserver.<br> Minimum value =  0<br> Maximum value =  31536000
+	* </pre>
+	*/
+	public Long get_mptcpsftimeout() throws Exception {
+		return this.mptcpsftimeout;
+	}
+
+	/**
+	* <pre>
+	* The minimum idle time value in seconds for idle mptcp subflows after which the sublow is replaced by new incoming subflow if maximum subflow limit is reached. The priority for replacement is given to those subflow without any transaction.<br> Default value: 10<br> Minimum value =  0<br> Maximum value =  31536000
+	* </pre>
+	*/
+	public void set_mptcpsfreplacetimeout(long mptcpsfreplacetimeout) throws Exception {
+		this.mptcpsfreplacetimeout = new Long(mptcpsfreplacetimeout);
+	}
+
+	/**
+	* <pre>
+	* The minimum idle time value in seconds for idle mptcp subflows after which the sublow is replaced by new incoming subflow if maximum subflow limit is reached. The priority for replacement is given to those subflow without any transaction.<br> Default value: 10<br> Minimum value =  0<br> Maximum value =  31536000
+	* </pre>
+	*/
+	public void set_mptcpsfreplacetimeout(Long mptcpsfreplacetimeout) throws Exception{
+		this.mptcpsfreplacetimeout = mptcpsfreplacetimeout;
+	}
+
+	/**
+	* <pre>
+	* The minimum idle time value in seconds for idle mptcp subflows after which the sublow is replaced by new incoming subflow if maximum subflow limit is reached. The priority for replacement is given to those subflow without any transaction.<br> Default value: 10<br> Minimum value =  0<br> Maximum value =  31536000
+	* </pre>
+	*/
+	public Long get_mptcpsfreplacetimeout() throws Exception {
+		return this.mptcpsfreplacetimeout;
+	}
+
+	/**
+	* <pre>
+	* Maximum number of subflow connections supported in established state per mptcp connection.<br> Default value: 4<br> Minimum value =  2<br> Maximum value =  6
+	* </pre>
+	*/
+	public void set_mptcpmaxsf(long mptcpmaxsf) throws Exception {
+		this.mptcpmaxsf = new Long(mptcpmaxsf);
+	}
+
+	/**
+	* <pre>
+	* Maximum number of subflow connections supported in established state per mptcp connection.<br> Default value: 4<br> Minimum value =  2<br> Maximum value =  6
+	* </pre>
+	*/
+	public void set_mptcpmaxsf(Long mptcpmaxsf) throws Exception{
+		this.mptcpmaxsf = mptcpmaxsf;
+	}
+
+	/**
+	* <pre>
+	* Maximum number of subflow connections supported in established state per mptcp connection.<br> Default value: 4<br> Minimum value =  2<br> Maximum value =  6
+	* </pre>
+	*/
+	public Long get_mptcpmaxsf() throws Exception {
+		return this.mptcpmaxsf;
+	}
+
+	/**
+	* <pre>
+	* Maximum number of subflow connections supported in pending join state per mptcp connection.<br> Default value: 4<br> Minimum value =  0<br> Maximum value =  4
+	* </pre>
+	*/
+	public void set_mptcpmaxpendingsf(long mptcpmaxpendingsf) throws Exception {
+		this.mptcpmaxpendingsf = new Long(mptcpmaxpendingsf);
+	}
+
+	/**
+	* <pre>
+	* Maximum number of subflow connections supported in pending join state per mptcp connection.<br> Default value: 4<br> Minimum value =  0<br> Maximum value =  4
+	* </pre>
+	*/
+	public void set_mptcpmaxpendingsf(Long mptcpmaxpendingsf) throws Exception{
+		this.mptcpmaxpendingsf = mptcpmaxpendingsf;
+	}
+
+	/**
+	* <pre>
+	* Maximum number of subflow connections supported in pending join state per mptcp connection.<br> Default value: 4<br> Minimum value =  0<br> Maximum value =  4
+	* </pre>
+	*/
+	public Long get_mptcpmaxpendingsf() throws Exception {
+		return this.mptcpmaxpendingsf;
+	}
+
+	/**
+	* <pre>
+	* Maximum system level pending join connections allowed.<br> Minimum value =  0<br> Maximum value =  4294967294
+	* </pre>
+	*/
+	public void set_mptcppendingjointhreshold(long mptcppendingjointhreshold) throws Exception {
+		this.mptcppendingjointhreshold = new Long(mptcppendingjointhreshold);
+	}
+
+	/**
+	* <pre>
+	* Maximum system level pending join connections allowed.<br> Minimum value =  0<br> Maximum value =  4294967294
+	* </pre>
+	*/
+	public void set_mptcppendingjointhreshold(Long mptcppendingjointhreshold) throws Exception{
+		this.mptcppendingjointhreshold = mptcppendingjointhreshold;
+	}
+
+	/**
+	* <pre>
+	* Maximum system level pending join connections allowed.<br> Minimum value =  0<br> Maximum value =  4294967294
+	* </pre>
+	*/
+	public Long get_mptcppendingjointhreshold() throws Exception {
+		return this.mptcppendingjointhreshold;
+	}
+
+	/**
+	* <pre>
+	* Number of RTO's at subflow level, after which MPCTP should start using other subflow.<br> Default value: 2<br> Minimum value =  1<br> Maximum value =  6
+	* </pre>
+	*/
+	public void set_mptcprtostoswitchsf(long mptcprtostoswitchsf) throws Exception {
+		this.mptcprtostoswitchsf = new Long(mptcprtostoswitchsf);
+	}
+
+	/**
+	* <pre>
+	* Number of RTO's at subflow level, after which MPCTP should start using other subflow.<br> Default value: 2<br> Minimum value =  1<br> Maximum value =  6
+	* </pre>
+	*/
+	public void set_mptcprtostoswitchsf(Long mptcprtostoswitchsf) throws Exception{
+		this.mptcprtostoswitchsf = mptcprtostoswitchsf;
+	}
+
+	/**
+	* <pre>
+	* Number of RTO's at subflow level, after which MPCTP should start using other subflow.<br> Default value: 2<br> Minimum value =  1<br> Maximum value =  6
+	* </pre>
+	*/
+	public Long get_mptcprtostoswitchsf() throws Exception {
+		return this.mptcprtostoswitchsf;
+	}
+
+	/**
+	* <pre>
+	* When enabled, if NS receives a DSS on a backup subflow, NS will start using that subflow to send data. And if disabled, NS will continue to transmit on current chosen subflow. In case there is some error on a subflow (like RTO's/RST etc.) then NS can choose a backup subflow irrespective of this tunable.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* </pre>
+	*/
+	public void set_mptcpusebackupondss(String mptcpusebackupondss) throws Exception{
+		this.mptcpusebackupondss = mptcpusebackupondss;
+	}
+
+	/**
+	* <pre>
+	* When enabled, if NS receives a DSS on a backup subflow, NS will start using that subflow to send data. And if disabled, NS will continue to transmit on current chosen subflow. In case there is some error on a subflow (like RTO's/RST etc.) then NS can choose a backup subflow irrespective of this tunable.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* </pre>
+	*/
+	public String get_mptcpusebackupondss() throws Exception {
+		return this.mptcpusebackupondss;
+	}
+
+	/**
+	* <pre>
+	* Number of RTO's after which a connection should be freed.<br> Default value: 7<br> Minimum value =  1<br> Maximum value =  7
+	* </pre>
+	*/
+	public void set_tcpmaxretries(long tcpmaxretries) throws Exception {
+		this.tcpmaxretries = new Long(tcpmaxretries);
+	}
+
+	/**
+	* <pre>
+	* Number of RTO's after which a connection should be freed.<br> Default value: 7<br> Minimum value =  1<br> Maximum value =  7
+	* </pre>
+	*/
+	public void set_tcpmaxretries(Long tcpmaxretries) throws Exception{
+		this.tcpmaxretries = tcpmaxretries;
+	}
+
+	/**
+	* <pre>
+	* Number of RTO's after which a connection should be freed.<br> Default value: 7<br> Minimum value =  1<br> Maximum value =  7
+	* </pre>
+	*/
+	public Long get_tcpmaxretries() throws Exception {
+		return this.tcpmaxretries;
+	}
+
+	/**
+	* <pre>
+	* Allow subflows to close immediately on FIN before the DATA_FIN exchange is completed at mptcp level.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* </pre>
+	*/
+	public void set_mptcpimmediatesfcloseonfin(String mptcpimmediatesfcloseonfin) throws Exception{
+		this.mptcpimmediatesfcloseonfin = mptcpimmediatesfcloseonfin;
+	}
+
+	/**
+	* <pre>
+	* Allow subflows to close immediately on FIN before the DATA_FIN exchange is completed at mptcp level.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* </pre>
+	*/
+	public String get_mptcpimmediatesfcloseonfin() throws Exception {
+		return this.mptcpimmediatesfcloseonfin;
 	}
 
 	/**
@@ -843,6 +1118,17 @@ See Also: connFlushThres argument below.
 		updateresource.synattackdetection = resource.synattackdetection;
 		updateresource.connflushifnomem = resource.connflushifnomem;
 		updateresource.connflushthres = resource.connflushthres;
+		updateresource.mptcpconcloseonpassivesf = resource.mptcpconcloseonpassivesf;
+		updateresource.mptcpchecksum = resource.mptcpchecksum;
+		updateresource.mptcpsftimeout = resource.mptcpsftimeout;
+		updateresource.mptcpsfreplacetimeout = resource.mptcpsfreplacetimeout;
+		updateresource.mptcpmaxsf = resource.mptcpmaxsf;
+		updateresource.mptcpmaxpendingsf = resource.mptcpmaxpendingsf;
+		updateresource.mptcppendingjointhreshold = resource.mptcppendingjointhreshold;
+		updateresource.mptcprtostoswitchsf = resource.mptcprtostoswitchsf;
+		updateresource.mptcpusebackupondss = resource.mptcpusebackupondss;
+		updateresource.tcpmaxretries = resource.tcpmaxretries;
+		updateresource.mptcpimmediatesfcloseonfin = resource.mptcpimmediatesfcloseonfin;
 		return updateresource.update_resource(client);
 	}
 
@@ -852,35 +1138,6 @@ See Also: connFlushThres argument below.
 	*/
 	public static base_response unset(nitro_service client, nstcpparam resource, String[] args) throws Exception{
 		nstcpparam unsetresource = new nstcpparam();
-		unsetresource.ws = resource.ws;
-		unsetresource.wsval = resource.wsval;
-		unsetresource.sack = resource.sack;
-		unsetresource.learnvsvrmss = resource.learnvsvrmss;
-		unsetresource.maxburst = resource.maxburst;
-		unsetresource.initialcwnd = resource.initialcwnd;
-		unsetresource.recvbuffsize = resource.recvbuffsize;
-		unsetresource.delayedack = resource.delayedack;
-		unsetresource.downstaterst = resource.downstaterst;
-		unsetresource.nagle = resource.nagle;
-		unsetresource.limitedpersist = resource.limitedpersist;
-		unsetresource.oooqsize = resource.oooqsize;
-		unsetresource.ackonpush = resource.ackonpush;
-		unsetresource.maxpktpermss = resource.maxpktpermss;
-		unsetresource.pktperretx = resource.pktperretx;
-		unsetresource.minrto = resource.minrto;
-		unsetresource.slowstartincr = resource.slowstartincr;
-		unsetresource.maxdynserverprobes = resource.maxdynserverprobes;
-		unsetresource.synholdfastgiveup = resource.synholdfastgiveup;
-		unsetresource.maxsynholdperprobe = resource.maxsynholdperprobe;
-		unsetresource.maxsynhold = resource.maxsynhold;
-		unsetresource.msslearninterval = resource.msslearninterval;
-		unsetresource.msslearndelay = resource.msslearndelay;
-		unsetresource.maxtimewaitconn = resource.maxtimewaitconn;
-		unsetresource.kaprobeupdatelastactivity = resource.kaprobeupdatelastactivity;
-		unsetresource.maxsynackretx = resource.maxsynackretx;
-		unsetresource.synattackdetection = resource.synattackdetection;
-		unsetresource.connflushifnomem = resource.connflushifnomem;
-		unsetresource.connflushthres = resource.connflushthres;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -914,7 +1171,20 @@ See Also: connFlushThres argument below.
 		public static final String ENABLED = "ENABLED";
 		public static final String DISABLED = "DISABLED";
 	}
+	public static class mptcpusebackupondssEnum {
+		public static final String ENABLED = "ENABLED";
+		public static final String DISABLED = "DISABLED";
+	}
 	public static class ackonpushEnum {
+		public static final String ENABLED = "ENABLED";
+		public static final String DISABLED = "DISABLED";
+	}
+	public static class connflushifnomemEnum {
+		public static final String NONE = "NONE";
+		public static final String HALFCLOSED_AND_IDLE = "HALFCLOSED_AND_IDLE";
+		public static final String FIFO = "FIFO";
+	}
+	public static class mptcpconcloseonpassivesfEnum {
 		public static final String ENABLED = "ENABLED";
 		public static final String DISABLED = "DISABLED";
 	}
@@ -935,6 +1205,14 @@ See Also: connFlushThres argument below.
 		public static final String DISABLED = "DISABLED";
 	}
 	public static class synattackdetectionEnum {
+		public static final String ENABLED = "ENABLED";
+		public static final String DISABLED = "DISABLED";
+	}
+	public static class mptcpchecksumEnum {
+		public static final String ENABLED = "ENABLED";
+		public static final String DISABLED = "DISABLED";
+	}
+	public static class mptcpimmediatesfcloseonfinEnum {
 		public static final String ENABLED = "ENABLED";
 		public static final String DISABLED = "DISABLED";
 	}

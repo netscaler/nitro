@@ -46,7 +46,7 @@ public class dnskey extends base_resource
 
 	/**
 	* <pre>
-	* The name given to a public/private key pair.<br> Minimum length =  1
+	* Name of the public-private key pair to publish in the zone.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_keyname(String keyname) throws Exception{
@@ -55,7 +55,7 @@ public class dnskey extends base_resource
 
 	/**
 	* <pre>
-	* The name given to a public/private key pair.<br> Minimum length =  1
+	* Name of the public-private key pair to publish in the zone.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_keyname() throws Exception {
@@ -64,7 +64,7 @@ public class dnskey extends base_resource
 
 	/**
 	* <pre>
-	* File name of the public key to be used for signing zone.
+	* File name of the public key.
 	* </pre>
 	*/
 	public void set_publickey(String publickey) throws Exception{
@@ -73,7 +73,7 @@ public class dnskey extends base_resource
 
 	/**
 	* <pre>
-	* File name of the public key to be used for signing zone.
+	* File name of the public key.
 	* </pre>
 	*/
 	public String get_publickey() throws Exception {
@@ -82,7 +82,7 @@ public class dnskey extends base_resource
 
 	/**
 	* <pre>
-	* File name of the private key to be used for signing zone.
+	* File name of the private key.
 	* </pre>
 	*/
 	public void set_privatekey(String privatekey) throws Exception{
@@ -91,7 +91,7 @@ public class dnskey extends base_resource
 
 	/**
 	* <pre>
-	* File name of the private key to be used for signing zone.
+	* File name of the private key.
 	* </pre>
 	*/
 	public String get_privatekey() throws Exception {
@@ -100,7 +100,7 @@ public class dnskey extends base_resource
 
 	/**
 	* <pre>
-	* Number of days since signing with a key, when the key expires.<br> Default value: 120<br> Minimum value =  1<br> Maximum value =  32767
+	* Time period for which to consider the key valid, after the key is used to sign a zone.<br> Default value: 120<br> Minimum value =  1<br> Maximum value =  32767
 	* </pre>
 	*/
 	public void set_expires(long expires) throws Exception {
@@ -109,7 +109,7 @@ public class dnskey extends base_resource
 
 	/**
 	* <pre>
-	* Number of days since signing with a key, when the key expires.<br> Default value: 120<br> Minimum value =  1<br> Maximum value =  32767
+	* Time period for which to consider the key valid, after the key is used to sign a zone.<br> Default value: 120<br> Minimum value =  1<br> Maximum value =  32767
 	* </pre>
 	*/
 	public void set_expires(Long expires) throws Exception{
@@ -118,7 +118,7 @@ public class dnskey extends base_resource
 
 	/**
 	* <pre>
-	* Number of days since signing with a key, when the key expires.<br> Default value: 120<br> Minimum value =  1<br> Maximum value =  32767
+	* Time period for which to consider the key valid, after the key is used to sign a zone.<br> Default value: 120<br> Minimum value =  1<br> Maximum value =  32767
 	* </pre>
 	*/
 	public Long get_expires() throws Exception {
@@ -127,7 +127,7 @@ public class dnskey extends base_resource
 
 	/**
 	* <pre>
-	* expiry time units.<br> Default value: NSDNS_KEY_EXPIRY_DAYS<br> Possible values = MINUTES, HOURS, DAYS
+	* Units for the expiry period.<br> Default value: DAYS<br> Possible values = MINUTES, HOURS, DAYS
 	* </pre>
 	*/
 	public void set_units1(String units1) throws Exception{
@@ -136,7 +136,7 @@ public class dnskey extends base_resource
 
 	/**
 	* <pre>
-	* expiry time units.<br> Default value: NSDNS_KEY_EXPIRY_DAYS<br> Possible values = MINUTES, HOURS, DAYS
+	* Units for the expiry period.<br> Default value: DAYS<br> Possible values = MINUTES, HOURS, DAYS
 	* </pre>
 	*/
 	public String get_units1() throws Exception {
@@ -145,7 +145,7 @@ public class dnskey extends base_resource
 
 	/**
 	* <pre>
-	* Number of days before the expiry of a key, when an notification should be generated.<br> Default value: 7<br> Minimum value =  1<br> Maximum value =  32767
+	* Time at which to generate notification of key expiration, specified as number of days, hours, or minutes before expiry. Must be less than the expiry period. The notification is an SNMP trap sent to an SNMP manager. To enable the appliance to send the trap, enable the DNSKEY-EXPIRY SNMP alarm.<br> Default value: 7<br> Minimum value =  1<br> Maximum value =  32767
 	* </pre>
 	*/
 	public void set_notificationperiod(long notificationperiod) throws Exception {
@@ -154,7 +154,7 @@ public class dnskey extends base_resource
 
 	/**
 	* <pre>
-	* Number of days before the expiry of a key, when an notification should be generated.<br> Default value: 7<br> Minimum value =  1<br> Maximum value =  32767
+	* Time at which to generate notification of key expiration, specified as number of days, hours, or minutes before expiry. Must be less than the expiry period. The notification is an SNMP trap sent to an SNMP manager. To enable the appliance to send the trap, enable the DNSKEY-EXPIRY SNMP alarm.<br> Default value: 7<br> Minimum value =  1<br> Maximum value =  32767
 	* </pre>
 	*/
 	public void set_notificationperiod(Long notificationperiod) throws Exception{
@@ -163,7 +163,7 @@ public class dnskey extends base_resource
 
 	/**
 	* <pre>
-	* Number of days before the expiry of a key, when an notification should be generated.<br> Default value: 7<br> Minimum value =  1<br> Maximum value =  32767
+	* Time at which to generate notification of key expiration, specified as number of days, hours, or minutes before expiry. Must be less than the expiry period. The notification is an SNMP trap sent to an SNMP manager. To enable the appliance to send the trap, enable the DNSKEY-EXPIRY SNMP alarm.<br> Default value: 7<br> Minimum value =  1<br> Maximum value =  32767
 	* </pre>
 	*/
 	public Long get_notificationperiod() throws Exception {
@@ -172,7 +172,7 @@ public class dnskey extends base_resource
 
 	/**
 	* <pre>
-	* notify time units.<br> Default value: NSDNS_KEY_EXPIRY_DAYS<br> Possible values = MINUTES, HOURS, DAYS
+	* Units for the notification period.<br> Default value: DAYS<br> Possible values = MINUTES, HOURS, DAYS
 	* </pre>
 	*/
 	public void set_units2(String units2) throws Exception{
@@ -181,7 +181,7 @@ public class dnskey extends base_resource
 
 	/**
 	* <pre>
-	* notify time units.<br> Default value: NSDNS_KEY_EXPIRY_DAYS<br> Possible values = MINUTES, HOURS, DAYS
+	* Units for the notification period.<br> Default value: DAYS<br> Possible values = MINUTES, HOURS, DAYS
 	* </pre>
 	*/
 	public String get_units2() throws Exception {
@@ -190,7 +190,7 @@ public class dnskey extends base_resource
 
 	/**
 	* <pre>
-	* Time to live, in seconds.<br> Default value: 3600<br> Minimum value =  0<br> Maximum value =  2147483647
+	* Time to Live (TTL), in seconds, for the DNSKEY resource record created in the zone. TTL is the time for which the record must be cached by the DNS proxies. If the TTL is not specified, either the DNS zone's minimum TTL or the default value of 3600 is used.<br> Default value: 3600<br> Minimum value =  0<br> Maximum value =  2147483647
 	* </pre>
 	*/
 	public void set_ttl(long ttl) throws Exception {
@@ -199,7 +199,7 @@ public class dnskey extends base_resource
 
 	/**
 	* <pre>
-	* Time to live, in seconds.<br> Default value: 3600<br> Minimum value =  0<br> Maximum value =  2147483647
+	* Time to Live (TTL), in seconds, for the DNSKEY resource record created in the zone. TTL is the time for which the record must be cached by the DNS proxies. If the TTL is not specified, either the DNS zone's minimum TTL or the default value of 3600 is used.<br> Default value: 3600<br> Minimum value =  0<br> Maximum value =  2147483647
 	* </pre>
 	*/
 	public void set_ttl(Long ttl) throws Exception{
@@ -208,7 +208,7 @@ public class dnskey extends base_resource
 
 	/**
 	* <pre>
-	* Time to live, in seconds.<br> Default value: 3600<br> Minimum value =  0<br> Maximum value =  2147483647
+	* Time to Live (TTL), in seconds, for the DNSKEY resource record created in the zone. TTL is the time for which the record must be cached by the DNS proxies. If the TTL is not specified, either the DNS zone's minimum TTL or the default value of 3600 is used.<br> Default value: 3600<br> Minimum value =  0<br> Maximum value =  2147483647
 	* </pre>
 	*/
 	public Long get_ttl() throws Exception {
@@ -217,7 +217,7 @@ public class dnskey extends base_resource
 
 	/**
 	* <pre>
-	* The name of the zone for which the key is being added.<br> Minimum length =  1
+	* Name of the zone for which to create a key.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_zonename(String zonename) throws Exception{
@@ -226,7 +226,7 @@ public class dnskey extends base_resource
 
 	/**
 	* <pre>
-	* The name of the zone for which the key is being added.<br> Minimum length =  1
+	* Name of the zone for which to create a key.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_zonename() throws Exception {
@@ -235,7 +235,7 @@ public class dnskey extends base_resource
 
 	/**
 	* <pre>
-	* The type of key.<br> Default value: NS_DNSKEY_ZSK<br> Possible values = KSK, KeySigningKey, ZSK, ZoneSigningKey
+	* Type of key to create.<br> Default value: NS_DNSKEY_ZSK<br> Possible values = KSK, KeySigningKey, ZSK, ZoneSigningKey
 	* </pre>
 	*/
 	public void set_keytype(String keytype) throws Exception{
@@ -244,7 +244,7 @@ public class dnskey extends base_resource
 
 	/**
 	* <pre>
-	* The type of key.<br> Default value: NS_DNSKEY_ZSK<br> Possible values = KSK, KeySigningKey, ZSK, ZoneSigningKey
+	* Type of key to create.<br> Default value: NS_DNSKEY_ZSK<br> Possible values = KSK, KeySigningKey, ZSK, ZoneSigningKey
 	* </pre>
 	*/
 	public String get_keytype() throws Exception {
@@ -253,7 +253,7 @@ public class dnskey extends base_resource
 
 	/**
 	* <pre>
-	* The type of algorithm to be generated.<br> Default value: NS_DNSKEYALGO_RSASHA1<br> Possible values = RSASHA1
+	* Algorithm to generate for zone signing.<br> Default value: NS_DNSKEYALGO_RSASHA1<br> Possible values = RSASHA1
 	* </pre>
 	*/
 	public void set_algorithm(String algorithm) throws Exception{
@@ -262,7 +262,7 @@ public class dnskey extends base_resource
 
 	/**
 	* <pre>
-	* The type of algorithm to be generated.<br> Default value: NS_DNSKEYALGO_RSASHA1<br> Possible values = RSASHA1
+	* Algorithm to generate for zone signing.<br> Default value: NS_DNSKEYALGO_RSASHA1<br> Possible values = RSASHA1
 	* </pre>
 	*/
 	public String get_algorithm() throws Exception {
@@ -271,7 +271,7 @@ public class dnskey extends base_resource
 
 	/**
 	* <pre>
-	* The size in bits of the key to be created.<br> Default value: 512
+	* Size of the key, in bits.<br> Default value: 512
 	* </pre>
 	*/
 	public void set_keysize(long keysize) throws Exception {
@@ -280,7 +280,7 @@ public class dnskey extends base_resource
 
 	/**
 	* <pre>
-	* The size in bits of the key to be created.<br> Default value: 512
+	* Size of the key, in bits.<br> Default value: 512
 	* </pre>
 	*/
 	public void set_keysize(Long keysize) throws Exception{
@@ -289,7 +289,7 @@ public class dnskey extends base_resource
 
 	/**
 	* <pre>
-	* The size in bits of the key to be created.<br> Default value: 512
+	* Size of the key, in bits.<br> Default value: 512
 	* </pre>
 	*/
 	public Long get_keysize() throws Exception {
@@ -298,7 +298,7 @@ public class dnskey extends base_resource
 
 	/**
 	* <pre>
-	* The string to be used as file name for the generated public, private and ds key files.
+	* Common prefix for the names of the generated public and private key files and the Delegation Signer (DS) resource record. During key generation, the .key, .private, and .ds suffixes are appended automatically to the file name prefix to produce the names of the public key, the private key, and the DS record, respectively.
 	* </pre>
 	*/
 	public void set_filenameprefix(String filenameprefix) throws Exception{
@@ -307,7 +307,7 @@ public class dnskey extends base_resource
 
 	/**
 	* <pre>
-	* The string to be used as file name for the generated public, private and ds key files.
+	* Common prefix for the names of the generated public and private key files and the Delegation Signer (DS) resource record. During key generation, the .key, .private, and .ds suffixes are appended automatically to the file name prefix to produce the names of the public key, the private key, and the DS record, respectively.
 	* </pre>
 	*/
 	public String get_filenameprefix() throws Exception {
@@ -459,24 +459,9 @@ public class dnskey extends base_resource
 	* Use this API to unset the properties of dnskey resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String keyname, String args[]) throws Exception {
-		dnskey unsetresource = new dnskey();
-		unsetresource.keyname = keyname;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of dnskey resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, dnskey resource, String[] args) throws Exception{
 		dnskey unsetresource = new dnskey();
 		unsetresource.keyname = resource.keyname;
-		unsetresource.expires = resource.expires;
-		unsetresource.units1 = resource.units1;
-		unsetresource.notificationperiod = resource.notificationperiod;
-		unsetresource.units2 = resource.units2;
-		unsetresource.ttl = resource.ttl;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -508,11 +493,6 @@ public class dnskey extends base_resource
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new dnskey();
 				unsetresources[i].keyname = resources[i].keyname;
-				unsetresources[i].expires = resources[i].expires;
-				unsetresources[i].units1 = resources[i].units1;
-				unsetresources[i].notificationperiod = resources[i].notificationperiod;
-				unsetresources[i].units2 = resources[i].units2;
-				unsetresources[i].ttl = resources[i].ttl;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}

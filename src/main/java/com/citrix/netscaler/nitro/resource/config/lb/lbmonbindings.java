@@ -60,7 +60,7 @@ public class lbmonbindings extends base_resource
 
 	/**
 	* <pre>
-	* The type of monitor.<br> Possible values = PING, TCP, HTTP, TCP-ECV, HTTP-ECV, UDP-ECV, DNS, FTP, LDNS-PING, LDNS-TCP, LDNS-DNS, RADIUS, USER, HTTP-INLINE, SIP-UDP, LOAD, FTP-EXTENDED, SMTP, SNMP, NNTP, MYSQL, MYSQL-ECV, MSSQL-ECV, LDAP, POP3, CITRIX-XML-SERVICE, CITRIX-WEB-INTERFACE, DNS-TCP, RTSP, ARP, CITRIX-AG, CITRIX-AAC-LOGINPAGE, CITRIX-AAC-LAS, CITRIX-XD-DDC, ND6, CITRIX-WI-EXTENDED, DIAMETER
+	* The type of monitor.<br> Possible values = PING, TCP, HTTP, TCP-ECV, HTTP-ECV, UDP-ECV, DNS, FTP, LDNS-PING, LDNS-TCP, LDNS-DNS, RADIUS, USER, HTTP-INLINE, SIP-UDP, LOAD, FTP-EXTENDED, SMTP, SNMP, NNTP, MYSQL, MYSQL-ECV, MSSQL-ECV, ORACLE-ECV, LDAP, POP3, CITRIX-XML-SERVICE, CITRIX-WEB-INTERFACE, DNS-TCP, RTSP, ARP, CITRIX-AG, CITRIX-AAC-LOGINPAGE, CITRIX-AAC-LAS, CITRIX-XD-DDC, ND6, CITRIX-WI-EXTENDED, DIAMETER, RADIUS_ACCOUNTING, STOREFRONT
 	* </pre>
 	*/
 	public String get_type() throws Exception {
@@ -234,6 +234,7 @@ public class lbmonbindings extends base_resource
 		public static final String MYSQL = "MYSQL";
 		public static final String MYSQL_ECV = "MYSQL-ECV";
 		public static final String MSSQL_ECV = "MSSQL-ECV";
+		public static final String ORACLE_ECV = "ORACLE-ECV";
 		public static final String LDAP = "LDAP";
 		public static final String POP3 = "POP3";
 		public static final String CITRIX_XML_SERVICE = "CITRIX-XML-SERVICE";
@@ -248,5 +249,7 @@ public class lbmonbindings extends base_resource
 		public static final String ND6 = "ND6";
 		public static final String CITRIX_WI_EXTENDED = "CITRIX-WI-EXTENDED";
 		public static final String DIAMETER = "DIAMETER";
+		public static final String RADIUS_ACCOUNTING = "RADIUS_ACCOUNTING";
+		public static final String STOREFRONT = "STOREFRONT";
 	}
 }

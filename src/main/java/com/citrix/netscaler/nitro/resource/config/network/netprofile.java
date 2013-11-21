@@ -33,12 +33,13 @@ class netprofile_response extends base_response
 public class netprofile extends base_resource
 {
 	private String name;
+	private Long td;
 	private String srcip;
 	private Long __count;
 
 	/**
 	* <pre>
-	* The name of the network profile.<br> Minimum length =  1
+	* Name for the net profile. Must begin with a letter, number, or the underscore character (_), and can consist of letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at sign (@), equals (=), colon (:), and underscore characters. Cannot be changed after the profile is created. Choose a name that helps identify the net profile.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -47,7 +48,7 @@ public class netprofile extends base_resource
 
 	/**
 	* <pre>
-	* The name of the network profile.<br> Minimum length =  1
+	* Name for the net profile. Must begin with a letter, number, or the underscore character (_), and can consist of letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at sign (@), equals (=), colon (:), and underscore characters. Cannot be changed after the profile is created. Choose a name that helps identify the net profile.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -56,7 +57,34 @@ public class netprofile extends base_resource
 
 	/**
 	* <pre>
-	* Source IP address or name of the IP set.
+	* Traffic Domain Id.<br> Minimum value =  0<br> Maximum value =  4094
+	* </pre>
+	*/
+	public void set_td(long td) throws Exception {
+		this.td = new Long(td);
+	}
+
+	/**
+	* <pre>
+	* Traffic Domain Id.<br> Minimum value =  0<br> Maximum value =  4094
+	* </pre>
+	*/
+	public void set_td(Long td) throws Exception{
+		this.td = td;
+	}
+
+	/**
+	* <pre>
+	* Traffic Domain Id.<br> Minimum value =  0<br> Maximum value =  4094
+	* </pre>
+	*/
+	public Long get_td() throws Exception {
+		return this.td;
+	}
+
+	/**
+	* <pre>
+	* IP address or the name of an IP set.
 	* </pre>
 	*/
 	public void set_srcip(String srcip) throws Exception{
@@ -65,7 +93,7 @@ public class netprofile extends base_resource
 
 	/**
 	* <pre>
-	* Source IP address or name of the IP set.
+	* IP address or the name of an IP set.
 	* </pre>
 	*/
 	public String get_srcip() throws Exception {
@@ -112,6 +140,7 @@ public class netprofile extends base_resource
 	public static base_response add(nitro_service client, netprofile resource) throws Exception {
 		netprofile addresource = new netprofile();
 		addresource.name = resource.name;
+		addresource.td = resource.td;
 		addresource.srcip = resource.srcip;
 		return addresource.add_resource(client);
 	}
@@ -126,6 +155,7 @@ public class netprofile extends base_resource
 			for (int i=0;i<resources.length;i++){
 				addresources[i] = new netprofile();
 				addresources[i].name = resources[i].name;
+				addresources[i].td = resources[i].td;
 				addresources[i].srcip = resources[i].srcip;
 			}
 			result = add_bulk_request(client, addresources);
@@ -227,7 +257,6 @@ public class netprofile extends base_resource
 	public static base_response unset(nitro_service client, netprofile resource, String[] args) throws Exception{
 		netprofile unsetresource = new netprofile();
 		unsetresource.name = resource.name;
-		unsetresource.srcip = resource.srcip;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -259,7 +288,6 @@ public class netprofile extends base_resource
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new netprofile();
 				unsetresources[i].name = resources[i].name;
-				unsetresources[i].srcip = resources[i].srcip;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}

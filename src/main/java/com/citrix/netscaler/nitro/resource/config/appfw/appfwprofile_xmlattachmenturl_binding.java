@@ -62,7 +62,7 @@ public class appfwprofile_xmlattachmenturl_binding extends base_resource
 
 	/**
 	* <pre>
-	* Application Firewall profile name.<br> Minimum length =  1
+	* Name of the profile to which to bind an exemption or rule.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -71,7 +71,7 @@ public class appfwprofile_xmlattachmenturl_binding extends base_resource
 
 	/**
 	* <pre>
-	* Application Firewall profile name.<br> Minimum length =  1
+	* Name of the profile to which to bind an exemption or rule.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -161,7 +161,7 @@ public class appfwprofile_xmlattachmenturl_binding extends base_resource
 
 	/**
 	* <pre>
-	* Comments associated with this profile.
+	* Any comments about the purpose of profile, or other useful information about the profile.
 	* </pre>
 	*/
 	public void set_comment(String comment) throws Exception{
@@ -170,7 +170,7 @@ public class appfwprofile_xmlattachmenturl_binding extends base_resource
 
 	/**
 	* <pre>
-	* Comments associated with this profile.
+	* Any comments about the purpose of profile, or other useful information about the profile.
 	* </pre>
 	*/
 	public String get_comment() throws Exception {
@@ -461,18 +461,18 @@ public class appfwprofile_xmlattachmenturl_binding extends base_resource
 		public static final String ELEMENT = "ELEMENT";
 		public static final String ATTRIBUTE = "ATTRIBUTE";
 	}
-	public static class isregex_ffcEnum {
-		public static final String REGEX = "REGEX";
-		public static final String NOTREGEX = "NOTREGEX";
+	public static class xmlmaxattributevaluelengthcheckEnum {
+		public static final String ON = "ON";
+		public static final String OFF = "OFF";
 	}
 	public static class as_scan_location_sqlEnum {
 		public static final String FORMFIELD = "FORMFIELD";
 		public static final String HEADER = "HEADER";
 		public static final String COOKIE = "COOKIE";
 	}
-	public static class xmlmaxattributevaluelengthcheckEnum {
-		public static final String ON = "ON";
-		public static final String OFF = "OFF";
+	public static class isregex_ffcEnum {
+		public static final String REGEX = "REGEX";
+		public static final String NOTREGEX = "NOTREGEX";
 	}
 	public static class xmlattachmentcontenttypecheckEnum {
 		public static final String ON = "ON";

@@ -46,7 +46,7 @@ public class cspolicy_csvserver_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the policy to be displayed. if no name is given then all policies will be displayed.<br> Minimum length =  1
+	* Name of the content switching policy to display. If this parameter is omitted, details of all the policies are displayed.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_policyname(String policyname) throws Exception{
@@ -55,7 +55,7 @@ public class cspolicy_csvserver_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the policy to be displayed. if no name is given then all policies will be displayed.<br> Minimum length =  1
+	* Name of the content switching policy to display. If this parameter is omitted, details of all the policies are displayed.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_policyname() throws Exception {
@@ -118,9 +118,7 @@ public class cspolicy_csvserver_binding extends base_resource
 
 	/**
 	* <pre>
-	* The URL, with wildcards.
-Specify the string value in this format:
-// [[prefix ] [*]] [.suffix].<br> Minimum length =  1<br> Maximum length =  208
+	* URL string that is matched with the URL of a request. Can contain a wildcard character. Specify the string value in the following format: [[prefix] [*]] [.suffix].<br> Minimum length =  1<br> Maximum length =  208
 	* </pre>
 	*/
 	public String get_url() throws Exception {
@@ -129,7 +127,7 @@ Specify the string value in this format:
 
 	/**
 	* <pre>
-	* Content switching action to be used by the policy.
+	* Content switching action that names the target load balancing virtual server to which the traffic is switched.
 	* </pre>
 	*/
 	public String get_action() throws Exception {

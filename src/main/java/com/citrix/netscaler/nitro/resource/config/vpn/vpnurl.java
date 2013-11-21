@@ -41,7 +41,7 @@ public class vpnurl extends base_resource
 
 	/**
 	* <pre>
-	* The name for the new vpn url.<br> Minimum length =  1
+	* Name of the bookmark link.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_urlname(String urlname) throws Exception{
@@ -50,7 +50,7 @@ public class vpnurl extends base_resource
 
 	/**
 	* <pre>
-	* The name for the new vpn url.<br> Minimum length =  1
+	* Name of the bookmark link.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_urlname() throws Exception {
@@ -59,7 +59,7 @@ public class vpnurl extends base_resource
 
 	/**
 	* <pre>
-	* The display name for the vpn url. This is the name that will display in the bookmark links in the vpn portal page.<br> Minimum length =  1
+	* Description of the bookmark link. The description appears in the Access Interface.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_linkname(String linkname) throws Exception{
@@ -68,7 +68,7 @@ public class vpnurl extends base_resource
 
 	/**
 	* <pre>
-	* The display name for the vpn url. This is the name that will display in the bookmark links in the vpn portal page.<br> Minimum length =  1
+	* Description of the bookmark link. The description appears in the Access Interface.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_linkname() throws Exception {
@@ -77,7 +77,7 @@ public class vpnurl extends base_resource
 
 	/**
 	* <pre>
-	* The actual URL that the vpn url points to.<br> Minimum length =  1
+	* Web address for the bookmark link.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_actualurl(String actualurl) throws Exception{
@@ -86,7 +86,7 @@ public class vpnurl extends base_resource
 
 	/**
 	* <pre>
-	* The actual URL that the vpn url points to.<br> Minimum length =  1
+	* Web address for the bookmark link.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_actualurl() throws Exception {
@@ -95,7 +95,7 @@ public class vpnurl extends base_resource
 
 	/**
 	* <pre>
-	* Enable clientless access for the URL in other VPN modes if permitted. In clientless mode of VPN, it is enabled by default.<br> Default value: OFF<br> Possible values = ON, OFF
+	* If clientless access to the resource hosting the link is allowed, also use clientless access for the bookmarked web address in the Secure Client Access based session. Allows single sign-on and other HTTP processing on Access Gateway for HTTPS resources.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_clientlessaccess(String clientlessaccess) throws Exception{
@@ -104,7 +104,7 @@ public class vpnurl extends base_resource
 
 	/**
 	* <pre>
-	* Enable clientless access for the URL in other VPN modes if permitted. In clientless mode of VPN, it is enabled by default.<br> Default value: OFF<br> Possible values = ON, OFF
+	* If clientless access to the resource hosting the link is allowed, also use clientless access for the bookmarked web address in the Secure Client Access based session. Allows single sign-on and other HTTP processing on Access Gateway for HTTPS resources.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_clientlessaccess() throws Exception {
@@ -113,7 +113,7 @@ public class vpnurl extends base_resource
 
 	/**
 	* <pre>
-	* Comments associated with this vpn url entity.
+	* Any comments associated with the bookmark link.
 	* </pre>
 	*/
 	public void set_comment(String comment) throws Exception{
@@ -122,7 +122,7 @@ public class vpnurl extends base_resource
 
 	/**
 	* <pre>
-	* Comments associated with this vpn url entity.
+	* Any comments associated with the bookmark link.
 	* </pre>
 	*/
 	public String get_comment() throws Exception {
@@ -283,21 +283,9 @@ public class vpnurl extends base_resource
 	* Use this API to unset the properties of vpnurl resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String urlname, String args[]) throws Exception {
-		vpnurl unsetresource = new vpnurl();
-		unsetresource.urlname = urlname;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of vpnurl resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, vpnurl resource, String[] args) throws Exception{
 		vpnurl unsetresource = new vpnurl();
 		unsetresource.urlname = resource.urlname;
-		unsetresource.clientlessaccess = resource.clientlessaccess;
-		unsetresource.comment = resource.comment;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -329,8 +317,6 @@ public class vpnurl extends base_resource
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new vpnurl();
 				unsetresources[i].urlname = resources[i].urlname;
-				unsetresources[i].clientlessaccess = resources[i].clientlessaccess;
-				unsetresources[i].comment = resources[i].comment;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}

@@ -26,7 +26,7 @@ public class policyexpression_args
 
 	/**
 	* <pre>
-	* The type of expression. This is for input only.<br> Possible values = CLASSIC, ADVANCED
+	* Type of expression. Can be a classic or default syntax (advanced) expression.<br> Possible values = CLASSIC, ADVANCED
 	* </pre>
 	*/
 	public void set_type(String type) throws Exception{
@@ -35,7 +35,7 @@ public class policyexpression_args
 
 	/**
 	* <pre>
-	* The type of expression. This is for input only.<br> Possible values = CLASSIC, ADVANCED
+	* Type of expression. Can be a classic or default syntax (advanced) expression.<br> Possible values = CLASSIC, ADVANCED
 	* </pre>
 	*/
 	public String get_type() throws Exception {

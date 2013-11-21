@@ -39,11 +39,16 @@ public class vpntrafficaction extends base_resource
 	private String formssoaction;
 	private String fta;
 	private String wanscaler;
+	private String kcdaccount;
+	private String samlssoprofile;
 	private Long __count;
 
 	/**
 	* <pre>
-	* The name for the action.<br> Minimum length =  1
+	* Name for the traffic action. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Cannot be changed after a traffic action is created.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my action" or 'my action').<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -52,7 +57,10 @@ public class vpntrafficaction extends base_resource
 
 	/**
 	* <pre>
-	* The name for the action.<br> Minimum length =  1
+	* Name for the traffic action. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Cannot be changed after a traffic action is created.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my action" or 'my action').<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -61,7 +69,7 @@ public class vpntrafficaction extends base_resource
 
 	/**
 	* <pre>
-	* The protocol to be set with the action, e.g. http or tcp.<br> Possible values = http, tcp
+	* Protocol, either HTTP or TCP, to be used with the action. If you specify TCP, single sign-on cannot be configured.<br> Possible values = http, tcp
 	* </pre>
 	*/
 	public void set_qual(String qual) throws Exception{
@@ -70,7 +78,7 @@ public class vpntrafficaction extends base_resource
 
 	/**
 	* <pre>
-	* The protocol to be set with the action, e.g. http or tcp.<br> Possible values = http, tcp
+	* Protocol, either HTTP or TCP, to be used with the action. If you specify TCP, single sign-on cannot be configured.<br> Possible values = http, tcp
 	* </pre>
 	*/
 	public String get_qual() throws Exception {
@@ -79,7 +87,7 @@ public class vpntrafficaction extends base_resource
 
 	/**
 	* <pre>
-	* The inactivity timeout after which the system closes a connection.<br> Minimum value =  1<br> Maximum value =  715827
+	* Maximum amount of time, in minutes, a user can stay logged on to the web application.<br> Minimum value =  1<br> Maximum value =  715827
 	* </pre>
 	*/
 	public void set_apptimeout(long apptimeout) throws Exception {
@@ -88,7 +96,7 @@ public class vpntrafficaction extends base_resource
 
 	/**
 	* <pre>
-	* The inactivity timeout after which the system closes a connection.<br> Minimum value =  1<br> Maximum value =  715827
+	* Maximum amount of time, in minutes, a user can stay logged on to the web application.<br> Minimum value =  1<br> Maximum value =  715827
 	* </pre>
 	*/
 	public void set_apptimeout(Long apptimeout) throws Exception{
@@ -97,7 +105,7 @@ public class vpntrafficaction extends base_resource
 
 	/**
 	* <pre>
-	* The inactivity timeout after which the system closes a connection.<br> Minimum value =  1<br> Maximum value =  715827
+	* Maximum amount of time, in minutes, a user can stay logged on to the web application.<br> Minimum value =  1<br> Maximum value =  715827
 	* </pre>
 	*/
 	public Long get_apptimeout() throws Exception {
@@ -106,7 +114,7 @@ public class vpntrafficaction extends base_resource
 
 	/**
 	* <pre>
-	* Enable or disable Single Sign-On.<br> Possible values = ON, OFF
+	* Provide single sign-on to the web application.<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_sso(String sso) throws Exception{
@@ -115,7 +123,7 @@ public class vpntrafficaction extends base_resource
 
 	/**
 	* <pre>
-	* Enable or disable Single Sign-On.<br> Possible values = ON, OFF
+	* Provide single sign-on to the web application.<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_sso() throws Exception {
@@ -124,7 +132,7 @@ public class vpntrafficaction extends base_resource
 
 	/**
 	* <pre>
-	* Name of configured vpn formssoaction.
+	* Name of the form-based single sign-on profile. Form-based single sign-on allows users to log on one time to all protected applications in your network, instead of requiring them to log on separately to access each one.
 	* </pre>
 	*/
 	public void set_formssoaction(String formssoaction) throws Exception{
@@ -133,7 +141,7 @@ public class vpntrafficaction extends base_resource
 
 	/**
 	* <pre>
-	* Name of configured vpn formssoaction.
+	* Name of the form-based single sign-on profile. Form-based single sign-on allows users to log on one time to all protected applications in your network, instead of requiring them to log on separately to access each one.
 	* </pre>
 	*/
 	public String get_formssoaction() throws Exception {
@@ -142,7 +150,7 @@ public class vpntrafficaction extends base_resource
 
 	/**
 	* <pre>
-	* Enable or disable file-type association.<br> Possible values = ON, OFF
+	* Specify file type association, which is a list of file extensions that users are allowed to open.<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_fta(String fta) throws Exception{
@@ -151,7 +159,7 @@ public class vpntrafficaction extends base_resource
 
 	/**
 	* <pre>
-	* Enable or disable file-type association.<br> Possible values = ON, OFF
+	* Specify file type association, which is a list of file extensions that users are allowed to open.<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_fta() throws Exception {
@@ -160,7 +168,7 @@ public class vpntrafficaction extends base_resource
 
 	/**
 	* <pre>
-	* Enable or disable Repeater .<br> Possible values = ON, OFF
+	* Use the Repeater Plug-in to optimize network traffic.<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_wanscaler(String wanscaler) throws Exception{
@@ -169,11 +177,47 @@ public class vpntrafficaction extends base_resource
 
 	/**
 	* <pre>
-	* Enable or disable Repeater .<br> Possible values = ON, OFF
+	* Use the Repeater Plug-in to optimize network traffic.<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_wanscaler() throws Exception {
 		return this.wanscaler;
+	}
+
+	/**
+	* <pre>
+	* Kerberos constrained delegation account name.<br> Default value: "None"<br> Minimum length =  1<br> Maximum length =  32
+	* </pre>
+	*/
+	public void set_kcdaccount(String kcdaccount) throws Exception{
+		this.kcdaccount = kcdaccount;
+	}
+
+	/**
+	* <pre>
+	* Kerberos constrained delegation account name.<br> Default value: "None"<br> Minimum length =  1<br> Maximum length =  32
+	* </pre>
+	*/
+	public String get_kcdaccount() throws Exception {
+		return this.kcdaccount;
+	}
+
+	/**
+	* <pre>
+	* Profile to be used for doing SAML SSO to remote relying party.<br> Minimum length =  1
+	* </pre>
+	*/
+	public void set_samlssoprofile(String samlssoprofile) throws Exception{
+		this.samlssoprofile = samlssoprofile;
+	}
+
+	/**
+	* <pre>
+	* Profile to be used for doing SAML SSO to remote relying party.<br> Minimum length =  1
+	* </pre>
+	*/
+	public String get_samlssoprofile() throws Exception {
+		return this.samlssoprofile;
 	}
 
 	/**
@@ -222,6 +266,8 @@ public class vpntrafficaction extends base_resource
 		addresource.formssoaction = resource.formssoaction;
 		addresource.fta = resource.fta;
 		addresource.wanscaler = resource.wanscaler;
+		addresource.kcdaccount = resource.kcdaccount;
+		addresource.samlssoprofile = resource.samlssoprofile;
 		return addresource.add_resource(client);
 	}
 
@@ -241,6 +287,8 @@ public class vpntrafficaction extends base_resource
 				addresources[i].formssoaction = resources[i].formssoaction;
 				addresources[i].fta = resources[i].fta;
 				addresources[i].wanscaler = resources[i].wanscaler;
+				addresources[i].kcdaccount = resources[i].kcdaccount;
+				addresources[i].samlssoprofile = resources[i].samlssoprofile;
 			}
 			result = add_bulk_request(client, addresources);
 		}
@@ -308,6 +356,8 @@ public class vpntrafficaction extends base_resource
 		updateresource.formssoaction = resource.formssoaction;
 		updateresource.fta = resource.fta;
 		updateresource.wanscaler = resource.wanscaler;
+		updateresource.kcdaccount = resource.kcdaccount;
+		updateresource.samlssoprofile = resource.samlssoprofile;
 		return updateresource.update_resource(client);
 	}
 
@@ -326,6 +376,8 @@ public class vpntrafficaction extends base_resource
 				updateresources[i].formssoaction = resources[i].formssoaction;
 				updateresources[i].fta = resources[i].fta;
 				updateresources[i].wanscaler = resources[i].wanscaler;
+				updateresources[i].kcdaccount = resources[i].kcdaccount;
+				updateresources[i].samlssoprofile = resources[i].samlssoprofile;
 			}
 			result = update_bulk_request(client, updateresources);
 		}
@@ -336,20 +388,9 @@ public class vpntrafficaction extends base_resource
 	* Use this API to unset the properties of vpntrafficaction resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String name, String args[]) throws Exception {
-		vpntrafficaction unsetresource = new vpntrafficaction();
-		unsetresource.name = name;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of vpntrafficaction resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, vpntrafficaction resource, String[] args) throws Exception{
 		vpntrafficaction unsetresource = new vpntrafficaction();
 		unsetresource.name = resource.name;
-		unsetresource.wanscaler = resource.wanscaler;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -381,7 +422,6 @@ public class vpntrafficaction extends base_resource
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new vpntrafficaction();
 				unsetresources[i].name = resources[i].name;
-				unsetresources[i].wanscaler = resources[i].wanscaler;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}

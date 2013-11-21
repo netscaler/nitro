@@ -42,6 +42,7 @@ public class appfwglobal_appfwpolicy_binding extends base_resource
 	private Long numpol;
 	private Long flowtype;
 	private String type;
+	private String policytype;
 	private Long __count;
 
 	/**
@@ -73,7 +74,7 @@ public class appfwglobal_appfwpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Application Firewall policy name.
+	* Name of the policy.
 	* </pre>
 	*/
 	public void set_policyname(String policyname) throws Exception{
@@ -82,7 +83,7 @@ public class appfwglobal_appfwpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Application Firewall policy name.
+	* Name of the policy.
 	* </pre>
 	*/
 	public String get_policyname() throws Exception {
@@ -91,7 +92,7 @@ public class appfwglobal_appfwpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Name of the label to invoke if the current policy rule evaluates to TRUE.
+	* Name of the policy label to invoke if the current policy evaluates to TRUE, the invoke parameter is set, and Label Type is set to Policy Label.
 	* </pre>
 	*/
 	public void set_labelname(String labelname) throws Exception{
@@ -100,7 +101,7 @@ public class appfwglobal_appfwpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Name of the label to invoke if the current policy rule evaluates to TRUE.
+	* Name of the policy label to invoke if the current policy evaluates to TRUE, the invoke parameter is set, and Label Type is set to Policy Label.
 	* </pre>
 	*/
 	public String get_labelname() throws Exception {
@@ -127,7 +128,7 @@ public class appfwglobal_appfwpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The bindpoint to which to policy is bound. This can be used with advance application firewall policy only.<br> Possible values = REQ_OVERRIDE, REQ_DEFAULT, NONE
+	* Bind point to which to policy is bound.<br> Possible values = REQ_OVERRIDE, REQ_DEFAULT, NONE
 	* </pre>
 	*/
 	public void set_type(String type) throws Exception{
@@ -136,7 +137,7 @@ public class appfwglobal_appfwpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The bindpoint to which to policy is bound. This can be used with advance application firewall policy only.<br> Possible values = REQ_OVERRIDE, REQ_DEFAULT, NONE
+	* Bind point to which to policy is bound.<br> Possible values = REQ_OVERRIDE, REQ_DEFAULT, NONE
 	* </pre>
 	*/
 	public String get_type() throws Exception {
@@ -145,7 +146,7 @@ public class appfwglobal_appfwpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Invoke flag. This can be used only when binding advanced application firewall policy.
+	* If the current policy evaluates to TRUE, terminate evaluation of policies bound to the current policy label, and then forward the request to the specified virtual server or evaluate the specified policy label.
 	* </pre>
 	*/
 	public void set_invoke(boolean invoke) throws Exception {
@@ -154,7 +155,7 @@ public class appfwglobal_appfwpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Invoke flag. This can be used only when binding advanced application firewall policy.
+	* If the current policy evaluates to TRUE, terminate evaluation of policies bound to the current policy label, and then forward the request to the specified virtual server or evaluate the specified policy label.
 	* </pre>
 	*/
 	public void set_invoke(Boolean invoke) throws Exception{
@@ -163,7 +164,7 @@ public class appfwglobal_appfwpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Invoke flag. This can be used only when binding advanced application firewall policy.
+	* If the current policy evaluates to TRUE, terminate evaluation of policies bound to the current policy label, and then forward the request to the specified virtual server or evaluate the specified policy label.
 	* </pre>
 	*/
 	public Boolean get_invoke() throws Exception {
@@ -190,7 +191,7 @@ public class appfwglobal_appfwpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The current state of the binding.<br> Possible values = ENABLED, DISABLED
+	* Enable or disable the binding to activate or deactivate the policy.<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_state(String state) throws Exception{
@@ -199,7 +200,7 @@ public class appfwglobal_appfwpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The current state of the binding.<br> Possible values = ENABLED, DISABLED
+	* Enable or disable the binding to activate or deactivate the policy.<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_state() throws Exception {
@@ -222,6 +223,15 @@ public class appfwglobal_appfwpolicy_binding extends base_resource
 	*/
 	public Long get_numpol() throws Exception {
 		return this.numpol;
+	}
+
+	/**
+	* <pre>
+	* .<br> Possible values = Classic Policy, Advanced Policy
+	* </pre>
+	*/
+	public String get_policytype() throws Exception {
+		return this.policytype;
 	}
 
 	/**
@@ -401,6 +411,10 @@ public class appfwglobal_appfwpolicy_binding extends base_resource
 	public static class labeltypeEnum {
 		public static final String reqvserver = "reqvserver";
 		public static final String policylabel = "policylabel";
+	}
+	public static class policytypeEnum {
+		public static final String Classic_Policy = "Classic Policy";
+		public static final String Advanced_Policy = "Advanced Policy";
 	}
 	public static class stateEnum {
 		public static final String ENABLED = "ENABLED";

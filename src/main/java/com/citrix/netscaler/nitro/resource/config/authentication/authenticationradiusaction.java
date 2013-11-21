@@ -49,6 +49,8 @@ public class authenticationradiusaction extends base_resource
 	private String accounting;
 	private Long pwdvendorid;
 	private Long pwdattributetype;
+	private String defaultauthenticationgroup;
+	private String callingstationid;
 
 	//------- Read only Parameter ---------;
 
@@ -59,7 +61,8 @@ public class authenticationradiusaction extends base_resource
 
 	/**
 	* <pre>
-	* The name of the RADIUS action.<br> Minimum length =  1
+	* Name for the RADIUS action. 
+Must begin with a letter, number, or the underscore character (_), and must contain only letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at (@), equals (=), colon (:), and underscore characters. Cannot be changed after the RADIUS action is added.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -68,7 +71,8 @@ public class authenticationradiusaction extends base_resource
 
 	/**
 	* <pre>
-	* The name of the RADIUS action.<br> Minimum length =  1
+	* Name for the RADIUS action. 
+Must begin with a letter, number, or the underscore character (_), and must contain only letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at (@), equals (=), colon (:), and underscore characters. Cannot be changed after the RADIUS action is added.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -77,7 +81,7 @@ public class authenticationradiusaction extends base_resource
 
 	/**
 	* <pre>
-	* The IP address of the RADIUS server.<br> Minimum length =  1
+	* IP address assigned to the RADIUS server.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_serverip(String serverip) throws Exception{
@@ -86,7 +90,7 @@ public class authenticationradiusaction extends base_resource
 
 	/**
 	* <pre>
-	* The IP address of the RADIUS server.<br> Minimum length =  1
+	* IP address assigned to the RADIUS server.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_serverip() throws Exception {
@@ -95,7 +99,7 @@ public class authenticationradiusaction extends base_resource
 
 	/**
 	* <pre>
-	* The port on which the RADIUS Server is running.<br> Default value: 1812<br> Minimum value =  1
+	* Port number on which the RADIUS server listens for connections.<br> Default value: 1812<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_serverport(int serverport) throws Exception {
@@ -104,7 +108,7 @@ public class authenticationradiusaction extends base_resource
 
 	/**
 	* <pre>
-	* The port on which the RADIUS Server is running.<br> Default value: 1812<br> Minimum value =  1
+	* Port number on which the RADIUS server listens for connections.<br> Default value: 1812<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_serverport(Integer serverport) throws Exception{
@@ -113,7 +117,7 @@ public class authenticationradiusaction extends base_resource
 
 	/**
 	* <pre>
-	* The port on which the RADIUS Server is running.<br> Default value: 1812<br> Minimum value =  1
+	* Port number on which the RADIUS server listens for connections.<br> Default value: 1812<br> Minimum value =  1
 	* </pre>
 	*/
 	public Integer get_serverport() throws Exception {
@@ -122,7 +126,7 @@ public class authenticationradiusaction extends base_resource
 
 	/**
 	* <pre>
-	* The maximum number of seconds the system will wait for a response from the RADIUS server.<br> Default value: 3<br> Minimum value =  1
+	* Number of seconds the NetScaler appliance waits for a response from the RADIUS server.<br> Default value: 3<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_authtimeout(long authtimeout) throws Exception {
@@ -131,7 +135,7 @@ public class authenticationradiusaction extends base_resource
 
 	/**
 	* <pre>
-	* The maximum number of seconds the system will wait for a response from the RADIUS server.<br> Default value: 3<br> Minimum value =  1
+	* Number of seconds the NetScaler appliance waits for a response from the RADIUS server.<br> Default value: 3<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_authtimeout(Long authtimeout) throws Exception{
@@ -140,7 +144,7 @@ public class authenticationradiusaction extends base_resource
 
 	/**
 	* <pre>
-	* The maximum number of seconds the system will wait for a response from the RADIUS server.<br> Default value: 3<br> Minimum value =  1
+	* Number of seconds the NetScaler appliance waits for a response from the RADIUS server.<br> Default value: 3<br> Minimum value =  1
 	* </pre>
 	*/
 	public Long get_authtimeout() throws Exception {
@@ -149,7 +153,8 @@ public class authenticationradiusaction extends base_resource
 
 	/**
 	* <pre>
-	* The key shared between the client and the server. This information is required for the system to communicate with the RADIUS server.<br> Minimum length =  1
+	* Key shared between the RADIUS server and the NetScaler appliance. 
+Required to allow the NetScaler appliance to communicate with the RADIUS server.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_radkey(String radkey) throws Exception{
@@ -158,7 +163,8 @@ public class authenticationradiusaction extends base_resource
 
 	/**
 	* <pre>
-	* The key shared between the client and the server. This information is required for the system to communicate with the RADIUS server.<br> Minimum length =  1
+	* Key shared between the RADIUS server and the NetScaler appliance. 
+Required to allow the NetScaler appliance to communicate with the RADIUS server.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_radkey() throws Exception {
@@ -167,7 +173,8 @@ public class authenticationradiusaction extends base_resource
 
 	/**
 	* <pre>
-	* If enabled, the system's IP address (NSIP) is sent to the server as the "nasip" (Network Access Server IP) in accordance with the RADIUS protocol.<br> Possible values = ENABLED, DISABLED
+	* If enabled, the NetScaler appliance IP address (NSIP) is sent to the RADIUS server as the  Network Access Server IP (NASIP) address. 
+The RADIUS protocol defines the meaning and use of the NASIP address.<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_radnasip(String radnasip) throws Exception{
@@ -176,7 +183,8 @@ public class authenticationradiusaction extends base_resource
 
 	/**
 	* <pre>
-	* If enabled, the system's IP address (NSIP) is sent to the server as the "nasip" (Network Access Server IP) in accordance with the RADIUS protocol.<br> Possible values = ENABLED, DISABLED
+	* If enabled, the NetScaler appliance IP address (NSIP) is sent to the RADIUS server as the  Network Access Server IP (NASIP) address. 
+The RADIUS protocol defines the meaning and use of the NASIP address.<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_radnasip() throws Exception {
@@ -185,7 +193,7 @@ public class authenticationradiusaction extends base_resource
 
 	/**
 	* <pre>
-	* If configured, this string is sent to the RADIUS server as the "nasid" (Network Access Server ID) in accordance with the RADIUS protocol.
+	* If configured, this string is sent to the RADIUS server as the Network Access Server ID (NASID).
 	* </pre>
 	*/
 	public void set_radnasid(String radnasid) throws Exception{
@@ -194,7 +202,7 @@ public class authenticationradiusaction extends base_resource
 
 	/**
 	* <pre>
-	* If configured, this string is sent to the RADIUS server as the "nasid" (Network Access Server ID) in accordance with the RADIUS protocol.
+	* If configured, this string is sent to the RADIUS server as the Network Access Server ID (NASID).
 	* </pre>
 	*/
 	public String get_radnasid() throws Exception {
@@ -203,7 +211,7 @@ public class authenticationradiusaction extends base_resource
 
 	/**
 	* <pre>
-	* The vendor ID for using RADIUS group extraction.<br> Minimum value =  1
+	* RADIUS vendor ID attribute, used for RADIUS group extraction.<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_radvendorid(long radvendorid) throws Exception {
@@ -212,7 +220,7 @@ public class authenticationradiusaction extends base_resource
 
 	/**
 	* <pre>
-	* The vendor ID for using RADIUS group extraction.<br> Minimum value =  1
+	* RADIUS vendor ID attribute, used for RADIUS group extraction.<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_radvendorid(Long radvendorid) throws Exception{
@@ -221,7 +229,7 @@ public class authenticationradiusaction extends base_resource
 
 	/**
 	* <pre>
-	* The vendor ID for using RADIUS group extraction.<br> Minimum value =  1
+	* RADIUS vendor ID attribute, used for RADIUS group extraction.<br> Minimum value =  1
 	* </pre>
 	*/
 	public Long get_radvendorid() throws Exception {
@@ -230,7 +238,7 @@ public class authenticationradiusaction extends base_resource
 
 	/**
 	* <pre>
-	* The Attribute type for using RADIUS group extraction.<br> Minimum value =  1
+	* RADIUS attribute type, used for RADIUS group extraction.<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_radattributetype(long radattributetype) throws Exception {
@@ -239,7 +247,7 @@ public class authenticationradiusaction extends base_resource
 
 	/**
 	* <pre>
-	* The Attribute type for using RADIUS group extraction.<br> Minimum value =  1
+	* RADIUS attribute type, used for RADIUS group extraction.<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_radattributetype(Long radattributetype) throws Exception{
@@ -248,7 +256,7 @@ public class authenticationradiusaction extends base_resource
 
 	/**
 	* <pre>
-	* The Attribute type for using RADIUS group extraction.<br> Minimum value =  1
+	* RADIUS attribute type, used for RADIUS group extraction.<br> Minimum value =  1
 	* </pre>
 	*/
 	public Long get_radattributetype() throws Exception {
@@ -257,7 +265,8 @@ public class authenticationradiusaction extends base_resource
 
 	/**
 	* <pre>
-	* The groups prefix string that precedes the group names within a RADIUS attribute for RADIUS group extraction.
+	* RADIUS groups prefix string. 
+This groups prefix precedes the group names within a RADIUS attribute for RADIUS group extraction.
 	* </pre>
 	*/
 	public void set_radgroupsprefix(String radgroupsprefix) throws Exception{
@@ -266,7 +275,8 @@ public class authenticationradiusaction extends base_resource
 
 	/**
 	* <pre>
-	* The groups prefix string that precedes the group names within a RADIUS attribute for RADIUS group extraction.
+	* RADIUS groups prefix string. 
+This groups prefix precedes the group names within a RADIUS attribute for RADIUS group extraction.
 	* </pre>
 	*/
 	public String get_radgroupsprefix() throws Exception {
@@ -275,7 +285,8 @@ public class authenticationradiusaction extends base_resource
 
 	/**
 	* <pre>
-	* The group separator string that delimits group names within a RADIUS attribute for RADIUS group extraction.
+	* RADIUS group separator string
+The group separator delimits group names within a RADIUS attribute for RADIUS group extraction.
 	* </pre>
 	*/
 	public void set_radgroupseparator(String radgroupseparator) throws Exception{
@@ -284,7 +295,8 @@ public class authenticationradiusaction extends base_resource
 
 	/**
 	* <pre>
-	* The group separator string that delimits group names within a RADIUS attribute for RADIUS group extraction.
+	* RADIUS group separator string
+The group separator delimits group names within a RADIUS attribute for RADIUS group extraction.
 	* </pre>
 	*/
 	public String get_radgroupseparator() throws Exception {
@@ -293,7 +305,7 @@ public class authenticationradiusaction extends base_resource
 
 	/**
 	* <pre>
-	* This option specifies how passwords should be encoded in the radius packets traveling from the system to the RADIUS server.<br> Default value: pap<br> Possible values = pap, chap, mschapv1, mschapv2
+	* Encoding type for passwords in RADIUS packets that the NetScaler appliance sends to the RADIUS server.<br> Default value: pap<br> Possible values = pap, chap, mschapv1, mschapv2
 	* </pre>
 	*/
 	public void set_passencoding(String passencoding) throws Exception{
@@ -302,7 +314,7 @@ public class authenticationradiusaction extends base_resource
 
 	/**
 	* <pre>
-	* This option specifies how passwords should be encoded in the radius packets traveling from the system to the RADIUS server.<br> Default value: pap<br> Possible values = pap, chap, mschapv1, mschapv2
+	* Encoding type for passwords in RADIUS packets that the NetScaler appliance sends to the RADIUS server.<br> Default value: pap<br> Possible values = pap, chap, mschapv1, mschapv2
 	* </pre>
 	*/
 	public String get_passencoding() throws Exception {
@@ -311,7 +323,8 @@ public class authenticationradiusaction extends base_resource
 
 	/**
 	* <pre>
-	* The vendor ID of the attribute in the RADIUS response which denotes the intranet IP.  The value of 0 denotes that the attribute is not vendor encoded.
+	* Vendor ID of the intranet IP attribute in the RADIUS response.
+NOTE: A value of 0 indicates that the attribute is not vendor encoded.
 	* </pre>
 	*/
 	public void set_ipvendorid(long ipvendorid) throws Exception {
@@ -320,7 +333,8 @@ public class authenticationradiusaction extends base_resource
 
 	/**
 	* <pre>
-	* The vendor ID of the attribute in the RADIUS response which denotes the intranet IP.  The value of 0 denotes that the attribute is not vendor encoded.
+	* Vendor ID of the intranet IP attribute in the RADIUS response.
+NOTE: A value of 0 indicates that the attribute is not vendor encoded.
 	* </pre>
 	*/
 	public void set_ipvendorid(Long ipvendorid) throws Exception{
@@ -329,7 +343,8 @@ public class authenticationradiusaction extends base_resource
 
 	/**
 	* <pre>
-	* The vendor ID of the attribute in the RADIUS response which denotes the intranet IP.  The value of 0 denotes that the attribute is not vendor encoded.
+	* Vendor ID of the intranet IP attribute in the RADIUS response.
+NOTE: A value of 0 indicates that the attribute is not vendor encoded.
 	* </pre>
 	*/
 	public Long get_ipvendorid() throws Exception {
@@ -338,7 +353,7 @@ public class authenticationradiusaction extends base_resource
 
 	/**
 	* <pre>
-	* The attribute type of the remote IP address attribute in a RADIUS response.<br> Minimum value =  1
+	* Remote IP address attribute type in a RADIUS response.<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_ipattributetype(long ipattributetype) throws Exception {
@@ -347,7 +362,7 @@ public class authenticationradiusaction extends base_resource
 
 	/**
 	* <pre>
-	* The attribute type of the remote IP address attribute in a RADIUS response.<br> Minimum value =  1
+	* Remote IP address attribute type in a RADIUS response.<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_ipattributetype(Long ipattributetype) throws Exception{
@@ -356,7 +371,7 @@ public class authenticationradiusaction extends base_resource
 
 	/**
 	* <pre>
-	* The attribute type of the remote IP address attribute in a RADIUS response.<br> Minimum value =  1
+	* Remote IP address attribute type in a RADIUS response.<br> Minimum value =  1
 	* </pre>
 	*/
 	public Long get_ipattributetype() throws Exception {
@@ -365,7 +380,7 @@ public class authenticationradiusaction extends base_resource
 
 	/**
 	* <pre>
-	* The state of the RADIUS server that will receive accounting messages.<br> Possible values = ON, OFF
+	* Whether the RADIUS server is currently accepting accounting messages.<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_accounting(String accounting) throws Exception{
@@ -374,7 +389,7 @@ public class authenticationradiusaction extends base_resource
 
 	/**
 	* <pre>
-	* The state of the RADIUS server that will receive accounting messages.<br> Possible values = ON, OFF
+	* Whether the RADIUS server is currently accepting accounting messages.<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_accounting() throws Exception {
@@ -383,7 +398,7 @@ public class authenticationradiusaction extends base_resource
 
 	/**
 	* <pre>
-	* Vendor ID of the attribute in the RADIUS response which will be used to extract the user Password.<br> Minimum value =  1
+	* Vendor ID of the attribute, in the RADIUS response, used to extract the user password.<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_pwdvendorid(long pwdvendorid) throws Exception {
@@ -392,7 +407,7 @@ public class authenticationradiusaction extends base_resource
 
 	/**
 	* <pre>
-	* Vendor ID of the attribute in the RADIUS response which will be used to extract the user Password.<br> Minimum value =  1
+	* Vendor ID of the attribute, in the RADIUS response, used to extract the user password.<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_pwdvendorid(Long pwdvendorid) throws Exception{
@@ -401,7 +416,7 @@ public class authenticationradiusaction extends base_resource
 
 	/**
 	* <pre>
-	* Vendor ID of the attribute in the RADIUS response which will be used to extract the user Password.<br> Minimum value =  1
+	* Vendor ID of the attribute, in the RADIUS response, used to extract the user password.<br> Minimum value =  1
 	* </pre>
 	*/
 	public Long get_pwdvendorid() throws Exception {
@@ -410,7 +425,7 @@ public class authenticationradiusaction extends base_resource
 
 	/**
 	* <pre>
-	* Attribute type of the vendor specific Password-Attribute in a RADIUS response.<br> Minimum value =  1
+	* Vendor-specific password attribute type in a RADIUS response.<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_pwdattributetype(long pwdattributetype) throws Exception {
@@ -419,7 +434,7 @@ public class authenticationradiusaction extends base_resource
 
 	/**
 	* <pre>
-	* Attribute type of the vendor specific Password-Attribute in a RADIUS response.<br> Minimum value =  1
+	* Vendor-specific password attribute type in a RADIUS response.<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_pwdattributetype(Long pwdattributetype) throws Exception{
@@ -428,11 +443,47 @@ public class authenticationradiusaction extends base_resource
 
 	/**
 	* <pre>
-	* Attribute type of the vendor specific Password-Attribute in a RADIUS response.<br> Minimum value =  1
+	* Vendor-specific password attribute type in a RADIUS response.<br> Minimum value =  1
 	* </pre>
 	*/
 	public Long get_pwdattributetype() throws Exception {
 		return this.pwdattributetype;
+	}
+
+	/**
+	* <pre>
+	* This is the default group that is chosen when the authentication succeeds in addition to extracted groups.<br> Maximum length =  64
+	* </pre>
+	*/
+	public void set_defaultauthenticationgroup(String defaultauthenticationgroup) throws Exception{
+		this.defaultauthenticationgroup = defaultauthenticationgroup;
+	}
+
+	/**
+	* <pre>
+	* This is the default group that is chosen when the authentication succeeds in addition to extracted groups.<br> Maximum length =  64
+	* </pre>
+	*/
+	public String get_defaultauthenticationgroup() throws Exception {
+		return this.defaultauthenticationgroup;
+	}
+
+	/**
+	* <pre>
+	* Send Calling-Station-ID of the client to the RADIUS server. IP Address of the client is sent as its Calling-Station-ID.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* </pre>
+	*/
+	public void set_callingstationid(String callingstationid) throws Exception{
+		this.callingstationid = callingstationid;
+	}
+
+	/**
+	* <pre>
+	* Send Calling-Station-ID of the client to the RADIUS server. IP Address of the client is sent as its Calling-Station-ID.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* </pre>
+	*/
+	public String get_callingstationid() throws Exception {
+		return this.callingstationid;
 	}
 
 	/**
@@ -518,6 +569,8 @@ public class authenticationradiusaction extends base_resource
 		addresource.accounting = resource.accounting;
 		addresource.pwdvendorid = resource.pwdvendorid;
 		addresource.pwdattributetype = resource.pwdattributetype;
+		addresource.defaultauthenticationgroup = resource.defaultauthenticationgroup;
+		addresource.callingstationid = resource.callingstationid;
 		return addresource.add_resource(client);
 	}
 
@@ -547,6 +600,8 @@ public class authenticationradiusaction extends base_resource
 				addresources[i].accounting = resources[i].accounting;
 				addresources[i].pwdvendorid = resources[i].pwdvendorid;
 				addresources[i].pwdattributetype = resources[i].pwdattributetype;
+				addresources[i].defaultauthenticationgroup = resources[i].defaultauthenticationgroup;
+				addresources[i].callingstationid = resources[i].callingstationid;
 			}
 			result = add_bulk_request(client, addresources);
 		}
@@ -625,6 +680,8 @@ public class authenticationradiusaction extends base_resource
 		updateresource.accounting = resource.accounting;
 		updateresource.pwdvendorid = resource.pwdvendorid;
 		updateresource.pwdattributetype = resource.pwdattributetype;
+		updateresource.defaultauthenticationgroup = resource.defaultauthenticationgroup;
+		updateresource.callingstationid = resource.callingstationid;
 		return updateresource.update_resource(client);
 	}
 
@@ -654,6 +711,8 @@ public class authenticationradiusaction extends base_resource
 				updateresources[i].accounting = resources[i].accounting;
 				updateresources[i].pwdvendorid = resources[i].pwdvendorid;
 				updateresources[i].pwdattributetype = resources[i].pwdattributetype;
+				updateresources[i].defaultauthenticationgroup = resources[i].defaultauthenticationgroup;
+				updateresources[i].callingstationid = resources[i].callingstationid;
 			}
 			result = update_bulk_request(client, updateresources);
 		}
@@ -664,34 +723,9 @@ public class authenticationradiusaction extends base_resource
 	* Use this API to unset the properties of authenticationradiusaction resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String name, String args[]) throws Exception {
-		authenticationradiusaction unsetresource = new authenticationradiusaction();
-		unsetresource.name = name;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of authenticationradiusaction resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, authenticationradiusaction resource, String[] args) throws Exception{
 		authenticationradiusaction unsetresource = new authenticationradiusaction();
 		unsetresource.name = resource.name;
-		unsetresource.serverip = resource.serverip;
-		unsetresource.serverport = resource.serverport;
-		unsetresource.authtimeout = resource.authtimeout;
-		unsetresource.radnasip = resource.radnasip;
-		unsetresource.radnasid = resource.radnasid;
-		unsetresource.radvendorid = resource.radvendorid;
-		unsetresource.radattributetype = resource.radattributetype;
-		unsetresource.radgroupsprefix = resource.radgroupsprefix;
-		unsetresource.radgroupseparator = resource.radgroupseparator;
-		unsetresource.passencoding = resource.passencoding;
-		unsetresource.ipvendorid = resource.ipvendorid;
-		unsetresource.ipattributetype = resource.ipattributetype;
-		unsetresource.accounting = resource.accounting;
-		unsetresource.pwdvendorid = resource.pwdvendorid;
-		unsetresource.pwdattributetype = resource.pwdattributetype;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -723,21 +757,6 @@ public class authenticationradiusaction extends base_resource
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new authenticationradiusaction();
 				unsetresources[i].name = resources[i].name;
-				unsetresources[i].serverip = resources[i].serverip;
-				unsetresources[i].serverport = resources[i].serverport;
-				unsetresources[i].authtimeout = resources[i].authtimeout;
-				unsetresources[i].radnasip = resources[i].radnasip;
-				unsetresources[i].radnasid = resources[i].radnasid;
-				unsetresources[i].radvendorid = resources[i].radvendorid;
-				unsetresources[i].radattributetype = resources[i].radattributetype;
-				unsetresources[i].radgroupsprefix = resources[i].radgroupsprefix;
-				unsetresources[i].radgroupseparator = resources[i].radgroupseparator;
-				unsetresources[i].passencoding = resources[i].passencoding;
-				unsetresources[i].ipvendorid = resources[i].ipvendorid;
-				unsetresources[i].ipattributetype = resources[i].ipattributetype;
-				unsetresources[i].accounting = resources[i].accounting;
-				unsetresources[i].pwdvendorid = resources[i].pwdvendorid;
-				unsetresources[i].pwdattributetype = resources[i].pwdattributetype;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}
@@ -861,6 +880,10 @@ public class authenticationradiusaction extends base_resource
 		public static final String chap = "chap";
 		public static final String mschapv1 = "mschapv1";
 		public static final String mschapv2 = "mschapv2";
+	}
+	public static class callingstationidEnum {
+		public static final String ENABLED = "ENABLED";
+		public static final String DISABLED = "DISABLED";
 	}
 	public static class accountingEnum {
 		public static final String ON = "ON";

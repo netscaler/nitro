@@ -40,7 +40,7 @@ public class systemuser_systemgroup_binding extends base_resource
 
 	/**
 	* <pre>
-	* The priority the command policy is to be bound with.<br> Minimum value =  0<br> Maximum value =  999999999
+	* Integer specifying the priority of the command policy. A lower number specifies a higher priority. Policies are evaluated in the order of their priority numbers.<br> Minimum value =  0<br> Maximum value =  999999999
 	* </pre>
 	*/
 	public void set_priority(long priority) throws Exception {
@@ -49,7 +49,7 @@ public class systemuser_systemgroup_binding extends base_resource
 
 	/**
 	* <pre>
-	* The priority the command policy is to be bound with.<br> Minimum value =  0<br> Maximum value =  999999999
+	* Integer specifying the priority of the command policy. A lower number specifies a higher priority. Policies are evaluated in the order of their priority numbers.<br> Minimum value =  0<br> Maximum value =  999999999
 	* </pre>
 	*/
 	public void set_priority(Long priority) throws Exception{
@@ -58,7 +58,7 @@ public class systemuser_systemgroup_binding extends base_resource
 
 	/**
 	* <pre>
-	* The priority the command policy is to be bound with.<br> Minimum value =  0<br> Maximum value =  999999999
+	* Integer specifying the priority of the command policy. A lower number specifies a higher priority. Policies are evaluated in the order of their priority numbers.<br> Minimum value =  0<br> Maximum value =  999999999
 	* </pre>
 	*/
 	public Long get_priority() throws Exception {
@@ -67,7 +67,7 @@ public class systemuser_systemgroup_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the command policy being bound to the system user.<br> Minimum length =  1
+	* Name of the command policy to bind to the system user.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_policyname(String policyname) throws Exception{
@@ -76,7 +76,7 @@ public class systemuser_systemgroup_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the command policy being bound to the system user.<br> Minimum length =  1
+	* Name of the command policy to bind to the system user.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_policyname() throws Exception {
@@ -85,7 +85,7 @@ public class systemuser_systemgroup_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the system user.<br> Minimum length =  1
+	* Name of the system-user entry to which to bind the command policy.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_username(String username) throws Exception{
@@ -94,7 +94,7 @@ public class systemuser_systemgroup_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the system user.<br> Minimum length =  1
+	* Name of the system-user entry to which to bind the command policy.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_username() throws Exception {

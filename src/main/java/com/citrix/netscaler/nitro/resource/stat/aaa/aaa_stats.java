@@ -29,6 +29,7 @@ class aaa_response extends base_response
 
 public class aaa_stats extends base_resource
 {
+	private String clearstats;
 	private Long aaaauthsuccess;
 	private Long aaaauthsuccessrate;
 	private Long aaaauthfail;
@@ -49,6 +50,28 @@ public class aaa_stats extends base_resource
 	private Long aaasessionsrate;
 	private Long aaatotsessiontimeout;
 	private Long aaasessiontimeoutrate;
+	private Long aaacurtmsessions;
+	private Long aaacurtmsessionsrate;
+	private Long aaatottmsessions;
+	private Long aaatmsessionsrate;
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters
+	* </pre>
+	*/
+	public void set_clearstats(String clearstats) throws Exception{
+		this.clearstats = clearstats;
+	}
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters.<br> Possible values = basic, full
+	* </pre>
+	*/
+	public String get_clearstats() throws Exception {
+		return this.clearstats;
+	}
 
 	/**
 	* <pre>
@@ -79,7 +102,16 @@ public class aaa_stats extends base_resource
 
 	/**
 	* <pre>
-	* Count of HTTP connections that failed authorization.
+	* Count of all AAATM sessions.
+	* </pre>
+	*/
+	public Long get_aaatottmsessions() throws Exception {
+		return this.aaatottmsessions;
+	}
+
+	/**
+	* <pre>
+	* Rate (/s) counter for aaaauthonlyhttpfail
 	* </pre>
 	*/
 	public Long get_aaaauthonlyhttpfailrate() throws Exception {
@@ -97,11 +129,20 @@ public class aaa_stats extends base_resource
 
 	/**
 	* <pre>
-	* Count of HTTP connections that succeeded authorization.
+	* Rate (/s) counter for aaaauthonlyhttpsuccess
 	* </pre>
 	*/
 	public Long get_aaaauthonlyhttpsuccessrate() throws Exception {
 		return this.aaaauthonlyhttpsuccessrate;
+	}
+
+	/**
+	* <pre>
+	* Count of current AAATM sessions.
+	* </pre>
+	*/
+	public Long get_aaacurtmsessions() throws Exception {
+		return this.aaacurtmsessions;
 	}
 
 	/**
@@ -133,7 +174,16 @@ public class aaa_stats extends base_resource
 
 	/**
 	* <pre>
-	* Count of authentication failures.
+	* Rate (/s) counter for aaatottmsessions
+	* </pre>
+	*/
+	public Long get_aaatmsessionsrate() throws Exception {
+		return this.aaatmsessionsrate;
+	}
+
+	/**
+	* <pre>
+	* Rate (/s) counter for aaaauthfail
 	* </pre>
 	*/
 	public Long get_aaaauthfailrate() throws Exception {
@@ -142,7 +192,7 @@ public class aaa_stats extends base_resource
 
 	/**
 	* <pre>
-	* Count of current AAA sessions.
+	* Rate (/s) counter for aaacursessions
 	* </pre>
 	*/
 	public Long get_aaacursessionsrate() throws Exception {
@@ -151,7 +201,7 @@ public class aaa_stats extends base_resource
 
 	/**
 	* <pre>
-	* Count of non HTTP connections that succeeded authorization.
+	* Rate (/s) counter for aaaauthnonhttpsuccess
 	* </pre>
 	*/
 	public Long get_aaaauthnonhttpsuccessrate() throws Exception {
@@ -160,7 +210,7 @@ public class aaa_stats extends base_resource
 
 	/**
 	* <pre>
-	* Count of non HTTP connections that failed authorization.
+	* Rate (/s) counter for aaaauthnonhttpfail
 	* </pre>
 	*/
 	public Long get_aaaauthnonhttpfailrate() throws Exception {
@@ -178,7 +228,7 @@ public class aaa_stats extends base_resource
 
 	/**
 	* <pre>
-	* Count of authentication successes.
+	* Rate (/s) counter for aaaauthsuccess
 	* </pre>
 	*/
 	public Long get_aaaauthsuccessrate() throws Exception {
@@ -196,7 +246,16 @@ public class aaa_stats extends base_resource
 
 	/**
 	* <pre>
-	* Count of AAA sessions that have timed out.
+	* Rate (/s) counter for aaacurtmsessions
+	* </pre>
+	*/
+	public Long get_aaacurtmsessionsrate() throws Exception {
+		return this.aaacurtmsessionsrate;
+	}
+
+	/**
+	* <pre>
+	* Rate (/s) counter for aaatotsessiontimeout
 	* </pre>
 	*/
 	public Long get_aaasessiontimeoutrate() throws Exception {
@@ -205,7 +264,7 @@ public class aaa_stats extends base_resource
 
 	/**
 	* <pre>
-	* Count of current ICA only sessions.
+	* Rate (/s) counter for aaacuricasessions
 	* </pre>
 	*/
 	public Long get_aaacuricasessionsrate() throws Exception {
@@ -223,7 +282,7 @@ public class aaa_stats extends base_resource
 
 	/**
 	* <pre>
-	* Count of all AAA sessions.
+	* Rate (/s) counter for aaatotsessions
 	* </pre>
 	*/
 	public Long get_aaasessionsrate() throws Exception {
@@ -284,4 +343,8 @@ public class aaa_stats extends base_resource
 		return response[0];
 	}
 
+	public static class clearstatsEnum {
+		public static final String basic = "basic";
+		public static final String full = "full";
+	}
 }

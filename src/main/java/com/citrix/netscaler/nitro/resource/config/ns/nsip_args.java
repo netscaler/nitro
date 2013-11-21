@@ -26,7 +26,7 @@ public class nsip_args
 
 	/**
 	* <pre>
-	* The type of this IP.<br> Possible values = SNIP, VIP, MIP, NSIP, GSLBsiteIP, CLIP
+	* Display the settings of all IPv4 addresses of a particular type.<br> Possible values = SNIP, VIP, MIP, NSIP, GSLBsiteIP, CLIP
 	* </pre>
 	*/
 	public void set_type(String type) throws Exception{
@@ -35,7 +35,7 @@ public class nsip_args
 
 	/**
 	* <pre>
-	* The type of this IP.<br> Possible values = SNIP, VIP, MIP, NSIP, GSLBsiteIP, CLIP
+	* Display the settings of all IPv4 addresses of a particular type.<br> Possible values = SNIP, VIP, MIP, NSIP, GSLBsiteIP, CLIP
 	* </pre>
 	*/
 	public String get_type() throws Exception {

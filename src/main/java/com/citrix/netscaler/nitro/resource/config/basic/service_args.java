@@ -27,7 +27,7 @@ public class service_args
 
 	/**
 	* <pre>
-	* Display both configured and dynamically learned services. If you do not use this option, only the configured services are displayed.
+	* Display both user-configured and dynamically learned services.
 	* </pre>
 	*/
 	public void set_all(boolean all) throws Exception {
@@ -36,7 +36,7 @@ public class service_args
 
 	/**
 	* <pre>
-	* Display both configured and dynamically learned services. If you do not use this option, only the configured services are displayed.
+	* Display both user-configured and dynamically learned services.
 	* </pre>
 	*/
 	public void set_all(Boolean all) throws Exception{
@@ -45,7 +45,7 @@ public class service_args
 
 	/**
 	* <pre>
-	* Display both configured and dynamically learned services. If you do not use this option, only the configured services are displayed.
+	* Display both user-configured and dynamically learned services.
 	* </pre>
 	*/
 	public Boolean get_all() throws Exception {
@@ -54,7 +54,7 @@ public class service_args
 
 	/**
 	* <pre>
-	* Display internally created named services.
+	* Display only dynamically learned services.
 	* </pre>
 	*/
 	public void set_Internal(boolean Internal) throws Exception {
@@ -63,7 +63,7 @@ public class service_args
 
 	/**
 	* <pre>
-	* Display internally created named services.
+	* Display only dynamically learned services.
 	* </pre>
 	*/
 	public void set_Internal(Boolean Internal) throws Exception{
@@ -72,7 +72,7 @@ public class service_args
 
 	/**
 	* <pre>
-	* Display internally created named services.
+	* Display only dynamically learned services.
 	* </pre>
 	*/
 	public Boolean get_Internal() throws Exception {

@@ -44,7 +44,7 @@ public class dnsptrrec extends base_resource
 
 	/**
 	* <pre>
-	* Reverse domain name with suffixes, e.g.: in-addr.arpa. or ip6.arpa..<br> Minimum length =  1
+	* Reversed domain name representation of the IPv4 or IPv6 address for which to create the PTR record. Use the "in-addr.arpa." suffix for IPv4 addresses and the "ip6.arpa." suffix for IPv6 addresses.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_reversedomain(String reversedomain) throws Exception{
@@ -53,7 +53,7 @@ public class dnsptrrec extends base_resource
 
 	/**
 	* <pre>
-	* Reverse domain name with suffixes, e.g.: in-addr.arpa. or ip6.arpa..<br> Minimum length =  1
+	* Reversed domain name representation of the IPv4 or IPv6 address for which to create the PTR record. Use the "in-addr.arpa." suffix for IPv4 addresses and the "ip6.arpa." suffix for IPv6 addresses.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_reversedomain() throws Exception {
@@ -62,7 +62,7 @@ public class dnsptrrec extends base_resource
 
 	/**
 	* <pre>
-	* The domain name for which reverse mapping is being done.<br> Minimum length =  1
+	* Domain name for which to configure reverse mapping.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_domain(String domain) throws Exception{
@@ -71,7 +71,7 @@ public class dnsptrrec extends base_resource
 
 	/**
 	* <pre>
-	* The domain name for which reverse mapping is being done.<br> Minimum length =  1
+	* Domain name for which to configure reverse mapping.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_domain() throws Exception {
@@ -80,7 +80,7 @@ public class dnsptrrec extends base_resource
 
 	/**
 	* <pre>
-	* Time to live, in seconds.<br> Default value: 3600<br> Minimum value =  0<br> Maximum value =  2147483647
+	* Time to Live (TTL), in seconds, for the record. TTL is the time for which the record must be cached by DNS proxies. The specified TTL is applied to all the resource records that are of the same record type and belong to the specified domain name. For example, if you add an address record, with a TTL of 36000, to the domain name example.com, the TTLs of all the address records of example.com are changed to 36000. If the TTL is not specified, the NetScaler appliance uses either the DNS zone's minimum TTL or, if the SOA record is not available on the appliance, the default value of 3600.<br> Default value: 3600<br> Minimum value =  0<br> Maximum value =  2147483647
 	* </pre>
 	*/
 	public void set_ttl(long ttl) throws Exception {
@@ -89,7 +89,7 @@ public class dnsptrrec extends base_resource
 
 	/**
 	* <pre>
-	* Time to live, in seconds.<br> Default value: 3600<br> Minimum value =  0<br> Maximum value =  2147483647
+	* Time to Live (TTL), in seconds, for the record. TTL is the time for which the record must be cached by DNS proxies. The specified TTL is applied to all the resource records that are of the same record type and belong to the specified domain name. For example, if you add an address record, with a TTL of 36000, to the domain name example.com, the TTLs of all the address records of example.com are changed to 36000. If the TTL is not specified, the NetScaler appliance uses either the DNS zone's minimum TTL or, if the SOA record is not available on the appliance, the default value of 3600.<br> Default value: 3600<br> Minimum value =  0<br> Maximum value =  2147483647
 	* </pre>
 	*/
 	public void set_ttl(Long ttl) throws Exception{
@@ -98,7 +98,7 @@ public class dnsptrrec extends base_resource
 
 	/**
 	* <pre>
-	* Time to live, in seconds.<br> Default value: 3600<br> Minimum value =  0<br> Maximum value =  2147483647
+	* Time to Live (TTL), in seconds, for the record. TTL is the time for which the record must be cached by DNS proxies. The specified TTL is applied to all the resource records that are of the same record type and belong to the specified domain name. For example, if you add an address record, with a TTL of 36000, to the domain name example.com, the TTLs of all the address records of example.com are changed to 36000. If the TTL is not specified, the NetScaler appliance uses either the DNS zone's minimum TTL or, if the SOA record is not available on the appliance, the default value of 3600.<br> Default value: 3600<br> Minimum value =  0<br> Maximum value =  2147483647
 	* </pre>
 	*/
 	public Long get_ttl() throws Exception {
@@ -107,10 +107,10 @@ public class dnsptrrec extends base_resource
 
 	/**
 	* <pre>
-	* PTR record type. The type can take 3 values:
-ADNS -  If this is specified, all of the authoritative ptr records will be displayed.
-PROXY - If this is specified, all of the proxy ptr records will be displayed.
-ALL  -  If this is specified, all of the ptr records will be displayed.<br> Possible values = ALL, ADNS, PROXY
+	* Type of records to display. Available settings function as follows:
+* ADNS - Display all authoritative address records.
+* PROXY - Display all proxy address records.
+* ALL - Display all address records.<br> Possible values = ALL, ADNS, PROXY
 	* </pre>
 	*/
 	public void set_type(String type) throws Exception{
@@ -119,10 +119,10 @@ ALL  -  If this is specified, all of the ptr records will be displayed.<br> Poss
 
 	/**
 	* <pre>
-	* PTR record type. The type can take 3 values:
-ADNS -  If this is specified, all of the authoritative ptr records will be displayed.
-PROXY - If this is specified, all of the proxy ptr records will be displayed.
-ALL  -  If this is specified, all of the ptr records will be displayed.<br> Possible values = ALL, ADNS, PROXY
+	* Type of records to display. Available settings function as follows:
+* ADNS - Display all authoritative address records.
+* PROXY - Display all proxy address records.
+* ALL - Display all address records.<br> Possible values = ALL, ADNS, PROXY
 	* </pre>
 	*/
 	public String get_type() throws Exception {

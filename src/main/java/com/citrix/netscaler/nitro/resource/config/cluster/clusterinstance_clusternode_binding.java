@@ -75,7 +75,7 @@ public class clusterinstance_clusternode_binding extends base_resource
 
 	/**
 	* <pre>
-	* A unique number that identifies the cluster.<br> Minimum value =  1<br> Maximum value =  16
+	* Unique number that identifies the cluster.<br> Minimum value =  1<br> Maximum value =  16
 	* </pre>
 	*/
 	public void set_clid(long clid) throws Exception {
@@ -84,7 +84,7 @@ public class clusterinstance_clusternode_binding extends base_resource
 
 	/**
 	* <pre>
-	* A unique number that identifies the cluster.<br> Minimum value =  1<br> Maximum value =  16
+	* Unique number that identifies the cluster.<br> Minimum value =  1<br> Maximum value =  16
 	* </pre>
 	*/
 	public void set_clid(Long clid) throws Exception{
@@ -93,7 +93,7 @@ public class clusterinstance_clusternode_binding extends base_resource
 
 	/**
 	* <pre>
-	* A unique number that identifies the cluster.<br> Minimum value =  1<br> Maximum value =  16
+	* Unique number that identifies the cluster.<br> Minimum value =  1<br> Maximum value =  16
 	* </pre>
 	*/
 	public Long get_clid() throws Exception {
@@ -111,7 +111,7 @@ public class clusterinstance_clusternode_binding extends base_resource
 
 	/**
 	* <pre>
-	* Node Health state.<br> Possible values = UNKNOWN, INIT, DOWN, UP, Some enabled and HAMON interfaces of the node are down, All interfaces of the node are down or disabled, SSL card(s) of the node have failed, Route Monitor(s) of the node have failed, Service state is being synchronized with the cluster, The backplane interface is not set,  is down,  or is disabled, The CLAG member(s) of the node are down, Persistence sessions are being synchronized with the cluster, The Syn Cookie is being synchronized with the cluster, Unknown Health
+	* Node Health state.<br> Possible values = UNKNOWN, INIT, DOWN, UP, Some enabled and HAMON interfaces of the node are down, All interfaces of the node are down or disabled, SSL card(s) of the node have failed, Route Monitor(s) of the node have failed, Service state is being synchronized with the cluster, The backplane interface is not set,  is down,  or is disabled, The CLAG member(s) of the node are down, Persistence sessions are being synchronized with the cluster, The Syn Cookie is being synchronized with the cluster, Unknown Health, AAA keys are being sychronized with the cluster
 	* </pre>
 	*/
 	public String get_health() throws Exception {
@@ -120,7 +120,7 @@ public class clusterinstance_clusternode_binding extends base_resource
 
 	/**
 	* <pre>
-	* Active, Spare or Passive. An active node serves traffic. A spare node serves as a backup for active nodes. A passive node does not serve traffic. This may be useful during temporary maintenance activity where it is desirable that the node takes part in the consensus protocol, but not serve traffic.<br> Default value: NSACL_NODEST_PASSIVE<br> Possible values = ACTIVE, SPARE, PASSIVE
+	* Active, Spare or Passive. An active node serves traffic. A spare node serves as a backup for active nodes. A passive node does not serve traffic. This may be useful during temporary maintenance activity where it is desirable that the node takes part in the consensus protocol, but not serve traffic.<br> Default value: PASSIVE<br> Possible values = ACTIVE, SPARE, PASSIVE
 	* </pre>
 	*/
 	public String get_state() throws Exception {
@@ -340,6 +340,7 @@ public class clusterinstance_clusternode_binding extends base_resource
 		public static final String Persistence_sessions_are_being_synchronized_with_the_cluster = "Persistence sessions are being synchronized with the cluster";
 		public static final String The_Syn_Cookie_is_being_synchronized_with_the_cluster = "The Syn Cookie is being synchronized with the cluster";
 		public static final String Unknown_Health = "Unknown Health";
+		public static final String AAA_keys_are_being_sychronized_with_the_cluster = "AAA keys are being sychronized with the cluster";
 	}
 	public static class clusterhealthEnum {
 		public static final String UP = "UP";

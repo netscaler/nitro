@@ -38,7 +38,7 @@ public class cspolicylabel_binding extends base_resource
 
 	/**
 	* <pre>
-	* Name of the content switching policy label.
+	* Name of the content switching policy label to display.
 	* </pre>
 	*/
 	public void set_labelname(String labelname) throws Exception{
@@ -47,7 +47,7 @@ public class cspolicylabel_binding extends base_resource
 
 	/**
 	* <pre>
-	* Name of the content switching policy label.
+	* Name of the content switching policy label to display.
 	* </pre>
 	*/
 	public String get_labelname() throws Exception {

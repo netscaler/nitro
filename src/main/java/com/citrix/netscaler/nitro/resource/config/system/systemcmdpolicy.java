@@ -43,7 +43,9 @@ public class systemcmdpolicy extends base_resource
 
 	/**
 	* <pre>
-	* The name for the command policy.<br> Minimum length =  1
+	* Name for a command policy. Must begin with a letter, number, or the underscore (_) character, and must contain only alphanumeric, hyphen (-), period (.), hash (#), space ( ), at (@), equal (=), colon (:), and underscore characters. Cannot be changed after the policy is created.
+
+CLI Users: If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my policy" or 'my policy').<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_policyname(String policyname) throws Exception{
@@ -52,7 +54,9 @@ public class systemcmdpolicy extends base_resource
 
 	/**
 	* <pre>
-	* The name for the command policy.<br> Minimum length =  1
+	* Name for a command policy. Must begin with a letter, number, or the underscore (_) character, and must contain only alphanumeric, hyphen (-), period (.), hash (#), space ( ), at (@), equal (=), colon (:), and underscore characters. Cannot be changed after the policy is created.
+
+CLI Users: If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my policy" or 'my policy').<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_policyname() throws Exception {
@@ -61,7 +65,7 @@ public class systemcmdpolicy extends base_resource
 
 	/**
 	* <pre>
-	* The action the policy need to apply when the cmdSpec pattern matches.<br> Possible values = ALLOW, DENY
+	* Action to perform when a request matches the policy.<br> Possible values = ALLOW, DENY
 	* </pre>
 	*/
 	public void set_action(String action) throws Exception{
@@ -70,7 +74,7 @@ public class systemcmdpolicy extends base_resource
 
 	/**
 	* <pre>
-	* The action the policy need to apply when the cmdSpec pattern matches.<br> Possible values = ALLOW, DENY
+	* Action to perform when a request matches the policy.<br> Possible values = ALLOW, DENY
 	* </pre>
 	*/
 	public String get_action() throws Exception {
@@ -79,7 +83,7 @@ public class systemcmdpolicy extends base_resource
 
 	/**
 	* <pre>
-	* The matching rule that the policy will utilize. This rule is a regular expression which the policy uses to pattern match.<br> Minimum length =  1
+	* Regular expression specifying the data that matches the policy.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_cmdspec(String cmdspec) throws Exception{
@@ -88,7 +92,7 @@ public class systemcmdpolicy extends base_resource
 
 	/**
 	* <pre>
-	* The matching rule that the policy will utilize. This rule is a regular expression which the policy uses to pattern match.<br> Minimum length =  1
+	* Regular expression specifying the data that matches the policy.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_cmdspec() throws Exception {

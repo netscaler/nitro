@@ -35,6 +35,7 @@ public class tmglobal_tmtrafficpolicy_binding extends base_resource
 	private String policyname;
 	private Long priority;
 	private Long bindpolicytype;
+	private String type;
 	private Long __count;
 
 	/**
@@ -80,6 +81,24 @@ public class tmglobal_tmtrafficpolicy_binding extends base_resource
 	*/
 	public String get_policyname() throws Exception {
 		return this.policyname;
+	}
+
+	/**
+	* <pre>
+	* Bindpoint to which the policy is bound.<br> Possible values = REQ_OVERRIDE, REQ_DEFAULT, RES_OVERRIDE, RES_DEFAULT
+	* </pre>
+	*/
+	public void set_type(String type) throws Exception{
+		this.type = type;
+	}
+
+	/**
+	* <pre>
+	* Bindpoint to which the policy is bound.<br> Possible values = REQ_OVERRIDE, REQ_DEFAULT, RES_OVERRIDE, RES_DEFAULT
+	* </pre>
+	*/
+	public String get_type() throws Exception {
+		return this.type;
 	}
 
 	/**
@@ -244,5 +263,11 @@ public class tmglobal_tmtrafficpolicy_binding extends base_resource
 		return 0;
 	}
 
+	public static class typeEnum {
+		public static final String REQ_OVERRIDE = "REQ_OVERRIDE";
+		public static final String REQ_DEFAULT = "REQ_DEFAULT";
+		public static final String RES_OVERRIDE = "RES_OVERRIDE";
+		public static final String RES_DEFAULT = "RES_DEFAULT";
+	}
 
 }

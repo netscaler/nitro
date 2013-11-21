@@ -44,7 +44,9 @@ public class filterpolicy extends base_resource
 
 	/**
 	* <pre>
-	* The name of the new filter policy.<br> Minimum length =  1
+	* Name for the filtering action. Must begin with a letter, number, or the underscore character (_). Other characters allowed, after the first character, are the hyphen (-), period (.) pound (#), space ( ), at (@), equals (=), and colon (:) characters. Choose a name that helps identify the type of action. The name cannot be updated after the policy is created.
+
+CLI Users: If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my policy" or 'my policy').<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -53,7 +55,9 @@ public class filterpolicy extends base_resource
 
 	/**
 	* <pre>
-	* The name of the new filter policy.<br> Minimum length =  1
+	* Name for the filtering action. Must begin with a letter, number, or the underscore character (_). Other characters allowed, after the first character, are the hyphen (-), period (.) pound (#), space ( ), at (@), equals (=), and colon (:) characters. Choose a name that helps identify the type of action. The name cannot be updated after the policy is created.
+
+CLI Users: If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my policy" or 'my policy').<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -62,7 +66,7 @@ public class filterpolicy extends base_resource
 
 	/**
 	* <pre>
-	* The expression which sets the condition for application of the policy.<br> Minimum length =  1
+	* NetScaler classic expression specifying the type of connections that match this policy.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_rule(String rule) throws Exception{
@@ -71,7 +75,7 @@ public class filterpolicy extends base_resource
 
 	/**
 	* <pre>
-	* The expression which sets the condition for application of the policy.<br> Minimum length =  1
+	* NetScaler classic expression specifying the type of connections that match this policy.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_rule() throws Exception {
@@ -80,11 +84,7 @@ public class filterpolicy extends base_resource
 
 	/**
 	* <pre>
-	* The name of the action to be performed on the request. The string value can be a created filter action or one of the following built-in actions:
-	RESET - Sends the TCP reset and closes the connection to the peer.
-	DROP - Silently closes the connection to the peer without sending the TCP FIN.
-
-Note that the request action can not be specified if the rule has some condition to be evaluated for response.<br> Minimum length =  1
+	* Name of the action to be performed on requests that match the policy. Cannot be specified if the rule includes condition to be evaluated for responses.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_reqaction(String reqaction) throws Exception{
@@ -93,11 +93,7 @@ Note that the request action can not be specified if the rule has some condition
 
 	/**
 	* <pre>
-	* The name of the action to be performed on the request. The string value can be a created filter action or one of the following built-in actions:
-	RESET - Sends the TCP reset and closes the connection to the peer.
-	DROP - Silently closes the connection to the peer without sending the TCP FIN.
-
-Note that the request action can not be specified if the rule has some condition to be evaluated for response.<br> Minimum length =  1
+	* Name of the action to be performed on requests that match the policy. Cannot be specified if the rule includes condition to be evaluated for responses.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_reqaction() throws Exception {

@@ -37,7 +37,7 @@ public class dnssuffix extends base_resource
 
 	/**
 	* <pre>
-	* Suffix to be appended while resolving the domain name.<br> Minimum length =  1
+	* Suffix to be appended when resolving domain names that are not fully qualified.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_Dnssuffix(String Dnssuffix) throws Exception{
@@ -46,7 +46,7 @@ public class dnssuffix extends base_resource
 
 	/**
 	* <pre>
-	* Suffix to be appended while resolving the domain name.<br> Minimum length =  1
+	* Suffix to be appended when resolving domain names that are not fully qualified.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_Dnssuffix() throws Exception {

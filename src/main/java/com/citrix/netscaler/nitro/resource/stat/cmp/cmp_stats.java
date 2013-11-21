@@ -29,6 +29,7 @@ class cmp_response extends base_response
 
 public class cmp_stats extends base_resource
 {
+	private String clearstats;
 	private Double delbwsaving;
 	private Double delcmpratio;
 	private Double decomptcpratio;
@@ -112,8 +113,24 @@ public class cmp_stats extends base_resource
 	private Long delcomperrreqinfoallocfailrate;
 	private Long delcomperrsessallocfail;
 	private Long delcomperrsessallocfailrate;
-	private Long httptotrxresponsebytes;
-	private Long httprxresponsebytesrate;
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters
+	* </pre>
+	*/
+	public void set_clearstats(String clearstats) throws Exception{
+		this.clearstats = clearstats;
+	}
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters.<br> Possible values = basic, full
+	* </pre>
+	*/
+	public String get_clearstats() throws Exception {
+		return this.clearstats;
+	}
 
 	/**
 	* <pre>
@@ -180,7 +197,7 @@ public class cmp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of decompressed packets transmitted by NetScaler.
+	* Rate (/s) counter for decomptcptxpackets
 	* </pre>
 	*/
 	public Long get_decomptcptxpacketsrate() throws Exception {
@@ -189,7 +206,7 @@ public class cmp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of basefile bytes transmitted by NetScaler.
+	* Rate (/s) counter for delcompbasetcptxbytes
 	* </pre>
 	*/
 	public Long get_delcompbasetcptxbytesrate() throws Exception {
@@ -207,20 +224,11 @@ public class cmp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of HTTP compression requests the NetScaler receives for which the response is successfully compressed. For example, after you enable compression and configure services, if you send requests to the NetScaler with the following header information: “Accept-Encoding: gzip, deflate”, and NetScaler compresses the corresponding response, this counter is incremented.
+	* Rate (/s) counter for comptotalrequests
 	* </pre>
 	*/
 	public Long get_comprequestsrate() throws Exception {
 		return this.comprequestsrate;
-	}
-
-	/**
-	* <pre>
-	* Total number of bytes of HTTP response data received.
-	* </pre>
-	*/
-	public Long get_httptotrxresponsebytes() throws Exception {
-		return this.httptotrxresponsebytes;
 	}
 
 	/**
@@ -234,7 +242,7 @@ public class cmp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of times the NetScaler compresses data on receiving End Of Input (FIN packet).  When the NetScaler receives End Of Input (FIN packet), it compresses the buffered data immediately without waiting for the buffered data size to reach the quantum size.
+	* Rate (/s) counter for comptcptotaleoi
 	* </pre>
 	*/
 	public Long get_comptcpeoirate() throws Exception {
@@ -261,7 +269,7 @@ public class cmp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of times delta-compression bypassed by NetScaler.
+	* Rate (/s) counter for delcomperrbypassed
 	* </pre>
 	*/
 	public Long get_delcomperrbypassedrate() throws Exception {
@@ -279,7 +287,7 @@ public class cmp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of delta compression requests received by NetScaler.
+	* Rate (/s) counter for delcomptotalrequests
 	* </pre>
 	*/
 	public Long get_delcomprequestsrate() throws Exception {
@@ -297,7 +305,7 @@ public class cmp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of delta-compressible packets received.
+	* Rate (/s) counter for delcomptcprxpackets
 	* </pre>
 	*/
 	public Long get_delcomptcprxpacketsrate() throws Exception {
@@ -324,7 +332,7 @@ public class cmp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of TCP packets that the NetScaler sends to the client after compressing the response from the server.
+	* Rate (/s) counter for comptcptotaltxpackets
 	* </pre>
 	*/
 	public Long get_comptcptxpacketsrate() throws Exception {
@@ -342,7 +350,7 @@ public class cmp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of bytes that can be compressed, which the NetScaler receives from the server. This gives the content length of the response that the NetScaler receives from server.
+	* Rate (/s) counter for comptotalrxbytes
 	* </pre>
 	*/
 	public Long get_comprxbytesrate() throws Exception {
@@ -351,16 +359,7 @@ public class cmp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of bytes of HTTP response data received.
-	* </pre>
-	*/
-	public Long get_httprxresponsebytesrate() throws Exception {
-		return this.httprxresponsebytesrate;
-	}
-
-	/**
-	* <pre>
-	* Number of times delta compression session could not be allocated.
+	* Rate (/s) counter for delcomperrsessallocfail
 	* </pre>
 	*/
 	public Long get_delcomperrsessallocfailrate() throws Exception {
@@ -369,7 +368,7 @@ public class cmp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of delta-compressed packets transmitted by NetScaler.
+	* Rate (/s) counter for delcomptcptxpackets
 	* </pre>
 	*/
 	public Long get_delcomptcptxpacketsrate() throws Exception {
@@ -387,7 +386,7 @@ public class cmp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of times the NetScaler compresses data on receiving a TCP PUSH flag from the server. The PUSH flag ensures that data is compressed immediately without waiting for the buffered data size to reach the quantum size.
+	* Rate (/s) counter for comptcptotalpush
 	* </pre>
 	*/
 	public Long get_comptcppushrate() throws Exception {
@@ -396,7 +395,7 @@ public class cmp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of times memory failures occurred while decompressing.
+	* Rate (/s) counter for decomptcperrmemory
 	* </pre>
 	*/
 	public Long get_decomptcperrmemoryrate() throws Exception {
@@ -405,7 +404,7 @@ public class cmp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of times unknown errors occurred while decompressing.
+	* Rate (/s) counter for decomptcperrunknown
 	* </pre>
 	*/
 	public Long get_decomptcperrunknownrate() throws Exception {
@@ -432,7 +431,7 @@ public class cmp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of delta compression first accesses.
+	* Rate (/s) counter for delcompfirstaccess
 	* </pre>
 	*/
 	public Long get_delcompfirstaccessrate() throws Exception {
@@ -441,7 +440,7 @@ public class cmp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of HTTP packets that can be compressed, which the NetScaler receives from the server.
+	* Rate (/s) counter for comptotalrxpackets
 	* </pre>
 	*/
 	public Long get_comprxpacketsrate() throws Exception {
@@ -459,7 +458,7 @@ public class cmp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of compressed packets received by NetScaler.
+	* Rate (/s) counter for decomptcprxpackets
 	* </pre>
 	*/
 	public Long get_decomptcprxpacketsrate() throws Exception {
@@ -468,7 +467,7 @@ public class cmp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of times the NetScaler compresses a quantum of data.  NetScaler buffers the data received from the server till it reaches the quantum size and then compresses the buffered data and transmits to the client.
+	* Rate (/s) counter for comptcptotalquantum
 	* </pre>
 	*/
 	public Long get_comptcpquantumrate() throws Exception {
@@ -477,7 +476,7 @@ public class cmp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of bytes the NetScaler sends to the client after compressing the response from the server.
+	* Rate (/s) counter for comptotaltxbytes
 	* </pre>
 	*/
 	public Long get_comptxbytesrate() throws Exception {
@@ -486,7 +485,7 @@ public class cmp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of basefile requests served by NetScaler.
+	* Rate (/s) counter for delcompbaseserved
 	* </pre>
 	*/
 	public Long get_delcompbaseservedrate() throws Exception {
@@ -504,7 +503,7 @@ public class cmp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of bytes that the NetScaler sends to the client after compressing the response from the server.
+	* Rate (/s) counter for comptcptotaltxbytes
 	* </pre>
 	*/
 	public Long get_comptcptxbytesrate() throws Exception {
@@ -540,7 +539,7 @@ public class cmp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of times basefile was not found in NetScaler cache.
+	* Rate (/s) counter for delcomperrnostoremiss
 	* </pre>
 	*/
 	public Long get_delcomperrnostoremissrate() throws Exception {
@@ -558,7 +557,7 @@ public class cmp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of times NetScaler received more data than declared by protocol.
+	* Rate (/s) counter for decomptcperrmoredata
 	* </pre>
 	*/
 	public Long get_decomptcperrmoredatarate() throws Exception {
@@ -603,7 +602,7 @@ public class cmp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of decompressed bytes transmitted by NetScaler.
+	* Rate (/s) counter for decomptcptxbytes
 	* </pre>
 	*/
 	public Long get_decomptcptxbytesrate() throws Exception {
@@ -621,7 +620,7 @@ public class cmp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of bytes that can be compressed, which the NetScaler receives from the server. This gives the content length of the response that the NetScaler receives from server.
+	* Rate (/s) counter for comptcptotalrxbytes
 	* </pre>
 	*/
 	public Long get_comptcprxbytesrate() throws Exception {
@@ -630,7 +629,7 @@ public class cmp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of HTTP packets that the NetScaler sends to the client after compressing the response from the server.
+	* Rate (/s) counter for comptotaltxpackets
 	* </pre>
 	*/
 	public Long get_comptxpacketsrate() throws Exception {
@@ -639,7 +638,7 @@ public class cmp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of compressible packets received by NetScaler.
+	* Rate (/s) counter for comptcptotalrxpackets
 	* </pre>
 	*/
 	public Long get_comptcprxpacketsrate() throws Exception {
@@ -657,7 +656,7 @@ public class cmp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of delta-compressed bytes transmitted by NetScaler.
+	* Rate (/s) counter for delcomptcptxbytes
 	* </pre>
 	*/
 	public Long get_delcomptcptxbytesrate() throws Exception {
@@ -666,7 +665,7 @@ public class cmp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of times basefile request URL was too large.
+	* Rate (/s) counter for delcomperrreqinfotoobig
 	* </pre>
 	*/
 	public Long get_delcomperrreqinfotoobigrate() throws Exception {
@@ -675,7 +674,7 @@ public class cmp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of compressed bytes received by NetScaler.
+	* Rate (/s) counter for decomptcprxbytes
 	* </pre>
 	*/
 	public Long get_decomptcprxbytesrate() throws Exception {
@@ -684,7 +683,7 @@ public class cmp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of data errors encountered while decompressing.
+	* Rate (/s) counter for decomptcperrdata
 	* </pre>
 	*/
 	public Long get_decomptcperrdatarate() throws Exception {
@@ -729,7 +728,7 @@ public class cmp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of times the NetScaler compresses data on expiration of data accumulation timer. The timer expires if the server response is very slow and consequently, the NetScaler does not receive response for a certain amount of time.  Under such a condition, the NetScaler compresses the buffered data immediately without waiting for the buffered data size to reach the quantum size.
+	* Rate (/s) counter for comptcptotaltimer
 	* </pre>
 	*/
 	public Long get_comptcptimerrate() throws Exception {
@@ -756,7 +755,7 @@ public class cmp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of delta compressions done by NetScaler.
+	* Rate (/s) counter for delcompdone
 	* </pre>
 	*/
 	public Long get_delcompdonerate() throws Exception {
@@ -783,7 +782,7 @@ public class cmp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of times NetScaler received less data than declared by protocol.
+	* Rate (/s) counter for decomptcperrlessdata
 	* </pre>
 	*/
 	public Long get_decomptcperrlessdatarate() throws Exception {
@@ -801,7 +800,7 @@ public class cmp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of delta-compressible bytes received by NetScaler.
+	* Rate (/s) counter for delcomptcprxbytes
 	* </pre>
 	*/
 	public Long get_delcomptcprxbytesrate() throws Exception {
@@ -837,7 +836,7 @@ public class cmp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of times requested basefile could not be allocated.
+	* Rate (/s) counter for delcomperrreqinfoallocfail
 	* </pre>
 	*/
 	public Long get_delcomperrreqinfoallocfailrate() throws Exception {
@@ -846,7 +845,7 @@ public class cmp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of times basefile could not be updated in NetScaler cache.
+	* Rate (/s) counter for delcomperrbfilewhdrfailed
 	* </pre>
 	*/
 	public Long get_delcomperrbfilewhdrfailedrate() throws Exception {
@@ -934,4 +933,8 @@ public class cmp_stats extends base_resource
 		return response[0];
 	}
 
+	public static class clearstatsEnum {
+		public static final String basic = "basic";
+		public static final String full = "full";
+	}
 }

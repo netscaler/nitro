@@ -26,10 +26,10 @@ public class dnszone_args
 
 	/**
 	* <pre>
-	* Zone type. The type can take 3 values:
-ADNS -  If this is specified, all of the authoritative zones will be displayed.
-PROXY - If this is specified, all of the proxy zones will be displayed.
-ALL  -  If this is specified, all of the zones will be displayed.<br> Possible values = ALL, ADNS, PROXY
+	* Type of zone to display. Mutually exclusive with the DNS Zone (zoneName) parameter. Available settings function as follows:
+* ADNS - Display all the zones for which the NetScaler appliance is authoritative.
+* PROXY - Display all the zones for which the NetScaler appliance is functioning as a proxy server.
+* ALL - Display all the zones configured on the appliance.<br> Possible values = ALL, ADNS, PROXY
 	* </pre>
 	*/
 	public void set_type(String type) throws Exception{
@@ -38,10 +38,10 @@ ALL  -  If this is specified, all of the zones will be displayed.<br> Possible v
 
 	/**
 	* <pre>
-	* Zone type. The type can take 3 values:
-ADNS -  If this is specified, all of the authoritative zones will be displayed.
-PROXY - If this is specified, all of the proxy zones will be displayed.
-ALL  -  If this is specified, all of the zones will be displayed.<br> Possible values = ALL, ADNS, PROXY
+	* Type of zone to display. Mutually exclusive with the DNS Zone (zoneName) parameter. Available settings function as follows:
+* ADNS - Display all the zones for which the NetScaler appliance is authoritative.
+* PROXY - Display all the zones for which the NetScaler appliance is functioning as a proxy server.
+* ALL - Display all the zones configured on the appliance.<br> Possible values = ALL, ADNS, PROXY
 	* </pre>
 	*/
 	public String get_type() throws Exception {

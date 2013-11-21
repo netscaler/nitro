@@ -33,14 +33,18 @@ class lbvserver_response extends base_response
 public class lbvserver_stats extends base_resource
 {
 	private String name;
+	private String clearstats;
 	private String sortby;
 	private String sortorder;
+	private Long vsvrsurgecount;
 	private Long establishedconn;
+	private Long inactsvcs;
 	private Long vslbhealth;
 	private String primaryipaddress;
 	private Integer primaryport;
 	private String type;
 	private String state;
+	private Long actsvcs;
 	private Long tothits;
 	private Long hitsrate;
 	private Long totalrequests;
@@ -57,6 +61,8 @@ public class lbvserver_stats extends base_resource
 	private Long pktssentrate;
 	private Long curclntconnections;
 	private Long cursrvrconnections;
+	private Long surgecount;
+	private Long svcsurgecount;
 	private Long sothreshold;
 	private Long totspillovers;
 	private Long labelledconn;
@@ -65,11 +71,10 @@ public class lbvserver_stats extends base_resource
 	private Long deferredreqrate;
 	private Long invalidrequestresponse;
 	private Long invalidrequestresponsedropped;
-	private Long svrestablishedconn;
 
 	/**
 	* <pre>
-	* The name of the vserver for which statistics will be displayed.  If not given statistics are shown for all vservers.
+	* Name of the virtual server. If no name is provided, statistical data of all configured virtual servers is displayed.
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -78,46 +83,65 @@ public class lbvserver_stats extends base_resource
 
 	/**
 	* <pre>
-	* The name of the vserver for which statistics will be displayed.  If not given statistics are shown for all vservers.<br> Minimum length =  1
+	* Name of the virtual server. If no name is provided, statistical data of all configured virtual servers is displayed.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
 		return this.name;
 	}
 
+	/**
+	* <pre>
+	* Clear the statsistics / counters
+	* </pre>
+	*/
+	public void set_clearstats(String clearstats) throws Exception{
+		this.clearstats = clearstats;
+	}
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters.<br> Possible values = basic, full
+	* </pre>
+	*/
+	public String get_clearstats() throws Exception {
+		return this.clearstats;
+	}
+
+	/**
+	* <pre>
+	* use this argument to sort by specific key
+	* </pre>
+	*/
 	public void set_sortby(String sortby) throws Exception{
 		this.sortby = sortby;
 	}
 
 	/**
 	* <pre>
-	* .<br> Possible values = 
+	* use this argument to sort by specific key.<br> Possible values = 
 	* </pre>
 	*/
 	public String get_sortby() throws Exception {
 		return this.sortby;
 	}
 
+	/**
+	* <pre>
+	* use this argument to specify sort order
+	* </pre>
+	*/
 	public void set_sortorder(String sortorder) throws Exception{
 		this.sortorder = sortorder;
 	}
 
 	/**
 	* <pre>
-	* .<br> Default value: SORT_DESCENDING<br> Possible values = ascending, descending
+	* use this argument to specify sort order.<br> Default value: SORT_DESCENDING<br> Possible values = ascending, descending
 	* </pre>
 	*/
 	public String get_sortorder() throws Exception {
 		return this.sortorder;
-	}
-
-	/**
-	* <pre>
-	* Number of server connections in ESTABLISHED state.
-	* </pre>
-	*/
-	public Long get_svrestablishedconn() throws Exception {
-		return this.svrestablishedconn;
 	}
 
 	/**
@@ -185,7 +209,16 @@ public class lbvserver_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of response bytes received by this service or virtual server.
+	* Number of requests in the surge queue.
+	* </pre>
+	*/
+	public Long get_surgecount() throws Exception {
+		return this.surgecount;
+	}
+
+	/**
+	* <pre>
+	* Rate (/s) counter for totalresponsebytes
 	* </pre>
 	*/
 	public Long get_responsebytesrate() throws Exception {
@@ -212,7 +245,7 @@ public class lbvserver_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of request bytes received on this service or virtual server.
+	* Rate (/s) counter for totalrequestbytes
 	* </pre>
 	*/
 	public Long get_requestbytesrate() throws Exception {
@@ -230,7 +263,7 @@ public class lbvserver_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total vserver hits
+	* Rate (/s) counter for tothits
 	* </pre>
 	*/
 	public Long get_hitsrate() throws Exception {
@@ -248,7 +281,7 @@ public class lbvserver_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of packets received by this service or virtual server.
+	* Rate (/s) counter for totalpktsrecvd
 	* </pre>
 	*/
 	public Long get_pktsrecvdrate() throws Exception {
@@ -266,6 +299,15 @@ public class lbvserver_stats extends base_resource
 
 	/**
 	* <pre>
+	* Number of requests waiting on this vserver. 
+	* </pre>
+	*/
+	public Long get_vsvrsurgecount() throws Exception {
+		return this.vsvrsurgecount;
+	}
+
+	/**
+	* <pre>
 	* Number of labels for this push vserver.
 	* </pre>
 	*/
@@ -275,7 +317,7 @@ public class lbvserver_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of responses received on this service or virtual server. (This applies to HTTP/SSL services and servers.)
+	* Rate (/s) counter for totalresponses
 	* </pre>
 	*/
 	public Long get_responsesrate() throws Exception {
@@ -302,6 +344,15 @@ public class lbvserver_stats extends base_resource
 
 	/**
 	* <pre>
+	* Total number of requests in the surge queues of all the services bound to this LB-vserver.
+	* </pre>
+	*/
+	public Long get_svcsurgecount() throws Exception {
+		return this.svcsurgecount;
+	}
+
+	/**
+	* <pre>
 	* Total number of request bytes received on this service or virtual server.
 	* </pre>
 	*/
@@ -320,7 +371,7 @@ public class lbvserver_stats extends base_resource
 
 	/**
 	* <pre>
-	* Current state of the server.
+	* Current state of the server. Possible values are UP, DOWN, UNKNOWN, OFS(Out of Service), TROFS(Transition Out of Service), TROFS_DOWN(Down When going Out of Service)
 	* </pre>
 	*/
 	public String get_state() throws Exception {
@@ -338,11 +389,20 @@ public class lbvserver_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of deferred request on this vserver
+	* Rate (/s) counter for deferredreq
 	* </pre>
 	*/
 	public Long get_deferredreqrate() throws Exception {
 		return this.deferredreqrate;
+	}
+
+	/**
+	* <pre>
+	* number of ACTIVE services bound to a vserver
+	* </pre>
+	*/
+	public Long get_actsvcs() throws Exception {
+		return this.actsvcs;
 	}
 
 	/**
@@ -356,7 +416,7 @@ public class lbvserver_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of packets sent.
+	* Rate (/s) counter for totalpktssent
 	* </pre>
 	*/
 	public Long get_pktssentrate() throws Exception {
@@ -383,11 +443,20 @@ public class lbvserver_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of requests received on this service or virtual server. (This applies to HTTP/SSL services and servers.)
+	* Rate (/s) counter for totalrequests
 	* </pre>
 	*/
 	public Long get_requestsrate() throws Exception {
 		return this.requestsrate;
+	}
+
+	/**
+	* <pre>
+	* number of INACTIVE services bound to a vserver
+	* </pre>
+	*/
+	public Long get_inactsvcs() throws Exception {
+		return this.inactsvcs;
 	}
 
 	/**
@@ -452,6 +521,10 @@ public class lbvserver_stats extends base_resource
 		return response;
 	}
 
+	public static class clearstatsEnum {
+		public static final String basic = "basic";
+		public static final String full = "full";
+	}
 	public static class sortorderEnum {
 		public static final String ascending = "ascending";
 		public static final String descending = "descending";

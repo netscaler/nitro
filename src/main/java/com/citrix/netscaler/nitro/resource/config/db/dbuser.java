@@ -39,7 +39,7 @@ public class dbuser extends base_resource
 
 	/**
 	* <pre>
-	* The name of the database user. Must be the same as the user name specified in the database.<br> Minimum length =  1
+	* Name of the database user. Must be the same as the user name specified in the database.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_username(String username) throws Exception{
@@ -48,7 +48,7 @@ public class dbuser extends base_resource
 
 	/**
 	* <pre>
-	* The name of the database user. Must be the same as the user name specified in the database.<br> Minimum length =  1
+	* Name of the database user. Must be the same as the user name specified in the database.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_username() throws Exception {
@@ -57,7 +57,7 @@ public class dbuser extends base_resource
 
 	/**
 	* <pre>
-	* The password for logging on to the database. Must be the same as the password specified in the database.<br> Minimum length =  1
+	* Password for logging on to the database. Must be the same as the password specified in the database.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_password(String password) throws Exception{
@@ -66,7 +66,7 @@ public class dbuser extends base_resource
 
 	/**
 	* <pre>
-	* The password for logging on to the database. Must be the same as the password specified in the database.<br> Minimum length =  1
+	* Password for logging on to the database. Must be the same as the password specified in the database.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_password() throws Exception {
@@ -75,7 +75,7 @@ public class dbuser extends base_resource
 
 	/**
 	* <pre>
-	* Display the names of all database users that are logged on to the NetScaler appliance.
+	* Display the names of all database users currently logged on to the NetScaler appliance.
 	* </pre>
 	*/
 	public void set_loggedin(boolean loggedin) throws Exception {
@@ -84,7 +84,7 @@ public class dbuser extends base_resource
 
 	/**
 	* <pre>
-	* Display the names of all database users that are logged on to the NetScaler appliance.
+	* Display the names of all database users currently logged on to the NetScaler appliance.
 	* </pre>
 	*/
 	public void set_loggedin(Boolean loggedin) throws Exception{
@@ -93,7 +93,7 @@ public class dbuser extends base_resource
 
 	/**
 	* <pre>
-	* Display the names of all database users that are logged on to the NetScaler appliance.
+	* Display the names of all database users currently logged on to the NetScaler appliance.
 	* </pre>
 	*/
 	public Boolean get_loggedin() throws Exception {

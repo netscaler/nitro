@@ -84,7 +84,7 @@ public class sslglobal_sslpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The bindpoint to which policy is bound.<br> Possible values = CONTROL_OVERRIDE, CONTROL_DEFAULT, DATA_OVERRIDE, DATA_DEFAULT
+	* Global bind point to which the policy is bound.<br> Possible values = CONTROL_OVERRIDE, CONTROL_DEFAULT, DATA_OVERRIDE, DATA_DEFAULT
 	* </pre>
 	*/
 	public void set_type(String type) throws Exception{
@@ -93,7 +93,7 @@ public class sslglobal_sslpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The bindpoint to which policy is bound.<br> Possible values = CONTROL_OVERRIDE, CONTROL_DEFAULT, DATA_OVERRIDE, DATA_DEFAULT
+	* Global bind point to which the policy is bound.<br> Possible values = CONTROL_OVERRIDE, CONTROL_DEFAULT, DATA_OVERRIDE, DATA_DEFAULT
 	* </pre>
 	*/
 	public String get_type() throws Exception {

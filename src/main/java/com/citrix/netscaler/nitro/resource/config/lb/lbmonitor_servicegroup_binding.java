@@ -42,7 +42,7 @@ public class lbmonitor_servicegroup_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the service group to which the monitor is to be bound.<br> Minimum length =  1
+	* Name of the service group.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_servicegroupname(String servicegroupname) throws Exception{
@@ -51,7 +51,7 @@ public class lbmonitor_servicegroup_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the service group to which the monitor is to be bound.<br> Minimum length =  1
+	* Name of the service group.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_servicegroupname() throws Exception {
@@ -60,7 +60,7 @@ public class lbmonitor_servicegroup_binding extends base_resource
 
 	/**
 	* <pre>
-	* The state of the monitor. If the monitor is enabled, probes of the monitor's type are sent to the service. If the monitor is disabled, probes of the monitor's type are not sent to the service.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* State of the monitor. The state setting for a monitor of a given type affects all monitors of that type. For example, if an HTTP monitor is enabled, all HTTP monitors on the appliance are (or remain) enabled. If an HTTP monitor is disabled, all HTTP monitors on the appliance are disabled.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_dup_state(String dup_state) throws Exception{
@@ -69,7 +69,7 @@ public class lbmonitor_servicegroup_binding extends base_resource
 
 	/**
 	* <pre>
-	* The state of the monitor. If the monitor is enabled, probes of the monitor's type are sent to the service. If the monitor is disabled, probes of the monitor's type are not sent to the service.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* State of the monitor. The state setting for a monitor of a given type affects all monitors of that type. For example, if an HTTP monitor is enabled, all HTTP monitors on the appliance are (or remain) enabled. If an HTTP monitor is disabled, all HTTP monitors on the appliance are disabled.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_dup_state() throws Exception {
@@ -78,7 +78,7 @@ public class lbmonitor_servicegroup_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the service or a service group to which the monitor is to be bound.<br> Minimum length =  1
+	* Name of the service or service group.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_servicename(String servicename) throws Exception{
@@ -87,7 +87,7 @@ public class lbmonitor_servicegroup_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the service or a service group to which the monitor is to be bound.<br> Minimum length =  1
+	* Name of the service or service group.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_servicename() throws Exception {
@@ -96,7 +96,7 @@ public class lbmonitor_servicegroup_binding extends base_resource
 
 	/**
 	* <pre>
-	* The state of the monitor. If the monitor is enabled, probes of the monitor's type are sent to the service. If the monitor is disabled, probes of the monitor's type are not sent to the service.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* State of the monitor. The state setting for a monitor of a given type affects all monitors of that type. For example, if an HTTP monitor is enabled, all HTTP monitors on the appliance are (or remain) enabled. If an HTTP monitor is disabled, all HTTP monitors on the appliance are disabled.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_state(String state) throws Exception{
@@ -105,7 +105,7 @@ public class lbmonitor_servicegroup_binding extends base_resource
 
 	/**
 	* <pre>
-	* The state of the monitor. If the monitor is enabled, probes of the monitor's type are sent to the service. If the monitor is disabled, probes of the monitor's type are not sent to the service.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* State of the monitor. The state setting for a monitor of a given type affects all monitors of that type. For example, if an HTTP monitor is enabled, all HTTP monitors on the appliance are (or remain) enabled. If an HTTP monitor is disabled, all HTTP monitors on the appliance are disabled.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_state() throws Exception {
@@ -114,7 +114,7 @@ public class lbmonitor_servicegroup_binding extends base_resource
 
 	/**
 	* <pre>
-	* The weight for the specified service monitor binding.<br> Default value: 1<br> Minimum value =  1<br> Maximum value =  100
+	* Weight to assign to the binding between the monitor and service.<br> Default value: 1<br> Minimum value =  1<br> Maximum value =  100
 	* </pre>
 	*/
 	public void set_dup_weight(long dup_weight) throws Exception {
@@ -123,7 +123,7 @@ public class lbmonitor_servicegroup_binding extends base_resource
 
 	/**
 	* <pre>
-	* The weight for the specified service monitor binding.<br> Default value: 1<br> Minimum value =  1<br> Maximum value =  100
+	* Weight to assign to the binding between the monitor and service.<br> Default value: 1<br> Minimum value =  1<br> Maximum value =  100
 	* </pre>
 	*/
 	public void set_dup_weight(Long dup_weight) throws Exception{
@@ -132,7 +132,7 @@ public class lbmonitor_servicegroup_binding extends base_resource
 
 	/**
 	* <pre>
-	* The weight for the specified service monitor binding.<br> Default value: 1<br> Minimum value =  1<br> Maximum value =  100
+	* Weight to assign to the binding between the monitor and service.<br> Default value: 1<br> Minimum value =  1<br> Maximum value =  100
 	* </pre>
 	*/
 	public Long get_dup_weight() throws Exception {
@@ -141,7 +141,7 @@ public class lbmonitor_servicegroup_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the monitor to be bound.<br> Minimum length =  1
+	* Name of the monitor.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_monitorname(String monitorname) throws Exception{
@@ -150,7 +150,7 @@ public class lbmonitor_servicegroup_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the monitor to be bound.<br> Minimum length =  1
+	* Name of the monitor.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_monitorname() throws Exception {
@@ -159,7 +159,7 @@ public class lbmonitor_servicegroup_binding extends base_resource
 
 	/**
 	* <pre>
-	* The weight for the specified service monitor binding.<br> Minimum value =  1<br> Maximum value =  100
+	* Weight to assign to the binding between the monitor and service.<br> Minimum value =  1<br> Maximum value =  100
 	* </pre>
 	*/
 	public void set_weight(long weight) throws Exception {
@@ -168,7 +168,7 @@ public class lbmonitor_servicegroup_binding extends base_resource
 
 	/**
 	* <pre>
-	* The weight for the specified service monitor binding.<br> Minimum value =  1<br> Maximum value =  100
+	* Weight to assign to the binding between the monitor and service.<br> Minimum value =  1<br> Maximum value =  100
 	* </pre>
 	*/
 	public void set_weight(Long weight) throws Exception{
@@ -177,7 +177,7 @@ public class lbmonitor_servicegroup_binding extends base_resource
 
 	/**
 	* <pre>
-	* The weight for the specified service monitor binding.<br> Minimum value =  1<br> Maximum value =  100
+	* Weight to assign to the binding between the monitor and service.<br> Minimum value =  1<br> Maximum value =  100
 	* </pre>
 	*/
 	public Long get_weight() throws Exception {
@@ -216,6 +216,60 @@ public class lbmonitor_servicegroup_binding extends base_resource
 
 	protected String get_object_name() {
 		return this.monitorname;
+	}
+
+	public static base_response add(nitro_service client, lbmonitor_servicegroup_binding resource) throws Exception {
+		lbmonitor_servicegroup_binding updateresource = new lbmonitor_servicegroup_binding();
+		updateresource.monitorname = resource.monitorname;
+		updateresource.servicename = resource.servicename;
+		updateresource.dup_state = resource.dup_state;
+		updateresource.dup_weight = resource.dup_weight;
+		updateresource.servicegroupname = resource.servicegroupname;
+		updateresource.state = resource.state;
+		updateresource.weight = resource.weight;
+		return updateresource.update_resource(client);
+	}
+
+	public static base_responses add(nitro_service client, lbmonitor_servicegroup_binding resources[]) throws Exception {
+		base_responses result = null;
+		if (resources != null && resources.length > 0) {
+			lbmonitor_servicegroup_binding updateresources[] = new lbmonitor_servicegroup_binding[resources.length];
+			for (int i=0;i<resources.length;i++){
+				updateresources[i] = new lbmonitor_servicegroup_binding();
+				updateresources[i].monitorname = resources[i].monitorname;
+				updateresources[i].servicename = resources[i].servicename;
+				updateresources[i].dup_state = resources[i].dup_state;
+				updateresources[i].dup_weight = resources[i].dup_weight;
+				updateresources[i].servicegroupname = resources[i].servicegroupname;
+				updateresources[i].state = resources[i].state;
+				updateresources[i].weight = resources[i].weight;
+			}
+			result = update_bulk_request(client, updateresources);
+		}
+		return result;
+	}
+
+	public static base_response delete(nitro_service client, lbmonitor_servicegroup_binding resource) throws Exception {
+		lbmonitor_servicegroup_binding deleteresource = new lbmonitor_servicegroup_binding();
+		deleteresource.monitorname = resource.monitorname;
+		deleteresource.servicename = resource.servicename;
+		deleteresource.servicegroupname = resource.servicegroupname;
+		return deleteresource.delete_resource(client);
+	}
+
+	public static base_responses delete(nitro_service client, lbmonitor_servicegroup_binding resources[]) throws Exception {
+		base_responses result = null;
+		if (resources != null && resources.length > 0) {
+			lbmonitor_servicegroup_binding deleteresources[] = new lbmonitor_servicegroup_binding[resources.length];
+			for (int i=0;i<resources.length;i++){
+				deleteresources[i] = new lbmonitor_servicegroup_binding();
+				deleteresources[i].monitorname = resources[i].monitorname;
+				deleteresources[i].servicename = resources[i].servicename;
+				deleteresources[i].servicegroupname = resources[i].servicegroupname;
+			}
+			result = delete_bulk_request(client, deleteresources);
+		}
+		return result;
 	}
 
 	public static class dup_stateEnum {

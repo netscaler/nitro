@@ -18,6 +18,7 @@ package com.citrix.netscaler.nitro.resource.config.filter;
 
 import com.citrix.netscaler.nitro.resource.config.filter.filterpolicy_csvserver_binding;
 import com.citrix.netscaler.nitro.resource.config.filter.filterpolicy_lbvserver_binding;
+import com.citrix.netscaler.nitro.resource.config.filter.filterpolicy_crvserver_binding;
 import com.citrix.netscaler.nitro.resource.config.filter.filterpolicy_filterglobal_binding;
 import com.citrix.netscaler.nitro.resource.base.*;
 import com.citrix.netscaler.nitro.service.nitro_service;
@@ -38,11 +39,12 @@ public class filterpolicy_binding extends base_resource
 	private String name;
 	private filterpolicy_csvserver_binding	filterpolicy_csvserver_binding[] = null;
 	private filterpolicy_lbvserver_binding	filterpolicy_lbvserver_binding[] = null;
+	private filterpolicy_crvserver_binding	filterpolicy_crvserver_binding[] = null;
 	private filterpolicy_filterglobal_binding	filterpolicy_filterglobal_binding[] = null;
 
 	/**
 	* <pre>
-	* The name of the filter policy.<br> Minimum length =  1
+	* Name of the filter policy to be displayed. If a name is not provided, information about all the filter policies is shown.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -51,11 +53,20 @@ public class filterpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the filter policy.<br> Minimum length =  1
+	* Name of the filter policy to be displayed. If a name is not provided, information about all the filter policies is shown.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
 		return this.name;
+	}
+
+	/**
+	* <pre>
+	* crvserver that can be bound to filterpolicy.
+	* </pre>
+	*/
+	public filterpolicy_crvserver_binding[] get_filterpolicy_crvserver_bindings() throws Exception {
+		return this.filterpolicy_crvserver_binding;
 	}
 
 	/**

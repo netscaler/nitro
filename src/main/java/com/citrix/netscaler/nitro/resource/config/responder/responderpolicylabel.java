@@ -48,7 +48,10 @@ public class responderpolicylabel extends base_resource
 
 	/**
 	* <pre>
-	* Name of the responder policy label.
+	* Name for the responder policy label. Must begin with a letter, number, or the underscore character (_), and must contain only letters, numbers, and the hyphen (-), period (.) hash (#), space ( ), at (@), equals (=), colon (:), and underscore characters. Cannot be changed after the responder policy label is added.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my responder policy label" or my responder policy label').
 	* </pre>
 	*/
 	public void set_labelname(String labelname) throws Exception{
@@ -57,7 +60,10 @@ public class responderpolicylabel extends base_resource
 
 	/**
 	* <pre>
-	* Name of the responder policy label.
+	* Name for the responder policy label. Must begin with a letter, number, or the underscore character (_), and must contain only letters, numbers, and the hyphen (-), period (.) hash (#), space ( ), at (@), equals (=), colon (:), and underscore characters. Cannot be changed after the responder policy label is added.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my responder policy label" or my responder policy label').
 	* </pre>
 	*/
 	public String get_labelname() throws Exception {
@@ -66,7 +72,12 @@ public class responderpolicylabel extends base_resource
 
 	/**
 	* <pre>
-	* The type of the policy label. Default value is HTTP.<br> Default value: NS_PLTMAP_RSP_REQ<br> Possible values = HTTP, OTHERTCP, SIP_UDP, MYSQL, MSSQL
+	* Type of responses sent by the policies bound to this policy label. Types are:
+* HTTP - HTTP responses. 
+* OTHERTCP - NON-HTTP TCP responses.
+* SIP_UDP - SIP responses.
+* MYSQL - SQL responses in MySQL format.
+* MSSQL - SQL responses in Microsoft SQL format.<br> Default value: HTTP<br> Possible values = HTTP, OTHERTCP, SIP_UDP, MYSQL, MSSQL
 	* </pre>
 	*/
 	public void set_policylabeltype(String policylabeltype) throws Exception{
@@ -75,7 +86,12 @@ public class responderpolicylabel extends base_resource
 
 	/**
 	* <pre>
-	* The type of the policy label. Default value is HTTP.<br> Default value: NS_PLTMAP_RSP_REQ<br> Possible values = HTTP, OTHERTCP, SIP_UDP, MYSQL, MSSQL
+	* Type of responses sent by the policies bound to this policy label. Types are:
+* HTTP - HTTP responses. 
+* OTHERTCP - NON-HTTP TCP responses.
+* SIP_UDP - SIP responses.
+* MYSQL - SQL responses in MySQL format.
+* MSSQL - SQL responses in Microsoft SQL format.<br> Default value: HTTP<br> Possible values = HTTP, OTHERTCP, SIP_UDP, MYSQL, MSSQL
 	* </pre>
 	*/
 	public String get_policylabeltype() throws Exception {
@@ -84,7 +100,7 @@ public class responderpolicylabel extends base_resource
 
 	/**
 	* <pre>
-	* The new name of the responder policylabel.<br> Minimum length =  1
+	* New name for the responder policy label. Must begin with a letter, number, or the underscore character (_), and must contain only letters, numbers, and the hyphen (-), period (.) hash (#), space ( ), at (@), equals (=), colon (:), and underscore characters.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_newname(String newname) throws Exception{
@@ -93,7 +109,7 @@ public class responderpolicylabel extends base_resource
 
 	/**
 	* <pre>
-	* The new name of the responder policylabel.<br> Minimum length =  1
+	* New name for the responder policy label. Must begin with a letter, number, or the underscore character (_), and must contain only letters, numbers, and the hyphen (-), period (.) hash (#), space ( ), at (@), equals (=), colon (:), and underscore characters.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_newname() throws Exception {
@@ -138,7 +154,9 @@ public class responderpolicylabel extends base_resource
 
 	/**
 	* <pre>
-	* Type of policy label invocation.<br> Possible values = vserver, policylabel
+	* Type of policy label to invoke. Available settings function as follows:
+* vserver - Invoke an unnamed policy label associated with a virtual server.
+* policylabel - Invoke a user-defined policy label.<br> Possible values = vserver, policylabel
 	* </pre>
 	*/
 	public String get_labeltype() throws Exception {
@@ -147,7 +165,8 @@ public class responderpolicylabel extends base_resource
 
 	/**
 	* <pre>
-	* Name of the label to invoke if the current policy rule evaluates to TRUE.
+	* * If labelType is policylabel, name of the policy label to invoke. 
+* If labelType is reqvserver or resvserver, name of the virtual server.
 	* </pre>
 	*/
 	public String get_invoke_labelname() throws Exception {

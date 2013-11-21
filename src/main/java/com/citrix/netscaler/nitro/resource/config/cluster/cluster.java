@@ -34,7 +34,7 @@ public class cluster extends base_resource
 
 	/**
 	* <pre>
-	* The cluster IP address to which you are trying to add the node.
+	* Cluster IP address to which to add the node.
 	* </pre>
 	*/
 	public void set_clip(String clip) throws Exception{
@@ -43,7 +43,7 @@ public class cluster extends base_resource
 
 	/**
 	* <pre>
-	* The cluster IP address to which you are trying to add the node.
+	* Cluster IP address to which to add the node.
 	* </pre>
 	*/
 	public String get_clip() throws Exception {
@@ -52,7 +52,7 @@ public class cluster extends base_resource
 
 	/**
 	* <pre>
-	* The password for the nsroot account of the configuration coordinator (CCO).
+	* Password for the nsroot account of the configuration coordinator (CCO).
 	* </pre>
 	*/
 	public void set_password(String password) throws Exception{
@@ -61,7 +61,7 @@ public class cluster extends base_resource
 
 	/**
 	* <pre>
-	* The password for the nsroot account of the configuration coordinator (CCO).
+	* Password for the nsroot account of the configuration coordinator (CCO).
 	* </pre>
 	*/
 	public String get_password() throws Exception {

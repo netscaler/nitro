@@ -61,7 +61,7 @@ public class dnspolicy_dnspolicylabel_binding extends base_resource
 
 	/**
 	* <pre>
-	* Name of the dns policy.
+	* Name of the DNS policy.
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -70,7 +70,7 @@ public class dnspolicy_dnspolicylabel_binding extends base_resource
 
 	/**
 	* <pre>
-	* Name of the dns policy.
+	* Name of the DNS policy.
 	* </pre>
 	*/
 	public String get_name() throws Exception {

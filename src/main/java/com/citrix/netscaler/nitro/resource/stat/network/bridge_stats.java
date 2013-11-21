@@ -32,6 +32,7 @@ class bridge_response extends base_response
 
 public class bridge_stats extends base_resource
 {
+	private String clearstats;
 	private Long tcptotbdgmacmoved;
 	private Long tcpbdgmacmovedrate;
 	private Long tcptotbdgcollisions;
@@ -45,7 +46,25 @@ public class bridge_stats extends base_resource
 
 	/**
 	* <pre>
-	* The number of bridging table collisions
+	* Clear the statsistics / counters
+	* </pre>
+	*/
+	public void set_clearstats(String clearstats) throws Exception{
+		this.clearstats = clearstats;
+	}
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters.<br> Possible values = basic, full
+	* </pre>
+	*/
+	public String get_clearstats() throws Exception {
+		return this.clearstats;
+	}
+
+	/**
+	* <pre>
+	* Rate (/s) counter for tcptotbdgcollisions
 	* </pre>
 	*/
 	public Long get_tcpbdgcollisionsrate() throws Exception {
@@ -63,7 +82,7 @@ public class bridge_stats extends base_resource
 
 	/**
 	* <pre>
-	* The total number of bridged packets
+	* Rate (/s) counter for totbdgpkts
 	* </pre>
 	*/
 	public Long get_bdgpktsrate() throws Exception {
@@ -81,7 +100,7 @@ public class bridge_stats extends base_resource
 
 	/**
 	* <pre>
-	* The number of bridging related interface mutes
+	* Rate (/s) counter for tcperrbdgmuted
 	* </pre>
 	*/
 	public Long get_tcperrbdgmutedrate() throws Exception {
@@ -90,7 +109,7 @@ public class bridge_stats extends base_resource
 
 	/**
 	* <pre>
-	* The number of times bridging registered MAC moved
+	* Rate (/s) counter for tcptotbdgmacmoved
 	* </pre>
 	*/
 	public Long get_tcpbdgmacmovedrate() throws Exception {
@@ -99,7 +118,7 @@ public class bridge_stats extends base_resource
 
 	/**
 	* <pre>
-	* The total number of bridged Mbits
+	* Rate (/s) counter for totbdgmbits
 	* </pre>
 	*/
 	public Long get_bdgmbitsrate() throws Exception {
@@ -187,4 +206,8 @@ public class bridge_stats extends base_resource
 		return response[0];
 	}
 
+	public static class clearstatsEnum {
+		public static final String basic = "basic";
+		public static final String full = "full";
+	}
 }

@@ -45,7 +45,7 @@ public class gslbparameter extends base_resource
 
 	/**
 	* <pre>
-	* The idle timeout in seconds of the learnt LDNS entry. If no new DNS request is made within this interval, then the LDNS entry is aged out.<br> Default value: 180<br> Minimum value =  0<br> Maximum value =  65534
+	* Time, in seconds, after which an inactive LDNS entry is removed.<br> Default value: 180<br> Minimum value =  0<br> Maximum value =  65534
 	* </pre>
 	*/
 	public void set_ldnsentrytimeout(long ldnsentrytimeout) throws Exception {
@@ -54,7 +54,7 @@ public class gslbparameter extends base_resource
 
 	/**
 	* <pre>
-	* The idle timeout in seconds of the learnt LDNS entry. If no new DNS request is made within this interval, then the LDNS entry is aged out.<br> Default value: 180<br> Minimum value =  0<br> Maximum value =  65534
+	* Time, in seconds, after which an inactive LDNS entry is removed.<br> Default value: 180<br> Minimum value =  0<br> Maximum value =  65534
 	* </pre>
 	*/
 	public void set_ldnsentrytimeout(Long ldnsentrytimeout) throws Exception{
@@ -63,7 +63,7 @@ public class gslbparameter extends base_resource
 
 	/**
 	* <pre>
-	* The idle timeout in seconds of the learnt LDNS entry. If no new DNS request is made within this interval, then the LDNS entry is aged out.<br> Default value: 180<br> Minimum value =  0<br> Maximum value =  65534
+	* Time, in seconds, after which an inactive LDNS entry is removed.<br> Default value: 180<br> Minimum value =  0<br> Maximum value =  65534
 	* </pre>
 	*/
 	public Long get_ldnsentrytimeout() throws Exception {
@@ -72,7 +72,7 @@ public class gslbparameter extends base_resource
 
 	/**
 	* <pre>
-	* The RTT Tolerance in milli seconds. When the RTT is calculated for an LDNS entry, and if the difference between the old RTT and the newly computed one is less than or equal to the RTT Tolerance value, the network metric table is not updated with the new value for this LDNS entry. This is done to prevent exchange of metric when there is small variation in RTT.<br> Default value: 5<br> Minimum value =  1<br> Maximum value =  100
+	* Tolerance, in milliseconds, for newly learned round-trip time (RTT) values. If the difference between the old RTT value and the newly computed RTT value is less than or equal to the specified tolerance value, the LDNS entry in the network metric table is not updated with the new RTT value. Prevents the exchange of metrics when variations in RTT values are negligible.<br> Default value: 5<br> Minimum value =  1<br> Maximum value =  100
 	* </pre>
 	*/
 	public void set_rtttolerance(long rtttolerance) throws Exception {
@@ -81,7 +81,7 @@ public class gslbparameter extends base_resource
 
 	/**
 	* <pre>
-	* The RTT Tolerance in milli seconds. When the RTT is calculated for an LDNS entry, and if the difference between the old RTT and the newly computed one is less than or equal to the RTT Tolerance value, the network metric table is not updated with the new value for this LDNS entry. This is done to prevent exchange of metric when there is small variation in RTT.<br> Default value: 5<br> Minimum value =  1<br> Maximum value =  100
+	* Tolerance, in milliseconds, for newly learned round-trip time (RTT) values. If the difference between the old RTT value and the newly computed RTT value is less than or equal to the specified tolerance value, the LDNS entry in the network metric table is not updated with the new RTT value. Prevents the exchange of metrics when variations in RTT values are negligible.<br> Default value: 5<br> Minimum value =  1<br> Maximum value =  100
 	* </pre>
 	*/
 	public void set_rtttolerance(Long rtttolerance) throws Exception{
@@ -90,7 +90,7 @@ public class gslbparameter extends base_resource
 
 	/**
 	* <pre>
-	* The RTT Tolerance in milli seconds. When the RTT is calculated for an LDNS entry, and if the difference between the old RTT and the newly computed one is less than or equal to the RTT Tolerance value, the network metric table is not updated with the new value for this LDNS entry. This is done to prevent exchange of metric when there is small variation in RTT.<br> Default value: 5<br> Minimum value =  1<br> Maximum value =  100
+	* Tolerance, in milliseconds, for newly learned round-trip time (RTT) values. If the difference between the old RTT value and the newly computed RTT value is less than or equal to the specified tolerance value, the LDNS entry in the network metric table is not updated with the new RTT value. Prevents the exchange of metrics when variations in RTT values are negligible.<br> Default value: 5<br> Minimum value =  1<br> Maximum value =  100
 	* </pre>
 	*/
 	public Long get_rtttolerance() throws Exception {
@@ -99,7 +99,7 @@ public class gslbparameter extends base_resource
 
 	/**
 	* <pre>
-	* The Netmask. The Netmask specified here is used to store the LDNS IP addresses in the hash table and these are used in dynamic proximity-based GSLB.<br> Minimum length =  1
+	* The IPv4 network mask with which to create LDNS entries.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_ldnsmask(String ldnsmask) throws Exception{
@@ -108,7 +108,7 @@ public class gslbparameter extends base_resource
 
 	/**
 	* <pre>
-	* The Netmask. The Netmask specified here is used to store the LDNS IP addresses in the hash table and these are used in dynamic proximity-based GSLB.<br> Minimum length =  1
+	* The IPv4 network mask with which to create LDNS entries.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_ldnsmask() throws Exception {
@@ -117,7 +117,7 @@ public class gslbparameter extends base_resource
 
 	/**
 	* <pre>
-	* The V6 ldns mask prefix length.<br> Default value: 128<br> Minimum value =  1<br> Maximum value =  128
+	* Mask for creating LDNS entries for IPv6 source addresses. The mask is defined as the number of leading bits to consider, in the source IP address, when creating an LDNS entry.<br> Default value: 128<br> Minimum value =  1<br> Maximum value =  128
 	* </pre>
 	*/
 	public void set_v6ldnsmasklen(long v6ldnsmasklen) throws Exception {
@@ -126,7 +126,7 @@ public class gslbparameter extends base_resource
 
 	/**
 	* <pre>
-	* The V6 ldns mask prefix length.<br> Default value: 128<br> Minimum value =  1<br> Maximum value =  128
+	* Mask for creating LDNS entries for IPv6 source addresses. The mask is defined as the number of leading bits to consider, in the source IP address, when creating an LDNS entry.<br> Default value: 128<br> Minimum value =  1<br> Maximum value =  128
 	* </pre>
 	*/
 	public void set_v6ldnsmasklen(Long v6ldnsmasklen) throws Exception{
@@ -135,7 +135,7 @@ public class gslbparameter extends base_resource
 
 	/**
 	* <pre>
-	* The V6 ldns mask prefix length.<br> Default value: 128<br> Minimum value =  1<br> Maximum value =  128
+	* Mask for creating LDNS entries for IPv6 source addresses. The mask is defined as the number of leading bits to consider, in the source IP address, when creating an LDNS entry.<br> Default value: 128<br> Minimum value =  1<br> Maximum value =  128
 	* </pre>
 	*/
 	public Long get_v6ldnsmasklen() throws Exception {
@@ -144,7 +144,7 @@ public class gslbparameter extends base_resource
 
 	/**
 	* <pre>
-	* The order in which monitors should be initiated to calculate RTT.<br> Possible values = PING, DNS, TCP
+	* Order in which monitors should be initiated to calculate RTT.<br> Possible values = PING, DNS, TCP
 	* </pre>
 	*/
 	public void set_ldnsprobeorder(String[] ldnsprobeorder) throws Exception{
@@ -153,7 +153,7 @@ public class gslbparameter extends base_resource
 
 	/**
 	* <pre>
-	* The order in which monitors should be initiated to calculate RTT.<br> Possible values = PING, DNS, TCP
+	* Order in which monitors should be initiated to calculate RTT.<br> Possible values = PING, DNS, TCP
 	* </pre>
 	*/
 	public String[] get_ldnsprobeorder() throws Exception {
@@ -162,7 +162,7 @@ public class gslbparameter extends base_resource
 
 	/**
 	* <pre>
-	* Drop LDNS requests if no RTT info available.Effective state will be not be considered when services are down or saturated too.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Drop LDNS requests if round-trip time (RTT) information is not available.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_dropldnsreq(String dropldnsreq) throws Exception{
@@ -171,7 +171,7 @@ public class gslbparameter extends base_resource
 
 	/**
 	* <pre>
-	* Drop LDNS requests if no RTT info available.Effective state will be not be considered when services are down or saturated too.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Drop LDNS requests if round-trip time (RTT) information is not available.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_dropldnsreq() throws Exception {
@@ -243,12 +243,6 @@ public class gslbparameter extends base_resource
 	*/
 	public static base_response unset(nitro_service client, gslbparameter resource, String[] args) throws Exception{
 		gslbparameter unsetresource = new gslbparameter();
-		unsetresource.ldnsentrytimeout = resource.ldnsentrytimeout;
-		unsetresource.rtttolerance = resource.rtttolerance;
-		unsetresource.ldnsmask = resource.ldnsmask;
-		unsetresource.v6ldnsmasklen = resource.v6ldnsmasklen;
-		unsetresource.ldnsprobeorder = resource.ldnsprobeorder;
-		unsetresource.dropldnsreq = resource.dropldnsreq;
 		return unsetresource.unset_resource(client,args);
 	}
 

@@ -57,7 +57,7 @@ public class aaagroup_intranetip_binding extends base_resource
 
 	/**
 	* <pre>
-	* The group name.<br> Minimum length =  1
+	* Name of the group that you are binding.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_groupname(String groupname) throws Exception{
@@ -66,7 +66,7 @@ public class aaagroup_intranetip_binding extends base_resource
 
 	/**
 	* <pre>
-	* The group name.<br> Minimum length =  1
+	* Name of the group that you are binding.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_groupname() throws Exception {

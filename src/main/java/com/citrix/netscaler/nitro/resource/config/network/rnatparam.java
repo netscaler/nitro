@@ -36,7 +36,7 @@ public class rnatparam extends base_resource
 
 	/**
 	* <pre>
-	* The state of tcpproxy.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Enable TCP proxy, which enables the NetScaler appliance to optimize the RNAT TCP traffic by using Layer 4 features.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_tcpproxy(String tcpproxy) throws Exception{
@@ -45,7 +45,7 @@ public class rnatparam extends base_resource
 
 	/**
 	* <pre>
-	* The state of tcpproxy.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Enable TCP proxy, which enables the NetScaler appliance to optimize the RNAT TCP traffic by using Layer 4 features.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_tcpproxy() throws Exception {
@@ -103,7 +103,6 @@ public class rnatparam extends base_resource
 	*/
 	public static base_response unset(nitro_service client, rnatparam resource, String[] args) throws Exception{
 		rnatparam unsetresource = new rnatparam();
-		unsetresource.tcpproxy = resource.tcpproxy;
 		return unsetresource.unset_resource(client,args);
 	}
 

@@ -42,10 +42,11 @@ public class dnsparameter extends base_resource
 	private String dnssec;
 	private Long maxpipeline;
 	private String dnsrootreferral;
+	private Long dns64timeout;
 
 	/**
 	* <pre>
-	* The DNS resolver request retry count.<br> Default value: 5<br> Minimum value =  1<br> Maximum value =  5
+	* Maximum number of retry attempts when no response is received for a query sent to a name server. Applies to end resolver and forwarder configurations.<br> Default value: 5<br> Minimum value =  1<br> Maximum value =  5
 	* </pre>
 	*/
 	public void set_retries(long retries) throws Exception {
@@ -54,7 +55,7 @@ public class dnsparameter extends base_resource
 
 	/**
 	* <pre>
-	* The DNS resolver request retry count.<br> Default value: 5<br> Minimum value =  1<br> Maximum value =  5
+	* Maximum number of retry attempts when no response is received for a query sent to a name server. Applies to end resolver and forwarder configurations.<br> Default value: 5<br> Minimum value =  1<br> Maximum value =  5
 	* </pre>
 	*/
 	public void set_retries(Long retries) throws Exception{
@@ -63,7 +64,7 @@ public class dnsparameter extends base_resource
 
 	/**
 	* <pre>
-	* The DNS resolver request retry count.<br> Default value: 5<br> Minimum value =  1<br> Maximum value =  5
+	* Maximum number of retry attempts when no response is received for a query sent to a name server. Applies to end resolver and forwarder configurations.<br> Default value: 5<br> Minimum value =  1<br> Maximum value =  5
 	* </pre>
 	*/
 	public Long get_retries() throws Exception {
@@ -72,7 +73,7 @@ public class dnsparameter extends base_resource
 
 	/**
 	* <pre>
-	* The minimum time to live value, in seconds. If any DNS entry has a time to live value of less than the minimum, it is saved as the minimum time to live value.<br> Minimum value =  0<br> Maximum value =  604800
+	* Minimum permissible time to live (TTL) for all records cached in the DNS cache by DNS proxy, end resolver, and forwarder configurations. If the TTL of a record that is to be cached is lower than the value configured for minTTL, the TTL of the record is set to the value of minTTL before caching. When you modify this setting, the new value is applied only to those records that are cached after the modification. The TTL values of existing records are not changed.<br> Minimum value =  0<br> Maximum value =  604800
 	* </pre>
 	*/
 	public void set_minttl(long minttl) throws Exception {
@@ -81,7 +82,7 @@ public class dnsparameter extends base_resource
 
 	/**
 	* <pre>
-	* The minimum time to live value, in seconds. If any DNS entry has a time to live value of less than the minimum, it is saved as the minimum time to live value.<br> Minimum value =  0<br> Maximum value =  604800
+	* Minimum permissible time to live (TTL) for all records cached in the DNS cache by DNS proxy, end resolver, and forwarder configurations. If the TTL of a record that is to be cached is lower than the value configured for minTTL, the TTL of the record is set to the value of minTTL before caching. When you modify this setting, the new value is applied only to those records that are cached after the modification. The TTL values of existing records are not changed.<br> Minimum value =  0<br> Maximum value =  604800
 	* </pre>
 	*/
 	public void set_minttl(Long minttl) throws Exception{
@@ -90,7 +91,7 @@ public class dnsparameter extends base_resource
 
 	/**
 	* <pre>
-	* The minimum time to live value, in seconds. If any DNS entry has a time to live value of less than the minimum, it is saved as the minimum time to live value.<br> Minimum value =  0<br> Maximum value =  604800
+	* Minimum permissible time to live (TTL) for all records cached in the DNS cache by DNS proxy, end resolver, and forwarder configurations. If the TTL of a record that is to be cached is lower than the value configured for minTTL, the TTL of the record is set to the value of minTTL before caching. When you modify this setting, the new value is applied only to those records that are cached after the modification. The TTL values of existing records are not changed.<br> Minimum value =  0<br> Maximum value =  604800
 	* </pre>
 	*/
 	public Long get_minttl() throws Exception {
@@ -99,7 +100,7 @@ public class dnsparameter extends base_resource
 
 	/**
 	* <pre>
-	* The maximum time to live value allowed, in seconds. If the DNS entry has a time to live value of more than the maximum, it is saved as the maximum time to live value.<br> Default value: 604800<br> Minimum value =  1<br> Maximum value =  604800
+	* Maximum time to live (TTL) for all records cached in the DNS cache by DNS proxy, end resolver, and forwarder configurations. If the TTL of a record that is to be cached is higher than the value configured for maxTTL, the TTL of the record is set to the value of maxTTL before caching. When you modify this setting, the new value is applied only to those records that are cached after the modification. The TTL values of existing records are not changed.<br> Default value: 604800<br> Minimum value =  1<br> Maximum value =  604800
 	* </pre>
 	*/
 	public void set_maxttl(long maxttl) throws Exception {
@@ -108,7 +109,7 @@ public class dnsparameter extends base_resource
 
 	/**
 	* <pre>
-	* The maximum time to live value allowed, in seconds. If the DNS entry has a time to live value of more than the maximum, it is saved as the maximum time to live value.<br> Default value: 604800<br> Minimum value =  1<br> Maximum value =  604800
+	* Maximum time to live (TTL) for all records cached in the DNS cache by DNS proxy, end resolver, and forwarder configurations. If the TTL of a record that is to be cached is higher than the value configured for maxTTL, the TTL of the record is set to the value of maxTTL before caching. When you modify this setting, the new value is applied only to those records that are cached after the modification. The TTL values of existing records are not changed.<br> Default value: 604800<br> Minimum value =  1<br> Maximum value =  604800
 	* </pre>
 	*/
 	public void set_maxttl(Long maxttl) throws Exception{
@@ -117,7 +118,7 @@ public class dnsparameter extends base_resource
 
 	/**
 	* <pre>
-	* The maximum time to live value allowed, in seconds. If the DNS entry has a time to live value of more than the maximum, it is saved as the maximum time to live value.<br> Default value: 604800<br> Minimum value =  1<br> Maximum value =  604800
+	* Maximum time to live (TTL) for all records cached in the DNS cache by DNS proxy, end resolver, and forwarder configurations. If the TTL of a record that is to be cached is higher than the value configured for maxTTL, the TTL of the record is set to the value of maxTTL before caching. When you modify this setting, the new value is applied only to those records that are cached after the modification. The TTL values of existing records are not changed.<br> Default value: 604800<br> Minimum value =  1<br> Maximum value =  604800
 	* </pre>
 	*/
 	public Long get_maxttl() throws Exception {
@@ -126,7 +127,7 @@ public class dnsparameter extends base_resource
 
 	/**
 	* <pre>
-	* The state of dns records caching.<br> Default value: YES<br> Possible values = YES, NO
+	* Cache resource records in the DNS cache. Applies to resource records obtained through proxy configurations only. End resolver and forwarder configurations always cache records in the DNS cache, and you cannot disable this behavior. When you disable record caching, the appliance stops caching server responses. However, cached records are not flushed. The appliance does not serve requests from the cache until record caching is enabled again.<br> Default value: YES<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public void set_cacherecords(String cacherecords) throws Exception{
@@ -135,7 +136,7 @@ public class dnsparameter extends base_resource
 
 	/**
 	* <pre>
-	* The state of dns records caching.<br> Default value: YES<br> Possible values = YES, NO
+	* Cache resource records in the DNS cache. Applies to resource records obtained through proxy configurations only. End resolver and forwarder configurations always cache records in the DNS cache, and you cannot disable this behavior. When you disable record caching, the appliance stops caching server responses. However, cached records are not flushed. The appliance does not serve requests from the cache until record caching is enabled again.<br> Default value: YES<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public String get_cacherecords() throws Exception {
@@ -144,7 +145,7 @@ public class dnsparameter extends base_resource
 
 	/**
 	* <pre>
-	* The name lookup priority, as DNS or WINS.<br> Default value: NS_WINSFIRST<br> Possible values = WINS, DNS
+	* Type of lookup (DNS or WINS) to attempt first. If the first-priority lookup fails, the second-priority lookup is attempted. Used only by the SSL VPN feature.<br> Default value: WINS<br> Possible values = WINS, DNS
 	* </pre>
 	*/
 	public void set_namelookuppriority(String namelookuppriority) throws Exception{
@@ -153,7 +154,7 @@ public class dnsparameter extends base_resource
 
 	/**
 	* <pre>
-	* The name lookup priority, as DNS or WINS.<br> Default value: NS_WINSFIRST<br> Possible values = WINS, DNS
+	* Type of lookup (DNS or WINS) to attempt first. If the first-priority lookup fails, the second-priority lookup is attempted. Used only by the SSL VPN feature.<br> Default value: WINS<br> Possible values = WINS, DNS
 	* </pre>
 	*/
 	public String get_namelookuppriority() throws Exception {
@@ -162,7 +163,7 @@ public class dnsparameter extends base_resource
 
 	/**
 	* <pre>
-	* Allow recursive name resolution by NetScaler.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Function as an end resolver and recursively resolve queries for domains that are not hosted on the NetScaler appliance. Also resolve queries recursively when the external name servers configured on the appliance (for a forwarder configuration) are unavailable. When external name servers are unavailable, the appliance queries a root server and resolves the request recursively, as it does for an end resolver configuration.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_recursion(String recursion) throws Exception{
@@ -171,7 +172,7 @@ public class dnsparameter extends base_resource
 
 	/**
 	* <pre>
-	* Allow recursive name resolution by NetScaler.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Function as an end resolver and recursively resolve queries for domains that are not hosted on the NetScaler appliance. Also resolve queries recursively when the external name servers configured on the appliance (for a forwarder configuration) are unavailable. When external name servers are unavailable, the appliance queries a root server and resolves the request recursively, as it does for an end resolver configuration.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_recursion() throws Exception {
@@ -180,7 +181,11 @@ public class dnsparameter extends base_resource
 
 	/**
 	* <pre>
-	* The order in which DNS resolver send A/AAAA query for the domain.<br> Default value: NS_FOUR<br> Possible values = OnlyAQuery, OnlyAAAAQuery, AThenAAAAQuery, AAAAThenAQuery
+	* Type of DNS queries (A, AAAA, or both) to generate during the routine functioning of certain NetScaler features, such as SSL VPN, cache redirection, and the integrated cache. The queries are sent to the external name servers that are configured for the forwarder function. If you specify both query types, you can also specify the order. Available settings function as follows:
+* OnlyAQuery. Send queries for IPv4 address records (A records) only. 
+* OnlyAAAAQuery. Send queries for IPv6 address records (AAAA records) instead of queries for IPv4 address records (A records).
+* AThenAAAAQuery. Send a query for an A record, and then send a query for an AAAA record if the query for the A record results in a NODATA response from the name server.
+* AAAAThenAQuery. Send a query for an AAAA record, and then send a query for an A record if the query for the AAAA record results in a NODATA response from the name server.<br> Default value: OnlyAQuery<br> Possible values = OnlyAQuery, OnlyAAAAQuery, AThenAAAAQuery, AAAAThenAQuery
 	* </pre>
 	*/
 	public void set_resolutionorder(String resolutionorder) throws Exception{
@@ -189,7 +194,11 @@ public class dnsparameter extends base_resource
 
 	/**
 	* <pre>
-	* The order in which DNS resolver send A/AAAA query for the domain.<br> Default value: NS_FOUR<br> Possible values = OnlyAQuery, OnlyAAAAQuery, AThenAAAAQuery, AAAAThenAQuery
+	* Type of DNS queries (A, AAAA, or both) to generate during the routine functioning of certain NetScaler features, such as SSL VPN, cache redirection, and the integrated cache. The queries are sent to the external name servers that are configured for the forwarder function. If you specify both query types, you can also specify the order. Available settings function as follows:
+* OnlyAQuery. Send queries for IPv4 address records (A records) only. 
+* OnlyAAAAQuery. Send queries for IPv6 address records (AAAA records) instead of queries for IPv4 address records (A records).
+* AThenAAAAQuery. Send a query for an A record, and then send a query for an AAAA record if the query for the A record results in a NODATA response from the name server.
+* AAAAThenAQuery. Send a query for an AAAA record, and then send a query for an A record if the query for the AAAA record results in a NODATA response from the name server.<br> Default value: OnlyAQuery<br> Possible values = OnlyAQuery, OnlyAAAAQuery, AThenAAAAQuery, AAAAThenAQuery
 	* </pre>
 	*/
 	public String get_resolutionorder() throws Exception {
@@ -198,7 +207,7 @@ public class dnsparameter extends base_resource
 
 	/**
 	* <pre>
-	* To enable the DNS security extensions.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Enable or disable the Domain Name System Security Extensions (DNSSEC) feature on the appliance. Note: Even when the DNSSEC feature is enabled, forwarder configurations (used by internal NetScaler features such as SSL VPN and Cache Redirection for name resolution) do not support the DNSSEC OK (DO) bit in the EDNS0 OPT header.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_dnssec(String dnssec) throws Exception{
@@ -207,7 +216,7 @@ public class dnsparameter extends base_resource
 
 	/**
 	* <pre>
-	* To enable the DNS security extensions.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Enable or disable the Domain Name System Security Extensions (DNSSEC) feature on the appliance. Note: Even when the DNSSEC feature is enabled, forwarder configurations (used by internal NetScaler features such as SSL VPN and Cache Redirection for name resolution) do not support the DNSSEC OK (DO) bit in the EDNS0 OPT header.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_dnssec() throws Exception {
@@ -216,7 +225,7 @@ public class dnsparameter extends base_resource
 
 	/**
 	* <pre>
-	* To set the maximum value of the concurrent DNS pipeline. A setting of zero makes the pipeline infinite.
+	* Maximum number of concurrent DNS requests to allow on a single client connection, which is identified by the <clientip:port>-<vserver ip:port> tuple. A value of 0 (zero) applies no limit to the number of concurrent DNS requests allowed on a single client connection.
 	* </pre>
 	*/
 	public void set_maxpipeline(long maxpipeline) throws Exception {
@@ -225,7 +234,7 @@ public class dnsparameter extends base_resource
 
 	/**
 	* <pre>
-	* To set the maximum value of the concurrent DNS pipeline. A setting of zero makes the pipeline infinite.
+	* Maximum number of concurrent DNS requests to allow on a single client connection, which is identified by the <clientip:port>-<vserver ip:port> tuple. A value of 0 (zero) applies no limit to the number of concurrent DNS requests allowed on a single client connection.
 	* </pre>
 	*/
 	public void set_maxpipeline(Long maxpipeline) throws Exception{
@@ -234,7 +243,7 @@ public class dnsparameter extends base_resource
 
 	/**
 	* <pre>
-	* To set the maximum value of the concurrent DNS pipeline. A setting of zero makes the pipeline infinite.
+	* Maximum number of concurrent DNS requests to allow on a single client connection, which is identified by the <clientip:port>-<vserver ip:port> tuple. A value of 0 (zero) applies no limit to the number of concurrent DNS requests allowed on a single client connection.
 	* </pre>
 	*/
 	public Long get_maxpipeline() throws Exception {
@@ -243,7 +252,7 @@ public class dnsparameter extends base_resource
 
 	/**
 	* <pre>
-	* This option is used to enable/disable the sending NS root referrals.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Send a root referral if a client queries a domain name that is unrelated to the domains configured/cached on the NetScaler appliance. If the setting is disabled, the appliance sends a blank response instead of a root referral. Applicable to domains for which the appliance is authoritative. Disable the parameter when the appliance is under attack from a client that is sending a flood of queries for unrelated domains.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_dnsrootreferral(String dnsrootreferral) throws Exception{
@@ -252,11 +261,38 @@ public class dnsparameter extends base_resource
 
 	/**
 	* <pre>
-	* This option is used to enable/disable the sending NS root referrals.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Send a root referral if a client queries a domain name that is unrelated to the domains configured/cached on the NetScaler appliance. If the setting is disabled, the appliance sends a blank response instead of a root referral. Applicable to domains for which the appliance is authoritative. Disable the parameter when the appliance is under attack from a client that is sending a flood of queries for unrelated domains.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_dnsrootreferral() throws Exception {
 		return this.dnsrootreferral;
+	}
+
+	/**
+	* <pre>
+	* While doing DNS64 resolution, this parameter specifies the time to wait before sending an A query if no response is received from backend DNS server for AAAA query.<br> Minimum value =  0<br> Maximum value =  10000
+	* </pre>
+	*/
+	public void set_dns64timeout(long dns64timeout) throws Exception {
+		this.dns64timeout = new Long(dns64timeout);
+	}
+
+	/**
+	* <pre>
+	* While doing DNS64 resolution, this parameter specifies the time to wait before sending an A query if no response is received from backend DNS server for AAAA query.<br> Minimum value =  0<br> Maximum value =  10000
+	* </pre>
+	*/
+	public void set_dns64timeout(Long dns64timeout) throws Exception{
+		this.dns64timeout = dns64timeout;
+	}
+
+	/**
+	* <pre>
+	* While doing DNS64 resolution, this parameter specifies the time to wait before sending an A query if no response is received from backend DNS server for AAAA query.<br> Minimum value =  0<br> Maximum value =  10000
+	* </pre>
+	*/
+	public Long get_dns64timeout() throws Exception {
+		return this.dns64timeout;
 	}
 
 	/**
@@ -310,6 +346,7 @@ public class dnsparameter extends base_resource
 		updateresource.dnssec = resource.dnssec;
 		updateresource.maxpipeline = resource.maxpipeline;
 		updateresource.dnsrootreferral = resource.dnsrootreferral;
+		updateresource.dns64timeout = resource.dns64timeout;
 		return updateresource.update_resource(client);
 	}
 
@@ -319,16 +356,6 @@ public class dnsparameter extends base_resource
 	*/
 	public static base_response unset(nitro_service client, dnsparameter resource, String[] args) throws Exception{
 		dnsparameter unsetresource = new dnsparameter();
-		unsetresource.retries = resource.retries;
-		unsetresource.minttl = resource.minttl;
-		unsetresource.maxttl = resource.maxttl;
-		unsetresource.cacherecords = resource.cacherecords;
-		unsetresource.namelookuppriority = resource.namelookuppriority;
-		unsetresource.recursion = resource.recursion;
-		unsetresource.resolutionorder = resource.resolutionorder;
-		unsetresource.dnssec = resource.dnssec;
-		unsetresource.maxpipeline = resource.maxpipeline;
-		unsetresource.dnsrootreferral = resource.dnsrootreferral;
 		return unsetresource.unset_resource(client,args);
 	}
 

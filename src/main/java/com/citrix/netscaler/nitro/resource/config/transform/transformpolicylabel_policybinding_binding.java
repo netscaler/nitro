@@ -88,7 +88,7 @@ public class transformpolicylabel_policybinding_binding extends base_resource
 
 	/**
 	* <pre>
-	* The transform policy name.
+	* Name of the URL Transformation policy to bind to the policy label.
 	* </pre>
 	*/
 	public void set_policyname(String policyname) throws Exception{
@@ -97,7 +97,7 @@ public class transformpolicylabel_policybinding_binding extends base_resource
 
 	/**
 	* <pre>
-	* The transform policy name.
+	* Name of the URL Transformation policy to bind to the policy label.
 	* </pre>
 	*/
 	public String get_policyname() throws Exception {
@@ -106,7 +106,9 @@ public class transformpolicylabel_policybinding_binding extends base_resource
 
 	/**
 	* <pre>
-	* Type of policy label invocation.<br> Possible values = reqvserver, policylabel
+	* Type of invocation. Available settings function as follows:
+* reqvserver - Forward the request to the specified request virtual server.
+* policylabel - Invoke the specified policy label.<br> Possible values = reqvserver, policylabel
 	* </pre>
 	*/
 	public void set_labeltype(String labeltype) throws Exception{
@@ -115,7 +117,9 @@ public class transformpolicylabel_policybinding_binding extends base_resource
 
 	/**
 	* <pre>
-	* Type of policy label invocation.<br> Possible values = reqvserver, policylabel
+	* Type of invocation. Available settings function as follows:
+* reqvserver - Forward the request to the specified request virtual server.
+* policylabel - Invoke the specified policy label.<br> Possible values = reqvserver, policylabel
 	* </pre>
 	*/
 	public String get_labeltype() throws Exception {
@@ -124,7 +128,7 @@ public class transformpolicylabel_policybinding_binding extends base_resource
 
 	/**
 	* <pre>
-	* Name of the transform policy label.
+	* Name of the URL Transformation policy label to which to bind the policy.
 	* </pre>
 	*/
 	public void set_labelname(String labelname) throws Exception{
@@ -133,7 +137,7 @@ public class transformpolicylabel_policybinding_binding extends base_resource
 
 	/**
 	* <pre>
-	* Name of the transform policy label.
+	* Name of the URL Transformation policy label to which to bind the policy.
 	* </pre>
 	*/
 	public String get_labelname() throws Exception {
@@ -142,7 +146,7 @@ public class transformpolicylabel_policybinding_binding extends base_resource
 
 	/**
 	* <pre>
-	* Name of the label to invoke if the current policy rule evaluates to TRUE.
+	* Name of the policy label.
 	* </pre>
 	*/
 	public void set_invoke_labelname(String invoke_labelname) throws Exception{
@@ -151,7 +155,7 @@ public class transformpolicylabel_policybinding_binding extends base_resource
 
 	/**
 	* <pre>
-	* Name of the label to invoke if the current policy rule evaluates to TRUE.
+	* Name of the policy label.
 	* </pre>
 	*/
 	public String get_invoke_labelname() throws Exception {
@@ -160,7 +164,7 @@ public class transformpolicylabel_policybinding_binding extends base_resource
 
 	/**
 	* <pre>
-	* Invoke flag.
+	* If the current policy evaluates to TRUE, terminate evaluation of policies bound to the current policy label, and then forward the request to the specified virtual server or evaluate the specified policy label.
 	* </pre>
 	*/
 	public void set_invoke(boolean invoke) throws Exception {
@@ -169,7 +173,7 @@ public class transformpolicylabel_policybinding_binding extends base_resource
 
 	/**
 	* <pre>
-	* Invoke flag.
+	* If the current policy evaluates to TRUE, terminate evaluation of policies bound to the current policy label, and then forward the request to the specified virtual server or evaluate the specified policy label.
 	* </pre>
 	*/
 	public void set_invoke(Boolean invoke) throws Exception{
@@ -178,7 +182,7 @@ public class transformpolicylabel_policybinding_binding extends base_resource
 
 	/**
 	* <pre>
-	* Invoke flag.
+	* If the current policy evaluates to TRUE, terminate evaluation of policies bound to the current policy label, and then forward the request to the specified virtual server or evaluate the specified policy label.
 	* </pre>
 	*/
 	public Boolean get_invoke() throws Exception {

@@ -33,6 +33,7 @@ class clusterinstance_response extends base_response
 public class clusterinstance_stats extends base_resource
 {
 	private Long clid;
+	private String clearstats;
 	private Long clnumnodes;
 	private String clcurstatus;
 	private String clviewleader;
@@ -46,7 +47,7 @@ public class clusterinstance_stats extends base_resource
 
 	/**
 	* <pre>
-	* The ID of the cluster instance whose statistics must be displayed.
+	* ID of the cluster instance for which to display statistics.
 	* </pre>
 	*/
 	public void set_clid(long clid) throws Exception {
@@ -55,7 +56,7 @@ public class clusterinstance_stats extends base_resource
 
 	/**
 	* <pre>
-	* The ID of the cluster instance whose statistics must be displayed.
+	* ID of the cluster instance for which to display statistics.
 	* </pre>
 	*/
 	public void set_clid(Long clid) throws Exception{
@@ -64,11 +65,29 @@ public class clusterinstance_stats extends base_resource
 
 	/**
 	* <pre>
-	* The ID of the cluster instance whose statistics must be displayed.<br> Minimum value =  1<br> Maximum value =  16
+	* ID of the cluster instance for which to display statistics.<br> Minimum value =  1<br> Maximum value =  16
 	* </pre>
 	*/
 	public Long get_clid() throws Exception {
 		return this.clid;
+	}
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters
+	* </pre>
+	*/
+	public void set_clearstats(String clearstats) throws Exception{
+		this.clearstats = clearstats;
+	}
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters.<br> Possible values = basic, full
+	* </pre>
+	*/
+	public String get_clearstats() throws Exception {
+		return this.clearstats;
 	}
 
 	/**
@@ -91,7 +110,7 @@ public class clusterinstance_stats extends base_resource
 
 	/**
 	* <pre>
-	* Traffic transmitted from backplane (in mbits)
+	* Rate (/s) counter for clbkplanetx
 	* </pre>
 	*/
 	public Long get_clbkplanetxrate() throws Exception {
@@ -154,7 +173,7 @@ public class clusterinstance_stats extends base_resource
 
 	/**
 	* <pre>
-	* Traffic received on backplane (in mbits)
+	* Rate (/s) counter for clbkplanerx
 	* </pre>
 	*/
 	public Long get_clbkplanerxrate() throws Exception {
@@ -226,4 +245,8 @@ public class clusterinstance_stats extends base_resource
 		return response;
 	}
 
+	public static class clearstatsEnum {
+		public static final String basic = "basic";
+		public static final String full = "full";
+	}
 }

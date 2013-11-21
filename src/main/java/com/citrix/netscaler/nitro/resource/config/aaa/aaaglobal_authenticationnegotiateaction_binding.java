@@ -36,6 +36,7 @@ public class aaaglobal_authenticationnegotiateaction_binding extends base_resour
 	private String policy;
 	private Long priority;
 	private Long bindpolicytype;
+	private String[] builtin;
 	private Long __count;
 
 	/**
@@ -67,7 +68,7 @@ public class aaaglobal_authenticationnegotiateaction_binding extends base_resour
 
 	/**
 	* <pre>
-	* The policy to be unbound to the AAA user.<br> Minimum length =  1
+	* Name of the policy to be unbound.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_policy(String policy) throws Exception{
@@ -76,11 +77,29 @@ public class aaaglobal_authenticationnegotiateaction_binding extends base_resour
 
 	/**
 	* <pre>
-	* The policy to be unbound to the AAA user.<br> Minimum length =  1
+	* Name of the policy to be unbound.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_policy() throws Exception {
 		return this.policy;
+	}
+
+	/**
+	* <pre>
+	* Indicates that a variable is a built-in (SYSTEM INTERNAL) type.<br> Possible values = MODIFIABLE, DELETABLE, IMMUTABLE
+	* </pre>
+	*/
+	public void set_builtin(String[] builtin) throws Exception{
+		this.builtin = builtin;
+	}
+
+	/**
+	* <pre>
+	* Indicates that a variable is a built-in (SYSTEM INTERNAL) type.<br> Possible values = MODIFIABLE, DELETABLE, IMMUTABLE
+	* </pre>
+	*/
+	public String[] get_builtin() throws Exception {
+		return this.builtin;
 	}
 
 	/**
@@ -267,5 +286,10 @@ public class aaaglobal_authenticationnegotiateaction_binding extends base_resour
 		return 0;
 	}
 
+	public static class builtinEnum {
+		public static final String MODIFIABLE = "MODIFIABLE";
+		public static final String DELETABLE = "DELETABLE";
+		public static final String IMMUTABLE = "IMMUTABLE";
+	}
 
 }

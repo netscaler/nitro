@@ -26,7 +26,7 @@ public class aaauser_args
 
 	/**
 	* <pre>
-	* The loggedin flag. When this flag is turned on, the system displays the names of all logged-in users. If a user name is included, the system displays whether the user is logged in or not. .
+	* Show whether the user is logged in or not.
 	* </pre>
 	*/
 	public void set_loggedin(boolean loggedin) throws Exception {
@@ -35,7 +35,7 @@ public class aaauser_args
 
 	/**
 	* <pre>
-	* The loggedin flag. When this flag is turned on, the system displays the names of all logged-in users. If a user name is included, the system displays whether the user is logged in or not. .
+	* Show whether the user is logged in or not.
 	* </pre>
 	*/
 	public void set_loggedin(Boolean loggedin) throws Exception{
@@ -44,7 +44,7 @@ public class aaauser_args
 
 	/**
 	* <pre>
-	* The loggedin flag. When this flag is turned on, the system displays the names of all logged-in users. If a user name is included, the system displays whether the user is logged in or not. .
+	* Show whether the user is logged in or not.
 	* </pre>
 	*/
 	public Boolean get_loggedin() throws Exception {

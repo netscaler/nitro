@@ -16,8 +16,8 @@
 
 package com.citrix.netscaler.nitro.resource.config.cache;
 
-import com.citrix.netscaler.nitro.resource.config.cache.cachepolicylabel_policybinding_binding;
 import com.citrix.netscaler.nitro.resource.config.cache.cachepolicylabel_cachepolicy_binding;
+import com.citrix.netscaler.nitro.resource.config.cache.cachepolicylabel_policybinding_binding;
 import com.citrix.netscaler.nitro.resource.base.*;
 import com.citrix.netscaler.nitro.service.nitro_service;
 import com.citrix.netscaler.nitro.service.options;
@@ -35,12 +35,12 @@ class cachepolicylabel_binding_response extends base_response
 public class cachepolicylabel_binding extends base_resource
 {
 	private String labelname;
-	private cachepolicylabel_policybinding_binding	cachepolicylabel_policybinding_binding[] = null;
 	private cachepolicylabel_cachepolicy_binding	cachepolicylabel_cachepolicy_binding[] = null;
+	private cachepolicylabel_policybinding_binding	cachepolicylabel_policybinding_binding[] = null;
 
 	/**
 	* <pre>
-	* Name of the cache policy label.
+	* Name of the cache-policy label about which to display information.
 	* </pre>
 	*/
 	public void set_labelname(String labelname) throws Exception{
@@ -49,7 +49,7 @@ public class cachepolicylabel_binding extends base_resource
 
 	/**
 	* <pre>
-	* Name of the cache policy label.
+	* Name of the cache-policy label about which to display information.
 	* </pre>
 	*/
 	public String get_labelname() throws Exception {

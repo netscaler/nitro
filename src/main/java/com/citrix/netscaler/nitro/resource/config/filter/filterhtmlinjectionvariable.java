@@ -43,7 +43,7 @@ public class filterhtmlinjectionvariable extends base_resource
 
 	/**
 	* <pre>
-	* The name of the HTML injection variable to be added.<br> Minimum length =  1<br> Maximum length =  31
+	* Name for the HTML injection variable to be added.<br> Minimum length =  1<br> Maximum length =  31
 	* </pre>
 	*/
 	public void set_variable(String variable) throws Exception{
@@ -52,7 +52,7 @@ public class filterhtmlinjectionvariable extends base_resource
 
 	/**
 	* <pre>
-	* The name of the HTML injection variable to be added.<br> Minimum length =  1<br> Maximum length =  31
+	* Name for the HTML injection variable to be added.<br> Minimum length =  1<br> Maximum length =  31
 	* </pre>
 	*/
 	public String get_variable() throws Exception {
@@ -237,20 +237,9 @@ public class filterhtmlinjectionvariable extends base_resource
 	* Use this API to unset the properties of filterhtmlinjectionvariable resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String variable, String args[]) throws Exception {
-		filterhtmlinjectionvariable unsetresource = new filterhtmlinjectionvariable();
-		unsetresource.variable = variable;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of filterhtmlinjectionvariable resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, filterhtmlinjectionvariable resource, String[] args) throws Exception{
 		filterhtmlinjectionvariable unsetresource = new filterhtmlinjectionvariable();
 		unsetresource.variable = resource.variable;
-		unsetresource.value = resource.value;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -282,7 +271,6 @@ public class filterhtmlinjectionvariable extends base_resource
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new filterhtmlinjectionvariable();
 				unsetresources[i].variable = resources[i].variable;
-				unsetresources[i].value = resources[i].value;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}

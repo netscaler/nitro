@@ -40,7 +40,7 @@ public class authenticationlocalpolicy_vpnglobal_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the policy. If a name is not provided, all the configured LOCAL policies will be displayed.
+	* Name of the local authentication policy.
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -49,7 +49,7 @@ public class authenticationlocalpolicy_vpnglobal_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the policy. If a name is not provided, all the configured LOCAL policies will be displayed.
+	* Name of the local authentication policy.
 	* </pre>
 	*/
 	public String get_name() throws Exception {

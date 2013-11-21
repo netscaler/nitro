@@ -63,7 +63,7 @@ public class streamidentifier extends base_resource
 
 	/**
 	* <pre>
-	* The name of stream selector.<br> Minimum length =  1
+	* Name of the selector to use with the stream identifier.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_selectorname(String selectorname) throws Exception{
@@ -72,7 +72,7 @@ public class streamidentifier extends base_resource
 
 	/**
 	* <pre>
-	* The name of stream selector.<br> Minimum length =  1
+	* Name of the selector to use with the stream identifier.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_selectorname() throws Exception {
@@ -81,7 +81,7 @@ public class streamidentifier extends base_resource
 
 	/**
 	* <pre>
-	* Time interval in minutes for holding on the objects.<br> Default value: 1<br> Minimum value =  1
+	* Number of minutes of data to use when calculating session statistics (number of requests, bandwidth, and response times). The interval is a moving window that keeps the most recently collected data. Older data is discarded at regular intervals.<br> Default value: 1<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_interval(long interval) throws Exception {
@@ -90,7 +90,7 @@ public class streamidentifier extends base_resource
 
 	/**
 	* <pre>
-	* Time interval in minutes for holding on the objects.<br> Default value: 1<br> Minimum value =  1
+	* Number of minutes of data to use when calculating session statistics (number of requests, bandwidth, and response times). The interval is a moving window that keeps the most recently collected data. Older data is discarded at regular intervals.<br> Default value: 1<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_interval(Long interval) throws Exception{
@@ -99,7 +99,7 @@ public class streamidentifier extends base_resource
 
 	/**
 	* <pre>
-	* Time interval in minutes for holding on the objects.<br> Default value: 1<br> Minimum value =  1
+	* Number of minutes of data to use when calculating session statistics (number of requests, bandwidth, and response times). The interval is a moving window that keeps the most recently collected data. Older data is discarded at regular intervals.<br> Default value: 1<br> Minimum value =  1
 	* </pre>
 	*/
 	public Long get_interval() throws Exception {
@@ -108,7 +108,7 @@ public class streamidentifier extends base_resource
 
 	/**
 	* <pre>
-	* Sample count 1 in sample count objects to be sampled.<br> Default value: 1<br> Minimum value =  1<br> Maximum value =  65535
+	* Size of the sample from which to select a request for evaluation. The smaller the sample count, the more accurate is the statistical data. To evaluate all requests, set the sample count to 1. However, such a low setting can result in excessive consumption of memory and processing resources.<br> Default value: 1<br> Minimum value =  1<br> Maximum value =  65535
 	* </pre>
 	*/
 	public void set_samplecount(long samplecount) throws Exception {
@@ -117,7 +117,7 @@ public class streamidentifier extends base_resource
 
 	/**
 	* <pre>
-	* Sample count 1 in sample count objects to be sampled.<br> Default value: 1<br> Minimum value =  1<br> Maximum value =  65535
+	* Size of the sample from which to select a request for evaluation. The smaller the sample count, the more accurate is the statistical data. To evaluate all requests, set the sample count to 1. However, such a low setting can result in excessive consumption of memory and processing resources.<br> Default value: 1<br> Minimum value =  1<br> Maximum value =  65535
 	* </pre>
 	*/
 	public void set_samplecount(Long samplecount) throws Exception{
@@ -126,7 +126,7 @@ public class streamidentifier extends base_resource
 
 	/**
 	* <pre>
-	* Sample count 1 in sample count objects to be sampled.<br> Default value: 1<br> Minimum value =  1<br> Maximum value =  65535
+	* Size of the sample from which to select a request for evaluation. The smaller the sample count, the more accurate is the statistical data. To evaluate all requests, set the sample count to 1. However, such a low setting can result in excessive consumption of memory and processing resources.<br> Default value: 1<br> Minimum value =  1<br> Maximum value =  65535
 	* </pre>
 	*/
 	public Long get_samplecount() throws Exception {
@@ -135,7 +135,7 @@ public class streamidentifier extends base_resource
 
 	/**
 	* <pre>
-	* Attribute on which the objects will be sorted on which summarized expressions will be performed.<br> Default value: STREAM_DIMENSION_REQUESTS<br> Possible values = REQUESTS, CONNECTIONS, RESPTIME, BANDWIDTH, NONE
+	* Sort stored records by the specified statistics column, in descending order. Performed during data collection, the sorting enables real-time data evaluation through NetScaler policies (for example, compression and caching policies) that use functions such as IS_TOP(n).<br> Default value: REQUESTS<br> Possible values = REQUESTS, CONNECTIONS, RESPTIME, BANDWIDTH, NONE
 	* </pre>
 	*/
 	public void set_sort(String sort) throws Exception{
@@ -144,7 +144,7 @@ public class streamidentifier extends base_resource
 
 	/**
 	* <pre>
-	* Attribute on which the objects will be sorted on which summarized expressions will be performed.<br> Default value: STREAM_DIMENSION_REQUESTS<br> Possible values = REQUESTS, CONNECTIONS, RESPTIME, BANDWIDTH, NONE
+	* Sort stored records by the specified statistics column, in descending order. Performed during data collection, the sorting enables real-time data evaluation through NetScaler policies (for example, compression and caching policies) that use functions such as IS_TOP(n).<br> Default value: REQUESTS<br> Possible values = REQUESTS, CONNECTIONS, RESPTIME, BANDWIDTH, NONE
 	* </pre>
 	*/
 	public String get_sort() throws Exception {
@@ -264,23 +264,9 @@ public class streamidentifier extends base_resource
 	* Use this API to unset the properties of streamidentifier resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String name, String args[]) throws Exception {
-		streamidentifier unsetresource = new streamidentifier();
-		unsetresource.name = name;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of streamidentifier resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, streamidentifier resource, String[] args) throws Exception{
 		streamidentifier unsetresource = new streamidentifier();
 		unsetresource.name = resource.name;
-		unsetresource.selectorname = resource.selectorname;
-		unsetresource.interval = resource.interval;
-		unsetresource.samplecount = resource.samplecount;
-		unsetresource.sort = resource.sort;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -312,10 +298,6 @@ public class streamidentifier extends base_resource
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new streamidentifier();
 				unsetresources[i].name = resources[i].name;
-				unsetresources[i].selectorname = resources[i].selectorname;
-				unsetresources[i].interval = resources[i].interval;
-				unsetresources[i].samplecount = resources[i].samplecount;
-				unsetresources[i].sort = resources[i].sort;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}

@@ -38,7 +38,11 @@ public class nsdiameter extends base_resource
 
 	/**
 	* <pre>
-	* Diameter Host ID to be used by NS.<br> Minimum length =  1
+	* DiameterIdentity to be used by NS. DiameterIdentity is used to identify a Diameter node uniquely. Before setting up diameter configuration, Netscaler (as a Diameter node) MUST be assigned a unique DiameterIdentity.
+example =>
+set ns diameter -identity netscaler.com
+Now whenever Netscaler system needs to use identity in diameter messages. It will use 'netscaler.com' as Origin-Host AVP as defined in RFC3588
+.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_identity(String identity) throws Exception{
@@ -47,7 +51,11 @@ public class nsdiameter extends base_resource
 
 	/**
 	* <pre>
-	* Diameter Host ID to be used by NS.<br> Minimum length =  1
+	* DiameterIdentity to be used by NS. DiameterIdentity is used to identify a Diameter node uniquely. Before setting up diameter configuration, Netscaler (as a Diameter node) MUST be assigned a unique DiameterIdentity.
+example =>
+set ns diameter -identity netscaler.com
+Now whenever Netscaler system needs to use identity in diameter messages. It will use 'netscaler.com' as Origin-Host AVP as defined in RFC3588
+.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_identity() throws Exception {
@@ -56,7 +64,11 @@ public class nsdiameter extends base_resource
 
 	/**
 	* <pre>
-	* Diameter Realm to be used by NS.<br> Minimum length =  1
+	* Diameter Realm to be used by NS.
+example =>
+set ns diameter -realm com
+Now whenever Netscaler system needs to use realm in diameter messages. It will use 'com' as Origin-Realm AVP as defined in RFC3588
+.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_realm(String realm) throws Exception{
@@ -65,7 +77,11 @@ public class nsdiameter extends base_resource
 
 	/**
 	* <pre>
-	* Diameter Realm to be used by NS.<br> Minimum length =  1
+	* Diameter Realm to be used by NS.
+example =>
+set ns diameter -realm com
+Now whenever Netscaler system needs to use realm in diameter messages. It will use 'com' as Origin-Realm AVP as defined in RFC3588
+.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_realm() throws Exception {
@@ -143,7 +159,6 @@ public class nsdiameter extends base_resource
 	*/
 	public static base_response unset(nitro_service client, nsdiameter resource, String[] args) throws Exception{
 		nsdiameter unsetresource = new nsdiameter();
-		unsetresource.serverclosepropagation = resource.serverclosepropagation;
 		return unsetresource.unset_resource(client,args);
 	}
 

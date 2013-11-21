@@ -16,15 +16,15 @@
 
 package com.citrix.netscaler.nitro.resource.config.audit;
 
+import com.citrix.netscaler.nitro.resource.config.audit.auditsyslogpolicy_vpnvserver_binding;
 import com.citrix.netscaler.nitro.resource.config.audit.auditsyslogpolicy_csvserver_binding;
 import com.citrix.netscaler.nitro.resource.config.audit.auditsyslogpolicy_tmglobal_binding;
-import com.citrix.netscaler.nitro.resource.config.audit.auditsyslogpolicy_lbvserver_binding;
-import com.citrix.netscaler.nitro.resource.config.audit.auditsyslogpolicy_aaauser_binding;
-import com.citrix.netscaler.nitro.resource.config.audit.auditsyslogpolicy_vpnglobal_binding;
-import com.citrix.netscaler.nitro.resource.config.audit.auditsyslogpolicy_vpnvserver_binding;
 import com.citrix.netscaler.nitro.resource.config.audit.auditsyslogpolicy_systemglobal_binding;
+import com.citrix.netscaler.nitro.resource.config.audit.auditsyslogpolicy_lbvserver_binding;
 import com.citrix.netscaler.nitro.resource.config.audit.auditsyslogpolicy_authenticationvserver_binding;
 import com.citrix.netscaler.nitro.resource.config.audit.auditsyslogpolicy_aaagroup_binding;
+import com.citrix.netscaler.nitro.resource.config.audit.auditsyslogpolicy_aaauser_binding;
+import com.citrix.netscaler.nitro.resource.config.audit.auditsyslogpolicy_vpnglobal_binding;
 import com.citrix.netscaler.nitro.resource.base.*;
 import com.citrix.netscaler.nitro.service.nitro_service;
 import com.citrix.netscaler.nitro.service.options;
@@ -42,19 +42,19 @@ class auditsyslogpolicy_binding_response extends base_response
 public class auditsyslogpolicy_binding extends base_resource
 {
 	private String name;
+	private auditsyslogpolicy_vpnvserver_binding	auditsyslogpolicy_vpnvserver_binding[] = null;
 	private auditsyslogpolicy_csvserver_binding	auditsyslogpolicy_csvserver_binding[] = null;
 	private auditsyslogpolicy_tmglobal_binding	auditsyslogpolicy_tmglobal_binding[] = null;
-	private auditsyslogpolicy_lbvserver_binding	auditsyslogpolicy_lbvserver_binding[] = null;
-	private auditsyslogpolicy_aaauser_binding	auditsyslogpolicy_aaauser_binding[] = null;
-	private auditsyslogpolicy_vpnglobal_binding	auditsyslogpolicy_vpnglobal_binding[] = null;
-	private auditsyslogpolicy_vpnvserver_binding	auditsyslogpolicy_vpnvserver_binding[] = null;
 	private auditsyslogpolicy_systemglobal_binding	auditsyslogpolicy_systemglobal_binding[] = null;
+	private auditsyslogpolicy_lbvserver_binding	auditsyslogpolicy_lbvserver_binding[] = null;
 	private auditsyslogpolicy_authenticationvserver_binding	auditsyslogpolicy_authenticationvserver_binding[] = null;
 	private auditsyslogpolicy_aaagroup_binding	auditsyslogpolicy_aaagroup_binding[] = null;
+	private auditsyslogpolicy_aaauser_binding	auditsyslogpolicy_aaauser_binding[] = null;
+	private auditsyslogpolicy_vpnglobal_binding	auditsyslogpolicy_vpnglobal_binding[] = null;
 
 	/**
 	* <pre>
-	* The name of the policy to be displayed. If the policy name is not provided, all the configured syslog policies will be displayed.<br> Minimum length =  1
+	* Name of the policy.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -63,7 +63,7 @@ public class auditsyslogpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the policy to be displayed. If the policy name is not provided, all the configured syslog policies will be displayed.<br> Minimum length =  1
+	* Name of the policy.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {

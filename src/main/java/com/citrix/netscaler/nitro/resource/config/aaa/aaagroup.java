@@ -38,7 +38,12 @@ public class aaagroup extends base_resource
 
 	/**
 	* <pre>
-	* The name of the group.<br> Minimum length =  1
+	* Name for the group. Must begin with a letter, number, or the underscore character (_), and must consist only of letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at sign (@), equals (=), colon (:), and underscore  characters. Cannot be changed after the group is added.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or
+single quotation marks (for example, “my aaa group” or ‘my aaa
+	group).<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_groupname(String groupname) throws Exception{
@@ -47,7 +52,12 @@ public class aaagroup extends base_resource
 
 	/**
 	* <pre>
-	* The name of the group.<br> Minimum length =  1
+	* Name for the group. Must begin with a letter, number, or the underscore character (_), and must consist only of letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at sign (@), equals (=), colon (:), and underscore  characters. Cannot be changed after the group is added.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or
+single quotation marks (for example, “my aaa group” or ‘my aaa
+	group).<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_groupname() throws Exception {
@@ -56,7 +66,7 @@ public class aaagroup extends base_resource
 
 	/**
 	* <pre>
-	* The loggedin flag. When this flag is turned on, the system displays the names of the users in a group if at least one user in the group is logged in. When used with a group name, the system lists the users in the group who are logged in.
+	* Display only the group members who are currently logged in.
 	* </pre>
 	*/
 	public void set_loggedin(boolean loggedin) throws Exception {
@@ -65,7 +75,7 @@ public class aaagroup extends base_resource
 
 	/**
 	* <pre>
-	* The loggedin flag. When this flag is turned on, the system displays the names of the users in a group if at least one user in the group is logged in. When used with a group name, the system lists the users in the group who are logged in.
+	* Display only the group members who are currently logged in.
 	* </pre>
 	*/
 	public void set_loggedin(Boolean loggedin) throws Exception{
@@ -74,7 +84,7 @@ public class aaagroup extends base_resource
 
 	/**
 	* <pre>
-	* The loggedin flag. When this flag is turned on, the system displays the names of the users in a group if at least one user in the group is logged in. When used with a group name, the system lists the users in the group who are logged in.
+	* Display only the group members who are currently logged in.
 	* </pre>
 	*/
 	public Boolean get_loggedin() throws Exception {

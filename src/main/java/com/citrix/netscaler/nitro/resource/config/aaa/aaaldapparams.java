@@ -52,6 +52,7 @@ public class aaaldapparams extends base_resource
 	private String groupsearchattribute;
 	private String groupsearchsubattribute;
 	private String groupsearchfilter;
+	private String defaultauthenticationgroup;
 
 	//------- Read only Parameter ---------;
 
@@ -59,7 +60,7 @@ public class aaaldapparams extends base_resource
 
 	/**
 	* <pre>
-	* The IP address of the LDAP server. The default value is localhost.
+	* IP address of your LDAP server.
 	* </pre>
 	*/
 	public void set_serverip(String serverip) throws Exception{
@@ -68,7 +69,7 @@ public class aaaldapparams extends base_resource
 
 	/**
 	* <pre>
-	* The IP address of the LDAP server. The default value is localhost.
+	* IP address of your LDAP server.
 	* </pre>
 	*/
 	public String get_serverip() throws Exception {
@@ -77,7 +78,7 @@ public class aaaldapparams extends base_resource
 
 	/**
 	* <pre>
-	* The port number on which the LDAP server is running.<br> Default value: 389<br> Minimum value =  1
+	* Port number on which the LDAP server listens for connections.<br> Default value: 389<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_serverport(int serverport) throws Exception {
@@ -86,7 +87,7 @@ public class aaaldapparams extends base_resource
 
 	/**
 	* <pre>
-	* The port number on which the LDAP server is running.<br> Default value: 389<br> Minimum value =  1
+	* Port number on which the LDAP server listens for connections.<br> Default value: 389<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_serverport(Integer serverport) throws Exception{
@@ -95,7 +96,7 @@ public class aaaldapparams extends base_resource
 
 	/**
 	* <pre>
-	* The port number on which the LDAP server is running.<br> Default value: 389<br> Minimum value =  1
+	* Port number on which the LDAP server listens for connections.<br> Default value: 389<br> Minimum value =  1
 	* </pre>
 	*/
 	public Integer get_serverport() throws Exception {
@@ -104,7 +105,7 @@ public class aaaldapparams extends base_resource
 
 	/**
 	* <pre>
-	* The maximum number of seconds the system will wait for a response from the LDAP server.<br> Default value: 3<br> Minimum value =  1
+	* Maximum number of seconds that the NetScaler appliance waits for a response from the LDAP server.<br> Default value: 3<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_authtimeout(long authtimeout) throws Exception {
@@ -113,7 +114,7 @@ public class aaaldapparams extends base_resource
 
 	/**
 	* <pre>
-	* The maximum number of seconds the system will wait for a response from the LDAP server.<br> Default value: 3<br> Minimum value =  1
+	* Maximum number of seconds that the NetScaler appliance waits for a response from the LDAP server.<br> Default value: 3<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_authtimeout(Long authtimeout) throws Exception{
@@ -122,7 +123,7 @@ public class aaaldapparams extends base_resource
 
 	/**
 	* <pre>
-	* The maximum number of seconds the system will wait for a response from the LDAP server.<br> Default value: 3<br> Minimum value =  1
+	* Maximum number of seconds that the NetScaler appliance waits for a response from the LDAP server.<br> Default value: 3<br> Minimum value =  1
 	* </pre>
 	*/
 	public Long get_authtimeout() throws Exception {
@@ -131,7 +132,8 @@ public class aaaldapparams extends base_resource
 
 	/**
 	* <pre>
-	* The base or node where the ldapsearch should start. If the LDAP server is running locally, the default value of base is dc=netscaler, dc=com. .
+	* Base (the server and location) from which LDAP search commands should start. 
+If the LDAP server is running locally, the default value of base is dc=netscaler, dc=com.
 	* </pre>
 	*/
 	public void set_ldapbase(String ldapbase) throws Exception{
@@ -140,7 +142,8 @@ public class aaaldapparams extends base_resource
 
 	/**
 	* <pre>
-	* The base or node where the ldapsearch should start. If the LDAP server is running locally, the default value of base is dc=netscaler, dc=com. .
+	* Base (the server and location) from which LDAP search commands should start. 
+If the LDAP server is running locally, the default value of base is dc=netscaler, dc=com.
 	* </pre>
 	*/
 	public String get_ldapbase() throws Exception {
@@ -149,7 +152,7 @@ public class aaaldapparams extends base_resource
 
 	/**
 	* <pre>
-	* The full distinguished name that is used to bind to the LDAP server.
+	* Complete distinguished name (DN) string used for binding to the LDAP server.
 	* </pre>
 	*/
 	public void set_ldapbinddn(String ldapbinddn) throws Exception{
@@ -158,7 +161,7 @@ public class aaaldapparams extends base_resource
 
 	/**
 	* <pre>
-	* The full distinguished name that is used to bind to the LDAP server.
+	* Complete distinguished name (DN) string used for binding to the LDAP server.
 	* </pre>
 	*/
 	public String get_ldapbinddn() throws Exception {
@@ -167,7 +170,7 @@ public class aaaldapparams extends base_resource
 
 	/**
 	* <pre>
-	* The password used to bind to the LDAP server.<br> Minimum length =  1
+	* Password for binding to the LDAP server.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_ldapbinddnpassword(String ldapbinddnpassword) throws Exception{
@@ -176,7 +179,7 @@ public class aaaldapparams extends base_resource
 
 	/**
 	* <pre>
-	* The password used to bind to the LDAP server.<br> Minimum length =  1
+	* Password for binding to the LDAP server.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_ldapbinddnpassword() throws Exception {
@@ -185,7 +188,7 @@ public class aaaldapparams extends base_resource
 
 	/**
 	* <pre>
-	* The name attribute used by the system to query the external LDAP server or an Active Directory.
+	* Name attribute that the NetScaler appliance uses to query the external LDAP server or an Active Directory.
 	* </pre>
 	*/
 	public void set_ldaploginname(String ldaploginname) throws Exception{
@@ -194,7 +197,7 @@ public class aaaldapparams extends base_resource
 
 	/**
 	* <pre>
-	* The name attribute used by the system to query the external LDAP server or an Active Directory.
+	* Name attribute that the NetScaler appliance uses to query the external LDAP server or an Active Directory.
 	* </pre>
 	*/
 	public String get_ldaploginname() throws Exception {
@@ -203,7 +206,12 @@ public class aaaldapparams extends base_resource
 
 	/**
 	* <pre>
-	* The String to be combined with the default LDAP user search string to form the value. For example, vpnallowed=true with ldaploginame "samaccount" and user-supplied username "bob" would yield the LDAP search string "(&(vpnallowed=true)(samaccount=bob)".<br> Minimum length =  1
+	* String to be combined with the default LDAP user search string to form the value to use when executing an LDAP search. 
+For example, the following values:
+vpnallowed=true,
+ldaploginame=""samaccount""
+when combined with the user-supplied username ""bob"", yield the following LDAP search string:
+""(&(vpnallowed=true)(samaccount=bob)"".<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_searchfilter(String searchfilter) throws Exception{
@@ -212,7 +220,12 @@ public class aaaldapparams extends base_resource
 
 	/**
 	* <pre>
-	* The String to be combined with the default LDAP user search string to form the value. For example, vpnallowed=true with ldaploginame "samaccount" and user-supplied username "bob" would yield the LDAP search string "(&(vpnallowed=true)(samaccount=bob)".<br> Minimum length =  1
+	* String to be combined with the default LDAP user search string to form the value to use when executing an LDAP search. 
+For example, the following values:
+vpnallowed=true,
+ldaploginame=""samaccount""
+when combined with the user-supplied username ""bob"", yield the following LDAP search string:
+""(&(vpnallowed=true)(samaccount=bob)"".<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_searchfilter() throws Exception {
@@ -221,7 +234,7 @@ public class aaaldapparams extends base_resource
 
 	/**
 	* <pre>
-	* The attribute name for group extraction from the LDAP server.
+	* Attribute name used for group extraction from the LDAP server.
 	* </pre>
 	*/
 	public void set_groupattrname(String groupattrname) throws Exception{
@@ -230,7 +243,7 @@ public class aaaldapparams extends base_resource
 
 	/**
 	* <pre>
-	* The attribute name for group extraction from the LDAP server.
+	* Attribute name used for group extraction from the LDAP server.
 	* </pre>
 	*/
 	public String get_groupattrname() throws Exception {
@@ -239,7 +252,7 @@ public class aaaldapparams extends base_resource
 
 	/**
 	* <pre>
-	* The Sub-Attribute name for group extraction from LDAP server.
+	* Subattribute name used for group extraction from the LDAP server.
 	* </pre>
 	*/
 	public void set_subattributename(String subattributename) throws Exception{
@@ -248,7 +261,7 @@ public class aaaldapparams extends base_resource
 
 	/**
 	* <pre>
-	* The Sub-Attribute name for group extraction from LDAP server.
+	* Subattribute name used for group extraction from the LDAP server.
 	* </pre>
 	*/
 	public String get_subattributename() throws Exception {
@@ -257,10 +270,7 @@ public class aaaldapparams extends base_resource
 
 	/**
 	* <pre>
-	* The type of communication between the system and the LDAP server. The values are:
-PLAINTEXT: No encryption required.
-TLS: To use the TLS protocol to communicate.
-SSL: To use the SSL Protocol to communicate.<br> Default value: PLAINTEXT<br> Possible values = PLAINTEXT, TLS, SSL
+	* Type of security used for communications between the NetScaler appliance and the LDAP server. For the PLAINTEXT setting, no encryption is required.<br> Default value: PLAINTEXT<br> Possible values = PLAINTEXT, TLS, SSL
 	* </pre>
 	*/
 	public void set_sectype(String sectype) throws Exception{
@@ -269,10 +279,7 @@ SSL: To use the SSL Protocol to communicate.<br> Default value: PLAINTEXT<br> Po
 
 	/**
 	* <pre>
-	* The type of communication between the system and the LDAP server. The values are:
-PLAINTEXT: No encryption required.
-TLS: To use the TLS protocol to communicate.
-SSL: To use the SSL Protocol to communicate.<br> Default value: PLAINTEXT<br> Possible values = PLAINTEXT, TLS, SSL
+	* Type of security used for communications between the NetScaler appliance and the LDAP server. For the PLAINTEXT setting, no encryption is required.<br> Default value: PLAINTEXT<br> Possible values = PLAINTEXT, TLS, SSL
 	* </pre>
 	*/
 	public String get_sectype() throws Exception {
@@ -299,7 +306,8 @@ SSL: To use the SSL Protocol to communicate.<br> Default value: PLAINTEXT<br> Po
 
 	/**
 	* <pre>
-	* The attribute used by the system to query the external LDAP server (or an Active Directory) for an alternate username to be used in Single Sign-On.
+	* Attribute used by the NetScaler appliance to query an external LDAP server or Active Directory for an alternative username. 
+This alternative username is then used for single sign-on (SSO).
 	* </pre>
 	*/
 	public void set_ssonameattribute(String ssonameattribute) throws Exception{
@@ -308,7 +316,8 @@ SSL: To use the SSL Protocol to communicate.<br> Default value: PLAINTEXT<br> Po
 
 	/**
 	* <pre>
-	* The attribute used by the system to query the external LDAP server (or an Active Directory) for an alternate username to be used in Single Sign-On.
+	* Attribute used by the NetScaler appliance to query an external LDAP server or Active Directory for an alternative username. 
+This alternative username is then used for single sign-on (SSO).
 	* </pre>
 	*/
 	public String get_ssonameattribute() throws Exception {
@@ -317,7 +326,7 @@ SSL: To use the SSL Protocol to communicate.<br> Default value: PLAINTEXT<br> Po
 
 	/**
 	* <pre>
-	* Enabling this option does not block password change request.Disabling would block password change request.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Accept password change requests.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_passwdchange(String passwdchange) throws Exception{
@@ -326,7 +335,7 @@ SSL: To use the SSL Protocol to communicate.<br> Default value: PLAINTEXT<br> Po
 
 	/**
 	* <pre>
-	* Enabling this option does not block password change request.Disabling would block password change request.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Accept password change requests.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_passwdchange() throws Exception {
@@ -335,7 +344,7 @@ SSL: To use the SSL Protocol to communicate.<br> Default value: PLAINTEXT<br> Po
 
 	/**
 	* <pre>
-	* Setting this option to ON enables the nested group extraction feature where the system queries the external LDAP server to determine if a group belongs to another group.<br> Default value: OFF<br> Possible values = ON, OFF
+	* Queries the external LDAP server to determine whether the specified group belongs to another group.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_nestedgroupextraction(String nestedgroupextraction) throws Exception{
@@ -344,7 +353,7 @@ SSL: To use the SSL Protocol to communicate.<br> Default value: PLAINTEXT<br> Po
 
 	/**
 	* <pre>
-	* Setting this option to ON enables the nested group extraction feature where the system queries the external LDAP server to determine if a group belongs to another group.<br> Default value: OFF<br> Possible values = ON, OFF
+	* Queries the external LDAP server to determine whether the specified group belongs to another group.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_nestedgroupextraction() throws Exception {
@@ -353,7 +362,7 @@ SSL: To use the SSL Protocol to communicate.<br> Default value: PLAINTEXT<br> Po
 
 	/**
 	* <pre>
-	* .<br> Default value: 2<br> Minimum value =  2
+	* Number of levels up to which the system can query nested LDAP groups.<br> Default value: 2<br> Minimum value =  2
 	* </pre>
 	*/
 	public void set_maxnestinglevel(long maxnestinglevel) throws Exception {
@@ -362,7 +371,7 @@ SSL: To use the SSL Protocol to communicate.<br> Default value: PLAINTEXT<br> Po
 
 	/**
 	* <pre>
-	* .<br> Default value: 2<br> Minimum value =  2
+	* Number of levels up to which the system can query nested LDAP groups.<br> Default value: 2<br> Minimum value =  2
 	* </pre>
 	*/
 	public void set_maxnestinglevel(Long maxnestinglevel) throws Exception{
@@ -371,7 +380,7 @@ SSL: To use the SSL Protocol to communicate.<br> Default value: PLAINTEXT<br> Po
 
 	/**
 	* <pre>
-	* .<br> Default value: 2<br> Minimum value =  2
+	* Number of levels up to which the system can query nested LDAP groups.<br> Default value: 2<br> Minimum value =  2
 	* </pre>
 	*/
 	public Long get_maxnestinglevel() throws Exception {
@@ -380,7 +389,7 @@ SSL: To use the SSL Protocol to communicate.<br> Default value: PLAINTEXT<br> Po
 
 	/**
 	* <pre>
-	* .
+	* LDAP-group attribute that uniquely identifies the group. No two groups on one LDAP server can have the same group name identifier.
 	* </pre>
 	*/
 	public void set_groupnameidentifier(String groupnameidentifier) throws Exception{
@@ -389,7 +398,7 @@ SSL: To use the SSL Protocol to communicate.<br> Default value: PLAINTEXT<br> Po
 
 	/**
 	* <pre>
-	* .
+	* LDAP-group attribute that uniquely identifies the group. No two groups on one LDAP server can have the same group name identifier.
 	* </pre>
 	*/
 	public String get_groupnameidentifier() throws Exception {
@@ -398,7 +407,7 @@ SSL: To use the SSL Protocol to communicate.<br> Default value: PLAINTEXT<br> Po
 
 	/**
 	* <pre>
-	* .
+	* LDAP-group attribute that designates the parent group of the specified group. Use this attribute to search for a group’s parent group.
 	* </pre>
 	*/
 	public void set_groupsearchattribute(String groupsearchattribute) throws Exception{
@@ -407,7 +416,7 @@ SSL: To use the SSL Protocol to communicate.<br> Default value: PLAINTEXT<br> Po
 
 	/**
 	* <pre>
-	* .
+	* LDAP-group attribute that designates the parent group of the specified group. Use this attribute to search for a group’s parent group.
 	* </pre>
 	*/
 	public String get_groupsearchattribute() throws Exception {
@@ -416,7 +425,7 @@ SSL: To use the SSL Protocol to communicate.<br> Default value: PLAINTEXT<br> Po
 
 	/**
 	* <pre>
-	* .
+	* LDAP-group subattribute that designates the parent group of the specified group. Use this attribute to search for a group’s parent group.
 	* </pre>
 	*/
 	public void set_groupsearchsubattribute(String groupsearchsubattribute) throws Exception{
@@ -425,7 +434,7 @@ SSL: To use the SSL Protocol to communicate.<br> Default value: PLAINTEXT<br> Po
 
 	/**
 	* <pre>
-	* .
+	* LDAP-group subattribute that designates the parent group of the specified group. Use this attribute to search for a group’s parent group.
 	* </pre>
 	*/
 	public String get_groupsearchsubattribute() throws Exception {
@@ -434,7 +443,7 @@ SSL: To use the SSL Protocol to communicate.<br> Default value: PLAINTEXT<br> Po
 
 	/**
 	* <pre>
-	* .
+	* Search-expression that can be specified for sending group-search requests to the LDAP server.
 	* </pre>
 	*/
 	public void set_groupsearchfilter(String groupsearchfilter) throws Exception{
@@ -443,11 +452,29 @@ SSL: To use the SSL Protocol to communicate.<br> Default value: PLAINTEXT<br> Po
 
 	/**
 	* <pre>
-	* .
+	* Search-expression that can be specified for sending group-search requests to the LDAP server.
 	* </pre>
 	*/
 	public String get_groupsearchfilter() throws Exception {
 		return this.groupsearchfilter;
+	}
+
+	/**
+	* <pre>
+	* This is the default group that is chosen when the authentication succeeds in addition to extracted groups.<br> Maximum length =  64
+	* </pre>
+	*/
+	public void set_defaultauthenticationgroup(String defaultauthenticationgroup) throws Exception{
+		this.defaultauthenticationgroup = defaultauthenticationgroup;
+	}
+
+	/**
+	* <pre>
+	* This is the default group that is chosen when the authentication succeeds in addition to extracted groups.<br> Maximum length =  64
+	* </pre>
+	*/
+	public String get_defaultauthenticationgroup() throws Exception {
+		return this.defaultauthenticationgroup;
 	}
 
 	/**
@@ -526,6 +553,7 @@ You can bind different policies to each AAA group. Use the command
 		updateresource.groupsearchattribute = resource.groupsearchattribute;
 		updateresource.groupsearchsubattribute = resource.groupsearchsubattribute;
 		updateresource.groupsearchfilter = resource.groupsearchfilter;
+		updateresource.defaultauthenticationgroup = resource.defaultauthenticationgroup;
 		return updateresource.update_resource(client);
 	}
 
@@ -535,26 +563,6 @@ You can bind different policies to each AAA group. Use the command
 	*/
 	public static base_response unset(nitro_service client, aaaldapparams resource, String[] args) throws Exception{
 		aaaldapparams unsetresource = new aaaldapparams();
-		unsetresource.serverip = resource.serverip;
-		unsetresource.serverport = resource.serverport;
-		unsetresource.authtimeout = resource.authtimeout;
-		unsetresource.ldapbase = resource.ldapbase;
-		unsetresource.ldapbinddn = resource.ldapbinddn;
-		unsetresource.ldapbinddnpassword = resource.ldapbinddnpassword;
-		unsetresource.ldaploginname = resource.ldaploginname;
-		unsetresource.searchfilter = resource.searchfilter;
-		unsetresource.groupattrname = resource.groupattrname;
-		unsetresource.subattributename = resource.subattributename;
-		unsetresource.sectype = resource.sectype;
-		unsetresource.svrtype = resource.svrtype;
-		unsetresource.ssonameattribute = resource.ssonameattribute;
-		unsetresource.passwdchange = resource.passwdchange;
-		unsetresource.nestedgroupextraction = resource.nestedgroupextraction;
-		unsetresource.maxnestinglevel = resource.maxnestinglevel;
-		unsetresource.groupnameidentifier = resource.groupnameidentifier;
-		unsetresource.groupsearchattribute = resource.groupsearchattribute;
-		unsetresource.groupsearchsubattribute = resource.groupsearchsubattribute;
-		unsetresource.groupsearchfilter = resource.groupsearchfilter;
 		return unsetresource.unset_resource(client,args);
 	}
 

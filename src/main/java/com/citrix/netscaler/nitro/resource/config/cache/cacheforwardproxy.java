@@ -38,7 +38,7 @@ public class cacheforwardproxy extends base_resource
 
 	/**
 	* <pre>
-	* The IP address of the forward proxy.<br> Minimum length =  1
+	* IP address of the NetScaler appliance or a cache server for which the cache acts as a proxy. Requests coming to the NetScaler with the configured IP address are forwarded to the particular address, without involving the Integrated Cache in any way.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_ipaddress(String ipaddress) throws Exception{
@@ -47,7 +47,7 @@ public class cacheforwardproxy extends base_resource
 
 	/**
 	* <pre>
-	* The IP address of the forward proxy.<br> Minimum length =  1
+	* IP address of the NetScaler appliance or a cache server for which the cache acts as a proxy. Requests coming to the NetScaler with the configured IP address are forwarded to the particular address, without involving the Integrated Cache in any way.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_ipaddress() throws Exception {
@@ -56,7 +56,7 @@ public class cacheforwardproxy extends base_resource
 
 	/**
 	* <pre>
-	* The port of the forward proxy.<br> Minimum value =  1<br> Range 1 - 65535
+	* Port on the NetScaler appliance or a server for which the cache acts as a proxy.<br> Minimum value =  1<br> Range 1 - 65535
 	* </pre>
 	*/
 	public void set_port(int port) throws Exception {
@@ -65,7 +65,7 @@ public class cacheforwardproxy extends base_resource
 
 	/**
 	* <pre>
-	* The port of the forward proxy.<br> Minimum value =  1<br> Range 1 - 65535
+	* Port on the NetScaler appliance or a server for which the cache acts as a proxy.<br> Minimum value =  1<br> Range 1 - 65535
 	* </pre>
 	*/
 	public void set_port(Integer port) throws Exception{
@@ -74,7 +74,7 @@ public class cacheforwardproxy extends base_resource
 
 	/**
 	* <pre>
-	* The port of the forward proxy.<br> Minimum value =  1<br> Range 1 - 65535
+	* Port on the NetScaler appliance or a server for which the cache acts as a proxy.<br> Minimum value =  1<br> Range 1 - 65535
 	* </pre>
 	*/
 	public Integer get_port() throws Exception {

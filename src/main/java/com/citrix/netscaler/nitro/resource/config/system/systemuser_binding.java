@@ -40,7 +40,7 @@ public class systemuser_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of a system user.<br> Minimum length =  1
+	* Name of a system user about whom to display information.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_username(String username) throws Exception{
@@ -49,7 +49,7 @@ public class systemuser_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of a system user.<br> Minimum length =  1
+	* Name of a system user about whom to display information.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_username() throws Exception {

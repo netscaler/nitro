@@ -57,7 +57,7 @@ public class sslcrl_serialnumber_binding extends base_resource
 
 	/**
 	* <pre>
-	* The CRL object name.<br> Minimum length =  1
+	* Name of the CRL for which to show detailed information.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_crlname(String crlname) throws Exception{
@@ -66,7 +66,7 @@ public class sslcrl_serialnumber_binding extends base_resource
 
 	/**
 	* <pre>
-	* The CRL object name.<br> Minimum length =  1
+	* Name of the CRL for which to show detailed information.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_crlname() throws Exception {

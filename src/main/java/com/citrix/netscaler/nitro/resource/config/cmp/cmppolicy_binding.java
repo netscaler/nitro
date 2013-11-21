@@ -44,7 +44,7 @@ public class cmppolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the HTTP compression policy whose details are to be displayed.<br> Minimum length =  1
+	* Name of the HTTP compression policy for which to display details.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -53,7 +53,7 @@ public class cmppolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the HTTP compression policy whose details are to be displayed.<br> Minimum length =  1
+	* Name of the HTTP compression policy for which to display details.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {

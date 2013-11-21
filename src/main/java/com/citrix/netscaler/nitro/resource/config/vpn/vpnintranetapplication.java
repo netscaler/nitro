@@ -52,7 +52,7 @@ public class vpnintranetapplication extends base_resource
 
 	/**
 	* <pre>
-	* The name for the new vpn intranet application.<br> Minimum length =  1
+	* Name of the intranet application.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_intranetapplication(String intranetapplication) throws Exception{
@@ -61,7 +61,7 @@ public class vpnintranetapplication extends base_resource
 
 	/**
 	* <pre>
-	* The name for the new vpn intranet application.<br> Minimum length =  1
+	* Name of the intranet application.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_intranetapplication() throws Exception {
@@ -70,7 +70,7 @@ public class vpnintranetapplication extends base_resource
 
 	/**
 	* <pre>
-	* The protocol of the intranet application, e.g. TCP, UDP or ANY.<br> Possible values = TCP, UDP, ANY
+	* Protocol used by the intranet application. If protocol is set to BOTH, TCP and UDP traffic is allowed.<br> Possible values = TCP, UDP, ANY
 	* </pre>
 	*/
 	public void set_protocol(String protocol) throws Exception{
@@ -79,7 +79,7 @@ public class vpnintranetapplication extends base_resource
 
 	/**
 	* <pre>
-	* The protocol of the intranet application, e.g. TCP, UDP or ANY.<br> Possible values = TCP, UDP, ANY
+	* Protocol used by the intranet application. If protocol is set to BOTH, TCP and UDP traffic is allowed.<br> Possible values = TCP, UDP, ANY
 	* </pre>
 	*/
 	public String get_protocol() throws Exception {
@@ -88,7 +88,7 @@ public class vpnintranetapplication extends base_resource
 
 	/**
 	* <pre>
-	* The destination IP address for the application. This address is the real application server IP address.<br> Minimum length =  1
+	* Destination IP address, IP range, or host name of the intranet application. This address is the server IP address.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_destip(String destip) throws Exception{
@@ -97,7 +97,7 @@ public class vpnintranetapplication extends base_resource
 
 	/**
 	* <pre>
-	* The destination IP address for the application. This address is the real application server IP address.<br> Minimum length =  1
+	* Destination IP address, IP range, or host name of the intranet application. This address is the server IP address.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_destip() throws Exception {
@@ -106,7 +106,7 @@ public class vpnintranetapplication extends base_resource
 
 	/**
 	* <pre>
-	* The destination netmask for the application.
+	* Destination subnet mask for the intranet application.
 	* </pre>
 	*/
 	public void set_netmask(String netmask) throws Exception{
@@ -115,7 +115,7 @@ public class vpnintranetapplication extends base_resource
 
 	/**
 	* <pre>
-	* The destination netmask for the application.
+	* Destination subnet mask for the intranet application.
 	* </pre>
 	*/
 	public String get_netmask() throws Exception {
@@ -124,7 +124,7 @@ public class vpnintranetapplication extends base_resource
 
 	/**
 	* <pre>
-	* The destination IP address range for the application. This address is the real application server IP address. (range).<br> Minimum length =  1
+	* If you have multiple servers in your network, such as web, email, and file shares, configure an intranet application that includes the IP range for all the network applications. This allows users to access all the intranet applications contained in the IP address range.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_iprange(String iprange) throws Exception{
@@ -133,7 +133,7 @@ public class vpnintranetapplication extends base_resource
 
 	/**
 	* <pre>
-	* The destination IP address range for the application. This address is the real application server IP address. (range).<br> Minimum length =  1
+	* If you have multiple servers in your network, such as web, email, and file shares, configure an intranet application that includes the IP range for all the network applications. This allows users to access all the intranet applications contained in the IP address range.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_iprange() throws Exception {
@@ -142,7 +142,7 @@ public class vpnintranetapplication extends base_resource
 
 	/**
 	* <pre>
-	* Name based interception. Names should be valid DNS or WINS names and will be resolved during interception on the sslvpn.<br> Minimum length =  1
+	* Name of the host for which to configure interception. The names are resolved during interception when users log on with the Access Gateway Plug-in.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_hostname(String hostname) throws Exception{
@@ -151,7 +151,7 @@ public class vpnintranetapplication extends base_resource
 
 	/**
 	* <pre>
-	* Name based interception. Names should be valid DNS or WINS names and will be resolved during interception on the sslvpn.<br> Minimum length =  1
+	* Name of the host for which to configure interception. The names are resolved during interception when users log on with the Access Gateway Plug-in.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_hostname() throws Exception {
@@ -160,7 +160,7 @@ public class vpnintranetapplication extends base_resource
 
 	/**
 	* <pre>
-	* The names of the client applications.<br> Minimum length =  1
+	* Names of the client applications, such as PuTTY and Xshell.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_clientapplication(String[] clientapplication) throws Exception{
@@ -169,7 +169,7 @@ public class vpnintranetapplication extends base_resource
 
 	/**
 	* <pre>
-	* The names of the client applications.<br> Minimum length =  1
+	* Names of the client applications, such as PuTTY and Xshell.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String[] get_clientapplication() throws Exception {
@@ -178,7 +178,7 @@ public class vpnintranetapplication extends base_resource
 
 	/**
 	* <pre>
-	* Whether or not to spoof this application on the client. .<br> Default value: ON<br> Possible values = ON, OFF
+	* IP address that the intranet application will use to route the connection through the virtual adapter.<br> Default value: ON<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_spoofiip(String spoofiip) throws Exception{
@@ -187,7 +187,7 @@ public class vpnintranetapplication extends base_resource
 
 	/**
 	* <pre>
-	* Whether or not to spoof this application on the client. .<br> Default value: ON<br> Possible values = ON, OFF
+	* IP address that the intranet application will use to route the connection through the virtual adapter.<br> Default value: ON<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_spoofiip() throws Exception {
@@ -196,7 +196,7 @@ public class vpnintranetapplication extends base_resource
 
 	/**
 	* <pre>
-	* The destination TCP or UDP port range.<br> Minimum length =  1
+	* Destination TCP or UDP port number for the intranet application. Use a hyphen to specify a range of port numbers, for example 90-95.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_destport(String destport) throws Exception{
@@ -205,7 +205,7 @@ public class vpnintranetapplication extends base_resource
 
 	/**
 	* <pre>
-	* The destination TCP or UDP port range.<br> Minimum length =  1
+	* Destination TCP or UDP port number for the intranet application. Use a hyphen to specify a range of port numbers, for example 90-95.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_destport() throws Exception {
@@ -214,7 +214,7 @@ public class vpnintranetapplication extends base_resource
 
 	/**
 	* <pre>
-	* The interception type, e.g. proxy or transparent.<br> Possible values = PROXY, TRANSPARENT
+	* Interception mode for the intranet application or resource. Correct value depends on the type of client software used to make connections. If the interception mode is set to TRANSPARENT, users connect with the Access Gateway Plug-in for Windows. With the PROXY setting, users connect with the Access Gateway Plug-in for Java.<br> Possible values = PROXY, TRANSPARENT
 	* </pre>
 	*/
 	public void set_interception(String interception) throws Exception{
@@ -223,7 +223,7 @@ public class vpnintranetapplication extends base_resource
 
 	/**
 	* <pre>
-	* The interception type, e.g. proxy or transparent.<br> Possible values = PROXY, TRANSPARENT
+	* Interception mode for the intranet application or resource. Correct value depends on the type of client software used to make connections. If the interception mode is set to TRANSPARENT, users connect with the Access Gateway Plug-in for Windows. With the PROXY setting, users connect with the Access Gateway Plug-in for Java.<br> Possible values = PROXY, TRANSPARENT
 	* </pre>
 	*/
 	public String get_interception() throws Exception {
@@ -232,7 +232,7 @@ public class vpnintranetapplication extends base_resource
 
 	/**
 	* <pre>
-	* This is the source IP address of the client application. If not optionally specified, the default is 127.0.0.1.<br> Minimum length =  1
+	* Source IP address. Required if interception mode is set to PROXY. Default is the loopback address, 127.0.0.1.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_srcip(String srcip) throws Exception{
@@ -241,7 +241,7 @@ public class vpnintranetapplication extends base_resource
 
 	/**
 	* <pre>
-	* This is the source IP address of the client application. If not optionally specified, the default is 127.0.0.1.<br> Minimum length =  1
+	* Source IP address. Required if interception mode is set to PROXY. Default is the loopback address, 127.0.0.1.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_srcip() throws Exception {
@@ -250,7 +250,7 @@ public class vpnintranetapplication extends base_resource
 
 	/**
 	* <pre>
-	* The source application TCP or UDP port.<br> Minimum value =  1
+	* Source port for the application for which the Access Gateway virtual server proxies the traffic. If users are connecting from a device that uses the Access Gateway Plug-in for Java, applications must be configured manually by using the source IP address and TCP port values specified in the intranet application profile. If a port value is not set, the destination port value is used.<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_srcport(int srcport) throws Exception {
@@ -259,7 +259,7 @@ public class vpnintranetapplication extends base_resource
 
 	/**
 	* <pre>
-	* The source application TCP or UDP port.<br> Minimum value =  1
+	* Source port for the application for which the Access Gateway virtual server proxies the traffic. If users are connecting from a device that uses the Access Gateway Plug-in for Java, applications must be configured manually by using the source IP address and TCP port values specified in the intranet application profile. If a port value is not set, the destination port value is used.<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_srcport(Integer srcport) throws Exception{
@@ -268,7 +268,7 @@ public class vpnintranetapplication extends base_resource
 
 	/**
 	* <pre>
-	* The source application TCP or UDP port.<br> Minimum value =  1
+	* Source port for the application for which the Access Gateway virtual server proxies the traffic. If users are connecting from a device that uses the Access Gateway Plug-in for Java, applications must be configured manually by using the source IP address and TCP port values specified in the intranet application profile. If a port value is not set, the destination port value is used.<br> Minimum value =  1
 	* </pre>
 	*/
 	public Integer get_srcport() throws Exception {

@@ -111,7 +111,10 @@ public class appfwprofile extends base_resource
 
 	/**
 	* <pre>
-	* Application Firewall profile name.<br> Minimum length =  1
+	* Name for the profile. Must begin with a letter, number, or the underscore character (_), and must contain only letters, numbers, and the hyphen (-), period (.), pound (#), space ( ), at (@), equals (=), colon (:), and underscore (_) characters. Cannot be changed after the profile is added.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my profile" or 'my profile').<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -120,7 +123,10 @@ public class appfwprofile extends base_resource
 
 	/**
 	* <pre>
-	* Application Firewall profile name.<br> Minimum length =  1
+	* Name for the profile. Must begin with a letter, number, or the underscore character (_), and must contain only letters, numbers, and the hyphen (-), period (.), pound (#), space ( ), at (@), equals (=), colon (:), and underscore (_) characters. Cannot be changed after the profile is added.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my profile" or 'my profile').<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -129,7 +135,9 @@ public class appfwprofile extends base_resource
 
 	/**
 	* <pre>
-	* Default Start URLs and Deny URLs.<br> Possible values = basic, advanced
+	* Default configuration to apply to the profile. Basic defaults are intended for standard content that requires little further configuration, such as static web site content. Advanced defaults are intended for specialized content that requires significant specialized configuration, such as heavily scripted or dynamic content.
+
+CLI users: When adding an application firewall profile, you can set either the defaults or the type, but not both. To set both options, create the profile by using the add appfw profile command, and then use the set appfw profile command to configure the other option.<br> Possible values = basic, advanced
 	* </pre>
 	*/
 	public void set_defaults(String defaults) throws Exception{
@@ -138,7 +146,9 @@ public class appfwprofile extends base_resource
 
 	/**
 	* <pre>
-	* Default Start URLs and Deny URLs.<br> Possible values = basic, advanced
+	* Default configuration to apply to the profile. Basic defaults are intended for standard content that requires little further configuration, such as static web site content. Advanced defaults are intended for specialized content that requires significant specialized configuration, such as heavily scripted or dynamic content.
+
+CLI users: When adding an application firewall profile, you can set either the defaults or the type, but not both. To set both options, create the profile by using the add appfw profile command, and then use the set appfw profile command to configure the other option.<br> Possible values = basic, advanced
 	* </pre>
 	*/
 	public String get_defaults() throws Exception {
@@ -147,8 +157,14 @@ public class appfwprofile extends base_resource
 
 	/**
 	* <pre>
-	* Start URL action types. (BLOCK | LEARN | LOG | STATS | NONE)
-This check is applicable to Profile Type: HTML, XML. .<br> Possible values = none, block, learn, log, stats
+	* One or more Start URL actions. Available settings function as follows:
+* Block - Block connections that violate this security check.
+* Learn - Use the learning engine to generate a list of exceptions to this security check.
+* Log - Log violations of this security check.
+* Stats - Generate statistics for this security check.
+* None - Disable all actions for this security check.
+
+CLI users: To enable one or more actions, type "set appfw profile -startURLaction" followed by the actions to be enabled. To turn off all actions, type "set appfw profile -startURLaction none".<br> Possible values = none, block, learn, log, stats
 	* </pre>
 	*/
 	public void set_starturlaction(String[] starturlaction) throws Exception{
@@ -157,8 +173,14 @@ This check is applicable to Profile Type: HTML, XML. .<br> Possible values = non
 
 	/**
 	* <pre>
-	* Start URL action types. (BLOCK | LEARN | LOG | STATS | NONE)
-This check is applicable to Profile Type: HTML, XML. .<br> Possible values = none, block, learn, log, stats
+	* One or more Start URL actions. Available settings function as follows:
+* Block - Block connections that violate this security check.
+* Learn - Use the learning engine to generate a list of exceptions to this security check.
+* Log - Log violations of this security check.
+* Stats - Generate statistics for this security check.
+* None - Disable all actions for this security check.
+
+CLI users: To enable one or more actions, type "set appfw profile -startURLaction" followed by the actions to be enabled. To turn off all actions, type "set appfw profile -startURLaction none".<br> Possible values = none, block, learn, log, stats
 	* </pre>
 	*/
 	public String[] get_starturlaction() throws Exception {
@@ -167,8 +189,7 @@ This check is applicable to Profile Type: HTML, XML. .<br> Possible values = non
 
 	/**
 	* <pre>
-	* Start URL closure.
-This check is applicable to Profile Type: HTML, XML. .<br> Default value: OFF<br> Possible values = ON, OFF
+	* Toggle  the state of Start URL Closure.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_starturlclosure(String starturlclosure) throws Exception{
@@ -177,8 +198,7 @@ This check is applicable to Profile Type: HTML, XML. .<br> Default value: OFF<br
 
 	/**
 	* <pre>
-	* Start URL closure.
-This check is applicable to Profile Type: HTML, XML. .<br> Default value: OFF<br> Possible values = ON, OFF
+	* Toggle  the state of Start URL Closure.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_starturlclosure() throws Exception {
@@ -187,9 +207,15 @@ This check is applicable to Profile Type: HTML, XML. .<br> Default value: OFF<br
 
 	/**
 	* <pre>
-	* Deny URL action types. (BLOCK | LOG | STATS | NONE)
-This check is applicable to Profile Type: HTML, XML.
-LEARN is not supported.<br> Possible values = none, block, learn, log, stats
+	* One or more Deny URL actions. Available settings function as follows:
+* Block - Block connections that violate this security check.
+* Log - Log violations of this security check.
+* Stats - Generate statistics for this security check.
+* None - Disable all actions for this security check.
+
+NOTE: The Deny URL check takes precedence over the Start URL check. If you enable blocking for the Deny URL check, the application firewall blocks any URL that is explicitly blocked by a Deny URL, even if the same URL would otherwise be allowed by the Start URL check.
+
+CLI users: To enable one or more actions, type "set appfw profile -denyURLaction" followed by the actions to be enabled. To turn off all actions, type "set appfw profile -denyURLaction none".<br> Possible values = none, block, learn, log, stats
 	* </pre>
 	*/
 	public void set_denyurlaction(String[] denyurlaction) throws Exception{
@@ -198,9 +224,15 @@ LEARN is not supported.<br> Possible values = none, block, learn, log, stats
 
 	/**
 	* <pre>
-	* Deny URL action types. (BLOCK | LOG | STATS | NONE)
-This check is applicable to Profile Type: HTML, XML.
-LEARN is not supported.<br> Possible values = none, block, learn, log, stats
+	* One or more Deny URL actions. Available settings function as follows:
+* Block - Block connections that violate this security check.
+* Log - Log violations of this security check.
+* Stats - Generate statistics for this security check.
+* None - Disable all actions for this security check.
+
+NOTE: The Deny URL check takes precedence over the Start URL check. If you enable blocking for the Deny URL check, the application firewall blocks any URL that is explicitly blocked by a Deny URL, even if the same URL would otherwise be allowed by the Start URL check.
+
+CLI users: To enable one or more actions, type "set appfw profile -denyURLaction" followed by the actions to be enabled. To turn off all actions, type "set appfw profile -denyURLaction none".<br> Possible values = none, block, learn, log, stats
 	* </pre>
 	*/
 	public String[] get_denyurlaction() throws Exception {
@@ -209,8 +241,9 @@ LEARN is not supported.<br> Possible values = none, block, learn, log, stats
 
 	/**
 	* <pre>
-	* Referer header check
-This check is applicable to Profile Type: HTML. .<br> Default value: OFF<br> Possible values = OFF, if_present, always
+	* Enable validation of Referer headers. 
+Referer validation ensures that a web form that a user sends to your web site originally came from your web site, not an outside attacker. 
+Although this parameter is part of the Start URL check, referer validation protects against cross-site request forgery (CSRF) attacks, not Start URL attacks.<br> Default value: OFF<br> Possible values = OFF, if_present, always
 	* </pre>
 	*/
 	public void set_refererheadercheck(String refererheadercheck) throws Exception{
@@ -219,8 +252,9 @@ This check is applicable to Profile Type: HTML. .<br> Default value: OFF<br> Pos
 
 	/**
 	* <pre>
-	* Referer header check
-This check is applicable to Profile Type: HTML. .<br> Default value: OFF<br> Possible values = OFF, if_present, always
+	* Enable validation of Referer headers. 
+Referer validation ensures that a web form that a user sends to your web site originally came from your web site, not an outside attacker. 
+Although this parameter is part of the Start URL check, referer validation protects against cross-site request forgery (CSRF) attacks, not Start URL attacks.<br> Default value: OFF<br> Possible values = OFF, if_present, always
 	* </pre>
 	*/
 	public String get_refererheadercheck() throws Exception {
@@ -229,8 +263,14 @@ This check is applicable to Profile Type: HTML. .<br> Default value: OFF<br> Pos
 
 	/**
 	* <pre>
-	* Cookie consistency action types. (BLOCK | LEARN | LOG | STATS | NONE)
-This check is applicable to Profile Type: HTML, XML. .<br> Default value: none<br> Possible values = none, block, learn, log, stats
+	* One or more Cookie Consistency actions. Available settings function as follows:
+* Block - Block connections that violate this security check.
+* Learn - Use the learning engine to generate a list of exceptions to this security check.
+* Log - Log violations of this security check.
+* Stats - Generate statistics for this security check.
+* None - Disable all actions for this security check.
+
+CLI users: To enable one or more actions, type "set appfw profile -cookieConsistencyAction" followed by the actions to be enabled. To turn off all actions, type "set appfw profile -cookieConsistencyAction none".<br> Default value: none<br> Possible values = none, block, learn, log, stats
 	* </pre>
 	*/
 	public void set_cookieconsistencyaction(String[] cookieconsistencyaction) throws Exception{
@@ -239,8 +279,14 @@ This check is applicable to Profile Type: HTML, XML. .<br> Default value: none<b
 
 	/**
 	* <pre>
-	* Cookie consistency action types. (BLOCK | LEARN | LOG | STATS | NONE)
-This check is applicable to Profile Type: HTML, XML. .<br> Default value: none<br> Possible values = none, block, learn, log, stats
+	* One or more Cookie Consistency actions. Available settings function as follows:
+* Block - Block connections that violate this security check.
+* Learn - Use the learning engine to generate a list of exceptions to this security check.
+* Log - Log violations of this security check.
+* Stats - Generate statistics for this security check.
+* None - Disable all actions for this security check.
+
+CLI users: To enable one or more actions, type "set appfw profile -cookieConsistencyAction" followed by the actions to be enabled. To turn off all actions, type "set appfw profile -cookieConsistencyAction none".<br> Default value: none<br> Possible values = none, block, learn, log, stats
 	* </pre>
 	*/
 	public String[] get_cookieconsistencyaction() throws Exception {
@@ -249,8 +295,12 @@ This check is applicable to Profile Type: HTML, XML. .<br> Default value: none<b
 
 	/**
 	* <pre>
-	* Enable cookie transforms: encryption, proxying, and adding cookie flags. Make sure this is turned ON if you want the transforms to happen.
-This check is applicable to Profile Type: HTML. XML.<br> Default value: OFF<br> Possible values = ON, OFF
+	* Perform the specified type of cookie transformation. 
+Available settings function as follows: 
+* Encryption - Encrypt cookies.
+* Proxying - Mask contents of server cookies by sending proxy cookie to users.
+* Cookie flags - Flag cookies as HTTP only to prevent scripts on user's browser from accessing and possibly modifying them.
+CAUTION: Make sure that this parameter is set to ON if you are configuring any cookie transformations. If it is set to OFF, no cookie transformations are performed regardless of any other settings.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_cookietransforms(String cookietransforms) throws Exception{
@@ -259,8 +309,12 @@ This check is applicable to Profile Type: HTML. XML.<br> Default value: OFF<br> 
 
 	/**
 	* <pre>
-	* Enable cookie transforms: encryption, proxying, and adding cookie flags. Make sure this is turned ON if you want the transforms to happen.
-This check is applicable to Profile Type: HTML. XML.<br> Default value: OFF<br> Possible values = ON, OFF
+	* Perform the specified type of cookie transformation. 
+Available settings function as follows: 
+* Encryption - Encrypt cookies.
+* Proxying - Mask contents of server cookies by sending proxy cookie to users.
+* Cookie flags - Flag cookies as HTTP only to prevent scripts on user's browser from accessing and possibly modifying them.
+CAUTION: Make sure that this parameter is set to ON if you are configuring any cookie transformations. If it is set to OFF, no cookie transformations are performed regardless of any other settings.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_cookietransforms() throws Exception {
@@ -269,7 +323,11 @@ This check is applicable to Profile Type: HTML. XML.<br> Default value: OFF<br> 
 
 	/**
 	* <pre>
-	* Encrypts server cookies.<br> Default value: none<br> Possible values = none, decryptOnly, encryptSessionOnly, encryptAll
+	* Type of cookie encryption. Available settings function as follows:
+* None - Do not encrypt cookies.
+* Decrypt Only - Decrypt encrypted cookies, but do not encrypt cookies.
+* Encrypt Session Only - Encrypt session cookies, but not permanent cookies.
+* Encrypt All - Encrypt all cookies.<br> Default value: none<br> Possible values = none, decryptOnly, encryptSessionOnly, encryptAll
 	* </pre>
 	*/
 	public void set_cookieencryption(String cookieencryption) throws Exception{
@@ -278,7 +336,11 @@ This check is applicable to Profile Type: HTML. XML.<br> Default value: OFF<br> 
 
 	/**
 	* <pre>
-	* Encrypts server cookies.<br> Default value: none<br> Possible values = none, decryptOnly, encryptSessionOnly, encryptAll
+	* Type of cookie encryption. Available settings function as follows:
+* None - Do not encrypt cookies.
+* Decrypt Only - Decrypt encrypted cookies, but do not encrypt cookies.
+* Encrypt Session Only - Encrypt session cookies, but not permanent cookies.
+* Encrypt All - Encrypt all cookies.<br> Default value: none<br> Possible values = none, decryptOnly, encryptSessionOnly, encryptAll
 	* </pre>
 	*/
 	public String get_cookieencryption() throws Exception {
@@ -287,7 +349,9 @@ This check is applicable to Profile Type: HTML. XML.<br> Default value: OFF<br> 
 
 	/**
 	* <pre>
-	* Proxy server cookies using an Application Firewall session .<br> Default value: none<br> Possible values = none, sessionOnly
+	* Cookie proxy setting. Available settings function as follows:
+* None - Do not proxy cookies.
+* Session Only - Proxy session cookies by using the NetScaler session ID, but do not proxy permanent cookies.<br> Default value: none<br> Possible values = none, sessionOnly
 	* </pre>
 	*/
 	public void set_cookieproxying(String cookieproxying) throws Exception{
@@ -296,7 +360,9 @@ This check is applicable to Profile Type: HTML. XML.<br> Default value: OFF<br> 
 
 	/**
 	* <pre>
-	* Proxy server cookies using an Application Firewall session .<br> Default value: none<br> Possible values = none, sessionOnly
+	* Cookie proxy setting. Available settings function as follows:
+* None - Do not proxy cookies.
+* Session Only - Proxy session cookies by using the NetScaler session ID, but do not proxy permanent cookies.<br> Default value: none<br> Possible values = none, sessionOnly
 	* </pre>
 	*/
 	public String get_cookieproxying() throws Exception {
@@ -305,7 +371,11 @@ This check is applicable to Profile Type: HTML. XML.<br> Default value: OFF<br> 
 
 	/**
 	* <pre>
-	* Add HttpOnly and/or Secure flags to cookies.<br> Default value: none<br> Possible values = none, httpOnly, secure, all
+	* Add the specified flags to cookies. Available settings function as follows:
+* None - Do not add flags to cookies.
+* HTTP Only - Add the HTTP Only flag to cookies, which prevents scripts from accessing cookies.
+* Secure - Add Secure flag to cookies.
+* All - Add both HTTPOnly and Secure flags to cookies.<br> Default value: none<br> Possible values = none, httpOnly, secure, all
 	* </pre>
 	*/
 	public void set_addcookieflags(String addcookieflags) throws Exception{
@@ -314,7 +384,11 @@ This check is applicable to Profile Type: HTML. XML.<br> Default value: OFF<br> 
 
 	/**
 	* <pre>
-	* Add HttpOnly and/or Secure flags to cookies.<br> Default value: none<br> Possible values = none, httpOnly, secure, all
+	* Add the specified flags to cookies. Available settings function as follows:
+* None - Do not add flags to cookies.
+* HTTP Only - Add the HTTP Only flag to cookies, which prevents scripts from accessing cookies.
+* Secure - Add Secure flag to cookies.
+* All - Add both HTTPOnly and Secure flags to cookies.<br> Default value: none<br> Possible values = none, httpOnly, secure, all
 	* </pre>
 	*/
 	public String get_addcookieflags() throws Exception {
@@ -323,8 +397,14 @@ This check is applicable to Profile Type: HTML. XML.<br> Default value: OFF<br> 
 
 	/**
 	* <pre>
-	* Form Field Consistency action types. (BLOCK | LEARN | LOG | STATS | NONE)
-This check is applicable to Profile Type: HTML. .<br> Default value: none<br> Possible values = none, block, learn, log, stats
+	* One or more Form Field Consistency actions. Available settings function as follows:
+* Block - Block connections that violate this security check.
+* Learn - Use the learning engine to generate a list of exceptions to this security check.
+* Log - Log violations of this security check.
+* Stats - Generate statistics for this security check.
+* None - Disable all actions for this security check.
+
+CLI users: To enable one or more actions, type "set appfw profile -fieldConsistencyaction" followed by the actions to be enabled. To turn off all actions, type "set appfw profile -fieldConsistencyAction none".<br> Default value: none<br> Possible values = none, block, learn, log, stats
 	* </pre>
 	*/
 	public void set_fieldconsistencyaction(String[] fieldconsistencyaction) throws Exception{
@@ -333,8 +413,14 @@ This check is applicable to Profile Type: HTML. .<br> Default value: none<br> Po
 
 	/**
 	* <pre>
-	* Form Field Consistency action types. (BLOCK | LEARN | LOG | STATS | NONE)
-This check is applicable to Profile Type: HTML. .<br> Default value: none<br> Possible values = none, block, learn, log, stats
+	* One or more Form Field Consistency actions. Available settings function as follows:
+* Block - Block connections that violate this security check.
+* Learn - Use the learning engine to generate a list of exceptions to this security check.
+* Log - Log violations of this security check.
+* Stats - Generate statistics for this security check.
+* None - Disable all actions for this security check.
+
+CLI users: To enable one or more actions, type "set appfw profile -fieldConsistencyaction" followed by the actions to be enabled. To turn off all actions, type "set appfw profile -fieldConsistencyAction none".<br> Default value: none<br> Possible values = none, block, learn, log, stats
 	* </pre>
 	*/
 	public String[] get_fieldconsistencyaction() throws Exception {
@@ -343,9 +429,14 @@ This check is applicable to Profile Type: HTML. .<br> Default value: none<br> Po
 
 	/**
 	* <pre>
-	* Cross-site request forgery tag action types. (BLOCK | LEARN | LOG | STATS | NONE)
-This check is applicable to Profile Type: HTML.
-LEARN is not supported.<br> Default value: none<br> Possible values = none, block, learn, log, stats
+	* One or more Cross-Site Request Forgery (CSRF) Tagging actions. Available settings function as follows:
+* Block - Block connections that violate this security check.
+* Learn - Use the learning engine to generate a list of exceptions to this security check.
+* Log - Log violations of this security check.
+* Stats - Generate statistics for this security check.
+* None - Disable all actions for this security check.
+
+CLI users: To enable one or more actions, type "set appfw profile -CSRFTagAction" followed by the actions to be enabled. To turn off all actions, type "set appfw profile -CSRFTagAction none".<br> Default value: none<br> Possible values = none, block, learn, log, stats
 	* </pre>
 	*/
 	public void set_csrftagaction(String[] csrftagaction) throws Exception{
@@ -354,9 +445,14 @@ LEARN is not supported.<br> Default value: none<br> Possible values = none, bloc
 
 	/**
 	* <pre>
-	* Cross-site request forgery tag action types. (BLOCK | LEARN | LOG | STATS | NONE)
-This check is applicable to Profile Type: HTML.
-LEARN is not supported.<br> Default value: none<br> Possible values = none, block, learn, log, stats
+	* One or more Cross-Site Request Forgery (CSRF) Tagging actions. Available settings function as follows:
+* Block - Block connections that violate this security check.
+* Learn - Use the learning engine to generate a list of exceptions to this security check.
+* Log - Log violations of this security check.
+* Stats - Generate statistics for this security check.
+* None - Disable all actions for this security check.
+
+CLI users: To enable one or more actions, type "set appfw profile -CSRFTagAction" followed by the actions to be enabled. To turn off all actions, type "set appfw profile -CSRFTagAction none".<br> Default value: none<br> Possible values = none, block, learn, log, stats
 	* </pre>
 	*/
 	public String[] get_csrftagaction() throws Exception {
@@ -365,8 +461,14 @@ LEARN is not supported.<br> Default value: none<br> Possible values = none, bloc
 
 	/**
 	* <pre>
-	* Cross-site scripting action types. (BLOCK | LEARN | LOG | STATS | NONE)
-This check is applicable to Profile Type: HTML. .<br> Possible values = none, block, learn, log, stats
+	* One or more Cross-Site Scripting (XSS) actions. Available settings function as follows:
+* Block - Block connections that violate this security check.
+* Learn - Use the learning engine to generate a list of exceptions to this security check.
+* Log - Log violations of this security check.
+* Stats - Generate statistics for this security check.
+* None - Disable all actions for this security check.
+
+CLI users: To enable one or more actions, type "set appfw profile -crossSiteScriptingAction" followed by the actions to be enabled. To turn off all actions, type "set appfw profile -crossSiteScriptingAction none".<br> Possible values = none, block, learn, log, stats
 	* </pre>
 	*/
 	public void set_crosssitescriptingaction(String[] crosssitescriptingaction) throws Exception{
@@ -375,8 +477,14 @@ This check is applicable to Profile Type: HTML. .<br> Possible values = none, bl
 
 	/**
 	* <pre>
-	* Cross-site scripting action types. (BLOCK | LEARN | LOG | STATS | NONE)
-This check is applicable to Profile Type: HTML. .<br> Possible values = none, block, learn, log, stats
+	* One or more Cross-Site Scripting (XSS) actions. Available settings function as follows:
+* Block - Block connections that violate this security check.
+* Learn - Use the learning engine to generate a list of exceptions to this security check.
+* Log - Log violations of this security check.
+* Stats - Generate statistics for this security check.
+* None - Disable all actions for this security check.
+
+CLI users: To enable one or more actions, type "set appfw profile -crossSiteScriptingAction" followed by the actions to be enabled. To turn off all actions, type "set appfw profile -crossSiteScriptingAction none".<br> Possible values = none, block, learn, log, stats
 	* </pre>
 	*/
 	public String[] get_crosssitescriptingaction() throws Exception {
@@ -385,8 +493,8 @@ This check is applicable to Profile Type: HTML. .<br> Possible values = none, bl
 
 	/**
 	* <pre>
-	* Transform HTML characters.
-This check is applicable to Profile Type: HTML. .<br> Default value: OFF<br> Possible values = ON, OFF
+	* Transform cross-site scripts. This setting configures the application firewall to disable dangerous HTML instead of blocking the request. 
+CAUTION: Make sure that this parameter is set to ON if you are configuring any cross-site scripting transformations. If it is set to OFF, no cross-site scripting transformations are performed regardless of any other settings.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_crosssitescriptingtransformunsafehtml(String crosssitescriptingtransformunsafehtml) throws Exception{
@@ -395,8 +503,8 @@ This check is applicable to Profile Type: HTML. .<br> Default value: OFF<br> Pos
 
 	/**
 	* <pre>
-	* Transform HTML characters.
-This check is applicable to Profile Type: HTML. .<br> Default value: OFF<br> Possible values = ON, OFF
+	* Transform cross-site scripts. This setting configures the application firewall to disable dangerous HTML instead of blocking the request. 
+CAUTION: Make sure that this parameter is set to ON if you are configuring any cross-site scripting transformations. If it is set to OFF, no cross-site scripting transformations are performed regardless of any other settings.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_crosssitescriptingtransformunsafehtml() throws Exception {
@@ -405,8 +513,7 @@ This check is applicable to Profile Type: HTML. .<br> Default value: OFF<br> Pos
 
 	/**
 	* <pre>
-	* Check complete URLs.
-This check is applicable to Profile Type: HTML. .<br> Default value: OFF<br> Possible values = ON, OFF
+	* Check complete URLs for cross-site scripts, instead of just the query portions of URLs.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_crosssitescriptingcheckcompleteurls(String crosssitescriptingcheckcompleteurls) throws Exception{
@@ -415,8 +522,7 @@ This check is applicable to Profile Type: HTML. .<br> Default value: OFF<br> Pos
 
 	/**
 	* <pre>
-	* Check complete URLs.
-This check is applicable to Profile Type: HTML. .<br> Default value: OFF<br> Possible values = ON, OFF
+	* Check complete URLs for cross-site scripts, instead of just the query portions of URLs.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_crosssitescriptingcheckcompleteurls() throws Exception {
@@ -425,8 +531,14 @@ This check is applicable to Profile Type: HTML. .<br> Default value: OFF<br> Pos
 
 	/**
 	* <pre>
-	* SQL injection action types. (BLOCK | LEARN | LOG | STATS | NONE)
-This check is applicable to Profile Type: HTML. .<br> Possible values = none, block, learn, log, stats
+	* One or more HTML SQL Injection actions. Available settings function as follows:
+* Block - Block connections that violate this security check.
+* Learn - Use the learning engine to generate a list of exceptions to this security check.
+* Log - Log violations of this security check.
+* Stats - Generate statistics for this security check.
+* None - Disable all actions for this security check.
+
+CLI users: To enable one or more actions, type "set appfw profile -SQLInjectionAction" followed by the actions to be enabled. To turn off all actions, type "set appfw profile -SQLInjectionAction none".<br> Possible values = none, block, learn, log, stats
 	* </pre>
 	*/
 	public void set_sqlinjectionaction(String[] sqlinjectionaction) throws Exception{
@@ -435,8 +547,14 @@ This check is applicable to Profile Type: HTML. .<br> Possible values = none, bl
 
 	/**
 	* <pre>
-	* SQL injection action types. (BLOCK | LEARN | LOG | STATS | NONE)
-This check is applicable to Profile Type: HTML. .<br> Possible values = none, block, learn, log, stats
+	* One or more HTML SQL Injection actions. Available settings function as follows:
+* Block - Block connections that violate this security check.
+* Learn - Use the learning engine to generate a list of exceptions to this security check.
+* Log - Log violations of this security check.
+* Stats - Generate statistics for this security check.
+* None - Disable all actions for this security check.
+
+CLI users: To enable one or more actions, type "set appfw profile -SQLInjectionAction" followed by the actions to be enabled. To turn off all actions, type "set appfw profile -SQLInjectionAction none".<br> Possible values = none, block, learn, log, stats
 	* </pre>
 	*/
 	public String[] get_sqlinjectionaction() throws Exception {
@@ -445,8 +563,8 @@ This check is applicable to Profile Type: HTML. .<br> Possible values = none, bl
 
 	/**
 	* <pre>
-	* Transform HTML characters.
-This check is applicable to Profile Type: HTML. .<br> Default value: OFF<br> Possible values = ON, OFF
+	* Transform injected SQL code. This setting configures the application firewall to disable SQL special strings instead of blocking the request. Since most SQL servers require a special string to activate an SQL keyword, in most cases a request that contains injected SQL code is safe if special strings are disabled.
+CAUTION: Make sure that this parameter is set to ON if you are configuring any SQL injection transformations. If it is set to OFF, no SQL injection transformations are performed regardless of any other settings.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_sqlinjectiontransformspecialchars(String sqlinjectiontransformspecialchars) throws Exception{
@@ -455,8 +573,8 @@ This check is applicable to Profile Type: HTML. .<br> Default value: OFF<br> Pos
 
 	/**
 	* <pre>
-	* Transform HTML characters.
-This check is applicable to Profile Type: HTML. .<br> Default value: OFF<br> Possible values = ON, OFF
+	* Transform injected SQL code. This setting configures the application firewall to disable SQL special strings instead of blocking the request. Since most SQL servers require a special string to activate an SQL keyword, in most cases a request that contains injected SQL code is safe if special strings are disabled.
+CAUTION: Make sure that this parameter is set to ON if you are configuring any SQL injection transformations. If it is set to OFF, no SQL injection transformations are performed regardless of any other settings.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_sqlinjectiontransformspecialchars() throws Exception {
@@ -465,8 +583,8 @@ This check is applicable to Profile Type: HTML. .<br> Default value: OFF<br> Pos
 
 	/**
 	* <pre>
-	* Check SQL characters.
-This check is applicable to Profile Type: HTML. .<br> Default value: ON<br> Possible values = ON, OFF
+	* Check only form fields that contain SQL special strings (characters) for injected SQL code.
+Most SQL servers require a special string to activate an SQL request, so SQL code without a special string is harmless to most SQL servers.<br> Default value: ON<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_sqlinjectiononlycheckfieldswithsqlchars(String sqlinjectiononlycheckfieldswithsqlchars) throws Exception{
@@ -475,8 +593,8 @@ This check is applicable to Profile Type: HTML. .<br> Default value: ON<br> Poss
 
 	/**
 	* <pre>
-	* Check SQL characters.
-This check is applicable to Profile Type: HTML. .<br> Default value: ON<br> Possible values = ON, OFF
+	* Check only form fields that contain SQL special strings (characters) for injected SQL code.
+Most SQL servers require a special string to activate an SQL request, so SQL code without a special string is harmless to most SQL servers.<br> Default value: ON<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_sqlinjectiononlycheckfieldswithsqlchars() throws Exception {
@@ -485,8 +603,14 @@ This check is applicable to Profile Type: HTML. .<br> Default value: ON<br> Poss
 
 	/**
 	* <pre>
-	* Field format action types. (BLOCK | LEARN | LOG | STATS | NONE)
-This check is applicable to Profile Type: HTML. .<br> Possible values = none, block, learn, log, stats
+	* One or more Field Format actions. Available settings function as follows:
+* Block - Block connections that violate this security check.
+* Learn - Use the learning engine to generate a list of suggested web form fields and field format assignments.
+* Log - Log violations of this security check.
+* Stats - Generate statistics for this security check.
+* None - Disable all actions for this security check.
+
+CLI users: To enable one or more actions, type "set appfw profile -fieldFormatAction" followed by the actions to be enabled. To turn off all actions, type "set appfw profile -fieldFormatAction none".<br> Possible values = none, block, learn, log, stats
 	* </pre>
 	*/
 	public void set_fieldformataction(String[] fieldformataction) throws Exception{
@@ -495,8 +619,14 @@ This check is applicable to Profile Type: HTML. .<br> Possible values = none, bl
 
 	/**
 	* <pre>
-	* Field format action types. (BLOCK | LEARN | LOG | STATS | NONE)
-This check is applicable to Profile Type: HTML. .<br> Possible values = none, block, learn, log, stats
+	* One or more Field Format actions. Available settings function as follows:
+* Block - Block connections that violate this security check.
+* Learn - Use the learning engine to generate a list of suggested web form fields and field format assignments.
+* Log - Log violations of this security check.
+* Stats - Generate statistics for this security check.
+* None - Disable all actions for this security check.
+
+CLI users: To enable one or more actions, type "set appfw profile -fieldFormatAction" followed by the actions to be enabled. To turn off all actions, type "set appfw profile -fieldFormatAction none".<br> Possible values = none, block, learn, log, stats
 	* </pre>
 	*/
 	public String[] get_fieldformataction() throws Exception {
@@ -505,8 +635,7 @@ This check is applicable to Profile Type: HTML. .<br> Possible values = none, bl
 
 	/**
 	* <pre>
-	* Default field type.
-This check is applicable to Profile Type: HTML. .<br> Minimum length =  1
+	* Designate a default field type to be applied to web form fields that do not have a field type explicitly assigned to them.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_defaultfieldformattype(String defaultfieldformattype) throws Exception{
@@ -515,8 +644,7 @@ This check is applicable to Profile Type: HTML. .<br> Minimum length =  1
 
 	/**
 	* <pre>
-	* Default field type.
-This check is applicable to Profile Type: HTML. .<br> Minimum length =  1
+	* Designate a default field type to be applied to web form fields that do not have a field type explicitly assigned to them.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_defaultfieldformattype() throws Exception {
@@ -525,8 +653,8 @@ This check is applicable to Profile Type: HTML. .<br> Minimum length =  1
 
 	/**
 	* <pre>
-	* Default field type minimum length.
-This check is applicable to Profile Type: HTML. .<br> Default value: 0<br> Minimum value =  0<br> Maximum value =  65535
+	* Minimum length, in characters, for data entered into a field that is assigned the default field type. 
+To disable the minimum and maximum length settings and allow data of any length to be entered into the field, set this parameter to zero (0).<br> Default value: 0<br> Minimum value =  0<br> Maximum value =  65535
 	* </pre>
 	*/
 	public void set_defaultfieldformatminlength(long defaultfieldformatminlength) throws Exception {
@@ -535,8 +663,8 @@ This check is applicable to Profile Type: HTML. .<br> Default value: 0<br> Minim
 
 	/**
 	* <pre>
-	* Default field type minimum length.
-This check is applicable to Profile Type: HTML. .<br> Default value: 0<br> Minimum value =  0<br> Maximum value =  65535
+	* Minimum length, in characters, for data entered into a field that is assigned the default field type. 
+To disable the minimum and maximum length settings and allow data of any length to be entered into the field, set this parameter to zero (0).<br> Default value: 0<br> Minimum value =  0<br> Maximum value =  65535
 	* </pre>
 	*/
 	public void set_defaultfieldformatminlength(Long defaultfieldformatminlength) throws Exception{
@@ -545,8 +673,8 @@ This check is applicable to Profile Type: HTML. .<br> Default value: 0<br> Minim
 
 	/**
 	* <pre>
-	* Default field type minimum length.
-This check is applicable to Profile Type: HTML. .<br> Default value: 0<br> Minimum value =  0<br> Maximum value =  65535
+	* Minimum length, in characters, for data entered into a field that is assigned the default field type. 
+To disable the minimum and maximum length settings and allow data of any length to be entered into the field, set this parameter to zero (0).<br> Default value: 0<br> Minimum value =  0<br> Maximum value =  65535
 	* </pre>
 	*/
 	public Long get_defaultfieldformatminlength() throws Exception {
@@ -555,8 +683,7 @@ This check is applicable to Profile Type: HTML. .<br> Default value: 0<br> Minim
 
 	/**
 	* <pre>
-	* Default field type maximum length.
-This check is applicable to Profile Type: HTML. .<br> Default value: 65535<br> Minimum value =  1<br> Maximum value =  65535
+	* Maximum length, in characters, for data entered into a field that is assigned the default field type.<br> Default value: 65535<br> Minimum value =  1<br> Maximum value =  65535
 	* </pre>
 	*/
 	public void set_defaultfieldformatmaxlength(long defaultfieldformatmaxlength) throws Exception {
@@ -565,8 +692,7 @@ This check is applicable to Profile Type: HTML. .<br> Default value: 65535<br> M
 
 	/**
 	* <pre>
-	* Default field type maximum length.
-This check is applicable to Profile Type: HTML. .<br> Default value: 65535<br> Minimum value =  1<br> Maximum value =  65535
+	* Maximum length, in characters, for data entered into a field that is assigned the default field type.<br> Default value: 65535<br> Minimum value =  1<br> Maximum value =  65535
 	* </pre>
 	*/
 	public void set_defaultfieldformatmaxlength(Long defaultfieldformatmaxlength) throws Exception{
@@ -575,8 +701,7 @@ This check is applicable to Profile Type: HTML. .<br> Default value: 65535<br> M
 
 	/**
 	* <pre>
-	* Default field type maximum length.
-This check is applicable to Profile Type: HTML. .<br> Default value: 65535<br> Minimum value =  1<br> Maximum value =  65535
+	* Maximum length, in characters, for data entered into a field that is assigned the default field type.<br> Default value: 65535<br> Minimum value =  1<br> Maximum value =  65535
 	* </pre>
 	*/
 	public Long get_defaultfieldformatmaxlength() throws Exception {
@@ -585,9 +710,13 @@ This check is applicable to Profile Type: HTML. .<br> Default value: 65535<br> M
 
 	/**
 	* <pre>
-	* Buffer overflow action types. (BLOCK | LOG | STATS | NONE)
-This check is applicable to Profile Type: HTML, XML.
-LEARN is not supported. .<br> Possible values = none, block, learn, log, stats
+	* One or more Buffer Overflow actions. Available settings function as follows:
+* Block - Block connections that violate this security check.
+* Log - Log violations of this security check.
+* Stats - Generate statistics for this security check.
+* None - Disable all actions for this security check.
+
+CLI users: To enable one or more actions, type "set appfw profile -bufferOverflowAction" followed by the actions to be enabled. To turn off all actions, type "set appfw profile -bufferOverflowAction none".<br> Possible values = none, block, learn, log, stats
 	* </pre>
 	*/
 	public void set_bufferoverflowaction(String[] bufferoverflowaction) throws Exception{
@@ -596,9 +725,13 @@ LEARN is not supported. .<br> Possible values = none, block, learn, log, stats
 
 	/**
 	* <pre>
-	* Buffer overflow action types. (BLOCK | LOG | STATS | NONE)
-This check is applicable to Profile Type: HTML, XML.
-LEARN is not supported. .<br> Possible values = none, block, learn, log, stats
+	* One or more Buffer Overflow actions. Available settings function as follows:
+* Block - Block connections that violate this security check.
+* Log - Log violations of this security check.
+* Stats - Generate statistics for this security check.
+* None - Disable all actions for this security check.
+
+CLI users: To enable one or more actions, type "set appfw profile -bufferOverflowAction" followed by the actions to be enabled. To turn off all actions, type "set appfw profile -bufferOverflowAction none".<br> Possible values = none, block, learn, log, stats
 	* </pre>
 	*/
 	public String[] get_bufferoverflowaction() throws Exception {
@@ -607,8 +740,7 @@ LEARN is not supported. .<br> Possible values = none, block, learn, log, stats
 
 	/**
 	* <pre>
-	* Maximum URL length.
-This check is applicable to Profile Type: HTML, XML. .<br> Default value: 1024<br> Minimum value =  0<br> Maximum value =  65535
+	* Maximum length, in characters, for URLs on your protected web sites. Requests with longer URLs are blocked.<br> Default value: 1024<br> Minimum value =  0<br> Maximum value =  65535
 	* </pre>
 	*/
 	public void set_bufferoverflowmaxurllength(long bufferoverflowmaxurllength) throws Exception {
@@ -617,8 +749,7 @@ This check is applicable to Profile Type: HTML, XML. .<br> Default value: 1024<b
 
 	/**
 	* <pre>
-	* Maximum URL length.
-This check is applicable to Profile Type: HTML, XML. .<br> Default value: 1024<br> Minimum value =  0<br> Maximum value =  65535
+	* Maximum length, in characters, for URLs on your protected web sites. Requests with longer URLs are blocked.<br> Default value: 1024<br> Minimum value =  0<br> Maximum value =  65535
 	* </pre>
 	*/
 	public void set_bufferoverflowmaxurllength(Long bufferoverflowmaxurllength) throws Exception{
@@ -627,8 +758,7 @@ This check is applicable to Profile Type: HTML, XML. .<br> Default value: 1024<b
 
 	/**
 	* <pre>
-	* Maximum URL length.
-This check is applicable to Profile Type: HTML, XML. .<br> Default value: 1024<br> Minimum value =  0<br> Maximum value =  65535
+	* Maximum length, in characters, for URLs on your protected web sites. Requests with longer URLs are blocked.<br> Default value: 1024<br> Minimum value =  0<br> Maximum value =  65535
 	* </pre>
 	*/
 	public Long get_bufferoverflowmaxurllength() throws Exception {
@@ -637,8 +767,7 @@ This check is applicable to Profile Type: HTML, XML. .<br> Default value: 1024<b
 
 	/**
 	* <pre>
-	* Maximum header length.
-This check is applicable to Profile Type: HTML, XML. .<br> Default value: 4096<br> Minimum value =  0<br> Maximum value =  65535
+	* Maximum length, in characters, for HTTP headers in requests sent to your protected web sites. Requests with longer headers are blocked.<br> Default value: 4096<br> Minimum value =  0<br> Maximum value =  65535
 	* </pre>
 	*/
 	public void set_bufferoverflowmaxheaderlength(long bufferoverflowmaxheaderlength) throws Exception {
@@ -647,8 +776,7 @@ This check is applicable to Profile Type: HTML, XML. .<br> Default value: 4096<b
 
 	/**
 	* <pre>
-	* Maximum header length.
-This check is applicable to Profile Type: HTML, XML. .<br> Default value: 4096<br> Minimum value =  0<br> Maximum value =  65535
+	* Maximum length, in characters, for HTTP headers in requests sent to your protected web sites. Requests with longer headers are blocked.<br> Default value: 4096<br> Minimum value =  0<br> Maximum value =  65535
 	* </pre>
 	*/
 	public void set_bufferoverflowmaxheaderlength(Long bufferoverflowmaxheaderlength) throws Exception{
@@ -657,8 +785,7 @@ This check is applicable to Profile Type: HTML, XML. .<br> Default value: 4096<b
 
 	/**
 	* <pre>
-	* Maximum header length.
-This check is applicable to Profile Type: HTML, XML. .<br> Default value: 4096<br> Minimum value =  0<br> Maximum value =  65535
+	* Maximum length, in characters, for HTTP headers in requests sent to your protected web sites. Requests with longer headers are blocked.<br> Default value: 4096<br> Minimum value =  0<br> Maximum value =  65535
 	* </pre>
 	*/
 	public Long get_bufferoverflowmaxheaderlength() throws Exception {
@@ -667,8 +794,7 @@ This check is applicable to Profile Type: HTML, XML. .<br> Default value: 4096<b
 
 	/**
 	* <pre>
-	* Maximum cookie length.
-This check is applicable to Profile Type: HTML, XML. .<br> Default value: 4096<br> Minimum value =  0<br> Maximum value =  65535
+	* Maximum length, in characters, for cookies sent to your protected web sites. Requests with longer cookies are blocked.<br> Default value: 4096<br> Minimum value =  0<br> Maximum value =  65535
 	* </pre>
 	*/
 	public void set_bufferoverflowmaxcookielength(long bufferoverflowmaxcookielength) throws Exception {
@@ -677,8 +803,7 @@ This check is applicable to Profile Type: HTML, XML. .<br> Default value: 4096<b
 
 	/**
 	* <pre>
-	* Maximum cookie length.
-This check is applicable to Profile Type: HTML, XML. .<br> Default value: 4096<br> Minimum value =  0<br> Maximum value =  65535
+	* Maximum length, in characters, for cookies sent to your protected web sites. Requests with longer cookies are blocked.<br> Default value: 4096<br> Minimum value =  0<br> Maximum value =  65535
 	* </pre>
 	*/
 	public void set_bufferoverflowmaxcookielength(Long bufferoverflowmaxcookielength) throws Exception{
@@ -687,8 +812,7 @@ This check is applicable to Profile Type: HTML, XML. .<br> Default value: 4096<b
 
 	/**
 	* <pre>
-	* Maximum cookie length.
-This check is applicable to Profile Type: HTML, XML. .<br> Default value: 4096<br> Minimum value =  0<br> Maximum value =  65535
+	* Maximum length, in characters, for cookies sent to your protected web sites. Requests with longer cookies are blocked.<br> Default value: 4096<br> Minimum value =  0<br> Maximum value =  65535
 	* </pre>
 	*/
 	public Long get_bufferoverflowmaxcookielength() throws Exception {
@@ -697,9 +821,13 @@ This check is applicable to Profile Type: HTML, XML. .<br> Default value: 4096<b
 
 	/**
 	* <pre>
-	* Credit Card action types. (BLOCK | LOG | STATS | NONE)
-This check is applicable to Profile Type: HTML, XML.
-LEARN is not supported. .<br> Default value: none<br> Possible values = none, block, learn, log, stats
+	* One or more Credit Card actions. Available settings function as follows:
+* Block - Block connections that violate this security check.
+* Log - Log violations of this security check.
+* Stats - Generate statistics for this security check.
+* None - Disable all actions for this security check.
+
+CLI users: To enable one or more actions, type "set appfw profile -creditCardAction" followed by the actions to be enabled. To turn off all actions, type "set appfw profile -creditCardAction none".<br> Default value: none<br> Possible values = none, block, learn, log, stats
 	* </pre>
 	*/
 	public void set_creditcardaction(String[] creditcardaction) throws Exception{
@@ -708,9 +836,13 @@ LEARN is not supported. .<br> Default value: none<br> Possible values = none, bl
 
 	/**
 	* <pre>
-	* Credit Card action types. (BLOCK | LOG | STATS | NONE)
-This check is applicable to Profile Type: HTML, XML.
-LEARN is not supported. .<br> Default value: none<br> Possible values = none, block, learn, log, stats
+	* One or more Credit Card actions. Available settings function as follows:
+* Block - Block connections that violate this security check.
+* Log - Log violations of this security check.
+* Stats - Generate statistics for this security check.
+* None - Disable all actions for this security check.
+
+CLI users: To enable one or more actions, type "set appfw profile -creditCardAction" followed by the actions to be enabled. To turn off all actions, type "set appfw profile -creditCardAction none".<br> Default value: none<br> Possible values = none, block, learn, log, stats
 	* </pre>
 	*/
 	public String[] get_creditcardaction() throws Exception {
@@ -719,8 +851,7 @@ LEARN is not supported. .<br> Default value: none<br> Possible values = none, bl
 
 	/**
 	* <pre>
-	* Credit card.
-This check is applicable to Profile Type: HTML, XML. .<br> Possible values = visa, mastercard, discover, amex, jcb, dinersclub
+	* Credit card types that the application firewall should protect.<br> Possible values = visa, mastercard, discover, amex, jcb, dinersclub
 	* </pre>
 	*/
 	public void set_creditcard(String[] creditcard) throws Exception{
@@ -729,8 +860,7 @@ This check is applicable to Profile Type: HTML, XML. .<br> Possible values = vis
 
 	/**
 	* <pre>
-	* Credit card.
-This check is applicable to Profile Type: HTML, XML. .<br> Possible values = visa, mastercard, discover, amex, jcb, dinersclub
+	* Credit card types that the application firewall should protect.<br> Possible values = visa, mastercard, discover, amex, jcb, dinersclub
 	* </pre>
 	*/
 	public String[] get_creditcard() throws Exception {
@@ -739,8 +869,7 @@ This check is applicable to Profile Type: HTML, XML. .<br> Possible values = vis
 
 	/**
 	* <pre>
-	* Maximum number of times a credit card number may be seen before action is taken.
-This check is applicable to Profile Type: HTML, XML. .<br> Minimum value =  0<br> Maximum value =  255
+	* Maximum number of credit card numbers that can appear on a web page served by your protected web sites. Pages that contain more credit card numbers are blocked, or the credit card numbers are masked.<br> Minimum value =  0<br> Maximum value =  255
 	* </pre>
 	*/
 	public void set_creditcardmaxallowed(long creditcardmaxallowed) throws Exception {
@@ -749,8 +878,7 @@ This check is applicable to Profile Type: HTML, XML. .<br> Minimum value =  0<br
 
 	/**
 	* <pre>
-	* Maximum number of times a credit card number may be seen before action is taken.
-This check is applicable to Profile Type: HTML, XML. .<br> Minimum value =  0<br> Maximum value =  255
+	* Maximum number of credit card numbers that can appear on a web page served by your protected web sites. Pages that contain more credit card numbers are blocked, or the credit card numbers are masked.<br> Minimum value =  0<br> Maximum value =  255
 	* </pre>
 	*/
 	public void set_creditcardmaxallowed(Long creditcardmaxallowed) throws Exception{
@@ -759,8 +887,7 @@ This check is applicable to Profile Type: HTML, XML. .<br> Minimum value =  0<br
 
 	/**
 	* <pre>
-	* Maximum number of times a credit card number may be seen before action is taken.
-This check is applicable to Profile Type: HTML, XML. .<br> Minimum value =  0<br> Maximum value =  255
+	* Maximum number of credit card numbers that can appear on a web page served by your protected web sites. Pages that contain more credit card numbers are blocked, or the credit card numbers are masked.<br> Minimum value =  0<br> Maximum value =  255
 	* </pre>
 	*/
 	public Long get_creditcardmaxallowed() throws Exception {
@@ -769,8 +896,7 @@ This check is applicable to Profile Type: HTML, XML. .<br> Minimum value =  0<br
 
 	/**
 	* <pre>
-	* X-out the credit card numbers.
-This check is applicable to Profile Type: HTML, XML. .<br> Default value: OFF<br> Possible values = ON, OFF
+	* Mask any credit card number detected in a response by replacing each digit, except the digits in the final group, with the letter "X.".<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_creditcardxout(String creditcardxout) throws Exception{
@@ -779,8 +905,7 @@ This check is applicable to Profile Type: HTML, XML. .<br> Default value: OFF<br
 
 	/**
 	* <pre>
-	* X-out the credit card numbers.
-This check is applicable to Profile Type: HTML, XML. .<br> Default value: OFF<br> Possible values = ON, OFF
+	* Mask any credit card number detected in a response by replacing each digit, except the digits in the final group, with the letter "X.".<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_creditcardxout() throws Exception {
@@ -789,8 +914,8 @@ This check is applicable to Profile Type: HTML, XML. .<br> Default value: OFF<br
 
 	/**
 	* <pre>
-	* Default content-type for request messages.
-This binding is applicable to Profile Type: HTML, XML. .<br> Minimum length =  1<br> Maximum length =  255
+	* Default Content-Type header for requests. 
+A Content-Type header can contain 0-255 letters, numbers, and the hyphen (-) and underscore (_) characters.<br> Minimum length =  1<br> Maximum length =  255
 	* </pre>
 	*/
 	public void set_requestcontenttype(String requestcontenttype) throws Exception{
@@ -799,8 +924,8 @@ This binding is applicable to Profile Type: HTML, XML. .<br> Minimum length =  1
 
 	/**
 	* <pre>
-	* Default content-type for request messages.
-This binding is applicable to Profile Type: HTML, XML. .<br> Minimum length =  1<br> Maximum length =  255
+	* Default Content-Type header for requests. 
+A Content-Type header can contain 0-255 letters, numbers, and the hyphen (-) and underscore (_) characters.<br> Minimum length =  1<br> Maximum length =  255
 	* </pre>
 	*/
 	public String get_requestcontenttype() throws Exception {
@@ -809,8 +934,8 @@ This binding is applicable to Profile Type: HTML, XML. .<br> Minimum length =  1
 
 	/**
 	* <pre>
-	* Default content-type for response messages.
-This binding is applicable to Profile Type: HTML, XML. .<br> Minimum length =  1<br> Maximum length =  255
+	* Default Content-Type header for responses. 
+A Content-Type header can contain 0-255 letters, numbers, and the hyphen (-) and underscore (_) characters.<br> Minimum length =  1<br> Maximum length =  255
 	* </pre>
 	*/
 	public void set_responsecontenttype(String responsecontenttype) throws Exception{
@@ -819,8 +944,8 @@ This binding is applicable to Profile Type: HTML, XML. .<br> Minimum length =  1
 
 	/**
 	* <pre>
-	* Default content-type for response messages.
-This binding is applicable to Profile Type: HTML, XML. .<br> Minimum length =  1<br> Maximum length =  255
+	* Default Content-Type header for responses. 
+A Content-Type header can contain 0-255 letters, numbers, and the hyphen (-) and underscore (_) characters.<br> Minimum length =  1<br> Maximum length =  255
 	* </pre>
 	*/
 	public String get_responsecontenttype() throws Exception {
@@ -829,8 +954,14 @@ This binding is applicable to Profile Type: HTML, XML. .<br> Minimum length =  1
 
 	/**
 	* <pre>
-	* XML DOS action types. (BLOCK | LEARN | LOG | STATS | NONE)
-This check is applicable to Profile Type: XML. .<br> Possible values = none, block, learn, log, stats
+	* One or more XML Denial-of-Service (XDoS) actions. Available settings function as follows:
+* Block - Block connections that violate this security check.
+* Learn - Use the learning engine to generate a list of exceptions to this security check.
+* Log - Log violations of this security check.
+* Stats - Generate statistics for this security check.
+* None - Disable all actions for this security check.
+
+CLI users: To enable one or more actions, type "set appfw profile -XMLDoSAction" followed by the actions to be enabled. To turn off all actions, type "set appfw profile -XMLDoSAction none".<br> Possible values = none, block, learn, log, stats
 	* </pre>
 	*/
 	public void set_xmldosaction(String[] xmldosaction) throws Exception{
@@ -839,8 +970,14 @@ This check is applicable to Profile Type: XML. .<br> Possible values = none, blo
 
 	/**
 	* <pre>
-	* XML DOS action types. (BLOCK | LEARN | LOG | STATS | NONE)
-This check is applicable to Profile Type: XML. .<br> Possible values = none, block, learn, log, stats
+	* One or more XML Denial-of-Service (XDoS) actions. Available settings function as follows:
+* Block - Block connections that violate this security check.
+* Learn - Use the learning engine to generate a list of exceptions to this security check.
+* Log - Log violations of this security check.
+* Stats - Generate statistics for this security check.
+* None - Disable all actions for this security check.
+
+CLI users: To enable one or more actions, type "set appfw profile -XMLDoSAction" followed by the actions to be enabled. To turn off all actions, type "set appfw profile -XMLDoSAction none".<br> Possible values = none, block, learn, log, stats
 	* </pre>
 	*/
 	public String[] get_xmldosaction() throws Exception {
@@ -849,9 +986,13 @@ This check is applicable to Profile Type: XML. .<br> Possible values = none, blo
 
 	/**
 	* <pre>
-	* XML well-formed request action types. (BLOCK | LOG | STATS | NONE)
-This check is applicable to Profile Type: XML.
-LEARN is not supported.<br> Possible values = none, block, learn, log, stats
+	* One or more XML Format actions. Available settings function as follows:
+* Block - Block connections that violate this security check.
+* Log - Log violations of this security check.
+* Stats - Generate statistics for this security check.
+* None - Disable all actions for this security check.
+
+CLI users: To enable one or more actions, type "set appfw profile -XMLFormatAction" followed by the actions to be enabled. To turn off all actions, type "set appfw profile -XMLFormatAction none".<br> Possible values = none, block, learn, log, stats
 	* </pre>
 	*/
 	public void set_xmlformataction(String[] xmlformataction) throws Exception{
@@ -860,9 +1001,13 @@ LEARN is not supported.<br> Possible values = none, block, learn, log, stats
 
 	/**
 	* <pre>
-	* XML well-formed request action types. (BLOCK | LOG | STATS | NONE)
-This check is applicable to Profile Type: XML.
-LEARN is not supported.<br> Possible values = none, block, learn, log, stats
+	* One or more XML Format actions. Available settings function as follows:
+* Block - Block connections that violate this security check.
+* Log - Log violations of this security check.
+* Stats - Generate statistics for this security check.
+* None - Disable all actions for this security check.
+
+CLI users: To enable one or more actions, type "set appfw profile -XMLFormatAction" followed by the actions to be enabled. To turn off all actions, type "set appfw profile -XMLFormatAction none".<br> Possible values = none, block, learn, log, stats
 	* </pre>
 	*/
 	public String[] get_xmlformataction() throws Exception {
@@ -871,9 +1016,13 @@ LEARN is not supported.<br> Possible values = none, block, learn, log, stats
 
 	/**
 	* <pre>
-	* XML SQL injection action types. (BLOCK | LOG | STATS | NONE)
-This check is applicable to Profile Type: XML.
-LEARN is not supported.<br> Possible values = none, block, learn, log, stats
+	* One or more XML SQL Injection actions. Available settings function as follows:
+* Block - Block connections that violate this security check.
+* Log - Log violations of this security check.
+* Stats - Generate statistics for this security check.
+* None - Disable all actions for this security check.
+
+CLI users: To enable one or more actions, type "set appfw profile -XMLSQLInjectionAction" followed by the actions to be enabled. To turn off all actions, type "set appfw profile -XMLSQLInjectionAction none".<br> Possible values = none, block, learn, log, stats
 	* </pre>
 	*/
 	public void set_xmlsqlinjectionaction(String[] xmlsqlinjectionaction) throws Exception{
@@ -882,9 +1031,13 @@ LEARN is not supported.<br> Possible values = none, block, learn, log, stats
 
 	/**
 	* <pre>
-	* XML SQL injection action types. (BLOCK | LOG | STATS | NONE)
-This check is applicable to Profile Type: XML.
-LEARN is not supported.<br> Possible values = none, block, learn, log, stats
+	* One or more XML SQL Injection actions. Available settings function as follows:
+* Block - Block connections that violate this security check.
+* Log - Log violations of this security check.
+* Stats - Generate statistics for this security check.
+* None - Disable all actions for this security check.
+
+CLI users: To enable one or more actions, type "set appfw profile -XMLSQLInjectionAction" followed by the actions to be enabled. To turn off all actions, type "set appfw profile -XMLSQLInjectionAction none".<br> Possible values = none, block, learn, log, stats
 	* </pre>
 	*/
 	public String[] get_xmlsqlinjectionaction() throws Exception {
@@ -893,8 +1046,7 @@ LEARN is not supported.<br> Possible values = none, block, learn, log, stats
 
 	/**
 	* <pre>
-	* Check SQL characters.
-This check is applicable to Profile Type: XML. .<br> Default value: ON<br> Possible values = ON, OFF
+	* Check only form fields that contain SQL special characters, which most SQL servers require before accepting an SQL command, for injected SQL.<br> Default value: ON<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_xmlsqlinjectiononlycheckfieldswithsqlchars(String xmlsqlinjectiononlycheckfieldswithsqlchars) throws Exception{
@@ -903,8 +1055,7 @@ This check is applicable to Profile Type: XML. .<br> Default value: ON<br> Possi
 
 	/**
 	* <pre>
-	* Check SQL characters.
-This check is applicable to Profile Type: XML. .<br> Default value: ON<br> Possible values = ON, OFF
+	* Check only form fields that contain SQL special characters, which most SQL servers require before accepting an SQL command, for injected SQL.<br> Default value: ON<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_xmlsqlinjectiononlycheckfieldswithsqlchars() throws Exception {
@@ -913,8 +1064,11 @@ This check is applicable to Profile Type: XML. .<br> Default value: ON<br> Possi
 
 	/**
 	* <pre>
-	* Canonicalize SQL Comments in XML Data.
-This check is applicable to Profile Type: XML. .<br> Default value: checkall<br> Possible values = checkall, ansi, nested, ansinested
+	* Parse comments in XML Data and exempt those sections of the request that are from the XML SQL Injection check. You must configure the type of comments that the application firewall is to detect and exempt from this security check. Available settings function as follows:
+* Check all - Check all content.
+* ANSI - Exempt content that is part of an ANSI (Mozilla-style) comment. 
+* Nested - Exempt content that is part of a nested (Microsoft-style) comment.
+* ANSI Nested - Exempt content that is part of any type of comment.<br> Default value: checkall<br> Possible values = checkall, ansi, nested, ansinested
 	* </pre>
 	*/
 	public void set_xmlsqlinjectionparsecomments(String xmlsqlinjectionparsecomments) throws Exception{
@@ -923,8 +1077,11 @@ This check is applicable to Profile Type: XML. .<br> Default value: checkall<br>
 
 	/**
 	* <pre>
-	* Canonicalize SQL Comments in XML Data.
-This check is applicable to Profile Type: XML. .<br> Default value: checkall<br> Possible values = checkall, ansi, nested, ansinested
+	* Parse comments in XML Data and exempt those sections of the request that are from the XML SQL Injection check. You must configure the type of comments that the application firewall is to detect and exempt from this security check. Available settings function as follows:
+* Check all - Check all content.
+* ANSI - Exempt content that is part of an ANSI (Mozilla-style) comment. 
+* Nested - Exempt content that is part of a nested (Microsoft-style) comment.
+* ANSI Nested - Exempt content that is part of any type of comment.<br> Default value: checkall<br> Possible values = checkall, ansi, nested, ansinested
 	* </pre>
 	*/
 	public String get_xmlsqlinjectionparsecomments() throws Exception {
@@ -933,9 +1090,13 @@ This check is applicable to Profile Type: XML. .<br> Default value: checkall<br>
 
 	/**
 	* <pre>
-	* XML cross-site scripting action types. (BLOCK | LOG | STATS | NONE)
-This check is applicable to Profile Type: XML.
-LEARN is not supported.<br> Possible values = none, block, learn, log, stats
+	* One or more XML Cross-Site Scripting actions. Available settings function as follows:
+* Block - Block connections that violate this security check.
+* Log - Log violations of this security check.
+* Stats - Generate statistics for this security check.
+* None - Disable all actions for this security check.
+
+CLI users: To enable one or more actions, type "set appfw profile -XMLXSSAction" followed by the actions to be enabled. To turn off all actions, type "set appfw profile -XMLXSSAction none".<br> Possible values = none, block, learn, log, stats
 	* </pre>
 	*/
 	public void set_xmlxssaction(String[] xmlxssaction) throws Exception{
@@ -944,9 +1105,13 @@ LEARN is not supported.<br> Possible values = none, block, learn, log, stats
 
 	/**
 	* <pre>
-	* XML cross-site scripting action types. (BLOCK | LOG | STATS | NONE)
-This check is applicable to Profile Type: XML.
-LEARN is not supported.<br> Possible values = none, block, learn, log, stats
+	* One or more XML Cross-Site Scripting actions. Available settings function as follows:
+* Block - Block connections that violate this security check.
+* Log - Log violations of this security check.
+* Stats - Generate statistics for this security check.
+* None - Disable all actions for this security check.
+
+CLI users: To enable one or more actions, type "set appfw profile -XMLXSSAction" followed by the actions to be enabled. To turn off all actions, type "set appfw profile -XMLXSSAction none".<br> Possible values = none, block, learn, log, stats
 	* </pre>
 	*/
 	public String[] get_xmlxssaction() throws Exception {
@@ -955,8 +1120,14 @@ LEARN is not supported.<br> Possible values = none, block, learn, log, stats
 
 	/**
 	* <pre>
-	* XML WS-I action types. (BLOCK | LEARN | LOG | STATS | NONE)
-This check is applicable to Profile Type: XML. .<br> Possible values = none, block, learn, log, stats
+	* One or more Web Services Interoperability (WSI) actions. Available settings function as follows:
+* Block - Block connections that violate this security check.
+* Learn - Use the learning engine to generate a list of exceptions to this security check.
+* Log - Log violations of this security check.
+* Stats - Generate statistics for this security check.
+* None - Disable all actions for this security check.
+
+CLI users: To enable one or more actions, type "set appfw profile -XMLWSIAction" followed by the actions to be enabled. To turn off all actions, type "set appfw profile -XMLWSIAction none".<br> Possible values = none, block, learn, log, stats
 	* </pre>
 	*/
 	public void set_xmlwsiaction(String[] xmlwsiaction) throws Exception{
@@ -965,8 +1136,14 @@ This check is applicable to Profile Type: XML. .<br> Possible values = none, blo
 
 	/**
 	* <pre>
-	* XML WS-I action types. (BLOCK | LEARN | LOG | STATS | NONE)
-This check is applicable to Profile Type: XML. .<br> Possible values = none, block, learn, log, stats
+	* One or more Web Services Interoperability (WSI) actions. Available settings function as follows:
+* Block - Block connections that violate this security check.
+* Learn - Use the learning engine to generate a list of exceptions to this security check.
+* Log - Log violations of this security check.
+* Stats - Generate statistics for this security check.
+* None - Disable all actions for this security check.
+
+CLI users: To enable one or more actions, type "set appfw profile -XMLWSIAction" followed by the actions to be enabled. To turn off all actions, type "set appfw profile -XMLWSIAction none".<br> Possible values = none, block, learn, log, stats
 	* </pre>
 	*/
 	public String[] get_xmlwsiaction() throws Exception {
@@ -975,8 +1152,14 @@ This check is applicable to Profile Type: XML. .<br> Possible values = none, blo
 
 	/**
 	* <pre>
-	* XML attachment action types. (BLOCK | LEARN | LOG | STATS | NONE)
-This check is applicable to Profile Type: XML. .<br> Possible values = none, block, learn, log, stats
+	* One or more XML Attachment actions. Available settings function as follows:
+* Block - Block connections that violate this security check.
+* Learn - Use the learning engine to generate a list of exceptions to this security check.
+* Log - Log violations of this security check.
+* Stats - Generate statistics for this security check.
+* None - Disable all actions for this security check.
+
+CLI users: To enable one or more actions, type "set appfw profile -XMLAttachmentAction" followed by the actions to be enabled. To turn off all actions, type "set appfw profile -XMLAttachmentAction none".<br> Possible values = none, block, learn, log, stats
 	* </pre>
 	*/
 	public void set_xmlattachmentaction(String[] xmlattachmentaction) throws Exception{
@@ -985,8 +1168,14 @@ This check is applicable to Profile Type: XML. .<br> Possible values = none, blo
 
 	/**
 	* <pre>
-	* XML attachment action types. (BLOCK | LEARN | LOG | STATS | NONE)
-This check is applicable to Profile Type: XML. .<br> Possible values = none, block, learn, log, stats
+	* One or more XML Attachment actions. Available settings function as follows:
+* Block - Block connections that violate this security check.
+* Learn - Use the learning engine to generate a list of exceptions to this security check.
+* Log - Log violations of this security check.
+* Stats - Generate statistics for this security check.
+* None - Disable all actions for this security check.
+
+CLI users: To enable one or more actions, type "set appfw profile -XMLAttachmentAction" followed by the actions to be enabled. To turn off all actions, type "set appfw profile -XMLAttachmentAction none".<br> Possible values = none, block, learn, log, stats
 	* </pre>
 	*/
 	public String[] get_xmlattachmentaction() throws Exception {
@@ -995,9 +1184,13 @@ This check is applicable to Profile Type: XML. .<br> Possible values = none, blo
 
 	/**
 	* <pre>
-	* XML validation action types. (BLOCK | LOG | STATS | NONE)
-This check is applicable to Profile Type: XML.
-LEARN is not supported.<br> Possible values = none, block, learn, log, stats
+	* One or more XML Validation actions. Available settings function as follows:
+* Block - Block connections that violate this security check.
+* Log - Log violations of this security check.
+* Stats - Generate statistics for this security check.
+* None - Disable all actions for this security check. 
+
+CLI users: To enable one or more actions, type "set appfw profile -XMLValidationAction" followed by the actions to be enabled. To turn off all actions, type "set appfw profile -XMLValidationAction none".<br> Possible values = none, block, learn, log, stats
 	* </pre>
 	*/
 	public void set_xmlvalidationaction(String[] xmlvalidationaction) throws Exception{
@@ -1006,9 +1199,13 @@ LEARN is not supported.<br> Possible values = none, block, learn, log, stats
 
 	/**
 	* <pre>
-	* XML validation action types. (BLOCK | LOG | STATS | NONE)
-This check is applicable to Profile Type: XML.
-LEARN is not supported.<br> Possible values = none, block, learn, log, stats
+	* One or more XML Validation actions. Available settings function as follows:
+* Block - Block connections that violate this security check.
+* Log - Log violations of this security check.
+* Stats - Generate statistics for this security check.
+* None - Disable all actions for this security check. 
+
+CLI users: To enable one or more actions, type "set appfw profile -XMLValidationAction" followed by the actions to be enabled. To turn off all actions, type "set appfw profile -XMLValidationAction none".<br> Possible values = none, block, learn, log, stats
 	* </pre>
 	*/
 	public String[] get_xmlvalidationaction() throws Exception {
@@ -1017,8 +1214,11 @@ LEARN is not supported.<br> Possible values = none, block, learn, log, stats
 
 	/**
 	* <pre>
-	* Object name for the xml error page.
-This check is applicable to Profile Type: XML. .<br> Minimum length =  1
+	* Name to assign to the XML Error Object, which the application firewall displays when a user request is blocked.
+Must begin with a letter, number, or the underscore character \(_\), and must contain only letters, numbers, and the hyphen \(-\), period \(.\) pound \(\#\), space \( \), at (@), equals \(=\), colon \(:\), and underscore characters. Cannot be changed after the XML error object is added.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks \(for example, "my XML error object" or 'my XML error object'\).<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_xmlerrorobject(String xmlerrorobject) throws Exception{
@@ -1027,8 +1227,11 @@ This check is applicable to Profile Type: XML. .<br> Minimum length =  1
 
 	/**
 	* <pre>
-	* Object name for the xml error page.
-This check is applicable to Profile Type: XML. .<br> Minimum length =  1
+	* Name to assign to the XML Error Object, which the application firewall displays when a user request is blocked.
+Must begin with a letter, number, or the underscore character \(_\), and must contain only letters, numbers, and the hyphen \(-\), period \(.\) pound \(\#\), space \( \), at (@), equals \(=\), colon \(:\), and underscore characters. Cannot be changed after the XML error object is added.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks \(for example, "my XML error object" or 'my XML error object'\).<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_xmlerrorobject() throws Exception {
@@ -1077,9 +1280,14 @@ This check is applicable to Profile Type: HTML, XML. .<br> Minimum length =  1
 
 	/**
 	* <pre>
-	* XML SOAP fault filtering action types. (BLOCK | LOG | STATS | REMOVE | NONE)
-This check is applicable to Profile Type: XML.
-LEARN is not supported.<br> Possible values = none, block, learn, log, remove, stats
+	* One or more XML SOAP Fault Filtering actions. Available settings function as follows:
+* Block - Block connections that violate this security check.
+* Log - Log violations of this security check.
+* Stats - Generate statistics for this security check.
+* None - Disable all actions for this security check.
+* Remove - Remove all violations for this security check.
+
+CLI users: To enable one or more actions, type "set appfw profile -XMLSOAPFaultAction" followed by the actions to be enabled. To turn off all actions, type "set appfw profile -XMLSOAPFaultAction none".<br> Possible values = none, block, log, remove, stats
 	* </pre>
 	*/
 	public void set_xmlsoapfaultaction(String[] xmlsoapfaultaction) throws Exception{
@@ -1088,9 +1296,14 @@ LEARN is not supported.<br> Possible values = none, block, learn, log, remove, s
 
 	/**
 	* <pre>
-	* XML SOAP fault filtering action types. (BLOCK | LOG | STATS | REMOVE | NONE)
-This check is applicable to Profile Type: XML.
-LEARN is not supported.<br> Possible values = none, block, learn, log, remove, stats
+	* One or more XML SOAP Fault Filtering actions. Available settings function as follows:
+* Block - Block connections that violate this security check.
+* Log - Log violations of this security check.
+* Stats - Generate statistics for this security check.
+* None - Disable all actions for this security check.
+* Remove - Remove all violations for this security check.
+
+CLI users: To enable one or more actions, type "set appfw profile -XMLSOAPFaultAction" followed by the actions to be enabled. To turn off all actions, type "set appfw profile -XMLSOAPFaultAction none".<br> Possible values = none, block, log, remove, stats
 	* </pre>
 	*/
 	public String[] get_xmlsoapfaultaction() throws Exception {
@@ -1099,7 +1312,7 @@ LEARN is not supported.<br> Possible values = none, block, learn, log, remove, s
 
 	/**
 	* <pre>
-	* Use HTML Error object for response instead of Redirect Error URL.<br> Default value: OFF<br> Possible values = ON, OFF
+	* Send an imported HTML Error object to a user when a request is blocked, instead of redirecting the user to the designated Error URL.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_usehtmlerrorobject(String usehtmlerrorobject) throws Exception{
@@ -1108,7 +1321,7 @@ LEARN is not supported.<br> Possible values = none, block, learn, log, remove, s
 
 	/**
 	* <pre>
-	* Use HTML Error object for response instead of Redirect Error URL.<br> Default value: OFF<br> Possible values = ON, OFF
+	* Send an imported HTML Error object to a user when a request is blocked, instead of redirecting the user to the designated Error URL.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_usehtmlerrorobject() throws Exception {
@@ -1117,8 +1330,7 @@ LEARN is not supported.<br> Possible values = none, block, learn, log, remove, s
 
 	/**
 	* <pre>
-	* Error page.
-This check is applicable to Profile Type: HTML. .<br> Minimum length =  1
+	* URL that application firewall uses as the Error URL.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_errorurl(String errorurl) throws Exception{
@@ -1127,8 +1339,7 @@ This check is applicable to Profile Type: HTML. .<br> Minimum length =  1
 
 	/**
 	* <pre>
-	* Error page.
-This check is applicable to Profile Type: HTML. .<br> Minimum length =  1
+	* URL that application firewall uses as the Error URL.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_errorurl() throws Exception {
@@ -1137,8 +1348,11 @@ This check is applicable to Profile Type: HTML. .<br> Minimum length =  1
 
 	/**
 	* <pre>
-	* Object name for the html error page.
-This check is applicable to Profile Type: HTML. .<br> Minimum length =  1
+	* Name to assign to the HTML Error Object. 
+Must begin with a letter, number, or the underscore character \(_\), and must contain only letters, numbers, and the hyphen \(-\), period \(.\) pound \(\#\), space \( \), at (@), equals \(=\), colon \(:\), and underscore characters. Cannot be changed after the HTML error object is added.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks \(for example, "my HTML error object" or 'my HTML error object'\).<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_htmlerrorobject(String htmlerrorobject) throws Exception{
@@ -1147,8 +1361,11 @@ This check is applicable to Profile Type: HTML. .<br> Minimum length =  1
 
 	/**
 	* <pre>
-	* Object name for the html error page.
-This check is applicable to Profile Type: HTML. .<br> Minimum length =  1
+	* Name to assign to the HTML Error Object. 
+Must begin with a letter, number, or the underscore character \(_\), and must contain only letters, numbers, and the hyphen \(-\), period \(.\) pound \(\#\), space \( \), at (@), equals \(=\), colon \(:\), and underscore characters. Cannot be changed after the HTML error object is added.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks \(for example, "my HTML error object" or 'my HTML error object'\).<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_htmlerrorobject() throws Exception {
@@ -1157,7 +1374,7 @@ This check is applicable to Profile Type: HTML. .<br> Minimum length =  1
 
 	/**
 	* <pre>
-	* Log every profile match regardless of security checks results.<br> Default value: OFF<br> Possible values = ON, OFF
+	* Log every profile match, regardless of security checks results.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_logeverypolicyhit(String logeverypolicyhit) throws Exception{
@@ -1166,7 +1383,7 @@ This check is applicable to Profile Type: HTML. .<br> Minimum length =  1
 
 	/**
 	* <pre>
-	* Log every profile match regardless of security checks results.<br> Default value: OFF<br> Possible values = ON, OFF
+	* Log every profile match, regardless of security checks results.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_logeverypolicyhit() throws Exception {
@@ -1195,8 +1412,7 @@ This check is applicable to Profile Type: HTML. .<br> Default value: OFF<br> Pos
 
 	/**
 	* <pre>
-	* Strip HTML comments.
-This check is applicable to Profile Type: HTML. .<br> Default value: none<br> Possible values = none, all, exclude_script_tag
+	* Strip HTML comments before forwarding a web page sent by a protected web site in response to a user request.<br> Default value: none<br> Possible values = none, all, exclude_script_tag
 	* </pre>
 	*/
 	public void set_striphtmlcomments(String striphtmlcomments) throws Exception{
@@ -1205,8 +1421,7 @@ This check is applicable to Profile Type: HTML. .<br> Default value: none<br> Po
 
 	/**
 	* <pre>
-	* Strip HTML comments.
-This check is applicable to Profile Type: HTML. .<br> Default value: none<br> Possible values = none, all, exclude_script_tag
+	* Strip HTML comments before forwarding a web page sent by a protected web site in response to a user request.<br> Default value: none<br> Possible values = none, all, exclude_script_tag
 	* </pre>
 	*/
 	public String get_striphtmlcomments() throws Exception {
@@ -1215,8 +1430,7 @@ This check is applicable to Profile Type: HTML. .<br> Default value: none<br> Po
 
 	/**
 	* <pre>
-	* Strip XML comments.
-This check is applicable to Profile Type: XML. .<br> Default value: none<br> Possible values = none, all
+	* Exempt URLs that pass the Start URL closure check from additional security checks.<br> Default value: none<br> Possible values = none, all
 	* </pre>
 	*/
 	public void set_stripxmlcomments(String stripxmlcomments) throws Exception{
@@ -1225,8 +1439,7 @@ This check is applicable to Profile Type: XML. .<br> Default value: none<br> Pos
 
 	/**
 	* <pre>
-	* Strip XML comments.
-This check is applicable to Profile Type: XML. .<br> Default value: none<br> Possible values = none, all
+	* Exempt URLs that pass the Start URL closure check from additional security checks.<br> Default value: none<br> Possible values = none, all
 	* </pre>
 	*/
 	public String get_stripxmlcomments() throws Exception {
@@ -1235,8 +1448,7 @@ This check is applicable to Profile Type: XML. .<br> Default value: none<br> Pos
 
 	/**
 	* <pre>
-	* Tells the Application Firewall to exempt closure URLs from security checks.
-This check is applicable to Profile Type: HTML. .<br> Default value: ON<br> Possible values = ON, OFF
+	* Exempt URLs that pass the Start URL closure check from additional security checks.<br> Default value: ON<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_exemptclosureurlsfromsecuritychecks(String exemptclosureurlsfromsecuritychecks) throws Exception{
@@ -1245,8 +1457,7 @@ This check is applicable to Profile Type: HTML. .<br> Default value: ON<br> Poss
 
 	/**
 	* <pre>
-	* Tells the Application Firewall to exempt closure URLs from security checks.
-This check is applicable to Profile Type: HTML. .<br> Default value: ON<br> Possible values = ON, OFF
+	* Exempt URLs that pass the Start URL closure check from additional security checks.<br> Default value: ON<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_exemptclosureurlsfromsecuritychecks() throws Exception {
@@ -1255,8 +1466,15 @@ This check is applicable to Profile Type: HTML. .<br> Default value: ON<br> Poss
 
 	/**
 	* <pre>
-	* Default character set.  Possible values are iso-8859-1 (English US), big5 (Chinese Traditional), gb2312 (Chinese Simplified), sjis (Japanese), euc-jp (Japanese EUC-JP), utf-8 (Unicode), and euc-kr (Korean).
-This check is applicable to Profile Type: HTML. .<br> Minimum length =  1<br> Maximum length =  31
+	* Default character set for protected web pages. Web pages sent by your protected web sites in response to user requests are assigned this character set if the page does not already specify a character set. The character sets supported by the application firewall are: 
+* iso-8859-1 (English US)
+* big5 (Chinese Traditional)
+* gb2312 (Chinese Simplified)
+* sjis (Japanese Shift-JIS)
+* euc-jp (Japanese EUC-JP)
+* iso-8859-9 (Turkish)
+* utf-8 (Unicode)
+* euc-kr (Korean).<br> Minimum length =  1<br> Maximum length =  31
 	* </pre>
 	*/
 	public void set_defaultcharset(String defaultcharset) throws Exception{
@@ -1265,8 +1483,15 @@ This check is applicable to Profile Type: HTML. .<br> Minimum length =  1<br> Ma
 
 	/**
 	* <pre>
-	* Default character set.  Possible values are iso-8859-1 (English US), big5 (Chinese Traditional), gb2312 (Chinese Simplified), sjis (Japanese), euc-jp (Japanese EUC-JP), utf-8 (Unicode), and euc-kr (Korean).
-This check is applicable to Profile Type: HTML. .<br> Minimum length =  1<br> Maximum length =  31
+	* Default character set for protected web pages. Web pages sent by your protected web sites in response to user requests are assigned this character set if the page does not already specify a character set. The character sets supported by the application firewall are: 
+* iso-8859-1 (English US)
+* big5 (Chinese Traditional)
+* gb2312 (Chinese Simplified)
+* sjis (Japanese Shift-JIS)
+* euc-jp (Japanese EUC-JP)
+* iso-8859-9 (Turkish)
+* utf-8 (Unicode)
+* euc-kr (Korean).<br> Minimum length =  1<br> Maximum length =  31
 	* </pre>
 	*/
 	public String get_defaultcharset() throws Exception {
@@ -1275,8 +1500,7 @@ This check is applicable to Profile Type: HTML. .<br> Minimum length =  1<br> Ma
 
 	/**
 	* <pre>
-	* Maximum allowed post body size.
-This check is applicable to Profile Type: HTML, XML. .<br> Default value: 20000000<br> Minimum value =  0<br> Maximum value =  1000000000
+	* Maximum allowed HTTP post body size, in bytes.<br> Default value: 20000000<br> Minimum value =  0<br> Maximum value =  1000000000
 	* </pre>
 	*/
 	public void set_postbodylimit(long postbodylimit) throws Exception {
@@ -1285,8 +1509,7 @@ This check is applicable to Profile Type: HTML, XML. .<br> Default value: 200000
 
 	/**
 	* <pre>
-	* Maximum allowed post body size.
-This check is applicable to Profile Type: HTML, XML. .<br> Default value: 20000000<br> Minimum value =  0<br> Maximum value =  1000000000
+	* Maximum allowed HTTP post body size, in bytes.<br> Default value: 20000000<br> Minimum value =  0<br> Maximum value =  1000000000
 	* </pre>
 	*/
 	public void set_postbodylimit(Long postbodylimit) throws Exception{
@@ -1295,8 +1518,7 @@ This check is applicable to Profile Type: HTML, XML. .<br> Default value: 200000
 
 	/**
 	* <pre>
-	* Maximum allowed post body size.
-This check is applicable to Profile Type: HTML, XML. .<br> Default value: 20000000<br> Minimum value =  0<br> Maximum value =  1000000000
+	* Maximum allowed HTTP post body size, in bytes.<br> Default value: 20000000<br> Minimum value =  0<br> Maximum value =  1000000000
 	* </pre>
 	*/
 	public Long get_postbodylimit() throws Exception {
@@ -1305,7 +1527,7 @@ This check is applicable to Profile Type: HTML, XML. .<br> Default value: 200000
 
 	/**
 	* <pre>
-	* Maximum allowed number of file uploads per form submission request. Setting this parameter to the maximum value of 65535 will allow an unlimited number of uploads.<br> Default value: 65535<br> Minimum value =  0<br> Maximum value =  65535
+	* Maximum allowed number of file uploads per form-submission request. The maximum setting (65535) allows an unlimited number of uploads.<br> Default value: 65535<br> Minimum value =  0<br> Maximum value =  65535
 	* </pre>
 	*/
 	public void set_fileuploadmaxnum(long fileuploadmaxnum) throws Exception {
@@ -1314,7 +1536,7 @@ This check is applicable to Profile Type: HTML, XML. .<br> Default value: 200000
 
 	/**
 	* <pre>
-	* Maximum allowed number of file uploads per form submission request. Setting this parameter to the maximum value of 65535 will allow an unlimited number of uploads.<br> Default value: 65535<br> Minimum value =  0<br> Maximum value =  65535
+	* Maximum allowed number of file uploads per form-submission request. The maximum setting (65535) allows an unlimited number of uploads.<br> Default value: 65535<br> Minimum value =  0<br> Maximum value =  65535
 	* </pre>
 	*/
 	public void set_fileuploadmaxnum(Long fileuploadmaxnum) throws Exception{
@@ -1323,7 +1545,7 @@ This check is applicable to Profile Type: HTML, XML. .<br> Default value: 200000
 
 	/**
 	* <pre>
-	* Maximum allowed number of file uploads per form submission request. Setting this parameter to the maximum value of 65535 will allow an unlimited number of uploads.<br> Default value: 65535<br> Minimum value =  0<br> Maximum value =  65535
+	* Maximum allowed number of file uploads per form-submission request. The maximum setting (65535) allows an unlimited number of uploads.<br> Default value: 65535<br> Minimum value =  0<br> Maximum value =  65535
 	* </pre>
 	*/
 	public Long get_fileuploadmaxnum() throws Exception {
@@ -1332,8 +1554,7 @@ This check is applicable to Profile Type: HTML, XML. .<br> Default value: 200000
 
 	/**
 	* <pre>
-	* Entity encoding for html special characters for attributes in the response.
-This check is applicable to Profile Type: HTML. .<br> Default value: ON<br> Possible values = ON, OFF
+	* Perform HTML entity encoding for any special characters in responses sent by your protected web sites.<br> Default value: ON<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_canonicalizehtmlresponse(String canonicalizehtmlresponse) throws Exception{
@@ -1342,8 +1563,7 @@ This check is applicable to Profile Type: HTML. .<br> Default value: ON<br> Poss
 
 	/**
 	* <pre>
-	* Entity encoding for html special characters for attributes in the response.
-This check is applicable to Profile Type: HTML. .<br> Default value: ON<br> Possible values = ON, OFF
+	* Perform HTML entity encoding for any special characters in responses sent by your protected web sites.<br> Default value: ON<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_canonicalizehtmlresponse() throws Exception {
@@ -1352,8 +1572,7 @@ This check is applicable to Profile Type: HTML. .<br> Default value: ON<br> Poss
 
 	/**
 	* <pre>
-	* Enable Tagging of Forms for Field Consistency Checks.
-This check is applicable to Profile Type: HTML. .<br> Default value: ON<br> Possible values = ON, OFF
+	* Enable tagging of web form fields for use by the Form Field Consistency and CSRF Form Tagging checks.<br> Default value: ON<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_enableformtagging(String enableformtagging) throws Exception{
@@ -1362,8 +1581,7 @@ This check is applicable to Profile Type: HTML. .<br> Default value: ON<br> Poss
 
 	/**
 	* <pre>
-	* Enable Tagging of Forms for Field Consistency Checks.
-This check is applicable to Profile Type: HTML. .<br> Default value: ON<br> Possible values = ON, OFF
+	* Enable tagging of web form fields for use by the Form Field Consistency and CSRF Form Tagging checks.<br> Default value: ON<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_enableformtagging() throws Exception {
@@ -1372,8 +1590,7 @@ This check is applicable to Profile Type: HTML. .<br> Default value: ON<br> Poss
 
 	/**
 	* <pre>
-	* Enable session less Field Consistency Checks.
-This check is applicable to Profile Type: HTML. .<br> Default value: OFF<br> Possible values = OFF, ON, postOnly
+	* Perform sessionless Field Consistency Checks.<br> Default value: OFF<br> Possible values = OFF, ON, postOnly
 	* </pre>
 	*/
 	public void set_sessionlessfieldconsistency(String sessionlessfieldconsistency) throws Exception{
@@ -1382,8 +1599,7 @@ This check is applicable to Profile Type: HTML. .<br> Default value: OFF<br> Pos
 
 	/**
 	* <pre>
-	* Enable session less Field Consistency Checks.
-This check is applicable to Profile Type: HTML. .<br> Default value: OFF<br> Possible values = OFF, ON, postOnly
+	* Perform sessionless Field Consistency Checks.<br> Default value: OFF<br> Possible values = OFF, ON, postOnly
 	* </pre>
 	*/
 	public String get_sessionlessfieldconsistency() throws Exception {
@@ -1430,8 +1646,7 @@ This check is applicable to Profile Type: HTML. .<br> Default value: OFF<br> Pos
 
 	/**
 	* <pre>
-	* Exclude Uploaded Files from Form checks.
-This check is applicable to Profile Type: HTML. .<br> Default value: OFF<br> Possible values = ON, OFF
+	* Exclude uploaded files from Form checks.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_excludefileuploadfromchecks(String excludefileuploadfromchecks) throws Exception{
@@ -1440,8 +1655,7 @@ This check is applicable to Profile Type: HTML. .<br> Default value: OFF<br> Pos
 
 	/**
 	* <pre>
-	* Exclude Uploaded Files from Form checks.
-This check is applicable to Profile Type: HTML. .<br> Default value: OFF<br> Possible values = ON, OFF
+	* Exclude uploaded files from Form checks.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_excludefileuploadfromchecks() throws Exception {
@@ -1450,8 +1664,11 @@ This check is applicable to Profile Type: HTML. .<br> Default value: OFF<br> Pos
 
 	/**
 	* <pre>
-	* Canonicalize SQL Comments in form fields.
-This check is applicable to Profile Type: HTML. .<br> Possible values = checkall, ansi, nested, ansinested
+	* Parse HTML comments and exempt them from the HTML SQL Injection check. You must specify the type of comments that the application firewall is to detect and exempt from this security check. Available settings function as follows:
+* Check all - Check all content.
+* ANSI - Exempt content that is part of an ANSI (Mozilla-style) comment. 
+* Nested - Exempt content that is part of a nested (Microsoft-style) comment.
+* ANSI Nested - Exempt content that is part of any type of comment.<br> Possible values = checkall, ansi, nested, ansinested
 	* </pre>
 	*/
 	public void set_sqlinjectionparsecomments(String sqlinjectionparsecomments) throws Exception{
@@ -1460,8 +1677,11 @@ This check is applicable to Profile Type: HTML. .<br> Possible values = checkall
 
 	/**
 	* <pre>
-	* Canonicalize SQL Comments in form fields.
-This check is applicable to Profile Type: HTML. .<br> Possible values = checkall, ansi, nested, ansinested
+	* Parse HTML comments and exempt them from the HTML SQL Injection check. You must specify the type of comments that the application firewall is to detect and exempt from this security check. Available settings function as follows:
+* Check all - Check all content.
+* ANSI - Exempt content that is part of an ANSI (Mozilla-style) comment. 
+* Nested - Exempt content that is part of a nested (Microsoft-style) comment.
+* ANSI Nested - Exempt content that is part of any type of comment.<br> Possible values = checkall, ansi, nested, ansinested
 	* </pre>
 	*/
 	public String get_sqlinjectionparsecomments() throws Exception {
@@ -1470,7 +1690,10 @@ This check is applicable to Profile Type: HTML. .<br> Possible values = checkall
 
 	/**
 	* <pre>
-	* Options for handling percent-encoded names and values. .<br> Default value: secure_mode<br> Possible values = apache_mode, asp_mode, secure_mode
+	* Configure the method that the application firewall uses to handle percent-encoded names and values. Available settings function as follows: 
+* apache_mode - Apache format.
+* asp_mode - Microsoft ASP format.
+* secure_mode - Secure format.<br> Default value: secure_mode<br> Possible values = apache_mode, asp_mode, secure_mode
 	* </pre>
 	*/
 	public void set_invalidpercenthandling(String invalidpercenthandling) throws Exception{
@@ -1479,7 +1702,10 @@ This check is applicable to Profile Type: HTML. .<br> Possible values = checkall
 
 	/**
 	* <pre>
-	* Options for handling percent-encoded names and values. .<br> Default value: secure_mode<br> Possible values = apache_mode, asp_mode, secure_mode
+	* Configure the method that the application firewall uses to handle percent-encoded names and values. Available settings function as follows: 
+* apache_mode - Apache format.
+* asp_mode - Microsoft ASP format.
+* secure_mode - Secure format.<br> Default value: secure_mode<br> Possible values = apache_mode, asp_mode, secure_mode
 	* </pre>
 	*/
 	public String get_invalidpercenthandling() throws Exception {
@@ -1488,7 +1714,10 @@ This check is applicable to Profile Type: HTML. .<br> Possible values = checkall
 
 	/**
 	* <pre>
-	* Defines the type of the Application Firewall Profile. If the profile is of type XML, then you can only set security checks that are relevent to XML. Similary, if the profile type is HTML then you can set only security checks that are relevant to HTML. Composite profile types can have HTML and XML checks.<br> Default value: HTML<br> Possible values = HTML, XML
+	* Application firewall profile type, which controls which security checks and settings are applied to content that is filtered with the profile. Available settings function as follows:
+* HTML - HTML-based web sites.
+* XML - XML-based web sites and services.
+* HTML XML (Web 2.0) - Sites that contain both HTML and XML content, such as ATOM feeds, blogs, and RSS feeds.<br> Default value: HTML<br> Possible values = HTML, XML
 	* </pre>
 	*/
 	public void set_type(String[] type) throws Exception{
@@ -1497,7 +1726,10 @@ This check is applicable to Profile Type: HTML. .<br> Possible values = checkall
 
 	/**
 	* <pre>
-	* Defines the type of the Application Firewall Profile. If the profile is of type XML, then you can only set security checks that are relevent to XML. Similary, if the profile type is HTML then you can set only security checks that are relevant to HTML. Composite profile types can have HTML and XML checks.<br> Default value: HTML<br> Possible values = HTML, XML
+	* Application firewall profile type, which controls which security checks and settings are applied to content that is filtered with the profile. Available settings function as follows:
+* HTML - HTML-based web sites.
+* XML - XML-based web sites and services.
+* HTML XML (Web 2.0) - Sites that contain both HTML and XML content, such as ATOM feeds, blogs, and RSS feeds.<br> Default value: HTML<br> Possible values = HTML, XML
 	* </pre>
 	*/
 	public String[] get_type() throws Exception {
@@ -1506,7 +1738,7 @@ This check is applicable to Profile Type: HTML. .<br> Possible values = checkall
 
 	/**
 	* <pre>
-	* Check for XSS and SQL injections in request headers.<br> Default value: OFF<br> Possible values = ON, OFF
+	* Check request headers as well as web forms for injected SQL and cross-site scripts.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_checkrequestheaders(String checkrequestheaders) throws Exception{
@@ -1515,7 +1747,7 @@ This check is applicable to Profile Type: HTML. .<br> Possible values = checkall
 
 	/**
 	* <pre>
-	* Check for XSS and SQL injections in request headers.<br> Default value: OFF<br> Possible values = ON, OFF
+	* Check request headers as well as web forms for injected SQL and cross-site scripts.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_checkrequestheaders() throws Exception {
@@ -1524,7 +1756,7 @@ This check is applicable to Profile Type: HTML. .<br> Possible values = checkall
 
 	/**
 	* <pre>
-	* Comments associated with this profile.
+	* Any comments about the purpose of profile, or other useful information about the profile.
 	* </pre>
 	*/
 	public void set_comment(String comment) throws Exception{
@@ -1533,7 +1765,7 @@ This check is applicable to Profile Type: HTML. .<br> Possible values = checkall
 
 	/**
 	* <pre>
-	* Comments associated with this profile.
+	* Any comments about the purpose of profile, or other useful information about the profile.
 	* </pre>
 	*/
 	public String get_comment() throws Exception {
@@ -1989,85 +2221,9 @@ This check is applicable to Profile Type: HTML. .<br> Possible values = checkall
 	* Use this API to unset the properties of appfwprofile resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String name, String args[]) throws Exception {
-		appfwprofile unsetresource = new appfwprofile();
-		unsetresource.name = name;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of appfwprofile resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, appfwprofile resource, String[] args) throws Exception{
 		appfwprofile unsetresource = new appfwprofile();
 		unsetresource.name = resource.name;
-		unsetresource.starturlaction = resource.starturlaction;
-		unsetresource.starturlclosure = resource.starturlclosure;
-		unsetresource.denyurlaction = resource.denyurlaction;
-		unsetresource.refererheadercheck = resource.refererheadercheck;
-		unsetresource.cookieconsistencyaction = resource.cookieconsistencyaction;
-		unsetresource.cookietransforms = resource.cookietransforms;
-		unsetresource.cookieencryption = resource.cookieencryption;
-		unsetresource.cookieproxying = resource.cookieproxying;
-		unsetresource.addcookieflags = resource.addcookieflags;
-		unsetresource.fieldconsistencyaction = resource.fieldconsistencyaction;
-		unsetresource.csrftagaction = resource.csrftagaction;
-		unsetresource.crosssitescriptingaction = resource.crosssitescriptingaction;
-		unsetresource.crosssitescriptingtransformunsafehtml = resource.crosssitescriptingtransformunsafehtml;
-		unsetresource.crosssitescriptingcheckcompleteurls = resource.crosssitescriptingcheckcompleteurls;
-		unsetresource.sqlinjectionaction = resource.sqlinjectionaction;
-		unsetresource.sqlinjectiontransformspecialchars = resource.sqlinjectiontransformspecialchars;
-		unsetresource.sqlinjectiononlycheckfieldswithsqlchars = resource.sqlinjectiononlycheckfieldswithsqlchars;
-		unsetresource.fieldformataction = resource.fieldformataction;
-		unsetresource.defaultfieldformattype = resource.defaultfieldformattype;
-		unsetresource.defaultfieldformatminlength = resource.defaultfieldformatminlength;
-		unsetresource.defaultfieldformatmaxlength = resource.defaultfieldformatmaxlength;
-		unsetresource.bufferoverflowaction = resource.bufferoverflowaction;
-		unsetresource.bufferoverflowmaxurllength = resource.bufferoverflowmaxurllength;
-		unsetresource.bufferoverflowmaxheaderlength = resource.bufferoverflowmaxheaderlength;
-		unsetresource.bufferoverflowmaxcookielength = resource.bufferoverflowmaxcookielength;
-		unsetresource.creditcardaction = resource.creditcardaction;
-		unsetresource.creditcard = resource.creditcard;
-		unsetresource.creditcardmaxallowed = resource.creditcardmaxallowed;
-		unsetresource.creditcardxout = resource.creditcardxout;
-		unsetresource.requestcontenttype = resource.requestcontenttype;
-		unsetresource.responsecontenttype = resource.responsecontenttype;
-		unsetresource.xmldosaction = resource.xmldosaction;
-		unsetresource.xmlformataction = resource.xmlformataction;
-		unsetresource.xmlsqlinjectionaction = resource.xmlsqlinjectionaction;
-		unsetresource.xmlsqlinjectiononlycheckfieldswithsqlchars = resource.xmlsqlinjectiononlycheckfieldswithsqlchars;
-		unsetresource.xmlsqlinjectionparsecomments = resource.xmlsqlinjectionparsecomments;
-		unsetresource.xmlxssaction = resource.xmlxssaction;
-		unsetresource.xmlwsiaction = resource.xmlwsiaction;
-		unsetresource.xmlattachmentaction = resource.xmlattachmentaction;
-		unsetresource.xmlvalidationaction = resource.xmlvalidationaction;
-		unsetresource.xmlerrorobject = resource.xmlerrorobject;
-		unsetresource.customsettings = resource.customsettings;
-		unsetresource.signatures = resource.signatures;
-		unsetresource.xmlsoapfaultaction = resource.xmlsoapfaultaction;
-		unsetresource.usehtmlerrorobject = resource.usehtmlerrorobject;
-		unsetresource.errorurl = resource.errorurl;
-		unsetresource.htmlerrorobject = resource.htmlerrorobject;
-		unsetresource.logeverypolicyhit = resource.logeverypolicyhit;
-		unsetresource.stripcomments = resource.stripcomments;
-		unsetresource.striphtmlcomments = resource.striphtmlcomments;
-		unsetresource.stripxmlcomments = resource.stripxmlcomments;
-		unsetresource.exemptclosureurlsfromsecuritychecks = resource.exemptclosureurlsfromsecuritychecks;
-		unsetresource.defaultcharset = resource.defaultcharset;
-		unsetresource.postbodylimit = resource.postbodylimit;
-		unsetresource.fileuploadmaxnum = resource.fileuploadmaxnum;
-		unsetresource.canonicalizehtmlresponse = resource.canonicalizehtmlresponse;
-		unsetresource.enableformtagging = resource.enableformtagging;
-		unsetresource.sessionlessfieldconsistency = resource.sessionlessfieldconsistency;
-		unsetresource.sessionlessurlclosure = resource.sessionlessurlclosure;
-		unsetresource.semicolonfieldseparator = resource.semicolonfieldseparator;
-		unsetresource.excludefileuploadfromchecks = resource.excludefileuploadfromchecks;
-		unsetresource.sqlinjectionparsecomments = resource.sqlinjectionparsecomments;
-		unsetresource.invalidpercenthandling = resource.invalidpercenthandling;
-		unsetresource.type = resource.type;
-		unsetresource.checkrequestheaders = resource.checkrequestheaders;
-		unsetresource.comment = resource.comment;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -2099,74 +2255,33 @@ This check is applicable to Profile Type: HTML. .<br> Possible values = checkall
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new appfwprofile();
 				unsetresources[i].name = resources[i].name;
-				unsetresources[i].starturlaction = resources[i].starturlaction;
-				unsetresources[i].starturlclosure = resources[i].starturlclosure;
-				unsetresources[i].denyurlaction = resources[i].denyurlaction;
-				unsetresources[i].refererheadercheck = resources[i].refererheadercheck;
-				unsetresources[i].cookieconsistencyaction = resources[i].cookieconsistencyaction;
-				unsetresources[i].cookietransforms = resources[i].cookietransforms;
-				unsetresources[i].cookieencryption = resources[i].cookieencryption;
-				unsetresources[i].cookieproxying = resources[i].cookieproxying;
-				unsetresources[i].addcookieflags = resources[i].addcookieflags;
-				unsetresources[i].fieldconsistencyaction = resources[i].fieldconsistencyaction;
-				unsetresources[i].csrftagaction = resources[i].csrftagaction;
-				unsetresources[i].crosssitescriptingaction = resources[i].crosssitescriptingaction;
-				unsetresources[i].crosssitescriptingtransformunsafehtml = resources[i].crosssitescriptingtransformunsafehtml;
-				unsetresources[i].crosssitescriptingcheckcompleteurls = resources[i].crosssitescriptingcheckcompleteurls;
-				unsetresources[i].sqlinjectionaction = resources[i].sqlinjectionaction;
-				unsetresources[i].sqlinjectiontransformspecialchars = resources[i].sqlinjectiontransformspecialchars;
-				unsetresources[i].sqlinjectiononlycheckfieldswithsqlchars = resources[i].sqlinjectiononlycheckfieldswithsqlchars;
-				unsetresources[i].fieldformataction = resources[i].fieldformataction;
-				unsetresources[i].defaultfieldformattype = resources[i].defaultfieldformattype;
-				unsetresources[i].defaultfieldformatminlength = resources[i].defaultfieldformatminlength;
-				unsetresources[i].defaultfieldformatmaxlength = resources[i].defaultfieldformatmaxlength;
-				unsetresources[i].bufferoverflowaction = resources[i].bufferoverflowaction;
-				unsetresources[i].bufferoverflowmaxurllength = resources[i].bufferoverflowmaxurllength;
-				unsetresources[i].bufferoverflowmaxheaderlength = resources[i].bufferoverflowmaxheaderlength;
-				unsetresources[i].bufferoverflowmaxcookielength = resources[i].bufferoverflowmaxcookielength;
-				unsetresources[i].creditcardaction = resources[i].creditcardaction;
-				unsetresources[i].creditcard = resources[i].creditcard;
-				unsetresources[i].creditcardmaxallowed = resources[i].creditcardmaxallowed;
-				unsetresources[i].creditcardxout = resources[i].creditcardxout;
-				unsetresources[i].requestcontenttype = resources[i].requestcontenttype;
-				unsetresources[i].responsecontenttype = resources[i].responsecontenttype;
-				unsetresources[i].xmldosaction = resources[i].xmldosaction;
-				unsetresources[i].xmlformataction = resources[i].xmlformataction;
-				unsetresources[i].xmlsqlinjectionaction = resources[i].xmlsqlinjectionaction;
-				unsetresources[i].xmlsqlinjectiononlycheckfieldswithsqlchars = resources[i].xmlsqlinjectiononlycheckfieldswithsqlchars;
-				unsetresources[i].xmlsqlinjectionparsecomments = resources[i].xmlsqlinjectionparsecomments;
-				unsetresources[i].xmlxssaction = resources[i].xmlxssaction;
-				unsetresources[i].xmlwsiaction = resources[i].xmlwsiaction;
-				unsetresources[i].xmlattachmentaction = resources[i].xmlattachmentaction;
-				unsetresources[i].xmlvalidationaction = resources[i].xmlvalidationaction;
-				unsetresources[i].xmlerrorobject = resources[i].xmlerrorobject;
-				unsetresources[i].customsettings = resources[i].customsettings;
-				unsetresources[i].signatures = resources[i].signatures;
-				unsetresources[i].xmlsoapfaultaction = resources[i].xmlsoapfaultaction;
-				unsetresources[i].usehtmlerrorobject = resources[i].usehtmlerrorobject;
-				unsetresources[i].errorurl = resources[i].errorurl;
-				unsetresources[i].htmlerrorobject = resources[i].htmlerrorobject;
-				unsetresources[i].logeverypolicyhit = resources[i].logeverypolicyhit;
-				unsetresources[i].stripcomments = resources[i].stripcomments;
-				unsetresources[i].striphtmlcomments = resources[i].striphtmlcomments;
-				unsetresources[i].stripxmlcomments = resources[i].stripxmlcomments;
-				unsetresources[i].exemptclosureurlsfromsecuritychecks = resources[i].exemptclosureurlsfromsecuritychecks;
-				unsetresources[i].defaultcharset = resources[i].defaultcharset;
-				unsetresources[i].postbodylimit = resources[i].postbodylimit;
-				unsetresources[i].fileuploadmaxnum = resources[i].fileuploadmaxnum;
-				unsetresources[i].canonicalizehtmlresponse = resources[i].canonicalizehtmlresponse;
-				unsetresources[i].enableformtagging = resources[i].enableformtagging;
-				unsetresources[i].sessionlessfieldconsistency = resources[i].sessionlessfieldconsistency;
-				unsetresources[i].sessionlessurlclosure = resources[i].sessionlessurlclosure;
-				unsetresources[i].semicolonfieldseparator = resources[i].semicolonfieldseparator;
-				unsetresources[i].excludefileuploadfromchecks = resources[i].excludefileuploadfromchecks;
-				unsetresources[i].sqlinjectionparsecomments = resources[i].sqlinjectionparsecomments;
-				unsetresources[i].invalidpercenthandling = resources[i].invalidpercenthandling;
-				unsetresources[i].type = resources[i].type;
-				unsetresources[i].checkrequestheaders = resources[i].checkrequestheaders;
-				unsetresources[i].comment = resources[i].comment;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
+		}
+		return result;
+	}
+
+	/**
+	* Use this API to restore appfwprofile.
+	*/
+	public static base_response restore(nitro_service client, appfwprofile resource) throws Exception {
+		appfwprofile restoreresource = new appfwprofile();
+		restoreresource.archivename = resource.archivename;
+		return restoreresource.perform_operation(client,"restore");
+	}
+
+	/**
+	* Use this API to restore appfwprofile resources.
+	*/
+	public static base_responses restore(nitro_service client, appfwprofile resources[]) throws Exception {
+		base_responses result = null;
+		if (resources != null && resources.length > 0) {
+			appfwprofile restoreresources[] = new appfwprofile[resources.length];
+			for (int i=0;i<resources.length;i++){
+				restoreresources[i] = new appfwprofile();
+				restoreresources[i].archivename = resources[i].archivename;
+			}
+			result = perform_operation_bulk_request(client, restoreresources,"restore");
 		}
 		return result;
 	}
@@ -2537,7 +2652,6 @@ This check is applicable to Profile Type: HTML. .<br> Possible values = checkall
 	public static class xmlsoapfaultactionEnum {
 		public static final String none = "none";
 		public static final String block = "block";
-		public static final String learn = "learn";
 		public static final String log = "log";
 		public static final String remove = "remove";
 		public static final String stats = "stats";

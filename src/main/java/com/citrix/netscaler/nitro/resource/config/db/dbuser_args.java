@@ -26,7 +26,7 @@ public class dbuser_args
 
 	/**
 	* <pre>
-	* Display the names of all database users that are logged on to the NetScaler appliance.
+	* Display the names of all database users currently logged on to the NetScaler appliance.
 	* </pre>
 	*/
 	public void set_loggedin(boolean loggedin) throws Exception {
@@ -35,7 +35,7 @@ public class dbuser_args
 
 	/**
 	* <pre>
-	* Display the names of all database users that are logged on to the NetScaler appliance.
+	* Display the names of all database users currently logged on to the NetScaler appliance.
 	* </pre>
 	*/
 	public void set_loggedin(Boolean loggedin) throws Exception{
@@ -44,7 +44,7 @@ public class dbuser_args
 
 	/**
 	* <pre>
-	* Display the names of all database users that are logged on to the NetScaler appliance.
+	* Display the names of all database users currently logged on to the NetScaler appliance.
 	* </pre>
 	*/
 	public Boolean get_loggedin() throws Exception {

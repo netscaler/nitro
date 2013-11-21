@@ -26,7 +26,7 @@ public class aaagroup_args
 
 	/**
 	* <pre>
-	* The loggedin flag. When this flag is turned on, the system displays the names of the users in a group if at least one user in the group is logged in. When used with a group name, the system lists the users in the group who are logged in.
+	* Display only the group members who are currently logged in.
 	* </pre>
 	*/
 	public void set_loggedin(boolean loggedin) throws Exception {
@@ -35,7 +35,7 @@ public class aaagroup_args
 
 	/**
 	* <pre>
-	* The loggedin flag. When this flag is turned on, the system displays the names of the users in a group if at least one user in the group is logged in. When used with a group name, the system lists the users in the group who are logged in.
+	* Display only the group members who are currently logged in.
 	* </pre>
 	*/
 	public void set_loggedin(Boolean loggedin) throws Exception{
@@ -44,7 +44,7 @@ public class aaagroup_args
 
 	/**
 	* <pre>
-	* The loggedin flag. When this flag is turned on, the system displays the names of the users in a group if at least one user in the group is logged in. When used with a group name, the system lists the users in the group who are logged in.
+	* Display only the group members who are currently logged in.
 	* </pre>
 	*/
 	public Boolean get_loggedin() throws Exception {

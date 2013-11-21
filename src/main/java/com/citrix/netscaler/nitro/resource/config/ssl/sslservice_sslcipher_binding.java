@@ -57,7 +57,7 @@ public class sslservice_sslcipher_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the SSL service to which the SSL policy needs to be bound.<br> Minimum length =  1
+	* Name of the SSL service for which to set advanced configuration.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_servicename(String servicename) throws Exception{
@@ -66,7 +66,7 @@ public class sslservice_sslcipher_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the SSL service to which the SSL policy needs to be bound.<br> Minimum length =  1
+	* Name of the SSL service for which to set advanced configuration.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_servicename() throws Exception {

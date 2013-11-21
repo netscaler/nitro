@@ -26,10 +26,10 @@ public class dnsmxrec_args
 
 	/**
 	* <pre>
-	* The MX record type. The type can take 3 values:
-ADNS -  If this is specified, all of the authoritative MX records will be displayed.
-PROXY - If this is specified, all of the proxy MX records will be displayed.
-ALL  -  If this is specified, all of the MX records will be displayed.<br> Default value: NSDNS_AUTH_HOST<br> Possible values = ALL, ADNS, PROXY
+	* Type of records to display. Available settings function as follows:
+* ADNS - Display all authoritative address records.
+* PROXY - Display all proxy address records.
+* ALL - Display all address records.<br> Default value: ADNS<br> Possible values = ALL, ADNS, PROXY
 	* </pre>
 	*/
 	public void set_type(String type) throws Exception{
@@ -38,10 +38,10 @@ ALL  -  If this is specified, all of the MX records will be displayed.<br> Defau
 
 	/**
 	* <pre>
-	* The MX record type. The type can take 3 values:
-ADNS -  If this is specified, all of the authoritative MX records will be displayed.
-PROXY - If this is specified, all of the proxy MX records will be displayed.
-ALL  -  If this is specified, all of the MX records will be displayed.<br> Default value: NSDNS_AUTH_HOST<br> Possible values = ALL, ADNS, PROXY
+	* Type of records to display. Available settings function as follows:
+* ADNS - Display all authoritative address records.
+* PROXY - Display all proxy address records.
+* ALL - Display all address records.<br> Default value: ADNS<br> Possible values = ALL, ADNS, PROXY
 	* </pre>
 	*/
 	public String get_type() throws Exception {

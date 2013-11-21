@@ -36,9 +36,45 @@ public class clusterfiles extends base_resource
 
 	/**
 	* <pre>
-	* Specifies the directories and files to be synchronized.
-Possible values: all, bookmarks, ssl, htmlinjection, imports, misc, dns, all_plus_misc.
-Default value: all.<br> Possible values = all, bookmarks, ssl, htmlinjection, imports, misc, dns, all_plus_misc
+	* The directories and files to be synchronized. The available settings function as follows:
+ Mode    Paths
+ all           /nsconfig/ssl/
+                /var/netscaler/ssl/
+                /var/vpn/bookmark/
+                /nsconfig/dns/
+                /nsconfig/htmlinjection/
+                /netscaler/htmlinjection/ens/
+                /nsconfig/monitors/
+                /nsconfig/nstemplates/
+                /nsconfig/ssh/
+                /nsconfig/rc.netscaler
+                /nsconfig/resolv.conf
+                /nsconfig/inetd.conf
+                /nsconfig/syslog.conf
+                /nsconfig/snmpd.conf
+                /nsconfig/ntp.conf
+                /nsconfig/httpd.conf
+                /nsconfig/sshd_config
+                /nsconfig/hosts
+                /nsconfig/enckey
+                /var/nslw.bin/etc/krb5.conf
+                /var/nslw.bin/etc/krb5.keytab
+                /var/lib/likewise/db/
+                /var/download/
+                /var/wi/tomcat/webapps/
+                /var/wi/tomcat/conf/Catalina/localhost/
+                /var/wi/java_home/lib/security/cacerts
+                /var/wi/java_home/jre/lib/security/cacerts
+ssl            /nsconfig/ssl/
+                 /var/netscaler/ssl/
+bookmarks     /var/vpn/bookmark/
+dns                  /nsconfig/dns/
+htmlinjection    /nsconfig/htmlinjection/
+imports          /var/download/
+misc               /nsconfig/license/
+                       /nsconfig/rc.conf
+all_plus_misc    Includes *all* files and /nsconfig/license/ and /nsconfig/rc.conf.
+Default value: all.<br> Possible values = all, bookmarks, ssl, htmlinjection, imports, misc, dns, krb, all_plus_misc
 	* </pre>
 	*/
 	public void set_mode(String[] mode) throws Exception{
@@ -47,9 +83,45 @@ Default value: all.<br> Possible values = all, bookmarks, ssl, htmlinjection, im
 
 	/**
 	* <pre>
-	* Specifies the directories and files to be synchronized.
-Possible values: all, bookmarks, ssl, htmlinjection, imports, misc, dns, all_plus_misc.
-Default value: all.<br> Possible values = all, bookmarks, ssl, htmlinjection, imports, misc, dns, all_plus_misc
+	* The directories and files to be synchronized. The available settings function as follows:
+ Mode    Paths
+ all           /nsconfig/ssl/
+                /var/netscaler/ssl/
+                /var/vpn/bookmark/
+                /nsconfig/dns/
+                /nsconfig/htmlinjection/
+                /netscaler/htmlinjection/ens/
+                /nsconfig/monitors/
+                /nsconfig/nstemplates/
+                /nsconfig/ssh/
+                /nsconfig/rc.netscaler
+                /nsconfig/resolv.conf
+                /nsconfig/inetd.conf
+                /nsconfig/syslog.conf
+                /nsconfig/snmpd.conf
+                /nsconfig/ntp.conf
+                /nsconfig/httpd.conf
+                /nsconfig/sshd_config
+                /nsconfig/hosts
+                /nsconfig/enckey
+                /var/nslw.bin/etc/krb5.conf
+                /var/nslw.bin/etc/krb5.keytab
+                /var/lib/likewise/db/
+                /var/download/
+                /var/wi/tomcat/webapps/
+                /var/wi/tomcat/conf/Catalina/localhost/
+                /var/wi/java_home/lib/security/cacerts
+                /var/wi/java_home/jre/lib/security/cacerts
+ssl            /nsconfig/ssl/
+                 /var/netscaler/ssl/
+bookmarks     /var/vpn/bookmark/
+dns                  /nsconfig/dns/
+htmlinjection    /nsconfig/htmlinjection/
+imports          /var/download/
+misc               /nsconfig/license/
+                       /nsconfig/rc.conf
+all_plus_misc    Includes *all* files and /nsconfig/license/ and /nsconfig/rc.conf.
+Default value: all.<br> Possible values = all, bookmarks, ssl, htmlinjection, imports, misc, dns, krb, all_plus_misc
 	* </pre>
 	*/
 	public String[] get_mode() throws Exception {
@@ -109,6 +181,7 @@ Default value: all.<br> Possible values = all, bookmarks, ssl, htmlinjection, im
 		public static final String imports = "imports";
 		public static final String misc = "misc";
 		public static final String dns = "dns";
+		public static final String krb = "krb";
 		public static final String all_plus_misc = "all_plus_misc";
 	}
 }

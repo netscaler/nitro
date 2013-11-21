@@ -39,7 +39,7 @@ public class policydataset_value_binding extends base_resource
 
 	/**
 	* <pre>
-	* The value (ipv4, ipv6, number) associated with the set.
+	* Value of the specified type that is associated with the dataset.
 	* </pre>
 	*/
 	public void set_value(String value) throws Exception{
@@ -48,7 +48,7 @@ public class policydataset_value_binding extends base_resource
 
 	/**
 	* <pre>
-	* The value (ipv4, ipv6, number) associated with the set.
+	* Value of the specified type that is associated with the dataset.
 	* </pre>
 	*/
 	public String get_value() throws Exception {
@@ -57,7 +57,7 @@ public class policydataset_value_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the set. The name must not exceed 127 characters.<br> Minimum length =  1
+	* Name of the dataset to which to bind the value.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -66,7 +66,7 @@ public class policydataset_value_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the set. The name must not exceed 127 characters.<br> Minimum length =  1
+	* Name of the dataset to which to bind the value.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {

@@ -39,7 +39,7 @@ public class dospolicy extends base_resource
 
 	/**
 	* <pre>
-	* The name for the HTTP DoS protection policy. The name can include a maximum of 31 characters that include letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at sign (@), equals (=), colon (:), and underscore (_) symbols. The name can begin with a letter, number, or the underscore (_) symbol.<br> Minimum length =  1
+	* Name for the HTTP DoS protection policy. Must begin with a letter, number, or the underscore character (_). Other characters allowed, after the first character, are the hyphen (-), period (.) hash (#), space ( ), at (@), equals (=), and colon (:) characters.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -48,7 +48,7 @@ public class dospolicy extends base_resource
 
 	/**
 	* <pre>
-	* The name for the HTTP DoS protection policy. The name can include a maximum of 31 characters that include letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at sign (@), equals (=), colon (:), and underscore (_) symbols. The name can begin with a letter, number, or the underscore (_) symbol.<br> Minimum length =  1
+	* Name for the HTTP DoS protection policy. Must begin with a letter, number, or the underscore character (_). Other characters allowed, after the first character, are the hyphen (-), period (.) hash (#), space ( ), at (@), equals (=), and colon (:) characters.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -57,7 +57,7 @@ public class dospolicy extends base_resource
 
 	/**
 	* <pre>
-	* The queue depth. It is the queue size (the number of outstanding service requests on the system) that must be reached before DoS protection is activated on the service to which the DoS protection policy is bound.<br> Minimum value =  21
+	* Queue depth. The queue size (the number of outstanding service requests on the system) before DoS protection is activated on the service to which the DoS protection policy is bound.<br> Minimum value =  21
 	* </pre>
 	*/
 	public void set_qdepth(long qdepth) throws Exception {
@@ -66,7 +66,7 @@ public class dospolicy extends base_resource
 
 	/**
 	* <pre>
-	* The queue depth. It is the queue size (the number of outstanding service requests on the system) that must be reached before DoS protection is activated on the service to which the DoS protection policy is bound.<br> Minimum value =  21
+	* Queue depth. The queue size (the number of outstanding service requests on the system) before DoS protection is activated on the service to which the DoS protection policy is bound.<br> Minimum value =  21
 	* </pre>
 	*/
 	public void set_qdepth(Long qdepth) throws Exception{
@@ -75,7 +75,7 @@ public class dospolicy extends base_resource
 
 	/**
 	* <pre>
-	* The queue depth. It is the queue size (the number of outstanding service requests on the system) that must be reached before DoS protection is activated on the service to which the DoS protection policy is bound.<br> Minimum value =  21
+	* Queue depth. The queue size (the number of outstanding service requests on the system) before DoS protection is activated on the service to which the DoS protection policy is bound.<br> Minimum value =  21
 	* </pre>
 	*/
 	public Long get_qdepth() throws Exception {
@@ -84,7 +84,7 @@ public class dospolicy extends base_resource
 
 	/**
 	* <pre>
-	* The client detect rate. It is an integer that represents the percentage of traffic to which the HTTP DoS policy must be applied.<br> Minimum value =  0<br> Maximum value =  100
+	* Client detect rate. Integer representing the percentage of traffic to which the HTTP DoS policy is to be applied after the queue depth condition is satisfied.<br> Minimum value =  0<br> Maximum value =  100
 	* </pre>
 	*/
 	public void set_cltdetectrate(long cltdetectrate) throws Exception {
@@ -93,7 +93,7 @@ public class dospolicy extends base_resource
 
 	/**
 	* <pre>
-	* The client detect rate. It is an integer that represents the percentage of traffic to which the HTTP DoS policy must be applied.<br> Minimum value =  0<br> Maximum value =  100
+	* Client detect rate. Integer representing the percentage of traffic to which the HTTP DoS policy is to be applied after the queue depth condition is satisfied.<br> Minimum value =  0<br> Maximum value =  100
 	* </pre>
 	*/
 	public void set_cltdetectrate(Long cltdetectrate) throws Exception{
@@ -102,7 +102,7 @@ public class dospolicy extends base_resource
 
 	/**
 	* <pre>
-	* The client detect rate. It is an integer that represents the percentage of traffic to which the HTTP DoS policy must be applied.<br> Minimum value =  0<br> Maximum value =  100
+	* Client detect rate. Integer representing the percentage of traffic to which the HTTP DoS policy is to be applied after the queue depth condition is satisfied.<br> Minimum value =  0<br> Maximum value =  100
 	* </pre>
 	*/
 	public Long get_cltdetectrate() throws Exception {
@@ -255,20 +255,9 @@ public class dospolicy extends base_resource
 	* Use this API to unset the properties of dospolicy resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String name, String args[]) throws Exception {
-		dospolicy unsetresource = new dospolicy();
-		unsetresource.name = name;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of dospolicy resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, dospolicy resource, String[] args) throws Exception{
 		dospolicy unsetresource = new dospolicy();
 		unsetresource.name = resource.name;
-		unsetresource.cltdetectrate = resource.cltdetectrate;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -300,7 +289,6 @@ public class dospolicy extends base_resource
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new dospolicy();
 				unsetresources[i].name = resources[i].name;
-				unsetresources[i].cltdetectrate = resources[i].cltdetectrate;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}

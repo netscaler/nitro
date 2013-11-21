@@ -16,9 +16,9 @@
 
 package com.citrix.netscaler.nitro.resource.config.basic;
 
+import com.citrix.netscaler.nitro.resource.config.basic.service_scpolicy_binding;
 import com.citrix.netscaler.nitro.resource.config.basic.service_lbmonitor_binding;
 import com.citrix.netscaler.nitro.resource.config.basic.service_dospolicy_binding;
-import com.citrix.netscaler.nitro.resource.config.basic.service_scpolicy_binding;
 import com.citrix.netscaler.nitro.resource.base.*;
 import com.citrix.netscaler.nitro.service.nitro_service;
 import com.citrix.netscaler.nitro.service.options;
@@ -36,13 +36,13 @@ class service_binding_response extends base_response
 public class service_binding extends base_resource
 {
 	private String name;
+	private service_scpolicy_binding	service_scpolicy_binding[] = null;
 	private service_lbmonitor_binding	service_lbmonitor_binding[] = null;
 	private service_dospolicy_binding	service_dospolicy_binding[] = null;
-	private service_scpolicy_binding	service_scpolicy_binding[] = null;
 
 	/**
 	* <pre>
-	* The name of the service.<br> Minimum length =  1
+	* Name of the service for which to display configuration details.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -51,7 +51,7 @@ public class service_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the service.<br> Minimum length =  1
+	* Name of the service for which to display configuration details.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {

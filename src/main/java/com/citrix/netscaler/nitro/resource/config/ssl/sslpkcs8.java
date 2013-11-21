@@ -39,7 +39,7 @@ public class sslpkcs8 extends base_resource
 
 	/**
 	* <pre>
-	* The name of the output file where the PKCS8 format key file will be stored. The default output path for the PKCS8 file is /nsconfig/ssl/.<br> Maximum length =  63
+	* Name for and, optionally, path to, the output file where the PKCS#8 format key file is stored. /nsconfig/ssl/ is the default path.<br> Maximum length =  63
 	* </pre>
 	*/
 	public void set_pkcs8file(String pkcs8file) throws Exception{
@@ -48,7 +48,7 @@ public class sslpkcs8 extends base_resource
 
 	/**
 	* <pre>
-	* The name of the output file where the PKCS8 format key file will be stored. The default output path for the PKCS8 file is /nsconfig/ssl/.<br> Maximum length =  63
+	* Name for and, optionally, path to, the output file where the PKCS#8 format key file is stored. /nsconfig/ssl/ is the default path.<br> Maximum length =  63
 	* </pre>
 	*/
 	public String get_pkcs8file() throws Exception {
@@ -57,7 +57,7 @@ public class sslpkcs8 extends base_resource
 
 	/**
 	* <pre>
-	* The input key file. The default input path for the key file is /nsconfig/ssl/.<br> Maximum length =  63
+	* Name of and, optionally, path to the input key file to be converted from PEM or DER format to PKCS#8 format. /nsconfig/ssl/ is the default path.<br> Maximum length =  63
 	* </pre>
 	*/
 	public void set_keyfile(String keyfile) throws Exception{
@@ -66,7 +66,7 @@ public class sslpkcs8 extends base_resource
 
 	/**
 	* <pre>
-	* The input key file. The default input path for the key file is /nsconfig/ssl/.<br> Maximum length =  63
+	* Name of and, optionally, path to the input key file to be converted from PEM or DER format to PKCS#8 format. /nsconfig/ssl/ is the default path.<br> Maximum length =  63
 	* </pre>
 	*/
 	public String get_keyfile() throws Exception {
@@ -75,10 +75,7 @@ public class sslpkcs8 extends base_resource
 
 	/**
 	* <pre>
-	* The format of the keyFile.
-	PEM: Privacy Enhanced Mail
-	DER: Distinguished Encoding Rule
-.<br> Default value: FORMAT_PEM<br> Possible values = DER, PEM
+	* Format in which the key file is stored on the appliance.<br> Default value: PEM<br> Possible values = DER, PEM
 	* </pre>
 	*/
 	public void set_keyform(String keyform) throws Exception{
@@ -87,10 +84,7 @@ public class sslpkcs8 extends base_resource
 
 	/**
 	* <pre>
-	* The format of the keyFile.
-	PEM: Privacy Enhanced Mail
-	DER: Distinguished Encoding Rule
-.<br> Default value: FORMAT_PEM<br> Possible values = DER, PEM
+	* Format in which the key file is stored on the appliance.<br> Default value: PEM<br> Possible values = DER, PEM
 	* </pre>
 	*/
 	public String get_keyform() throws Exception {
@@ -99,7 +93,7 @@ public class sslpkcs8 extends base_resource
 
 	/**
 	* <pre>
-	* The password if the key is encrypted. Valid for PEM encoded files only.<br> Minimum length =  1<br> Maximum length =  31
+	* Password to assign to the file if the key is encrypted. Applies only for PEM format files.<br> Minimum length =  1<br> Maximum length =  31
 	* </pre>
 	*/
 	public void set_password(String password) throws Exception{
@@ -108,7 +102,7 @@ public class sslpkcs8 extends base_resource
 
 	/**
 	* <pre>
-	* The password if the key is encrypted. Valid for PEM encoded files only.<br> Minimum length =  1<br> Maximum length =  31
+	* Password to assign to the file if the key is encrypted. Applies only for PEM format files.<br> Minimum length =  1<br> Maximum length =  31
 	* </pre>
 	*/
 	public String get_password() throws Exception {

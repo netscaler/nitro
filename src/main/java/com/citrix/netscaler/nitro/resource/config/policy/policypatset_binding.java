@@ -38,7 +38,7 @@ public class policypatset_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the patset.<br> Minimum length =  1
+	* Name of the pattern set for which to display the detailed information. If a name is not provided, a list of all pattern sets configured on the appliance is shown.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -47,7 +47,7 @@ public class policypatset_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the patset.<br> Minimum length =  1
+	* Name of the pattern set for which to display the detailed information. If a name is not provided, a list of all pattern sets configured on the appliance is shown.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {

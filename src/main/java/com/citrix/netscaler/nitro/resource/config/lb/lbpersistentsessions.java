@@ -47,7 +47,6 @@ public class lbpersistentsessions extends base_resource
 	private String vservername;
 	private Long timeout;
 	private Long referencecount;
-	private String sipcallid;
 	private String persistenceparam;
 	private Long __count;
 
@@ -175,15 +174,6 @@ public class lbpersistentsessions extends base_resource
 	*/
 	public Long get_referencecount() throws Exception {
 		return this.referencecount;
-	}
-
-	/**
-	* <pre>
-	* SIP CALLID.
-	* </pre>
-	*/
-	public String get_sipcallid() throws Exception {
-		return this.sipcallid;
 	}
 
 	/**

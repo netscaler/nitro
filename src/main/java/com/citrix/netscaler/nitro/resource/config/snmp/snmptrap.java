@@ -43,11 +43,7 @@ public class snmptrap extends base_resource
 
 	/**
 	* <pre>
-	* The type of trap messages that you want the NetScaler appliance to send to this trap listener. There are two types:
-
-Generic. Send standard system SNMP traps messages, such as authenticationfailure, linkDown, linkUp, and, coldStart traps, to the trap listener. 
-
-Specific. Send enterprise specific trap messages to the trap listener. The MIB file of the NetScaler appliance contains the definitions of all the enterprise specific traps. For more information about the enterprise specific traps, see the SNMP OID reference guide for this release of the NetScaler software.<br> Possible values = generic, specific
+	* Type of trap messages that the NetScaler appliance sends to the trap listener: Generic or the enterprise-specific messages defined in the MIB file.<br> Possible values = generic, specific
 	* </pre>
 	*/
 	public void set_trapclass(String trapclass) throws Exception{
@@ -56,11 +52,7 @@ Specific. Send enterprise specific trap messages to the trap listener. The MIB f
 
 	/**
 	* <pre>
-	* The type of trap messages that you want the NetScaler appliance to send to this trap listener. There are two types:
-
-Generic. Send standard system SNMP traps messages, such as authenticationfailure, linkDown, linkUp, and, coldStart traps, to the trap listener. 
-
-Specific. Send enterprise specific trap messages to the trap listener. The MIB file of the NetScaler appliance contains the definitions of all the enterprise specific traps. For more information about the enterprise specific traps, see the SNMP OID reference guide for this release of the NetScaler software.<br> Possible values = generic, specific
+	* Type of trap messages that the NetScaler appliance sends to the trap listener: Generic or the enterprise-specific messages defined in the MIB file.<br> Possible values = generic, specific
 	* </pre>
 	*/
 	public String get_trapclass() throws Exception {
@@ -69,7 +61,7 @@ Specific. Send enterprise specific trap messages to the trap listener. The MIB f
 
 	/**
 	* <pre>
-	* The IPv4 or the IPv6 address of the trap listener to which you want the NetScaler appliance to send the SNMP trap messages.<br> Minimum length =  1
+	* IPv4 or the IPv6 address of the trap listener to which the NetScaler appliance is to send SNMP trap messages.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_trapdestination(String trapdestination) throws Exception{
@@ -78,7 +70,7 @@ Specific. Send enterprise specific trap messages to the trap listener. The MIB f
 
 	/**
 	* <pre>
-	* The IPv4 or the IPv6 address of the trap listener to which you want the NetScaler appliance to send the SNMP trap messages.<br> Minimum length =  1
+	* IPv4 or the IPv6 address of the trap listener to which the NetScaler appliance is to send SNMP trap messages.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_trapdestination() throws Exception {
@@ -87,7 +79,8 @@ Specific. Send enterprise specific trap messages to the trap listener. The MIB f
 
 	/**
 	* <pre>
-	* The SNMP version, which determines the format of trap messages received by this trap listener.  .<br> Default value: TRAP_VERSION_2<br> Possible values = V1, V2
+	* SNMP version, which determines the format of trap messages sent to the trap listener. 
+This setting must match the setting on the trap listener. Otherwise, the listener drops the trap messages.<br> Default value: V2<br> Possible values = V1, V2
 	* </pre>
 	*/
 	public void set_version(String version) throws Exception{
@@ -96,7 +89,8 @@ Specific. Send enterprise specific trap messages to the trap listener. The MIB f
 
 	/**
 	* <pre>
-	* The SNMP version, which determines the format of trap messages received by this trap listener.  .<br> Default value: TRAP_VERSION_2<br> Possible values = V1, V2
+	* SNMP version, which determines the format of trap messages sent to the trap listener. 
+This setting must match the setting on the trap listener. Otherwise, the listener drops the trap messages.<br> Default value: V2<br> Possible values = V1, V2
 	* </pre>
 	*/
 	public String get_version() throws Exception {
@@ -105,7 +99,7 @@ Specific. Send enterprise specific trap messages to the trap listener. The MIB f
 
 	/**
 	* <pre>
-	* The UDP port of this trap listener to which the NetScaler appliance send the SNMP trap messages. You must specify the same port number on the trap listener device. Otherwise, the trap listener drops the trap messages.<br> Default value: 162<br> Minimum value =  1<br> Maximum value =  65534
+	* UDP port at which the trap listener listens for trap messages. This setting must match the setting on the trap listener. Otherwise, the listener drops the trap messages.<br> Default value: 162<br> Minimum value =  1<br> Maximum value =  65534
 	* </pre>
 	*/
 	public void set_destport(int destport) throws Exception {
@@ -114,7 +108,7 @@ Specific. Send enterprise specific trap messages to the trap listener. The MIB f
 
 	/**
 	* <pre>
-	* The UDP port of this trap listener to which the NetScaler appliance send the SNMP trap messages. You must specify the same port number on the trap listener device. Otherwise, the trap listener drops the trap messages.<br> Default value: 162<br> Minimum value =  1<br> Maximum value =  65534
+	* UDP port at which the trap listener listens for trap messages. This setting must match the setting on the trap listener. Otherwise, the listener drops the trap messages.<br> Default value: 162<br> Minimum value =  1<br> Maximum value =  65534
 	* </pre>
 	*/
 	public void set_destport(Integer destport) throws Exception{
@@ -123,7 +117,7 @@ Specific. Send enterprise specific trap messages to the trap listener. The MIB f
 
 	/**
 	* <pre>
-	* The UDP port of this trap listener to which the NetScaler appliance send the SNMP trap messages. You must specify the same port number on the trap listener device. Otherwise, the trap listener drops the trap messages.<br> Default value: 162<br> Minimum value =  1<br> Maximum value =  65534
+	* UDP port at which the trap listener listens for trap messages. This setting must match the setting on the trap listener. Otherwise, the listener drops the trap messages.<br> Default value: 162<br> Minimum value =  1<br> Maximum value =  65534
 	* </pre>
 	*/
 	public Integer get_destport() throws Exception {
@@ -132,7 +126,11 @@ Specific. Send enterprise specific trap messages to the trap listener. The MIB f
 
 	/**
 	* <pre>
-	* A password (string) sent with the traps messages, which is used to authenticate the trap messages on the trap listener. Can consist of 1 to 31 characters that include letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at sign (@), equals (=), colon (:), and underscore (_) symbols.  You must specify the same community string on the trap listener device. Otherwise, the trap listener drops the trap messages.<br> Default value: "public"<br> Minimum length =  1
+	* Password (string) sent with the trap messages, so that the trap listener can authenticate them. Can include 1 to 31 uppercase or lowercase letters, numbers, and hyphen (-), period (.) pound (#), space ( ), at (@), equals (=), colon (:), and underscore (_) characters.  
+You must specify the same community string on the trap listener device. Otherwise, the trap listener drops the trap messages.
+
+The following requirement applies only to the NetScaler CLI:
+If the string includes one or more spaces, enclose the name in double or single quotation marks (for example, "my string" or 'my string').<br> Default value: "public"<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_communityname(String communityname) throws Exception{
@@ -141,7 +139,11 @@ Specific. Send enterprise specific trap messages to the trap listener. The MIB f
 
 	/**
 	* <pre>
-	* A password (string) sent with the traps messages, which is used to authenticate the trap messages on the trap listener. Can consist of 1 to 31 characters that include letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at sign (@), equals (=), colon (:), and underscore (_) symbols.  You must specify the same community string on the trap listener device. Otherwise, the trap listener drops the trap messages.<br> Default value: "public"<br> Minimum length =  1
+	* Password (string) sent with the trap messages, so that the trap listener can authenticate them. Can include 1 to 31 uppercase or lowercase letters, numbers, and hyphen (-), period (.) pound (#), space ( ), at (@), equals (=), colon (:), and underscore (_) characters.  
+You must specify the same community string on the trap listener device. Otherwise, the trap listener drops the trap messages.
+
+The following requirement applies only to the NetScaler CLI:
+If the string includes one or more spaces, enclose the name in double or single quotation marks (for example, "my string" or 'my string').<br> Default value: "public"<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_communityname() throws Exception {
@@ -150,9 +152,7 @@ Specific. Send enterprise specific trap messages to the trap listener. The MIB f
 
 	/**
 	* <pre>
-	* The IPv4 or IPv6 address that the NetScaler appliance inserts as the source IP address in all SNMP trap messages that it sends to this trap listener. 
- 
-For a trap listener that has an IPv4 address, you can set the source IP to either a mapped IP (MIP) address or a subnet IP (SNIP) address configured on the NetScaler appliance. By default, the appliance uses the NSIP address as the source IP address.  For a trap listener that has an IPv6 address, you can set the source IP address to any subnet IPv6 (SNIP6) address configured on the appliance. By default, the appliance uses the NSIP6 address as the source IP address.<br> Minimum length =  1
+	* IPv4 or IPv6 address that the NetScaler appliance inserts as the source IP address in all SNMP trap messages that it sends to this trap listener. By default this is the appliance's NSIP or NSIP6 address, but you can specify an IPv4 MIP or SNIP address or a SNIP6 address.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_srcip(String srcip) throws Exception{
@@ -161,9 +161,7 @@ For a trap listener that has an IPv4 address, you can set the source IP to eithe
 
 	/**
 	* <pre>
-	* The IPv4 or IPv6 address that the NetScaler appliance inserts as the source IP address in all SNMP trap messages that it sends to this trap listener. 
- 
-For a trap listener that has an IPv4 address, you can set the source IP to either a mapped IP (MIP) address or a subnet IP (SNIP) address configured on the NetScaler appliance. By default, the appliance uses the NSIP address as the source IP address.  For a trap listener that has an IPv6 address, you can set the source IP address to any subnet IPv6 (SNIP6) address configured on the appliance. By default, the appliance uses the NSIP6 address as the source IP address.<br> Minimum length =  1
+	* IPv4 or IPv6 address that the NetScaler appliance inserts as the source IP address in all SNMP trap messages that it sends to this trap listener. By default this is the appliance's NSIP or NSIP6 address, but you can specify an IPv4 MIP or SNIP address or a SNIP6 address.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_srcip() throws Exception {
@@ -172,18 +170,8 @@ For a trap listener that has an IPv4 address, you can set the source IP to eithe
 
 	/**
 	* <pre>
-	* The severity level at or above which the NetScaler appliance sends trap messages to this trap listener. Following are the severity levels defined on the NetScaler appliance, in increasing order of severity.
- - Informational
- - Warning
- - Minor
- - Major
- - Critical
-
-For example, if you set the severity level as Minor, all trap messages with a severity level of Minor, Major, or Critical are sent to the trap listener. 
-
-This parameter can only be set for specific trap listeners. By default, all levels of generated SNMP traps messages are sent to a trap listener. 
-
-Important: Trap messages are not assigned severity levels unless you specify severity levels when configuring SNMP alarms. For example, if you specify a severity level as Warning for the SNMP alarm named LOGIN-FAILURE, a trap message generated as a result of login failure is assigned the Warning severity level.<br> Default value: SNMP_SEV_UNKNOWN<br> Possible values = Critical, Major, Minor, Warning, Informational
+	* Severity level at or above which the NetScaler appliance sends trap messages to this trap listener. The severity levels, in increasing order of severity, are Informational, Warning, Minor, Major, Critical. This parameter can be set for trap listeners of type SPECIFIC only. The default is to send all levels of trap messages. 
+Important: Trap messages are not assigned severity levels unless you specify severity levels when configuring SNMP alarms.<br> Default value: Unknown<br> Possible values = Critical, Major, Minor, Warning, Informational
 	* </pre>
 	*/
 	public void set_severity(String severity) throws Exception{
@@ -192,18 +180,8 @@ Important: Trap messages are not assigned severity levels unless you specify sev
 
 	/**
 	* <pre>
-	* The severity level at or above which the NetScaler appliance sends trap messages to this trap listener. Following are the severity levels defined on the NetScaler appliance, in increasing order of severity.
- - Informational
- - Warning
- - Minor
- - Major
- - Critical
-
-For example, if you set the severity level as Minor, all trap messages with a severity level of Minor, Major, or Critical are sent to the trap listener. 
-
-This parameter can only be set for specific trap listeners. By default, all levels of generated SNMP traps messages are sent to a trap listener. 
-
-Important: Trap messages are not assigned severity levels unless you specify severity levels when configuring SNMP alarms. For example, if you specify a severity level as Warning for the SNMP alarm named LOGIN-FAILURE, a trap message generated as a result of login failure is assigned the Warning severity level.<br> Default value: SNMP_SEV_UNKNOWN<br> Possible values = Critical, Major, Minor, Warning, Informational
+	* Severity level at or above which the NetScaler appliance sends trap messages to this trap listener. The severity levels, in increasing order of severity, are Informational, Warning, Minor, Major, Critical. This parameter can be set for trap listeners of type SPECIFIC only. The default is to send all levels of trap messages. 
+Important: Trap messages are not assigned severity levels unless you specify severity levels when configuring SNMP alarms.<br> Default value: Unknown<br> Possible values = Critical, Major, Minor, Warning, Informational
 	* </pre>
 	*/
 	public String get_severity() throws Exception {
@@ -374,43 +352,11 @@ Important: Trap messages are not assigned severity levels unless you specify sev
 	* Use this API to unset the properties of snmptrap resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String trapclass, String args[]) throws Exception {
-		snmptrap unsetresource = new snmptrap();
-		unsetresource.trapclass = trapclass;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of snmptrap resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, snmptrap resource, String[] args) throws Exception{
 		snmptrap unsetresource = new snmptrap();
 		unsetresource.trapclass = resource.trapclass;
 		unsetresource.trapdestination = resource.trapdestination;
-		unsetresource.destport = resource.destport;
-		unsetresource.version = resource.version;
-		unsetresource.communityname = resource.communityname;
-		unsetresource.srcip = resource.srcip;
-		unsetresource.severity = resource.severity;
 		return unsetresource.unset_resource(client,args);
-	}
-
-	/**
-	* Use this API to unset the properties of snmptrap resources.
-	* Properties that need to be unset are specified in args array.
-	*/
-	public static base_responses unset(nitro_service client, String trapclass[], String args[]) throws Exception {
-		base_responses result = null;
-		if (trapclass != null && trapclass.length > 0) {
-			snmptrap unsetresources[] = new snmptrap[trapclass.length];
-			for (int i=0;i<trapclass.length;i++){
-				unsetresources[i] = new snmptrap();
-				unsetresources[i].trapclass = trapclass[i];
-			}
-			result = unset_bulk_request(client, unsetresources,args);
-		}
-		return result;
 	}
 
 	/**
@@ -425,11 +371,6 @@ Important: Trap messages are not assigned severity levels unless you specify sev
 				unsetresources[i] = new snmptrap();
 				unsetresources[i].trapclass = resources[i].trapclass;
 				unsetresources[i].trapdestination = resources[i].trapdestination;
-				unsetresources[i].destport = resources[i].destport;
-				unsetresources[i].version = resources[i].version;
-				unsetresources[i].communityname = resources[i].communityname;
-				unsetresources[i].srcip = resources[i].srcip;
-				unsetresources[i].severity = resources[i].severity;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}

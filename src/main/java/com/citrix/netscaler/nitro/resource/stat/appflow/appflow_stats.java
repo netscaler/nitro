@@ -29,6 +29,7 @@ class appflow_response extends base_response
 
 public class appflow_stats extends base_resource
 {
+	private String clearstats;
 	private Long appflowtotaltxoctets;
 	private Long appflowtxoctetsrate;
 	private Long appflowtotalflows;
@@ -48,7 +49,25 @@ public class appflow_stats extends base_resource
 
 	/**
 	* <pre>
-	* The total number of AppFlow (IPFIX) octets that the NetScaler has transmitted.
+	* Clear the statsistics / counters
+	* </pre>
+	*/
+	public void set_clearstats(String clearstats) throws Exception{
+		this.clearstats = clearstats;
+	}
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters.<br> Possible values = basic, full
+	* </pre>
+	*/
+	public String get_clearstats() throws Exception {
+		return this.clearstats;
+	}
+
+	/**
+	* <pre>
+	* Rate (/s) counter for appflowtotaltxoctets
 	* </pre>
 	*/
 	public Long get_appflowtxoctetsrate() throws Exception {
@@ -57,7 +76,7 @@ public class appflow_stats extends base_resource
 
 	/**
 	* <pre>
-	* The total number of AppFlow (IPFIX) messages that the NetScaler has transmitted.
+	* Rate (/s) counter for appflowtotaltxmessagess
 	* </pre>
 	*/
 	public Long get_appflowtxmessagessrate() throws Exception {
@@ -111,7 +130,7 @@ public class appflow_stats extends base_resource
 
 	/**
 	* <pre>
-	* The total number of AppFlow (IPFIX) flows that the NetScaler has not transmitted.
+	* Rate (/s) counter for appflowtotalnotxflows
 	* </pre>
 	*/
 	public Long get_appflownotxflowsrate() throws Exception {
@@ -120,7 +139,7 @@ public class appflow_stats extends base_resource
 
 	/**
 	* <pre>
-	* The total number of octets that the NetScaler has ignored for AppFlow (IPFIX).
+	* Rate (/s) counter for appflowtotalignoctets
 	* </pre>
 	*/
 	public Long get_appflowignoctetsrate() throws Exception {
@@ -156,7 +175,7 @@ public class appflow_stats extends base_resource
 
 	/**
 	* <pre>
-	* The total number of AppFlow (IPFIX) packets that the NetScaler has not transmitted.
+	* Rate (/s) counter for appflowtotalnotxpackets
 	* </pre>
 	*/
 	public Long get_appflownotxpacketsrate() throws Exception {
@@ -165,7 +184,7 @@ public class appflow_stats extends base_resource
 
 	/**
 	* <pre>
-	* The total number of AppFlow (IPFIX) flows that the NetScaler has transmitted.
+	* Rate (/s) counter for appflowtotalflows
 	* </pre>
 	*/
 	public Long get_appflowflowsrate() throws Exception {
@@ -174,7 +193,7 @@ public class appflow_stats extends base_resource
 
 	/**
 	* <pre>
-	* The total number of AppFlow (IPFIX) octets that the NetScaler has not transmitted.
+	* Rate (/s) counter for appflowtotalnotxoctets
 	* </pre>
 	*/
 	public Long get_appflownotxoctetsrate() throws Exception {
@@ -183,7 +202,7 @@ public class appflow_stats extends base_resource
 
 	/**
 	* <pre>
-	* The total number of packets that the NetScaler has ignored for AppFlow (IPFIX).
+	* Rate (/s) counter for appflowtotalignpacketss
 	* </pre>
 	*/
 	public Long get_appflowignpacketssrate() throws Exception {
@@ -244,4 +263,8 @@ public class appflow_stats extends base_resource
 		return response[0];
 	}
 
+	public static class clearstatsEnum {
+		public static final String basic = "basic";
+		public static final String full = "full";
+	}
 }

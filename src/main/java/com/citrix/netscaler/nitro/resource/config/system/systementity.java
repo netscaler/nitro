@@ -60,7 +60,7 @@ public class systementity extends base_resource
 
 	/**
 	* <pre>
-	* Specify Data source name.
+	* Specifies the source which contains all the stored counter values.
 	* </pre>
 	*/
 	public void set_datasource(String datasource) throws Exception{
@@ -69,7 +69,7 @@ public class systementity extends base_resource
 
 	/**
 	* <pre>
-	* Specify Data source name.
+	* Specifies the source which contains all the stored counter values.
 	* </pre>
 	*/
 	public String get_datasource() throws Exception {
@@ -78,7 +78,7 @@ public class systementity extends base_resource
 
 	/**
 	* <pre>
-	* Specify core.
+	* Specify core ID of the PE in nCore.
 	* </pre>
 	*/
 	public void set_core(int core) throws Exception {
@@ -87,7 +87,7 @@ public class systementity extends base_resource
 
 	/**
 	* <pre>
-	* Specify core.
+	* Specify core ID of the PE in nCore.
 	* </pre>
 	*/
 	public void set_core(Integer core) throws Exception{
@@ -96,7 +96,7 @@ public class systementity extends base_resource
 
 	/**
 	* <pre>
-	* Specify core.
+	* Specify core ID of the PE in nCore.
 	* </pre>
 	*/
 	public Integer get_core() throws Exception {

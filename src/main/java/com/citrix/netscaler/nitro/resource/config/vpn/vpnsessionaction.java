@@ -91,6 +91,7 @@ public class vpnsessionaction extends base_resource
 	private String allowedlogingroups;
 	private String securebrowse;
 	private String storefronturl;
+	private String kcdaccount;
 
 	//------- Read only Parameter ---------;
 
@@ -100,7 +101,10 @@ public class vpnsessionaction extends base_resource
 
 	/**
 	* <pre>
-	* The name for the new vpn session action.<br> Minimum length =  1
+	* Name for the Access Gateway profile (action). Must begin with an ASCII alphabetic or underscore (_) character, and must consist only of ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Cannot be changed after the profile is created.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my action" or 'my action').<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -109,7 +113,10 @@ public class vpnsessionaction extends base_resource
 
 	/**
 	* <pre>
-	* The name for the new vpn session action.<br> Minimum length =  1
+	* Name for the Access Gateway profile (action). Must begin with an ASCII alphabetic or underscore (_) character, and must consist only of ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Cannot be changed after the profile is created.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my action" or 'my action').<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -118,7 +125,7 @@ public class vpnsessionaction extends base_resource
 
 	/**
 	* <pre>
-	* The http port number for this session.<br> Minimum value =  1
+	* Destination port numbers other than port 80, added as a comma-separated list. Traffic to these ports is processed as HTTP traffic, which allows functionality, such as HTTP authorization and single sign-on to a web application to work.<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_httpport(Integer[] httpport) throws Exception{
@@ -127,7 +134,7 @@ public class vpnsessionaction extends base_resource
 
 	/**
 	* <pre>
-	* The http port number for this session.<br> Minimum value =  1
+	* Destination port numbers other than port 80, added as a comma-separated list. Traffic to these ports is processed as HTTP traffic, which allows functionality, such as HTTP authorization and single sign-on to a web application to work.<br> Minimum value =  1
 	* </pre>
 	*/
 	public Integer[] get_httpport() throws Exception {
@@ -136,7 +143,7 @@ public class vpnsessionaction extends base_resource
 
 	/**
 	* <pre>
-	* The WINS server ip address for this session.
+	* WINS server IP address to add to Access Gateway for name resolution.
 	* </pre>
 	*/
 	public void set_winsip(String winsip) throws Exception{
@@ -145,7 +152,7 @@ public class vpnsessionaction extends base_resource
 
 	/**
 	* <pre>
-	* The WINS server ip address for this session.
+	* WINS server IP address to add to Access Gateway for name resolution.
 	* </pre>
 	*/
 	public String get_winsip() throws Exception {
@@ -154,7 +161,7 @@ public class vpnsessionaction extends base_resource
 
 	/**
 	* <pre>
-	* The name of the DNS vserver to be configured by the session action.<br> Minimum length =  1
+	* Name of the DNS virtual server for the user session.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_dnsvservername(String dnsvservername) throws Exception{
@@ -163,7 +170,7 @@ public class vpnsessionaction extends base_resource
 
 	/**
 	* <pre>
-	* The name of the DNS vserver to be configured by the session action.<br> Minimum length =  1
+	* Name of the DNS virtual server for the user session.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_dnsvservername() throws Exception {
@@ -172,7 +179,7 @@ public class vpnsessionaction extends base_resource
 
 	/**
 	* <pre>
-	* Set the VPN client to route the DNS requests to remote network or local network or both.<br> Possible values = LOCAL, REMOTE, BOTH
+	* Route the DNS requests to the local DNS server configured on the user device, or Access Gateway (remote), or both.<br> Possible values = LOCAL, REMOTE, BOTH
 	* </pre>
 	*/
 	public void set_splitdns(String splitdns) throws Exception{
@@ -181,7 +188,7 @@ public class vpnsessionaction extends base_resource
 
 	/**
 	* <pre>
-	* Set the VPN client to route the DNS requests to remote network or local network or both.<br> Possible values = LOCAL, REMOTE, BOTH
+	* Route the DNS requests to the local DNS server configured on the user device, or Access Gateway (remote), or both.<br> Possible values = LOCAL, REMOTE, BOTH
 	* </pre>
 	*/
 	public String get_splitdns() throws Exception {
@@ -190,7 +197,7 @@ public class vpnsessionaction extends base_resource
 
 	/**
 	* <pre>
-	* The session timeout, in minutes, to be set by the action.<br> Minimum value =  1
+	* Number of minutes after which the session times out.<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_sesstimeout(long sesstimeout) throws Exception {
@@ -199,7 +206,7 @@ public class vpnsessionaction extends base_resource
 
 	/**
 	* <pre>
-	* The session timeout, in minutes, to be set by the action.<br> Minimum value =  1
+	* Number of minutes after which the session times out.<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_sesstimeout(Long sesstimeout) throws Exception{
@@ -208,7 +215,7 @@ public class vpnsessionaction extends base_resource
 
 	/**
 	* <pre>
-	* The session timeout, in minutes, to be set by the action.<br> Minimum value =  1
+	* Number of minutes after which the session times out.<br> Minimum value =  1
 	* </pre>
 	*/
 	public Long get_sesstimeout() throws Exception {
@@ -217,7 +224,7 @@ public class vpnsessionaction extends base_resource
 
 	/**
 	* <pre>
-	* The client security check string to be applied. This is in the form of an Expression. Expressions are simple conditions, such as a test for equality, applied to operands, such as a URL string or an IP address. Expression syntax is described in the Installation and Configuration Guide.
+	* Specify the client security check for the user device to permit an Access Gateway session. The web address or IP address is not included in the expression for the client security check.
 	* </pre>
 	*/
 	public void set_clientsecurity(String clientsecurity) throws Exception{
@@ -226,7 +233,7 @@ public class vpnsessionaction extends base_resource
 
 	/**
 	* <pre>
-	* The client security check string to be applied. This is in the form of an Expression. Expressions are simple conditions, such as a test for equality, applied to operands, such as a URL string or an IP address. Expression syntax is described in the Installation and Configuration Guide.
+	* Specify the client security check for the user device to permit an Access Gateway session. The web address or IP address is not included in the expression for the client security check.
 	* </pre>
 	*/
 	public String get_clientsecurity() throws Exception {
@@ -271,7 +278,7 @@ public class vpnsessionaction extends base_resource
 
 	/**
 	* <pre>
-	* Controls client side logging of security checks.<br> Possible values = ON, OFF
+	* Set the logging of client security checks.<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_clientsecuritylog(String clientsecuritylog) throws Exception{
@@ -280,7 +287,7 @@ public class vpnsessionaction extends base_resource
 
 	/**
 	* <pre>
-	* Controls client side logging of security checks.<br> Possible values = ON, OFF
+	* Set the logging of client security checks.<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_clientsecuritylog() throws Exception {
@@ -289,8 +296,7 @@ public class vpnsessionaction extends base_resource
 
 	/**
 	* <pre>
-	* The split tunnel state, e.g. ON, OFF or REVERSE. Split Tunnelling ON enables the VPN client to route non-VPN traffic through its local network interface. When Split Tunnelling is OFF, no traffic may go to the local interface while the client session is active.
-Split tunneling can also be set to REVERSE. In this case all traffic directed to domains configured on the system will bypass the VPN tunnel. All other traffic is forced through the VPN tunnel.<br> Possible values = ON, OFF, REVERSE
+	* Send, through the tunnel, traffic only for intranet applications that are defined in Access Gateway. Route all other traffic directly to the Internet. The OFF setting routes all traffic through Access Gateway. With the REVERSE setting, intranet applications define the network traffic that is not intercepted. All network traffic directed to internal IP addresses bypasses the VPN tunnel, while other traffic goes through Access Gateway. Reverse split tunneling can be used to log all non-local LAN traffic. For example, if users have a home network and are logged on through the Access Gateway Plug-in, network traffic destined to a printer or another device within the home network is not intercepted.<br> Possible values = ON, OFF, REVERSE
 	* </pre>
 	*/
 	public void set_splittunnel(String splittunnel) throws Exception{
@@ -299,8 +305,7 @@ Split tunneling can also be set to REVERSE. In this case all traffic directed to
 
 	/**
 	* <pre>
-	* The split tunnel state, e.g. ON, OFF or REVERSE. Split Tunnelling ON enables the VPN client to route non-VPN traffic through its local network interface. When Split Tunnelling is OFF, no traffic may go to the local interface while the client session is active.
-Split tunneling can also be set to REVERSE. In this case all traffic directed to domains configured on the system will bypass the VPN tunnel. All other traffic is forced through the VPN tunnel.<br> Possible values = ON, OFF, REVERSE
+	* Send, through the tunnel, traffic only for intranet applications that are defined in Access Gateway. Route all other traffic directly to the Internet. The OFF setting routes all traffic through Access Gateway. With the REVERSE setting, intranet applications define the network traffic that is not intercepted. All network traffic directed to internal IP addresses bypasses the VPN tunnel, while other traffic goes through Access Gateway. Reverse split tunneling can be used to log all non-local LAN traffic. For example, if users have a home network and are logged on through the Access Gateway Plug-in, network traffic destined to a printer or another device within the home network is not intercepted.<br> Possible values = ON, OFF, REVERSE
 	* </pre>
 	*/
 	public String get_splittunnel() throws Exception {
@@ -309,7 +314,7 @@ Split tunneling can also be set to REVERSE. In this case all traffic directed to
 
 	/**
 	* <pre>
-	* Finer grained local lan access. ON or OFF. splitTunnel, when OFF, permits no traffic to be routed to the client's local interface. But if, in addition, localLanAccess is turned ON, the client MAY route traffic to its local interface. This combination of switches is useful primarily when the rfc1918 switch is also specified. In this fashion, the client may restrict local lan access to devices which commonly have non-routable addresses, such as local printers or local file servers.<br> Possible values = ON, OFF
+	* Set local LAN access. If split tunneling is OFF, and you set local LAN access to ON, the local client can route traffic to its local interface. When the local area network switch is specified, this combination of switches is useful. The client can allow local LAN access to devices that commonly have non-routable addresses, such as local printers or local file servers.<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_locallanaccess(String locallanaccess) throws Exception{
@@ -318,7 +323,7 @@ Split tunneling can also be set to REVERSE. In this case all traffic directed to
 
 	/**
 	* <pre>
-	* Finer grained local lan access. ON or OFF. splitTunnel, when OFF, permits no traffic to be routed to the client's local interface. But if, in addition, localLanAccess is turned ON, the client MAY route traffic to its local interface. This combination of switches is useful primarily when the rfc1918 switch is also specified. In this fashion, the client may restrict local lan access to devices which commonly have non-routable addresses, such as local printers or local file servers.<br> Possible values = ON, OFF
+	* Set local LAN access. If split tunneling is OFF, and you set local LAN access to ON, the local client can route traffic to its local interface. When the local area network switch is specified, this combination of switches is useful. The client can allow local LAN access to devices that commonly have non-routable addresses, such as local printers or local file servers.<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_locallanaccess() throws Exception {
@@ -327,7 +332,10 @@ Split tunneling can also be set to REVERSE. In this case all traffic directed to
 
 	/**
 	* <pre>
-	* Only allow RFC1918 local addresses when local LAN access feature is enabled.<br> Possible values = ON, OFF
+	* As defined in the local area network, allow only the following local area network addresses to bypass the VPN tunnel when the local LAN access feature is enabled:
+* 10.*.*.*,
+* 172.16.*.*,
+* 192.168.*.*.<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_rfc1918(String rfc1918) throws Exception{
@@ -336,7 +344,10 @@ Split tunneling can also be set to REVERSE. In this case all traffic directed to
 
 	/**
 	* <pre>
-	* Only allow RFC1918 local addresses when local LAN access feature is enabled.<br> Possible values = ON, OFF
+	* As defined in the local area network, allow only the following local area network addresses to bypass the VPN tunnel when the local LAN access feature is enabled:
+* 10.*.*.*,
+* 172.16.*.*,
+* 192.168.*.*.<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_rfc1918() throws Exception {
@@ -345,7 +356,7 @@ Split tunneling can also be set to REVERSE. In this case all traffic directed to
 
 	/**
 	* <pre>
-	* Controls the Spoofing of Intranet IP to the Windows Applications by Windows VPN client when the end-user is connected to SSL VPN in '-splittunnel OFF' mode.<br> Possible values = ON, OFF
+	* IP address that the intranet application uses to route the connection through the virtual adapter.<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_spoofiip(String spoofiip) throws Exception{
@@ -354,7 +365,7 @@ Split tunneling can also be set to REVERSE. In this case all traffic directed to
 
 	/**
 	* <pre>
-	* Controls the Spoofing of Intranet IP to the Windows Applications by Windows VPN client when the end-user is connected to SSL VPN in '-splittunnel OFF' mode.<br> Possible values = ON, OFF
+	* IP address that the intranet application uses to route the connection through the virtual adapter.<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_spoofiip() throws Exception {
@@ -363,7 +374,7 @@ Split tunneling can also be set to REVERSE. In this case all traffic directed to
 
 	/**
 	* <pre>
-	* Determines whether Windows VPN client should kill all pre-existing connections (ie, the connections existing before the end user logged in to SSL VPN) and prevent new incoming connections on the Windows Client system when the end-user is connected to SSL VPN in '-splittunnel OFF' mode.<br> Possible values = ON, OFF
+	* Specify whether the Access Gateway Plug-in should disconnect all preexisting connections, such as the connections existing before the user logged on to Access Gateway, and prevent new incoming connections on the Access Gateway Plug-in for Windows and MAC when the user is connected to Access Gateway and split tunneling is disabled.<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_killconnections(String killconnections) throws Exception{
@@ -372,7 +383,7 @@ Split tunneling can also be set to REVERSE. In this case all traffic directed to
 
 	/**
 	* <pre>
-	* Determines whether Windows VPN client should kill all pre-existing connections (ie, the connections existing before the end user logged in to SSL VPN) and prevent new incoming connections on the Windows Client system when the end-user is connected to SSL VPN in '-splittunnel OFF' mode.<br> Possible values = ON, OFF
+	* Specify whether the Access Gateway Plug-in should disconnect all preexisting connections, such as the connections existing before the user logged on to Access Gateway, and prevent new incoming connections on the Access Gateway Plug-in for Windows and MAC when the user is connected to Access Gateway and split tunneling is disabled.<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_killconnections() throws Exception {
@@ -381,7 +392,7 @@ Split tunneling can also be set to REVERSE. In this case all traffic directed to
 
 	/**
 	* <pre>
-	* The transparent interception state, e.g. ON or OFF.<br> Possible values = ON, OFF
+	* Allow access to network resources by using a single IP address and subnet mask or a range of IP addresses. The OFF setting sets the mode to proxy, in which you configure destination and source IP addresses and port numbers. If you are using the Access Gateway Plug-in for Windows, set this parameter to ON, in which the mode is set to transparent. If you are using the Access Gateway Plug-in for Java, set this parameter to OFF.<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_transparentinterception(String transparentinterception) throws Exception{
@@ -390,7 +401,7 @@ Split tunneling can also be set to REVERSE. In this case all traffic directed to
 
 	/**
 	* <pre>
-	* The transparent interception state, e.g. ON or OFF.<br> Possible values = ON, OFF
+	* Allow access to network resources by using a single IP address and subnet mask or a range of IP addresses. The OFF setting sets the mode to proxy, in which you configure destination and source IP addresses and port numbers. If you are using the Access Gateway Plug-in for Windows, set this parameter to ON, in which the mode is set to transparent. If you are using the Access Gateway Plug-in for Java, set this parameter to OFF.<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_transparentinterception() throws Exception {
@@ -421,7 +432,7 @@ b) Activex Control - ActiveX control run by Microsoft's Internet Explorer.<br> P
 
 	/**
 	* <pre>
-	* This toggles the default authorization action to either ALLOW or DENY.<br> Possible values = ALLOW, DENY
+	* Specify the network resources that users have access to when they log on to the internal network. The default setting for authorization is to deny access to all network resources. Citrix recommends using the default global setting and then creating authorization policies to define the network resources users can access. If you set the default authorization policy to DENY, you must explicitly authorize access to any network resource, which improves security.<br> Possible values = ALLOW, DENY
 	* </pre>
 	*/
 	public void set_defaultauthorizationaction(String defaultauthorizationaction) throws Exception{
@@ -430,7 +441,7 @@ b) Activex Control - ActiveX control run by Microsoft's Internet Explorer.<br> P
 
 	/**
 	* <pre>
-	* This toggles the default authorization action to either ALLOW or DENY.<br> Possible values = ALLOW, DENY
+	* Specify the network resources that users have access to when they log on to the internal network. The default setting for authorization is to deny access to all network resources. Citrix recommends using the default global setting and then creating authorization policies to define the network resources users can access. If you set the default authorization policy to DENY, you must explicitly authorize access to any network resource, which improves security.<br> Possible values = ALLOW, DENY
 	* </pre>
 	*/
 	public String get_defaultauthorizationaction() throws Exception {
@@ -439,7 +450,7 @@ b) Activex Control - ActiveX control run by Microsoft's Internet Explorer.<br> P
 
 	/**
 	* <pre>
-	* The authorization group to be applied to the session.<br> Minimum length =  1
+	* Comma-separated list of groups in which the user is placed when none of the groups that the user is a part of is configured on Access Gateway. The authorization policy can be bound to these groups to control access to the resources.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_authorizationgroup(String authorizationgroup) throws Exception{
@@ -448,7 +459,7 @@ b) Activex Control - ActiveX control run by Microsoft's Internet Explorer.<br> P
 
 	/**
 	* <pre>
-	* The authorization group to be applied to the session.<br> Minimum length =  1
+	* Comma-separated list of groups in which the user is placed when none of the groups that the user is a part of is configured on Access Gateway. The authorization policy can be bound to these groups to control access to the resources.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_authorizationgroup() throws Exception {
@@ -457,7 +468,7 @@ b) Activex Control - ActiveX control run by Microsoft's Internet Explorer.<br> P
 
 	/**
 	* <pre>
-	* Defines the client idle timeout value. Measured in minutes, the client idle timeout default is 20 minutes and meters a client session's keyboard and mouse inactivity. .<br> Minimum value =  1<br> Maximum value =  9999
+	* Time, in minutes, after which to time out the user session if Access Gateway does not detect mouse or keyboard activity.<br> Minimum value =  1<br> Maximum value =  9999
 	* </pre>
 	*/
 	public void set_clientidletimeout(long clientidletimeout) throws Exception {
@@ -466,7 +477,7 @@ b) Activex Control - ActiveX control run by Microsoft's Internet Explorer.<br> P
 
 	/**
 	* <pre>
-	* Defines the client idle timeout value. Measured in minutes, the client idle timeout default is 20 minutes and meters a client session's keyboard and mouse inactivity. .<br> Minimum value =  1<br> Maximum value =  9999
+	* Time, in minutes, after which to time out the user session if Access Gateway does not detect mouse or keyboard activity.<br> Minimum value =  1<br> Maximum value =  9999
 	* </pre>
 	*/
 	public void set_clientidletimeout(Long clientidletimeout) throws Exception{
@@ -475,7 +486,7 @@ b) Activex Control - ActiveX control run by Microsoft's Internet Explorer.<br> P
 
 	/**
 	* <pre>
-	* Defines the client idle timeout value. Measured in minutes, the client idle timeout default is 20 minutes and meters a client session's keyboard and mouse inactivity. .<br> Minimum value =  1<br> Maximum value =  9999
+	* Time, in minutes, after which to time out the user session if Access Gateway does not detect mouse or keyboard activity.<br> Minimum value =  1<br> Maximum value =  9999
 	* </pre>
 	*/
 	public Long get_clientidletimeout() throws Exception {
@@ -484,7 +495,10 @@ b) Activex Control - ActiveX control run by Microsoft's Internet Explorer.<br> P
 
 	/**
 	* <pre>
-	* Enables or disables use of a proxy configuration in the session.<br> Possible values = BROWSER, NS, OFF
+	* Set options to apply proxy for accessing the internal resources. Available settings function as follows:
+* BROWSER - Proxy settings are configured only in Internet Explorer and Firefox browsers.
+* NS - Proxy settings are configured on the NetScaler appliance.
+* OFF - Proxy settings are not configured.<br> Possible values = BROWSER, NS, OFF
 	* </pre>
 	*/
 	public void set_proxy(String proxy) throws Exception{
@@ -493,7 +507,10 @@ b) Activex Control - ActiveX control run by Microsoft's Internet Explorer.<br> P
 
 	/**
 	* <pre>
-	* Enables or disables use of a proxy configuration in the session.<br> Possible values = BROWSER, NS, OFF
+	* Set options to apply proxy for accessing the internal resources. Available settings function as follows:
+* BROWSER - Proxy settings are configured only in Internet Explorer and Firefox browsers.
+* NS - Proxy settings are configured on the NetScaler appliance.
+* OFF - Proxy settings are not configured.<br> Possible values = BROWSER, NS, OFF
 	* </pre>
 	*/
 	public String get_proxy() throws Exception {
@@ -502,7 +519,7 @@ b) Activex Control - ActiveX control run by Microsoft's Internet Explorer.<br> P
 
 	/**
 	* <pre>
-	* Sets the address to use for all proxies.<br> Minimum length =  1
+	* IP address of the proxy server to use for all protocols supported by Access Gateway.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_allprotocolproxy(String allprotocolproxy) throws Exception{
@@ -511,7 +528,7 @@ b) Activex Control - ActiveX control run by Microsoft's Internet Explorer.<br> P
 
 	/**
 	* <pre>
-	* Sets the address to use for all proxies.<br> Minimum length =  1
+	* IP address of the proxy server to use for all protocols supported by Access Gateway.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_allprotocolproxy() throws Exception {
@@ -520,7 +537,7 @@ b) Activex Control - ActiveX control run by Microsoft's Internet Explorer.<br> P
 
 	/**
 	* <pre>
-	* Sets the HTTP proxy IP address.<br> Minimum length =  1
+	* IP address of the proxy server to be used for HTTP access for all subsequent connections to the internal network.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_httpproxy(String httpproxy) throws Exception{
@@ -529,7 +546,7 @@ b) Activex Control - ActiveX control run by Microsoft's Internet Explorer.<br> P
 
 	/**
 	* <pre>
-	* Sets the HTTP proxy IP address.<br> Minimum length =  1
+	* IP address of the proxy server to be used for HTTP access for all subsequent connections to the internal network.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_httpproxy() throws Exception {
@@ -538,7 +555,7 @@ b) Activex Control - ActiveX control run by Microsoft's Internet Explorer.<br> P
 
 	/**
 	* <pre>
-	* Defines the FTP proxy IP address.<br> Minimum length =  1
+	* IP address of the proxy server to be used for FTP access for all subsequent connections to the internal network.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_ftpproxy(String ftpproxy) throws Exception{
@@ -547,7 +564,7 @@ b) Activex Control - ActiveX control run by Microsoft's Internet Explorer.<br> P
 
 	/**
 	* <pre>
-	* Defines the FTP proxy IP address.<br> Minimum length =  1
+	* IP address of the proxy server to be used for FTP access for all subsequent connections to the internal network.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_ftpproxy() throws Exception {
@@ -556,7 +573,7 @@ b) Activex Control - ActiveX control run by Microsoft's Internet Explorer.<br> P
 
 	/**
 	* <pre>
-	* The SOCKS proxy IP address.<br> Minimum length =  1
+	* IP address of the proxy server to be used for SOCKS access for all subsequent connections to the internal network.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_socksproxy(String socksproxy) throws Exception{
@@ -565,7 +582,7 @@ b) Activex Control - ActiveX control run by Microsoft's Internet Explorer.<br> P
 
 	/**
 	* <pre>
-	* The SOCKS proxy IP address.<br> Minimum length =  1
+	* IP address of the proxy server to be used for SOCKS access for all subsequent connections to the internal network.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_socksproxy() throws Exception {
@@ -574,7 +591,7 @@ b) Activex Control - ActiveX control run by Microsoft's Internet Explorer.<br> P
 
 	/**
 	* <pre>
-	* Sets the Gopher proxy IP address.<br> Minimum length =  1
+	* IP address of the proxy server to be used for GOPHER access for all subsequent connections to the internal network.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_gopherproxy(String gopherproxy) throws Exception{
@@ -583,7 +600,7 @@ b) Activex Control - ActiveX control run by Microsoft's Internet Explorer.<br> P
 
 	/**
 	* <pre>
-	* Sets the Gopher proxy IP address.<br> Minimum length =  1
+	* IP address of the proxy server to be used for GOPHER access for all subsequent connections to the internal network.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_gopherproxy() throws Exception {
@@ -592,7 +609,7 @@ b) Activex Control - ActiveX control run by Microsoft's Internet Explorer.<br> P
 
 	/**
 	* <pre>
-	* Sets the HTTPS proxy IP address.<br> Minimum length =  1
+	* IP address of the proxy server to be used for SSL access for all subsequent connections to the internal network.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_sslproxy(String sslproxy) throws Exception{
@@ -601,7 +618,7 @@ b) Activex Control - ActiveX control run by Microsoft's Internet Explorer.<br> P
 
 	/**
 	* <pre>
-	* Sets the HTTPS proxy IP address.<br> Minimum length =  1
+	* IP address of the proxy server to be used for SSL access for all subsequent connections to the internal network.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_sslproxy() throws Exception {
@@ -610,7 +627,7 @@ b) Activex Control - ActiveX control run by Microsoft's Internet Explorer.<br> P
 
 	/**
 	* <pre>
-	* Proxy Exception string that will be configured in the Browser for bypassing the previously configured proxies. Allowed only if proxy type is Browser.<br> Minimum length =  1
+	* Proxy exception string that will be configured in the browser for bypassing the previously configured proxies. Allowed only if proxy type is Browser.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_proxyexception(String proxyexception) throws Exception{
@@ -619,7 +636,7 @@ b) Activex Control - ActiveX control run by Microsoft's Internet Explorer.<br> P
 
 	/**
 	* <pre>
-	* Proxy Exception string that will be configured in the Browser for bypassing the previously configured proxies. Allowed only if proxy type is Browser.<br> Minimum length =  1
+	* Proxy exception string that will be configured in the browser for bypassing the previously configured proxies. Allowed only if proxy type is Browser.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_proxyexception() throws Exception {
@@ -628,7 +645,7 @@ b) Activex Control - ActiveX control run by Microsoft's Internet Explorer.<br> P
 
 	/**
 	* <pre>
-	* Bypass proxy server for local addresses option in IE proxy server settings will be enabled.<br> Possible values = ENABLED, DISABLED
+	* Bypass proxy server for local addresses option in Internet Explorer and Firefox proxy server settings.<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_proxylocalbypass(String proxylocalbypass) throws Exception{
@@ -637,7 +654,7 @@ b) Activex Control - ActiveX control run by Microsoft's Internet Explorer.<br> P
 
 	/**
 	* <pre>
-	* Bypass proxy server for local addresses option in IE proxy server settings will be enabled.<br> Possible values = ENABLED, DISABLED
+	* Bypass proxy server for local addresses option in Internet Explorer and Firefox proxy server settings.<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_proxylocalbypass() throws Exception {
@@ -646,7 +663,7 @@ b) Activex Control - ActiveX control run by Microsoft's Internet Explorer.<br> P
 
 	/**
 	* <pre>
-	* Toggles the prompt for client clean up on a client intitiated session close.<br> Possible values = ON, OFF
+	* Prompt for client-side cache clean-up when a client-initiated session closes.<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_clientcleanupprompt(String clientcleanupprompt) throws Exception{
@@ -655,7 +672,7 @@ b) Activex Control - ActiveX control run by Microsoft's Internet Explorer.<br> P
 
 	/**
 	* <pre>
-	* Toggles the prompt for client clean up on a client intitiated session close.<br> Possible values = ON, OFF
+	* Prompt for client-side cache clean-up when a client-initiated session closes.<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_clientcleanupprompt() throws Exception {
@@ -664,9 +681,7 @@ b) Activex Control - ActiveX control run by Microsoft's Internet Explorer.<br> P
 
 	/**
 	* <pre>
-	* The client side items for force cleanup on session close. Options are:
-	none, all, cookie, addressbar, plugin, filesystemapplication, addressbar, application, clientcertificate, applicationdata, and autocomplete.
-You may specify all or none alone or any combination of the client side items.<br> Possible values = none, all, cookie, addressbar, plugin, filesystemapplication, application, applicationdata, clientcertificate, autocomplete, cache
+	* Force cache clean-up when the user closes a session. You can specify all, none, or any combination of the client-side items.<br> Possible values = none, all, cookie, addressbar, plugin, filesystemapplication, application, applicationdata, clientcertificate, autocomplete, cache
 	* </pre>
 	*/
 	public void set_forcecleanup(String[] forcecleanup) throws Exception{
@@ -675,9 +690,7 @@ You may specify all or none alone or any combination of the client side items.<b
 
 	/**
 	* <pre>
-	* The client side items for force cleanup on session close. Options are:
-	none, all, cookie, addressbar, plugin, filesystemapplication, addressbar, application, clientcertificate, applicationdata, and autocomplete.
-You may specify all or none alone or any combination of the client side items.<br> Possible values = none, all, cookie, addressbar, plugin, filesystemapplication, application, applicationdata, clientcertificate, autocomplete, cache
+	* Force cache clean-up when the user closes a session. You can specify all, none, or any combination of the client-side items.<br> Possible values = none, all, cookie, addressbar, plugin, filesystemapplication, application, applicationdata, clientcertificate, autocomplete, cache
 	* </pre>
 	*/
 	public String[] get_forcecleanup() throws Exception {
@@ -686,20 +699,7 @@ You may specify all or none alone or any combination of the client side items.<b
 
 	/**
 	* <pre>
-	* Display only configured buttons(and/or menu options in the docked client) in the Windows VPN client.\
-Options:\
-none\
-		none of the Windows Client's buttons/menu options (except logout) are displayed.\
-all\
-		all of the Windows Client's buttons/menu options are displayed.\
-\
-One or more of the following\
-services\
-		only the "Services" button/menu option is displayed.\
-filetransfer\
-		only the "File Transfer" button/menu option is displayed.\
-configuration\
-		only the "Configuration" button/menu option is displayed.<br> Possible values = none, all, services, filetransfer, configuration
+	* Display only the configured menu options when you select the "Configure Access Gateway" option in the Access Gateway Plug-in's system tray icon for Windows.<br> Possible values = none, all, services, filetransfer, configuration
 	* </pre>
 	*/
 	public void set_clientoptions(String[] clientoptions) throws Exception{
@@ -708,20 +708,7 @@ configuration\
 
 	/**
 	* <pre>
-	* Display only configured buttons(and/or menu options in the docked client) in the Windows VPN client.\
-Options:\
-none\
-		none of the Windows Client's buttons/menu options (except logout) are displayed.\
-all\
-		all of the Windows Client's buttons/menu options are displayed.\
-\
-One or more of the following\
-services\
-		only the "Services" button/menu option is displayed.\
-filetransfer\
-		only the "File Transfer" button/menu option is displayed.\
-configuration\
-		only the "Configuration" button/menu option is displayed.<br> Possible values = none, all, services, filetransfer, configuration
+	* Display only the configured menu options when you select the "Configure Access Gateway" option in the Access Gateway Plug-in's system tray icon for Windows.<br> Possible values = none, all, services, filetransfer, configuration
 	* </pre>
 	*/
 	public String[] get_clientoptions() throws Exception {
@@ -730,24 +717,7 @@ configuration\
 
 	/**
 	* <pre>
-	* Display only configured tabs in the Windows VPN client.\
-Options:\
-none\
-		none of the Windows Client's tabs(except About) are displayed.\
-all\
-		all of the Windows Client's tabs (except "Resptime") are displayed.\
-\
-One or more of the following\
-general\
-		only the "General" tab is displayed.\
-tunnel\
-		only the "Tunnel" tab is displayed.\
-trace\
-		only the "Trace" tab is displayed.\
-compression\
-	only the "Compression" tab is displayed.\
-resptime\
-		only the "Resptime" tab is displayed.<br> Possible values = none, all, general, tunnel, trace, compression
+	* Display only the configured tabs when you select the "Configure Access Gateway" option in the Access Gateway Plug-in's system tray icon for Windows.<br> Possible values = none, all, general, tunnel, trace, compression
 	* </pre>
 	*/
 	public void set_clientconfiguration(String[] clientconfiguration) throws Exception{
@@ -756,24 +726,7 @@ resptime\
 
 	/**
 	* <pre>
-	* Display only configured tabs in the Windows VPN client.\
-Options:\
-none\
-		none of the Windows Client's tabs(except About) are displayed.\
-all\
-		all of the Windows Client's tabs (except "Resptime") are displayed.\
-\
-One or more of the following\
-general\
-		only the "General" tab is displayed.\
-tunnel\
-		only the "Tunnel" tab is displayed.\
-trace\
-		only the "Trace" tab is displayed.\
-compression\
-	only the "Compression" tab is displayed.\
-resptime\
-		only the "Resptime" tab is displayed.<br> Possible values = none, all, general, tunnel, trace, compression
+	* Display only the configured tabs when you select the "Configure Access Gateway" option in the Access Gateway Plug-in's system tray icon for Windows.<br> Possible values = none, all, general, tunnel, trace, compression
 	* </pre>
 	*/
 	public String[] get_clientconfiguration() throws Exception {
@@ -782,7 +735,7 @@ resptime\
 
 	/**
 	* <pre>
-	* Enables or disables the use of Single Sign-on for the session.<br> Possible values = ON, OFF
+	* Set single sign-on (SSO) for the session. When the user accesses a server, the user's logon credentials are passed to the server for authentication.<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_sso(String sso) throws Exception{
@@ -791,7 +744,7 @@ resptime\
 
 	/**
 	* <pre>
-	* Enables or disables the use of Single Sign-on for the session.<br> Possible values = ON, OFF
+	* Set single sign-on (SSO) for the session. When the user accesses a server, the user's logon credentials are passed to the server for authentication.<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_sso() throws Exception {
@@ -800,7 +753,7 @@ resptime\
 
 	/**
 	* <pre>
-	* The set of user credentials (primary or secondary) to use for Single Sign-On.<br> Possible values = PRIMARY, SECONDARY
+	* Specify whether to use the primary or secondary authentication credentials for single sign-on to the server.<br> Possible values = PRIMARY, SECONDARY
 	* </pre>
 	*/
 	public void set_ssocredential(String ssocredential) throws Exception{
@@ -809,7 +762,7 @@ resptime\
 
 	/**
 	* <pre>
-	* The set of user credentials (primary or secondary) to use for Single Sign-On.<br> Possible values = PRIMARY, SECONDARY
+	* Specify whether to use the primary or secondary authentication credentials for single sign-on to the server.<br> Possible values = PRIMARY, SECONDARY
 	* </pre>
 	*/
 	public String get_ssocredential() throws Exception {
@@ -818,7 +771,7 @@ resptime\
 
 	/**
 	* <pre>
-	* Enables or disables the Windows Auto Logon for the session.<br> Possible values = ON, OFF
+	* Enable or disable the Windows Auto Logon for the session. If a VPN session is established after this setting is enabled, the user is automatically logged on by using Windows credentials after the system is restarted.<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_windowsautologon(String windowsautologon) throws Exception{
@@ -827,7 +780,7 @@ resptime\
 
 	/**
 	* <pre>
-	* Enables or disables the Windows Auto Logon for the session.<br> Possible values = ON, OFF
+	* Enable or disable the Windows Auto Logon for the session. If a VPN session is established after this setting is enabled, the user is automatically logged on by using Windows credentials after the system is restarted.<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_windowsautologon() throws Exception {
@@ -836,7 +789,8 @@ resptime\
 
 	/**
 	* <pre>
-	* Enables or disables the use of a Mapped IP address for the session.<br> Possible values = NS, OFF
+	* Enable or disable the use of a unique IP address alias, or a mapped IP address, as the client IP address for each client session. Allow Access Gateway to use the mapped IP address as an intranet IP address when all other IP addresses are not available. 
+When IP pooling is configured and the mapped IP is used as an intranet IP address, the mapped IP address is used when an intranet IP address cannot be assigned.<br> Possible values = NS, OFF
 	* </pre>
 	*/
 	public void set_usemip(String usemip) throws Exception{
@@ -845,7 +799,8 @@ resptime\
 
 	/**
 	* <pre>
-	* Enables or disables the use of a Mapped IP address for the session.<br> Possible values = NS, OFF
+	* Enable or disable the use of a unique IP address alias, or a mapped IP address, as the client IP address for each client session. Allow Access Gateway to use the mapped IP address as an intranet IP address when all other IP addresses are not available. 
+When IP pooling is configured and the mapped IP is used as an intranet IP address, the mapped IP address is used when an intranet IP address cannot be assigned.<br> Possible values = NS, OFF
 	* </pre>
 	*/
 	public String get_usemip() throws Exception {
@@ -854,13 +809,10 @@ resptime\
 
 	/**
 	* <pre>
-	* Controls how the intranet IP module is configured for usage. \
-Options:\
-SPILLOVER\
-	specifies that iip is ON and when we can't assign an intranet IP to an entity, which has other instances active, we spill over to using Mapped IP.\
-NOSPILLOVER\
-	specifies that iip is ON and when we can't assign intranet IP to an entity, which has other instances active, then we initiate transfer login.\
-OFFn	specifies that intranet IP module won't be activated for this entity.<br> Possible values = NOSPILLOVER, SPILLOVER, OFF
+	* Define IP address pool options. Available settings function as follows: 
+* SPILLOVER - When an address pool is configured and the mapped IP is used as an intranet IP address, the mapped IP address is used when an intranet IP address cannot be assigned. 
+* NOSPILLOVER - When intranet IP addresses are enabled and the mapped IP address is not used, the Transfer Login page appears for users who have used all available intranet IP addresses. 
+* OFF - Address pool is not configured.<br> Possible values = NOSPILLOVER, SPILLOVER, OFF
 	* </pre>
 	*/
 	public void set_useiip(String useiip) throws Exception{
@@ -869,13 +821,10 @@ OFFn	specifies that intranet IP module won't be activated for this entity.<br> P
 
 	/**
 	* <pre>
-	* Controls how the intranet IP module is configured for usage. \
-Options:\
-SPILLOVER\
-	specifies that iip is ON and when we can't assign an intranet IP to an entity, which has other instances active, we spill over to using Mapped IP.\
-NOSPILLOVER\
-	specifies that iip is ON and when we can't assign intranet IP to an entity, which has other instances active, then we initiate transfer login.\
-OFFn	specifies that intranet IP module won't be activated for this entity.<br> Possible values = NOSPILLOVER, SPILLOVER, OFF
+	* Define IP address pool options. Available settings function as follows: 
+* SPILLOVER - When an address pool is configured and the mapped IP is used as an intranet IP address, the mapped IP address is used when an intranet IP address cannot be assigned. 
+* NOSPILLOVER - When intranet IP addresses are enabled and the mapped IP address is not used, the Transfer Login page appears for users who have used all available intranet IP addresses. 
+* OFF - Address pool is not configured.<br> Possible values = NOSPILLOVER, SPILLOVER, OFF
 	* </pre>
 	*/
 	public String get_useiip() throws Exception {
@@ -884,16 +833,11 @@ OFFn	specifies that intranet IP module won't be activated for this entity.<br> P
 
 	/**
 	* <pre>
-	* Sets the trace level on the Windows VPN Client.\
-Options:\
-debugn\
-		Detailed debug messages are collected are written into the specified file.\
-stats\
-			Application audit level error messages and debug statistic counters are written into the specified file.\
-events\
-			Application audit level error messages are written into the specified file.\
-off\
-			Only critical events are logged into the Windows Application Log.<br> Possible values = debug, stats, events, OFF
+	* Set the trace level on Access Gateway. Technical support technicians use these debug logs for in-depth debugging and troubleshooting purposes. Available settings function as follows: 
+* DEBUG - Detailed debug messages are collected and written into the specified file.
+* STATS - Application audit level error messages and debug statistic counters are written into the specified file. 
+* EVENTS - Application audit-level error messages are written into the specified file. 
+* OFF - Only critical events are logged into the Windows Application Log.<br> Possible values = debug, stats, events, OFF
 	* </pre>
 	*/
 	public void set_clientdebug(String clientdebug) throws Exception{
@@ -902,16 +846,11 @@ off\
 
 	/**
 	* <pre>
-	* Sets the trace level on the Windows VPN Client.\
-Options:\
-debugn\
-		Detailed debug messages are collected are written into the specified file.\
-stats\
-			Application audit level error messages and debug statistic counters are written into the specified file.\
-events\
-			Application audit level error messages are written into the specified file.\
-off\
-			Only critical events are logged into the Windows Application Log.<br> Possible values = debug, stats, events, OFF
+	* Set the trace level on Access Gateway. Technical support technicians use these debug logs for in-depth debugging and troubleshooting purposes. Available settings function as follows: 
+* DEBUG - Detailed debug messages are collected and written into the specified file.
+* STATS - Application audit level error messages and debug statistic counters are written into the specified file. 
+* EVENTS - Application audit-level error messages are written into the specified file. 
+* OFF - Only critical events are logged into the Windows Application Log.<br> Possible values = debug, stats, events, OFF
 	* </pre>
 	*/
 	public String get_clientdebug() throws Exception {
@@ -920,7 +859,7 @@ off\
 
 	/**
 	* <pre>
-	* Login script path.<br> Minimum length =  1
+	* Path to the logon script that is run when a session is established. Separate multiple scripts by using comma. A "$" in the path signifies that the word following the "$" is an environment variable.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_loginscript(String loginscript) throws Exception{
@@ -929,7 +868,7 @@ off\
 
 	/**
 	* <pre>
-	* Login script path.<br> Minimum length =  1
+	* Path to the logon script that is run when a session is established. Separate multiple scripts by using comma. A "$" in the path signifies that the word following the "$" is an environment variable.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_loginscript() throws Exception {
@@ -938,7 +877,7 @@ off\
 
 	/**
 	* <pre>
-	* Logout script path.<br> Minimum length =  1
+	* Path to the logout script. Separate multiple scripts by using comma. A "$" in the path signifies that the word following the "$" is an environment variable.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_logoutscript(String logoutscript) throws Exception{
@@ -947,7 +886,7 @@ off\
 
 	/**
 	* <pre>
-	* Logout script path.<br> Minimum length =  1
+	* Path to the logout script. Separate multiple scripts by using comma. A "$" in the path signifies that the word following the "$" is an environment variable.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_logoutscript() throws Exception {
@@ -956,7 +895,7 @@ off\
 
 	/**
 	* <pre>
-	* Sets the client home page. Setting this parameter overrides serving the default portal page to SSL VPN users with the URL specified here.
+	* Web address of the home page that appears when users log on. Otherwise, users receive the default home page for Access Gateway, which is the Access Interface.
 	* </pre>
 	*/
 	public void set_homepage(String homepage) throws Exception{
@@ -965,7 +904,7 @@ off\
 
 	/**
 	* <pre>
-	* Sets the client home page. Setting this parameter overrides serving the default portal page to SSL VPN users with the URL specified here.
+	* Web address of the home page that appears when users log on. Otherwise, users receive the default home page for Access Gateway, which is the Access Interface.
 	* </pre>
 	*/
 	public String get_homepage() throws Exception {
@@ -974,7 +913,7 @@ off\
 
 	/**
 	* <pre>
-	* Enable ICA proxy mode. This can be used to enable Secure Gateway functionality for the Web Interface. If enabled, a VPN homepage that points to a Web Interface in SG mode, has to be configured.<br> Possible values = ON, OFF
+	* Enable ICA proxy to configure secure Internet access to servers running Citrix XenApp or XenDesktop by using Citrix Receiver instead of the Access Gateway Plug-in.<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_icaproxy(String icaproxy) throws Exception{
@@ -983,7 +922,7 @@ off\
 
 	/**
 	* <pre>
-	* Enable ICA proxy mode. This can be used to enable Secure Gateway functionality for the Web Interface. If enabled, a VPN homepage that points to a Web Interface in SG mode, has to be configured.<br> Possible values = ON, OFF
+	* Enable ICA proxy to configure secure Internet access to servers running Citrix XenApp or XenDesktop by using Citrix Receiver instead of the Access Gateway Plug-in.<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_icaproxy() throws Exception {
@@ -992,7 +931,8 @@ off\
 
 	/**
 	* <pre>
-	* Sets the home page of wi interface. Used only in conjunction with icaProxy ON. If clientChoices is ON, wiHome has to be configured. Since the end user is given a choice between FullClient and ICAProxy the homepage/landing page for each of these options could be different i.e. for FullClient it could be a Intranet web site and for the ICAProxy choice it will be a Web Interface web site. Hence we don't presume wihome == homepage.
+	* Web address of the Web Interface server, such as http://<ipAddress>/Citrix/XenApp, or Receiver for Web, which enumerates the virtualized resources, such as XenApp, XenDesktop, and cloud applications. This web address is used as the home page in ICA proxy mode. 
+If Client Choices is ON, you must configure this setting. Because the user can choose between FullClient and ICAProxy, the user may see a different home page. An Internet web site may appear if the user gets the FullClient option, or a Web Interface site if the user gets the ICAProxy option. If the setting is not configured, the XenApp option does not appear as a client choice.
 	* </pre>
 	*/
 	public void set_wihome(String wihome) throws Exception{
@@ -1001,7 +941,8 @@ off\
 
 	/**
 	* <pre>
-	* Sets the home page of wi interface. Used only in conjunction with icaProxy ON. If clientChoices is ON, wiHome has to be configured. Since the end user is given a choice between FullClient and ICAProxy the homepage/landing page for each of these options could be different i.e. for FullClient it could be a Intranet web site and for the ICAProxy choice it will be a Web Interface web site. Hence we don't presume wihome == homepage.
+	* Web address of the Web Interface server, such as http://<ipAddress>/Citrix/XenApp, or Receiver for Web, which enumerates the virtualized resources, such as XenApp, XenDesktop, and cloud applications. This web address is used as the home page in ICA proxy mode. 
+If Client Choices is ON, you must configure this setting. Because the user can choose between FullClient and ICAProxy, the user may see a different home page. An Internet web site may appear if the user gets the FullClient option, or a Web Interface site if the user gets the ICAProxy option. If the setting is not configured, the XenApp option does not appear as a client choice.
 	* </pre>
 	*/
 	public String get_wihome() throws Exception {
@@ -1010,7 +951,7 @@ off\
 
 	/**
 	* <pre>
-	* Sets the home page of apprecvr interface.
+	* Web address for the Citrix Receiver home page. Configure Access Gateway so that when users log on to the appliance, the Access Gateway Plug-in opens a web browser that allows single sign-on to the Citrix Receiver home page.
 	* </pre>
 	*/
 	public void set_citrixreceiverhome(String citrixreceiverhome) throws Exception{
@@ -1019,7 +960,7 @@ off\
 
 	/**
 	* <pre>
-	* Sets the home page of apprecvr interface.
+	* Web address for the Citrix Receiver home page. Configure Access Gateway so that when users log on to the appliance, the Access Gateway Plug-in opens a web browser that allows single sign-on to the Citrix Receiver home page.
 	* </pre>
 	*/
 	public String get_citrixreceiverhome() throws Exception {
@@ -1028,7 +969,7 @@ off\
 
 	/**
 	* <pre>
-	* WI layout on the VPN portal.<br> Possible values = NORMAL, COMPACT
+	* Layout on the Access Interface. The COMPACT value indicates the use of small icons.<br> Possible values = NORMAL, COMPACT
 	* </pre>
 	*/
 	public void set_wiportalmode(String wiportalmode) throws Exception{
@@ -1037,7 +978,7 @@ off\
 
 	/**
 	* <pre>
-	* WI layout on the VPN portal.<br> Possible values = NORMAL, COMPACT
+	* Layout on the Access Interface. The COMPACT value indicates the use of small icons.<br> Possible values = NORMAL, COMPACT
 	* </pre>
 	*/
 	public String get_wiportalmode() throws Exception {
@@ -1046,10 +987,7 @@ off\
 
 	/**
 	* <pre>
-	* Enables user to select different clients by displaying a set of options in a html page.
- The different client can be a) agent
-b) plugin
-c) wimode.<br> Possible values = ON, OFF
+	* Provide users with multiple logon options. With client choices, users have the option of logging on by using the Access Gateway Plug-in for Windows, Access Gateway Plug-in for Java, the Web Interface, or clientless access from one location. Depending on how Access Gateway is configured, users are presented with up to three icons for logon choices. The most common are the Access Gateway Plug-in for Windows, Web Interface, and clientless access.<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_clientchoices(String clientchoices) throws Exception{
@@ -1058,10 +996,7 @@ c) wimode.<br> Possible values = ON, OFF
 
 	/**
 	* <pre>
-	* Enables user to select different clients by displaying a set of options in a html page.
- The different client can be a) agent
-b) plugin
-c) wimode.<br> Possible values = ON, OFF
+	* Provide users with multiple logon options. With client choices, users have the option of logging on by using the Access Gateway Plug-in for Windows, Access Gateway Plug-in for Java, the Web Interface, or clientless access from one location. Depending on how Access Gateway is configured, users are presented with up to three icons for logon choices. The most common are the Access Gateway Plug-in for Windows, Web Interface, and clientless access.<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_clientchoices() throws Exception {
@@ -1092,7 +1027,7 @@ b) Activex Control - ActiveX control run by Microsoft's Internet Explorer.<br> P
 
 	/**
 	* <pre>
-	* Configure the IntranetIP DNS suffix. When a user logs into SSL-VPN, an A record is added to the DNS cache, after appending the configured IntranetIP DNS suffix to the username.<br> Minimum length =  1
+	* An intranet IP DNS suffix. When a user logs on to Access Gateway and is assigned an IP address, a DNS record for the user name and IP address combination is added to Access Gateway DNS cache. You can configure a DNS suffix to append to the user name when the DNS record is added to the cache. You can reach to the host from where the user is logged on by using the user's name, which can be easier to remember than an IP address. When the user logs off from Access Gateway, the record is removed from the DNS cache.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_iipdnssuffix(String iipdnssuffix) throws Exception{
@@ -1101,7 +1036,7 @@ b) Activex Control - ActiveX control run by Microsoft's Internet Explorer.<br> P
 
 	/**
 	* <pre>
-	* Configure the IntranetIP DNS suffix. When a user logs into SSL-VPN, an A record is added to the DNS cache, after appending the configured IntranetIP DNS suffix to the username.<br> Minimum length =  1
+	* An intranet IP DNS suffix. When a user logs on to Access Gateway and is assigned an IP address, a DNS record for the user name and IP address combination is added to Access Gateway DNS cache. You can configure a DNS suffix to append to the user name when the DNS record is added to the cache. You can reach to the host from where the user is logged on by using the user's name, which can be easier to remember than an IP address. When the user logs off from Access Gateway, the record is removed from the DNS cache.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_iipdnssuffix() throws Exception {
@@ -1110,7 +1045,7 @@ b) Activex Control - ActiveX control run by Microsoft's Internet Explorer.<br> P
 
 	/**
 	* <pre>
-	* Maximum number of minutes a session is allowed to persist.<br> Minimum value =  1<br> Maximum value =  3000
+	* Force a disconnection from the Access Gateway Plug-in with Access Gateway after a specified number of minutes. If the session closes, the user must log on again.<br> Minimum value =  1<br> Maximum value =  65535
 	* </pre>
 	*/
 	public void set_forcedtimeout(long forcedtimeout) throws Exception {
@@ -1119,7 +1054,7 @@ b) Activex Control - ActiveX control run by Microsoft's Internet Explorer.<br> P
 
 	/**
 	* <pre>
-	* Maximum number of minutes a session is allowed to persist.<br> Minimum value =  1<br> Maximum value =  3000
+	* Force a disconnection from the Access Gateway Plug-in with Access Gateway after a specified number of minutes. If the session closes, the user must log on again.<br> Minimum value =  1<br> Maximum value =  65535
 	* </pre>
 	*/
 	public void set_forcedtimeout(Long forcedtimeout) throws Exception{
@@ -1128,7 +1063,7 @@ b) Activex Control - ActiveX control run by Microsoft's Internet Explorer.<br> P
 
 	/**
 	* <pre>
-	* Maximum number of minutes a session is allowed to persist.<br> Minimum value =  1<br> Maximum value =  3000
+	* Force a disconnection from the Access Gateway Plug-in with Access Gateway after a specified number of minutes. If the session closes, the user must log on again.<br> Minimum value =  1<br> Maximum value =  65535
 	* </pre>
 	*/
 	public Long get_forcedtimeout() throws Exception {
@@ -1137,7 +1072,7 @@ b) Activex Control - ActiveX control run by Microsoft's Internet Explorer.<br> P
 
 	/**
 	* <pre>
-	* Number of minutes to warn a user before their session is removed by a forced time out.<br> Minimum value =  1<br> Maximum value =  255
+	* Number of minutes to warn a user before the user session is disconnected.<br> Minimum value =  1<br> Maximum value =  255
 	* </pre>
 	*/
 	public void set_forcedtimeoutwarning(long forcedtimeoutwarning) throws Exception {
@@ -1146,7 +1081,7 @@ b) Activex Control - ActiveX control run by Microsoft's Internet Explorer.<br> P
 
 	/**
 	* <pre>
-	* Number of minutes to warn a user before their session is removed by a forced time out.<br> Minimum value =  1<br> Maximum value =  255
+	* Number of minutes to warn a user before the user session is disconnected.<br> Minimum value =  1<br> Maximum value =  255
 	* </pre>
 	*/
 	public void set_forcedtimeoutwarning(Long forcedtimeoutwarning) throws Exception{
@@ -1155,7 +1090,7 @@ b) Activex Control - ActiveX control run by Microsoft's Internet Explorer.<br> P
 
 	/**
 	* <pre>
-	* Number of minutes to warn a user before their session is removed by a forced time out.<br> Minimum value =  1<br> Maximum value =  255
+	* Number of minutes to warn a user before the user session is disconnected.<br> Minimum value =  1<br> Maximum value =  255
 	* </pre>
 	*/
 	public Long get_forcedtimeoutwarning() throws Exception {
@@ -1164,7 +1099,7 @@ b) Activex Control - ActiveX control run by Microsoft's Internet Explorer.<br> P
 
 	/**
 	* <pre>
-	* NT domain to use with Smart Access when User Principle Name is not extracted from Active Directory.<br> Minimum length =  1<br> Maximum length =  32
+	* Single sign-on domain to use for single sign-on to applications in the internal network. This setting can be overwritten by the domain that users specify at the time of logon or by the domain that the authentication server returns.<br> Minimum length =  1<br> Maximum length =  32
 	* </pre>
 	*/
 	public void set_ntdomain(String ntdomain) throws Exception{
@@ -1173,7 +1108,7 @@ b) Activex Control - ActiveX control run by Microsoft's Internet Explorer.<br> P
 
 	/**
 	* <pre>
-	* NT domain to use with Smart Access when User Principle Name is not extracted from Active Directory.<br> Minimum length =  1<br> Maximum length =  32
+	* Single sign-on domain to use for single sign-on to applications in the internal network. This setting can be overwritten by the domain that users specify at the time of logon or by the domain that the authentication server returns.<br> Minimum length =  1<br> Maximum length =  32
 	* </pre>
 	*/
 	public String get_ntdomain() throws Exception {
@@ -1182,10 +1117,10 @@ b) Activex Control - ActiveX control run by Microsoft's Internet Explorer.<br> P
 
 	/**
 	* <pre>
-	* Whether clientlessVPN is available to the session.
-ON will make the session clientless and no client will be downloaded
-OFF will download the client but the clientlessVPN will also be available
-DISABLED will disable clientlessVPN altogether.<br> Possible values = ON, OFF, DISABLED
+	* Enable clientless access for web, XenApp or XenDesktop, and FileShare resources without installing the Access Gateway Plug-in. Available settings function as follows: 
+* ON - Allow only clientless access. 
+* OFF - Allow clientless access after users log on with the Access Gateway Plug-in. 
+* DISABLED - Do not allow clientless access.<br> Possible values = ON, OFF, DISABLED
 	* </pre>
 	*/
 	public void set_clientlessvpnmode(String clientlessvpnmode) throws Exception{
@@ -1194,10 +1129,10 @@ DISABLED will disable clientlessVPN altogether.<br> Possible values = ON, OFF, D
 
 	/**
 	* <pre>
-	* Whether clientlessVPN is available to the session.
-ON will make the session clientless and no client will be downloaded
-OFF will download the client but the clientlessVPN will also be available
-DISABLED will disable clientlessVPN altogether.<br> Possible values = ON, OFF, DISABLED
+	* Enable clientless access for web, XenApp or XenDesktop, and FileShare resources without installing the Access Gateway Plug-in. Available settings function as follows: 
+* ON - Allow only clientless access. 
+* OFF - Allow clientless access after users log on with the Access Gateway Plug-in. 
+* DISABLED - Do not allow clientless access.<br> Possible values = ON, OFF, DISABLED
 	* </pre>
 	*/
 	public String get_clientlessvpnmode() throws Exception {
@@ -1206,7 +1141,7 @@ DISABLED will disable clientlessVPN altogether.<br> Possible values = ON, OFF, D
 
 	/**
 	* <pre>
-	* Sets the EMail home for the portal.
+	* Web address for the web-based email, such as Outlook Web Access.
 	* </pre>
 	*/
 	public void set_emailhome(String emailhome) throws Exception{
@@ -1215,7 +1150,7 @@ DISABLED will disable clientlessVPN altogether.<br> Possible values = ON, OFF, D
 
 	/**
 	* <pre>
-	* Sets the EMail home for the portal.
+	* Web address for the web-based email, such as Outlook Web Access.
 	* </pre>
 	*/
 	public String get_emailhome() throws Exception {
@@ -1224,9 +1159,10 @@ DISABLED will disable clientlessVPN altogether.<br> Possible values = ON, OFF, D
 
 	/**
 	* <pre>
-	* URL encoding to be used in clientless mode.
-No encoding will be done for TRANSPARENT.
-Protocol and domain will be encoded or encrypted with OPAQUE or ENCRYPT respectively.<br> Possible values = TRANSPARENT, OPAQUE, ENCRYPT
+	* When clientless access is enabled, you can choose to encode the addresses of internal web applications or to leave the address as clear text. Available settings function as follows: 
+* OPAQUE - Use standard encoding mechanisms to make the domain and protocol part of the resource unclear to users. 
+* CLEAR - Do not encode the web address and make it visible to users. 
+* ENCRYPT - Allow the domain and protocol to be encrypted using a session key. When the web address is encrypted, the URL is different for each user session for the same web resource. If users bookmark the encoded web address, save it in the web browser and then log off, they cannot connect to the web address when they log on and use the bookmark. If users save the encrypted bookmark in the Access Interface during their session, the bookmark works each time the user logs on.<br> Possible values = TRANSPARENT, OPAQUE, ENCRYPT
 	* </pre>
 	*/
 	public void set_clientlessmodeurlencoding(String clientlessmodeurlencoding) throws Exception{
@@ -1235,9 +1171,10 @@ Protocol and domain will be encoded or encrypted with OPAQUE or ENCRYPT respecti
 
 	/**
 	* <pre>
-	* URL encoding to be used in clientless mode.
-No encoding will be done for TRANSPARENT.
-Protocol and domain will be encoded or encrypted with OPAQUE or ENCRYPT respectively.<br> Possible values = TRANSPARENT, OPAQUE, ENCRYPT
+	* When clientless access is enabled, you can choose to encode the addresses of internal web applications or to leave the address as clear text. Available settings function as follows: 
+* OPAQUE - Use standard encoding mechanisms to make the domain and protocol part of the resource unclear to users. 
+* CLEAR - Do not encode the web address and make it visible to users. 
+* ENCRYPT - Allow the domain and protocol to be encrypted using a session key. When the web address is encrypted, the URL is different for each user session for the same web resource. If users bookmark the encoded web address, save it in the web browser and then log off, they cannot connect to the web address when they log on and use the bookmark. If users save the encrypted bookmark in the Access Interface during their session, the bookmark works each time the user logs on.<br> Possible values = TRANSPARENT, OPAQUE, ENCRYPT
 	* </pre>
 	*/
 	public String get_clientlessmodeurlencoding() throws Exception {
@@ -1246,10 +1183,10 @@ Protocol and domain will be encoded or encrypted with OPAQUE or ENCRYPT respecti
 
 	/**
 	* <pre>
-	* Controls the use of persistent cookie in clientless mode.
-ALLOW lets cookie to be stored on disk.
-DENY prevents usage of persistent cookie.
-PROMPT lets VPN user choose whether persistent cookie should be used or not.<br> Possible values = ALLOW, DENY, PROMPT
+	* State of persistent cookies in clientless access mode. Persistent cookies are required for accessing certain features of SharePoint, such as opening and editing Microsoft Word, Excel, and PowerPoint documents hosted on the SharePoint server. A persistent cookie remains on the user device and is sent with each HTTP request. Access Gateway encrypts the persistent cookie before sending it to the plug-in on the user device, and refreshes the cookie periodically as long as the session exists. The cookie becomes stale if the session ends. Available settings function as follows: 
+* ALLOW - Enable persistent cookies. Users can open and edit Microsoft documents stored in SharePoint. 
+* DENY - Disable persistent cookies. Users cannot open and edit Microsoft documents stored in SharePoint. 
+* PROMPT - Prompt users to allow or deny persistent cookies during the session. Persistent cookies are not required for clientless access if users do not connect to SharePoint.<br> Possible values = ALLOW, DENY, PROMPT
 	* </pre>
 	*/
 	public void set_clientlesspersistentcookie(String clientlesspersistentcookie) throws Exception{
@@ -1258,10 +1195,10 @@ PROMPT lets VPN user choose whether persistent cookie should be used or not.<br>
 
 	/**
 	* <pre>
-	* Controls the use of persistent cookie in clientless mode.
-ALLOW lets cookie to be stored on disk.
-DENY prevents usage of persistent cookie.
-PROMPT lets VPN user choose whether persistent cookie should be used or not.<br> Possible values = ALLOW, DENY, PROMPT
+	* State of persistent cookies in clientless access mode. Persistent cookies are required for accessing certain features of SharePoint, such as opening and editing Microsoft Word, Excel, and PowerPoint documents hosted on the SharePoint server. A persistent cookie remains on the user device and is sent with each HTTP request. Access Gateway encrypts the persistent cookie before sending it to the plug-in on the user device, and refreshes the cookie periodically as long as the session exists. The cookie becomes stale if the session ends. Available settings function as follows: 
+* ALLOW - Enable persistent cookies. Users can open and edit Microsoft documents stored in SharePoint. 
+* DENY - Disable persistent cookies. Users cannot open and edit Microsoft documents stored in SharePoint. 
+* PROMPT - Prompt users to allow or deny persistent cookies during the session. Persistent cookies are not required for clientless access if users do not connect to SharePoint.<br> Possible values = ALLOW, DENY, PROMPT
 	* </pre>
 	*/
 	public String get_clientlesspersistentcookie() throws Exception {
@@ -1270,7 +1207,7 @@ PROMPT lets VPN user choose whether persistent cookie should be used or not.<br>
 
 	/**
 	* <pre>
-	* The groups allowed login to VPN.<br> Minimum length =  1<br> Maximum length =  511
+	* Specify groups that have permission to log on to Access Gateway. Users who do not belong to this group or groups are denied access even if they have valid credentials.<br> Minimum length =  1<br> Maximum length =  511
 	* </pre>
 	*/
 	public void set_allowedlogingroups(String allowedlogingroups) throws Exception{
@@ -1279,7 +1216,7 @@ PROMPT lets VPN user choose whether persistent cookie should be used or not.<br>
 
 	/**
 	* <pre>
-	* The groups allowed login to VPN.<br> Minimum length =  1<br> Maximum length =  511
+	* Specify groups that have permission to log on to Access Gateway. Users who do not belong to this group or groups are denied access even if they have valid credentials.<br> Minimum length =  1<br> Maximum length =  511
 	* </pre>
 	*/
 	public String get_allowedlogingroups() throws Exception {
@@ -1288,7 +1225,7 @@ PROMPT lets VPN user choose whether persistent cookie should be used or not.<br>
 
 	/**
 	* <pre>
-	* Enable and Disable the Secure Browse functionality.<br> Possible values = ENABLED, DISABLED
+	* Allow users to connect through Access Gateway to network resources from iOS and Android mobile devices with Citrix Receiver. Users do not need to establish a full VPN tunnel to access resources in the secure network.<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_securebrowse(String securebrowse) throws Exception{
@@ -1297,7 +1234,7 @@ PROMPT lets VPN user choose whether persistent cookie should be used or not.<br>
 
 	/**
 	* <pre>
-	* Enable and Disable the Secure Browse functionality.<br> Possible values = ENABLED, DISABLED
+	* Allow users to connect through Access Gateway to network resources from iOS and Android mobile devices with Citrix Receiver. Users do not need to establish a full VPN tunnel to access resources in the secure network.<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_securebrowse() throws Exception {
@@ -1306,7 +1243,7 @@ PROMPT lets VPN user choose whether persistent cookie should be used or not.<br>
 
 	/**
 	* <pre>
-	* The Account Service or Auto Discovery url for this session.<br> Minimum length =  1<br> Maximum length =  255
+	* Web address for StoreFront to be used in this session for enumeration of resources from XenApp or XenDesktop.<br> Minimum length =  1<br> Maximum length =  255
 	* </pre>
 	*/
 	public void set_storefronturl(String storefronturl) throws Exception{
@@ -1315,11 +1252,29 @@ PROMPT lets VPN user choose whether persistent cookie should be used or not.<br>
 
 	/**
 	* <pre>
-	* The Account Service or Auto Discovery url for this session.<br> Minimum length =  1<br> Maximum length =  255
+	* Web address for StoreFront to be used in this session for enumeration of resources from XenApp or XenDesktop.<br> Minimum length =  1<br> Maximum length =  255
 	* </pre>
 	*/
 	public String get_storefronturl() throws Exception {
 		return this.storefronturl;
+	}
+
+	/**
+	* <pre>
+	* The kcd account details to be used in SSO.<br> Minimum length =  1<br> Maximum length =  32
+	* </pre>
+	*/
+	public void set_kcdaccount(String kcdaccount) throws Exception{
+		this.kcdaccount = kcdaccount;
+	}
+
+	/**
+	* <pre>
+	* The kcd account details to be used in SSO.<br> Minimum length =  1<br> Maximum length =  32
+	* </pre>
+	*/
+	public String get_kcdaccount() throws Exception {
+		return this.kcdaccount;
 	}
 
 	/**
@@ -1438,6 +1393,7 @@ PROMPT lets VPN user choose whether persistent cookie should be used or not.<br>
 		addresource.allowedlogingroups = resource.allowedlogingroups;
 		addresource.securebrowse = resource.securebrowse;
 		addresource.storefronturl = resource.storefronturl;
+		addresource.kcdaccount = resource.kcdaccount;
 		return addresource.add_resource(client);
 	}
 
@@ -1509,6 +1465,7 @@ PROMPT lets VPN user choose whether persistent cookie should be used or not.<br>
 				addresources[i].allowedlogingroups = resources[i].allowedlogingroups;
 				addresources[i].securebrowse = resources[i].securebrowse;
 				addresources[i].storefronturl = resources[i].storefronturl;
+				addresources[i].kcdaccount = resources[i].kcdaccount;
 			}
 			result = add_bulk_request(client, addresources);
 		}
@@ -1629,6 +1586,7 @@ PROMPT lets VPN user choose whether persistent cookie should be used or not.<br>
 		updateresource.allowedlogingroups = resource.allowedlogingroups;
 		updateresource.securebrowse = resource.securebrowse;
 		updateresource.storefronturl = resource.storefronturl;
+		updateresource.kcdaccount = resource.kcdaccount;
 		return updateresource.update_resource(client);
 	}
 
@@ -1700,6 +1658,7 @@ PROMPT lets VPN user choose whether persistent cookie should be used or not.<br>
 				updateresources[i].allowedlogingroups = resources[i].allowedlogingroups;
 				updateresources[i].securebrowse = resources[i].securebrowse;
 				updateresources[i].storefronturl = resources[i].storefronturl;
+				updateresources[i].kcdaccount = resources[i].kcdaccount;
 			}
 			result = update_bulk_request(client, updateresources);
 		}
@@ -1710,77 +1669,9 @@ PROMPT lets VPN user choose whether persistent cookie should be used or not.<br>
 	* Use this API to unset the properties of vpnsessionaction resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String name, String args[]) throws Exception {
-		vpnsessionaction unsetresource = new vpnsessionaction();
-		unsetresource.name = name;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of vpnsessionaction resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, vpnsessionaction resource, String[] args) throws Exception{
 		vpnsessionaction unsetresource = new vpnsessionaction();
 		unsetresource.name = resource.name;
-		unsetresource.httpport = resource.httpport;
-		unsetresource.winsip = resource.winsip;
-		unsetresource.dnsvservername = resource.dnsvservername;
-		unsetresource.splitdns = resource.splitdns;
-		unsetresource.sesstimeout = resource.sesstimeout;
-		unsetresource.clientsecurity = resource.clientsecurity;
-		unsetresource.clientsecuritygroup = resource.clientsecuritygroup;
-		unsetresource.clientsecuritymessage = resource.clientsecuritymessage;
-		unsetresource.clientsecuritylog = resource.clientsecuritylog;
-		unsetresource.splittunnel = resource.splittunnel;
-		unsetresource.locallanaccess = resource.locallanaccess;
-		unsetresource.rfc1918 = resource.rfc1918;
-		unsetresource.spoofiip = resource.spoofiip;
-		unsetresource.killconnections = resource.killconnections;
-		unsetresource.transparentinterception = resource.transparentinterception;
-		unsetresource.windowsclienttype = resource.windowsclienttype;
-		unsetresource.defaultauthorizationaction = resource.defaultauthorizationaction;
-		unsetresource.authorizationgroup = resource.authorizationgroup;
-		unsetresource.clientidletimeout = resource.clientidletimeout;
-		unsetresource.proxy = resource.proxy;
-		unsetresource.allprotocolproxy = resource.allprotocolproxy;
-		unsetresource.httpproxy = resource.httpproxy;
-		unsetresource.ftpproxy = resource.ftpproxy;
-		unsetresource.socksproxy = resource.socksproxy;
-		unsetresource.gopherproxy = resource.gopherproxy;
-		unsetresource.sslproxy = resource.sslproxy;
-		unsetresource.proxyexception = resource.proxyexception;
-		unsetresource.proxylocalbypass = resource.proxylocalbypass;
-		unsetresource.clientcleanupprompt = resource.clientcleanupprompt;
-		unsetresource.forcecleanup = resource.forcecleanup;
-		unsetresource.clientoptions = resource.clientoptions;
-		unsetresource.clientconfiguration = resource.clientconfiguration;
-		unsetresource.sso = resource.sso;
-		unsetresource.ssocredential = resource.ssocredential;
-		unsetresource.windowsautologon = resource.windowsautologon;
-		unsetresource.usemip = resource.usemip;
-		unsetresource.useiip = resource.useiip;
-		unsetresource.clientdebug = resource.clientdebug;
-		unsetresource.loginscript = resource.loginscript;
-		unsetresource.logoutscript = resource.logoutscript;
-		unsetresource.homepage = resource.homepage;
-		unsetresource.icaproxy = resource.icaproxy;
-		unsetresource.wihome = resource.wihome;
-		unsetresource.citrixreceiverhome = resource.citrixreceiverhome;
-		unsetresource.wiportalmode = resource.wiportalmode;
-		unsetresource.clientchoices = resource.clientchoices;
-		unsetresource.epaclienttype = resource.epaclienttype;
-		unsetresource.iipdnssuffix = resource.iipdnssuffix;
-		unsetresource.forcedtimeout = resource.forcedtimeout;
-		unsetresource.forcedtimeoutwarning = resource.forcedtimeoutwarning;
-		unsetresource.ntdomain = resource.ntdomain;
-		unsetresource.clientlessvpnmode = resource.clientlessvpnmode;
-		unsetresource.emailhome = resource.emailhome;
-		unsetresource.clientlessmodeurlencoding = resource.clientlessmodeurlencoding;
-		unsetresource.clientlesspersistentcookie = resource.clientlesspersistentcookie;
-		unsetresource.allowedlogingroups = resource.allowedlogingroups;
-		unsetresource.securebrowse = resource.securebrowse;
-		unsetresource.storefronturl = resource.storefronturl;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -1812,64 +1703,6 @@ PROMPT lets VPN user choose whether persistent cookie should be used or not.<br>
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new vpnsessionaction();
 				unsetresources[i].name = resources[i].name;
-				unsetresources[i].httpport = resources[i].httpport;
-				unsetresources[i].winsip = resources[i].winsip;
-				unsetresources[i].dnsvservername = resources[i].dnsvservername;
-				unsetresources[i].splitdns = resources[i].splitdns;
-				unsetresources[i].sesstimeout = resources[i].sesstimeout;
-				unsetresources[i].clientsecurity = resources[i].clientsecurity;
-				unsetresources[i].clientsecuritygroup = resources[i].clientsecuritygroup;
-				unsetresources[i].clientsecuritymessage = resources[i].clientsecuritymessage;
-				unsetresources[i].clientsecuritylog = resources[i].clientsecuritylog;
-				unsetresources[i].splittunnel = resources[i].splittunnel;
-				unsetresources[i].locallanaccess = resources[i].locallanaccess;
-				unsetresources[i].rfc1918 = resources[i].rfc1918;
-				unsetresources[i].spoofiip = resources[i].spoofiip;
-				unsetresources[i].killconnections = resources[i].killconnections;
-				unsetresources[i].transparentinterception = resources[i].transparentinterception;
-				unsetresources[i].windowsclienttype = resources[i].windowsclienttype;
-				unsetresources[i].defaultauthorizationaction = resources[i].defaultauthorizationaction;
-				unsetresources[i].authorizationgroup = resources[i].authorizationgroup;
-				unsetresources[i].clientidletimeout = resources[i].clientidletimeout;
-				unsetresources[i].proxy = resources[i].proxy;
-				unsetresources[i].allprotocolproxy = resources[i].allprotocolproxy;
-				unsetresources[i].httpproxy = resources[i].httpproxy;
-				unsetresources[i].ftpproxy = resources[i].ftpproxy;
-				unsetresources[i].socksproxy = resources[i].socksproxy;
-				unsetresources[i].gopherproxy = resources[i].gopherproxy;
-				unsetresources[i].sslproxy = resources[i].sslproxy;
-				unsetresources[i].proxyexception = resources[i].proxyexception;
-				unsetresources[i].proxylocalbypass = resources[i].proxylocalbypass;
-				unsetresources[i].clientcleanupprompt = resources[i].clientcleanupprompt;
-				unsetresources[i].forcecleanup = resources[i].forcecleanup;
-				unsetresources[i].clientoptions = resources[i].clientoptions;
-				unsetresources[i].clientconfiguration = resources[i].clientconfiguration;
-				unsetresources[i].sso = resources[i].sso;
-				unsetresources[i].ssocredential = resources[i].ssocredential;
-				unsetresources[i].windowsautologon = resources[i].windowsautologon;
-				unsetresources[i].usemip = resources[i].usemip;
-				unsetresources[i].useiip = resources[i].useiip;
-				unsetresources[i].clientdebug = resources[i].clientdebug;
-				unsetresources[i].loginscript = resources[i].loginscript;
-				unsetresources[i].logoutscript = resources[i].logoutscript;
-				unsetresources[i].homepage = resources[i].homepage;
-				unsetresources[i].icaproxy = resources[i].icaproxy;
-				unsetresources[i].wihome = resources[i].wihome;
-				unsetresources[i].citrixreceiverhome = resources[i].citrixreceiverhome;
-				unsetresources[i].wiportalmode = resources[i].wiportalmode;
-				unsetresources[i].clientchoices = resources[i].clientchoices;
-				unsetresources[i].epaclienttype = resources[i].epaclienttype;
-				unsetresources[i].iipdnssuffix = resources[i].iipdnssuffix;
-				unsetresources[i].forcedtimeout = resources[i].forcedtimeout;
-				unsetresources[i].forcedtimeoutwarning = resources[i].forcedtimeoutwarning;
-				unsetresources[i].ntdomain = resources[i].ntdomain;
-				unsetresources[i].clientlessvpnmode = resources[i].clientlessvpnmode;
-				unsetresources[i].emailhome = resources[i].emailhome;
-				unsetresources[i].clientlessmodeurlencoding = resources[i].clientlessmodeurlencoding;
-				unsetresources[i].clientlesspersistentcookie = resources[i].clientlesspersistentcookie;
-				unsetresources[i].allowedlogingroups = resources[i].allowedlogingroups;
-				unsetresources[i].securebrowse = resources[i].securebrowse;
-				unsetresources[i].storefronturl = resources[i].storefronturl;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}

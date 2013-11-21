@@ -44,7 +44,7 @@ public class sslvserver_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the SSL virtual server.<br> Minimum length =  1
+	* Name of the SSL virtual server for which to show detailed information.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_vservername(String vservername) throws Exception{
@@ -53,7 +53,7 @@ public class sslvserver_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the SSL virtual server.<br> Minimum length =  1
+	* Name of the SSL virtual server for which to show detailed information.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_vservername() throws Exception {

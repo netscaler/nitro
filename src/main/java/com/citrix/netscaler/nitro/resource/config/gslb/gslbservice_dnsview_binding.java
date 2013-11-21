@@ -39,7 +39,7 @@ public class gslbservice_dnsview_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of view for the given IP.<br> Minimum length =  1
+	* Name of the DNS view of the service. A DNS view is used in global server load balancing (GSLB) to return a predetermined IP address to a specific group of clients, which are identified by using a DNS policy.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_viewname(String viewname) throws Exception{
@@ -48,7 +48,7 @@ public class gslbservice_dnsview_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of view for the given IP.<br> Minimum length =  1
+	* Name of the DNS view of the service. A DNS view is used in global server load balancing (GSLB) to return a predetermined IP address to a specific group of clients, which are identified by using a DNS policy.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_viewname() throws Exception {
@@ -57,7 +57,7 @@ public class gslbservice_dnsview_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the gslb service.<br> Minimum length =  1
+	* Name of the GSLB service.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_servicename(String servicename) throws Exception{
@@ -66,7 +66,7 @@ public class gslbservice_dnsview_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the gslb service.<br> Minimum length =  1
+	* Name of the GSLB service.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_servicename() throws Exception {

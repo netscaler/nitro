@@ -44,7 +44,7 @@ public class nsdhcpparams extends base_resource
 
 	/**
 	* <pre>
-	* Setting this argument to ON makes the netscaler to enable dhcp-client for acquiring IP from the DHCP server in the next boot. Setting it to OFF disables the dhcp-client in the next boot.<br> Default value: OFF<br> Possible values = ON, OFF
+	* Enables DHCP client to acquire IP address from the DHCP server in the next boot. When set to OFF, disables the DHCP client in the next boot.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_dhcpclient(String dhcpclient) throws Exception{
@@ -53,7 +53,7 @@ public class nsdhcpparams extends base_resource
 
 	/**
 	* <pre>
-	* Setting this argument to ON makes the netscaler to enable dhcp-client for acquiring IP from the DHCP server in the next boot. Setting it to OFF disables the dhcp-client in the next boot.<br> Default value: OFF<br> Possible values = ON, OFF
+	* Enables DHCP client to acquire IP address from the DHCP server in the next boot. When set to OFF, disables the DHCP client in the next boot.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_dhcpclient() throws Exception {
@@ -62,7 +62,7 @@ public class nsdhcpparams extends base_resource
 
 	/**
 	* <pre>
-	* If this flag is set, then DHCP acquired routes are saved during saveconfig.<br> Default value: OFF<br> Possible values = ON, OFF
+	* DHCP acquired routes are saved on the NetScaler appliance.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_saveroute(String saveroute) throws Exception{
@@ -71,7 +71,7 @@ public class nsdhcpparams extends base_resource
 
 	/**
 	* <pre>
-	* If this flag is set, then DHCP acquired routes are saved during saveconfig.<br> Default value: OFF<br> Possible values = ON, OFF
+	* DHCP acquired routes are saved on the NetScaler appliance.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_saveroute() throws Exception {
@@ -166,8 +166,6 @@ public class nsdhcpparams extends base_resource
 	*/
 	public static base_response unset(nitro_service client, nsdhcpparams resource, String[] args) throws Exception{
 		nsdhcpparams unsetresource = new nsdhcpparams();
-		unsetresource.dhcpclient = resource.dhcpclient;
-		unsetresource.saveroute = resource.saveroute;
 		return unsetresource.unset_resource(client,args);
 	}
 

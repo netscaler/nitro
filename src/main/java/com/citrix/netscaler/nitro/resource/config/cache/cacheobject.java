@@ -42,6 +42,7 @@ public class cacheobject extends base_resource
 	private String group;
 	private String ignoremarkerobjects;
 	private String includenotreadyobjects;
+	private Boolean force;
 
 	//------- Read only Parameter ---------;
 
@@ -53,7 +54,6 @@ public class cacheobject extends base_resource
 	private String cachecontrol;
 	private String cacheresdate;
 	private String contentgroup;
-	private Long destip;
 	private String destipv46;
 	private Integer destport;
 	private String cachecellcomplex;
@@ -72,8 +72,7 @@ public class cacheobject extends base_resource
 	private Long cachecellcurmisses;
 	private Long cachecellhits;
 	private Long cachecellmisses;
-	private String cachecellgzipcompressed;
-	private String cachecelldeflatecompressed;
+	private Long cachecelldhits;
 	private String cachecellcompressionformat;
 	private String cachecellappfwmetadataexists;
 	private String cachecellhttp11;
@@ -83,6 +82,10 @@ public class cacheobject extends base_resource
 	private String cachecellpolleverytime;
 	private String cachecelletaginserted;
 	private String cachecellreadywithlastbyte;
+	private String cacheinmemory;
+	private String cacheindisk;
+	private String cachedirname;
+	private String cachefilename;
 	private String cachecelldestipverified;
 	private String cachecellfwpxyobj;
 	private String cachecellbasefile;
@@ -105,7 +108,7 @@ public class cacheobject extends base_resource
 
 	/**
 	* <pre>
-	* The URL of the object.<br> Minimum length =  1
+	* URL of the particular object whose details is required. Parameter "host" must be specified along with the URL.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_url(String url) throws Exception{
@@ -114,7 +117,7 @@ public class cacheobject extends base_resource
 
 	/**
 	* <pre>
-	* The URL of the object.<br> Minimum length =  1
+	* URL of the particular object whose details is required. Parameter "host" must be specified along with the URL.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_url() throws Exception {
@@ -123,7 +126,7 @@ public class cacheobject extends base_resource
 
 	/**
 	* <pre>
-	* The id of the cached object.
+	* ID of the cached object.
 	* </pre>
 	*/
 	public void set_locator(long locator) throws Exception {
@@ -132,7 +135,7 @@ public class cacheobject extends base_resource
 
 	/**
 	* <pre>
-	* The id of the cached object.
+	* ID of the cached object.
 	* </pre>
 	*/
 	public void set_locator(Long locator) throws Exception{
@@ -141,7 +144,7 @@ public class cacheobject extends base_resource
 
 	/**
 	* <pre>
-	* The id of the cached object.
+	* ID of the cached object.
 	* </pre>
 	*/
 	public Long get_locator() throws Exception {
@@ -177,7 +180,7 @@ public class cacheobject extends base_resource
 
 	/**
 	* <pre>
-	* The hostname of the object.<br> Minimum length =  1
+	* Host name of the object. Parameter "url" must be specified.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_host(String host) throws Exception{
@@ -186,7 +189,7 @@ public class cacheobject extends base_resource
 
 	/**
 	* <pre>
-	* The hostname of the object.<br> Minimum length =  1
+	* Host name of the object. Parameter "url" must be specified.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_host() throws Exception {
@@ -195,7 +198,7 @@ public class cacheobject extends base_resource
 
 	/**
 	* <pre>
-	* The host port of the object.<br> Default value: 80<br> Minimum value =  1
+	* Host port of the object. You must also set the Host parameter.<br> Default value: 80<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_port(int port) throws Exception {
@@ -204,7 +207,7 @@ public class cacheobject extends base_resource
 
 	/**
 	* <pre>
-	* The host port of the object.<br> Default value: 80<br> Minimum value =  1
+	* Host port of the object. You must also set the Host parameter.<br> Default value: 80<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_port(Integer port) throws Exception{
@@ -213,7 +216,7 @@ public class cacheobject extends base_resource
 
 	/**
 	* <pre>
-	* The host port of the object.<br> Default value: 80<br> Minimum value =  1
+	* Host port of the object. You must also set the Host parameter.<br> Default value: 80<br> Minimum value =  1
 	* </pre>
 	*/
 	public Integer get_port() throws Exception {
@@ -222,7 +225,7 @@ public class cacheobject extends base_resource
 
 	/**
 	* <pre>
-	* The name of the content group to be in which the cell is present.
+	* Name of the content group to which the object belongs. It will display only the objects belonging to the specified content group. You must also set the Host parameter.
 	* </pre>
 	*/
 	public void set_groupname(String groupname) throws Exception{
@@ -231,7 +234,7 @@ public class cacheobject extends base_resource
 
 	/**
 	* <pre>
-	* The name of the content group to be in which the cell is present.
+	* Name of the content group to which the object belongs. It will display only the objects belonging to the specified content group. You must also set the Host parameter.
 	* </pre>
 	*/
 	public String get_groupname() throws Exception {
@@ -240,7 +243,7 @@ public class cacheobject extends base_resource
 
 	/**
 	* <pre>
-	* The HTTP request method that caused the object to be stored.<br> Default value: NS_HTTP_METHOD_GET<br> Possible values = GET, POST
+	* HTTP request method that caused the object to be stored.<br> Default value: GET<br> Possible values = GET, POST
 	* </pre>
 	*/
 	public void set_httpmethod(String httpmethod) throws Exception{
@@ -249,7 +252,7 @@ public class cacheobject extends base_resource
 
 	/**
 	* <pre>
-	* The HTTP request method that caused the object to be stored.<br> Default value: NS_HTTP_METHOD_GET<br> Possible values = GET, POST
+	* HTTP request method that caused the object to be stored.<br> Default value: GET<br> Possible values = GET, POST
 	* </pre>
 	*/
 	public String get_httpmethod() throws Exception {
@@ -258,7 +261,7 @@ public class cacheobject extends base_resource
 
 	/**
 	* <pre>
-	* The name of the content group whose objects should be listed.
+	* Name of the content group whose objects should be listed.
 	* </pre>
 	*/
 	public void set_group(String group) throws Exception{
@@ -267,7 +270,7 @@ public class cacheobject extends base_resource
 
 	/**
 	* <pre>
-	* The name of the content group whose objects should be listed.
+	* Name of the content group whose objects should be listed.
 	* </pre>
 	*/
 	public String get_group() throws Exception {
@@ -276,7 +279,7 @@ public class cacheobject extends base_resource
 
 	/**
 	* <pre>
-	* Ignore marker objects.<br> Possible values = ON, OFF
+	* Ignore marker objects. Marker objects are created when a response exceeds the maximum or minimum response size for the content group or has not yet received the minimum number of hits for the content group.<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_ignoremarkerobjects(String ignoremarkerobjects) throws Exception{
@@ -285,7 +288,7 @@ public class cacheobject extends base_resource
 
 	/**
 	* <pre>
-	* Ignore marker objects.<br> Possible values = ON, OFF
+	* Ignore marker objects. Marker objects are created when a response exceeds the maximum or minimum response size for the content group or has not yet received the minimum number of hits for the content group.<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_ignoremarkerobjects() throws Exception {
@@ -294,7 +297,7 @@ public class cacheobject extends base_resource
 
 	/**
 	* <pre>
-	* Include objects not-ready for a cache hit.<br> Possible values = ON, OFF
+	* Include responses that have not yet reached a minimum number of hits before being cached.<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_includenotreadyobjects(String includenotreadyobjects) throws Exception{
@@ -303,11 +306,38 @@ public class cacheobject extends base_resource
 
 	/**
 	* <pre>
-	* Include objects not-ready for a cache hit.<br> Possible values = ON, OFF
+	* Include responses that have not yet reached a minimum number of hits before being cached.<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_includenotreadyobjects() throws Exception {
 		return this.includenotreadyobjects;
+	}
+
+	/**
+	* <pre>
+	* Force all copies to be flushed including on disk.
+	* </pre>
+	*/
+	public void set_force(boolean force) throws Exception {
+		this.force = new Boolean(force);
+	}
+
+	/**
+	* <pre>
+	* Force all copies to be flushed including on disk.
+	* </pre>
+	*/
+	public void set_force(Boolean force) throws Exception{
+		this.force = force;
+	}
+
+	/**
+	* <pre>
+	* Force all copies to be flushed including on disk.
+	* </pre>
+	*/
+	public Boolean get_force() throws Exception {
+		return this.force;
 	}
 
 	/**
@@ -380,15 +410,6 @@ public class cacheobject extends base_resource
 	*/
 	public String get_contentgroup() throws Exception {
 		return this.contentgroup;
-	}
-
-	/**
-	* <pre>
-	* Destination IP.
-	* </pre>
-	*/
-	public Long get_destip() throws Exception {
-		return this.destip;
 	}
 
 	/**
@@ -555,20 +576,11 @@ public class cacheobject extends base_resource
 
 	/**
 	* <pre>
-	* The state of the response being gzip-compressed.<br> Possible values = YES, NO
+	* Cache cell disk hits.
 	* </pre>
 	*/
-	public String get_cachecellgzipcompressed() throws Exception {
-		return this.cachecellgzipcompressed;
-	}
-
-	/**
-	* <pre>
-	* The state of the response being deflate-compressed.<br> Possible values = YES, NO
-	* </pre>
-	*/
-	public String get_cachecelldeflatecompressed() throws Exception {
-		return this.cachecelldeflatecompressed;
+	public Long get_cachecelldhits() throws Exception {
+		return this.cachecelldhits;
 	}
 
 	/**
@@ -650,6 +662,42 @@ public class cacheobject extends base_resource
 	*/
 	public String get_cachecellreadywithlastbyte() throws Exception {
 		return this.cachecellreadywithlastbyte;
+	}
+
+	/**
+	* <pre>
+	* The cache data is available in memory.<br> Possible values = YES, NO
+	* </pre>
+	*/
+	public String get_cacheinmemory() throws Exception {
+		return this.cacheinmemory;
+	}
+
+	/**
+	* <pre>
+	* The cache data is available in disk.<br> Possible values = YES, NO
+	* </pre>
+	*/
+	public String get_cacheindisk() throws Exception {
+		return this.cacheindisk;
+	}
+
+	/**
+	* <pre>
+	* The directory name used if saved.
+	* </pre>
+	*/
+	public String get_cachedirname() throws Exception {
+		return this.cachedirname;
+	}
+
+	/**
+	* <pre>
+	* The filename used if saved.
+	* </pre>
+	*/
+	public String get_cachefilename() throws Exception {
+		return this.cachefilename;
 	}
 
 	/**
@@ -894,6 +942,7 @@ public class cacheobject extends base_resource
 		flushresource.port = resource.port;
 		flushresource.groupname = resource.groupname;
 		flushresource.httpmethod = resource.httpmethod;
+		flushresource.force = resource.force;
 		return flushresource.perform_operation(client,"flush");
 	}
 
@@ -912,8 +961,34 @@ public class cacheobject extends base_resource
 				flushresources[i].port = resources[i].port;
 				flushresources[i].groupname = resources[i].groupname;
 				flushresources[i].httpmethod = resources[i].httpmethod;
+				flushresources[i].force = resources[i].force;
 			}
 			result = perform_operation_bulk_request(client, flushresources,"flush");
+		}
+		return result;
+	}
+
+	/**
+	* Use this API to save cacheobject.
+	*/
+	public static base_response save(nitro_service client, cacheobject resource) throws Exception {
+		cacheobject saveresource = new cacheobject();
+		saveresource.locator = resource.locator;
+		return saveresource.perform_operation(client,"save");
+	}
+
+	/**
+	* Use this API to save cacheobject resources.
+	*/
+	public static base_responses save(nitro_service client, cacheobject resources[]) throws Exception {
+		base_responses result = null;
+		if (resources != null && resources.length > 0) {
+			cacheobject saveresources[] = new cacheobject[resources.length];
+			for (int i=0;i<resources.length;i++){
+				saveresources[i] = new cacheobject();
+				saveresources[i].locator = resources[i].locator;
+			}
+			result = perform_operation_bulk_request(client, saveresources,"save");
 		}
 		return result;
 	}
@@ -1057,15 +1132,15 @@ public class cacheobject extends base_resource
 		public static final String YES = "YES";
 		public static final String NO = "NO";
 	}
-	public static class cachecelldeflatecompressedEnum {
-		public static final String YES = "YES";
-		public static final String NO = "NO";
-	}
 	public static class cachecelletaginsertedEnum {
 		public static final String YES = "YES";
 		public static final String NO = "NO";
 	}
 	public static class cachecellweaketagEnum {
+		public static final String YES = "YES";
+		public static final String NO = "NO";
+	}
+	public static class cacheinmemoryEnum {
 		public static final String YES = "YES";
 		public static final String NO = "NO";
 	}
@@ -1109,7 +1184,7 @@ public class cacheobject extends base_resource
 		public static final String YES = "YES";
 		public static final String NO = "NO";
 	}
-	public static class cachecellgzipcompressedEnum {
+	public static class cacheindiskEnum {
 		public static final String YES = "YES";
 		public static final String NO = "NO";
 	}

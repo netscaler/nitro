@@ -40,7 +40,7 @@ public class lbmetrictable_metric_binding extends base_resource
 
 	/**
 	* <pre>
-	* Metric name in the metric table.<br> Minimum length =  1
+	* Name of the metric for which to change the SNMP OID.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_metric(String metric) throws Exception{
@@ -49,7 +49,7 @@ public class lbmetrictable_metric_binding extends base_resource
 
 	/**
 	* <pre>
-	* Metric name in the metric table.<br> Minimum length =  1
+	* Name of the metric for which to change the SNMP OID.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_metric() throws Exception {
@@ -58,7 +58,7 @@ public class lbmetrictable_metric_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the metric table.<br> Minimum length =  1<br> Maximum length =  31
+	* Name of the metric table.<br> Minimum length =  1<br> Maximum length =  31
 	* </pre>
 	*/
 	public void set_metrictable(String metrictable) throws Exception{
@@ -67,7 +67,7 @@ public class lbmetrictable_metric_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the metric table.<br> Minimum length =  1<br> Maximum length =  31
+	* Name of the metric table.<br> Minimum length =  1<br> Maximum length =  31
 	* </pre>
 	*/
 	public String get_metrictable() throws Exception {
@@ -76,7 +76,7 @@ public class lbmetrictable_metric_binding extends base_resource
 
 	/**
 	* <pre>
-	* New OID that must be used.<br> Minimum length =  1
+	* New SNMP OID of the metric.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_Snmpoid(String Snmpoid) throws Exception{
@@ -85,7 +85,7 @@ public class lbmetrictable_metric_binding extends base_resource
 
 	/**
 	* <pre>
-	* New OID that must be used.<br> Minimum length =  1
+	* New SNMP OID of the metric.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_Snmpoid() throws Exception {

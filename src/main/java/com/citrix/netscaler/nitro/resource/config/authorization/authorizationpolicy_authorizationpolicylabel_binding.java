@@ -34,7 +34,6 @@ public class authorizationpolicy_authorizationpolicylabel_binding extends base_r
 {
 	private String boundto;
 	private Long priority;
-	private Long activepolicy;
 	private String name;
 	private Long __count;
 
@@ -58,7 +57,7 @@ public class authorizationpolicy_authorizationpolicylabel_binding extends base_r
 
 	/**
 	* <pre>
-	* The name of the authorization policy.<br> Minimum length =  1
+	* Name of the authorization policy.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -67,7 +66,7 @@ public class authorizationpolicy_authorizationpolicylabel_binding extends base_r
 
 	/**
 	* <pre>
-	* The name of the authorization policy.<br> Minimum length =  1
+	* Name of the authorization policy.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -81,15 +80,6 @@ public class authorizationpolicy_authorizationpolicylabel_binding extends base_r
 	*/
 	public Long get_priority() throws Exception {
 		return this.priority;
-	}
-
-	/**
-	* <pre>
-	* .
-	* </pre>
-	*/
-	public Long get_activepolicy() throws Exception {
-		return this.activepolicy;
 	}
 
 	/**

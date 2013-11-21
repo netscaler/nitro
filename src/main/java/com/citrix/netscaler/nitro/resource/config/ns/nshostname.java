@@ -38,7 +38,7 @@ public class nshostname extends base_resource
 
 	/**
 	* <pre>
-	* Desired host name.<br> Minimum length =  1<br> Maximum length =  255
+	* Host name for the NetScaler appliance.<br> Minimum length =  1<br> Maximum length =  255
 	* </pre>
 	*/
 	public void set_hostname(String hostname) throws Exception{
@@ -47,7 +47,7 @@ public class nshostname extends base_resource
 
 	/**
 	* <pre>
-	* Desired host name.<br> Minimum length =  1<br> Maximum length =  255
+	* Host name for the NetScaler appliance.<br> Minimum length =  1<br> Maximum length =  255
 	* </pre>
 	*/
 	public String get_hostname() throws Exception {
@@ -56,7 +56,7 @@ public class nshostname extends base_resource
 
 	/**
 	* <pre>
-	* The owner node in a Cluster for which we are setting the hostname. Owner node can vary from 0 to 31.<br> Default value: 255<br> Minimum value =  0<br> Maximum value =  31
+	* ID of the cluster node for which you are setting the hostname. Can be configured only through the cluster IP address.<br> Default value: 255<br> Minimum value =  0<br> Maximum value =  31
 	* </pre>
 	*/
 	public void set_ownernode(long ownernode) throws Exception {
@@ -65,7 +65,7 @@ public class nshostname extends base_resource
 
 	/**
 	* <pre>
-	* The owner node in a Cluster for which we are setting the hostname. Owner node can vary from 0 to 31.<br> Default value: 255<br> Minimum value =  0<br> Maximum value =  31
+	* ID of the cluster node for which you are setting the hostname. Can be configured only through the cluster IP address.<br> Default value: 255<br> Minimum value =  0<br> Maximum value =  31
 	* </pre>
 	*/
 	public void set_ownernode(Long ownernode) throws Exception{
@@ -74,7 +74,7 @@ public class nshostname extends base_resource
 
 	/**
 	* <pre>
-	* The owner node in a Cluster for which we are setting the hostname. Owner node can vary from 0 to 31.<br> Default value: 255<br> Minimum value =  0<br> Maximum value =  31
+	* ID of the cluster node for which you are setting the hostname. Can be configured only through the cluster IP address.<br> Default value: 255<br> Minimum value =  0<br> Maximum value =  31
 	* </pre>
 	*/
 	public Long get_ownernode() throws Exception {

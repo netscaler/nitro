@@ -40,7 +40,7 @@ public class vrid6_nsip_binding extends base_resource
 
 	/**
 	* <pre>
-	* An integer value that uniquely identifies a VMAC6 address.<br> Minimum value =  1<br> Maximum value =  255
+	* Integer value that uniquely identifies a VMAC6 address.<br> Minimum value =  1<br> Maximum value =  255
 	* </pre>
 	*/
 	public void set_id(long id) throws Exception {
@@ -49,7 +49,7 @@ public class vrid6_nsip_binding extends base_resource
 
 	/**
 	* <pre>
-	* An integer value that uniquely identifies a VMAC6 address.<br> Minimum value =  1<br> Maximum value =  255
+	* Integer value that uniquely identifies a VMAC6 address.<br> Minimum value =  1<br> Maximum value =  255
 	* </pre>
 	*/
 	public void set_id(Long id) throws Exception{
@@ -58,7 +58,7 @@ public class vrid6_nsip_binding extends base_resource
 
 	/**
 	* <pre>
-	* An integer value that uniquely identifies a VMAC6 address.<br> Minimum value =  1<br> Maximum value =  255
+	* Integer value that uniquely identifies a VMAC6 address.<br> Minimum value =  1<br> Maximum value =  255
 	* </pre>
 	*/
 	public Long get_id() throws Exception {
@@ -67,7 +67,7 @@ public class vrid6_nsip_binding extends base_resource
 
 	/**
 	* <pre>
-	* Interfaces that you want to bind to the VMAC6. The format for specifying an interface is in slot/port notation, (for example, 1/2).
+	* Interfaces to bind tothe VMAC6, specified in (slot/port) notation (for example, 1/2).Use spaces to separate multiple entries.
 	* </pre>
 	*/
 	public void set_ifnum(String ifnum) throws Exception{
@@ -76,7 +76,7 @@ public class vrid6_nsip_binding extends base_resource
 
 	/**
 	* <pre>
-	* Interfaces that you want to bind to the VMAC6. The format for specifying an interface is in slot/port notation, (for example, 1/2).
+	* Interfaces to bind tothe VMAC6, specified in (slot/port) notation (for example, 1/2).Use spaces to separate multiple entries.
 	* </pre>
 	*/
 	public String get_ifnum() throws Exception {

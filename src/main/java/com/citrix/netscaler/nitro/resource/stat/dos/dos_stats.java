@@ -29,12 +29,31 @@ class dos_response extends base_response
 
 public class dos_stats extends base_resource
 {
+	private String clearstats;
 	private Long dostotconditiontriggered;
 	private Long dosconditiontriggeredrate;
 	private Long dostotvalidcookies;
 	private Long dosvalidcookiesrate;
 	private Long dostotdospriorityclients;
 	private Long dosdospriorityclientsrate;
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters
+	* </pre>
+	*/
+	public void set_clearstats(String clearstats) throws Exception{
+		this.clearstats = clearstats;
+	}
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters.<br> Possible values = basic, full
+	* </pre>
+	*/
+	public String get_clearstats() throws Exception {
+		return this.clearstats;
+	}
 
 	/**
 	* <pre>
@@ -47,7 +66,7 @@ public class dos_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of clients from whom the NetScaler appliance received a valid DOS cookie.
+	* Rate (/s) counter for dostotvalidcookies
 	* </pre>
 	*/
 	public Long get_dosvalidcookiesrate() throws Exception {
@@ -56,7 +75,7 @@ public class dos_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of valid clients that were given DOS priority.
+	* Rate (/s) counter for dostotdospriorityclients
 	* </pre>
 	*/
 	public Long get_dosdospriorityclientsrate() throws Exception {
@@ -65,7 +84,7 @@ public class dos_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of times the NetScaler appliance triggered the DOS JavaScript due to a condition match.
+	* Rate (/s) counter for dostotconditiontriggered
 	* </pre>
 	*/
 	public Long get_dosconditiontriggeredrate() throws Exception {
@@ -144,4 +163,8 @@ public class dos_stats extends base_resource
 		return response[0];
 	}
 
+	public static class clearstatsEnum {
+		public static final String basic = "basic";
+		public static final String full = "full";
+	}
 }

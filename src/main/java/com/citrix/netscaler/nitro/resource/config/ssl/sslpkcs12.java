@@ -45,7 +45,8 @@ public class sslpkcs12 extends base_resource
 
 	/**
 	* <pre>
-	* The output file to be generated. If the -import option is used, this file will be used to store the certificate and the private-key in PEM format. If the -export option is used, the certificate and private-key will be stored in the PKCS12 format. The default output path for the file is /nsconfig/ssl/.<br> Maximum length =  63
+	* Name for and, optionally, path to, the output file that contains the certificate and the private key after converting from PKCS#12 to PEM format. /nsconfig/ssl/ is the default path.
+If importing, the certificate-key pair is stored in PEM format. If exporting, the certificate-key pair is stored in PKCS#12 format.<br> Maximum length =  63
 	* </pre>
 	*/
 	public void set_outfile(String outfile) throws Exception{
@@ -54,7 +55,8 @@ public class sslpkcs12 extends base_resource
 
 	/**
 	* <pre>
-	* The output file to be generated. If the -import option is used, this file will be used to store the certificate and the private-key in PEM format. If the -export option is used, the certificate and private-key will be stored in the PKCS12 format. The default output path for the file is /nsconfig/ssl/.<br> Maximum length =  63
+	* Name for and, optionally, path to, the output file that contains the certificate and the private key after converting from PKCS#12 to PEM format. /nsconfig/ssl/ is the default path.
+If importing, the certificate-key pair is stored in PEM format. If exporting, the certificate-key pair is stored in PKCS#12 format.<br> Maximum length =  63
 	* </pre>
 	*/
 	public String get_outfile() throws Exception {
@@ -63,7 +65,7 @@ public class sslpkcs12 extends base_resource
 
 	/**
 	* <pre>
-	* Convert the certificate and private-key from PKCS12 format to PEM format.
+	* Convert the certificate and private-key from PKCS#12 format to PEM format.
 	* </pre>
 	*/
 	public void set_Import(boolean Import) throws Exception {
@@ -72,7 +74,7 @@ public class sslpkcs12 extends base_resource
 
 	/**
 	* <pre>
-	* Convert the certificate and private-key from PKCS12 format to PEM format.
+	* Convert the certificate and private-key from PKCS#12 format to PEM format.
 	* </pre>
 	*/
 	public void set_Import(Boolean Import) throws Exception{
@@ -81,7 +83,7 @@ public class sslpkcs12 extends base_resource
 
 	/**
 	* <pre>
-	* Convert the certificate and private-key from PKCS12 format to PEM format.
+	* Convert the certificate and private-key from PKCS#12 format to PEM format.
 	* </pre>
 	*/
 	public Boolean get_Import() throws Exception {
@@ -90,8 +92,9 @@ public class sslpkcs12 extends base_resource
 
 	/**
 	* <pre>
-	* The input file which contains the certificate and the private-key in PKCS12 format. The default input path is /nsconfig/ssl/.
-			Note: During the import operation, the user will be prompted to enter the 'Import password'.<br> Maximum length =  63
+	* Name for and, optionally, path to, the PKCS#12 file. If importing, specify the input file name that contains the certificate and the private key in PKCS#12 format. If exporting, specify the output file name that contains the certificate and the private key after converting from PEM to
+PKCS#12 format. /nsconfig/ssl/ is the default path.
+During the import operation, if the key is encrypted, you are prompted to enter the pass phrase used for encrypting the key.<br> Maximum length =  63
 	* </pre>
 	*/
 	public void set_pkcs12file(String pkcs12file) throws Exception{
@@ -100,8 +103,9 @@ public class sslpkcs12 extends base_resource
 
 	/**
 	* <pre>
-	* The input file which contains the certificate and the private-key in PKCS12 format. The default input path is /nsconfig/ssl/.
-			Note: During the import operation, the user will be prompted to enter the 'Import password'.<br> Maximum length =  63
+	* Name for and, optionally, path to, the PKCS#12 file. If importing, specify the input file name that contains the certificate and the private key in PKCS#12 format. If exporting, specify the output file name that contains the certificate and the private key after converting from PEM to
+PKCS#12 format. /nsconfig/ssl/ is the default path.
+During the import operation, if the key is encrypted, you are prompted to enter the pass phrase used for encrypting the key.<br> Maximum length =  63
 	* </pre>
 	*/
 	public String get_pkcs12file() throws Exception {
@@ -110,7 +114,7 @@ public class sslpkcs12 extends base_resource
 
 	/**
 	* <pre>
-	* Encrypt the private key with DES in CBC mode during the import operation. You will be prompted to enter the pass-phrase if this option is mentioned.
+	* Encrypt the private key by using the DES algorithm in CBC mode during the import operation. On the command line, you are prompted to enter the pass phrase.
 	* </pre>
 	*/
 	public void set_des(boolean des) throws Exception {
@@ -119,7 +123,7 @@ public class sslpkcs12 extends base_resource
 
 	/**
 	* <pre>
-	* Encrypt the private key with DES in CBC mode during the import operation. You will be prompted to enter the pass-phrase if this option is mentioned.
+	* Encrypt the private key by using the DES algorithm in CBC mode during the import operation. On the command line, you are prompted to enter the pass phrase.
 	* </pre>
 	*/
 	public void set_des(Boolean des) throws Exception{
@@ -128,7 +132,7 @@ public class sslpkcs12 extends base_resource
 
 	/**
 	* <pre>
-	* Encrypt the private key with DES in CBC mode during the import operation. You will be prompted to enter the pass-phrase if this option is mentioned.
+	* Encrypt the private key by using the DES algorithm in CBC mode during the import operation. On the command line, you are prompted to enter the pass phrase.
 	* </pre>
 	*/
 	public Boolean get_des() throws Exception {
@@ -137,7 +141,7 @@ public class sslpkcs12 extends base_resource
 
 	/**
 	* <pre>
-	* Encrypt the private key with DES in EDE CBC mode(168 bit key) during the import operation. You will be prompted to enter the pass-phrase if this option is mentioned.
+	* Encrypt the private key by using the Triple-DES algorithm in EDE CBC mode (168-bit key) during the import operation. On the command line, you are prompted to enter the pass phrase.
 	* </pre>
 	*/
 	public void set_des3(boolean des3) throws Exception {
@@ -146,7 +150,7 @@ public class sslpkcs12 extends base_resource
 
 	/**
 	* <pre>
-	* Encrypt the private key with DES in EDE CBC mode(168 bit key) during the import operation. You will be prompted to enter the pass-phrase if this option is mentioned.
+	* Encrypt the private key by using the Triple-DES algorithm in EDE CBC mode (168-bit key) during the import operation. On the command line, you are prompted to enter the pass phrase.
 	* </pre>
 	*/
 	public void set_des3(Boolean des3) throws Exception{
@@ -155,7 +159,7 @@ public class sslpkcs12 extends base_resource
 
 	/**
 	* <pre>
-	* Encrypt the private key with DES in EDE CBC mode(168 bit key) during the import operation. You will be prompted to enter the pass-phrase if this option is mentioned.
+	* Encrypt the private key by using the Triple-DES algorithm in EDE CBC mode (168-bit key) during the import operation. On the command line, you are prompted to enter the pass phrase.
 	* </pre>
 	*/
 	public Boolean get_des3() throws Exception {
@@ -164,8 +168,7 @@ public class sslpkcs12 extends base_resource
 
 	/**
 	* <pre>
-	* Convert the certificate and private-key from PEM format to PKCS12 format.
-	Note: During the export operation, you will be prompted to enter the 'Export password'.
+	* Convert the certificate and private key from PEM format to PKCS#12 format. On the command line, you are prompted to enter the pass phrase.
 	* </pre>
 	*/
 	public void set_export(boolean export) throws Exception {
@@ -174,8 +177,7 @@ public class sslpkcs12 extends base_resource
 
 	/**
 	* <pre>
-	* Convert the certificate and private-key from PEM format to PKCS12 format.
-	Note: During the export operation, you will be prompted to enter the 'Export password'.
+	* Convert the certificate and private key from PEM format to PKCS#12 format. On the command line, you are prompted to enter the pass phrase.
 	* </pre>
 	*/
 	public void set_export(Boolean export) throws Exception{
@@ -184,8 +186,7 @@ public class sslpkcs12 extends base_resource
 
 	/**
 	* <pre>
-	* Convert the certificate and private-key from PEM format to PKCS12 format.
-	Note: During the export operation, you will be prompted to enter the 'Export password'.
+	* Convert the certificate and private key from PEM format to PKCS#12 format. On the command line, you are prompted to enter the pass phrase.
 	* </pre>
 	*/
 	public Boolean get_export() throws Exception {
@@ -194,7 +195,7 @@ public class sslpkcs12 extends base_resource
 
 	/**
 	* <pre>
-	* The input certificate file in PEM format. The default input path for the file is /nsconfig/ssl/.<br> Maximum length =  63
+	* Certificate file to be converted from PEM to PKCS#12 format.<br> Maximum length =  63
 	* </pre>
 	*/
 	public void set_certfile(String certfile) throws Exception{
@@ -203,7 +204,7 @@ public class sslpkcs12 extends base_resource
 
 	/**
 	* <pre>
-	* The input certificate file in PEM format. The default input path for the file is /nsconfig/ssl/.<br> Maximum length =  63
+	* Certificate file to be converted from PEM to PKCS#12 format.<br> Maximum length =  63
 	* </pre>
 	*/
 	public String get_certfile() throws Exception {
@@ -212,8 +213,7 @@ public class sslpkcs12 extends base_resource
 
 	/**
 	* <pre>
-	* The input private-key file in PEM format. The default input path for the file is /nsconfig/ssl/.
-	Note: If the key file is in encrypted form, then the user will be prompted to enter the pass-phrase used for encrypting the key.<br> Maximum length =  63
+	* Name of the private key file to be converted from PEM to PKCS#12 format. If the key file is encrypted, you are prompted to enter the pass phrase used for encrypting the key.<br> Maximum length =  63
 	* </pre>
 	*/
 	public void set_keyfile(String keyfile) throws Exception{
@@ -222,8 +222,7 @@ public class sslpkcs12 extends base_resource
 
 	/**
 	* <pre>
-	* The input private-key file in PEM format. The default input path for the file is /nsconfig/ssl/.
-	Note: If the key file is in encrypted form, then the user will be prompted to enter the pass-phrase used for encrypting the key.<br> Maximum length =  63
+	* Name of the private key file to be converted from PEM to PKCS#12 format. If the key file is encrypted, you are prompted to enter the pass phrase used for encrypting the key.<br> Maximum length =  63
 	* </pre>
 	*/
 	public String get_keyfile() throws Exception {

@@ -33,12 +33,13 @@ class servicegroup_response extends base_response
 public class servicegroup_stats extends base_resource
 {
 	private String servicegroupname;
+	private String clearstats;
 	private String state;
 	private String servicetype;
 
 	/**
 	* <pre>
-	* The name of a service group
+	* Name of the service group for which to display settings.
 	* </pre>
 	*/
 	public void set_servicegroupname(String servicegroupname) throws Exception{
@@ -47,7 +48,7 @@ public class servicegroup_stats extends base_resource
 
 	/**
 	* <pre>
-	* The name of a service group.<br> Minimum length =  1
+	* Name of the service group for which to display settings.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_servicegroupname() throws Exception {
@@ -56,7 +57,25 @@ public class servicegroup_stats extends base_resource
 
 	/**
 	* <pre>
-	* The service type of this service.
+	* Clear the statsistics / counters
+	* </pre>
+	*/
+	public void set_clearstats(String clearstats) throws Exception{
+		this.clearstats = clearstats;
+	}
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters.<br> Possible values = basic, full
+	* </pre>
+	*/
+	public String get_clearstats() throws Exception {
+		return this.clearstats;
+	}
+
+	/**
+	* <pre>
+	* The service type of this service.Possible values are ADNS, DNS, MYSQL, RTSP, SSL_DIAMETER, ADNS_TCP, DNS_TCP, NNTP, SIP_UDP, SSL_TCP, ANY, FTP, RADIUS, SNMP, TCP, DHCPRA, HTTP, RDP, SSL, TFTP, DIAMETER, MSSQL, RPCSVR, SSL_BRIDGE, UDP
 	* </pre>
 	*/
 	public String get_servicetype() throws Exception {
@@ -65,7 +84,7 @@ public class servicegroup_stats extends base_resource
 
 	/**
 	* <pre>
-	* Current state of the server.
+	* Current state of the server. Possible values are UP, DOWN, UNKNOWN, OFS(Out of Service), TROFS(Transition Out of Service), TROFS_DOWN(Down When going Out of Service)
 	* </pre>
 	*/
 	public String get_state() throws Exception {
@@ -134,4 +153,8 @@ public class servicegroup_stats extends base_resource
 		return response;
 	}
 
+	public static class clearstatsEnum {
+		public static final String basic = "basic";
+		public static final String full = "full";
+	}
 }

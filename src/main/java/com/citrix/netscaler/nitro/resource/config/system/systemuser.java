@@ -34,6 +34,7 @@ public class systemuser extends base_resource
 {
 	private String username;
 	private String password;
+	private String externalauth;
 	private String promptstring;
 	private Long timeout;
 
@@ -46,7 +47,9 @@ public class systemuser extends base_resource
 
 	/**
 	* <pre>
-	* The name for the system user.<br> Minimum length =  1
+	* Name for a user. Must begin with a letter, number, or the underscore (_) character, and must contain only alphanumeric, hyphen (-), period (.), hash (#), space ( ), at (@), equal (=), colon (:), and underscore characters. Cannot be changed after the user is added.
+
+CLI Users: If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my user" or 'my user').<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_username(String username) throws Exception{
@@ -55,7 +58,9 @@ public class systemuser extends base_resource
 
 	/**
 	* <pre>
-	* The name for the system user.<br> Minimum length =  1
+	* Name for a user. Must begin with a letter, number, or the underscore (_) character, and must contain only alphanumeric, hyphen (-), period (.), hash (#), space ( ), at (@), equal (=), colon (:), and underscore characters. Cannot be changed after the user is added.
+
+CLI Users: If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my user" or 'my user').<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_username() throws Exception {
@@ -64,7 +69,7 @@ public class systemuser extends base_resource
 
 	/**
 	* <pre>
-	* The system user's password.<br> Minimum length =  1
+	* Password for the system user. Can include any ASCII character.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_password(String password) throws Exception{
@@ -73,7 +78,7 @@ public class systemuser extends base_resource
 
 	/**
 	* <pre>
-	* The system user's password.<br> Minimum length =  1
+	* Password for the system user. Can include any ASCII character.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_password() throws Exception {
@@ -82,7 +87,33 @@ public class systemuser extends base_resource
 
 	/**
 	* <pre>
-	* The system user's prompt.<br> Minimum length =  1
+	* Whether to use external authentication servers for the system user authentication or not.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* </pre>
+	*/
+	public void set_externalauth(String externalauth) throws Exception{
+		this.externalauth = externalauth;
+	}
+
+	/**
+	* <pre>
+	* Whether to use external authentication servers for the system user authentication or not.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* </pre>
+	*/
+	public String get_externalauth() throws Exception {
+		return this.externalauth;
+	}
+
+	/**
+	* <pre>
+	* String to display at the command-line prompt. Can consist of letters, numbers, hyphen (-), period (.), hash (#), space ( ), at (@), equal (=), colon (:), underscore (_), and the following variables: 
+* %u - Will be replaced by the user name.
+* %h - Will be replaced by the hostname of the NetScaler appliance.
+* %t - Will be replaced by the current time in 12-hour format.
+* %T - Will be replaced by the current time in 24-hour format.
+* %d - Will be replaced by the current date.
+* %s - Will be replaced by the state of the NetScaler appliance.
+
+Note: The 63-character limit for the length of the string does not apply to the characters that replace the variables.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_promptstring(String promptstring) throws Exception{
@@ -91,7 +122,15 @@ public class systemuser extends base_resource
 
 	/**
 	* <pre>
-	* The system user's prompt.<br> Minimum length =  1
+	* String to display at the command-line prompt. Can consist of letters, numbers, hyphen (-), period (.), hash (#), space ( ), at (@), equal (=), colon (:), underscore (_), and the following variables: 
+* %u - Will be replaced by the user name.
+* %h - Will be replaced by the hostname of the NetScaler appliance.
+* %t - Will be replaced by the current time in 12-hour format.
+* %T - Will be replaced by the current time in 24-hour format.
+* %d - Will be replaced by the current date.
+* %s - Will be replaced by the state of the NetScaler appliance.
+
+Note: The 63-character limit for the length of the string does not apply to the characters that replace the variables.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_promptstring() throws Exception {
@@ -193,6 +232,7 @@ public class systemuser extends base_resource
 		systemuser addresource = new systemuser();
 		addresource.username = resource.username;
 		addresource.password = resource.password;
+		addresource.externalauth = resource.externalauth;
 		addresource.promptstring = resource.promptstring;
 		addresource.timeout = resource.timeout;
 		return addresource.add_resource(client);
@@ -209,6 +249,7 @@ public class systemuser extends base_resource
 				addresources[i] = new systemuser();
 				addresources[i].username = resources[i].username;
 				addresources[i].password = resources[i].password;
+				addresources[i].externalauth = resources[i].externalauth;
 				addresources[i].promptstring = resources[i].promptstring;
 				addresources[i].timeout = resources[i].timeout;
 			}
@@ -274,6 +315,7 @@ public class systemuser extends base_resource
 		systemuser updateresource = new systemuser();
 		updateresource.username = resource.username;
 		updateresource.password = resource.password;
+		updateresource.externalauth = resource.externalauth;
 		updateresource.promptstring = resource.promptstring;
 		updateresource.timeout = resource.timeout;
 		return updateresource.update_resource(client);
@@ -290,6 +332,7 @@ public class systemuser extends base_resource
 				updateresources[i] = new systemuser();
 				updateresources[i].username = resources[i].username;
 				updateresources[i].password = resources[i].password;
+				updateresources[i].externalauth = resources[i].externalauth;
 				updateresources[i].promptstring = resources[i].promptstring;
 				updateresources[i].timeout = resources[i].timeout;
 			}
@@ -302,21 +345,9 @@ public class systemuser extends base_resource
 	* Use this API to unset the properties of systemuser resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String username, String args[]) throws Exception {
-		systemuser unsetresource = new systemuser();
-		unsetresource.username = username;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of systemuser resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, systemuser resource, String[] args) throws Exception{
 		systemuser unsetresource = new systemuser();
 		unsetresource.username = resource.username;
-		unsetresource.promptstring = resource.promptstring;
-		unsetresource.timeout = resource.timeout;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -348,8 +379,6 @@ public class systemuser extends base_resource
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new systemuser();
 				unsetresources[i].username = resources[i].username;
-				unsetresources[i].promptstring = resources[i].promptstring;
-				unsetresources[i].timeout = resources[i].timeout;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}
@@ -477,5 +506,9 @@ public class systemuser extends base_resource
 		public static final String User = "User";
 		public static final String Group = "Group";
 		public static final String Global = "Global";
+	}
+	public static class externalauthEnum {
+		public static final String ENABLED = "ENABLED";
+		public static final String DISABLED = "DISABLED";
 	}
 }

@@ -16,8 +16,8 @@
 
 package com.citrix.netscaler.nitro.resource.config.ssl;
 
-import com.citrix.netscaler.nitro.resource.config.ssl.sslservice_sslcipher_binding;
 import com.citrix.netscaler.nitro.resource.config.ssl.sslservice_sslpolicy_binding;
+import com.citrix.netscaler.nitro.resource.config.ssl.sslservice_sslcipher_binding;
 import com.citrix.netscaler.nitro.resource.config.ssl.sslservice_sslcertkey_binding;
 import com.citrix.netscaler.nitro.resource.config.ssl.sslservice_sslciphersuite_binding;
 import com.citrix.netscaler.nitro.resource.base.*;
@@ -37,14 +37,14 @@ class sslservice_binding_response extends base_response
 public class sslservice_binding extends base_resource
 {
 	private String servicename;
-	private sslservice_sslcipher_binding	sslservice_sslcipher_binding[] = null;
 	private sslservice_sslpolicy_binding	sslservice_sslpolicy_binding[] = null;
+	private sslservice_sslcipher_binding	sslservice_sslcipher_binding[] = null;
 	private sslservice_sslcertkey_binding	sslservice_sslcertkey_binding[] = null;
 	private sslservice_sslciphersuite_binding	sslservice_sslciphersuite_binding[] = null;
 
 	/**
 	* <pre>
-	* The name of the SSL service.<br> Minimum length =  1
+	* Name of the SSL service for which to show detailed information.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_servicename(String servicename) throws Exception{
@@ -53,7 +53,7 @@ public class sslservice_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the SSL service.<br> Minimum length =  1
+	* Name of the SSL service for which to show detailed information.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_servicename() throws Exception {

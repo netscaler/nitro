@@ -51,7 +51,7 @@ public class gslbservice_lbmonitor_binding extends base_resource
 
 	/**
 	* <pre>
-	* The weight for the specified monitor.<br> Minimum value =  1<br> Maximum value =  100
+	* Weight to assign to the monitor-service binding. A larger number specifies a greater weight. Contributes to the monitoring threshold, which determines the state of the service.<br> Minimum value =  1<br> Maximum value =  100
 	* </pre>
 	*/
 	public void set_weight(long weight) throws Exception {
@@ -60,7 +60,7 @@ public class gslbservice_lbmonitor_binding extends base_resource
 
 	/**
 	* <pre>
-	* The weight for the specified monitor.<br> Minimum value =  1<br> Maximum value =  100
+	* Weight to assign to the monitor-service binding. A larger number specifies a greater weight. Contributes to the monitoring threshold, which determines the state of the service.<br> Minimum value =  1<br> Maximum value =  100
 	* </pre>
 	*/
 	public void set_weight(Long weight) throws Exception{
@@ -69,7 +69,7 @@ public class gslbservice_lbmonitor_binding extends base_resource
 
 	/**
 	* <pre>
-	* The weight for the specified monitor.<br> Minimum value =  1<br> Maximum value =  100
+	* Weight to assign to the monitor-service binding. A larger number specifies a greater weight. Contributes to the monitoring threshold, which determines the state of the service.<br> Minimum value =  1<br> Maximum value =  100
 	* </pre>
 	*/
 	public Long get_weight() throws Exception {
@@ -78,7 +78,7 @@ public class gslbservice_lbmonitor_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the gslb service.<br> Minimum length =  1
+	* Name of the GSLB service.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_servicename(String servicename) throws Exception{
@@ -87,7 +87,7 @@ public class gslbservice_lbmonitor_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the gslb service.<br> Minimum length =  1
+	* Name of the GSLB service.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_servicename() throws Exception {
@@ -168,7 +168,7 @@ public class gslbservice_lbmonitor_binding extends base_resource
 
 	/**
 	* <pre>
-	* The running state of the monitor on this service.<br> Possible values = UP, DOWN, UNKNOWN, BUSY, OUT OF SERVICE, GOING OUT OF SERVICE, DOWN WHEN GOING OUT OF SERVICE, NS_EMPTY_STR
+	* The running state of the monitor on this service.<br> Possible values = UP, DOWN, UNKNOWN, BUSY, OUT OF SERVICE, GOING OUT OF SERVICE, DOWN WHEN GOING OUT OF SERVICE, NS_EMPTY_STR, Unknown, DISABLED
 	* </pre>
 	*/
 	public String get_monitor_state() throws Exception {
@@ -403,6 +403,8 @@ public class gslbservice_lbmonitor_binding extends base_resource
 		public static final String GOING_OUT_OF_SERVICE = "GOING OUT OF SERVICE";
 		public static final String DOWN_WHEN_GOING_OUT_OF_SERVICE = "DOWN WHEN GOING OUT OF SERVICE";
 		public static final String NS_EMPTY_STR = "NS_EMPTY_STR";
+		public static final String Unknown = "Unknown";
+		public static final String DISABLED = "DISABLED";
 	}
 	public static class monstateEnum {
 		public static final String ENABLED = "ENABLED";

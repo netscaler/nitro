@@ -16,10 +16,10 @@
 
 package com.citrix.netscaler.nitro.resource.config.vpn;
 
-import com.citrix.netscaler.nitro.resource.config.vpn.vpntrafficpolicy_aaauser_binding;
-import com.citrix.netscaler.nitro.resource.config.vpn.vpntrafficpolicy_vpnglobal_binding;
 import com.citrix.netscaler.nitro.resource.config.vpn.vpntrafficpolicy_vpnvserver_binding;
 import com.citrix.netscaler.nitro.resource.config.vpn.vpntrafficpolicy_aaagroup_binding;
+import com.citrix.netscaler.nitro.resource.config.vpn.vpntrafficpolicy_aaauser_binding;
+import com.citrix.netscaler.nitro.resource.config.vpn.vpntrafficpolicy_vpnglobal_binding;
 import com.citrix.netscaler.nitro.resource.base.*;
 import com.citrix.netscaler.nitro.service.nitro_service;
 import com.citrix.netscaler.nitro.service.options;
@@ -37,14 +37,14 @@ class vpntrafficpolicy_binding_response extends base_response
 public class vpntrafficpolicy_binding extends base_resource
 {
 	private String name;
-	private vpntrafficpolicy_aaauser_binding	vpntrafficpolicy_aaauser_binding[] = null;
-	private vpntrafficpolicy_vpnglobal_binding	vpntrafficpolicy_vpnglobal_binding[] = null;
 	private vpntrafficpolicy_vpnvserver_binding	vpntrafficpolicy_vpnvserver_binding[] = null;
 	private vpntrafficpolicy_aaagroup_binding	vpntrafficpolicy_aaagroup_binding[] = null;
+	private vpntrafficpolicy_aaauser_binding	vpntrafficpolicy_aaauser_binding[] = null;
+	private vpntrafficpolicy_vpnglobal_binding	vpntrafficpolicy_vpnglobal_binding[] = null;
 
 	/**
 	* <pre>
-	* The name of the vpn trafiic policy.<br> Minimum length =  1
+	* Name of the traffic policy for which to display detailed information.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -53,7 +53,7 @@ public class vpntrafficpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the vpn trafiic policy.<br> Minimum length =  1
+	* Name of the traffic policy for which to display detailed information.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {

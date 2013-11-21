@@ -45,7 +45,9 @@ public class crpolicy extends base_resource
 
 	/**
 	* <pre>
-	* The name of the cache redirection policy.<br> Minimum length =  1
+	* Name for the cache redirection policy. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at sign (@), equal sign (=), and hyphen (-) characters. Cannot be changed after the policy is created.
+The following requirement applies only to the NetScaler CLI: 
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, “my policy” or ‘my policy’).<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_policyname(String policyname) throws Exception{
@@ -54,7 +56,9 @@ public class crpolicy extends base_resource
 
 	/**
 	* <pre>
-	* The name of the cache redirection policy.<br> Minimum length =  1
+	* Name for the cache redirection policy. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at sign (@), equal sign (=), and hyphen (-) characters. Cannot be changed after the policy is created.
+The following requirement applies only to the NetScaler CLI: 
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, “my policy” or ‘my policy’).<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_policyname() throws Exception {
@@ -63,12 +67,12 @@ public class crpolicy extends base_resource
 
 	/**
 	* <pre>
-	* A condition defined by an expression. When the condition is valid, the request is directed to the origin server.
-Expression logic is: expression names, separated by the logical operators || and &&, and possibly grouped using parenthesis.
-Note:	If the expression contains blanks (for example, between an expression name and a logical operator), then the entire argument must be enclosed in double quotes.
-The following are valid expressions:
-l	ns_ext_cgi||ns_ext_asp
-2	ns_non_get && (ns_header_cookie||ns_header_pragma).
+	* Expression, or name of a named expression, against which traffic is evaluated. Written in the classic syntax.
+Note:Maximum length of a string literal in the expression is 255 characters. A longer string can be split into smaller strings of up to 255 characters each, and the smaller strings concatenated with the + operator. For example, you can create a 500-character string as follows: "<string of 255 characters>" + "<string of 245 characters>"
+The following requirements apply only to the NetScaler CLI:
+*  If the expression includes one or more spaces, enclose the entire expression in double quotation marks.
+*  If the expression itself includes double quotation marks, escape the quotations by using the \ character. 
+*  Alternatively, you can use single quotation marks to enclose the rule, in which case you do not have to escape the double quotation marks.
 	* </pre>
 	*/
 	public void set_rule(String rule) throws Exception{
@@ -77,12 +81,12 @@ l	ns_ext_cgi||ns_ext_asp
 
 	/**
 	* <pre>
-	* A condition defined by an expression. When the condition is valid, the request is directed to the origin server.
-Expression logic is: expression names, separated by the logical operators || and &&, and possibly grouped using parenthesis.
-Note:	If the expression contains blanks (for example, between an expression name and a logical operator), then the entire argument must be enclosed in double quotes.
-The following are valid expressions:
-l	ns_ext_cgi||ns_ext_asp
-2	ns_non_get && (ns_header_cookie||ns_header_pragma).
+	* Expression, or name of a named expression, against which traffic is evaluated. Written in the classic syntax.
+Note:Maximum length of a string literal in the expression is 255 characters. A longer string can be split into smaller strings of up to 255 characters each, and the smaller strings concatenated with the + operator. For example, you can create a 500-character string as follows: "<string of 255 characters>" + "<string of 245 characters>"
+The following requirements apply only to the NetScaler CLI:
+*  If the expression includes one or more spaces, enclose the entire expression in double quotation marks.
+*  If the expression itself includes double quotation marks, escape the quotations by using the \ character. 
+*  Alternatively, you can use single quotation marks to enclose the rule, in which case you do not have to escape the double quotation marks.
 	* </pre>
 	*/
 	public String get_rule() throws Exception {

@@ -38,7 +38,7 @@ public class policystringmap extends base_resource
 
 	/**
 	* <pre>
-	* The name of the string map that will be created.<br> Minimum length =  1
+	* Unique name for the string map. Not case sensitive. Must begin with an ASCII letter or underscore (_) character, and must consist only of ASCII alphanumeric or underscore characters. Must not begin with 're' or 'xp' or be a word reserved for use as a default syntax expression qualifier prefix (such as HTTP) or enumeration value (such as ASCII). Must not be the name of an existing named expression, pattern set, dataset, string map, or HTTP callout.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -47,7 +47,7 @@ public class policystringmap extends base_resource
 
 	/**
 	* <pre>
-	* The name of the string map that will be created.<br> Minimum length =  1
+	* Unique name for the string map. Not case sensitive. Must begin with an ASCII letter or underscore (_) character, and must consist only of ASCII alphanumeric or underscore characters. Must not begin with 're' or 'xp' or be a word reserved for use as a default syntax expression qualifier prefix (such as HTTP) or enumeration value (such as ASCII). Must not be the name of an existing named expression, pattern set, dataset, string map, or HTTP callout.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -56,7 +56,7 @@ public class policystringmap extends base_resource
 
 	/**
 	* <pre>
-	* Comments associated with this string map.
+	* Comments associated with the string map.
 	* </pre>
 	*/
 	public void set_comment(String comment) throws Exception{
@@ -65,7 +65,7 @@ public class policystringmap extends base_resource
 
 	/**
 	* <pre>
-	* Comments associated with this string map.
+	* Comments associated with the string map.
 	* </pre>
 	*/
 	public String get_comment() throws Exception {
@@ -214,20 +214,9 @@ public class policystringmap extends base_resource
 	* Use this API to unset the properties of policystringmap resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String name, String args[]) throws Exception {
-		policystringmap unsetresource = new policystringmap();
-		unsetresource.name = name;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of policystringmap resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, policystringmap resource, String[] args) throws Exception{
 		policystringmap unsetresource = new policystringmap();
 		unsetresource.name = resource.name;
-		unsetresource.comment = resource.comment;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -259,7 +248,6 @@ public class policystringmap extends base_resource
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new policystringmap();
 				unsetresources[i].name = resources[i].name;
-				unsetresources[i].comment = resources[i].comment;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}

@@ -26,7 +26,7 @@ public class servicegroup_args
 
 	/**
 	* <pre>
-	* Include a summary of the members in a group too.
+	* Display the members of the listed service groups in addition to their settings. Can be specified when no service group name is provided in the command. In that case, the details displayed for each service group are identical to the details displayed when a service group name is provided, except that bound monitors are not displayed.
 	* </pre>
 	*/
 	public void set_includemembers(boolean includemembers) throws Exception {
@@ -35,7 +35,7 @@ public class servicegroup_args
 
 	/**
 	* <pre>
-	* Include a summary of the members in a group too.
+	* Display the members of the listed service groups in addition to their settings. Can be specified when no service group name is provided in the command. In that case, the details displayed for each service group are identical to the details displayed when a service group name is provided, except that bound monitors are not displayed.
 	* </pre>
 	*/
 	public void set_includemembers(Boolean includemembers) throws Exception{
@@ -44,7 +44,7 @@ public class servicegroup_args
 
 	/**
 	* <pre>
-	* Include a summary of the members in a group too.
+	* Display the members of the listed service groups in addition to their settings. Can be specified when no service group name is provided in the command. In that case, the details displayed for each service group are identical to the details displayed when a service group name is provided, except that bound monitors are not displayed.
 	* </pre>
 	*/
 	public Boolean get_includemembers() throws Exception {

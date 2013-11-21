@@ -46,13 +46,12 @@ public class cachepolicy extends base_resource
 	private Long hits;
 	private Long undefhits;
 	private Long flags;
-	private String precededefrules;
 	private String[] builtin;
 	private Long __count;
 
 	/**
 	* <pre>
-	* The name of the new Integrated Cache policy.<br> Minimum length =  1
+	* Name for the policy. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Can be changed after the policy is created.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_policyname(String policyname) throws Exception{
@@ -61,7 +60,7 @@ public class cachepolicy extends base_resource
 
 	/**
 	* <pre>
-	* The name of the new Integrated Cache policy.<br> Minimum length =  1
+	* Name for the policy. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Can be changed after the policy is created.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_policyname() throws Exception {
@@ -70,13 +69,13 @@ public class cachepolicy extends base_resource
 
 	/**
 	* <pre>
-	* The request/response rule that will trigger the given action.
-The only actions you can specify with a request rule are: MAY_CACHE, MAY_NOCACHE, and INVAL.
-You specify a rule using a single expression or a logical combination of expressions (called a compound expression). You can combine xpressions using the && and || operators. For more information on creating expressions, refer to the add expression CLI command.
-Note:	If a compound expression contains blanks (for example, between an expression name and a logical operator), then the entire argument must be enclosed in double quotes.
-The following are examples of valid expressions:
-	ns_ext_cgi||ns_ext_asp
-	"ns_non_get && (ns_header_cookie||ns_header_pragma)".
+	* Expression against which the traffic is evaluated.
+Note:
+Maximum length of a string literal in the expression is 255 characters. A longer string can be split into smaller strings of up to 255 characters each, and the smaller strings concatenated with the + operator. For example, you can create a 500-character string as follows: '"<string of 255 characters>" + "<string of 245 characters>"'
+The following requirements apply only to the NetScaler CLI:
+* If the expression includes one or more spaces, enclose the entire expression in double quotation marks.
+* If the expression itself includes double quotation marks, escape the quotations by using the \ character. 
+* Alternatively, you can use single quotation marks to enclose the rule, in which case you do not have to escape the double quotation marks.
 	* </pre>
 	*/
 	public void set_rule(String rule) throws Exception{
@@ -85,13 +84,13 @@ The following are examples of valid expressions:
 
 	/**
 	* <pre>
-	* The request/response rule that will trigger the given action.
-The only actions you can specify with a request rule are: MAY_CACHE, MAY_NOCACHE, and INVAL.
-You specify a rule using a single expression or a logical combination of expressions (called a compound expression). You can combine xpressions using the && and || operators. For more information on creating expressions, refer to the add expression CLI command.
-Note:	If a compound expression contains blanks (for example, between an expression name and a logical operator), then the entire argument must be enclosed in double quotes.
-The following are examples of valid expressions:
-	ns_ext_cgi||ns_ext_asp
-	"ns_non_get && (ns_header_cookie||ns_header_pragma)".
+	* Expression against which the traffic is evaluated.
+Note:
+Maximum length of a string literal in the expression is 255 characters. A longer string can be split into smaller strings of up to 255 characters each, and the smaller strings concatenated with the + operator. For example, you can create a 500-character string as follows: '"<string of 255 characters>" + "<string of 245 characters>"'
+The following requirements apply only to the NetScaler CLI:
+* If the expression includes one or more spaces, enclose the entire expression in double quotation marks.
+* If the expression itself includes double quotation marks, escape the quotations by using the \ character. 
+* Alternatively, you can use single quotation marks to enclose the rule, in which case you do not have to escape the double quotation marks.
 	* </pre>
 	*/
 	public String get_rule() throws Exception {
@@ -100,7 +99,10 @@ The following are examples of valid expressions:
 
 	/**
 	* <pre>
-	* The integrated cache action to be applied when the system finds content that matches the rules.<br> Possible values = CACHE, NOCACHE, MAY_CACHE, MAY_NOCACHE, INVAL
+	* Action to apply to content that matches the policy. 
+* CACHE or MAY_CACHE action - positive cachability policy
+* NOCACHE or MAY_NOCACHE action - negative cachability policy
+* INVAL action - Dynamic Invalidation Policy.<br> Possible values = CACHE, NOCACHE, MAY_CACHE, MAY_NOCACHE, INVAL
 	* </pre>
 	*/
 	public void set_action(String action) throws Exception{
@@ -109,7 +111,10 @@ The following are examples of valid expressions:
 
 	/**
 	* <pre>
-	* The integrated cache action to be applied when the system finds content that matches the rules.<br> Possible values = CACHE, NOCACHE, MAY_CACHE, MAY_NOCACHE, INVAL
+	* Action to apply to content that matches the policy. 
+* CACHE or MAY_CACHE action - positive cachability policy
+* NOCACHE or MAY_NOCACHE action - negative cachability policy
+* INVAL action - Dynamic Invalidation Policy.<br> Possible values = CACHE, NOCACHE, MAY_CACHE, MAY_NOCACHE, INVAL
 	* </pre>
 	*/
 	public String get_action() throws Exception {
@@ -118,7 +123,7 @@ The following are examples of valid expressions:
 
 	/**
 	* <pre>
-	* The content group where the object will be stored when the action directive is CACHE.<br> Minimum length =  1
+	* Name of the content group in which to store the object when the final result of policy evaluation is CACHE. The content group must exist before being mentioned here. Use the "show cache contentgroup" command to view the list of existing content groups.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_storeingroup(String storeingroup) throws Exception{
@@ -127,7 +132,7 @@ The following are examples of valid expressions:
 
 	/**
 	* <pre>
-	* The content group where the object will be stored when the action directive is CACHE.<br> Minimum length =  1
+	* Name of the content group in which to store the object when the final result of policy evaluation is CACHE. The content group must exist before being mentioned here. Use the "show cache contentgroup" command to view the list of existing content groups.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_storeingroup() throws Exception {
@@ -136,7 +141,7 @@ The following are examples of valid expressions:
 
 	/**
 	* <pre>
-	* The content group(s) to be invalidated when the action directive is INVAL.<br> Minimum length =  1
+	* Content group(s) to be invalidated when the INVAL action is applied. Maximum number of content groups that can be specified is 16.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_invalgroups(String[] invalgroups) throws Exception{
@@ -145,7 +150,7 @@ The following are examples of valid expressions:
 
 	/**
 	* <pre>
-	* The content group(s) to be invalidated when the action directive is INVAL.<br> Minimum length =  1
+	* Content group(s) to be invalidated when the INVAL action is applied. Maximum number of content groups that can be specified is 16.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String[] get_invalgroups() throws Exception {
@@ -154,7 +159,7 @@ The following are examples of valid expressions:
 
 	/**
 	* <pre>
-	* The content group(s) where the objects will be invalidated when the action directive is INVAL.<br> Minimum length =  1
+	* Content groups(s) in which the objects will be invalidated if the action is INVAL.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_invalobjects(String[] invalobjects) throws Exception{
@@ -163,7 +168,7 @@ The following are examples of valid expressions:
 
 	/**
 	* <pre>
-	* The content group(s) where the objects will be invalidated when the action directive is INVAL.<br> Minimum length =  1
+	* Content groups(s) in which the objects will be invalidated if the action is INVAL.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String[] get_invalobjects() throws Exception {
@@ -172,7 +177,7 @@ The following are examples of valid expressions:
 
 	/**
 	* <pre>
-	* A CACHE action, which is used by the policy when the rule evaluation is undefined. The undef action can be NOCACHE or RESET.<br> Possible values = NOCACHE, RESET
+	* Action to be performed when the result of rule evaluation is undefined.<br> Possible values = NOCACHE, RESET
 	* </pre>
 	*/
 	public void set_undefaction(String undefaction) throws Exception{
@@ -181,7 +186,7 @@ The following are examples of valid expressions:
 
 	/**
 	* <pre>
-	* A CACHE action, which is used by the policy when the rule evaluation is undefined. The undef action can be NOCACHE or RESET.<br> Possible values = NOCACHE, RESET
+	* Action to be performed when the result of rule evaluation is undefined.<br> Possible values = NOCACHE, RESET
 	* </pre>
 	*/
 	public String get_undefaction() throws Exception {
@@ -190,7 +195,7 @@ The following are examples of valid expressions:
 
 	/**
 	* <pre>
-	* The new name of the cache policy.<br> Minimum length =  1
+	* New name for the cache policy. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_newname(String newname) throws Exception{
@@ -199,7 +204,7 @@ The following are examples of valid expressions:
 
 	/**
 	* <pre>
-	* The new name of the cache policy.<br> Minimum length =  1
+	* New name for the cache policy. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_newname() throws Exception {
@@ -231,15 +236,6 @@ The following are examples of valid expressions:
 	*/
 	public Long get_flags() throws Exception {
 		return this.flags;
-	}
-
-	/**
-	* <pre>
-	* Override default request/response cacheability rules.<br> Possible values = YES, NO
-	* </pre>
-	*/
-	public String get_precededefrules() throws Exception {
-		return this.precededefrules;
 	}
 
 	/**
@@ -413,23 +409,9 @@ The following are examples of valid expressions:
 	* Use this API to unset the properties of cachepolicy resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String policyname, String args[]) throws Exception {
-		cachepolicy unsetresource = new cachepolicy();
-		unsetresource.policyname = policyname;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of cachepolicy resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, cachepolicy resource, String[] args) throws Exception{
 		cachepolicy unsetresource = new cachepolicy();
 		unsetresource.policyname = resource.policyname;
-		unsetresource.storeingroup = resource.storeingroup;
-		unsetresource.invalgroups = resource.invalgroups;
-		unsetresource.invalobjects = resource.invalobjects;
-		unsetresource.undefaction = resource.undefaction;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -461,10 +443,6 @@ The following are examples of valid expressions:
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new cachepolicy();
 				unsetresources[i].policyname = resources[i].policyname;
-				unsetresources[i].storeingroup = resources[i].storeingroup;
-				unsetresources[i].invalgroups = resources[i].invalgroups;
-				unsetresources[i].invalobjects = resources[i].invalobjects;
-				unsetresources[i].undefaction = resources[i].undefaction;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}
@@ -609,10 +587,6 @@ The following are examples of valid expressions:
 	public static class undefactionEnum {
 		public static final String NOCACHE = "NOCACHE";
 		public static final String RESET = "RESET";
-	}
-	public static class precededefrulesEnum {
-		public static final String YES = "YES";
-		public static final String NO = "NO";
 	}
 	public static class actionEnum {
 		public static final String CACHE = "CACHE";

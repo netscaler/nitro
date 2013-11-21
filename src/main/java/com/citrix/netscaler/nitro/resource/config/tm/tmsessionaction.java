@@ -42,6 +42,7 @@ public class tmsessionaction extends base_resource
 	private String kcdaccount;
 	private String persistentcookie;
 	private Long persistentcookievalidity;
+	private String homepage;
 
 	//------- Read only Parameter ---------;
 
@@ -50,7 +51,10 @@ public class tmsessionaction extends base_resource
 
 	/**
 	* <pre>
-	* The name for the new tm session action.<br> Minimum length =  1
+	* Name for the session action. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Cannot be changed after a session action is created.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my action" or 'my action').<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -59,7 +63,10 @@ public class tmsessionaction extends base_resource
 
 	/**
 	* <pre>
-	* The name for the new tm session action.<br> Minimum length =  1
+	* Name for the session action. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Cannot be changed after a session action is created.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my action" or 'my action').<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -68,7 +75,7 @@ public class tmsessionaction extends base_resource
 
 	/**
 	* <pre>
-	* The session timeout, in minutes, to be set by the action.<br> Minimum value =  1
+	* Session timeout, in minutes. If there is no traffic during the timeout period, the user is disconnected and must reauthenticate to access intranet resources.<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_sesstimeout(long sesstimeout) throws Exception {
@@ -77,7 +84,7 @@ public class tmsessionaction extends base_resource
 
 	/**
 	* <pre>
-	* The session timeout, in minutes, to be set by the action.<br> Minimum value =  1
+	* Session timeout, in minutes. If there is no traffic during the timeout period, the user is disconnected and must reauthenticate to access intranet resources.<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_sesstimeout(Long sesstimeout) throws Exception{
@@ -86,7 +93,7 @@ public class tmsessionaction extends base_resource
 
 	/**
 	* <pre>
-	* The session timeout, in minutes, to be set by the action.<br> Minimum value =  1
+	* Session timeout, in minutes. If there is no traffic during the timeout period, the user is disconnected and must reauthenticate to access intranet resources.<br> Minimum value =  1
 	* </pre>
 	*/
 	public Long get_sesstimeout() throws Exception {
@@ -95,7 +102,7 @@ public class tmsessionaction extends base_resource
 
 	/**
 	* <pre>
-	* This toggles the default authorization action to either ALLOW or DENY.<br> Possible values = ALLOW, DENY
+	* Allow or deny access to content for which there is no specific authorization policy.<br> Possible values = ALLOW, DENY
 	* </pre>
 	*/
 	public void set_defaultauthorizationaction(String defaultauthorizationaction) throws Exception{
@@ -104,7 +111,7 @@ public class tmsessionaction extends base_resource
 
 	/**
 	* <pre>
-	* This toggles the default authorization action to either ALLOW or DENY.<br> Possible values = ALLOW, DENY
+	* Allow or deny access to content for which there is no specific authorization policy.<br> Possible values = ALLOW, DENY
 	* </pre>
 	*/
 	public String get_defaultauthorizationaction() throws Exception {
@@ -113,7 +120,7 @@ public class tmsessionaction extends base_resource
 
 	/**
 	* <pre>
-	* Enables or disables the use of Single Sign-on for the session.<br> Default value: OFF<br> Possible values = ON, OFF
+	* Use single sign-on (SSO) to log users on to all web applications automatically after they authenticate, or pass users to the web application logon page to authenticate to each application individually.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_sso(String sso) throws Exception{
@@ -122,7 +129,7 @@ public class tmsessionaction extends base_resource
 
 	/**
 	* <pre>
-	* Enables or disables the use of Single Sign-on for the session.<br> Default value: OFF<br> Possible values = ON, OFF
+	* Use single sign-on (SSO) to log users on to all web applications automatically after they authenticate, or pass users to the web application logon page to authenticate to each application individually.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_sso() throws Exception {
@@ -131,7 +138,7 @@ public class tmsessionaction extends base_resource
 
 	/**
 	* <pre>
-	* The set of user credentials (primary or secondary) to use for Single Sign-On.<br> Possible values = PRIMARY, SECONDARY
+	* Use the primary or secondary authentication credentials for single sign-on (SSO).<br> Possible values = PRIMARY, SECONDARY
 	* </pre>
 	*/
 	public void set_ssocredential(String ssocredential) throws Exception{
@@ -140,7 +147,7 @@ public class tmsessionaction extends base_resource
 
 	/**
 	* <pre>
-	* The set of user credentials (primary or secondary) to use for Single Sign-On.<br> Possible values = PRIMARY, SECONDARY
+	* Use the primary or secondary authentication credentials for single sign-on (SSO).<br> Possible values = PRIMARY, SECONDARY
 	* </pre>
 	*/
 	public String get_ssocredential() throws Exception {
@@ -149,7 +156,7 @@ public class tmsessionaction extends base_resource
 
 	/**
 	* <pre>
-	* NT domain to use with SSO.<br> Minimum length =  1<br> Maximum length =  32
+	* Domain to use for single sign-on (SSO).<br> Minimum length =  1<br> Maximum length =  32
 	* </pre>
 	*/
 	public void set_ssodomain(String ssodomain) throws Exception{
@@ -158,7 +165,7 @@ public class tmsessionaction extends base_resource
 
 	/**
 	* <pre>
-	* NT domain to use with SSO.<br> Minimum length =  1<br> Maximum length =  32
+	* Domain to use for single sign-on (SSO).<br> Minimum length =  1<br> Maximum length =  32
 	* </pre>
 	*/
 	public String get_ssodomain() throws Exception {
@@ -167,7 +174,7 @@ public class tmsessionaction extends base_resource
 
 	/**
 	* <pre>
-	* whether the session cookie will be httpOnly or not.<br> Possible values = YES, NO
+	* Allow only an HTTP session cookie, in which case the cookie cannot be accessed by scripts.<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public void set_httponlycookie(String httponlycookie) throws Exception{
@@ -176,7 +183,7 @@ public class tmsessionaction extends base_resource
 
 	/**
 	* <pre>
-	* whether the session cookie will be httpOnly or not.<br> Possible values = YES, NO
+	* Allow only an HTTP session cookie, in which case the cookie cannot be accessed by scripts.<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public String get_httponlycookie() throws Exception {
@@ -203,7 +210,8 @@ public class tmsessionaction extends base_resource
 
 	/**
 	* <pre>
-	* Whether persistent cookie should be allowed on this TM session.<br> Possible values = ON, OFF
+	* Enable or disable persistent SSO cookies for the traffic management (TM) session. A persistent cookie remains on the user device and is sent with each HTTP request. The cookie becomes stale if the session ends. This setting is overwritten if a traffic action sets persistent cookie to OFF. 
+Note: If persistent cookie is enabled, make sure you set the persistent cookie validity.<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_persistentcookie(String persistentcookie) throws Exception{
@@ -212,7 +220,8 @@ public class tmsessionaction extends base_resource
 
 	/**
 	* <pre>
-	* Whether persistent cookie should be allowed on this TM session.<br> Possible values = ON, OFF
+	* Enable or disable persistent SSO cookies for the traffic management (TM) session. A persistent cookie remains on the user device and is sent with each HTTP request. The cookie becomes stale if the session ends. This setting is overwritten if a traffic action sets persistent cookie to OFF. 
+Note: If persistent cookie is enabled, make sure you set the persistent cookie validity.<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_persistentcookie() throws Exception {
@@ -221,7 +230,7 @@ public class tmsessionaction extends base_resource
 
 	/**
 	* <pre>
-	* Number of minutes for which the persistent cookie would be valid.<br> Minimum value =  1
+	* Integer specifying the number of minutes for which the persistent cookie remains valid. Can be set only if the persistent cookie setting is enabled.<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_persistentcookievalidity(long persistentcookievalidity) throws Exception {
@@ -230,7 +239,7 @@ public class tmsessionaction extends base_resource
 
 	/**
 	* <pre>
-	* Number of minutes for which the persistent cookie would be valid.<br> Minimum value =  1
+	* Integer specifying the number of minutes for which the persistent cookie remains valid. Can be set only if the persistent cookie setting is enabled.<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_persistentcookievalidity(Long persistentcookievalidity) throws Exception{
@@ -239,11 +248,29 @@ public class tmsessionaction extends base_resource
 
 	/**
 	* <pre>
-	* Number of minutes for which the persistent cookie would be valid.<br> Minimum value =  1
+	* Integer specifying the number of minutes for which the persistent cookie remains valid. Can be set only if the persistent cookie setting is enabled.<br> Minimum value =  1
 	* </pre>
 	*/
 	public Long get_persistentcookievalidity() throws Exception {
 		return this.persistentcookievalidity;
+	}
+
+	/**
+	* <pre>
+	* Web address of the home page that a user is displayed when authentication vserver is bookmarked and used to login.
+	* </pre>
+	*/
+	public void set_homepage(String homepage) throws Exception{
+		this.homepage = homepage;
+	}
+
+	/**
+	* <pre>
+	* Web address of the home page that a user is displayed when authentication vserver is bookmarked and used to login.
+	* </pre>
+	*/
+	public String get_homepage() throws Exception {
+		return this.homepage;
 	}
 
 	/**
@@ -304,6 +331,7 @@ public class tmsessionaction extends base_resource
 		addresource.kcdaccount = resource.kcdaccount;
 		addresource.persistentcookie = resource.persistentcookie;
 		addresource.persistentcookievalidity = resource.persistentcookievalidity;
+		addresource.homepage = resource.homepage;
 		return addresource.add_resource(client);
 	}
 
@@ -326,6 +354,7 @@ public class tmsessionaction extends base_resource
 				addresources[i].kcdaccount = resources[i].kcdaccount;
 				addresources[i].persistentcookie = resources[i].persistentcookie;
 				addresources[i].persistentcookievalidity = resources[i].persistentcookievalidity;
+				addresources[i].homepage = resources[i].homepage;
 			}
 			result = add_bulk_request(client, addresources);
 		}
@@ -397,6 +426,7 @@ public class tmsessionaction extends base_resource
 		updateresource.httponlycookie = resource.httponlycookie;
 		updateresource.persistentcookie = resource.persistentcookie;
 		updateresource.persistentcookievalidity = resource.persistentcookievalidity;
+		updateresource.homepage = resource.homepage;
 		return updateresource.update_resource(client);
 	}
 
@@ -419,6 +449,7 @@ public class tmsessionaction extends base_resource
 				updateresources[i].httponlycookie = resources[i].httponlycookie;
 				updateresources[i].persistentcookie = resources[i].persistentcookie;
 				updateresources[i].persistentcookievalidity = resources[i].persistentcookievalidity;
+				updateresources[i].homepage = resources[i].homepage;
 			}
 			result = update_bulk_request(client, updateresources);
 		}
@@ -429,28 +460,9 @@ public class tmsessionaction extends base_resource
 	* Use this API to unset the properties of tmsessionaction resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String name, String args[]) throws Exception {
-		tmsessionaction unsetresource = new tmsessionaction();
-		unsetresource.name = name;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of tmsessionaction resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, tmsessionaction resource, String[] args) throws Exception{
 		tmsessionaction unsetresource = new tmsessionaction();
 		unsetresource.name = resource.name;
-		unsetresource.sesstimeout = resource.sesstimeout;
-		unsetresource.defaultauthorizationaction = resource.defaultauthorizationaction;
-		unsetresource.sso = resource.sso;
-		unsetresource.ssocredential = resource.ssocredential;
-		unsetresource.ssodomain = resource.ssodomain;
-		unsetresource.kcdaccount = resource.kcdaccount;
-		unsetresource.httponlycookie = resource.httponlycookie;
-		unsetresource.persistentcookie = resource.persistentcookie;
-		unsetresource.persistentcookievalidity = resource.persistentcookievalidity;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -482,15 +494,6 @@ public class tmsessionaction extends base_resource
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new tmsessionaction();
 				unsetresources[i].name = resources[i].name;
-				unsetresources[i].sesstimeout = resources[i].sesstimeout;
-				unsetresources[i].defaultauthorizationaction = resources[i].defaultauthorizationaction;
-				unsetresources[i].sso = resources[i].sso;
-				unsetresources[i].ssocredential = resources[i].ssocredential;
-				unsetresources[i].ssodomain = resources[i].ssodomain;
-				unsetresources[i].kcdaccount = resources[i].kcdaccount;
-				unsetresources[i].httponlycookie = resources[i].httponlycookie;
-				unsetresources[i].persistentcookie = resources[i].persistentcookie;
-				unsetresources[i].persistentcookievalidity = resources[i].persistentcookievalidity;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}

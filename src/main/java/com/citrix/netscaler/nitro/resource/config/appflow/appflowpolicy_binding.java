@@ -17,9 +17,9 @@
 package com.citrix.netscaler.nitro.resource.config.appflow;
 
 import com.citrix.netscaler.nitro.resource.config.appflow.appflowpolicy_csvserver_binding;
+import com.citrix.netscaler.nitro.resource.config.appflow.appflowpolicy_appflowpolicylabel_binding;
 import com.citrix.netscaler.nitro.resource.config.appflow.appflowpolicy_lbvserver_binding;
 import com.citrix.netscaler.nitro.resource.config.appflow.appflowpolicy_appflowglobal_binding;
-import com.citrix.netscaler.nitro.resource.config.appflow.appflowpolicy_appflowpolicylabel_binding;
 import com.citrix.netscaler.nitro.resource.base.*;
 import com.citrix.netscaler.nitro.service.nitro_service;
 import com.citrix.netscaler.nitro.service.options;
@@ -38,13 +38,13 @@ public class appflowpolicy_binding extends base_resource
 {
 	private String name;
 	private appflowpolicy_csvserver_binding	appflowpolicy_csvserver_binding[] = null;
+	private appflowpolicy_appflowpolicylabel_binding	appflowpolicy_appflowpolicylabel_binding[] = null;
 	private appflowpolicy_lbvserver_binding	appflowpolicy_lbvserver_binding[] = null;
 	private appflowpolicy_appflowglobal_binding	appflowpolicy_appflowglobal_binding[] = null;
-	private appflowpolicy_appflowpolicylabel_binding	appflowpolicy_appflowpolicylabel_binding[] = null;
 
 	/**
 	* <pre>
-	* Name of an AppFlow policy.
+	* Name of the policy about which to display detailed information.
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -53,7 +53,7 @@ public class appflowpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Name of an AppFlow policy.
+	* Name of the policy about which to display detailed information.
 	* </pre>
 	*/
 	public String get_name() throws Exception {

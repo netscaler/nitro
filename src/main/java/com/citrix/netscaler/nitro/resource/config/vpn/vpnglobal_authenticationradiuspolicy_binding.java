@@ -35,6 +35,7 @@ public class vpnglobal_authenticationradiuspolicy_binding extends base_resource
 	private String policyname;
 	private Long priority;
 	private Boolean secondary;
+	private Boolean groupextraction;
 	private Long __count;
 
 	/**
@@ -84,7 +85,7 @@ public class vpnglobal_authenticationradiuspolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Bind the Authentication policy to the secondary chain. This provides for multifactor authentication in which a user must not only authenticate to a primary authentication server but also a server in the secondary chain.  User groups are aggregated across both authentication systems and while user may use different passwords in each system their username must be exactly the same.
+	* Bind the authentication policy as the secondary policy to use in a two-factor configuration. A user must then authenticate not only to a primary authentication server but also to a secondary authentication server. User groups are aggregated across both authentication servers. The user name must be exactly the same on both authentication servers, but the authentication servers can require different passwords.
 	* </pre>
 	*/
 	public void set_secondary(boolean secondary) throws Exception {
@@ -93,7 +94,7 @@ public class vpnglobal_authenticationradiuspolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Bind the Authentication policy to the secondary chain. This provides for multifactor authentication in which a user must not only authenticate to a primary authentication server but also a server in the secondary chain.  User groups are aggregated across both authentication systems and while user may use different passwords in each system their username must be exactly the same.
+	* Bind the authentication policy as the secondary policy to use in a two-factor configuration. A user must then authenticate not only to a primary authentication server but also to a secondary authentication server. User groups are aggregated across both authentication servers. The user name must be exactly the same on both authentication servers, but the authentication servers can require different passwords.
 	* </pre>
 	*/
 	public void set_secondary(Boolean secondary) throws Exception{
@@ -102,11 +103,38 @@ public class vpnglobal_authenticationradiuspolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Bind the Authentication policy to the secondary chain. This provides for multifactor authentication in which a user must not only authenticate to a primary authentication server but also a server in the secondary chain.  User groups are aggregated across both authentication systems and while user may use different passwords in each system their username must be exactly the same.
+	* Bind the authentication policy as the secondary policy to use in a two-factor configuration. A user must then authenticate not only to a primary authentication server but also to a secondary authentication server. User groups are aggregated across both authentication servers. The user name must be exactly the same on both authentication servers, but the authentication servers can require different passwords.
 	* </pre>
 	*/
 	public Boolean get_secondary() throws Exception {
 		return this.secondary;
+	}
+
+	/**
+	* <pre>
+	* Bind the Authentication policy to a tertiary chain which will be used only for group extraction.  The user will not authenticate against this server, and this will only be called it primary and/or secondary authentication has succeeded.
+	* </pre>
+	*/
+	public void set_groupextraction(boolean groupextraction) throws Exception {
+		this.groupextraction = new Boolean(groupextraction);
+	}
+
+	/**
+	* <pre>
+	* Bind the Authentication policy to a tertiary chain which will be used only for group extraction.  The user will not authenticate against this server, and this will only be called it primary and/or secondary authentication has succeeded.
+	* </pre>
+	*/
+	public void set_groupextraction(Boolean groupextraction) throws Exception{
+		this.groupextraction = groupextraction;
+	}
+
+	/**
+	* <pre>
+	* Bind the Authentication policy to a tertiary chain which will be used only for group extraction.  The user will not authenticate against this server, and this will only be called it primary and/or secondary authentication has succeeded.
+	* </pre>
+	*/
+	public Boolean get_groupextraction() throws Exception {
+		return this.groupextraction;
 	}
 
 	/**
@@ -148,6 +176,7 @@ public class vpnglobal_authenticationradiuspolicy_binding extends base_resource
 		updateresource.policyname = resource.policyname;
 		updateresource.priority = resource.priority;
 		updateresource.secondary = resource.secondary;
+		updateresource.groupextraction = resource.groupextraction;
 		return updateresource.update_resource(client);
 	}
 
@@ -160,6 +189,7 @@ public class vpnglobal_authenticationradiuspolicy_binding extends base_resource
 				updateresources[i].policyname = resources[i].policyname;
 				updateresources[i].priority = resources[i].priority;
 				updateresources[i].secondary = resources[i].secondary;
+				updateresources[i].groupextraction = resources[i].groupextraction;
 			}
 			result = update_bulk_request(client, updateresources);
 		}
@@ -170,6 +200,7 @@ public class vpnglobal_authenticationradiuspolicy_binding extends base_resource
 		vpnglobal_authenticationradiuspolicy_binding deleteresource = new vpnglobal_authenticationradiuspolicy_binding();
 		deleteresource.policyname = resource.policyname;
 		deleteresource.secondary = resource.secondary;
+		deleteresource.groupextraction = resource.groupextraction;
 		return deleteresource.delete_resource(client);
 	}
 
@@ -181,6 +212,7 @@ public class vpnglobal_authenticationradiuspolicy_binding extends base_resource
 				deleteresources[i] = new vpnglobal_authenticationradiuspolicy_binding();
 				deleteresources[i].policyname = resources[i].policyname;
 				deleteresources[i].secondary = resources[i].secondary;
+				deleteresources[i].groupextraction = resources[i].groupextraction;
 			}
 			result = delete_bulk_request(client, deleteresources);
 		}

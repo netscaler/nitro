@@ -23,8 +23,6 @@ import com.citrix.netscaler.nitro.service.nitro_service;
 import java.io.*;
 import java.util.*;
 
-import junit.framework.Assert;
-import org.junit.Test;
 
 import java.io.File;
 import java.io.InputStreamReader;
@@ -44,8 +42,7 @@ public class NitroTest {
 
     public void loadXMLFromString() throws Exception
     {
-		URL url = this.getClass().getResource("/config.xml");
-		File xmlFile = new File(url.getFile());
+		File xmlFile = new File("./config.xml");
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
         Document doc = builder.parse(xmlFile);
@@ -63,7 +60,6 @@ public class NitroTest {
 			);
     }
 
-	@Test
 	public void CRD_LbVserver() { // Create, Retreive, Delete LB Vserver
 		
 		try {
@@ -113,4 +109,9 @@ public class NitroTest {
 			throw new RuntimeException("Error Testing NITRO -> " +e.getMessage());
 		}
 	}
+	public static void main(String a[]) {
+	new NitroTest().CRD_LbVserver();
+	        
+	}
+	
 }

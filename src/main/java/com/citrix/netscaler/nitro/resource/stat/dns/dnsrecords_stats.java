@@ -30,6 +30,7 @@ class dnsrecords_response extends base_response
 public class dnsrecords_stats extends base_resource
 {
 	private String dnsrecordtype;
+	private String clearstats;
 	private Long dnstotentries;
 	private Long dnstotupdates;
 	private Long dnstotresponses;
@@ -43,7 +44,7 @@ public class dnsrecords_stats extends base_resource
 
 	/**
 	* <pre>
-	* DNS Record/Query type
+	* Display statistics for the specified DNS record or query type or, if a record or query type is not specified, statistics for all record types supported on the NetScaler appliance.
 	* </pre>
 	*/
 	public void set_dnsrecordtype(String dnsrecordtype) throws Exception{
@@ -52,11 +53,29 @@ public class dnsrecords_stats extends base_resource
 
 	/**
 	* <pre>
-	* DNS Record/Query type.
+	* Display statistics for the specified DNS record or query type or, if a record or query type is not specified, statistics for all record types supported on the NetScaler appliance.
 	* </pre>
 	*/
 	public String get_dnsrecordtype() throws Exception {
 		return this.dnsrecordtype;
+	}
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters
+	* </pre>
+	*/
+	public void set_clearstats(String clearstats) throws Exception{
+		this.clearstats = clearstats;
+	}
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters.<br> Possible values = basic, full
+	* </pre>
+	*/
+	public String get_clearstats() throws Exception {
+		return this.clearstats;
 	}
 
 	/**
@@ -211,4 +230,8 @@ public class dnsrecords_stats extends base_resource
 		return response;
 	}
 
+	public static class clearstatsEnum {
+		public static final String basic = "basic";
+		public static final String full = "full";
+	}
 }

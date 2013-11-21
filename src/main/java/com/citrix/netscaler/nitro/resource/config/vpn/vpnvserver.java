@@ -50,6 +50,10 @@ public class vpnvserver extends base_resource
 	private String comment;
 	private String appflowlog;
 	private String icmpvsrresponse;
+	private String netprofile;
+	private String cginfrahomepageredirect;
+	private Long maxloginattempts;
+	private Long failedlogintimeout;
 	private String newname;
 
 	//------- Read only Parameter ---------;
@@ -66,7 +70,6 @@ public class vpnvserver extends base_resource
 	private Long curaaausers;
 	private String domain;
 	private String rule;
-	private String policyname;
 	private String policy;
 	private String servicename;
 	private Long weight;
@@ -83,11 +86,16 @@ public class vpnvserver extends base_resource
 	private String bindpoint;
 	private String gotopriorityexpression;
 	private String disableprimaryondown;
+	private Boolean secondary;
+	private Boolean groupextraction;
 	private Long __count;
 
 	/**
 	* <pre>
-	* The name for the new vpn vserver.<br> Minimum length =  1
+	* Name for the Access Gateway virtual server. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Can be changed after the virtual server is created.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my server" or 'my server').<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -96,7 +104,10 @@ public class vpnvserver extends base_resource
 
 	/**
 	* <pre>
-	* The name for the new vpn vserver.<br> Minimum length =  1
+	* Name for the Access Gateway virtual server. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Can be changed after the virtual server is created.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my server" or 'my server').<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -105,7 +116,7 @@ public class vpnvserver extends base_resource
 
 	/**
 	* <pre>
-	* The vpn vserver's protocol type, e.g. SSL.<br> Default value: SSL<br> Possible values = SSL
+	* Protocol used by the Access Gateway virtual server.<br> Default value: SSL<br> Possible values = SSL
 	* </pre>
 	*/
 	public void set_servicetype(String servicetype) throws Exception{
@@ -114,7 +125,7 @@ public class vpnvserver extends base_resource
 
 	/**
 	* <pre>
-	* The vpn vserver's protocol type, e.g. SSL.<br> Default value: SSL<br> Possible values = SSL
+	* Protocol used by the Access Gateway virtual server.<br> Default value: SSL<br> Possible values = SSL
 	* </pre>
 	*/
 	public String get_servicetype() throws Exception {
@@ -123,7 +134,7 @@ public class vpnvserver extends base_resource
 
 	/**
 	* <pre>
-	* The IP address for the vpn vserver.<br> Minimum length =  1
+	* IPv4 or IPv6 address of the Access Gateway virtual server. Usually a public IP address. User devices send connection requests to this IP address.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_ipv46(String ipv46) throws Exception{
@@ -132,7 +143,7 @@ public class vpnvserver extends base_resource
 
 	/**
 	* <pre>
-	* The IP address for the vpn vserver.<br> Minimum length =  1
+	* IPv4 or IPv6 address of the Access Gateway virtual server. Usually a public IP address. User devices send connection requests to this IP address.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_ipv46() throws Exception {
@@ -141,7 +152,8 @@ public class vpnvserver extends base_resource
 
 	/**
 	* <pre>
-	* Range of vpn vserver IP addresses. The new range of vpn vservers will have IP addresses consecutively numbered, starting with the primary address specified with the <ipaddress> argument.<br> Default value: 1<br> Minimum value =  1
+	* Range of Access Gateway virtual server IP addresses. The consecutively numbered range of IP addresses begins with the address specified by the IP Address parameter. 
+In the configuration utility, select Network VServer to enter a range.<br> Default value: 1<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_range(long range) throws Exception {
@@ -150,7 +162,8 @@ public class vpnvserver extends base_resource
 
 	/**
 	* <pre>
-	* Range of vpn vserver IP addresses. The new range of vpn vservers will have IP addresses consecutively numbered, starting with the primary address specified with the <ipaddress> argument.<br> Default value: 1<br> Minimum value =  1
+	* Range of Access Gateway virtual server IP addresses. The consecutively numbered range of IP addresses begins with the address specified by the IP Address parameter. 
+In the configuration utility, select Network VServer to enter a range.<br> Default value: 1<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_range(Long range) throws Exception{
@@ -159,7 +172,8 @@ public class vpnvserver extends base_resource
 
 	/**
 	* <pre>
-	* Range of vpn vserver IP addresses. The new range of vpn vservers will have IP addresses consecutively numbered, starting with the primary address specified with the <ipaddress> argument.<br> Default value: 1<br> Minimum value =  1
+	* Range of Access Gateway virtual server IP addresses. The consecutively numbered range of IP addresses begins with the address specified by the IP Address parameter. 
+In the configuration utility, select Network VServer to enter a range.<br> Default value: 1<br> Minimum value =  1
 	* </pre>
 	*/
 	public Long get_range() throws Exception {
@@ -168,7 +182,7 @@ public class vpnvserver extends base_resource
 
 	/**
 	* <pre>
-	* The TCP port on which the vserver listens.<br> Minimum value =  1<br> Range 1 - 65535
+	* TCP port on which the virtual server listens.<br> Minimum value =  1<br> Range 1 - 65535
 	* </pre>
 	*/
 	public void set_port(int port) throws Exception {
@@ -177,7 +191,7 @@ public class vpnvserver extends base_resource
 
 	/**
 	* <pre>
-	* The TCP port on which the vserver listens.<br> Minimum value =  1<br> Range 1 - 65535
+	* TCP port on which the virtual server listens.<br> Minimum value =  1<br> Range 1 - 65535
 	* </pre>
 	*/
 	public void set_port(Integer port) throws Exception{
@@ -186,7 +200,7 @@ public class vpnvserver extends base_resource
 
 	/**
 	* <pre>
-	* The TCP port on which the vserver listens.<br> Minimum value =  1<br> Range 1 - 65535
+	* TCP port on which the virtual server listens.<br> Minimum value =  1<br> Range 1 - 65535
 	* </pre>
 	*/
 	public Integer get_port() throws Exception {
@@ -195,7 +209,7 @@ public class vpnvserver extends base_resource
 
 	/**
 	* <pre>
-	* The intital vserver server state, e.g. ENABLED or DISABLED.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* State of the virtual server. If the virtual server is disabled, requests are not processed.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_state(String state) throws Exception{
@@ -204,7 +218,7 @@ public class vpnvserver extends base_resource
 
 	/**
 	* <pre>
-	* The intital vserver server state, e.g. ENABLED or DISABLED.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* State of the virtual server. If the virtual server is disabled, requests are not processed.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_state() throws Exception {
@@ -213,7 +227,7 @@ public class vpnvserver extends base_resource
 
 	/**
 	* <pre>
-	* This option toggles on or off the application of authentication of incoming users to the VPN.<br> Default value: ON<br> Possible values = ON, OFF
+	* Require authentication for users connecting to Access Gateway.<br> Default value: ON<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_authentication(String authentication) throws Exception{
@@ -222,7 +236,7 @@ public class vpnvserver extends base_resource
 
 	/**
 	* <pre>
-	* This option toggles on or off the application of authentication of incoming users to the VPN.<br> Default value: ON<br> Possible values = ON, OFF
+	* Require authentication for users connecting to Access Gateway.<br> Default value: ON<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_authentication() throws Exception {
@@ -231,7 +245,7 @@ public class vpnvserver extends base_resource
 
 	/**
 	* <pre>
-	* This option toggles on or off the application of authentication of incoming users to the VPN.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Use the Access Gateway appliance in a double-hop configuration. A double-hop deployment provides an extra layer of security for the internal network by using three firewalls to divide the demilitarized zone (DMZ) into two stages. Such a deployment can have one appliance in the DMZ and one appliance in the secure network.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_doublehop(String doublehop) throws Exception{
@@ -240,7 +254,7 @@ public class vpnvserver extends base_resource
 
 	/**
 	* <pre>
-	* This option toggles on or off the application of authentication of incoming users to the VPN.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Use the Access Gateway appliance in a double-hop configuration. A double-hop deployment provides an extra layer of security for the internal network by using three firewalls to divide the demilitarized zone (DMZ) into two stages. Such a deployment can have one appliance in the DMZ and one appliance in the secure network.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_doublehop() throws Exception {
@@ -249,7 +263,7 @@ public class vpnvserver extends base_resource
 
 	/**
 	* <pre>
-	* The maximum number of concurrent users allowed to login into this vserver at a time. The administrator can configure any number between 0 and 65535 for this virtual server, but the actual number of users allowed to login into this virtual server will also depend on the total number of user licenses and the total number of currently logged in users.<br> Minimum value =  0<br> Maximum value =  65535
+	* Maximum number of concurrent user sessions allowed on this virtual server. The actual number of users allowed to log on to this virtual server depends on the total number of user licenses.
 	* </pre>
 	*/
 	public void set_maxaaausers(long maxaaausers) throws Exception {
@@ -258,7 +272,7 @@ public class vpnvserver extends base_resource
 
 	/**
 	* <pre>
-	* The maximum number of concurrent users allowed to login into this vserver at a time. The administrator can configure any number between 0 and 65535 for this virtual server, but the actual number of users allowed to login into this virtual server will also depend on the total number of user licenses and the total number of currently logged in users.<br> Minimum value =  0<br> Maximum value =  65535
+	* Maximum number of concurrent user sessions allowed on this virtual server. The actual number of users allowed to log on to this virtual server depends on the total number of user licenses.
 	* </pre>
 	*/
 	public void set_maxaaausers(Long maxaaausers) throws Exception{
@@ -267,7 +281,7 @@ public class vpnvserver extends base_resource
 
 	/**
 	* <pre>
-	* The maximum number of concurrent users allowed to login into this vserver at a time. The administrator can configure any number between 0 and 65535 for this virtual server, but the actual number of users allowed to login into this virtual server will also depend on the total number of user licenses and the total number of currently logged in users.<br> Minimum value =  0<br> Maximum value =  65535
+	* Maximum number of concurrent user sessions allowed on this virtual server. The actual number of users allowed to log on to this virtual server depends on the total number of user licenses.
 	* </pre>
 	*/
 	public Long get_maxaaausers() throws Exception {
@@ -276,7 +290,7 @@ public class vpnvserver extends base_resource
 
 	/**
 	* <pre>
-	* This option tells whether ica only license feature is on or off.<br> Default value: OFF<br> Possible values = ON, OFF
+	* User can log on in basic mode only, through either Citrix Receiver or a browser. Users are not allowed to connect by using the Access Gateway Plug-in.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_icaonly(String icaonly) throws Exception{
@@ -285,7 +299,7 @@ public class vpnvserver extends base_resource
 
 	/**
 	* <pre>
-	* This option tells whether ica only license feature is on or off.<br> Default value: OFF<br> Possible values = ON, OFF
+	* User can log on in basic mode only, through either Citrix Receiver or a browser. Users are not allowed to connect by using the Access Gateway Plug-in.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_icaonly() throws Exception {
@@ -294,7 +308,7 @@ public class vpnvserver extends base_resource
 
 	/**
 	* <pre>
-	* Perform delayed clean up of connections on this vserver.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Close existing connections when the virtual server is marked DOWN, which means the server might have timed out. Disconnecting existing connections frees resources and in certain cases speeds recovery of overloaded load balancing setups. Enable this setting on servers whose connections can safely be closed when they are marked DOWN.  Do not enable DOWN state flush on servers that must complete their transactions.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_downstateflush(String downstateflush) throws Exception{
@@ -303,7 +317,7 @@ public class vpnvserver extends base_resource
 
 	/**
 	* <pre>
-	* Perform delayed clean up of connections on this vserver.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Close existing connections when the virtual server is marked DOWN, which means the server might have timed out. Disconnecting existing connections frees resources and in certain cases speeds recovery of overloaded load balancing setups. Enable this setting on servers whose connections can safely be closed when they are marked DOWN.  Do not enable DOWN state flush on servers that must complete their transactions.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_downstateflush() throws Exception {
@@ -312,8 +326,7 @@ public class vpnvserver extends base_resource
 
 	/**
 	* <pre>
-	* Use this parameter to specify the listen policy for VPN Vserver.
-The string can be either an existing expression name (configured using add policy expression command) or else it can be an in-line expression with a maximum of 1500 characters.<br> Default value: "none"
+	* String specifying the listen policy for the Access Gateway virtual server. Can be either a named expression or a default syntax expression. The Access Gateway virtual server processes only the traffic for which the expression evaluates to true.<br> Default value: "none"
 	* </pre>
 	*/
 	public void set_listenpolicy(String listenpolicy) throws Exception{
@@ -322,8 +335,7 @@ The string can be either an existing expression name (configured using add polic
 
 	/**
 	* <pre>
-	* Use this parameter to specify the listen policy for VPN Vserver.
-The string can be either an existing expression name (configured using add policy expression command) or else it can be an in-line expression with a maximum of 1500 characters.<br> Default value: "none"
+	* String specifying the listen policy for the Access Gateway virtual server. Can be either a named expression or a default syntax expression. The Access Gateway virtual server processes only the traffic for which the expression evaluates to true.<br> Default value: "none"
 	* </pre>
 	*/
 	public String get_listenpolicy() throws Exception {
@@ -332,7 +344,7 @@ The string can be either an existing expression name (configured using add polic
 
 	/**
 	* <pre>
-	* Use this parameter to specify the priority for listen policy of VPN Vserver.<br> Default value: 101<br> Minimum value =  0<br> Maximum value =  100
+	* Integer specifying the priority of the listen policy. A higher number specifies a lower priority. If a request matches the listen policies of more than one virtual server, the virtual server whose listen policy has the highest priority (the lowest priority number) accepts the request.<br> Default value: 101<br> Minimum value =  0<br> Maximum value =  100
 	* </pre>
 	*/
 	public void set_listenpriority(long listenpriority) throws Exception {
@@ -341,7 +353,7 @@ The string can be either an existing expression name (configured using add polic
 
 	/**
 	* <pre>
-	* Use this parameter to specify the priority for listen policy of VPN Vserver.<br> Default value: 101<br> Minimum value =  0<br> Maximum value =  100
+	* Integer specifying the priority of the listen policy. A higher number specifies a lower priority. If a request matches the listen policies of more than one virtual server, the virtual server whose listen policy has the highest priority (the lowest priority number) accepts the request.<br> Default value: 101<br> Minimum value =  0<br> Maximum value =  100
 	* </pre>
 	*/
 	public void set_listenpriority(Long listenpriority) throws Exception{
@@ -350,7 +362,7 @@ The string can be either an existing expression name (configured using add polic
 
 	/**
 	* <pre>
-	* Use this parameter to specify the priority for listen policy of VPN Vserver.<br> Default value: 101<br> Minimum value =  0<br> Maximum value =  100
+	* Integer specifying the priority of the listen policy. A higher number specifies a lower priority. If a request matches the listen policies of more than one virtual server, the virtual server whose listen policy has the highest priority (the lowest priority number) accepts the request.<br> Default value: 101<br> Minimum value =  0<br> Maximum value =  100
 	* </pre>
 	*/
 	public Long get_listenpriority() throws Exception {
@@ -359,7 +371,7 @@ The string can be either an existing expression name (configured using add polic
 
 	/**
 	* <pre>
-	* The name of the TCP profile.<br> Minimum length =  1<br> Maximum length =  127
+	* Name of the TCP profile to assign to this virtual server.<br> Minimum length =  1<br> Maximum length =  127
 	* </pre>
 	*/
 	public void set_tcpprofilename(String tcpprofilename) throws Exception{
@@ -368,7 +380,7 @@ The string can be either an existing expression name (configured using add polic
 
 	/**
 	* <pre>
-	* The name of the TCP profile.<br> Minimum length =  1<br> Maximum length =  127
+	* Name of the TCP profile to assign to this virtual server.<br> Minimum length =  1<br> Maximum length =  127
 	* </pre>
 	*/
 	public String get_tcpprofilename() throws Exception {
@@ -377,7 +389,7 @@ The string can be either an existing expression name (configured using add polic
 
 	/**
 	* <pre>
-	* Name of the HTTP profile.<br> Minimum length =  1<br> Maximum length =  127
+	* Name of the HTTP profile to assign to this virtual server.<br> Minimum length =  1<br> Maximum length =  127
 	* </pre>
 	*/
 	public void set_httpprofilename(String httpprofilename) throws Exception{
@@ -386,7 +398,7 @@ The string can be either an existing expression name (configured using add polic
 
 	/**
 	* <pre>
-	* Name of the HTTP profile.<br> Minimum length =  1<br> Maximum length =  127
+	* Name of the HTTP profile to assign to this virtual server.<br> Minimum length =  1<br> Maximum length =  127
 	* </pre>
 	*/
 	public String get_httpprofilename() throws Exception {
@@ -395,7 +407,7 @@ The string can be either an existing expression name (configured using add polic
 
 	/**
 	* <pre>
-	* Comments associated with this virtual server.
+	* Any comments associated with the virtual server.
 	* </pre>
 	*/
 	public void set_comment(String comment) throws Exception{
@@ -404,7 +416,7 @@ The string can be either an existing expression name (configured using add polic
 
 	/**
 	* <pre>
-	* Comments associated with this virtual server.
+	* Any comments associated with the virtual server.
 	* </pre>
 	*/
 	public String get_comment() throws Exception {
@@ -413,7 +425,7 @@ The string can be either an existing expression name (configured using add polic
 
 	/**
 	* <pre>
-	* Enable logging appflow flow information.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Log AppFlow records that contain standard NetFlow or IPFIX information, such as time stamps for the beginning and end of a flow, packet count, and byte count. Also log records that contain application-level information, such as HTTP web addresses, HTTP request methods and response status codes, server response time, and latency.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_appflowlog(String appflowlog) throws Exception{
@@ -422,7 +434,7 @@ The string can be either an existing expression name (configured using add polic
 
 	/**
 	* <pre>
-	* Enable logging appflow flow information.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Log AppFlow records that contain standard NetFlow or IPFIX information, such as time stamps for the beginning and end of a flow, packet count, and byte count. Also log records that contain application-level information, such as HTTP web addresses, HTTP request methods and response status codes, server response time, and latency.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_appflowlog() throws Exception {
@@ -431,7 +443,7 @@ The string can be either an existing expression name (configured using add polic
 
 	/**
 	* <pre>
-	* Can be active or passive.<br> Default value: NS_VSR_PASSIVE<br> Possible values = PASSIVE, ACTIVE
+	* Criterion for responding to PING requests sent to this virtual server. If this parameter is set to ACTIVE, respond only if the virtual server is available. With the PASSIVE setting, respond even if the virtual server is not available.<br> Default value: PASSIVE<br> Possible values = PASSIVE, ACTIVE
 	* </pre>
 	*/
 	public void set_icmpvsrresponse(String icmpvsrresponse) throws Exception{
@@ -440,7 +452,7 @@ The string can be either an existing expression name (configured using add polic
 
 	/**
 	* <pre>
-	* Can be active or passive.<br> Default value: NS_VSR_PASSIVE<br> Possible values = PASSIVE, ACTIVE
+	* Criterion for responding to PING requests sent to this virtual server. If this parameter is set to ACTIVE, respond only if the virtual server is available. With the PASSIVE setting, respond even if the virtual server is not available.<br> Default value: PASSIVE<br> Possible values = PASSIVE, ACTIVE
 	* </pre>
 	*/
 	public String get_icmpvsrresponse() throws Exception {
@@ -449,7 +461,100 @@ The string can be either an existing expression name (configured using add polic
 
 	/**
 	* <pre>
-	* The new name of the virtual server.<br> Minimum length =  1
+	* The name of the network profile.<br> Minimum length =  1<br> Maximum length =  127
+	* </pre>
+	*/
+	public void set_netprofile(String netprofile) throws Exception{
+		this.netprofile = netprofile;
+	}
+
+	/**
+	* <pre>
+	* The name of the network profile.<br> Minimum length =  1<br> Maximum length =  127
+	* </pre>
+	*/
+	public String get_netprofile() throws Exception {
+		return this.netprofile;
+	}
+
+	/**
+	* <pre>
+	* When client requests for Sharefile resource and AGEE finds that the user is unauthenticated or the user-session has expired then, disabling this option will take the user to the originally requested Sharefile resource after authentication (instead of taking the user to the default vpn homepage).<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* </pre>
+	*/
+	public void set_cginfrahomepageredirect(String cginfrahomepageredirect) throws Exception{
+		this.cginfrahomepageredirect = cginfrahomepageredirect;
+	}
+
+	/**
+	* <pre>
+	* When client requests for Sharefile resource and AGEE finds that the user is unauthenticated or the user-session has expired then, disabling this option will take the user to the originally requested Sharefile resource after authentication (instead of taking the user to the default vpn homepage).<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* </pre>
+	*/
+	public String get_cginfrahomepageredirect() throws Exception {
+		return this.cginfrahomepageredirect;
+	}
+
+	/**
+	* <pre>
+	* Maximum Number of login Attempts.<br> Minimum value =  1<br> Maximum value =  255
+	* </pre>
+	*/
+	public void set_maxloginattempts(long maxloginattempts) throws Exception {
+		this.maxloginattempts = new Long(maxloginattempts);
+	}
+
+	/**
+	* <pre>
+	* Maximum Number of login Attempts.<br> Minimum value =  1<br> Maximum value =  255
+	* </pre>
+	*/
+	public void set_maxloginattempts(Long maxloginattempts) throws Exception{
+		this.maxloginattempts = maxloginattempts;
+	}
+
+	/**
+	* <pre>
+	* Maximum Number of login Attempts.<br> Minimum value =  1<br> Maximum value =  255
+	* </pre>
+	*/
+	public Long get_maxloginattempts() throws Exception {
+		return this.maxloginattempts;
+	}
+
+	/**
+	* <pre>
+	* Failed Login timeout.<br> Minimum value =  1
+	* </pre>
+	*/
+	public void set_failedlogintimeout(long failedlogintimeout) throws Exception {
+		this.failedlogintimeout = new Long(failedlogintimeout);
+	}
+
+	/**
+	* <pre>
+	* Failed Login timeout.<br> Minimum value =  1
+	* </pre>
+	*/
+	public void set_failedlogintimeout(Long failedlogintimeout) throws Exception{
+		this.failedlogintimeout = failedlogintimeout;
+	}
+
+	/**
+	* <pre>
+	* Failed Login timeout.<br> Minimum value =  1
+	* </pre>
+	*/
+	public Long get_failedlogintimeout() throws Exception {
+		return this.failedlogintimeout;
+	}
+
+	/**
+	* <pre>
+	* New name for the Access Gateway virtual server. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. 
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my server" or 'my server').<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_newname(String newname) throws Exception{
@@ -458,7 +563,10 @@ The string can be either an existing expression name (configured using add polic
 
 	/**
 	* <pre>
-	* The new name of the virtual server.<br> Minimum length =  1
+	* New name for the Access Gateway virtual server. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. 
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my server" or 'my server').<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_newname() throws Exception {
@@ -494,7 +602,7 @@ The string can be either an existing expression name (configured using add polic
 
 	/**
 	* <pre>
-	* The current state of the Virtual server, e.g. UP, DOWN, BUSY, etc.<br> Possible values = UP, DOWN, UNKNOWN, BUSY, OUT OF SERVICE, GOING OUT OF SERVICE, DOWN WHEN GOING OUT OF SERVICE, NS_EMPTY_STR
+	* The current state of the Virtual server, e.g. UP, DOWN, BUSY, etc.<br> Possible values = UP, DOWN, UNKNOWN, BUSY, OUT OF SERVICE, GOING OUT OF SERVICE, DOWN WHEN GOING OUT OF SERVICE, NS_EMPTY_STR, Unknown, DISABLED
 	* </pre>
 	*/
 	public String get_curstate() throws Exception {
@@ -590,15 +698,6 @@ For all URL-based policies, the precedence hierarchy is:
 	*/
 	public String get_rule() throws Exception {
 		return this.rule;
-	}
-
-	/**
-	* <pre>
-	* The name of the policy, if any, bound to the vpn vserver.
-	* </pre>
-	*/
-	public String get_policyname() throws Exception {
-		return this.policyname;
 	}
 
 	/**
@@ -730,7 +829,7 @@ for the virtual servers running on the NetScaler. Mapped IP addresses are used b
 
 	/**
 	* <pre>
-	* Bindpoint to which the policy is bound.<br> Possible values = REQUEST, RESPONSE
+	* Bindpoint to which the policy is bound.<br> Possible values = REQUEST, RESPONSE, ICA_REQUEST, OTHERTCP_REQUEST
 	* </pre>
 	*/
 	public String get_bindpoint() throws Exception {
@@ -753,6 +852,24 @@ for the virtual servers running on the NetScaler. Mapped IP addresses are used b
 	*/
 	public String get_disableprimaryondown() throws Exception {
 		return this.disableprimaryondown;
+	}
+
+	/**
+	* <pre>
+	* Bind the authentication policy as the secondary policy to use in a two-factor configuration. A user must then authenticate not only via a primary authentication method but also via a secondary authentication method. User groups are aggregated across both. The user name must be exactly the same for both authentication methods, but they can require different passwords.
+	* </pre>
+	*/
+	public Boolean get_secondary() throws Exception {
+		return this.secondary;
+	}
+
+	/**
+	* <pre>
+	* Bind the Authentication policy to a tertiary chain which will be used only for group extraction.  The user will not authenticate against this server, and this will only be called if primary and/or secondary authentication has succeeded.
+	* </pre>
+	*/
+	public Boolean get_groupextraction() throws Exception {
+		return this.groupextraction;
 	}
 
 	/**
@@ -812,6 +929,10 @@ for the virtual servers running on the NetScaler. Mapped IP addresses are used b
 		addresource.comment = resource.comment;
 		addresource.appflowlog = resource.appflowlog;
 		addresource.icmpvsrresponse = resource.icmpvsrresponse;
+		addresource.netprofile = resource.netprofile;
+		addresource.cginfrahomepageredirect = resource.cginfrahomepageredirect;
+		addresource.maxloginattempts = resource.maxloginattempts;
+		addresource.failedlogintimeout = resource.failedlogintimeout;
 		return addresource.add_resource(client);
 	}
 
@@ -842,6 +963,10 @@ for the virtual servers running on the NetScaler. Mapped IP addresses are used b
 				addresources[i].comment = resources[i].comment;
 				addresources[i].appflowlog = resources[i].appflowlog;
 				addresources[i].icmpvsrresponse = resources[i].icmpvsrresponse;
+				addresources[i].netprofile = resources[i].netprofile;
+				addresources[i].cginfrahomepageredirect = resources[i].cginfrahomepageredirect;
+				addresources[i].maxloginattempts = resources[i].maxloginattempts;
+				addresources[i].failedlogintimeout = resources[i].failedlogintimeout;
 			}
 			result = add_bulk_request(client, addresources);
 		}
@@ -917,6 +1042,10 @@ for the virtual servers running on the NetScaler. Mapped IP addresses are used b
 		updateresource.comment = resource.comment;
 		updateresource.appflowlog = resource.appflowlog;
 		updateresource.icmpvsrresponse = resource.icmpvsrresponse;
+		updateresource.netprofile = resource.netprofile;
+		updateresource.cginfrahomepageredirect = resource.cginfrahomepageredirect;
+		updateresource.maxloginattempts = resource.maxloginattempts;
+		updateresource.failedlogintimeout = resource.failedlogintimeout;
 		return updateresource.update_resource(client);
 	}
 
@@ -943,6 +1072,10 @@ for the virtual servers running on the NetScaler. Mapped IP addresses are used b
 				updateresources[i].comment = resources[i].comment;
 				updateresources[i].appflowlog = resources[i].appflowlog;
 				updateresources[i].icmpvsrresponse = resources[i].icmpvsrresponse;
+				updateresources[i].netprofile = resources[i].netprofile;
+				updateresources[i].cginfrahomepageredirect = resources[i].cginfrahomepageredirect;
+				updateresources[i].maxloginattempts = resources[i].maxloginattempts;
+				updateresources[i].failedlogintimeout = resources[i].failedlogintimeout;
 			}
 			result = update_bulk_request(client, updateresources);
 		}
@@ -953,31 +1086,9 @@ for the virtual servers running on the NetScaler. Mapped IP addresses are used b
 	* Use this API to unset the properties of vpnvserver resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String name, String args[]) throws Exception {
-		vpnvserver unsetresource = new vpnvserver();
-		unsetresource.name = name;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of vpnvserver resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, vpnvserver resource, String[] args) throws Exception{
 		vpnvserver unsetresource = new vpnvserver();
 		unsetresource.name = resource.name;
-		unsetresource.authentication = resource.authentication;
-		unsetresource.doublehop = resource.doublehop;
-		unsetresource.icaonly = resource.icaonly;
-		unsetresource.maxaaausers = resource.maxaaausers;
-		unsetresource.downstateflush = resource.downstateflush;
-		unsetresource.listenpolicy = resource.listenpolicy;
-		unsetresource.listenpriority = resource.listenpriority;
-		unsetresource.tcpprofilename = resource.tcpprofilename;
-		unsetresource.httpprofilename = resource.httpprofilename;
-		unsetresource.comment = resource.comment;
-		unsetresource.appflowlog = resource.appflowlog;
-		unsetresource.icmpvsrresponse = resource.icmpvsrresponse;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -1009,18 +1120,6 @@ for the virtual servers running on the NetScaler. Mapped IP addresses are used b
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new vpnvserver();
 				unsetresources[i].name = resources[i].name;
-				unsetresources[i].authentication = resources[i].authentication;
-				unsetresources[i].doublehop = resources[i].doublehop;
-				unsetresources[i].icaonly = resources[i].icaonly;
-				unsetresources[i].maxaaausers = resources[i].maxaaausers;
-				unsetresources[i].downstateflush = resources[i].downstateflush;
-				unsetresources[i].listenpolicy = resources[i].listenpolicy;
-				unsetresources[i].listenpriority = resources[i].listenpriority;
-				unsetresources[i].tcpprofilename = resources[i].tcpprofilename;
-				unsetresources[i].httpprofilename = resources[i].httpprofilename;
-				unsetresources[i].comment = resources[i].comment;
-				unsetresources[i].appflowlog = resources[i].appflowlog;
-				unsetresources[i].icmpvsrresponse = resources[i].icmpvsrresponse;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}
@@ -1261,6 +1360,10 @@ for the virtual servers running on the NetScaler. Mapped IP addresses are used b
 		public static final String ON = "ON";
 		public static final String OFF = "OFF";
 	}
+	public static class cginfrahomepageredirectEnum {
+		public static final String ENABLED = "ENABLED";
+		public static final String DISABLED = "DISABLED";
+	}
 	public static class authenticationEnum {
 		public static final String ON = "ON";
 		public static final String OFF = "OFF";
@@ -1315,6 +1418,8 @@ for the virtual servers running on the NetScaler. Mapped IP addresses are used b
 	public static class bindpointEnum {
 		public static final String REQUEST = "REQUEST";
 		public static final String RESPONSE = "RESPONSE";
+		public static final String ICA_REQUEST = "ICA_REQUEST";
+		public static final String OTHERTCP_REQUEST = "OTHERTCP_REQUEST";
 	}
 	public static class sopersistenceEnum {
 		public static final String ENABLED = "ENABLED";
@@ -1346,5 +1451,7 @@ for the virtual servers running on the NetScaler. Mapped IP addresses are used b
 		public static final String GOING_OUT_OF_SERVICE = "GOING OUT OF SERVICE";
 		public static final String DOWN_WHEN_GOING_OUT_OF_SERVICE = "DOWN WHEN GOING OUT OF SERVICE";
 		public static final String NS_EMPTY_STR = "NS_EMPTY_STR";
+		public static final String Unknown = "Unknown";
+		public static final String DISABLED = "DISABLED";
 	}
 }

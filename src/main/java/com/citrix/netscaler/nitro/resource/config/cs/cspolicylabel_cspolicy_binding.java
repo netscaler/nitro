@@ -107,7 +107,7 @@ public class cspolicylabel_cspolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The virtual server name (created with the add lb vserver command) to which content will be switched.
+	* Name of the virtual server to which to forward requests that match the policy.
 	* </pre>
 	*/
 	public void set_targetvserver(String targetvserver) throws Exception{
@@ -116,7 +116,7 @@ public class cspolicylabel_cspolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The virtual server name (created with the add lb vserver command) to which content will be switched.
+	* Name of the virtual server to which to forward requests that match the policy.
 	* </pre>
 	*/
 	public String get_targetvserver() throws Exception {
@@ -143,7 +143,7 @@ public class cspolicylabel_cspolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Name of the content switching policy label.
+	* Name of the policy label to which to bind a content switching policy.
 	* </pre>
 	*/
 	public void set_labelname(String labelname) throws Exception{
@@ -152,7 +152,7 @@ public class cspolicylabel_cspolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Name of the content switching policy label.
+	* Name of the policy label to which to bind a content switching policy.
 	* </pre>
 	*/
 	public String get_labelname() throws Exception {

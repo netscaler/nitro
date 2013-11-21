@@ -33,6 +33,7 @@ class csvserver_response extends base_response
 public class csvserver extends base_resource
 {
 	private String name;
+	private Long td;
 	private String servicetype;
 	private String ipv46;
 	private String ippattern;
@@ -50,6 +51,7 @@ public class csvserver extends base_resource
 	private String sopersistence;
 	private Long sopersistencetimeout;
 	private Long sothreshold;
+	private String sobackupaction;
 	private String redirectportrewrite;
 	private String downstateflush;
 	private String backupvserver;
@@ -63,14 +65,13 @@ public class csvserver extends base_resource
 	private Long listenpriority;
 	private String authn401;
 	private String authnvsname;
-	private String aaa_tm_kbr_domain;
-	private String realm;
 	private String push;
 	private String pushvserver;
 	private String pushlabel;
 	private String pushmulticlients;
 	private String tcpprofilename;
 	private String httpprofilename;
+	private String dbprofilename;
 	private String comment;
 	private String mssqlserverversion;
 	private String l2conn;
@@ -81,12 +82,14 @@ public class csvserver extends base_resource
 	private String appflowlog;
 	private String netprofile;
 	private String icmpvsrresponse;
+	private String authnprofile;
 	private String newname;
 
 	//------- Read only Parameter ---------;
 
 	private String ip;
 	private String value;
+	private String ngname;
 	private String type;
 	private String curstate;
 	private String sc;
@@ -118,7 +121,10 @@ public class csvserver extends base_resource
 
 	/**
 	* <pre>
-	* The content switching virtual server name.<br> Minimum length =  1
+	* Name for the content switching virtual server. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at sign (@), equal sign (=), and hyphen (-) characters. 
+Cannot be changed after the CS virtual server is created.
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, \“my server\” or \‘my server\’).<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -127,7 +133,10 @@ public class csvserver extends base_resource
 
 	/**
 	* <pre>
-	* The content switching virtual server name.<br> Minimum length =  1
+	* Name for the content switching virtual server. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at sign (@), equal sign (=), and hyphen (-) characters. 
+Cannot be changed after the CS virtual server is created.
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, \“my server\” or \‘my server\’).<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -136,7 +145,34 @@ public class csvserver extends base_resource
 
 	/**
 	* <pre>
-	* The service type of the virtual server.<br> Possible values = HTTP, SSL, TCP, FTP, RTSP, SSL_TCP, UDP, DNS, SIP_UDP, ANY, RADIUS, RDP, MYSQL, MSSQL, DIAMETER, SSL_DIAMETER
+	* Traffic Domain ID.<br> Minimum value =  0<br> Maximum value =  4094
+	* </pre>
+	*/
+	public void set_td(long td) throws Exception {
+		this.td = new Long(td);
+	}
+
+	/**
+	* <pre>
+	* Traffic Domain ID.<br> Minimum value =  0<br> Maximum value =  4094
+	* </pre>
+	*/
+	public void set_td(Long td) throws Exception{
+		this.td = td;
+	}
+
+	/**
+	* <pre>
+	* Traffic Domain ID.<br> Minimum value =  0<br> Maximum value =  4094
+	* </pre>
+	*/
+	public Long get_td() throws Exception {
+		return this.td;
+	}
+
+	/**
+	* <pre>
+	* Protocol used by the virtual server.<br> Possible values = HTTP, SSL, TCP, FTP, RTSP, SSL_TCP, UDP, DNS, SIP_UDP, ANY, RADIUS, RDP, MYSQL, MSSQL, DIAMETER, SSL_DIAMETER
 	* </pre>
 	*/
 	public void set_servicetype(String servicetype) throws Exception{
@@ -145,7 +181,7 @@ public class csvserver extends base_resource
 
 	/**
 	* <pre>
-	* The service type of the virtual server.<br> Possible values = HTTP, SSL, TCP, FTP, RTSP, SSL_TCP, UDP, DNS, SIP_UDP, ANY, RADIUS, RDP, MYSQL, MSSQL, DIAMETER, SSL_DIAMETER
+	* Protocol used by the virtual server.<br> Possible values = HTTP, SSL, TCP, FTP, RTSP, SSL_TCP, UDP, DNS, SIP_UDP, ANY, RADIUS, RDP, MYSQL, MSSQL, DIAMETER, SSL_DIAMETER
 	* </pre>
 	*/
 	public String get_servicetype() throws Exception {
@@ -154,7 +190,7 @@ public class csvserver extends base_resource
 
 	/**
 	* <pre>
-	* The IP address of the virtual server.<br> Minimum length =  1
+	* IP address of the content switching virtual server.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_ipv46(String ipv46) throws Exception{
@@ -163,7 +199,7 @@ public class csvserver extends base_resource
 
 	/**
 	* <pre>
-	* The IP address of the virtual server.<br> Minimum length =  1
+	* IP address of the content switching virtual server.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_ipv46() throws Exception {
@@ -172,7 +208,9 @@ public class csvserver extends base_resource
 
 	/**
 	* <pre>
-	* The IP Pattern of the virtual server.
+	* IP address pattern, in dotted decimal notation, for identifying packets to be accepted by the virtual server. The IP Mask parameter specifies which part of the destination IP address is matched against the pattern. Mutually exclusive with the IP Address parameter. 
+For example, if the IP pattern assigned to the virtual server is 198.51.100.0 and the IP mask is 255.255.240.0 (a forward mask), the first 20 bits in the destination IP addresses are matched with the first 20 bits in the pattern. The virtual server accepts requests with IP addresses that range from 198.51.96.1 to 198.51.111.254. You can also use a pattern such as 0.0.2.2 and a mask such as 0.0.255.255 (a reverse mask).
+If a destination IP address matches more than one IP pattern, the pattern with the longest match is selected, and the associated virtual server processes the request. For example, if the virtual servers, vs1 and vs2, have the same IP pattern, 0.0.100.128, but different IP masks of 0.0.255.255 and 0.0.224.255, a destination IP address of 198.51.100.128 has the longest match with the IP pattern of vs1. If a destination IP address matches two or more virtual servers to the same extent, the request is processed by the virtual server whose port number matches the port number in the request.
 	* </pre>
 	*/
 	public void set_ippattern(String ippattern) throws Exception{
@@ -181,7 +219,9 @@ public class csvserver extends base_resource
 
 	/**
 	* <pre>
-	* The IP Pattern of the virtual server.
+	* IP address pattern, in dotted decimal notation, for identifying packets to be accepted by the virtual server. The IP Mask parameter specifies which part of the destination IP address is matched against the pattern. Mutually exclusive with the IP Address parameter. 
+For example, if the IP pattern assigned to the virtual server is 198.51.100.0 and the IP mask is 255.255.240.0 (a forward mask), the first 20 bits in the destination IP addresses are matched with the first 20 bits in the pattern. The virtual server accepts requests with IP addresses that range from 198.51.96.1 to 198.51.111.254. You can also use a pattern such as 0.0.2.2 and a mask such as 0.0.255.255 (a reverse mask).
+If a destination IP address matches more than one IP pattern, the pattern with the longest match is selected, and the associated virtual server processes the request. For example, if the virtual servers, vs1 and vs2, have the same IP pattern, 0.0.100.128, but different IP masks of 0.0.255.255 and 0.0.224.255, a destination IP address of 198.51.100.128 has the longest match with the IP pattern of vs1. If a destination IP address matches two or more virtual servers to the same extent, the request is processed by the virtual server whose port number matches the port number in the request.
 	* </pre>
 	*/
 	public String get_ippattern() throws Exception {
@@ -190,7 +230,7 @@ public class csvserver extends base_resource
 
 	/**
 	* <pre>
-	* The IP Mask of the virtual server IP Pattern.
+	* IP mask, in dotted decimal notation, for the IP Pattern parameter. Can have leading or trailing non-zero octets (for example, 255.255.240.0 or 0.0.255.255). Accordingly, the mask specifies whether the first n bits or the last n bits of the destination IP address in a client request are to be matched with the corresponding bits in the IP pattern. The former is called a forward mask. The latter is called a reverse mask.
 	* </pre>
 	*/
 	public void set_ipmask(String ipmask) throws Exception{
@@ -199,7 +239,7 @@ public class csvserver extends base_resource
 
 	/**
 	* <pre>
-	* The IP Mask of the virtual server IP Pattern.
+	* IP mask, in dotted decimal notation, for the IP Pattern parameter. Can have leading or trailing non-zero octets (for example, 255.255.240.0 or 0.0.255.255). Accordingly, the mask specifies whether the first n bits or the last n bits of the destination IP address in a client request are to be matched with the corresponding bits in the IP pattern. The former is called a forward mask. The latter is called a reverse mask.
 	* </pre>
 	*/
 	public String get_ipmask() throws Exception {
@@ -208,7 +248,7 @@ public class csvserver extends base_resource
 
 	/**
 	* <pre>
-	* An IP address range.<br> Default value: 1<br> Minimum value =  1<br> Maximum value =  254
+	* Number of consecutive IP addresses, starting with the address specified by the IP Address parameter, to include in a range of addresses assigned to this virtual server.<br> Default value: 1<br> Minimum value =  1<br> Maximum value =  254
 	* </pre>
 	*/
 	public void set_range(long range) throws Exception {
@@ -217,7 +257,7 @@ public class csvserver extends base_resource
 
 	/**
 	* <pre>
-	* An IP address range.<br> Default value: 1<br> Minimum value =  1<br> Maximum value =  254
+	* Number of consecutive IP addresses, starting with the address specified by the IP Address parameter, to include in a range of addresses assigned to this virtual server.<br> Default value: 1<br> Minimum value =  1<br> Maximum value =  254
 	* </pre>
 	*/
 	public void set_range(Long range) throws Exception{
@@ -226,7 +266,7 @@ public class csvserver extends base_resource
 
 	/**
 	* <pre>
-	* An IP address range.<br> Default value: 1<br> Minimum value =  1<br> Maximum value =  254
+	* Number of consecutive IP addresses, starting with the address specified by the IP Address parameter, to include in a range of addresses assigned to this virtual server.<br> Default value: 1<br> Minimum value =  1<br> Maximum value =  254
 	* </pre>
 	*/
 	public Long get_range() throws Exception {
@@ -235,7 +275,7 @@ public class csvserver extends base_resource
 
 	/**
 	* <pre>
-	* A port number for the virtual server.<br> Minimum value =  1<br> Range 1 - 65535
+	* Port number for content switching virtual server.<br> Minimum value =  1<br> Range 1 - 65535
 	* </pre>
 	*/
 	public void set_port(int port) throws Exception {
@@ -244,7 +284,7 @@ public class csvserver extends base_resource
 
 	/**
 	* <pre>
-	* A port number for the virtual server.<br> Minimum value =  1<br> Range 1 - 65535
+	* Port number for content switching virtual server.<br> Minimum value =  1<br> Range 1 - 65535
 	* </pre>
 	*/
 	public void set_port(Integer port) throws Exception{
@@ -253,7 +293,7 @@ public class csvserver extends base_resource
 
 	/**
 	* <pre>
-	* A port number for the virtual server.<br> Minimum value =  1<br> Range 1 - 65535
+	* Port number for content switching virtual server.<br> Minimum value =  1<br> Range 1 - 65535
 	* </pre>
 	*/
 	public Integer get_port() throws Exception {
@@ -262,7 +302,7 @@ public class csvserver extends base_resource
 
 	/**
 	* <pre>
-	* The initial state, enabled or disabled, of the virtual server.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Initial state of the load balancing virtual server.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_state(String state) throws Exception{
@@ -271,7 +311,7 @@ public class csvserver extends base_resource
 
 	/**
 	* <pre>
-	* The initial state, enabled or disabled, of the virtual server.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Initial state of the load balancing virtual server.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_state() throws Exception {
@@ -280,7 +320,13 @@ public class csvserver extends base_resource
 
 	/**
 	* <pre>
-	* To enable the state update for a CSW vserver.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Enable state updates for a specific content switching virtual server. By default, the Content Switching virtual server is always UP, regardless of the state of the Load Balancing virtual servers bound to it. This parameter interacts with the global setting as follows:
+Global Level | Vserver Level | Result
+ENABLED      ENABLED        ENABLED
+ENABLED      DISABLED       ENABLED
+DISABLED     ENABLED        ENABLED
+DISABLED     DISABLED       DISABLED
+If you want to enable state updates for only some content switching virtual servers, be sure to disable the state update parameter.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_stateupdate(String stateupdate) throws Exception{
@@ -289,7 +335,13 @@ public class csvserver extends base_resource
 
 	/**
 	* <pre>
-	* To enable the state update for a CSW vserver.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Enable state updates for a specific content switching virtual server. By default, the Content Switching virtual server is always UP, regardless of the state of the Load Balancing virtual servers bound to it. This parameter interacts with the global setting as follows:
+Global Level | Vserver Level | Result
+ENABLED      ENABLED        ENABLED
+ENABLED      DISABLED       ENABLED
+DISABLED     ENABLED        ENABLED
+DISABLED     DISABLED       DISABLED
+If you want to enable state updates for only some content switching virtual servers, be sure to disable the state update parameter.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_stateupdate() throws Exception {
@@ -316,7 +368,8 @@ public class csvserver extends base_resource
 
 	/**
 	* <pre>
-	* The URL where traffic is redirected if the virtual server in the system becomes unavailable. You can enter up to 127 characters as the URL argument.WARNING!Make sure that the domain you specify in the URL does not match the domain specified in the -d domainName argument of the add cs policy CLI command. If the same domain is specified in both arguments, the request will be continuously redirected to the same unavailable virtual server in the system  -  then the user may not get the requested content.<br> Minimum length =  1
+	* URL to which traffic is redirected if the virtual server becomes unavailable. The service type of the virtual server should be either HTTP or SSL.
+Caution: Make sure that the domain in the URL does not match the domain specified for a content switching policy. If it does, requests are continuously redirected to the unavailable virtual server.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_redirecturl(String redirecturl) throws Exception{
@@ -325,7 +378,8 @@ public class csvserver extends base_resource
 
 	/**
 	* <pre>
-	* The URL where traffic is redirected if the virtual server in the system becomes unavailable. You can enter up to 127 characters as the URL argument.WARNING!Make sure that the domain you specify in the URL does not match the domain specified in the -d domainName argument of the add cs policy CLI command. If the same domain is specified in both arguments, the request will be continuously redirected to the same unavailable virtual server in the system  -  then the user may not get the requested content.<br> Minimum length =  1
+	* URL to which traffic is redirected if the virtual server becomes unavailable. The service type of the virtual server should be either HTTP or SSL.
+Caution: Make sure that the domain in the URL does not match the domain specified for a content switching policy. If it does, requests are continuously redirected to the unavailable virtual server.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_redirecturl() throws Exception {
@@ -334,7 +388,11 @@ public class csvserver extends base_resource
 
 	/**
 	* <pre>
-	* The timeout value in seconds for idle client connection.<br> Minimum value =  0<br> Maximum value =  31536000
+	* Idle time, in seconds, after which the client connection is terminated. The default values are:
+180 seconds for HTTP/SSL-based services.
+9000 seconds for other TCP-based services.
+120 seconds for DNS-based services.
+120 seconds for other UDP-based services.<br> Minimum value =  0<br> Maximum value =  31536000
 	* </pre>
 	*/
 	public void set_clttimeout(long clttimeout) throws Exception {
@@ -343,7 +401,11 @@ public class csvserver extends base_resource
 
 	/**
 	* <pre>
-	* The timeout value in seconds for idle client connection.<br> Minimum value =  0<br> Maximum value =  31536000
+	* Idle time, in seconds, after which the client connection is terminated. The default values are:
+180 seconds for HTTP/SSL-based services.
+9000 seconds for other TCP-based services.
+120 seconds for DNS-based services.
+120 seconds for other UDP-based services.<br> Minimum value =  0<br> Maximum value =  31536000
 	* </pre>
 	*/
 	public void set_clttimeout(Long clttimeout) throws Exception{
@@ -352,7 +414,11 @@ public class csvserver extends base_resource
 
 	/**
 	* <pre>
-	* The timeout value in seconds for idle client connection.<br> Minimum value =  0<br> Maximum value =  31536000
+	* Idle time, in seconds, after which the client connection is terminated. The default values are:
+180 seconds for HTTP/SSL-based services.
+9000 seconds for other TCP-based services.
+120 seconds for DNS-based services.
+120 seconds for other UDP-based services.<br> Minimum value =  0<br> Maximum value =  31536000
 	* </pre>
 	*/
 	public Long get_clttimeout() throws Exception {
@@ -361,9 +427,7 @@ public class csvserver extends base_resource
 
 	/**
 	* <pre>
-	* This sets the precedence between RULE-based and URL-based policies on the content switching virtual server. The default precedence is RULE.
-With the precedence set to RULE, incoming requests are evaluated against the content switching policies created with the -rule argument (using the add cs policy CLI command).
-If none of the rules match, the URL in the request is evaluated against the content switching policies created with the -url argument (using the add cs policy CLI command).<br> Default value: CS_PRIORITY_RULE<br> Possible values = RULE, URL
+	* Type of precedence to use for both RULE-based and URL-based policies on the content switching virtual server. With the default (RULE) setting, incoming requests are evaluated against the rule-based content switching policies. If none of the rules match, the URL in the request is evaluated against the URL-based content switching policies.<br> Default value: RULE<br> Possible values = RULE, URL
 	* </pre>
 	*/
 	public void set_precedence(String precedence) throws Exception{
@@ -372,9 +436,7 @@ If none of the rules match, the URL in the request is evaluated against the cont
 
 	/**
 	* <pre>
-	* This sets the precedence between RULE-based and URL-based policies on the content switching virtual server. The default precedence is RULE.
-With the precedence set to RULE, incoming requests are evaluated against the content switching policies created with the -rule argument (using the add cs policy CLI command).
-If none of the rules match, the URL in the request is evaluated against the content switching policies created with the -url argument (using the add cs policy CLI command).<br> Default value: CS_PRIORITY_RULE<br> Possible values = RULE, URL
+	* Type of precedence to use for both RULE-based and URL-based policies on the content switching virtual server. With the default (RULE) setting, incoming requests are evaluated against the rule-based content switching policies. If none of the rules match, the URL in the request is evaluated against the URL-based content switching policies.<br> Default value: RULE<br> Possible values = RULE, URL
 	* </pre>
 	*/
 	public String get_precedence() throws Exception {
@@ -383,9 +445,7 @@ If none of the rules match, the URL in the request is evaluated against the cont
 
 	/**
 	* <pre>
-	* The URL lookup case option on the content switching vserver.
-If the case sensitivity of a content switching virtual server is set to 'ON', the URLs /a/1.html and /A/1.HTML are treated differently, and can be switched to different targets with appropriate content switching policies.
-If the case sensitivity is set to 'OFF', the URLs /a/1.html and /A/1.HTML are treated the same, and are switched to the same target.<br> Default value: ON<br> Possible values = ON, OFF
+	* Consider case in URLs (for policies that use URLs instead of RULES). For example, with the ON setting, the URLs /a/1.html and /A/1.HTML are treated differently and can have different targets (set by content switching policies). With the OFF setting, /a/1.html and /A/1.HTML are switched to the same target.<br> Default value: ON<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_casesensitive(String casesensitive) throws Exception{
@@ -394,9 +454,7 @@ If the case sensitivity is set to 'OFF', the URLs /a/1.html and /A/1.HTML are tr
 
 	/**
 	* <pre>
-	* The URL lookup case option on the content switching vserver.
-If the case sensitivity of a content switching virtual server is set to 'ON', the URLs /a/1.html and /A/1.HTML are treated differently, and can be switched to different targets with appropriate content switching policies.
-If the case sensitivity is set to 'OFF', the URLs /a/1.html and /A/1.HTML are treated the same, and are switched to the same target.<br> Default value: ON<br> Possible values = ON, OFF
+	* Consider case in URLs (for policies that use URLs instead of RULES). For example, with the ON setting, the URLs /a/1.html and /A/1.HTML are treated differently and can have different targets (set by content switching policies). With the OFF setting, /a/1.html and /A/1.HTML are switched to the same target.<br> Default value: ON<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_casesensitive() throws Exception {
@@ -405,7 +463,7 @@ If the case sensitivity is set to 'OFF', the URLs /a/1.html and /A/1.HTML are tr
 
 	/**
 	* <pre>
-	* The spillover factor based on which the traffic will be given to the backupvserver once the main virtual server reaches the spillover threshold.<br> Possible values = CONNECTION, DYNAMICCONNECTION, BANDWIDTH, HEALTH, NONE
+	* Type of spillover used to divert traffic to the backup virtual server when the primary virtual server reaches the spillover threshold. Connection spillover is based on the number of connections. Bandwidth spillover is based on the total Kbps of incoming and outgoing traffic.<br> Possible values = CONNECTION, DYNAMICCONNECTION, BANDWIDTH, HEALTH, NONE
 	* </pre>
 	*/
 	public void set_somethod(String somethod) throws Exception{
@@ -414,7 +472,7 @@ If the case sensitivity is set to 'OFF', the URLs /a/1.html and /A/1.HTML are tr
 
 	/**
 	* <pre>
-	* The spillover factor based on which the traffic will be given to the backupvserver once the main virtual server reaches the spillover threshold.<br> Possible values = CONNECTION, DYNAMICCONNECTION, BANDWIDTH, HEALTH, NONE
+	* Type of spillover used to divert traffic to the backup virtual server when the primary virtual server reaches the spillover threshold. Connection spillover is based on the number of connections. Bandwidth spillover is based on the total Kbps of incoming and outgoing traffic.<br> Possible values = CONNECTION, DYNAMICCONNECTION, BANDWIDTH, HEALTH, NONE
 	* </pre>
 	*/
 	public String get_somethod() throws Exception {
@@ -423,7 +481,7 @@ If the case sensitivity is set to 'OFF', the URLs /a/1.html and /A/1.HTML are tr
 
 	/**
 	* <pre>
-	* The state of the spillover persistence.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Maintain source-IP based persistence on primary and backup virtual servers.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_sopersistence(String sopersistence) throws Exception{
@@ -432,7 +490,7 @@ If the case sensitivity is set to 'OFF', the URLs /a/1.html and /A/1.HTML are tr
 
 	/**
 	* <pre>
-	* The state of the spillover persistence.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Maintain source-IP based persistence on primary and backup virtual servers.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_sopersistence() throws Exception {
@@ -441,7 +499,7 @@ If the case sensitivity is set to 'OFF', the URLs /a/1.html and /A/1.HTML are tr
 
 	/**
 	* <pre>
-	* .<br> Default value: 2<br> Minimum value =  2<br> Maximum value =  1440
+	* Time-out value, in minutes, for spillover persistence.<br> Default value: 2<br> Minimum value =  2<br> Maximum value =  1440
 	* </pre>
 	*/
 	public void set_sopersistencetimeout(long sopersistencetimeout) throws Exception {
@@ -450,7 +508,7 @@ If the case sensitivity is set to 'OFF', the URLs /a/1.html and /A/1.HTML are tr
 
 	/**
 	* <pre>
-	* .<br> Default value: 2<br> Minimum value =  2<br> Maximum value =  1440
+	* Time-out value, in minutes, for spillover persistence.<br> Default value: 2<br> Minimum value =  2<br> Maximum value =  1440
 	* </pre>
 	*/
 	public void set_sopersistencetimeout(Long sopersistencetimeout) throws Exception{
@@ -459,7 +517,7 @@ If the case sensitivity is set to 'OFF', the URLs /a/1.html and /A/1.HTML are tr
 
 	/**
 	* <pre>
-	* .<br> Default value: 2<br> Minimum value =  2<br> Maximum value =  1440
+	* Time-out value, in minutes, for spillover persistence.<br> Default value: 2<br> Minimum value =  2<br> Maximum value =  1440
 	* </pre>
 	*/
 	public Long get_sopersistencetimeout() throws Exception {
@@ -468,7 +526,7 @@ If the case sensitivity is set to 'OFF', the URLs /a/1.html and /A/1.HTML are tr
 
 	/**
 	* <pre>
-	* If the spillover method is set to CONNECTION or DYNAMICCONNECTION, this value is treated as the maximum number of connections a lb vserver will handle before spillover takes place. If the spillover method is set to BANDWIDTH, this value is treated as the amount of incoming and outgoing traffic (in Kbps) a vserver will handle before spillover takes place.<br> Minimum value =  1<br> Maximum value =  4294967287
+	* Depending on the spillover method, the maximum number of connections or the maximum total bandwidth (Kbps) that a virtual server can handle before spillover occurs.<br> Minimum value =  1<br> Maximum value =  4294967287
 	* </pre>
 	*/
 	public void set_sothreshold(long sothreshold) throws Exception {
@@ -477,7 +535,7 @@ If the case sensitivity is set to 'OFF', the URLs /a/1.html and /A/1.HTML are tr
 
 	/**
 	* <pre>
-	* If the spillover method is set to CONNECTION or DYNAMICCONNECTION, this value is treated as the maximum number of connections a lb vserver will handle before spillover takes place. If the spillover method is set to BANDWIDTH, this value is treated as the amount of incoming and outgoing traffic (in Kbps) a vserver will handle before spillover takes place.<br> Minimum value =  1<br> Maximum value =  4294967287
+	* Depending on the spillover method, the maximum number of connections or the maximum total bandwidth (Kbps) that a virtual server can handle before spillover occurs.<br> Minimum value =  1<br> Maximum value =  4294967287
 	* </pre>
 	*/
 	public void set_sothreshold(Long sothreshold) throws Exception{
@@ -486,7 +544,7 @@ If the case sensitivity is set to 'OFF', the URLs /a/1.html and /A/1.HTML are tr
 
 	/**
 	* <pre>
-	* If the spillover method is set to CONNECTION or DYNAMICCONNECTION, this value is treated as the maximum number of connections a lb vserver will handle before spillover takes place. If the spillover method is set to BANDWIDTH, this value is treated as the amount of incoming and outgoing traffic (in Kbps) a vserver will handle before spillover takes place.<br> Minimum value =  1<br> Maximum value =  4294967287
+	* Depending on the spillover method, the maximum number of connections or the maximum total bandwidth (Kbps) that a virtual server can handle before spillover occurs.<br> Minimum value =  1<br> Maximum value =  4294967287
 	* </pre>
 	*/
 	public Long get_sothreshold() throws Exception {
@@ -495,7 +553,25 @@ If the case sensitivity is set to 'OFF', the URLs /a/1.html and /A/1.HTML are tr
 
 	/**
 	* <pre>
-	* Enable port rewrite while performing HTTP redirect.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Action to be performed if spillover is to take effect, but no backup chain to spillover is usable or exists.<br> Possible values = DROP, ACCEPT, REDIRECT
+	* </pre>
+	*/
+	public void set_sobackupaction(String sobackupaction) throws Exception{
+		this.sobackupaction = sobackupaction;
+	}
+
+	/**
+	* <pre>
+	* Action to be performed if spillover is to take effect, but no backup chain to spillover is usable or exists.<br> Possible values = DROP, ACCEPT, REDIRECT
+	* </pre>
+	*/
+	public String get_sobackupaction() throws Exception {
+		return this.sobackupaction;
+	}
+
+	/**
+	* <pre>
+	* State of port rewrite while performing HTTP redirect.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_redirectportrewrite(String redirectportrewrite) throws Exception{
@@ -504,7 +580,7 @@ If the case sensitivity is set to 'OFF', the URLs /a/1.html and /A/1.HTML are tr
 
 	/**
 	* <pre>
-	* Enable port rewrite while performing HTTP redirect.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* State of port rewrite while performing HTTP redirect.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_redirectportrewrite() throws Exception {
@@ -531,7 +607,9 @@ If the case sensitivity is set to 'OFF', the URLs /a/1.html and /A/1.HTML are tr
 
 	/**
 	* <pre>
-	* The backup virtual server for content switching.<br> Minimum length =  1
+	* Name of the backup virtual server that you are configuring. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at sign (@), equal sign (=), and hyphen (-) characters. Can be changed after the backup virtual server is created. You can assign a different backup virtual server or rename the existing virtual server.
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_backupvserver(String backupvserver) throws Exception{
@@ -540,7 +618,9 @@ If the case sensitivity is set to 'OFF', the URLs /a/1.html and /A/1.HTML are tr
 
 	/**
 	* <pre>
-	* The backup virtual server for content switching.<br> Minimum length =  1
+	* Name of the backup virtual server that you are configuring. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at sign (@), equal sign (=), and hyphen (-) characters. Can be changed after the backup virtual server is created. You can assign a different backup virtual server or rename the existing virtual server.
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_backupvserver() throws Exception {
@@ -549,7 +629,7 @@ If the case sensitivity is set to 'OFF', the URLs /a/1.html and /A/1.HTML are tr
 
 	/**
 	* <pre>
-	* When this argument is enabled, traffic will continue reaching backup vservers even after primary comes UP from DOWN state.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Continue forwarding the traffic to backup virtual server even after the primary server comes UP from the DOWN state.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_disableprimaryondown(String disableprimaryondown) throws Exception{
@@ -558,7 +638,7 @@ If the case sensitivity is set to 'OFF', the URLs /a/1.html and /A/1.HTML are tr
 
 	/**
 	* <pre>
-	* When this argument is enabled, traffic will continue reaching backup vservers even after primary comes UP from DOWN state.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Continue forwarding the traffic to backup virtual server even after the primary server comes UP from the DOWN state.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_disableprimaryondown() throws Exception {
@@ -567,7 +647,7 @@ If the case sensitivity is set to 'OFF', the URLs /a/1.html and /A/1.HTML are tr
 
 	/**
 	* <pre>
-	* The virtual IP and port header insertion option for the vserver.
+	* Insert the virtual server's VIP address and port number in the request header. Available values function as follows:
         VIPADDR - Header contains the vserver's IP address and port number without any translation.
         OFF     - The virtual IP and port header insertion option is disabled.
         V6TOV4MAPPING - Header contains the mapped IPv4 address corresponding to the IPv6 address of the vserver and the port number. An IPv6 address can be mapped to a user-specified IPv4 address using the set ns ip6 command.<br> Possible values = OFF, VIPADDR, V6TOV4MAPPING
@@ -579,7 +659,7 @@ If the case sensitivity is set to 'OFF', the URLs /a/1.html and /A/1.HTML are tr
 
 	/**
 	* <pre>
-	* The virtual IP and port header insertion option for the vserver.
+	* Insert the virtual server's VIP address and port number in the request header. Available values function as follows:
         VIPADDR - Header contains the vserver's IP address and port number without any translation.
         OFF     - The virtual IP and port header insertion option is disabled.
         V6TOV4MAPPING - Header contains the mapped IPv4 address corresponding to the IPv6 address of the vserver and the port number. An IPv6 address can be mapped to a user-specified IPv4 address using the set ns ip6 command.<br> Possible values = OFF, VIPADDR, V6TOV4MAPPING
@@ -591,7 +671,7 @@ If the case sensitivity is set to 'OFF', the URLs /a/1.html and /A/1.HTML are tr
 
 	/**
 	* <pre>
-	* The name of virtual IP and port header.<br> Minimum length =  1
+	* Name of virtual server IP and port header, for use with the VServer IP Port Insertion parameter.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_vipheader(String vipheader) throws Exception{
@@ -600,7 +680,7 @@ If the case sensitivity is set to 'OFF', the URLs /a/1.html and /A/1.HTML are tr
 
 	/**
 	* <pre>
-	* The name of virtual IP and port header.<br> Minimum length =  1
+	* Name of virtual server IP and port header, for use with the VServer IP Port Insertion parameter.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_vipheader() throws Exception {
@@ -609,7 +689,7 @@ If the case sensitivity is set to 'OFF', the URLs /a/1.html and /A/1.HTML are tr
 
 	/**
 	* <pre>
-	* Use this parameter to enable natting for RTSP data connection.<br> Default value: OFF<br> Possible values = ON, OFF
+	* Enable network address translation (NAT) for real-time streaming protocol (RTSP) connections.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_rtspnat(String rtspnat) throws Exception{
@@ -618,7 +698,7 @@ If the case sensitivity is set to 'OFF', the URLs /a/1.html and /A/1.HTML are tr
 
 	/**
 	* <pre>
-	* Use this parameter to enable natting for RTSP data connection.<br> Default value: OFF<br> Possible values = ON, OFF
+	* Enable network address translation (NAT) for real-time streaming protocol (RTSP) connections.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_rtspnat() throws Exception {
@@ -627,7 +707,7 @@ If the case sensitivity is set to 'OFF', the URLs /a/1.html and /A/1.HTML are tr
 
 	/**
 	* <pre>
-	* FQDN of authentication vserver.<br> Minimum length =  3<br> Maximum length =  252
+	* FQDN of the authentication virtual server. The service type of the virtual server should be either HTTP or SSL.<br> Minimum length =  3<br> Maximum length =  252
 	* </pre>
 	*/
 	public void set_authenticationhost(String authenticationhost) throws Exception{
@@ -636,7 +716,7 @@ If the case sensitivity is set to 'OFF', the URLs /a/1.html and /A/1.HTML are tr
 
 	/**
 	* <pre>
-	* FQDN of authentication vserver.<br> Minimum length =  3<br> Maximum length =  252
+	* FQDN of the authentication virtual server. The service type of the virtual server should be either HTTP or SSL.<br> Minimum length =  3<br> Maximum length =  252
 	* </pre>
 	*/
 	public String get_authenticationhost() throws Exception {
@@ -645,7 +725,7 @@ If the case sensitivity is set to 'OFF', the URLs /a/1.html and /A/1.HTML are tr
 
 	/**
 	* <pre>
-	* This option toggles on or off the application of authentication of incoming users to the vserver.<br> Default value: OFF<br> Possible values = ON, OFF
+	* Authenticate users who request a connection to the content switching virtual server.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_authentication(String authentication) throws Exception{
@@ -654,7 +734,7 @@ If the case sensitivity is set to 'OFF', the URLs /a/1.html and /A/1.HTML are tr
 
 	/**
 	* <pre>
-	* This option toggles on or off the application of authentication of incoming users to the vserver.<br> Default value: OFF<br> Possible values = ON, OFF
+	* Authenticate users who request a connection to the content switching virtual server.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_authentication() throws Exception {
@@ -663,8 +743,7 @@ If the case sensitivity is set to 'OFF', the URLs /a/1.html and /A/1.HTML are tr
 
 	/**
 	* <pre>
-	* Use this parameter to specify the listen policy for CS Vserver.
-The string can be either an existing expression name (configured using add policy expression command) or else it can be an in-line expression with a maximum of 1499 characters.<br> Default value: "none"
+	* String specifying the listen policy for the content switching virtual server. Can be either the name of an existing expression or an in-line expression.<br> Default value: "none"
 	* </pre>
 	*/
 	public void set_listenpolicy(String listenpolicy) throws Exception{
@@ -673,8 +752,7 @@ The string can be either an existing expression name (configured using add polic
 
 	/**
 	* <pre>
-	* Use this parameter to specify the listen policy for CS Vserver.
-The string can be either an existing expression name (configured using add policy expression command) or else it can be an in-line expression with a maximum of 1499 characters.<br> Default value: "none"
+	* String specifying the listen policy for the content switching virtual server. Can be either the name of an existing expression or an in-line expression.<br> Default value: "none"
 	* </pre>
 	*/
 	public String get_listenpolicy() throws Exception {
@@ -683,7 +761,7 @@ The string can be either an existing expression name (configured using add polic
 
 	/**
 	* <pre>
-	* Use this parameter to specify the priority for listen policy of CS Vserver.<br> Default value: 101<br> Minimum value =  0<br> Maximum value =  100
+	* Integer specifying the priority of the listen policy. A higher number specifies a lower priority. If a request matches the listen policies of more than one virtual server the virtual server whose listen policy has the highest priority (the lowest priority number) accepts the request.<br> Default value: 101<br> Minimum value =  0<br> Maximum value =  100
 	* </pre>
 	*/
 	public void set_listenpriority(long listenpriority) throws Exception {
@@ -692,7 +770,7 @@ The string can be either an existing expression name (configured using add polic
 
 	/**
 	* <pre>
-	* Use this parameter to specify the priority for listen policy of CS Vserver.<br> Default value: 101<br> Minimum value =  0<br> Maximum value =  100
+	* Integer specifying the priority of the listen policy. A higher number specifies a lower priority. If a request matches the listen policies of more than one virtual server the virtual server whose listen policy has the highest priority (the lowest priority number) accepts the request.<br> Default value: 101<br> Minimum value =  0<br> Maximum value =  100
 	* </pre>
 	*/
 	public void set_listenpriority(Long listenpriority) throws Exception{
@@ -701,7 +779,7 @@ The string can be either an existing expression name (configured using add polic
 
 	/**
 	* <pre>
-	* Use this parameter to specify the priority for listen policy of CS Vserver.<br> Default value: 101<br> Minimum value =  0<br> Maximum value =  100
+	* Integer specifying the priority of the listen policy. A higher number specifies a lower priority. If a request matches the listen policies of more than one virtual server the virtual server whose listen policy has the highest priority (the lowest priority number) accepts the request.<br> Default value: 101<br> Minimum value =  0<br> Maximum value =  100
 	* </pre>
 	*/
 	public Long get_listenpriority() throws Exception {
@@ -710,7 +788,7 @@ The string can be either an existing expression name (configured using add polic
 
 	/**
 	* <pre>
-	* This option toggles on or off the HTTP 401 response based authentication.<br> Default value: OFF<br> Possible values = ON, OFF
+	* Enable HTTP 401-response based authentication.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_authn401(String authn401) throws Exception{
@@ -719,7 +797,7 @@ The string can be either an existing expression name (configured using add polic
 
 	/**
 	* <pre>
-	* This option toggles on or off the HTTP 401 response based authentication.<br> Default value: OFF<br> Possible values = ON, OFF
+	* Enable HTTP 401-response based authentication.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_authn401() throws Exception {
@@ -728,7 +806,7 @@ The string can be either an existing expression name (configured using add polic
 
 	/**
 	* <pre>
-	* Name of authentication vserver.<br> Minimum length =  1<br> Maximum length =  252
+	* Name of authentication virtual server that authenticates the incoming user requests to this content switching virtual server. .<br> Minimum length =  1<br> Maximum length =  252
 	* </pre>
 	*/
 	public void set_authnvsname(String authnvsname) throws Exception{
@@ -737,7 +815,7 @@ The string can be either an existing expression name (configured using add polic
 
 	/**
 	* <pre>
-	* Name of authentication vserver.<br> Minimum length =  1<br> Maximum length =  252
+	* Name of authentication virtual server that authenticates the incoming user requests to this content switching virtual server. .<br> Minimum length =  1<br> Maximum length =  252
 	* </pre>
 	*/
 	public String get_authnvsname() throws Exception {
@@ -746,43 +824,7 @@ The string can be either an existing expression name (configured using add polic
 
 	/**
 	* <pre>
-	* Domain of LB vserver.<br> Minimum length =  3<br> Maximum length =  252
-	* </pre>
-	*/
-	public void set_aaa_tm_kbr_domain(String aaa_tm_kbr_domain) throws Exception{
-		this.aaa_tm_kbr_domain = aaa_tm_kbr_domain;
-	}
-
-	/**
-	* <pre>
-	* Domain of LB vserver.<br> Minimum length =  3<br> Maximum length =  252
-	* </pre>
-	*/
-	public String get_aaa_tm_kbr_domain() throws Exception {
-		return this.aaa_tm_kbr_domain;
-	}
-
-	/**
-	* <pre>
-	* Realm.<br> Minimum length =  3<br> Maximum length =  252
-	* </pre>
-	*/
-	public void set_realm(String realm) throws Exception{
-		this.realm = realm;
-	}
-
-	/**
-	* <pre>
-	* Realm.<br> Minimum length =  3<br> Maximum length =  252
-	* </pre>
-	*/
-	public String get_realm() throws Exception {
-		return this.realm;
-	}
-
-	/**
-	* <pre>
-	* Process traffic on bound Push vserver.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Process traffic with the push virtual server that is bound to this content switching virtual server (specified by the Push VServer parameter). The service type of the push virtual server should be either HTTP or SSL.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_push(String push) throws Exception{
@@ -791,7 +833,7 @@ The string can be either an existing expression name (configured using add polic
 
 	/**
 	* <pre>
-	* Process traffic on bound Push vserver.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Process traffic with the push virtual server that is bound to this content switching virtual server (specified by the Push VServer parameter). The service type of the push virtual server should be either HTTP or SSL.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_push() throws Exception {
@@ -800,7 +842,7 @@ The string can be either an existing expression name (configured using add polic
 
 	/**
 	* <pre>
-	* The lb vserver of type PUSH/SSL_PUSH to which server pushes the updates received on the client facing non-push lb vserver.<br> Minimum length =  1
+	* Name of the load balancing virtual server, of type PUSH or SSL_PUSH, to which the server pushes updates received on the client-facing load balancing virtual server.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_pushvserver(String pushvserver) throws Exception{
@@ -809,7 +851,7 @@ The string can be either an existing expression name (configured using add polic
 
 	/**
 	* <pre>
-	* The lb vserver of type PUSH/SSL_PUSH to which server pushes the updates received on the client facing non-push lb vserver.<br> Minimum length =  1
+	* Name of the load balancing virtual server, of type PUSH or SSL_PUSH, to which the server pushes updates received on the client-facing load balancing virtual server.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_pushvserver() throws Exception {
@@ -818,8 +860,7 @@ The string can be either an existing expression name (configured using add polic
 
 	/**
 	* <pre>
-	* Use this parameter to specify the expression to extract the label in response from server.
-The string can be either a named expression (configured using add policy expression command) or else it can be an in-line expression with a maximum of 63 characters.<br> Default value: "none"
+	* Expression for extracting the label from the response received from server. This string can be either an existing rule name or an inline expression. The service type of the virtual server should be either HTTP or SSL.<br> Default value: "none"
 	* </pre>
 	*/
 	public void set_pushlabel(String pushlabel) throws Exception{
@@ -828,8 +869,7 @@ The string can be either a named expression (configured using add policy express
 
 	/**
 	* <pre>
-	* Use this parameter to specify the expression to extract the label in response from server.
-The string can be either a named expression (configured using add policy expression command) or else it can be an in-line expression with a maximum of 63 characters.<br> Default value: "none"
+	* Expression for extracting the label from the response received from server. This string can be either an existing rule name or an inline expression. The service type of the virtual server should be either HTTP or SSL.<br> Default value: "none"
 	* </pre>
 	*/
 	public String get_pushlabel() throws Exception {
@@ -838,7 +878,7 @@ The string can be either a named expression (configured using add policy express
 
 	/**
 	* <pre>
-	* Specify if multiple web 2.0 connections from the same client can connect to this vserver and expect updates.<br> Default value: NO<br> Possible values = YES, NO
+	* Allow multiple Web 2.0 connections from the same client to connect to the virtual server and expect updates.<br> Default value: NO<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public void set_pushmulticlients(String pushmulticlients) throws Exception{
@@ -847,7 +887,7 @@ The string can be either a named expression (configured using add policy express
 
 	/**
 	* <pre>
-	* Specify if multiple web 2.0 connections from the same client can connect to this vserver and expect updates.<br> Default value: NO<br> Possible values = YES, NO
+	* Allow multiple Web 2.0 connections from the same client to connect to the virtual server and expect updates.<br> Default value: NO<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public String get_pushmulticlients() throws Exception {
@@ -856,7 +896,7 @@ The string can be either a named expression (configured using add policy express
 
 	/**
 	* <pre>
-	* The name of the TCP profile.<br> Minimum length =  1<br> Maximum length =  127
+	* Name of the TCP profile containing TCP configuration settings for the virtual server.<br> Minimum length =  1<br> Maximum length =  127
 	* </pre>
 	*/
 	public void set_tcpprofilename(String tcpprofilename) throws Exception{
@@ -865,7 +905,7 @@ The string can be either a named expression (configured using add policy express
 
 	/**
 	* <pre>
-	* The name of the TCP profile.<br> Minimum length =  1<br> Maximum length =  127
+	* Name of the TCP profile containing TCP configuration settings for the virtual server.<br> Minimum length =  1<br> Maximum length =  127
 	* </pre>
 	*/
 	public String get_tcpprofilename() throws Exception {
@@ -874,7 +914,7 @@ The string can be either a named expression (configured using add policy express
 
 	/**
 	* <pre>
-	* Name of the HTTP profile.<br> Minimum length =  1<br> Maximum length =  127
+	* Name of the HTTP profile containing HTTP configuration settings for the virtual server. The service type of the virtual server should be either HTTP or SSL.<br> Minimum length =  1<br> Maximum length =  127
 	* </pre>
 	*/
 	public void set_httpprofilename(String httpprofilename) throws Exception{
@@ -883,7 +923,7 @@ The string can be either a named expression (configured using add policy express
 
 	/**
 	* <pre>
-	* Name of the HTTP profile.<br> Minimum length =  1<br> Maximum length =  127
+	* Name of the HTTP profile containing HTTP configuration settings for the virtual server. The service type of the virtual server should be either HTTP or SSL.<br> Minimum length =  1<br> Maximum length =  127
 	* </pre>
 	*/
 	public String get_httpprofilename() throws Exception {
@@ -892,7 +932,25 @@ The string can be either a named expression (configured using add policy express
 
 	/**
 	* <pre>
-	* Comments associated with this virtual server.
+	* Name of the DB profile.<br> Minimum length =  1<br> Maximum length =  127
+	* </pre>
+	*/
+	public void set_dbprofilename(String dbprofilename) throws Exception{
+		this.dbprofilename = dbprofilename;
+	}
+
+	/**
+	* <pre>
+	* Name of the DB profile.<br> Minimum length =  1<br> Maximum length =  127
+	* </pre>
+	*/
+	public String get_dbprofilename() throws Exception {
+		return this.dbprofilename;
+	}
+
+	/**
+	* <pre>
+	* Information about this virtual server.
 	* </pre>
 	*/
 	public void set_comment(String comment) throws Exception{
@@ -901,7 +959,7 @@ The string can be either a named expression (configured using add policy express
 
 	/**
 	* <pre>
-	* Comments associated with this virtual server.
+	* Information about this virtual server.
 	* </pre>
 	*/
 	public String get_comment() throws Exception {
@@ -910,7 +968,7 @@ The string can be either a named expression (configured using add policy express
 
 	/**
 	* <pre>
-	* The version of the MSSQL server.<br> Default value: TDS_PROT_2008B<br> Possible values = 70, 2000, 2000SP1, 2005, 2008, 2008R2
+	* The version of the MSSQL server.<br> Default value: 2008R2<br> Possible values = 70, 2000, 2000SP1, 2005, 2008, 2008R2, 2012
 	* </pre>
 	*/
 	public void set_mssqlserverversion(String mssqlserverversion) throws Exception{
@@ -919,7 +977,7 @@ The string can be either a named expression (configured using add policy express
 
 	/**
 	* <pre>
-	* The version of the MSSQL server.<br> Default value: TDS_PROT_2008B<br> Possible values = 70, 2000, 2000SP1, 2005, 2008, 2008R2
+	* The version of the MSSQL server.<br> Default value: 2008R2<br> Possible values = 70, 2000, 2000SP1, 2005, 2008, 2008R2, 2012
 	* </pre>
 	*/
 	public String get_mssqlserverversion() throws Exception {
@@ -1081,7 +1139,7 @@ The string can be either a named expression (configured using add policy express
 
 	/**
 	* <pre>
-	* Can be active or passive.<br> Default value: NS_VSR_PASSIVE<br> Possible values = PASSIVE, ACTIVE
+	* Can be active or passive.<br> Default value: PASSIVE<br> Possible values = PASSIVE, ACTIVE
 	* </pre>
 	*/
 	public void set_icmpvsrresponse(String icmpvsrresponse) throws Exception{
@@ -1090,7 +1148,7 @@ The string can be either a named expression (configured using add policy express
 
 	/**
 	* <pre>
-	* Can be active or passive.<br> Default value: NS_VSR_PASSIVE<br> Possible values = PASSIVE, ACTIVE
+	* Can be active or passive.<br> Default value: PASSIVE<br> Possible values = PASSIVE, ACTIVE
 	* </pre>
 	*/
 	public String get_icmpvsrresponse() throws Exception {
@@ -1099,7 +1157,27 @@ The string can be either a named expression (configured using add policy express
 
 	/**
 	* <pre>
-	* The new name of the virtual server.<br> Minimum length =  1
+	* Name of the authentication profile to be used when authentication is turned on.
+	* </pre>
+	*/
+	public void set_authnprofile(String authnprofile) throws Exception{
+		this.authnprofile = authnprofile;
+	}
+
+	/**
+	* <pre>
+	* Name of the authentication profile to be used when authentication is turned on.
+	* </pre>
+	*/
+	public String get_authnprofile() throws Exception {
+		return this.authnprofile;
+	}
+
+	/**
+	* <pre>
+	* New name for the virtual server. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at sign (@), equal sign (=), and hyphen (-) characters. 
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, “my name” or ‘my name’).<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_newname(String newname) throws Exception{
@@ -1108,7 +1186,9 @@ The string can be either a named expression (configured using add policy express
 
 	/**
 	* <pre>
-	* The new name of the virtual server.<br> Minimum length =  1
+	* New name for the virtual server. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at sign (@), equal sign (=), and hyphen (-) characters. 
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, “my name” or ‘my name’).<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_newname() throws Exception {
@@ -1135,6 +1215,15 @@ The string can be either a named expression (configured using add policy express
 
 	/**
 	* <pre>
+	* Nodegroup devno to which this csvserver belongs to.
+	* </pre>
+	*/
+	public String get_ngname() throws Exception {
+		return this.ngname;
+	}
+
+	/**
+	* <pre>
 	* Virtual server type.<br> Possible values = CONTENT, ADDRESS
 	* </pre>
 	*/
@@ -1144,7 +1233,7 @@ The string can be either a named expression (configured using add policy express
 
 	/**
 	* <pre>
-	* The state of the cs vserver.<br> Possible values = UP, DOWN, UNKNOWN, BUSY, OUT OF SERVICE, GOING OUT OF SERVICE, DOWN WHEN GOING OUT OF SERVICE, NS_EMPTY_STR
+	* The state of the cs vserver.<br> Possible values = UP, DOWN, UNKNOWN, BUSY, OUT OF SERVICE, GOING OUT OF SERVICE, DOWN WHEN GOING OUT OF SERVICE, NS_EMPTY_STR, Unknown, DISABLED
 	* </pre>
 	*/
 	public String get_curstate() throws Exception {
@@ -1360,7 +1449,7 @@ The string can be either a named expression (configured using add policy express
 
 	/**
 	* <pre>
-	* Name of the default lb vserver bound.<br> Minimum length =  1
+	* Name of the default lb vserver bound. Use this param for Default binding only. For Example: bind cs vserver cs1 -lbvserver lb1.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_lbvserver() throws Exception {
@@ -1416,6 +1505,7 @@ The string can be either a named expression (configured using add policy express
 	public static base_response add(nitro_service client, csvserver resource) throws Exception {
 		csvserver addresource = new csvserver();
 		addresource.name = resource.name;
+		addresource.td = resource.td;
 		addresource.servicetype = resource.servicetype;
 		addresource.ipv46 = resource.ipv46;
 		addresource.ippattern = resource.ippattern;
@@ -1433,6 +1523,7 @@ The string can be either a named expression (configured using add policy express
 		addresource.sopersistence = resource.sopersistence;
 		addresource.sopersistencetimeout = resource.sopersistencetimeout;
 		addresource.sothreshold = resource.sothreshold;
+		addresource.sobackupaction = resource.sobackupaction;
 		addresource.redirectportrewrite = resource.redirectportrewrite;
 		addresource.downstateflush = resource.downstateflush;
 		addresource.backupvserver = resource.backupvserver;
@@ -1446,14 +1537,13 @@ The string can be either a named expression (configured using add policy express
 		addresource.listenpriority = resource.listenpriority;
 		addresource.authn401 = resource.authn401;
 		addresource.authnvsname = resource.authnvsname;
-		addresource.aaa_tm_kbr_domain = resource.aaa_tm_kbr_domain;
-		addresource.realm = resource.realm;
 		addresource.push = resource.push;
 		addresource.pushvserver = resource.pushvserver;
 		addresource.pushlabel = resource.pushlabel;
 		addresource.pushmulticlients = resource.pushmulticlients;
 		addresource.tcpprofilename = resource.tcpprofilename;
 		addresource.httpprofilename = resource.httpprofilename;
+		addresource.dbprofilename = resource.dbprofilename;
 		addresource.comment = resource.comment;
 		addresource.mssqlserverversion = resource.mssqlserverversion;
 		addresource.l2conn = resource.l2conn;
@@ -1464,6 +1554,7 @@ The string can be either a named expression (configured using add policy express
 		addresource.appflowlog = resource.appflowlog;
 		addresource.netprofile = resource.netprofile;
 		addresource.icmpvsrresponse = resource.icmpvsrresponse;
+		addresource.authnprofile = resource.authnprofile;
 		return addresource.add_resource(client);
 	}
 
@@ -1477,6 +1568,7 @@ The string can be either a named expression (configured using add policy express
 			for (int i=0;i<resources.length;i++){
 				addresources[i] = new csvserver();
 				addresources[i].name = resources[i].name;
+				addresources[i].td = resources[i].td;
 				addresources[i].servicetype = resources[i].servicetype;
 				addresources[i].ipv46 = resources[i].ipv46;
 				addresources[i].ippattern = resources[i].ippattern;
@@ -1494,6 +1586,7 @@ The string can be either a named expression (configured using add policy express
 				addresources[i].sopersistence = resources[i].sopersistence;
 				addresources[i].sopersistencetimeout = resources[i].sopersistencetimeout;
 				addresources[i].sothreshold = resources[i].sothreshold;
+				addresources[i].sobackupaction = resources[i].sobackupaction;
 				addresources[i].redirectportrewrite = resources[i].redirectportrewrite;
 				addresources[i].downstateflush = resources[i].downstateflush;
 				addresources[i].backupvserver = resources[i].backupvserver;
@@ -1507,14 +1600,13 @@ The string can be either a named expression (configured using add policy express
 				addresources[i].listenpriority = resources[i].listenpriority;
 				addresources[i].authn401 = resources[i].authn401;
 				addresources[i].authnvsname = resources[i].authnvsname;
-				addresources[i].aaa_tm_kbr_domain = resources[i].aaa_tm_kbr_domain;
-				addresources[i].realm = resources[i].realm;
 				addresources[i].push = resources[i].push;
 				addresources[i].pushvserver = resources[i].pushvserver;
 				addresources[i].pushlabel = resources[i].pushlabel;
 				addresources[i].pushmulticlients = resources[i].pushmulticlients;
 				addresources[i].tcpprofilename = resources[i].tcpprofilename;
 				addresources[i].httpprofilename = resources[i].httpprofilename;
+				addresources[i].dbprofilename = resources[i].dbprofilename;
 				addresources[i].comment = resources[i].comment;
 				addresources[i].mssqlserverversion = resources[i].mssqlserverversion;
 				addresources[i].l2conn = resources[i].l2conn;
@@ -1525,6 +1617,7 @@ The string can be either a named expression (configured using add policy express
 				addresources[i].appflowlog = resources[i].appflowlog;
 				addresources[i].netprofile = resources[i].netprofile;
 				addresources[i].icmpvsrresponse = resources[i].icmpvsrresponse;
+				addresources[i].authnprofile = resources[i].authnprofile;
 			}
 			result = add_bulk_request(client, addresources);
 		}
@@ -1601,6 +1694,7 @@ The string can be either a named expression (configured using add policy express
 		updateresource.sopersistence = resource.sopersistence;
 		updateresource.sopersistencetimeout = resource.sopersistencetimeout;
 		updateresource.sothreshold = resource.sothreshold;
+		updateresource.sobackupaction = resource.sobackupaction;
 		updateresource.redirectportrewrite = resource.redirectportrewrite;
 		updateresource.downstateflush = resource.downstateflush;
 		updateresource.disableprimaryondown = resource.disableprimaryondown;
@@ -1613,14 +1707,13 @@ The string can be either a named expression (configured using add policy express
 		updateresource.listenpriority = resource.listenpriority;
 		updateresource.authn401 = resource.authn401;
 		updateresource.authnvsname = resource.authnvsname;
-		updateresource.aaa_tm_kbr_domain = resource.aaa_tm_kbr_domain;
-		updateresource.realm = resource.realm;
 		updateresource.push = resource.push;
 		updateresource.pushvserver = resource.pushvserver;
 		updateresource.pushlabel = resource.pushlabel;
 		updateresource.pushmulticlients = resource.pushmulticlients;
 		updateresource.tcpprofilename = resource.tcpprofilename;
 		updateresource.httpprofilename = resource.httpprofilename;
+		updateresource.dbprofilename = resource.dbprofilename;
 		updateresource.comment = resource.comment;
 		updateresource.l2conn = resource.l2conn;
 		updateresource.mssqlserverversion = resource.mssqlserverversion;
@@ -1630,6 +1723,7 @@ The string can be either a named expression (configured using add policy express
 		updateresource.mysqlservercapabilities = resource.mysqlservercapabilities;
 		updateresource.appflowlog = resource.appflowlog;
 		updateresource.netprofile = resource.netprofile;
+		updateresource.authnprofile = resource.authnprofile;
 		updateresource.icmpvsrresponse = resource.icmpvsrresponse;
 		return updateresource.update_resource(client);
 	}
@@ -1658,6 +1752,7 @@ The string can be either a named expression (configured using add policy express
 				updateresources[i].sopersistence = resources[i].sopersistence;
 				updateresources[i].sopersistencetimeout = resources[i].sopersistencetimeout;
 				updateresources[i].sothreshold = resources[i].sothreshold;
+				updateresources[i].sobackupaction = resources[i].sobackupaction;
 				updateresources[i].redirectportrewrite = resources[i].redirectportrewrite;
 				updateresources[i].downstateflush = resources[i].downstateflush;
 				updateresources[i].disableprimaryondown = resources[i].disableprimaryondown;
@@ -1670,14 +1765,13 @@ The string can be either a named expression (configured using add policy express
 				updateresources[i].listenpriority = resources[i].listenpriority;
 				updateresources[i].authn401 = resources[i].authn401;
 				updateresources[i].authnvsname = resources[i].authnvsname;
-				updateresources[i].aaa_tm_kbr_domain = resources[i].aaa_tm_kbr_domain;
-				updateresources[i].realm = resources[i].realm;
 				updateresources[i].push = resources[i].push;
 				updateresources[i].pushvserver = resources[i].pushvserver;
 				updateresources[i].pushlabel = resources[i].pushlabel;
 				updateresources[i].pushmulticlients = resources[i].pushmulticlients;
 				updateresources[i].tcpprofilename = resources[i].tcpprofilename;
 				updateresources[i].httpprofilename = resources[i].httpprofilename;
+				updateresources[i].dbprofilename = resources[i].dbprofilename;
 				updateresources[i].comment = resources[i].comment;
 				updateresources[i].l2conn = resources[i].l2conn;
 				updateresources[i].mssqlserverversion = resources[i].mssqlserverversion;
@@ -1687,6 +1781,7 @@ The string can be either a named expression (configured using add policy express
 				updateresources[i].mysqlservercapabilities = resources[i].mysqlservercapabilities;
 				updateresources[i].appflowlog = resources[i].appflowlog;
 				updateresources[i].netprofile = resources[i].netprofile;
+				updateresources[i].authnprofile = resources[i].authnprofile;
 				updateresources[i].icmpvsrresponse = resources[i].icmpvsrresponse;
 			}
 			result = update_bulk_request(client, updateresources);
@@ -1698,60 +1793,9 @@ The string can be either a named expression (configured using add policy express
 	* Use this API to unset the properties of csvserver resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String name, String args[]) throws Exception {
-		csvserver unsetresource = new csvserver();
-		unsetresource.name = name;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of csvserver resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, csvserver resource, String[] args) throws Exception{
 		csvserver unsetresource = new csvserver();
 		unsetresource.name = resource.name;
-		unsetresource.casesensitive = resource.casesensitive;
-		unsetresource.backupvserver = resource.backupvserver;
-		unsetresource.clttimeout = resource.clttimeout;
-		unsetresource.redirecturl = resource.redirecturl;
-		unsetresource.authenticationhost = resource.authenticationhost;
-		unsetresource.authnvsname = resource.authnvsname;
-		unsetresource.aaa_tm_kbr_domain = resource.aaa_tm_kbr_domain;
-		unsetresource.realm = resource.realm;
-		unsetresource.pushvserver = resource.pushvserver;
-		unsetresource.pushlabel = resource.pushlabel;
-		unsetresource.tcpprofilename = resource.tcpprofilename;
-		unsetresource.httpprofilename = resource.httpprofilename;
-		unsetresource.l2conn = resource.l2conn;
-		unsetresource.mysqlprotocolversion = resource.mysqlprotocolversion;
-		unsetresource.mysqlserverversion = resource.mysqlserverversion;
-		unsetresource.mysqlcharacterset = resource.mysqlcharacterset;
-		unsetresource.mysqlservercapabilities = resource.mysqlservercapabilities;
-		unsetresource.appflowlog = resource.appflowlog;
-		unsetresource.netprofile = resource.netprofile;
-		unsetresource.icmpvsrresponse = resource.icmpvsrresponse;
-		unsetresource.stateupdate = resource.stateupdate;
-		unsetresource.precedence = resource.precedence;
-		unsetresource.cacheable = resource.cacheable;
-		unsetresource.somethod = resource.somethod;
-		unsetresource.sopersistence = resource.sopersistence;
-		unsetresource.sopersistencetimeout = resource.sopersistencetimeout;
-		unsetresource.sothreshold = resource.sothreshold;
-		unsetresource.redirectportrewrite = resource.redirectportrewrite;
-		unsetresource.downstateflush = resource.downstateflush;
-		unsetresource.disableprimaryondown = resource.disableprimaryondown;
-		unsetresource.insertvserveripport = resource.insertvserveripport;
-		unsetresource.vipheader = resource.vipheader;
-		unsetresource.rtspnat = resource.rtspnat;
-		unsetresource.authentication = resource.authentication;
-		unsetresource.listenpolicy = resource.listenpolicy;
-		unsetresource.listenpriority = resource.listenpriority;
-		unsetresource.authn401 = resource.authn401;
-		unsetresource.push = resource.push;
-		unsetresource.pushmulticlients = resource.pushmulticlients;
-		unsetresource.comment = resource.comment;
-		unsetresource.mssqlserverversion = resource.mssqlserverversion;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -1783,47 +1827,6 @@ The string can be either a named expression (configured using add policy express
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new csvserver();
 				unsetresources[i].name = resources[i].name;
-				unsetresources[i].casesensitive = resources[i].casesensitive;
-				unsetresources[i].backupvserver = resources[i].backupvserver;
-				unsetresources[i].clttimeout = resources[i].clttimeout;
-				unsetresources[i].redirecturl = resources[i].redirecturl;
-				unsetresources[i].authenticationhost = resources[i].authenticationhost;
-				unsetresources[i].authnvsname = resources[i].authnvsname;
-				unsetresources[i].aaa_tm_kbr_domain = resources[i].aaa_tm_kbr_domain;
-				unsetresources[i].realm = resources[i].realm;
-				unsetresources[i].pushvserver = resources[i].pushvserver;
-				unsetresources[i].pushlabel = resources[i].pushlabel;
-				unsetresources[i].tcpprofilename = resources[i].tcpprofilename;
-				unsetresources[i].httpprofilename = resources[i].httpprofilename;
-				unsetresources[i].l2conn = resources[i].l2conn;
-				unsetresources[i].mysqlprotocolversion = resources[i].mysqlprotocolversion;
-				unsetresources[i].mysqlserverversion = resources[i].mysqlserverversion;
-				unsetresources[i].mysqlcharacterset = resources[i].mysqlcharacterset;
-				unsetresources[i].mysqlservercapabilities = resources[i].mysqlservercapabilities;
-				unsetresources[i].appflowlog = resources[i].appflowlog;
-				unsetresources[i].netprofile = resources[i].netprofile;
-				unsetresources[i].icmpvsrresponse = resources[i].icmpvsrresponse;
-				unsetresources[i].stateupdate = resources[i].stateupdate;
-				unsetresources[i].precedence = resources[i].precedence;
-				unsetresources[i].cacheable = resources[i].cacheable;
-				unsetresources[i].somethod = resources[i].somethod;
-				unsetresources[i].sopersistence = resources[i].sopersistence;
-				unsetresources[i].sopersistencetimeout = resources[i].sopersistencetimeout;
-				unsetresources[i].sothreshold = resources[i].sothreshold;
-				unsetresources[i].redirectportrewrite = resources[i].redirectportrewrite;
-				unsetresources[i].downstateflush = resources[i].downstateflush;
-				unsetresources[i].disableprimaryondown = resources[i].disableprimaryondown;
-				unsetresources[i].insertvserveripport = resources[i].insertvserveripport;
-				unsetresources[i].vipheader = resources[i].vipheader;
-				unsetresources[i].rtspnat = resources[i].rtspnat;
-				unsetresources[i].authentication = resources[i].authentication;
-				unsetresources[i].listenpolicy = resources[i].listenpolicy;
-				unsetresources[i].listenpriority = resources[i].listenpriority;
-				unsetresources[i].authn401 = resources[i].authn401;
-				unsetresources[i].push = resources[i].push;
-				unsetresources[i].pushmulticlients = resources[i].pushmulticlients;
-				unsetresources[i].comment = resources[i].comment;
-				unsetresources[i].mssqlserverversion = resources[i].mssqlserverversion;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}
@@ -2156,6 +2159,11 @@ The string can be either a named expression (configured using add policy express
 		public static final String ON = "ON";
 		public static final String OFF = "OFF";
 	}
+	public static class sobackupactionEnum {
+		public static final String DROP = "DROP";
+		public static final String ACCEPT = "ACCEPT";
+		public static final String REDIRECT = "REDIRECT";
+	}
 	public static class gt2gbEnum {
 		public static final String ENABLED = "ENABLED";
 		public static final String DISABLED = "DISABLED";
@@ -2173,6 +2181,8 @@ The string can be either a named expression (configured using add policy express
 		public static final String GOING_OUT_OF_SERVICE = "GOING OUT OF SERVICE";
 		public static final String DOWN_WHEN_GOING_OUT_OF_SERVICE = "DOWN WHEN GOING OUT OF SERVICE";
 		public static final String NS_EMPTY_STR = "NS_EMPTY_STR";
+		public static final String Unknown = "Unknown";
+		public static final String DISABLED = "DISABLED";
 	}
 	public static class pushEnum {
 		public static final String ENABLED = "ENABLED";
@@ -2202,6 +2212,7 @@ The string can be either a named expression (configured using add policy express
 		public static final String _2005 = "2005";
 		public static final String _2008 = "2008";
 		public static final String _2008R2 = "2008R2";
+		public static final String _2012 = "2012";
 	}
 	public static class authn401Enum {
 		public static final String ON = "ON";

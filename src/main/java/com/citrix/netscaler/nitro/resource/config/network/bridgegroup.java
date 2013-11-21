@@ -74,7 +74,7 @@ public class bridgegroup extends base_resource
 
 	/**
 	* <pre>
-	* Enable all IPv6 dynamic routing protocols on this VLAN. Possible values: ENABLED, DISABLED Default: DISABLED. Note: For the ENABLED setting to work, you must configure IPv6 dynamic routing protocols from the VTYSH command line. For more information about configuring IPv6 dynamic routing protocols on the NetScaler appliance, see the “Dynamic Routing” chapter of the Citrix NetScaler Networking Guide.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Enable all IPv6 dynamic routing protocols on this VLAN. Possible values: ENABLED, DISABLED Default: DISABLED. Note: For the ENABLED setting to work, you must configure IPv6 dynamic routing protocols from the VTYSH command line. For more information about configuring IPv6 dynamic routing protocols on the NetScaler appliance, see the 'Dynamic Routing' chapter of the Citrix NetScaler Networking Guide.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_ipv6dynamicrouting(String ipv6dynamicrouting) throws Exception{
@@ -83,7 +83,7 @@ public class bridgegroup extends base_resource
 
 	/**
 	* <pre>
-	* Enable all IPv6 dynamic routing protocols on this VLAN. Possible values: ENABLED, DISABLED Default: DISABLED. Note: For the ENABLED setting to work, you must configure IPv6 dynamic routing protocols from the VTYSH command line. For more information about configuring IPv6 dynamic routing protocols on the NetScaler appliance, see the “Dynamic Routing” chapter of the Citrix NetScaler Networking Guide.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Enable all IPv6 dynamic routing protocols on this VLAN. Possible values: ENABLED, DISABLED Default: DISABLED. Note: For the ENABLED setting to work, you must configure IPv6 dynamic routing protocols from the VTYSH command line. For more information about configuring IPv6 dynamic routing protocols on the NetScaler appliance, see the 'Dynamic Routing' chapter of the Citrix NetScaler Networking Guide.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_ipv6dynamicrouting() throws Exception {
@@ -289,20 +289,9 @@ public class bridgegroup extends base_resource
 	* Use this API to unset the properties of bridgegroup resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, Long id, String args[]) throws Exception {
-		bridgegroup unsetresource = new bridgegroup();
-		unsetresource.id = id;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of bridgegroup resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, bridgegroup resource, String[] args) throws Exception{
 		bridgegroup unsetresource = new bridgegroup();
 		unsetresource.id = resource.id;
-		unsetresource.ipv6dynamicrouting = resource.ipv6dynamicrouting;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -334,7 +323,6 @@ public class bridgegroup extends base_resource
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new bridgegroup();
 				unsetresources[i].id = resources[i].id;
-				unsetresources[i].ipv6dynamicrouting = resources[i].ipv6dynamicrouting;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}

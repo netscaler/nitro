@@ -60,6 +60,7 @@ public class nsip extends base_resource
 	private String icmpresponse;
 	private Long ownernode;
 	private String arpresponse;
+	private Long td;
 
 	//------- Read only Parameter ---------;
 
@@ -75,7 +76,7 @@ public class nsip extends base_resource
 
 	/**
 	* <pre>
-	* The IP address of the entity.<br> Minimum length =  1
+	* IPv4 address to create on the NetScaler appliance. Cannot be changed after the IP address is created.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_ipaddress(String ipaddress) throws Exception{
@@ -84,7 +85,7 @@ public class nsip extends base_resource
 
 	/**
 	* <pre>
-	* The IP address of the entity.<br> Minimum length =  1
+	* IPv4 address to create on the NetScaler appliance. Cannot be changed after the IP address is created.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_ipaddress() throws Exception {
@@ -93,7 +94,7 @@ public class nsip extends base_resource
 
 	/**
 	* <pre>
-	* The netmask of the IP.
+	* Subnet mask associated with the IP address.
 	* </pre>
 	*/
 	public void set_netmask(String netmask) throws Exception{
@@ -102,7 +103,7 @@ public class nsip extends base_resource
 
 	/**
 	* <pre>
-	* The netmask of the IP.
+	* Subnet mask associated with the IP address.
 	* </pre>
 	*/
 	public String get_netmask() throws Exception {
@@ -111,7 +112,7 @@ public class nsip extends base_resource
 
 	/**
 	* <pre>
-	* The type of the IP address.<br> Default value: NSADDR_SNIP<br> Possible values = SNIP, VIP, MIP, NSIP, GSLBsiteIP, CLIP
+	* Type of the IP address to create on the NetScaler appliance. Cannot be changed after the IP address is created.<br> Default value: SNIP<br> Possible values = SNIP, VIP, MIP, NSIP, GSLBsiteIP, CLIP
 	* </pre>
 	*/
 	public void set_type(String type) throws Exception{
@@ -120,7 +121,7 @@ public class nsip extends base_resource
 
 	/**
 	* <pre>
-	* The type of the IP address.<br> Default value: NSADDR_SNIP<br> Possible values = SNIP, VIP, MIP, NSIP, GSLBsiteIP, CLIP
+	* Type of the IP address to create on the NetScaler appliance. Cannot be changed after the IP address is created.<br> Default value: SNIP<br> Possible values = SNIP, VIP, MIP, NSIP, GSLBsiteIP, CLIP
 	* </pre>
 	*/
 	public String get_type() throws Exception {
@@ -129,7 +130,7 @@ public class nsip extends base_resource
 
 	/**
 	* <pre>
-	* Use this option to set (enable or disable) ARP and gratuitous ARP for the entity.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Respond to respond to ARP requests for this IP address.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_arp(String arp) throws Exception{
@@ -138,7 +139,7 @@ public class nsip extends base_resource
 
 	/**
 	* <pre>
-	* Use this option to set (enable or disable) ARP and gratuitous ARP for the entity.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Respond to respond to ARP requests for this IP address.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_arp() throws Exception {
@@ -147,7 +148,7 @@ public class nsip extends base_resource
 
 	/**
 	* <pre>
-	* Use this option to set (enable or disable) ICMP responses for the entity.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Respond to ICMP requests for this IP address.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_icmp(String icmp) throws Exception{
@@ -156,7 +157,7 @@ public class nsip extends base_resource
 
 	/**
 	* <pre>
-	* Use this option to set (enable or disable) ICMP responses for the entity.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Respond to ICMP requests for this IP address.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_icmp() throws Exception {
@@ -183,7 +184,7 @@ public class nsip extends base_resource
 
 	/**
 	* <pre>
-	* Use this option to set (enable or disable) the state of telnet access to this IP entity.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Allow Telnet access to this IP address.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_telnet(String telnet) throws Exception{
@@ -192,7 +193,7 @@ public class nsip extends base_resource
 
 	/**
 	* <pre>
-	* Use this option to set (enable or disable) the state of telnet access to this IP entity.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Allow Telnet access to this IP address.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_telnet() throws Exception {
@@ -201,7 +202,7 @@ public class nsip extends base_resource
 
 	/**
 	* <pre>
-	* Use this option to set (enable or disable) the state of ftp access to this IP entity.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Allow File Transfer Protocol (FTP) access to this IP address.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_ftp(String ftp) throws Exception{
@@ -210,7 +211,7 @@ public class nsip extends base_resource
 
 	/**
 	* <pre>
-	* Use this option to set (enable or disable) the state of ftp access to this IP entity.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Allow File Transfer Protocol (FTP) access to this IP address.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_ftp() throws Exception {
@@ -219,7 +220,7 @@ public class nsip extends base_resource
 
 	/**
 	* <pre>
-	* Use this option to set (enable|Secureonly|disable) GUI access to this IP entity.<br> Default value: ENABLED<br> Possible values = ENABLED, SECUREONLY, DISABLED
+	* Allow graphical user interface (GUI) access to this IP address.<br> Default value: ENABLED<br> Possible values = ENABLED, SECUREONLY, DISABLED
 	* </pre>
 	*/
 	public void set_gui(String gui) throws Exception{
@@ -228,7 +229,7 @@ public class nsip extends base_resource
 
 	/**
 	* <pre>
-	* Use this option to set (enable|Secureonly|disable) GUI access to this IP entity.<br> Default value: ENABLED<br> Possible values = ENABLED, SECUREONLY, DISABLED
+	* Allow graphical user interface (GUI) access to this IP address.<br> Default value: ENABLED<br> Possible values = ENABLED, SECUREONLY, DISABLED
 	* </pre>
 	*/
 	public String get_gui() throws Exception {
@@ -237,7 +238,7 @@ public class nsip extends base_resource
 
 	/**
 	* <pre>
-	* Use this option to set (enable or disable) the state of SSH access to this IP entity.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Allow secure shell (SSH) access to this IP address.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_ssh(String ssh) throws Exception{
@@ -246,7 +247,7 @@ public class nsip extends base_resource
 
 	/**
 	* <pre>
-	* Use this option to set (enable or disable) the state of SSH access to this IP entity.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Allow secure shell (SSH) access to this IP address.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_ssh() throws Exception {
@@ -255,7 +256,7 @@ public class nsip extends base_resource
 
 	/**
 	* <pre>
-	* Use this option to set (enable or disable) the state of SNMP access to this IP entity.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Allow Simple Network Management Protocol (SNMP) access to this IP address.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_snmp(String snmp) throws Exception{
@@ -264,7 +265,7 @@ public class nsip extends base_resource
 
 	/**
 	* <pre>
-	* Use this option to set (enable or disable) the state of SNMP access to this IP entity.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Allow Simple Network Management Protocol (SNMP) access to this IP address.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_snmp() throws Exception {
@@ -273,7 +274,7 @@ public class nsip extends base_resource
 
 	/**
 	* <pre>
-	* Use this option to set (enable or disable) the state of management access to this IP entity.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Allow access to management applications on this IP address.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_mgmtaccess(String mgmtaccess) throws Exception{
@@ -282,7 +283,7 @@ public class nsip extends base_resource
 
 	/**
 	* <pre>
-	* Use this option to set (enable or disable) the state of management access to this IP entity.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Allow access to management applications on this IP address.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_mgmtaccess() throws Exception {
@@ -291,7 +292,7 @@ public class nsip extends base_resource
 
 	/**
 	* <pre>
-	* Enable or disable blocking of all ports not used for management access.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Block access to nonmanagement applications on this IP. This option is applicable for MIPs, SNIPs, and NSIP, and is disabled by default. Nonmanagement applications can run on the underlying NetScaler Free BSD operating system.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_restrictaccess(String restrictaccess) throws Exception{
@@ -300,7 +301,7 @@ public class nsip extends base_resource
 
 	/**
 	* <pre>
-	* Enable or disable blocking of all ports not used for management access.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Block access to nonmanagement applications on this IP. This option is applicable for MIPs, SNIPs, and NSIP, and is disabled by default. Nonmanagement applications can run on the underlying NetScaler Free BSD operating system.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_restrictaccess() throws Exception {
@@ -309,7 +310,7 @@ public class nsip extends base_resource
 
 	/**
 	* <pre>
-	* Use this option to enable or disable dynamic routing on this IP address for the entity.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Allow dynamic routing on the IP address. Specific to SNIP addresses.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_dynamicrouting(String dynamicrouting) throws Exception{
@@ -318,7 +319,7 @@ public class nsip extends base_resource
 
 	/**
 	* <pre>
-	* Use this option to enable or disable dynamic routing on this IP address for the entity.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Allow dynamic routing on the IP address. Specific to SNIP addresses.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_dynamicrouting() throws Exception {
@@ -381,7 +382,7 @@ public class nsip extends base_resource
 
 	/**
 	* <pre>
-	* The state of advertisement of a hostroute to this IP entity.<br> Possible values = ENABLED, DISABLED
+	* Advertise a route for the VIP address, using the dynamic routing protocols running on the NetScaler appliance.<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_hostroute(String hostroute) throws Exception{
@@ -390,7 +391,7 @@ public class nsip extends base_resource
 
 	/**
 	* <pre>
-	* The state of advertisement of a hostroute to this IP entity.<br> Possible values = ENABLED, DISABLED
+	* Advertise a route for the VIP address, using the dynamic routing protocols running on the NetScaler appliance.<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_hostroute() throws Exception {
@@ -399,7 +400,7 @@ public class nsip extends base_resource
 
 	/**
 	* <pre>
-	* The gateway for the hostroute to be advertised for this IP entity.<br> Default value: -1
+	* IP address of the gateway for the route.<br> Default value: -1
 	* </pre>
 	*/
 	public void set_hostrtgw(String hostrtgw) throws Exception{
@@ -408,7 +409,7 @@ public class nsip extends base_resource
 
 	/**
 	* <pre>
-	* The gateway for the hostroute to be advertised for this IP entity.<br> Default value: -1
+	* IP address of the gateway for the route.<br> Default value: -1
 	* </pre>
 	*/
 	public String get_hostrtgw() throws Exception {
@@ -417,7 +418,7 @@ public class nsip extends base_resource
 
 	/**
 	* <pre>
-	* The metric value to be added or subtracted from the cost of the hostroute advertised for this IP entity.<br> Minimum value =  -16777215
+	* Integer value to add to or subtract from the cost of the route advertised for the VIP address.<br> Minimum value =  -16777215
 	* </pre>
 	*/
 	public void set_metric(int metric) throws Exception {
@@ -426,7 +427,7 @@ public class nsip extends base_resource
 
 	/**
 	* <pre>
-	* The metric value to be added or subtracted from the cost of the hostroute advertised for this IP entity.<br> Minimum value =  -16777215
+	* Integer value to add to or subtract from the cost of the route advertised for the VIP address.<br> Minimum value =  -16777215
 	* </pre>
 	*/
 	public void set_metric(Integer metric) throws Exception{
@@ -435,7 +436,7 @@ public class nsip extends base_resource
 
 	/**
 	* <pre>
-	* The metric value to be added or subtracted from the cost of the hostroute advertised for this IP entity.<br> Minimum value =  -16777215
+	* Integer value to add to or subtract from the cost of the route advertised for the VIP address.<br> Minimum value =  -16777215
 	* </pre>
 	*/
 	public Integer get_metric() throws Exception {
@@ -444,7 +445,10 @@ public class nsip extends base_resource
 
 	/**
 	* <pre>
-	* The state of per VIP RHI controls.<br> Default value: RHI_STATE_ONE<br> Possible values = ONE_VSERVER, ALL_VSERVERS, NONE
+	* Advertise the route for the Virtual IP (VIP) address on the basis of the state of the virtual servers associated with that VIP.
+* NONE - Advertise the route for the VIP address, regardless of the state of the virtual servers associated with the address.
+* ONE VSERVER - Advertise the route for the VIP address if at least one of the associated virtual servers is in UP state.
+* ALL VSERVER - Advertise the route for the VIP address if all of the associated virtual servers are in UP state.<br> Default value: ONE_VSERVER<br> Possible values = ONE_VSERVER, ALL_VSERVERS, NONE
 	* </pre>
 	*/
 	public void set_vserverrhilevel(String vserverrhilevel) throws Exception{
@@ -453,7 +457,10 @@ public class nsip extends base_resource
 
 	/**
 	* <pre>
-	* The state of per VIP RHI controls.<br> Default value: RHI_STATE_ONE<br> Possible values = ONE_VSERVER, ALL_VSERVERS, NONE
+	* Advertise the route for the Virtual IP (VIP) address on the basis of the state of the virtual servers associated with that VIP.
+* NONE - Advertise the route for the VIP address, regardless of the state of the virtual servers associated with the address.
+* ONE VSERVER - Advertise the route for the VIP address if at least one of the associated virtual servers is in UP state.
+* ALL VSERVER - Advertise the route for the VIP address if all of the associated virtual servers are in UP state.<br> Default value: ONE_VSERVER<br> Possible values = ONE_VSERVER, ALL_VSERVERS, NONE
 	* </pre>
 	*/
 	public String get_vserverrhilevel() throws Exception {
@@ -462,7 +469,7 @@ public class nsip extends base_resource
 
 	/**
 	* <pre>
-	* The OSPF's route advertisement type.<br> Default value: DISABLED<br> Possible values = TYPE1, TYPE5
+	* Type of LSAs to be used by the OSPF protocol, running on the NetScaler appliance, for advertising the route for this VIP address.<br> Default value: DISABLED<br> Possible values = TYPE1, TYPE5
 	* </pre>
 	*/
 	public void set_ospflsatype(String ospflsatype) throws Exception{
@@ -471,7 +478,7 @@ public class nsip extends base_resource
 
 	/**
 	* <pre>
-	* The OSPF's route advertisement type.<br> Default value: DISABLED<br> Possible values = TYPE1, TYPE5
+	* Type of LSAs to be used by the OSPF protocol, running on the NetScaler appliance, for advertising the route for this VIP address.<br> Default value: DISABLED<br> Possible values = TYPE1, TYPE5
 	* </pre>
 	*/
 	public String get_ospflsatype() throws Exception {
@@ -480,7 +487,7 @@ public class nsip extends base_resource
 
 	/**
 	* <pre>
-	* The area ID of the area in which OSPF Type1 LSAs should be advertised.<br> Default value: -1<br> Minimum value =  0<br> Maximum value =  4294967294LU
+	* ID of the area in which the Type1 LSAs are to be advertised for this VIP address by the OSPF protocol running on the NetScaler appliance.<br> Default value: -1<br> Minimum value =  0<br> Maximum value =  4294967294LU
 	* </pre>
 	*/
 	public void set_ospfarea(long ospfarea) throws Exception {
@@ -489,7 +496,7 @@ public class nsip extends base_resource
 
 	/**
 	* <pre>
-	* The area ID of the area in which OSPF Type1 LSAs should be advertised.<br> Default value: -1<br> Minimum value =  0<br> Maximum value =  4294967294LU
+	* ID of the area in which the Type1 LSAs are to be advertised for this VIP address by the OSPF protocol running on the NetScaler appliance.<br> Default value: -1<br> Minimum value =  0<br> Maximum value =  4294967294LU
 	* </pre>
 	*/
 	public void set_ospfarea(Long ospfarea) throws Exception{
@@ -498,7 +505,7 @@ public class nsip extends base_resource
 
 	/**
 	* <pre>
-	* The area ID of the area in which OSPF Type1 LSAs should be advertised.<br> Default value: -1<br> Minimum value =  0<br> Maximum value =  4294967294LU
+	* ID of the area in which the Type1 LSAs are to be advertised for this VIP address by the OSPF protocol running on the NetScaler appliance.<br> Default value: -1<br> Minimum value =  0<br> Maximum value =  4294967294LU
 	* </pre>
 	*/
 	public Long get_ospfarea() throws Exception {
@@ -507,7 +514,7 @@ public class nsip extends base_resource
 
 	/**
 	* <pre>
-	* Use this option to enable or disable the entity.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Enable or disable the IP address.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_state(String state) throws Exception{
@@ -516,7 +523,7 @@ public class nsip extends base_resource
 
 	/**
 	* <pre>
-	* Use this option to enable or disable the entity.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Enable or disable the IP address.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_state() throws Exception {
@@ -525,7 +532,7 @@ public class nsip extends base_resource
 
 	/**
 	* <pre>
-	* Use this option to bind this IP to a VRID.<br> Minimum value =  1<br> Maximum value =  255
+	* ID, which uniquely identifies a VMAC address, to bin to a VIP address. This binding is used to set up NetScaler appliances in an active-active configuration using VRRP.<br> Minimum value =  1<br> Maximum value =  255
 	* </pre>
 	*/
 	public void set_vrid(long vrid) throws Exception {
@@ -534,7 +541,7 @@ public class nsip extends base_resource
 
 	/**
 	* <pre>
-	* Use this option to bind this IP to a VRID.<br> Minimum value =  1<br> Maximum value =  255
+	* ID, which uniquely identifies a VMAC address, to bin to a VIP address. This binding is used to set up NetScaler appliances in an active-active configuration using VRRP.<br> Minimum value =  1<br> Maximum value =  255
 	* </pre>
 	*/
 	public void set_vrid(Long vrid) throws Exception{
@@ -543,7 +550,7 @@ public class nsip extends base_resource
 
 	/**
 	* <pre>
-	* Use this option to bind this IP to a VRID.<br> Minimum value =  1<br> Maximum value =  255
+	* ID, which uniquely identifies a VMAC address, to bin to a VIP address. This binding is used to set up NetScaler appliances in an active-active configuration using VRRP.<br> Minimum value =  1<br> Maximum value =  255
 	* </pre>
 	*/
 	public Long get_vrid() throws Exception {
@@ -552,7 +559,16 @@ public class nsip extends base_resource
 
 	/**
 	* <pre>
-	* ICMp response control on down vserver.<br> Default value: 5<br> Possible values = NONE, ONE_VSERVER, ALL_VSERVERS, VSVR_CNTRLD
+	* Respond to ICMP requests for a Virtual IP (VIP) address on the basis of the states of the virtual servers associated with that VIP. Available settings function as follows:
+* NONE - The NetScaler appliance responds to any ICMP request for the VIP address, irrespective of the states of the virtual servers associated with the address.
+* ONE VSERVER - The NetScaler appliance responds to any ICMP request for the VIP address if at least one of the associated virtual servers is in UP state.
+* ALL VSERVER - The NetScaler appliance responds to any ICMP request for the VIP address if all of the associated virtual servers are in UP state.
+* VSVR_CNTRLD - The behavior depends on the ICMP VSERVER RESPONSE setting on all the associated virtual servers.
+
+The following settings can be made for the ICMP VSERVER RESPONSE parameter on a virtual server:
+* If you set ICMP VSERVER RESPONSE to PASSIVE on all virtual servers, NetScaler always responds.
+* If you set ICMP VSERVER RESPONSE to ACTIVE on all virtual servers, NetScaler responds if even one virtual server is UP.
+* When you set ICMP VSERVER RESPONSE to ACTIVE on some and PASSIVE on others, NetScaler responds if even one virtual server set to ACTIVE is UP.<br> Default value: 5<br> Possible values = NONE, ONE_VSERVER, ALL_VSERVERS, VSVR_CNTRLD
 	* </pre>
 	*/
 	public void set_icmpresponse(String icmpresponse) throws Exception{
@@ -561,7 +577,16 @@ public class nsip extends base_resource
 
 	/**
 	* <pre>
-	* ICMp response control on down vserver.<br> Default value: 5<br> Possible values = NONE, ONE_VSERVER, ALL_VSERVERS, VSVR_CNTRLD
+	* Respond to ICMP requests for a Virtual IP (VIP) address on the basis of the states of the virtual servers associated with that VIP. Available settings function as follows:
+* NONE - The NetScaler appliance responds to any ICMP request for the VIP address, irrespective of the states of the virtual servers associated with the address.
+* ONE VSERVER - The NetScaler appliance responds to any ICMP request for the VIP address if at least one of the associated virtual servers is in UP state.
+* ALL VSERVER - The NetScaler appliance responds to any ICMP request for the VIP address if all of the associated virtual servers are in UP state.
+* VSVR_CNTRLD - The behavior depends on the ICMP VSERVER RESPONSE setting on all the associated virtual servers.
+
+The following settings can be made for the ICMP VSERVER RESPONSE parameter on a virtual server:
+* If you set ICMP VSERVER RESPONSE to PASSIVE on all virtual servers, NetScaler always responds.
+* If you set ICMP VSERVER RESPONSE to ACTIVE on all virtual servers, NetScaler responds if even one virtual server is UP.
+* When you set ICMP VSERVER RESPONSE to ACTIVE on some and PASSIVE on others, NetScaler responds if even one virtual server set to ACTIVE is UP.<br> Default value: 5<br> Possible values = NONE, ONE_VSERVER, ALL_VSERVERS, VSVR_CNTRLD
 	* </pre>
 	*/
 	public String get_icmpresponse() throws Exception {
@@ -597,7 +622,11 @@ public class nsip extends base_resource
 
 	/**
 	* <pre>
-	* Arp response control on down vserver.<br> Default value: 5<br> Possible values = NONE, ONE_VSERVER, ALL_VSERVERS
+	* Respond to ARP requests for a Virtual IP (VIP) address on the basis of the states of the virtual servers associated with that VIP. Available settings function as follows:
+
+* NONE - The NetScaler appliance responds to any ARP request for the VIP address, irrespective of the states of the virtual servers associated with the address.
+* ONE VSERVER - The NetScaler appliance responds to any ARP request for the VIP address if at least one of the associated virtual servers is in UP state.
+* ALL VSERVER - The NetScaler appliance responds to any ARP request for the VIP address if all of the associated virtual servers are in UP state.<br> Default value: 5<br> Possible values = NONE, ONE_VSERVER, ALL_VSERVERS
 	* </pre>
 	*/
 	public void set_arpresponse(String arpresponse) throws Exception{
@@ -606,11 +635,42 @@ public class nsip extends base_resource
 
 	/**
 	* <pre>
-	* Arp response control on down vserver.<br> Default value: 5<br> Possible values = NONE, ONE_VSERVER, ALL_VSERVERS
+	* Respond to ARP requests for a Virtual IP (VIP) address on the basis of the states of the virtual servers associated with that VIP. Available settings function as follows:
+
+* NONE - The NetScaler appliance responds to any ARP request for the VIP address, irrespective of the states of the virtual servers associated with the address.
+* ONE VSERVER - The NetScaler appliance responds to any ARP request for the VIP address if at least one of the associated virtual servers is in UP state.
+* ALL VSERVER - The NetScaler appliance responds to any ARP request for the VIP address if all of the associated virtual servers are in UP state.<br> Default value: 5<br> Possible values = NONE, ONE_VSERVER, ALL_VSERVERS
 	* </pre>
 	*/
 	public String get_arpresponse() throws Exception {
 		return this.arpresponse;
+	}
+
+	/**
+	* <pre>
+	* Traffic Domain Id.<br> Minimum value =  0<br> Maximum value =  4094
+	* </pre>
+	*/
+	public void set_td(long td) throws Exception {
+		this.td = new Long(td);
+	}
+
+	/**
+	* <pre>
+	* Traffic Domain Id.<br> Minimum value =  0<br> Maximum value =  4094
+	* </pre>
+	*/
+	public void set_td(Long td) throws Exception{
+		this.td = td;
+	}
+
+	/**
+	* <pre>
+	* Traffic Domain Id.<br> Minimum value =  0<br> Maximum value =  4094
+	* </pre>
+	*/
+	public Long get_td() throws Exception {
+		return this.td;
 	}
 
 	/**
@@ -752,6 +812,7 @@ public class nsip extends base_resource
 		addresource.icmpresponse = resource.icmpresponse;
 		addresource.ownernode = resource.ownernode;
 		addresource.arpresponse = resource.arpresponse;
+		addresource.td = resource.td;
 		return addresource.add_resource(client);
 	}
 
@@ -792,6 +853,7 @@ public class nsip extends base_resource
 				addresources[i].icmpresponse = resources[i].icmpresponse;
 				addresources[i].ownernode = resources[i].ownernode;
 				addresources[i].arpresponse = resources[i].arpresponse;
+				addresources[i].td = resources[i].td;
 			}
 			result = add_bulk_request(client, addresources);
 		}
@@ -813,6 +875,7 @@ public class nsip extends base_resource
 	public static base_response delete(nitro_service client, nsip resource) throws Exception {
 		nsip deleteresource = new nsip();
 		deleteresource.ipaddress = resource.ipaddress;
+		deleteresource.td = resource.td;
 		return deleteresource.delete_resource(client);
 	}
 
@@ -842,6 +905,7 @@ public class nsip extends base_resource
 			for (int i=0;i<resources.length;i++){
 				deleteresources[i] = new nsip();
 				deleteresources[i].ipaddress = resources[i].ipaddress;
+				deleteresources[i].td = resources[i].td;
 			}
 			result = delete_bulk_request(client, deleteresources);
 		}
@@ -854,6 +918,7 @@ public class nsip extends base_resource
 	public static base_response update(nitro_service client, nsip resource) throws Exception {
 		nsip updateresource = new nsip();
 		updateresource.ipaddress = resource.ipaddress;
+		updateresource.td = resource.td;
 		updateresource.netmask = resource.netmask;
 		updateresource.arp = resource.arp;
 		updateresource.icmp = resource.icmp;
@@ -891,6 +956,7 @@ public class nsip extends base_resource
 			for (int i=0;i<resources.length;i++){
 				updateresources[i] = new nsip();
 				updateresources[i].ipaddress = resources[i].ipaddress;
+				updateresources[i].td = resources[i].td;
 				updateresources[i].netmask = resources[i].netmask;
 				updateresources[i].arp = resources[i].arp;
 				updateresources[i].icmp = resources[i].icmp;
@@ -925,43 +991,10 @@ public class nsip extends base_resource
 	* Use this API to unset the properties of nsip resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String ipaddress, String args[]) throws Exception {
-		nsip unsetresource = new nsip();
-		unsetresource.ipaddress = ipaddress;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of nsip resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, nsip resource, String[] args) throws Exception{
 		nsip unsetresource = new nsip();
 		unsetresource.ipaddress = resource.ipaddress;
-		unsetresource.netmask = resource.netmask;
-		unsetresource.arp = resource.arp;
-		unsetresource.icmp = resource.icmp;
-		unsetresource.vserver = resource.vserver;
-		unsetresource.telnet = resource.telnet;
-		unsetresource.ftp = resource.ftp;
-		unsetresource.gui = resource.gui;
-		unsetresource.ssh = resource.ssh;
-		unsetresource.snmp = resource.snmp;
-		unsetresource.mgmtaccess = resource.mgmtaccess;
-		unsetresource.restrictaccess = resource.restrictaccess;
-		unsetresource.dynamicrouting = resource.dynamicrouting;
-		unsetresource.ospf = resource.ospf;
-		unsetresource.bgp = resource.bgp;
-		unsetresource.rip = resource.rip;
-		unsetresource.hostroute = resource.hostroute;
-		unsetresource.hostrtgw = resource.hostrtgw;
-		unsetresource.metric = resource.metric;
-		unsetresource.vserverrhilevel = resource.vserverrhilevel;
-		unsetresource.ospflsatype = resource.ospflsatype;
-		unsetresource.ospfarea = resource.ospfarea;
-		unsetresource.vrid = resource.vrid;
-		unsetresource.icmpresponse = resource.icmpresponse;
-		unsetresource.arpresponse = resource.arpresponse;
+		unsetresource.td = resource.td;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -993,30 +1026,7 @@ public class nsip extends base_resource
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new nsip();
 				unsetresources[i].ipaddress = resources[i].ipaddress;
-				unsetresources[i].netmask = resources[i].netmask;
-				unsetresources[i].arp = resources[i].arp;
-				unsetresources[i].icmp = resources[i].icmp;
-				unsetresources[i].vserver = resources[i].vserver;
-				unsetresources[i].telnet = resources[i].telnet;
-				unsetresources[i].ftp = resources[i].ftp;
-				unsetresources[i].gui = resources[i].gui;
-				unsetresources[i].ssh = resources[i].ssh;
-				unsetresources[i].snmp = resources[i].snmp;
-				unsetresources[i].mgmtaccess = resources[i].mgmtaccess;
-				unsetresources[i].restrictaccess = resources[i].restrictaccess;
-				unsetresources[i].dynamicrouting = resources[i].dynamicrouting;
-				unsetresources[i].ospf = resources[i].ospf;
-				unsetresources[i].bgp = resources[i].bgp;
-				unsetresources[i].rip = resources[i].rip;
-				unsetresources[i].hostroute = resources[i].hostroute;
-				unsetresources[i].hostrtgw = resources[i].hostrtgw;
-				unsetresources[i].metric = resources[i].metric;
-				unsetresources[i].vserverrhilevel = resources[i].vserverrhilevel;
-				unsetresources[i].ospflsatype = resources[i].ospflsatype;
-				unsetresources[i].ospfarea = resources[i].ospfarea;
-				unsetresources[i].vrid = resources[i].vrid;
-				unsetresources[i].icmpresponse = resources[i].icmpresponse;
-				unsetresources[i].arpresponse = resources[i].arpresponse;
+				unsetresources[i].td = resources[i].td;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}
@@ -1038,6 +1048,7 @@ public class nsip extends base_resource
 	public static base_response enable(nitro_service client, nsip resource) throws Exception {
 		nsip enableresource = new nsip();
 		enableresource.ipaddress = resource.ipaddress;
+		enableresource.td = resource.td;
 		return enableresource.perform_operation(client,"enable");
 	}
 
@@ -1067,6 +1078,7 @@ public class nsip extends base_resource
 			for (int i=0;i<resources.length;i++){
 				enableresources[i] = new nsip();
 				enableresources[i].ipaddress = resources[i].ipaddress;
+				enableresources[i].td = resources[i].td;
 			}
 			result = perform_operation_bulk_request(client, enableresources,"enable");
 		}
@@ -1088,6 +1100,7 @@ public class nsip extends base_resource
 	public static base_response disable(nitro_service client, nsip resource) throws Exception {
 		nsip disableresource = new nsip();
 		disableresource.ipaddress = resource.ipaddress;
+		disableresource.td = resource.td;
 		return disableresource.perform_operation(client,"disable");
 	}
 
@@ -1117,6 +1130,7 @@ public class nsip extends base_resource
 			for (int i=0;i<resources.length;i++){
 				disableresources[i] = new nsip();
 				disableresources[i].ipaddress = resources[i].ipaddress;
+				disableresources[i].td = resources[i].td;
 			}
 			result = perform_operation_bulk_request(client, disableresources,"disable");
 		}
@@ -1140,6 +1154,31 @@ public class nsip extends base_resource
 		return response;
 	}
 	/**
+	* Use this API to fetch a nsip resource.
+	*/
+	public static nsip get(nitro_service service, nsip obj) throws Exception{
+		options option = new options();
+		option.set_args(nitro_util.object_to_string_withoutquotes(obj));
+		nsip response = (nsip) obj.get_resource(service,option);
+		return response;
+	}
+
+	/**
+	* Use this API to fetch a nsip resources.
+	*/
+	public static nsip[] get(nitro_service service, nsip obj[]) throws Exception{
+		if (obj != null && obj.length > 0) {
+			nsip response[] = new nsip[obj.length];
+			for (int i=0;i<obj.length;i++) {
+				options option = new options();
+				option.set_args(nitro_util.object_to_string_withoutquotes(obj[i]));
+				response[i] = (nsip) obj[i].get_resource(service,option);
+			}
+			return response;
+		}
+		return null;
+	}
+	/**
 	* Use this API to fetch all the nsip resources that are configured on netscaler.
 	* This uses nsip_args which is a way to provide additional arguments while fetching the resources.
 	*/
@@ -1151,32 +1190,6 @@ public class nsip extends base_resource
 		return response;
 	}
 
-	/**
-	* Use this API to fetch nsip resource of given name .
-	*/
-	public static nsip get(nitro_service service, String ipaddress) throws Exception{
-		nsip obj = new nsip();
-		obj.set_ipaddress(ipaddress);
-		nsip response = (nsip) obj.get_resource(service);
-		return response;
-	}
-
-	/**
-	* Use this API to fetch nsip resources of given names .
-	*/
-	public static nsip[] get(nitro_service service, String ipaddress[]) throws Exception{
-		if (ipaddress !=null && ipaddress.length>0) {
-			nsip response[] = new nsip[ipaddress.length];
-			nsip obj[] = new nsip[ipaddress.length];
-			for (int i=0;i<ipaddress.length;i++) {
-				obj[i] = new nsip();
-				obj[i].set_ipaddress(ipaddress[i]);
-				response[i] = (nsip) obj[i].get_resource(service);
-			}
-			return response;
-		}
-		return null;
-	}
 	/**
 	* Use this API to fetch filtered set of nsip resources.
 	* filter string should be in JSON format.eg: "port:80,servicetype:HTTP".

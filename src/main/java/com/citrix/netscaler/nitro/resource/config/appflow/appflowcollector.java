@@ -41,7 +41,12 @@ public class appflowcollector extends base_resource
 
 	/**
 	* <pre>
-	* Name of the AppFlow collector.<br> Minimum length =  1<br> Maximum length =  127
+	* Name for the collector. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at
+(@), equals (=), and hyphen (-) characters.
+ Only four collectors can be configured. 
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my appflow collector" or 'my appflow collector').<br> Minimum length =  1<br> Maximum length =  127
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -50,7 +55,12 @@ public class appflowcollector extends base_resource
 
 	/**
 	* <pre>
-	* Name of the AppFlow collector.<br> Minimum length =  1<br> Maximum length =  127
+	* Name for the collector. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at
+(@), equals (=), and hyphen (-) characters.
+ Only four collectors can be configured. 
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my appflow collector" or 'my appflow collector').<br> Minimum length =  1<br> Maximum length =  127
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -59,7 +69,7 @@ public class appflowcollector extends base_resource
 
 	/**
 	* <pre>
-	* The IPv4 address of the AppFlow collector.
+	* IPv4 address of the collector.
 	* </pre>
 	*/
 	public void set_ipaddress(String ipaddress) throws Exception{
@@ -68,7 +78,7 @@ public class appflowcollector extends base_resource
 
 	/**
 	* <pre>
-	* The IPv4 address of the AppFlow collector.
+	* IPv4 address of the collector.
 	* </pre>
 	*/
 	public String get_ipaddress() throws Exception {
@@ -77,7 +87,7 @@ public class appflowcollector extends base_resource
 
 	/**
 	* <pre>
-	* The UDP port on which the AppFlow collector is listening.<br> Default value: 4739
+	* UDP port on which the collector listens.<br> Default value: 4739
 	* </pre>
 	*/
 	public void set_port(int port) throws Exception {
@@ -86,7 +96,7 @@ public class appflowcollector extends base_resource
 
 	/**
 	* <pre>
-	* The UDP port on which the AppFlow collector is listening.<br> Default value: 4739
+	* UDP port on which the collector listens.<br> Default value: 4739
 	* </pre>
 	*/
 	public void set_port(Integer port) throws Exception{
@@ -95,7 +105,7 @@ public class appflowcollector extends base_resource
 
 	/**
 	* <pre>
-	* The UDP port on which the AppFlow collector is listening.<br> Default value: 4739
+	* UDP port on which the collector listens.<br> Default value: 4739
 	* </pre>
 	*/
 	public Integer get_port() throws Exception {
@@ -104,7 +114,7 @@ public class appflowcollector extends base_resource
 
 	/**
 	* <pre>
-	* The IP address associated with this netprofile will be used as source IP for appflow traffic to this collector.<br> Maximum length =  128
+	* Netprofile to associate with the collector. The IP address defined in the profile is used as the source IP address for AppFlow traffic for this collector.  If you do not set this parameter, the NetScaler IP (NSIP) address is used as the source IP address.<br> Maximum length =  128
 	* </pre>
 	*/
 	public void set_netprofile(String netprofile) throws Exception{
@@ -113,7 +123,7 @@ public class appflowcollector extends base_resource
 
 	/**
 	* <pre>
-	* The IP address associated with this netprofile will be used as source IP for appflow traffic to this collector.<br> Maximum length =  128
+	* Netprofile to associate with the collector. The IP address defined in the profile is used as the source IP address for AppFlow traffic for this collector.  If you do not set this parameter, the NetScaler IP (NSIP) address is used as the source IP address.<br> Maximum length =  128
 	* </pre>
 	*/
 	public String get_netprofile() throws Exception {
@@ -122,7 +132,11 @@ public class appflowcollector extends base_resource
 
 	/**
 	* <pre>
-	* The new name of the AppFlow collector.<br> Minimum length =  1
+	* New name for the collector. Must begin with an ASCII alphabetic or underscore (_) character, and must
+contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at(@), equals (=), and hyphen (-) characters. 
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my appflow coll" or 'my appflow coll').<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_newname(String newname) throws Exception{
@@ -131,7 +145,11 @@ public class appflowcollector extends base_resource
 
 	/**
 	* <pre>
-	* The new name of the AppFlow collector.<br> Minimum length =  1
+	* New name for the collector. Must begin with an ASCII alphabetic or underscore (_) character, and must
+contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at(@), equals (=), and hyphen (-) characters. 
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my appflow coll" or 'my appflow coll').<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_newname() throws Exception {

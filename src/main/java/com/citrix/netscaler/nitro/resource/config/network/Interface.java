@@ -79,6 +79,8 @@ public class Interface extends base_resource
 	private Long taggedautolearn;
 	private Long hangdetect;
 	private Long hangreset;
+	private Long linkstate;
+	private Long intfstate;
 	private Long rxpackets;
 	private Long rxbytes;
 	private Long rxerrors;
@@ -110,17 +112,39 @@ public class Interface extends base_resource
 	private Long slaveflowctl;
 	private Long slavetime;
 	private String intftype;
+	private Long lacpactorpriority;
+	private Long lacpactorportno;
+	private String lacppartnerstate;
+	private String lacppartnertimeout;
+	private String lacppartneraggregation;
+	private String lacppartnerinsync;
+	private String lacppartnercollecting;
+	private String lacppartnerdistributing;
+	private String lacppartnerdefaulted;
+	private String lacppartnerexpired;
+	private Long lacppartnerpriority;
+	private String lacppartnersystemmac;
+	private Long lacppartnersystempriority;
+	private Long lacppartnerportno;
+	private Long lacppartnerkey;
+	private String lacpactoraggregation;
+	private String lacpactorinsync;
+	private String lacpactorcollecting;
+	private String lacpactordistributing;
+	private String lacpportmuxstate;
+	private String lacpportrxstat;
+	private String lacpportselectstate;
 	private Long __count;
 
 	/**
 	* <pre>
-	* The interface number, in the a/b format, of the interface that needs to be cleared. 'a' can take one of the following values:
-				1.	'0': Indicates a management interface.
-				2.	'1': Indicates a 10/100/1000 Mbps ports and 10G ports of NetScaler 12000-10G and NetScaler MPX 15000 and 17000 platforms.
-				3.	'10': Indicates a 10 Gbps port.
-				4.	'LA': Indicates a link aggregation port.
-				5.	'LO': Indicates a loop back port.
-				'b' is an integer that is used to provide a unique label for the interfaces in the groups defined by 'a'.
+	* Interface number, in C/U format, where C can take one of the following values:
+* 0 - Indicates a management interface.
+* 1 - Indicates a 1 Gbps port.
+* 10 - Indicates a 10 Gbps port.
+* LA - Indicates a link aggregation port.
+* LO - Indicates a loop back port.
+U is a unique integer for representing an interface in a particular port group.
 	* </pre>
 	*/
 	public void set_id(String id) throws Exception{
@@ -129,13 +153,13 @@ public class Interface extends base_resource
 
 	/**
 	* <pre>
-	* The interface number, in the a/b format, of the interface that needs to be cleared. 'a' can take one of the following values:
-				1.	'0': Indicates a management interface.
-				2.	'1': Indicates a 10/100/1000 Mbps ports and 10G ports of NetScaler 12000-10G and NetScaler MPX 15000 and 17000 platforms.
-				3.	'10': Indicates a 10 Gbps port.
-				4.	'LA': Indicates a link aggregation port.
-				5.	'LO': Indicates a loop back port.
-				'b' is an integer that is used to provide a unique label for the interfaces in the groups defined by 'a'.
+	* Interface number, in C/U format, where C can take one of the following values:
+* 0 - Indicates a management interface.
+* 1 - Indicates a 1 Gbps port.
+* 10 - Indicates a 10 Gbps port.
+* LA - Indicates a link aggregation port.
+* LO - Indicates a loop back port.
+U is a unique integer for representing an interface in a particular port group.
 	* </pre>
 	*/
 	public String get_id() throws Exception {
@@ -144,10 +168,11 @@ public class Interface extends base_resource
 
 	/**
 	* <pre>
-	* The requested Ethernet speed of the interface. Possible values are:
-1.	AUTO: The default value. Specifies that the NetScaler appliance attempts to auto-negotiate or auto-sense the line speed of the interface when it is brought up.
-2.	10, 100, 1000, and 10000: 10 Mbps, 100 Mbps, 1 Gbps, and 10 Gbps respectively.
-Setting a speed other than AUTO requires the device at the other end of the link to be configured identically. Mismatched speed and duplex settings lead to link errors, packet loss, and other errors. Some interfaces do not support certain speeds. If you specify an unsupported speed, an error message appears.<br> Default value: NSA_DVC_SPEED_AUTO<br> Possible values = AUTO, 10, 100, 1000, 10000
+	* Ethernet speed of the interface, in Mbps. 
+Notes:
+* If you set the speed as AUTO, the NetScaler appliance attempts to auto-negotiate or auto-sense the link speed of the interface when it is UP. You must enable auto negotiation on the interface.
+* If you set a speed other than AUTO, you must specify the same speed for the peer network device. Mismatched speed and duplex settings between the peer devices of a link lead to link errors, packet loss, and other errors. 
+Some interfaces do not support certain speeds. If you specify an unsupported speed, an error message appears.<br> Default value: AUTO<br> Possible values = AUTO, 10, 100, 1000, 10000
 	* </pre>
 	*/
 	public void set_speed(String speed) throws Exception{
@@ -156,10 +181,11 @@ Setting a speed other than AUTO requires the device at the other end of the link
 
 	/**
 	* <pre>
-	* The requested Ethernet speed of the interface. Possible values are:
-1.	AUTO: The default value. Specifies that the NetScaler appliance attempts to auto-negotiate or auto-sense the line speed of the interface when it is brought up.
-2.	10, 100, 1000, and 10000: 10 Mbps, 100 Mbps, 1 Gbps, and 10 Gbps respectively.
-Setting a speed other than AUTO requires the device at the other end of the link to be configured identically. Mismatched speed and duplex settings lead to link errors, packet loss, and other errors. Some interfaces do not support certain speeds. If you specify an unsupported speed, an error message appears.<br> Default value: NSA_DVC_SPEED_AUTO<br> Possible values = AUTO, 10, 100, 1000, 10000
+	* Ethernet speed of the interface, in Mbps. 
+Notes:
+* If you set the speed as AUTO, the NetScaler appliance attempts to auto-negotiate or auto-sense the link speed of the interface when it is UP. You must enable auto negotiation on the interface.
+* If you set a speed other than AUTO, you must specify the same speed for the peer network device. Mismatched speed and duplex settings between the peer devices of a link lead to link errors, packet loss, and other errors. 
+Some interfaces do not support certain speeds. If you specify an unsupported speed, an error message appears.<br> Default value: AUTO<br> Possible values = AUTO, 10, 100, 1000, 10000
 	* </pre>
 	*/
 	public String get_speed() throws Exception {
@@ -168,11 +194,10 @@ Setting a speed other than AUTO requires the device at the other end of the link
 
 	/**
 	* <pre>
-	* The requested duplex mode for the interface. Possible values are:
-1.	AUTO: The default setting. Specifies that the NetScaler appliance attempts to auto-negotiate the duplex mode of the interface when it is brought up.
-2.	HALF
-3.	FULL
-For settings other than AUTO, duplex and speed settings should be identical at both ends of the link.<br> Default value: NSA_DVC_DUPLEX_AUTO<br> Possible values = AUTO, HALF, FULL
+	* The duplex mode for the interface. 
+Notes:
+* If you set the duplex mode to AUTO, the NetScaler appliance attempts to auto-negotiate the duplex mode of the interface when it is UP. You must enable auto negotiation on the interface.
+If you set a duplex mode other than AUTO, you must specify the same duplex mode for the peer network device. Mismatched speed and duplex settings between the peer devices of a link lead to link errors, packet loss, and other errors.<br> Default value: AUTO<br> Possible values = AUTO, HALF, FULL
 	* </pre>
 	*/
 	public void set_duplex(String duplex) throws Exception{
@@ -181,11 +206,10 @@ For settings other than AUTO, duplex and speed settings should be identical at b
 
 	/**
 	* <pre>
-	* The requested duplex mode for the interface. Possible values are:
-1.	AUTO: The default setting. Specifies that the NetScaler appliance attempts to auto-negotiate the duplex mode of the interface when it is brought up.
-2.	HALF
-3.	FULL
-For settings other than AUTO, duplex and speed settings should be identical at both ends of the link.<br> Default value: NSA_DVC_DUPLEX_AUTO<br> Possible values = AUTO, HALF, FULL
+	* The duplex mode for the interface. 
+Notes:
+* If you set the duplex mode to AUTO, the NetScaler appliance attempts to auto-negotiate the duplex mode of the interface when it is UP. You must enable auto negotiation on the interface.
+If you set a duplex mode other than AUTO, you must specify the same duplex mode for the peer network device. Mismatched speed and duplex settings between the peer devices of a link lead to link errors, packet loss, and other errors.<br> Default value: AUTO<br> Possible values = AUTO, HALF, FULL
 	* </pre>
 	*/
 	public String get_duplex() throws Exception {
@@ -194,7 +218,7 @@ For settings other than AUTO, duplex and speed settings should be identical at b
 
 	/**
 	* <pre>
-	* The requested 802.3x flow control setting for the interface. Possible values are OFF (the default), RX, TX, RXTX, and ON ("forced RXTX"). The 802.3x specification does not define flow control for 10 Mbps and 100 Mbps speeds, but if a Gigabit Ethernet interface operates at those speeds, the flow control settings can be applied. The flow control setting that is finally applied to an interface depends on auto-negotiation. With the ON option, auto-negotiation gives the peer the opportunity to negotiate the flow control, but the appliance then forces two-way flow control for the interface.  Any other link-parameter mismatches can sometimes cause problems and should be avoided by thoroughly checking the settings.<br> Default value: OFF<br> Possible values = OFF, RX, TX, RXTX
+	* 802.3x flow control setting for the interface.  The 802.3x specification does not define flow control for 10 Mbps and 100 Mbps speeds, but if a Gigabit Ethernet interface operates at those speeds, the flow control settings can be applied. The flow control setting that is finally applied to an interface depends on auto-negotiation. With the ON option, the peer negotiates the flow control, but the appliance then forces two-way flow control for the interface.<br> Default value: OFF<br> Possible values = OFF, RX, TX, RXTX
 	* </pre>
 	*/
 	public void set_flowctl(String flowctl) throws Exception{
@@ -203,7 +227,7 @@ For settings other than AUTO, duplex and speed settings should be identical at b
 
 	/**
 	* <pre>
-	* The requested 802.3x flow control setting for the interface. Possible values are OFF (the default), RX, TX, RXTX, and ON ("forced RXTX"). The 802.3x specification does not define flow control for 10 Mbps and 100 Mbps speeds, but if a Gigabit Ethernet interface operates at those speeds, the flow control settings can be applied. The flow control setting that is finally applied to an interface depends on auto-negotiation. With the ON option, auto-negotiation gives the peer the opportunity to negotiate the flow control, but the appliance then forces two-way flow control for the interface.  Any other link-parameter mismatches can sometimes cause problems and should be avoided by thoroughly checking the settings.<br> Default value: OFF<br> Possible values = OFF, RX, TX, RXTX
+	* 802.3x flow control setting for the interface.  The 802.3x specification does not define flow control for 10 Mbps and 100 Mbps speeds, but if a Gigabit Ethernet interface operates at those speeds, the flow control settings can be applied. The flow control setting that is finally applied to an interface depends on auto-negotiation. With the ON option, the peer negotiates the flow control, but the appliance then forces two-way flow control for the interface.<br> Default value: OFF<br> Possible values = OFF, RX, TX, RXTX
 	* </pre>
 	*/
 	public String get_flowctl() throws Exception {
@@ -212,7 +236,9 @@ For settings other than AUTO, duplex and speed settings should be identical at b
 
 	/**
 	* <pre>
-	* The state of auto-negotiation for the specified interface. Possible values are Enabled or Disabled. If auto-negotiation is enabled on an interface, that interface tries to auto-negotiate the speed and duplex settings with the link partner. If the user specifies a speed or duplex setting other then AUTO, auto-negotiation of that parameter does not occur.<br> Default value: NSA_DVC_AUTONEG_ON<br> Possible values = DISABLED, ENABLED
+	* Auto-negotiation state of the interface.
+With the ENABLED setting, the NetScaler appliance auto-negotiates the speed and duplex settings with the peer network device on the link. 
+The NetScaler appliance auto-negotiates the settings of only those parameters (speed or duplex mode) for which the value is set as AUTO.<br> Default value: NSA_DVC_AUTONEG_ON<br> Possible values = DISABLED, ENABLED
 	* </pre>
 	*/
 	public void set_autoneg(String autoneg) throws Exception{
@@ -221,7 +247,9 @@ For settings other than AUTO, duplex and speed settings should be identical at b
 
 	/**
 	* <pre>
-	* The state of auto-negotiation for the specified interface. Possible values are Enabled or Disabled. If auto-negotiation is enabled on an interface, that interface tries to auto-negotiate the speed and duplex settings with the link partner. If the user specifies a speed or duplex setting other then AUTO, auto-negotiation of that parameter does not occur.<br> Default value: NSA_DVC_AUTONEG_ON<br> Possible values = DISABLED, ENABLED
+	* Auto-negotiation state of the interface.
+With the ENABLED setting, the NetScaler appliance auto-negotiates the speed and duplex settings with the peer network device on the link. 
+The NetScaler appliance auto-negotiates the settings of only those parameters (speed or duplex mode) for which the value is set as AUTO.<br> Default value: NSA_DVC_AUTONEG_ON<br> Possible values = DISABLED, ENABLED
 	* </pre>
 	*/
 	public String get_autoneg() throws Exception {
@@ -230,7 +258,7 @@ For settings other than AUTO, duplex and speed settings should be identical at b
 
 	/**
 	* <pre>
-	* Trigger a failover when the interface on which this option is enabled goes down. By default, this option is enabled on all interfaces. Citrix recommends that this option be disabled on all unused or noncritical interfaces.<br> Default value: ON<br> Possible values = ON, OFF
+	* In a High Availability (HA) configuration, monitor the interface for failure events. In an HA configuration, an interface that has HA MON enabled and is not bound to any Failover Interface Set (FIS), is a critical interface. Failure or disabling of any critical interface triggers HA failover.<br> Default value: ON<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_hamonitor(String hamonitor) throws Exception{
@@ -239,7 +267,7 @@ For settings other than AUTO, duplex and speed settings should be identical at b
 
 	/**
 	* <pre>
-	* Trigger a failover when the interface on which this option is enabled goes down. By default, this option is enabled on all interfaces. Citrix recommends that this option be disabled on all unused or noncritical interfaces.<br> Default value: ON<br> Possible values = ON, OFF
+	* In a High Availability (HA) configuration, monitor the interface for failure events. In an HA configuration, an interface that has HA MON enabled and is not bound to any Failover Interface Set (FIS), is a critical interface. Failure or disabling of any critical interface triggers HA failover.<br> Default value: ON<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_hamonitor() throws Exception {
@@ -248,7 +276,7 @@ For settings other than AUTO, duplex and speed settings should be identical at b
 
 	/**
 	* <pre>
-	*  The appliance adds a four-byte 802.1q tag to every packet sent on this interface.  ON applies tags for all the VLANs that are bound to this interface. OFF, applies the tag for all VLANs other than the native VLAN.<br> Default value: OFF<br> Possible values = ON, OFF
+	* Add a four-byte 802.1q tag to every packet sent on this interface.  The ON setting applies the tag for this interface's native VLAN. OFF applies the tag for all VLANs other than the native VLAN.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_tagall(String tagall) throws Exception{
@@ -257,7 +285,7 @@ For settings other than AUTO, duplex and speed settings should be identical at b
 
 	/**
 	* <pre>
-	*  The appliance adds a four-byte 802.1q tag to every packet sent on this interface.  ON applies tags for all the VLANs that are bound to this interface. OFF, applies the tag for all VLANs other than the native VLAN.<br> Default value: OFF<br> Possible values = ON, OFF
+	* Add a four-byte 802.1q tag to every packet sent on this interface.  The ON setting applies the tag for this interface's native VLAN. OFF applies the tag for all VLANs other than the native VLAN.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_tagall() throws Exception {
@@ -284,11 +312,11 @@ For settings other than AUTO, duplex and speed settings should be identical at b
 
 	/**
 	* <pre>
-	* The LACP mode of the specified interface. The possible values are:
-1. Active: A port in active mode generates LACP protocol messages on a regular basis, regardless of any need expressed by its partner to receive them.
-2. Passive: A port in passive mode generally does not transmit LACP messages unless its partner is in the active mode; that is, it does not speak unless spoken to.
-3. Disabled: Removes the interface from the LA channel. If this is only interface in the LA channel, the LA channel is also deleted.
-<br> Default value: DISABLED<br> Possible values = DISABLED, ACTIVE, PASSIVE
+	* Bind the interface to a LA channel created by the Link Aggregation control protocol (LACP).  
+Available settings function as follows:
+* Active - The LA channel port of the NetScaler appliance generates LACPDU messages on a regular basis, regardless of any need expressed by its peer device to receive them.
+* Passive - The LA channel port of the NetScaler appliance does not transmit LACPDU messages unless the peer device port is in the active mode. That is, the port does not speak unless spoken to.
+* Disabled - Unbinds the interface from the LA channel. If this is the only interface in the LA channel, the LA channel is removed.<br> Default value: DISABLED<br> Possible values = DISABLED, ACTIVE, PASSIVE
 	* </pre>
 	*/
 	public void set_lacpmode(String lacpmode) throws Exception{
@@ -297,11 +325,11 @@ For settings other than AUTO, duplex and speed settings should be identical at b
 
 	/**
 	* <pre>
-	* The LACP mode of the specified interface. The possible values are:
-1. Active: A port in active mode generates LACP protocol messages on a regular basis, regardless of any need expressed by its partner to receive them.
-2. Passive: A port in passive mode generally does not transmit LACP messages unless its partner is in the active mode; that is, it does not speak unless spoken to.
-3. Disabled: Removes the interface from the LA channel. If this is only interface in the LA channel, the LA channel is also deleted.
-<br> Default value: DISABLED<br> Possible values = DISABLED, ACTIVE, PASSIVE
+	* Bind the interface to a LA channel created by the Link Aggregation control protocol (LACP).  
+Available settings function as follows:
+* Active - The LA channel port of the NetScaler appliance generates LACPDU messages on a regular basis, regardless of any need expressed by its peer device to receive them.
+* Passive - The LA channel port of the NetScaler appliance does not transmit LACPDU messages unless the peer device port is in the active mode. That is, the port does not speak unless spoken to.
+* Disabled - Unbinds the interface from the LA channel. If this is the only interface in the LA channel, the LA channel is removed.<br> Default value: DISABLED<br> Possible values = DISABLED, ACTIVE, PASSIVE
 	* </pre>
 	*/
 	public String get_lacpmode() throws Exception {
@@ -310,7 +338,9 @@ For settings other than AUTO, duplex and speed settings should be identical at b
 
 	/**
 	* <pre>
-	* A digit that dentifies the LA channel to which the interface is bound. Possible values: 1, 2, 3, 4.<br> Minimum value =  1<br> Maximum value =  8
+	* Integer identifying the LACP LA channel to which the interface is to be bound. 
+For an LA channel of the NetScaler appliance, this digit specifies the variable x of an LA channel in LA/x notation, where x can range from 1 to 4. For example, if you specify 3 as the LACP key for an LA channel, the interface is bound to the LA channel LA/3.
+For an LA channel of a cluster configuration, this digit specifies the variable y of a cluster LA channel in CLA/(y-4) notation, where y can range from 5 to 8. For example, if you specify 6 as the LACP key for a cluster LA channel, the interface is bound to the cluster LA channel CLA/2.<br> Minimum value =  1<br> Maximum value =  8
 	* </pre>
 	*/
 	public void set_lacpkey(long lacpkey) throws Exception {
@@ -319,7 +349,9 @@ For settings other than AUTO, duplex and speed settings should be identical at b
 
 	/**
 	* <pre>
-	* A digit that dentifies the LA channel to which the interface is bound. Possible values: 1, 2, 3, 4.<br> Minimum value =  1<br> Maximum value =  8
+	* Integer identifying the LACP LA channel to which the interface is to be bound. 
+For an LA channel of the NetScaler appliance, this digit specifies the variable x of an LA channel in LA/x notation, where x can range from 1 to 4. For example, if you specify 3 as the LACP key for an LA channel, the interface is bound to the LA channel LA/3.
+For an LA channel of a cluster configuration, this digit specifies the variable y of a cluster LA channel in CLA/(y-4) notation, where y can range from 5 to 8. For example, if you specify 6 as the LACP key for a cluster LA channel, the interface is bound to the cluster LA channel CLA/2.<br> Minimum value =  1<br> Maximum value =  8
 	* </pre>
 	*/
 	public void set_lacpkey(Long lacpkey) throws Exception{
@@ -328,7 +360,9 @@ For settings other than AUTO, duplex and speed settings should be identical at b
 
 	/**
 	* <pre>
-	* A digit that dentifies the LA channel to which the interface is bound. Possible values: 1, 2, 3, 4.<br> Minimum value =  1<br> Maximum value =  8
+	* Integer identifying the LACP LA channel to which the interface is to be bound. 
+For an LA channel of the NetScaler appliance, this digit specifies the variable x of an LA channel in LA/x notation, where x can range from 1 to 4. For example, if you specify 3 as the LACP key for an LA channel, the interface is bound to the LA channel LA/3.
+For an LA channel of a cluster configuration, this digit specifies the variable y of a cluster LA channel in CLA/(y-4) notation, where y can range from 5 to 8. For example, if you specify 6 as the LACP key for a cluster LA channel, the interface is bound to the cluster LA channel CLA/2.<br> Minimum value =  1<br> Maximum value =  8
 	* </pre>
 	*/
 	public Long get_lacpkey() throws Exception {
@@ -337,7 +371,7 @@ For settings other than AUTO, duplex and speed settings should be identical at b
 
 	/**
 	* <pre>
-	* LAG Type (Node/Cluster).<br> Default value: NSA_LAG_NODE<br> Possible values = NODE, CLUSTER
+	* Type of entity (NetScaler appliance or cluster configuration) for which to create the channel.<br> Default value: NSA_LAG_NODE<br> Possible values = NODE, CLUSTER
 	* </pre>
 	*/
 	public void set_lagtype(String lagtype) throws Exception{
@@ -346,7 +380,7 @@ For settings other than AUTO, duplex and speed settings should be identical at b
 
 	/**
 	* <pre>
-	* LAG Type (Node/Cluster).<br> Default value: NSA_LAG_NODE<br> Possible values = NODE, CLUSTER
+	* Type of entity (NetScaler appliance or cluster configuration) for which to create the channel.<br> Default value: NSA_LAG_NODE<br> Possible values = NODE, CLUSTER
 	* </pre>
 	*/
 	public String get_lagtype() throws Exception {
@@ -355,7 +389,7 @@ For settings other than AUTO, duplex and speed settings should be identical at b
 
 	/**
 	* <pre>
-	* LACP port priority, expressed as an integer ranging from 1 to 65535. The highest priority is 1. The NetScaler limits the number of interfaces in an LA channel to 8. If LACP is enabled on more than 8 interfaces, the NetScaler selects 8 interfaces, in decending order of port priority, to form an channel.<br> Default value: 32768<br> Minimum value =  1<br> Maximum value =  65535
+	* LACP port priority, expressed as an integer. The lower the number, the higher the priority. The NetScaler appliance limits the number of interfaces in an LA channel to eight. If LACP is enabled on more than eight interfaces, the appliance selects eight interfaces, in descending order of port priority, to form a channel.<br> Default value: 32768<br> Minimum value =  1<br> Maximum value =  65535
 	* </pre>
 	*/
 	public void set_lacppriority(long lacppriority) throws Exception {
@@ -364,7 +398,7 @@ For settings other than AUTO, duplex and speed settings should be identical at b
 
 	/**
 	* <pre>
-	* LACP port priority, expressed as an integer ranging from 1 to 65535. The highest priority is 1. The NetScaler limits the number of interfaces in an LA channel to 8. If LACP is enabled on more than 8 interfaces, the NetScaler selects 8 interfaces, in decending order of port priority, to form an channel.<br> Default value: 32768<br> Minimum value =  1<br> Maximum value =  65535
+	* LACP port priority, expressed as an integer. The lower the number, the higher the priority. The NetScaler appliance limits the number of interfaces in an LA channel to eight. If LACP is enabled on more than eight interfaces, the appliance selects eight interfaces, in descending order of port priority, to form a channel.<br> Default value: 32768<br> Minimum value =  1<br> Maximum value =  65535
 	* </pre>
 	*/
 	public void set_lacppriority(Long lacppriority) throws Exception{
@@ -373,7 +407,7 @@ For settings other than AUTO, duplex and speed settings should be identical at b
 
 	/**
 	* <pre>
-	* LACP port priority, expressed as an integer ranging from 1 to 65535. The highest priority is 1. The NetScaler limits the number of interfaces in an LA channel to 8. If LACP is enabled on more than 8 interfaces, the NetScaler selects 8 interfaces, in decending order of port priority, to form an channel.<br> Default value: 32768<br> Minimum value =  1<br> Maximum value =  65535
+	* LACP port priority, expressed as an integer. The lower the number, the higher the priority. The NetScaler appliance limits the number of interfaces in an LA channel to eight. If LACP is enabled on more than eight interfaces, the appliance selects eight interfaces, in descending order of port priority, to form a channel.<br> Default value: 32768<br> Minimum value =  1<br> Maximum value =  65535
 	* </pre>
 	*/
 	public Long get_lacppriority() throws Exception {
@@ -382,7 +416,10 @@ For settings other than AUTO, duplex and speed settings should be identical at b
 
 	/**
 	* <pre>
-	* Time to wait for the LACPDU.  If a LACPDU is not received within this interval, the NetScaler markes the link partner port as DOWN. Possible values: Long and Short. Long lacptimeout is 90 sec and Short LACP timeout is 3 sec.<br> Default value: NSA_LACP_TIMEOUT_LONG<br> Possible values = LONG, SHORT
+	* Interval at which the NetScaler appliance sends LACPDU messages to the peer device on the LA channel.
+Available settings function as follows:
+LONG - 30 seconds.
+SHORT - 1 second.<br> Default value: NSA_LACP_TIMEOUT_LONG<br> Possible values = LONG, SHORT
 	* </pre>
 	*/
 	public void set_lacptimeout(String lacptimeout) throws Exception{
@@ -391,7 +428,10 @@ For settings other than AUTO, duplex and speed settings should be identical at b
 
 	/**
 	* <pre>
-	* Time to wait for the LACPDU.  If a LACPDU is not received within this interval, the NetScaler markes the link partner port as DOWN. Possible values: Long and Short. Long lacptimeout is 90 sec and Short LACP timeout is 3 sec.<br> Default value: NSA_LACP_TIMEOUT_LONG<br> Possible values = LONG, SHORT
+	* Interval at which the NetScaler appliance sends LACPDU messages to the peer device on the LA channel.
+Available settings function as follows:
+LONG - 30 seconds.
+SHORT - 1 second.<br> Default value: NSA_LACP_TIMEOUT_LONG<br> Possible values = LONG, SHORT
 	* </pre>
 	*/
 	public String get_lacptimeout() throws Exception {
@@ -400,7 +440,7 @@ For settings other than AUTO, duplex and speed settings should be identical at b
 
 	/**
 	* <pre>
-	* The alias name for the interface.<br> Default value: " "<br> Maximum length =  31
+	* Alias name for the interface. Used only to enhance readability. To perform any operations, you have to specify the interface ID.<br> Default value: " "<br> Maximum length =  31
 	* </pre>
 	*/
 	public void set_ifalias(String ifalias) throws Exception{
@@ -409,7 +449,7 @@ For settings other than AUTO, duplex and speed settings should be identical at b
 
 	/**
 	* <pre>
-	* The alias name for the interface.<br> Default value: " "<br> Maximum length =  31
+	* Alias name for the interface. Used only to enhance readability. To perform any operations, you have to specify the interface ID.<br> Default value: " "<br> Maximum length =  31
 	* </pre>
 	*/
 	public String get_ifalias() throws Exception {
@@ -418,7 +458,7 @@ For settings other than AUTO, duplex and speed settings should be identical at b
 
 	/**
 	* <pre>
-	* Minimum required throughput for an interface. Failover is triggered if the operating throughput of a Link Aggregation (LA) channel for which HAMON is ON falls below this value.<br> Minimum value =  0<br> Maximum value =  80000
+	* Low threshold value for the throughput of the interface, in Mbps. In an HA configuration, failover is triggered if the interface has HA MON enabled and the throughput is below the specified the threshold.<br> Minimum value =  0<br> Maximum value =  80000
 	* </pre>
 	*/
 	public void set_throughput(long throughput) throws Exception {
@@ -427,7 +467,7 @@ For settings other than AUTO, duplex and speed settings should be identical at b
 
 	/**
 	* <pre>
-	* Minimum required throughput for an interface. Failover is triggered if the operating throughput of a Link Aggregation (LA) channel for which HAMON is ON falls below this value.<br> Minimum value =  0<br> Maximum value =  80000
+	* Low threshold value for the throughput of the interface, in Mbps. In an HA configuration, failover is triggered if the interface has HA MON enabled and the throughput is below the specified the threshold.<br> Minimum value =  0<br> Maximum value =  80000
 	* </pre>
 	*/
 	public void set_throughput(Long throughput) throws Exception{
@@ -436,7 +476,7 @@ For settings other than AUTO, duplex and speed settings should be identical at b
 
 	/**
 	* <pre>
-	* Minimum required throughput for an interface. Failover is triggered if the operating throughput of a Link Aggregation (LA) channel for which HAMON is ON falls below this value.<br> Minimum value =  0<br> Maximum value =  80000
+	* Low threshold value for the throughput of the interface, in Mbps. In an HA configuration, failover is triggered if the interface has HA MON enabled and the throughput is below the specified the threshold.<br> Minimum value =  0<br> Maximum value =  80000
 	* </pre>
 	*/
 	public Long get_throughput() throws Exception {
@@ -445,10 +485,7 @@ For settings other than AUTO, duplex and speed settings should be identical at b
 
 	/**
 	* <pre>
-	* Configured high threshold of the interface bandwidth usage in Mbits/s. Trap will be sent if bandwidth usage of the interface goes above this limit. The possible values are:
-1. 1000Mbps for 1G interfaces.
-2. 10000Mbps for 10G interfaces.
-3. 80000Mbps for Link Aggregation channels.<br> Minimum value =  0<br> Maximum value =  80000
+	* High threshold value for the bandwidth usage of the interface, in Mbps. The NetScaler appliance generates an SNMP trap message when the bandwidth usage of the interface is greater than or equal to the specified high threshold value.<br> Minimum value =  0<br> Maximum value =  80000
 	* </pre>
 	*/
 	public void set_bandwidthhigh(long bandwidthhigh) throws Exception {
@@ -457,10 +494,7 @@ For settings other than AUTO, duplex and speed settings should be identical at b
 
 	/**
 	* <pre>
-	* Configured high threshold of the interface bandwidth usage in Mbits/s. Trap will be sent if bandwidth usage of the interface goes above this limit. The possible values are:
-1. 1000Mbps for 1G interfaces.
-2. 10000Mbps for 10G interfaces.
-3. 80000Mbps for Link Aggregation channels.<br> Minimum value =  0<br> Maximum value =  80000
+	* High threshold value for the bandwidth usage of the interface, in Mbps. The NetScaler appliance generates an SNMP trap message when the bandwidth usage of the interface is greater than or equal to the specified high threshold value.<br> Minimum value =  0<br> Maximum value =  80000
 	* </pre>
 	*/
 	public void set_bandwidthhigh(Long bandwidthhigh) throws Exception{
@@ -469,10 +503,7 @@ For settings other than AUTO, duplex and speed settings should be identical at b
 
 	/**
 	* <pre>
-	* Configured high threshold of the interface bandwidth usage in Mbits/s. Trap will be sent if bandwidth usage of the interface goes above this limit. The possible values are:
-1. 1000Mbps for 1G interfaces.
-2. 10000Mbps for 10G interfaces.
-3. 80000Mbps for Link Aggregation channels.<br> Minimum value =  0<br> Maximum value =  80000
+	* High threshold value for the bandwidth usage of the interface, in Mbps. The NetScaler appliance generates an SNMP trap message when the bandwidth usage of the interface is greater than or equal to the specified high threshold value.<br> Minimum value =  0<br> Maximum value =  80000
 	* </pre>
 	*/
 	public Long get_bandwidthhigh() throws Exception {
@@ -481,10 +512,7 @@ For settings other than AUTO, duplex and speed settings should be identical at b
 
 	/**
 	* <pre>
-	* Configured normal threshold of the interface bandwidth usage in Mbits/s. Trap will be sent if bandwidth usage of the interface comes back to this limit. The possible values are:
-1. 1000Mbps for 1G interfaces.
-2. 10000Mbps for 10G interfaces.
-3. 80000Mbps for Link Aggregation channels.<br> Minimum value =  0<br> Maximum value =  80000
+	* Normal threshold value for the bandwidth usage of the interface, in Mbps. When the bandwidth usage of the interface becomes less than or equal to the specified normal threshold after exceeding the high threshold, the NetScaler appliance generates an SNMP trap message to indicate that the bandwidth usage has returned to normal.<br> Minimum value =  0<br> Maximum value =  80000
 	* </pre>
 	*/
 	public void set_bandwidthnormal(long bandwidthnormal) throws Exception {
@@ -493,10 +521,7 @@ For settings other than AUTO, duplex and speed settings should be identical at b
 
 	/**
 	* <pre>
-	* Configured normal threshold of the interface bandwidth usage in Mbits/s. Trap will be sent if bandwidth usage of the interface comes back to this limit. The possible values are:
-1. 1000Mbps for 1G interfaces.
-2. 10000Mbps for 10G interfaces.
-3. 80000Mbps for Link Aggregation channels.<br> Minimum value =  0<br> Maximum value =  80000
+	* Normal threshold value for the bandwidth usage of the interface, in Mbps. When the bandwidth usage of the interface becomes less than or equal to the specified normal threshold after exceeding the high threshold, the NetScaler appliance generates an SNMP trap message to indicate that the bandwidth usage has returned to normal.<br> Minimum value =  0<br> Maximum value =  80000
 	* </pre>
 	*/
 	public void set_bandwidthnormal(Long bandwidthnormal) throws Exception{
@@ -505,10 +530,7 @@ For settings other than AUTO, duplex and speed settings should be identical at b
 
 	/**
 	* <pre>
-	* Configured normal threshold of the interface bandwidth usage in Mbits/s. Trap will be sent if bandwidth usage of the interface comes back to this limit. The possible values are:
-1. 1000Mbps for 1G interfaces.
-2. 10000Mbps for 10G interfaces.
-3. 80000Mbps for Link Aggregation channels.<br> Minimum value =  0<br> Maximum value =  80000
+	* Normal threshold value for the bandwidth usage of the interface, in Mbps. When the bandwidth usage of the interface becomes less than or equal to the specified normal threshold after exceeding the high threshold, the NetScaler appliance generates an SNMP trap message to indicate that the bandwidth usage has returned to normal.<br> Minimum value =  0<br> Maximum value =  80000
 	* </pre>
 	*/
 	public Long get_bandwidthnormal() throws Exception {
@@ -756,6 +778,24 @@ For settings other than AUTO, duplex and speed settings should be identical at b
 	*/
 	public Long get_hangreset() throws Exception {
 		return this.hangreset;
+	}
+
+	/**
+	* <pre>
+	* The current state of the link associated with the interface. For logical interfaces (LA), the state of the link is dependent on the state of the slave interfaces. For the link to be UP at least one of the slave interfaces needs to be UP.
+	* </pre>
+	*/
+	public Long get_linkstate() throws Exception {
+		return this.linkstate;
+	}
+
+	/**
+	* <pre>
+	* Current state of the specified interface.  The interface state set to UP only if the link state is UP and administrative state is ENABLED.
+	* </pre>
+	*/
+	public Long get_intfstate() throws Exception {
+		return this.intfstate;
 	}
 
 	/**
@@ -1057,6 +1097,205 @@ For settings other than AUTO, duplex and speed settings should be identical at b
 
 	/**
 	* <pre>
+	* LACP Actor Priority. A LACP port priority is configured on each port using LACP. LACP uses the port priority with the port number to form the port identifier. The port priority determines which ports should be put in standby mode when there is a hardware limitation that prevents all compatible ports from aggregating.
+	* </pre>
+	*/
+	public Long get_lacpactorpriority() throws Exception {
+		return this.lacpactorpriority;
+	}
+
+	/**
+	* <pre>
+	* LACP Actor port number. LACP uses the port priority with the port number to form the port identifier.
+	* </pre>
+	*/
+	public Long get_lacpactorportno() throws Exception {
+		return this.lacpactorportno;
+	}
+
+	/**
+	* <pre>
+	* LACP Partner State. Whether the port is in Active or Passive negotiating state.<br> Possible values = MANUAL, AUTO
+	* </pre>
+	*/
+	public String get_lacppartnerstate() throws Exception {
+		return this.lacppartnerstate;
+	}
+
+	/**
+	* <pre>
+	* The timeout value for the information revieved in LACPDUs. It can have values as SHORT or LONG. The SHORT timeout is 3s and the LONG timeout is 90s.<br> Possible values = LONG, SHORT
+	* </pre>
+	*/
+	public String get_lacppartnertimeout() throws Exception {
+		return this.lacppartnertimeout;
+	}
+
+	/**
+	* <pre>
+	* The Aggregation flag indicates that the participant will allow the link to be used as part of an aggregate. Otherwise the link is to be used as an individual link, i.e. not aggregated with any other.<br> Possible values = NS_EMPTY_STR, AGG
+	* </pre>
+	*/
+	public String get_lacppartneraggregation() throws Exception {
+		return this.lacppartneraggregation;
+	}
+
+	/**
+	* <pre>
+	* The Synchronization flag indicates that the transmitting participant.s mux component is in sync with the system id and key information transmitted.<br> Possible values = NS_EMPTY_STR, SYNC
+	* </pre>
+	*/
+	public String get_lacppartnerinsync() throws Exception {
+		return this.lacppartnerinsync;
+	}
+
+	/**
+	* <pre>
+	* The Collecting flag indicates that the participant.s collector, i.e. the reception component of the mux, is definitely on. If set the flag communicates collecting.<br> Possible values = NS_EMPTY_STR, COLLECTING
+	* </pre>
+	*/
+	public String get_lacppartnercollecting() throws Exception {
+		return this.lacppartnercollecting;
+	}
+
+	/**
+	* <pre>
+	* The Distributing flag indicates that the participant.s distributor is not definitely off. If reset the flag indicates not distributing.<br> Possible values = NS_EMPTY_STR, DISTRIBUTING
+	* </pre>
+	*/
+	public String get_lacppartnerdistributing() throws Exception {
+		return this.lacppartnerdistributing;
+	}
+
+	/**
+	* <pre>
+	* If the timer expires in the Expired state, the Receive Machine enters the Defaulted state.<br> Possible values = NS_EMPTY_STR, DEFAULTED
+	* </pre>
+	*/
+	public String get_lacppartnerdefaulted() throws Exception {
+		return this.lacppartnerdefaulted;
+	}
+
+	/**
+	* <pre>
+	* If the LACPDUs are received for timeout period, the Receive Machine enters the Expired state and the timer is restarted with the timeout value of SHORT timeout.<br> Possible values = NS_EMPTY_STR, EXPIRED
+	* </pre>
+	*/
+	public String get_lacppartnerexpired() throws Exception {
+		return this.lacppartnerexpired;
+	}
+
+	/**
+	* <pre>
+	* LACP Partner Priority. A LACP port priority is configured on each port using LACP. LACP uses the port priority with the port number to form the port identifier. 
+					The port priority determines which ports should be put in standby mode when there is a hardware limitation that prevents all compatible ports from aggregating.
+	* </pre>
+	*/
+	public Long get_lacppartnerpriority() throws Exception {
+		return this.lacppartnerpriority;
+	}
+
+	/**
+	* <pre>
+	* LACP Partner System MAC.
+	* </pre>
+	*/
+	public String get_lacppartnersystemmac() throws Exception {
+		return this.lacppartnersystemmac;
+	}
+
+	/**
+	* <pre>
+	* LACP Partner System Priority. The LACP partner's system priority. The values for the priority range from 0 to 65535. The lower the value, the higher the system priority. The switch with the lower system priority value determines which links between LACP partner are active and which are in the standby for each LACP Channel.
+	* </pre>
+	*/
+	public Long get_lacppartnersystempriority() throws Exception {
+		return this.lacppartnersystempriority;
+	}
+
+	/**
+	* <pre>
+	* LACP Partner Port number. LACP uses the port priority with the port number to form the port identifier.
+	* </pre>
+	*/
+	public Long get_lacppartnerportno() throws Exception {
+		return this.lacppartnerportno;
+	}
+
+	/**
+	* <pre>
+	* LACP Partner Key. The LACP key used by the partner port.
+	* </pre>
+	*/
+	public Long get_lacppartnerkey() throws Exception {
+		return this.lacppartnerkey;
+	}
+
+	/**
+	* <pre>
+	* The Aggregation flag indicates that the participant will allow the link to be used as part of an aggregate. Otherwise the link is to be used as an individual link, i.e. not aggregated with any other.<br> Possible values = NS_EMPTY_STR, AGG
+	* </pre>
+	*/
+	public String get_lacpactoraggregation() throws Exception {
+		return this.lacpactoraggregation;
+	}
+
+	/**
+	* <pre>
+	* The Synchronization flag indicates that the transmitting participant.s mux component is in sync with the system id and key information transmitted.<br> Possible values = NS_EMPTY_STR, SYNC
+	* </pre>
+	*/
+	public String get_lacpactorinsync() throws Exception {
+		return this.lacpactorinsync;
+	}
+
+	/**
+	* <pre>
+	* The Collecting flag indicates that the participant.s collector, i.e. the reception component of the mux, is definitely on. If set the flag communicates collecting.<br> Possible values = NS_EMPTY_STR, COLLECTING
+	* </pre>
+	*/
+	public String get_lacpactorcollecting() throws Exception {
+		return this.lacpactorcollecting;
+	}
+
+	/**
+	* <pre>
+	* The Distributing flag indicates that the participant.s distributor is not definitely off. If reset the flag indicates not distributing.<br> Possible values = NS_EMPTY_STR, DISTRIBUTING
+	* </pre>
+	*/
+	public String get_lacpactordistributing() throws Exception {
+		return this.lacpactordistributing;
+	}
+
+	/**
+	* <pre>
+	* LACP Port MUX state. The state of the MUX control machine. The  Mux Control Machine attaches the physical port to an aggregate port, using the Selection Logic to choose an appropriate port, and turns the distributor and collector for the physical port on or off as required by protocol	information.<br> Possible values = DETACHED, WAITING, ATTACHED, COLLECTING, DISTRIBUTING
+	* </pre>
+	*/
+	public String get_lacpportmuxstate() throws Exception {
+		return this.lacpportmuxstate;
+	}
+
+	/**
+	* <pre>
+	* LACP Port RX state. The state of the Receive machine. The Receive Machine maintains partner information, recording protocol information from LACPDUs sent by remote partner(s). Received information is subject to a timeout, and if sufficient time elapses the receive machine will revert to using default partner information.<br> Possible values = INIT, PORT_DISABLED, LACP_DISABLED, EXPIRED, DEFAULTED, CURRENT
+	* </pre>
+	*/
+	public String get_lacpportrxstat() throws Exception {
+		return this.lacpportrxstat;
+	}
+
+	/**
+	* <pre>
+	* LACP Port SELECT state. The state of the SELECT state machine, It could be SELECTED or UNSELECTED.<br> Possible values = UNSELECTED, SELECTED, STANDBY
+	* </pre>
+	*/
+	public String get_lacpportselectstate() throws Exception {
+		return this.lacpportselectstate;
+	}
+
+	/**
+	* <pre>
 	* converts nitro response into object and returns the object array in case of get request.
 	* </pre>
 	*/
@@ -1175,34 +1414,9 @@ For settings other than AUTO, duplex and speed settings should be identical at b
 	* Use this API to unset the properties of Interface resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String id, String args[]) throws Exception {
-		Interface unsetresource = new Interface();
-		unsetresource.id = id;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of Interface resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, Interface resource, String[] args) throws Exception{
 		Interface unsetresource = new Interface();
 		unsetresource.id = resource.id;
-		unsetresource.speed = resource.speed;
-		unsetresource.duplex = resource.duplex;
-		unsetresource.flowctl = resource.flowctl;
-		unsetresource.autoneg = resource.autoneg;
-		unsetresource.hamonitor = resource.hamonitor;
-		unsetresource.tagall = resource.tagall;
-		unsetresource.trunk = resource.trunk;
-		unsetresource.lacpmode = resource.lacpmode;
-		unsetresource.lacpkey = resource.lacpkey;
-		unsetresource.lacppriority = resource.lacppriority;
-		unsetresource.lacptimeout = resource.lacptimeout;
-		unsetresource.ifalias = resource.ifalias;
-		unsetresource.throughput = resource.throughput;
-		unsetresource.bandwidthhigh = resource.bandwidthhigh;
-		unsetresource.bandwidthnormal = resource.bandwidthnormal;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -1234,21 +1448,6 @@ For settings other than AUTO, duplex and speed settings should be identical at b
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new Interface();
 				unsetresources[i].id = resources[i].id;
-				unsetresources[i].speed = resources[i].speed;
-				unsetresources[i].duplex = resources[i].duplex;
-				unsetresources[i].flowctl = resources[i].flowctl;
-				unsetresources[i].autoneg = resources[i].autoneg;
-				unsetresources[i].hamonitor = resources[i].hamonitor;
-				unsetresources[i].tagall = resources[i].tagall;
-				unsetresources[i].trunk = resources[i].trunk;
-				unsetresources[i].lacpmode = resources[i].lacpmode;
-				unsetresources[i].lacpkey = resources[i].lacpkey;
-				unsetresources[i].lacppriority = resources[i].lacppriority;
-				unsetresources[i].lacptimeout = resources[i].lacptimeout;
-				unsetresources[i].ifalias = resources[i].ifalias;
-				unsetresources[i].throughput = resources[i].throughput;
-				unsetresources[i].bandwidthhigh = resources[i].bandwidthhigh;
-				unsetresources[i].bandwidthnormal = resources[i].bandwidthnormal;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}
@@ -1492,6 +1691,11 @@ For settings other than AUTO, duplex and speed settings should be identical at b
 		return 0;
 	}
 
+	public static class lacpportselectstateEnum {
+		public static final String UNSELECTED = "UNSELECTED";
+		public static final String SELECTED = "SELECTED";
+		public static final String STANDBY = "STANDBY";
+	}
 	public static class reqduplexEnum {
 		public static final String AUTO = "AUTO";
 		public static final String HALF = "HALF";
@@ -1505,9 +1709,21 @@ For settings other than AUTO, duplex and speed settings should be identical at b
 		public static final String MANUAL = "MANUAL";
 		public static final String AUTO = "AUTO";
 	}
+	public static class lacpportrxstatEnum {
+		public static final String INIT = "INIT";
+		public static final String PORT_DISABLED = "PORT_DISABLED";
+		public static final String LACP_DISABLED = "LACP_DISABLED";
+		public static final String EXPIRED = "EXPIRED";
+		public static final String DEFAULTED = "DEFAULTED";
+		public static final String CURRENT = "CURRENT";
+	}
 	public static class stateEnum {
 		public static final String ENABLED = "ENABLED";
 		public static final String DISABLED = "DISABLED";
+	}
+	public static class lacppartnerinsyncEnum {
+		public static final String NS_EMPTY_STR = "NS_EMPTY_STR";
+		public static final String SYNC = "SYNC";
 	}
 	public static class actduplexEnum {
 		public static final String AUTO = "AUTO";
@@ -1517,6 +1733,14 @@ For settings other than AUTO, duplex and speed settings should be identical at b
 	public static class hamonitorEnum {
 		public static final String ON = "ON";
 		public static final String OFF = "OFF";
+	}
+	public static class lacppartnerdistributingEnum {
+		public static final String NS_EMPTY_STR = "NS_EMPTY_STR";
+		public static final String DISTRIBUTING = "DISTRIBUTING";
+	}
+	public static class lacppartnercollectingEnum {
+		public static final String NS_EMPTY_STR = "NS_EMPTY_STR";
+		public static final String COLLECTING = "COLLECTING";
 	}
 	public static class conndistrEnum {
 		public static final String DISABLED = "DISABLED";
@@ -1546,6 +1770,10 @@ For settings other than AUTO, duplex and speed settings should be identical at b
 		public static final String UTP = "UTP";
 		public static final String FIBER = "FIBER";
 	}
+	public static class lacppartnertimeoutEnum {
+		public static final String LONG = "LONG";
+		public static final String SHORT = "SHORT";
+	}
 	public static class intftypeEnum {
 		public static final String BROADCOM_5700_5701 = "BROADCOM 5700/5701";
 		public static final String TIGON1_TIGON2 = "TIGON1/TIGON2";
@@ -1571,10 +1799,37 @@ For settings other than AUTO, duplex and speed settings should be identical at b
 		public static final String DISABLED = "DISABLED";
 		public static final String ENABLED = "ENABLED";
 	}
+	public static class lacppartnerexpiredEnum {
+		public static final String NS_EMPTY_STR = "NS_EMPTY_STR";
+		public static final String EXPIRED = "EXPIRED";
+	}
 	public static class macdistrEnum {
 		public static final String SOURCE = "SOURCE";
 		public static final String DESTINATION = "DESTINATION";
 		public static final String BOTH = "BOTH";
+	}
+	public static class lacppartnerstateEnum {
+		public static final String MANUAL = "MANUAL";
+		public static final String AUTO = "AUTO";
+	}
+	public static class lacpportmuxstateEnum {
+		public static final String DETACHED = "DETACHED";
+		public static final String WAITING = "WAITING";
+		public static final String ATTACHED = "ATTACHED";
+		public static final String COLLECTING = "COLLECTING";
+		public static final String DISTRIBUTING = "DISTRIBUTING";
+	}
+	public static class lacpactordistributingEnum {
+		public static final String NS_EMPTY_STR = "NS_EMPTY_STR";
+		public static final String DISTRIBUTING = "DISTRIBUTING";
+	}
+	public static class lacpactorinsyncEnum {
+		public static final String NS_EMPTY_STR = "NS_EMPTY_STR";
+		public static final String SYNC = "SYNC";
+	}
+	public static class lacppartnerdefaultedEnum {
+		public static final String NS_EMPTY_STR = "NS_EMPTY_STR";
+		public static final String DEFAULTED = "DEFAULTED";
 	}
 	public static class actmediaEnum {
 		public static final String AUTO = "AUTO";
@@ -1602,6 +1857,10 @@ For settings other than AUTO, duplex and speed settings should be identical at b
 		public static final String ON = "ON";
 		public static final String OFF = "OFF";
 	}
+	public static class lacppartneraggregationEnum {
+		public static final String NS_EMPTY_STR = "NS_EMPTY_STR";
+		public static final String AGG = "AGG";
+	}
 	public static class trunkEnum {
 		public static final String ON = "ON";
 		public static final String OFF = "OFF";
@@ -1616,6 +1875,14 @@ For settings other than AUTO, duplex and speed settings should be identical at b
 		public static final String RX = "RX";
 		public static final String TX = "TX";
 		public static final String RXTX = "RXTX";
+	}
+	public static class lacpactorcollectingEnum {
+		public static final String NS_EMPTY_STR = "NS_EMPTY_STR";
+		public static final String COLLECTING = "COLLECTING";
+	}
+	public static class lacpactoraggregationEnum {
+		public static final String NS_EMPTY_STR = "NS_EMPTY_STR";
+		public static final String AGG = "AGG";
 	}
 	public static class flowctlEnum {
 		public static final String OFF = "OFF";

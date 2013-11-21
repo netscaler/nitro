@@ -36,6 +36,7 @@ public class appfwglobal_auditsyslogpolicy_binding extends base_resource
 	private Long priority;
 	private String state;
 	private String type;
+	private String policytype;
 	private String gotopriorityexpression;
 	private Boolean invoke;
 	private String labeltype;
@@ -71,7 +72,7 @@ public class appfwglobal_auditsyslogpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Application Firewall policy name.
+	* Name of the policy.
 	* </pre>
 	*/
 	public void set_policyname(String policyname) throws Exception{
@@ -80,7 +81,7 @@ public class appfwglobal_auditsyslogpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Application Firewall policy name.
+	* Name of the policy.
 	* </pre>
 	*/
 	public String get_policyname() throws Exception {
@@ -89,7 +90,7 @@ public class appfwglobal_auditsyslogpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Name of the label to invoke if the current policy rule evaluates to TRUE.
+	* Name of the policy label to invoke if the current policy evaluates to TRUE, the invoke parameter is set, and Label Type is set to Policy Label.
 	* </pre>
 	*/
 	public void set_labelname(String labelname) throws Exception{
@@ -98,7 +99,7 @@ public class appfwglobal_auditsyslogpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Name of the label to invoke if the current policy rule evaluates to TRUE.
+	* Name of the policy label to invoke if the current policy evaluates to TRUE, the invoke parameter is set, and Label Type is set to Policy Label.
 	* </pre>
 	*/
 	public String get_labelname() throws Exception {
@@ -107,18 +108,20 @@ public class appfwglobal_auditsyslogpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* This can be used only when binding advanced application firewall policy.
-Expression specifying the priority of the next policy which will get evaluated if the current policy rule evaluates to TRUE.
-	o	If gotoPriorityExpression is not present or if it is equal to END then the policy bank evaluation ends here
-	o	Else if the gotoPriorityExpression is equal to NEXT then the next policy in the priority order is evaluated.
-	o	Else gotoPriorityExpression is evaluated. The result of gotoPriorityExpression (which has to be a number) is processed as follows:
-		-	An UNDEF event is triggered if
-			.	gotoPriorityExpression cannot be evaluated
-			.	gotoPriorityExpression evaluates to number which is smaller than the maximum priority in the policy bank but is not same as any policy's priority
-			.	gotoPriorityExpression evaluates to a priority that is smaller than the current policy's priority
-		-	If the gotoPriorityExpression evaluates to the priority of the current policy then the next policy in the priority order is evaluated.
-		-	If the gotoPriorityExpression evaluates to the priority of a policy further ahead in the list then that policy will be evaluated next.
-		.
+	* Expression or other value specifying the next policy to evaluate if the current policy evaluates to TRUE.  Specify one of the following values:
+* NEXT - Evaluate the policy with the next higher priority number.
+* END - End policy evaluation.
+* USE_INVOCATION_RESULT - Applicable if this policy invokes another policy label. If the final goto in the invoked policy label has a value of END, the evaluation stops. If the final goto is anything other than END, the current policy label performs a NEXT.
+* A default syntax or classic expression that evaluates to a number.
+If you specify an expression, the number to which it evaluates determines the next policy to evaluate, as follows:
+* If the expression evaluates to a higher numbered priority, the policy with that priority is evaluated next.
+* If the expression evaluates to the priority of the current policy, the policy with the next higher numbered priority is evaluated next.
+* If the expression evaluates to a number that is larger than the largest numbered priority, policy evaluation ends.
+
+An UNDEF event is triggered if:
+* The expression is invalid.
+* The expression evaluates to a priority number that is smaller than the current policy's priority number.
+* The expression evaluates to a priority number that is between the current policy's priority number (say, 30) and the highest priority number (say, 100), but does not match any configured priority number (for example, the expression evaluates to the number 85). This example assumes that the priority number increments by 10 for every successive policy, and therefore a priority number of 85 does not exist in the policy label.
 	* </pre>
 	*/
 	public void set_gotopriorityexpression(String gotopriorityexpression) throws Exception{
@@ -127,18 +130,20 @@ Expression specifying the priority of the next policy which will get evaluated i
 
 	/**
 	* <pre>
-	* This can be used only when binding advanced application firewall policy.
-Expression specifying the priority of the next policy which will get evaluated if the current policy rule evaluates to TRUE.
-	o	If gotoPriorityExpression is not present or if it is equal to END then the policy bank evaluation ends here
-	o	Else if the gotoPriorityExpression is equal to NEXT then the next policy in the priority order is evaluated.
-	o	Else gotoPriorityExpression is evaluated. The result of gotoPriorityExpression (which has to be a number) is processed as follows:
-		-	An UNDEF event is triggered if
-			.	gotoPriorityExpression cannot be evaluated
-			.	gotoPriorityExpression evaluates to number which is smaller than the maximum priority in the policy bank but is not same as any policy's priority
-			.	gotoPriorityExpression evaluates to a priority that is smaller than the current policy's priority
-		-	If the gotoPriorityExpression evaluates to the priority of the current policy then the next policy in the priority order is evaluated.
-		-	If the gotoPriorityExpression evaluates to the priority of a policy further ahead in the list then that policy will be evaluated next.
-		.
+	* Expression or other value specifying the next policy to evaluate if the current policy evaluates to TRUE.  Specify one of the following values:
+* NEXT - Evaluate the policy with the next higher priority number.
+* END - End policy evaluation.
+* USE_INVOCATION_RESULT - Applicable if this policy invokes another policy label. If the final goto in the invoked policy label has a value of END, the evaluation stops. If the final goto is anything other than END, the current policy label performs a NEXT.
+* A default syntax or classic expression that evaluates to a number.
+If you specify an expression, the number to which it evaluates determines the next policy to evaluate, as follows:
+* If the expression evaluates to a higher numbered priority, the policy with that priority is evaluated next.
+* If the expression evaluates to the priority of the current policy, the policy with the next higher numbered priority is evaluated next.
+* If the expression evaluates to a number that is larger than the largest numbered priority, policy evaluation ends.
+
+An UNDEF event is triggered if:
+* The expression is invalid.
+* The expression evaluates to a priority number that is smaller than the current policy's priority number.
+* The expression evaluates to a priority number that is between the current policy's priority number (say, 30) and the highest priority number (say, 100), but does not match any configured priority number (for example, the expression evaluates to the number 85). This example assumes that the priority number increments by 10 for every successive policy, and therefore a priority number of 85 does not exist in the policy label.
 	* </pre>
 	*/
 	public String get_gotopriorityexpression() throws Exception {
@@ -147,7 +152,7 @@ Expression specifying the priority of the next policy which will get evaluated i
 
 	/**
 	* <pre>
-	* Invoke flag. This can be used only when binding advanced application firewall policy.
+	* If the current policy evaluates to TRUE, terminate evaluation of policies bound to the current policy label, and then forward the request to the specified virtual server or evaluate the specified policy label.
 	* </pre>
 	*/
 	public void set_invoke(boolean invoke) throws Exception {
@@ -156,7 +161,7 @@ Expression specifying the priority of the next policy which will get evaluated i
 
 	/**
 	* <pre>
-	* Invoke flag. This can be used only when binding advanced application firewall policy.
+	* If the current policy evaluates to TRUE, terminate evaluation of policies bound to the current policy label, and then forward the request to the specified virtual server or evaluate the specified policy label.
 	* </pre>
 	*/
 	public void set_invoke(Boolean invoke) throws Exception{
@@ -165,7 +170,7 @@ Expression specifying the priority of the next policy which will get evaluated i
 
 	/**
 	* <pre>
-	* Invoke flag. This can be used only when binding advanced application firewall policy.
+	* If the current policy evaluates to TRUE, terminate evaluation of policies bound to the current policy label, and then forward the request to the specified virtual server or evaluate the specified policy label.
 	* </pre>
 	*/
 	public Boolean get_invoke() throws Exception {
@@ -174,7 +179,7 @@ Expression specifying the priority of the next policy which will get evaluated i
 
 	/**
 	* <pre>
-	* The bindpoint to which to policy is bound. This can be used with advance application firewall policy only.<br> Possible values = REQ_OVERRIDE, REQ_DEFAULT, NONE
+	* Bind point to which to policy is bound.<br> Possible values = REQ_OVERRIDE, REQ_DEFAULT, NONE
 	* </pre>
 	*/
 	public void set_type(String type) throws Exception{
@@ -183,7 +188,7 @@ Expression specifying the priority of the next policy which will get evaluated i
 
 	/**
 	* <pre>
-	* The bindpoint to which to policy is bound. This can be used with advance application firewall policy only.<br> Possible values = REQ_OVERRIDE, REQ_DEFAULT, NONE
+	* Bind point to which to policy is bound.<br> Possible values = REQ_OVERRIDE, REQ_DEFAULT, NONE
 	* </pre>
 	*/
 	public String get_type() throws Exception {
@@ -192,7 +197,9 @@ Expression specifying the priority of the next policy which will get evaluated i
 
 	/**
 	* <pre>
-	* This can be used only when binding advanced application firewall policy.<br> Possible values = reqvserver, policylabel
+	* Type of policy label to invoke if the current policy evaluates to TRUE and the invoke parameter is set. Available settings function as follows:
+* reqvserver. Invoke the unnamed policy label associated with the specified request virtual server.
+* policylabel. Invoke the specified user-defined policy label.<br> Possible values = reqvserver, policylabel
 	* </pre>
 	*/
 	public void set_labeltype(String labeltype) throws Exception{
@@ -201,7 +208,9 @@ Expression specifying the priority of the next policy which will get evaluated i
 
 	/**
 	* <pre>
-	* This can be used only when binding advanced application firewall policy.<br> Possible values = reqvserver, policylabel
+	* Type of policy label to invoke if the current policy evaluates to TRUE and the invoke parameter is set. Available settings function as follows:
+* reqvserver. Invoke the unnamed policy label associated with the specified request virtual server.
+* policylabel. Invoke the specified user-defined policy label.<br> Possible values = reqvserver, policylabel
 	* </pre>
 	*/
 	public String get_labeltype() throws Exception {
@@ -210,7 +219,7 @@ Expression specifying the priority of the next policy which will get evaluated i
 
 	/**
 	* <pre>
-	* The current state of the binding.<br> Possible values = ENABLED, DISABLED
+	* Enable or disable the binding to activate or deactivate the policy.<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_state(String state) throws Exception{
@@ -219,11 +228,20 @@ Expression specifying the priority of the next policy which will get evaluated i
 
 	/**
 	* <pre>
-	* The current state of the binding.<br> Possible values = ENABLED, DISABLED
+	* Enable or disable the binding to activate or deactivate the policy.<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_state() throws Exception {
 		return this.state;
+	}
+
+	/**
+	* <pre>
+	* .<br> Possible values = Classic Policy, Advanced Policy
+	* </pre>
+	*/
+	public String get_policytype() throws Exception {
+		return this.policytype;
 	}
 
 	/**
@@ -403,6 +421,10 @@ Expression specifying the priority of the next policy which will get evaluated i
 	public static class labeltypeEnum {
 		public static final String reqvserver = "reqvserver";
 		public static final String policylabel = "policylabel";
+	}
+	public static class policytypeEnum {
+		public static final String Classic_Policy = "Classic Policy";
+		public static final String Advanced_Policy = "Advanced Policy";
 	}
 	public static class stateEnum {
 		public static final String ENABLED = "ENABLED";

@@ -39,6 +39,7 @@ public class cacheparameter extends base_resource
 	private Long prefetchmaxpending;
 	private String enablebypass;
 	private String undefaction;
+	private String enablediskcache;
 
 	//------- Read only Parameter ---------;
 
@@ -48,7 +49,7 @@ public class cacheparameter extends base_resource
 
 	/**
 	* <pre>
-	* The memory limit for Integrated Cache.
+	* Amount of memory available for storing the cache objects. In practice, the amount of memory available for caching can be less than half the total memory of the NetScaler appliance.
 	* </pre>
 	*/
 	public void set_memlimit(long memlimit) throws Exception {
@@ -57,7 +58,7 @@ public class cacheparameter extends base_resource
 
 	/**
 	* <pre>
-	* The memory limit for Integrated Cache.
+	* Amount of memory available for storing the cache objects. In practice, the amount of memory available for caching can be less than half the total memory of the NetScaler appliance.
 	* </pre>
 	*/
 	public void set_memlimit(Long memlimit) throws Exception{
@@ -66,7 +67,7 @@ public class cacheparameter extends base_resource
 
 	/**
 	* <pre>
-	* The memory limit for Integrated Cache.
+	* Amount of memory available for storing the cache objects. In practice, the amount of memory available for caching can be less than half the total memory of the NetScaler appliance.
 	* </pre>
 	*/
 	public Long get_memlimit() throws Exception {
@@ -75,7 +76,7 @@ public class cacheparameter extends base_resource
 
 	/**
 	* <pre>
-	* The string to be inserted in the "Via" header. A Via header is inserted in all responses served from a content group if its insertVia flag is set.<br> Minimum length =  1
+	* String to include in the Via header. A Via header is inserted into all responses served from a content group if its Insert Via flag is set.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_via(String via) throws Exception{
@@ -84,7 +85,7 @@ public class cacheparameter extends base_resource
 
 	/**
 	* <pre>
-	* The string to be inserted in the "Via" header. A Via header is inserted in all responses served from a content group if its insertVia flag is set.<br> Minimum length =  1
+	* String to include in the Via header. A Via header is inserted into all responses served from a content group if its Insert Via flag is set.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_via() throws Exception {
@@ -93,22 +94,11 @@ public class cacheparameter extends base_resource
 
 	/**
 	* <pre>
-	* The criteria for deciding whether a cached object can be served for an incoming HTTP request.
-a.	If the value of this attribute is set to HOSTNAME, then URL , host name  and host port values in the incoming HTTP request header must match before a cached object can be served. The IP address and the TCP port of the destination host are not matched.
-For certain deployments the HOSTNAME setting can be a security risk.
-A rogue client can access a rogue server via the Integrated Cache using the following HTTP request :
-GET / HTTP/1.1
-Host: sensitive.foo.com
-
-Integrated Cache will store the rogue page served by the rogue server. Any subsequent client trying to access the root page from sensitive.foo.com will be served the rogue page.
-
-The HOSTNAME setting should only be set if it is certain that no rogue client can access a rogue server via the Integrated Cache.
-The YES setting can lead to more hits if DNS-based load balancing is in use and the same content can be served by multiple backend servers.
-b.	If the attribute is set to HOSTNAME_AND_IP, then the following items must match: URL, host name, host port in the incoming HTTP request header, and the IP address and TCP port of the destination server.
-c.	If the attribute is set to DNS, then the following items should match: URL, host name and host
-port in the incoming HTTP request, and the TCP port.
-The hostname is used to do a DNS lookup of the destination server's IP address, and is compared with the set of addresses returned by the DNS lookup.
-The default value of this attribute is DNS.<br> Possible values = HOSTNAME, HOSTNAME_AND_IP, DNS
+	* Criteria for deciding whether a cached object can be served for an incoming HTTP request. Available settings function as follows:
+HOSTNAME - The URL, host name, and host port values in the incoming HTTP request header must match the cache policy. The IP address and the TCP port of the destination host are not evaluated. Do not use the HOSTNAME setting unless you are certain that no rogue client can access a rogue server through the cache. 
+HOSTNAME_AND_IP - The URL, host name, host port in the incoming HTTP request header, and the IP address and TCP port of
+the destination server, must match the cache policy.
+DNS - The URL, host name and host port in the incoming HTTP request, and the TCP port must match the cache policy. The host name is used for DNS lookup of the destination server's IP address, and is compared with the set of addresses returned by the DNS lookup.<br> Possible values = HOSTNAME, HOSTNAME_AND_IP, DNS
 	* </pre>
 	*/
 	public void set_verifyusing(String verifyusing) throws Exception{
@@ -117,22 +107,11 @@ The default value of this attribute is DNS.<br> Possible values = HOSTNAME, HOST
 
 	/**
 	* <pre>
-	* The criteria for deciding whether a cached object can be served for an incoming HTTP request.
-a.	If the value of this attribute is set to HOSTNAME, then URL , host name  and host port values in the incoming HTTP request header must match before a cached object can be served. The IP address and the TCP port of the destination host are not matched.
-For certain deployments the HOSTNAME setting can be a security risk.
-A rogue client can access a rogue server via the Integrated Cache using the following HTTP request :
-GET / HTTP/1.1
-Host: sensitive.foo.com
-
-Integrated Cache will store the rogue page served by the rogue server. Any subsequent client trying to access the root page from sensitive.foo.com will be served the rogue page.
-
-The HOSTNAME setting should only be set if it is certain that no rogue client can access a rogue server via the Integrated Cache.
-The YES setting can lead to more hits if DNS-based load balancing is in use and the same content can be served by multiple backend servers.
-b.	If the attribute is set to HOSTNAME_AND_IP, then the following items must match: URL, host name, host port in the incoming HTTP request header, and the IP address and TCP port of the destination server.
-c.	If the attribute is set to DNS, then the following items should match: URL, host name and host
-port in the incoming HTTP request, and the TCP port.
-The hostname is used to do a DNS lookup of the destination server's IP address, and is compared with the set of addresses returned by the DNS lookup.
-The default value of this attribute is DNS.<br> Possible values = HOSTNAME, HOSTNAME_AND_IP, DNS
+	* Criteria for deciding whether a cached object can be served for an incoming HTTP request. Available settings function as follows:
+HOSTNAME - The URL, host name, and host port values in the incoming HTTP request header must match the cache policy. The IP address and the TCP port of the destination host are not evaluated. Do not use the HOSTNAME setting unless you are certain that no rogue client can access a rogue server through the cache. 
+HOSTNAME_AND_IP - The URL, host name, host port in the incoming HTTP request header, and the IP address and TCP port of
+the destination server, must match the cache policy.
+DNS - The URL, host name and host port in the incoming HTTP request, and the TCP port must match the cache policy. The host name is used for DNS lookup of the destination server's IP address, and is compared with the set of addresses returned by the DNS lookup.<br> Possible values = HOSTNAME, HOSTNAME_AND_IP, DNS
 	* </pre>
 	*/
 	public String get_verifyusing() throws Exception {
@@ -141,7 +120,7 @@ The default value of this attribute is DNS.<br> Possible values = HOSTNAME, HOST
 
 	/**
 	* <pre>
-	* maximum number of POST body bytes to consider when evaluating parameters for a content group for which you have configured hitParams and invalParams.<br> Default value: 4096<br> Minimum value =  0<br> Maximum value =  131072
+	* Maximum number of POST body bytes to consider when evaluating parameters for a content group for which you have configured hit parameters and invalidation parameters.<br> Default value: 4096<br> Minimum value =  0<br> Maximum value =  131072
 	* </pre>
 	*/
 	public void set_maxpostlen(long maxpostlen) throws Exception {
@@ -150,7 +129,7 @@ The default value of this attribute is DNS.<br> Possible values = HOSTNAME, HOST
 
 	/**
 	* <pre>
-	* maximum number of POST body bytes to consider when evaluating parameters for a content group for which you have configured hitParams and invalParams.<br> Default value: 4096<br> Minimum value =  0<br> Maximum value =  131072
+	* Maximum number of POST body bytes to consider when evaluating parameters for a content group for which you have configured hit parameters and invalidation parameters.<br> Default value: 4096<br> Minimum value =  0<br> Maximum value =  131072
 	* </pre>
 	*/
 	public void set_maxpostlen(Long maxpostlen) throws Exception{
@@ -159,7 +138,7 @@ The default value of this attribute is DNS.<br> Possible values = HOSTNAME, HOST
 
 	/**
 	* <pre>
-	* maximum number of POST body bytes to consider when evaluating parameters for a content group for which you have configured hitParams and invalParams.<br> Default value: 4096<br> Minimum value =  0<br> Maximum value =  131072
+	* Maximum number of POST body bytes to consider when evaluating parameters for a content group for which you have configured hit parameters and invalidation parameters.<br> Default value: 4096<br> Minimum value =  0<br> Maximum value =  131072
 	* </pre>
 	*/
 	public Long get_maxpostlen() throws Exception {
@@ -168,7 +147,7 @@ The default value of this attribute is DNS.<br> Possible values = HOSTNAME, HOST
 
 	/**
 	* <pre>
-	* The maximum number of outstanding prefetches in the IC.
+	* Maximum number of outstanding prefetches in the Integrated Cache.
 	* </pre>
 	*/
 	public void set_prefetchmaxpending(long prefetchmaxpending) throws Exception {
@@ -177,7 +156,7 @@ The default value of this attribute is DNS.<br> Possible values = HOSTNAME, HOST
 
 	/**
 	* <pre>
-	* The maximum number of outstanding prefetches in the IC.
+	* Maximum number of outstanding prefetches in the Integrated Cache.
 	* </pre>
 	*/
 	public void set_prefetchmaxpending(Long prefetchmaxpending) throws Exception{
@@ -186,7 +165,7 @@ The default value of this attribute is DNS.<br> Possible values = HOSTNAME, HOST
 
 	/**
 	* <pre>
-	* The maximum number of outstanding prefetches in the IC.
+	* Maximum number of outstanding prefetches in the Integrated Cache.
 	* </pre>
 	*/
 	public Long get_prefetchmaxpending() throws Exception {
@@ -195,7 +174,9 @@ The default value of this attribute is DNS.<br> Possible values = HOSTNAME, HOST
 
 	/**
 	* <pre>
-	* The bypass parameter. When this value is set to NO, an incoming request will serve a hit if a matching object is found in cache storage, regardless of the cacheability policy configuration. If set to YES, the bound request cacheability policies are evaluated before attempting any hit selection in the cache storage. If the request matches a policy with a NOCACHE action, the request will bypass all cache processing. This flag does not affect processing of requests that match any invalidation policy.<br> Possible values = YES, NO
+	* Evaluate the request-time policies before attempting hit selection. If set to NO, an incoming request for which a matching object is found in cache storage results in a response regardless of the policy configuration.
+If the request matches a policy with a NOCACHE action, the request bypasses all cache processing. 
+This parameter does not affect processing of requests that match any invalidation policy.<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public void set_enablebypass(String enablebypass) throws Exception{
@@ -204,7 +185,9 @@ The default value of this attribute is DNS.<br> Possible values = HOSTNAME, HOST
 
 	/**
 	* <pre>
-	* The bypass parameter. When this value is set to NO, an incoming request will serve a hit if a matching object is found in cache storage, regardless of the cacheability policy configuration. If set to YES, the bound request cacheability policies are evaluated before attempting any hit selection in the cache storage. If the request matches a policy with a NOCACHE action, the request will bypass all cache processing. This flag does not affect processing of requests that match any invalidation policy.<br> Possible values = YES, NO
+	* Evaluate the request-time policies before attempting hit selection. If set to NO, an incoming request for which a matching object is found in cache storage results in a response regardless of the policy configuration.
+If the request matches a policy with a NOCACHE action, the request bypasses all cache processing. 
+This parameter does not affect processing of requests that match any invalidation policy.<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public String get_enablebypass() throws Exception {
@@ -213,7 +196,7 @@ The default value of this attribute is DNS.<br> Possible values = HOSTNAME, HOST
 
 	/**
 	* <pre>
-	* Set the default cache undef action. If an UNDEF event is triggered during policy evaluation and if the current policy's undefAction is not specified, then this global undefAction value is used. Can be NOCACHE or RESET. NOCACHE is the default value of default cache undef action.<br> Possible values = NOCACHE, RESET
+	* Action to take when a policy cannot be evaluated.<br> Possible values = NOCACHE, RESET
 	* </pre>
 	*/
 	public void set_undefaction(String undefaction) throws Exception{
@@ -222,11 +205,29 @@ The default value of this attribute is DNS.<br> Possible values = HOSTNAME, HOST
 
 	/**
 	* <pre>
-	* Set the default cache undef action. If an UNDEF event is triggered during policy evaluation and if the current policy's undefAction is not specified, then this global undefAction value is used. Can be NOCACHE or RESET. NOCACHE is the default value of default cache undef action.<br> Possible values = NOCACHE, RESET
+	* Action to take when a policy cannot be evaluated.<br> Possible values = NOCACHE, RESET
 	* </pre>
 	*/
 	public String get_undefaction() throws Exception {
 		return this.undefaction;
+	}
+
+	/**
+	* <pre>
+	* The disk cache parameter. When this value is set to YES, cache objects can be saved on disk.  If set to NO, objects will never be stored in disk.<br> Default value: NO<br> Possible values = YES, NO
+	* </pre>
+	*/
+	public void set_enablediskcache(String enablediskcache) throws Exception{
+		this.enablediskcache = enablediskcache;
+	}
+
+	/**
+	* <pre>
+	* The disk cache parameter. When this value is set to YES, cache objects can be saved on disk.  If set to NO, objects will never be stored in disk.<br> Default value: NO<br> Possible values = YES, NO
+	* </pre>
+	*/
+	public String get_enablediskcache() throws Exception {
+		return this.enablediskcache;
 	}
 
 	/**
@@ -304,6 +305,7 @@ The default value of this attribute is DNS.<br> Possible values = HOSTNAME, HOST
 		updateresource.prefetchmaxpending = resource.prefetchmaxpending;
 		updateresource.enablebypass = resource.enablebypass;
 		updateresource.undefaction = resource.undefaction;
+		updateresource.enablediskcache = resource.enablediskcache;
 		return updateresource.update_resource(client);
 	}
 
@@ -313,13 +315,6 @@ The default value of this attribute is DNS.<br> Possible values = HOSTNAME, HOST
 	*/
 	public static base_response unset(nitro_service client, cacheparameter resource, String[] args) throws Exception{
 		cacheparameter unsetresource = new cacheparameter();
-		unsetresource.memlimit = resource.memlimit;
-		unsetresource.via = resource.via;
-		unsetresource.verifyusing = resource.verifyusing;
-		unsetresource.maxpostlen = resource.maxpostlen;
-		unsetresource.prefetchmaxpending = resource.prefetchmaxpending;
-		unsetresource.enablebypass = resource.enablebypass;
-		unsetresource.undefaction = resource.undefaction;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -341,6 +336,10 @@ The default value of this attribute is DNS.<br> Possible values = HOSTNAME, HOST
 		return response[0];
 	}
 
+	public static class enablediskcacheEnum {
+		public static final String YES = "YES";
+		public static final String NO = "NO";
+	}
 	public static class verifyusingEnum {
 		public static final String HOSTNAME = "HOSTNAME";
 		public static final String HOSTNAME_AND_IP = "HOSTNAME_AND_IP";

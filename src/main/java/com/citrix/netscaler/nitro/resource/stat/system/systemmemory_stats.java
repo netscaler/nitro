@@ -32,6 +32,7 @@ class systemmemory_response extends base_response
 
 public class systemmemory_stats extends base_resource
 {
+	private String clearstats;
 	private Double shmemallocpcnt;
 	private Long shmemallocinmb;
 	private Long shmemtotinmb;
@@ -42,6 +43,24 @@ public class systemmemory_stats extends base_resource
 	private Long memtotallocmb;
 	private Long memtotinmb;
 	private Long memtotavail;
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters
+	* </pre>
+	*/
+	public void set_clearstats(String clearstats) throws Exception{
+		this.clearstats = clearstats;
+	}
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters.<br> Possible values = basic, full
+	* </pre>
+	*/
+	public String get_clearstats() throws Exception {
+		return this.clearstats;
+	}
 
 	/**
 	* <pre>
@@ -187,4 +206,8 @@ public class systemmemory_stats extends base_resource
 		return response[0];
 	}
 
+	public static class clearstatsEnum {
+		public static final String basic = "basic";
+		public static final String full = "full";
+	}
 }

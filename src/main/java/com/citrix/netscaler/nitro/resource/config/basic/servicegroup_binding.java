@@ -42,7 +42,7 @@ public class servicegroup_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the service group.<br> Minimum length =  1
+	* Name of the service group.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_servicegroupname(String servicegroupname) throws Exception{
@@ -51,7 +51,7 @@ public class servicegroup_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the service group.<br> Minimum length =  1
+	* Name of the service group.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_servicegroupname() throws Exception {

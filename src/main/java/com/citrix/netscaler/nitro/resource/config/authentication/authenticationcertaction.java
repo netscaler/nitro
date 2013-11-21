@@ -36,11 +36,16 @@ public class authenticationcertaction extends base_resource
 	private String twofactor;
 	private String usernamefield;
 	private String groupnamefield;
+	private String defaultauthenticationgroup;
 	private Long __count;
 
 	/**
 	* <pre>
-	* The name of the CERT action.<br> Minimum length =  1
+	* Name for the client cert authentication server profile (action). 
+Must begin with a letter, number, or the underscore character (_), and must contain only letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at (@), equals (=), colon (:), and underscore characters. Cannot be changed after certifcate action is created.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, “my authentication action” or ‘my authentication action’).<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -49,7 +54,11 @@ public class authenticationcertaction extends base_resource
 
 	/**
 	* <pre>
-	* The name of the CERT action.<br> Minimum length =  1
+	* Name for the client cert authentication server profile (action). 
+Must begin with a letter, number, or the underscore character (_), and must contain only letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at (@), equals (=), colon (:), and underscore characters. Cannot be changed after certifcate action is created.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, “my authentication action” or ‘my authentication action’).<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -58,7 +67,8 @@ public class authenticationcertaction extends base_resource
 
 	/**
 	* <pre>
-	* The state of two factor authentication. Two factor authentication means client certificate authentication followed by password authentication.<br> Default value: OFF<br> Possible values = ON, OFF
+	* Enables or disables two-factor authentication. 
+Two factor authentication is client cert authentication followed by password authentication.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_twofactor(String twofactor) throws Exception{
@@ -67,7 +77,8 @@ public class authenticationcertaction extends base_resource
 
 	/**
 	* <pre>
-	* The state of two factor authentication. Two factor authentication means client certificate authentication followed by password authentication.<br> Default value: OFF<br> Possible values = ON, OFF
+	* Enables or disables two-factor authentication. 
+Two factor authentication is client cert authentication followed by password authentication.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_twofactor() throws Exception {
@@ -76,7 +87,8 @@ public class authenticationcertaction extends base_resource
 
 	/**
 	* <pre>
-	* The field in the client certificate from which the username will be extracted. Should be of the format <field:subfield>. Allowed values for the field are "Subject" and "Issuer".<br> Minimum length =  1
+	* Client-cert field from which the username is extracted. Must be set to either ""Subject"" and ""Issuer"" (include both sets of double quotation marks).
+Format: <field>:<subfield>.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_usernamefield(String usernamefield) throws Exception{
@@ -85,7 +97,8 @@ public class authenticationcertaction extends base_resource
 
 	/**
 	* <pre>
-	* The field in the client certificate from which the username will be extracted. Should be of the format <field:subfield>. Allowed values for the field are "Subject" and "Issuer".<br> Minimum length =  1
+	* Client-cert field from which the username is extracted. Must be set to either ""Subject"" and ""Issuer"" (include both sets of double quotation marks).
+Format: <field>:<subfield>.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_usernamefield() throws Exception {
@@ -94,7 +107,8 @@ public class authenticationcertaction extends base_resource
 
 	/**
 	* <pre>
-	* The field in the certificate from which the group will be extracted. Should be of the format <field:subfield>. Allowed values for the field are "Subject" and "Issuer".<br> Minimum length =  1
+	* Client-cert field from which the group is extracted.  Must be set to either ""Subject"" and ""Issuer"" (include both sets of double quotation marks).
+Format: <field>:<subfield>.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_groupnamefield(String groupnamefield) throws Exception{
@@ -103,11 +117,30 @@ public class authenticationcertaction extends base_resource
 
 	/**
 	* <pre>
-	* The field in the certificate from which the group will be extracted. Should be of the format <field:subfield>. Allowed values for the field are "Subject" and "Issuer".<br> Minimum length =  1
+	* Client-cert field from which the group is extracted.  Must be set to either ""Subject"" and ""Issuer"" (include both sets of double quotation marks).
+Format: <field>:<subfield>.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_groupnamefield() throws Exception {
 		return this.groupnamefield;
+	}
+
+	/**
+	* <pre>
+	* This is the default group that is chosen when the authentication succeeds in addition to extracted groups.<br> Maximum length =  64
+	* </pre>
+	*/
+	public void set_defaultauthenticationgroup(String defaultauthenticationgroup) throws Exception{
+		this.defaultauthenticationgroup = defaultauthenticationgroup;
+	}
+
+	/**
+	* <pre>
+	* This is the default group that is chosen when the authentication succeeds in addition to extracted groups.<br> Maximum length =  64
+	* </pre>
+	*/
+	public String get_defaultauthenticationgroup() throws Exception {
+		return this.defaultauthenticationgroup;
 	}
 
 	/**
@@ -153,6 +186,7 @@ public class authenticationcertaction extends base_resource
 		addresource.twofactor = resource.twofactor;
 		addresource.usernamefield = resource.usernamefield;
 		addresource.groupnamefield = resource.groupnamefield;
+		addresource.defaultauthenticationgroup = resource.defaultauthenticationgroup;
 		return addresource.add_resource(client);
 	}
 
@@ -169,6 +203,7 @@ public class authenticationcertaction extends base_resource
 				addresources[i].twofactor = resources[i].twofactor;
 				addresources[i].usernamefield = resources[i].usernamefield;
 				addresources[i].groupnamefield = resources[i].groupnamefield;
+				addresources[i].defaultauthenticationgroup = resources[i].defaultauthenticationgroup;
 			}
 			result = add_bulk_request(client, addresources);
 		}
@@ -234,6 +269,7 @@ public class authenticationcertaction extends base_resource
 		updateresource.twofactor = resource.twofactor;
 		updateresource.usernamefield = resource.usernamefield;
 		updateresource.groupnamefield = resource.groupnamefield;
+		updateresource.defaultauthenticationgroup = resource.defaultauthenticationgroup;
 		return updateresource.update_resource(client);
 	}
 
@@ -250,6 +286,7 @@ public class authenticationcertaction extends base_resource
 				updateresources[i].twofactor = resources[i].twofactor;
 				updateresources[i].usernamefield = resources[i].usernamefield;
 				updateresources[i].groupnamefield = resources[i].groupnamefield;
+				updateresources[i].defaultauthenticationgroup = resources[i].defaultauthenticationgroup;
 			}
 			result = update_bulk_request(client, updateresources);
 		}
@@ -260,22 +297,9 @@ public class authenticationcertaction extends base_resource
 	* Use this API to unset the properties of authenticationcertaction resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String name, String args[]) throws Exception {
-		authenticationcertaction unsetresource = new authenticationcertaction();
-		unsetresource.name = name;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of authenticationcertaction resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, authenticationcertaction resource, String[] args) throws Exception{
 		authenticationcertaction unsetresource = new authenticationcertaction();
 		unsetresource.name = resource.name;
-		unsetresource.twofactor = resource.twofactor;
-		unsetresource.usernamefield = resource.usernamefield;
-		unsetresource.groupnamefield = resource.groupnamefield;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -307,9 +331,6 @@ public class authenticationcertaction extends base_resource
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new authenticationcertaction();
 				unsetresources[i].name = resources[i].name;
-				unsetresources[i].twofactor = resources[i].twofactor;
-				unsetresources[i].usernamefield = resources[i].usernamefield;
-				unsetresources[i].groupnamefield = resources[i].groupnamefield;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}

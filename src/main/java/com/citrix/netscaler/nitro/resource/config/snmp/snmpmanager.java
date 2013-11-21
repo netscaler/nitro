@@ -44,14 +44,8 @@ public class snmpmanager extends base_resource
 
 	/**
 	* <pre>
-	* The IPv4 or network address or the host name of the SNMP manager that you want to add to the NetScaler appliance.   
-Can be any of the following:
-
- - IPv4 address of the SNMP manager. 
- - IPv4 network address. The NetScaler appliance accepts and responds to SNMP queries from any device on this network.
- - Associated host-name of an SNMP manager that has an IPv4 address. If you specify a host-name, you must add a DNS name server that resolves the host-name of the SNMP manager to its IP address.
-
-You can add up to a maximum of 100 IP based SNMP managers or networks and a maximum of 5 host-name-based SNMP managers.<br> Minimum length =  1<br> Maximum length =  255
+	* IP address of the SNMP manager. Can be an IPv4 or IPv6 address. You can instead specify an IPv4 network address or IPv6 network prefix if you want the NetScaler appliance to respond to SNMP queries from any device on the specified network. Alternatively, instead of an IPv4 address, you can specify a host name that has been assigned to an SNMP manager. If you do so, you must add a DNS name server that resolves the host name of the SNMP manager to its IP address. 
+Note: The NetScaler appliance does not support host names for SNMP managers that have IPv6 addresses.<br> Minimum length =  1<br> Maximum length =  255
 	* </pre>
 	*/
 	public void set_ipaddress(String ipaddress) throws Exception{
@@ -60,14 +54,8 @@ You can add up to a maximum of 100 IP based SNMP managers or networks and a maxi
 
 	/**
 	* <pre>
-	* The IPv4 or network address or the host name of the SNMP manager that you want to add to the NetScaler appliance.   
-Can be any of the following:
-
- - IPv4 address of the SNMP manager. 
- - IPv4 network address. The NetScaler appliance accepts and responds to SNMP queries from any device on this network.
- - Associated host-name of an SNMP manager that has an IPv4 address. If you specify a host-name, you must add a DNS name server that resolves the host-name of the SNMP manager to its IP address.
-
-You can add up to a maximum of 100 IP based SNMP managers or networks and a maximum of 5 host-name-based SNMP managers.<br> Minimum length =  1<br> Maximum length =  255
+	* IP address of the SNMP manager. Can be an IPv4 or IPv6 address. You can instead specify an IPv4 network address or IPv6 network prefix if you want the NetScaler appliance to respond to SNMP queries from any device on the specified network. Alternatively, instead of an IPv4 address, you can specify a host name that has been assigned to an SNMP manager. If you do so, you must add a DNS name server that resolves the host name of the SNMP manager to its IP address. 
+Note: The NetScaler appliance does not support host names for SNMP managers that have IPv6 addresses.<br> Minimum length =  1<br> Maximum length =  255
 	* </pre>
 	*/
 	public String get_ipaddress() throws Exception {
@@ -76,7 +64,7 @@ You can add up to a maximum of 100 IP based SNMP managers or networks and a maxi
 
 	/**
 	* <pre>
-	* The subnet mask associated with the IPv4 network address specified by the IPAddress parameter. If the IPAddress parameter specifies a specific host, which is IP address or host name of the SNMP manager, accept the default value of 255.255.255.255 for the netmask parameter.
+	* Subnet mask associated with an IPv4 network address. If the IP address specifies the address or host name of a specific host, accept the default value of 255.255.255.255.
 	* </pre>
 	*/
 	public void set_netmask(String netmask) throws Exception{
@@ -85,7 +73,7 @@ You can add up to a maximum of 100 IP based SNMP managers or networks and a maxi
 
 	/**
 	* <pre>
-	* The subnet mask associated with the IPv4 network address specified by the IPAddress parameter. If the IPAddress parameter specifies a specific host, which is IP address or host name of the SNMP manager, accept the default value of 255.255.255.255 for the netmask parameter.
+	* Subnet mask associated with an IPv4 network address. If the IP address specifies the address or host name of a specific host, accept the default value of 255.255.255.255.
 	* </pre>
 	*/
 	public String get_netmask() throws Exception {
@@ -94,7 +82,7 @@ You can add up to a maximum of 100 IP based SNMP managers or networks and a maxi
 
 	/**
 	* <pre>
-	* The amount of time, in seconds, for which the NetScaler appliance waits before sending another DNS query to resolve the host-name of the SNMP manager if the last query failed. After a query succeeds, the appliance waits for the TTL time. This parameter is only valid for host-name based SNMP managers. .<br> Default value: 5<br> Minimum value =  5<br> Maximum value =  20939
+	* Amount of time, in seconds, for which the NetScaler appliance waits before sending another DNS query to resolve the host name of the SNMP manager if the last query failed. This parameter is valid for host-name based SNMP managers only. After a query succeeds, the TTL determines the wait time.<br> Minimum value =  5<br> Maximum value =  20939
 	* </pre>
 	*/
 	public void set_domainresolveretry(int domainresolveretry) throws Exception {
@@ -103,7 +91,7 @@ You can add up to a maximum of 100 IP based SNMP managers or networks and a maxi
 
 	/**
 	* <pre>
-	* The amount of time, in seconds, for which the NetScaler appliance waits before sending another DNS query to resolve the host-name of the SNMP manager if the last query failed. After a query succeeds, the appliance waits for the TTL time. This parameter is only valid for host-name based SNMP managers. .<br> Default value: 5<br> Minimum value =  5<br> Maximum value =  20939
+	* Amount of time, in seconds, for which the NetScaler appliance waits before sending another DNS query to resolve the host name of the SNMP manager if the last query failed. This parameter is valid for host-name based SNMP managers only. After a query succeeds, the TTL determines the wait time.<br> Minimum value =  5<br> Maximum value =  20939
 	* </pre>
 	*/
 	public void set_domainresolveretry(Integer domainresolveretry) throws Exception{
@@ -112,7 +100,7 @@ You can add up to a maximum of 100 IP based SNMP managers or networks and a maxi
 
 	/**
 	* <pre>
-	* The amount of time, in seconds, for which the NetScaler appliance waits before sending another DNS query to resolve the host-name of the SNMP manager if the last query failed. After a query succeeds, the appliance waits for the TTL time. This parameter is only valid for host-name based SNMP managers. .<br> Default value: 5<br> Minimum value =  5<br> Maximum value =  20939
+	* Amount of time, in seconds, for which the NetScaler appliance waits before sending another DNS query to resolve the host name of the SNMP manager if the last query failed. This parameter is valid for host-name based SNMP managers only. After a query succeeds, the TTL determines the wait time.<br> Minimum value =  5<br> Maximum value =  20939
 	* </pre>
 	*/
 	public Integer get_domainresolveretry() throws Exception {
@@ -285,39 +273,11 @@ You can add up to a maximum of 100 IP based SNMP managers or networks and a maxi
 	* Use this API to unset the properties of snmpmanager resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String ipaddress, String args[]) throws Exception {
-		snmpmanager unsetresource = new snmpmanager();
-		unsetresource.ipaddress = ipaddress;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of snmpmanager resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, snmpmanager resource, String[] args) throws Exception{
 		snmpmanager unsetresource = new snmpmanager();
 		unsetresource.ipaddress = resource.ipaddress;
 		unsetresource.netmask = resource.netmask;
-		unsetresource.domainresolveretry = resource.domainresolveretry;
 		return unsetresource.unset_resource(client,args);
-	}
-
-	/**
-	* Use this API to unset the properties of snmpmanager resources.
-	* Properties that need to be unset are specified in args array.
-	*/
-	public static base_responses unset(nitro_service client, String ipaddress[], String args[]) throws Exception {
-		base_responses result = null;
-		if (ipaddress != null && ipaddress.length > 0) {
-			snmpmanager unsetresources[] = new snmpmanager[ipaddress.length];
-			for (int i=0;i<ipaddress.length;i++){
-				unsetresources[i] = new snmpmanager();
-				unsetresources[i].ipaddress = ipaddress[i];
-			}
-			result = unset_bulk_request(client, unsetresources,args);
-		}
-		return result;
 	}
 
 	/**
@@ -332,7 +292,6 @@ You can add up to a maximum of 100 IP based SNMP managers or networks and a maxi
 				unsetresources[i] = new snmpmanager();
 				unsetresources[i].ipaddress = resources[i].ipaddress;
 				unsetresources[i].netmask = resources[i].netmask;
-				unsetresources[i].domainresolveretry = resources[i].domainresolveretry;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}

@@ -16,6 +16,7 @@
 
 package com.citrix.netscaler.nitro.resource.config.gslb;
 
+import com.citrix.netscaler.nitro.resource.config.gslb.gslbvserver_spilloverpolicy_binding;
 import com.citrix.netscaler.nitro.resource.config.gslb.gslbvserver_gslbservice_binding;
 import com.citrix.netscaler.nitro.resource.config.gslb.gslbvserver_domain_binding;
 import com.citrix.netscaler.nitro.resource.base.*;
@@ -35,12 +36,13 @@ class gslbvserver_binding_response extends base_response
 public class gslbvserver_binding extends base_resource
 {
 	private String name;
+	private gslbvserver_spilloverpolicy_binding	gslbvserver_spilloverpolicy_binding[] = null;
 	private gslbvserver_gslbservice_binding	gslbvserver_gslbservice_binding[] = null;
 	private gslbvserver_domain_binding	gslbvserver_domain_binding[] = null;
 
 	/**
 	* <pre>
-	* The name of the GSLB virtual server.<br> Minimum length =  1
+	* Name of the GSLB virtual server.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -49,7 +51,7 @@ public class gslbvserver_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the GSLB virtual server.<br> Minimum length =  1
+	* Name of the GSLB virtual server.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -63,6 +65,15 @@ public class gslbvserver_binding extends base_resource
 	*/
 	public gslbvserver_gslbservice_binding[] get_gslbvserver_gslbservice_bindings() throws Exception {
 		return this.gslbvserver_gslbservice_binding;
+	}
+
+	/**
+	* <pre>
+	* spilloverpolicy that can be bound to gslbvserver.
+	* </pre>
+	*/
+	public gslbvserver_spilloverpolicy_binding[] get_gslbvserver_spilloverpolicy_bindings() throws Exception {
+		return this.gslbvserver_spilloverpolicy_binding;
 	}
 
 	/**

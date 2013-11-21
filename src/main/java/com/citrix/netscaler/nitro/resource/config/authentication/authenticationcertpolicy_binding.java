@@ -16,10 +16,10 @@
 
 package com.citrix.netscaler.nitro.resource.config.authentication;
 
-import com.citrix.netscaler.nitro.resource.config.authentication.authenticationcertpolicy_vpnglobal_binding;
 import com.citrix.netscaler.nitro.resource.config.authentication.authenticationcertpolicy_vpnvserver_binding;
 import com.citrix.netscaler.nitro.resource.config.authentication.authenticationcertpolicy_systemglobal_binding;
 import com.citrix.netscaler.nitro.resource.config.authentication.authenticationcertpolicy_authenticationvserver_binding;
+import com.citrix.netscaler.nitro.resource.config.authentication.authenticationcertpolicy_vpnglobal_binding;
 import com.citrix.netscaler.nitro.resource.base.*;
 import com.citrix.netscaler.nitro.service.nitro_service;
 import com.citrix.netscaler.nitro.service.options;
@@ -37,14 +37,14 @@ class authenticationcertpolicy_binding_response extends base_response
 public class authenticationcertpolicy_binding extends base_resource
 {
 	private String name;
-	private authenticationcertpolicy_vpnglobal_binding	authenticationcertpolicy_vpnglobal_binding[] = null;
 	private authenticationcertpolicy_vpnvserver_binding	authenticationcertpolicy_vpnvserver_binding[] = null;
 	private authenticationcertpolicy_systemglobal_binding	authenticationcertpolicy_systemglobal_binding[] = null;
 	private authenticationcertpolicy_authenticationvserver_binding	authenticationcertpolicy_authenticationvserver_binding[] = null;
+	private authenticationcertpolicy_vpnglobal_binding	authenticationcertpolicy_vpnglobal_binding[] = null;
 
 	/**
 	* <pre>
-	* The name of the policy. If a name is not provided, all of the configured policies are displayed.<br> Minimum length =  1
+	* Name of the client cert authentication policy.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -53,7 +53,7 @@ public class authenticationcertpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the policy. If a name is not provided, all of the configured policies are displayed.<br> Minimum length =  1
+	* Name of the client cert authentication policy.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {

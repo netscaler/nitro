@@ -50,7 +50,12 @@ public class responderpolicy extends base_resource
 
 	/**
 	* <pre>
-	* Name of the responder policy.
+	* Name for the responder policy.
+Must begin with a letter, number, or the underscore character (_), and must contain only letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at (@), equals (=), colon (:), and underscore characters. Can be changed after the responder policy is added.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my responder policy" or 'my responder policy').
+
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -59,7 +64,12 @@ public class responderpolicy extends base_resource
 
 	/**
 	* <pre>
-	* Name of the responder policy.
+	* Name for the responder policy.
+Must begin with a letter, number, or the underscore character (_), and must contain only letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at (@), equals (=), colon (:), and underscore characters. Can be changed after the responder policy is added.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my responder policy" or 'my responder policy').
+
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -68,7 +78,7 @@ public class responderpolicy extends base_resource
 
 	/**
 	* <pre>
-	* Expression to be used by responder policy. It has to be a boolean PI rule expression.
+	* Default syntax expression that the policy uses to determine whether to respond to the specified request.
 	* </pre>
 	*/
 	public void set_rule(String rule) throws Exception{
@@ -77,7 +87,7 @@ public class responderpolicy extends base_resource
 
 	/**
 	* <pre>
-	* Expression to be used by responder policy. It has to be a boolean PI rule expression.
+	* Default syntax expression that the policy uses to determine whether to respond to the specified request.
 	* </pre>
 	*/
 	public String get_rule() throws Exception {
@@ -86,7 +96,7 @@ public class responderpolicy extends base_resource
 
 	/**
 	* <pre>
-	* Responder action to be used by the policy.
+	* Name of the responder action to perform if the request matches this responder policy.
 	* </pre>
 	*/
 	public void set_action(String action) throws Exception{
@@ -95,7 +105,7 @@ public class responderpolicy extends base_resource
 
 	/**
 	* <pre>
-	* Responder action to be used by the policy.
+	* Name of the responder action to perform if the request matches this responder policy.
 	* </pre>
 	*/
 	public String get_action() throws Exception {
@@ -104,7 +114,11 @@ public class responderpolicy extends base_resource
 
 	/**
 	* <pre>
-	* Responder action to be taken in the case of UNDEF event during policy evaluation. Should be NOOP, RESET or DROP.
+	* Action to perform if the result of policy evaluation is undefined (UNDEF). An UNDEF event indicates an internal error condition.
+Available settings function as follows:
+* NOOP - Send the request to the protected server instead of responding to it.
+* RESET - Reset the request and notify the user's browser, so that the user can resend the request.
+* DROP - Drop the request without sending a response to the user.
 	* </pre>
 	*/
 	public void set_undefaction(String undefaction) throws Exception{
@@ -113,7 +127,11 @@ public class responderpolicy extends base_resource
 
 	/**
 	* <pre>
-	* Responder action to be taken in the case of UNDEF event during policy evaluation. Should be NOOP, RESET or DROP.
+	* Action to perform if the result of policy evaluation is undefined (UNDEF). An UNDEF event indicates an internal error condition.
+Available settings function as follows:
+* NOOP - Send the request to the protected server instead of responding to it.
+* RESET - Reset the request and notify the user's browser, so that the user can resend the request.
+* DROP - Drop the request without sending a response to the user.
 	* </pre>
 	*/
 	public String get_undefaction() throws Exception {
@@ -122,7 +140,7 @@ public class responderpolicy extends base_resource
 
 	/**
 	* <pre>
-	* Comments associated with this responder policy.
+	* Any type of information about this responder policy.
 	* </pre>
 	*/
 	public void set_comment(String comment) throws Exception{
@@ -131,7 +149,7 @@ public class responderpolicy extends base_resource
 
 	/**
 	* <pre>
-	* Comments associated with this responder policy.
+	* Any type of information about this responder policy.
 	* </pre>
 	*/
 	public String get_comment() throws Exception {
@@ -140,7 +158,7 @@ public class responderpolicy extends base_resource
 
 	/**
 	* <pre>
-	* The log action associated with the responder policy.
+	* Name of the messagelog action to use for requests that match this policy.
 	* </pre>
 	*/
 	public void set_logaction(String logaction) throws Exception{
@@ -149,7 +167,7 @@ public class responderpolicy extends base_resource
 
 	/**
 	* <pre>
-	* The log action associated with the responder policy.
+	* Name of the messagelog action to use for requests that match this policy.
 	* </pre>
 	*/
 	public String get_logaction() throws Exception {
@@ -158,7 +176,7 @@ public class responderpolicy extends base_resource
 
 	/**
 	* <pre>
-	* The appflow action associated with the ES4NS responder policy.
+	* AppFlow action to invoke for requests that match this policy.
 	* </pre>
 	*/
 	public void set_appflowaction(String appflowaction) throws Exception{
@@ -167,7 +185,7 @@ public class responderpolicy extends base_resource
 
 	/**
 	* <pre>
-	* The appflow action associated with the ES4NS responder policy.
+	* AppFlow action to invoke for requests that match this policy.
 	* </pre>
 	*/
 	public String get_appflowaction() throws Exception {
@@ -176,7 +194,10 @@ public class responderpolicy extends base_resource
 
 	/**
 	* <pre>
-	* The new name of the responder policy.<br> Minimum length =  1
+	* New name for the responder policy. Must begin with a letter, number, or the underscore character (_), and must contain only letters, numbers, and the hyphen (-), period (.) hash (#), space ( ), at (@), equals (=), colon (:), and underscore characters. 
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my responder policy" or 'my responder policy').<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_newname(String newname) throws Exception{
@@ -185,7 +206,10 @@ public class responderpolicy extends base_resource
 
 	/**
 	* <pre>
-	* The new name of the responder policy.<br> Minimum length =  1
+	* New name for the responder policy. Must begin with a letter, number, or the underscore character (_), and must contain only letters, numbers, and the hyphen (-), period (.) hash (#), space ( ), at (@), equals (=), colon (:), and underscore characters. 
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my responder policy" or 'my responder policy').<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_newname() throws Exception {
@@ -381,23 +405,9 @@ public class responderpolicy extends base_resource
 	* Use this API to unset the properties of responderpolicy resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String name, String args[]) throws Exception {
-		responderpolicy unsetresource = new responderpolicy();
-		unsetresource.name = name;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of responderpolicy resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, responderpolicy resource, String[] args) throws Exception{
 		responderpolicy unsetresource = new responderpolicy();
 		unsetresource.name = resource.name;
-		unsetresource.undefaction = resource.undefaction;
-		unsetresource.comment = resource.comment;
-		unsetresource.logaction = resource.logaction;
-		unsetresource.appflowaction = resource.appflowaction;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -429,10 +439,6 @@ public class responderpolicy extends base_resource
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new responderpolicy();
 				unsetresources[i].name = resources[i].name;
-				unsetresources[i].undefaction = resources[i].undefaction;
-				unsetresources[i].comment = resources[i].comment;
-				unsetresources[i].logaction = resources[i].logaction;
-				unsetresources[i].appflowaction = resources[i].appflowaction;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}

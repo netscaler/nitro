@@ -39,7 +39,9 @@ public class sslwrapkey extends base_resource
 
 	/**
 	* <pre>
-	* The object name for the wrap key.<br> Minimum length =  1
+	* Name for the wrap key. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Cannot be changed after the wrap key is created.
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my key" or 'my key').<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_wrapkeyname(String wrapkeyname) throws Exception{
@@ -48,7 +50,9 @@ public class sslwrapkey extends base_resource
 
 	/**
 	* <pre>
-	* The object name for the wrap key.<br> Minimum length =  1
+	* Name for the wrap key. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Cannot be changed after the wrap key is created.
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my key" or 'my key').<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_wrapkeyname() throws Exception {
@@ -57,7 +61,7 @@ public class sslwrapkey extends base_resource
 
 	/**
 	* <pre>
-	* The password string for the wrap key.<br> Minimum length =  1
+	* Password string for the wrap key.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_password(String password) throws Exception{
@@ -66,7 +70,7 @@ public class sslwrapkey extends base_resource
 
 	/**
 	* <pre>
-	* The password string for the wrap key.<br> Minimum length =  1
+	* Password string for the wrap key.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_password() throws Exception {
@@ -75,7 +79,7 @@ public class sslwrapkey extends base_resource
 
 	/**
 	* <pre>
-	* The salt string for the wrap key.<br> Minimum length =  1
+	* Salt string for the wrap key.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_salt(String salt) throws Exception{
@@ -84,7 +88,7 @@ public class sslwrapkey extends base_resource
 
 	/**
 	* <pre>
-	* The salt string for the wrap key.<br> Minimum length =  1
+	* Salt string for the wrap key.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_salt() throws Exception {

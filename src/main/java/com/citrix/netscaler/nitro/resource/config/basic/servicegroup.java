@@ -35,6 +35,7 @@ public class servicegroup extends base_resource
 	private String servicegroupname;
 	private String servicetype;
 	private String cachetype;
+	private Long td;
 	private Long maxclient;
 	private Long maxreq;
 	private String cacheable;
@@ -80,7 +81,6 @@ public class servicegroup extends base_resource
 	//------- Read only Parameter ---------;
 
 	private Integer numofconnections;
-	private Boolean serviceconftpye;
 	private Boolean serviceconftype;
 	private String value;
 	private String svrstate;
@@ -95,7 +95,6 @@ public class servicegroup extends base_resource
 	private Long monitorcurrentfailedprobes;
 	private String statechangetimesec;
 	private Long statechangetimemsec;
-	private Long timesincelaststatechange;
 	private Long tickssincelaststatechange;
 	private Long stateupdatereason;
 	private Long clmonowner;
@@ -106,7 +105,7 @@ public class servicegroup extends base_resource
 
 	/**
 	* <pre>
-	* The name of the service group.<br> Minimum length =  1
+	* Name of the service group. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Can be changed after the name is created.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_servicegroupname(String servicegroupname) throws Exception{
@@ -115,7 +114,7 @@ public class servicegroup extends base_resource
 
 	/**
 	* <pre>
-	* The name of the service group.<br> Minimum length =  1
+	* Name of the service group. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Can be changed after the name is created.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_servicegroupname() throws Exception {
@@ -124,19 +123,7 @@ public class servicegroup extends base_resource
 
 	/**
 	* <pre>
-	* The type of service group that is being added.
-Supported protocols are:
-HTTP - To load balance web servers and provide connection multiplexing, latency improvement, and other content and TCP protection benefits for HTTP traffic.
-FTP - To load balance FTP servers. In FTP mode, the NetScaler 9000 system provides TCP protection benefits, protection against SYN attacks, and surge protection.
-TCP - To host any other TCP protocols that are not HTTP, FTP, NNTP, or SSL. In TCP mode, the NetScaler 9000 system provides TCP protection benefits, protection against SYN attack, and surge protection
-UDP - To load balance servers with UDP-based service groups (other than DNS)
-SSL - To provide end-to-end encryption and SSL acceleration.
-SSL_BRIDGE - To load balance SSL servers.
-SSL_TCP - To offload SSL traffic for TCP applications.
-NNTP - To load balance NNTP servers.
-DNS - To load balance DNS servers.
-ANY - To load balance a service group type not listed above (for example, for IP traffic when load balancing firewalls).
-Note:	The NNTP service group is for cache redirection.<br> Possible values = HTTP, FTP, TCP, UDP, SSL, SSL_BRIDGE, SSL_TCP, NNTP, RPCSVR, DNS, ADNS, SNMP, RTSP, DHCPRA, ANY, SIP_UDP, DNS_TCP, ADNS_TCP, MYSQL, MSSQL, RADIUS, RDP, DIAMETER, SSL_DIAMETER
+	* Protocol used to exchange data with the service.<br> Possible values = HTTP, FTP, TCP, UDP, SSL, SSL_BRIDGE, SSL_TCP, DTLS, NNTP, RPCSVR, DNS, ADNS, SNMP, RTSP, DHCPRA, ANY, SIP_UDP, DNS_TCP, ADNS_TCP, MYSQL, MSSQL, RADIUS, RDP, DIAMETER, SSL_DIAMETER, TFTP
 	* </pre>
 	*/
 	public void set_servicetype(String servicetype) throws Exception{
@@ -145,19 +132,7 @@ Note:	The NNTP service group is for cache redirection.<br> Possible values = HTT
 
 	/**
 	* <pre>
-	* The type of service group that is being added.
-Supported protocols are:
-HTTP - To load balance web servers and provide connection multiplexing, latency improvement, and other content and TCP protection benefits for HTTP traffic.
-FTP - To load balance FTP servers. In FTP mode, the NetScaler 9000 system provides TCP protection benefits, protection against SYN attacks, and surge protection.
-TCP - To host any other TCP protocols that are not HTTP, FTP, NNTP, or SSL. In TCP mode, the NetScaler 9000 system provides TCP protection benefits, protection against SYN attack, and surge protection
-UDP - To load balance servers with UDP-based service groups (other than DNS)
-SSL - To provide end-to-end encryption and SSL acceleration.
-SSL_BRIDGE - To load balance SSL servers.
-SSL_TCP - To offload SSL traffic for TCP applications.
-NNTP - To load balance NNTP servers.
-DNS - To load balance DNS servers.
-ANY - To load balance a service group type not listed above (for example, for IP traffic when load balancing firewalls).
-Note:	The NNTP service group is for cache redirection.<br> Possible values = HTTP, FTP, TCP, UDP, SSL, SSL_BRIDGE, SSL_TCP, NNTP, RPCSVR, DNS, ADNS, SNMP, RTSP, DHCPRA, ANY, SIP_UDP, DNS_TCP, ADNS_TCP, MYSQL, MSSQL, RADIUS, RDP, DIAMETER, SSL_DIAMETER
+	* Protocol used to exchange data with the service.<br> Possible values = HTTP, FTP, TCP, UDP, SSL, SSL_BRIDGE, SSL_TCP, DTLS, NNTP, RPCSVR, DNS, ADNS, SNMP, RTSP, DHCPRA, ANY, SIP_UDP, DNS_TCP, ADNS_TCP, MYSQL, MSSQL, RADIUS, RDP, DIAMETER, SSL_DIAMETER, TFTP
 	* </pre>
 	*/
 	public String get_servicetype() throws Exception {
@@ -166,7 +141,7 @@ Note:	The NNTP service group is for cache redirection.<br> Possible values = HTT
 
 	/**
 	* <pre>
-	* The cache type option supported by the cache server. The options are: TRANSPARENT, REVERSE, and FORWARD.<br> Possible values = TRANSPARENT, REVERSE, FORWARD
+	* Cache type supported by the cache server.<br> Possible values = TRANSPARENT, REVERSE, FORWARD
 	* </pre>
 	*/
 	public void set_cachetype(String cachetype) throws Exception{
@@ -175,7 +150,7 @@ Note:	The NNTP service group is for cache redirection.<br> Possible values = HTT
 
 	/**
 	* <pre>
-	* The cache type option supported by the cache server. The options are: TRANSPARENT, REVERSE, and FORWARD.<br> Possible values = TRANSPARENT, REVERSE, FORWARD
+	* Cache type supported by the cache server.<br> Possible values = TRANSPARENT, REVERSE, FORWARD
 	* </pre>
 	*/
 	public String get_cachetype() throws Exception {
@@ -184,7 +159,34 @@ Note:	The NNTP service group is for cache redirection.<br> Possible values = HTT
 
 	/**
 	* <pre>
-	* The maximum number of open connections to each service in the service group.<br> Minimum value =  0<br> Maximum value =  4294967294
+	* Traffic Domain Id.<br> Minimum value =  0<br> Maximum value =  4094
+	* </pre>
+	*/
+	public void set_td(long td) throws Exception {
+		this.td = new Long(td);
+	}
+
+	/**
+	* <pre>
+	* Traffic Domain Id.<br> Minimum value =  0<br> Maximum value =  4094
+	* </pre>
+	*/
+	public void set_td(Long td) throws Exception{
+		this.td = td;
+	}
+
+	/**
+	* <pre>
+	* Traffic Domain Id.<br> Minimum value =  0<br> Maximum value =  4094
+	* </pre>
+	*/
+	public Long get_td() throws Exception {
+		return this.td;
+	}
+
+	/**
+	* <pre>
+	* Maximum number of simultaneous open connections for the service group.<br> Minimum value =  0<br> Maximum value =  4294967294
 	* </pre>
 	*/
 	public void set_maxclient(long maxclient) throws Exception {
@@ -193,7 +195,7 @@ Note:	The NNTP service group is for cache redirection.<br> Possible values = HTT
 
 	/**
 	* <pre>
-	* The maximum number of open connections to each service in the service group.<br> Minimum value =  0<br> Maximum value =  4294967294
+	* Maximum number of simultaneous open connections for the service group.<br> Minimum value =  0<br> Maximum value =  4294967294
 	* </pre>
 	*/
 	public void set_maxclient(Long maxclient) throws Exception{
@@ -202,7 +204,7 @@ Note:	The NNTP service group is for cache redirection.<br> Possible values = HTT
 
 	/**
 	* <pre>
-	* The maximum number of open connections to each service in the service group.<br> Minimum value =  0<br> Maximum value =  4294967294
+	* Maximum number of simultaneous open connections for the service group.<br> Minimum value =  0<br> Maximum value =  4294967294
 	* </pre>
 	*/
 	public Long get_maxclient() throws Exception {
@@ -211,7 +213,8 @@ Note:	The NNTP service group is for cache redirection.<br> Possible values = HTT
 
 	/**
 	* <pre>
-	* The maximum number of requests that can be sent over a persistent connection to a service in the service group.<br> Minimum value =  0<br> Maximum value =  65535
+	* Maximum number of requests that can be sent on a persistent connection to the service group. 
+Note: Connection requests beyond this value are rejected.<br> Minimum value =  0<br> Maximum value =  65535
 	* </pre>
 	*/
 	public void set_maxreq(long maxreq) throws Exception {
@@ -220,7 +223,8 @@ Note:	The NNTP service group is for cache redirection.<br> Possible values = HTT
 
 	/**
 	* <pre>
-	* The maximum number of requests that can be sent over a persistent connection to a service in the service group.<br> Minimum value =  0<br> Maximum value =  65535
+	* Maximum number of requests that can be sent on a persistent connection to the service group. 
+Note: Connection requests beyond this value are rejected.<br> Minimum value =  0<br> Maximum value =  65535
 	* </pre>
 	*/
 	public void set_maxreq(Long maxreq) throws Exception{
@@ -229,7 +233,8 @@ Note:	The NNTP service group is for cache redirection.<br> Possible values = HTT
 
 	/**
 	* <pre>
-	* The maximum number of requests that can be sent over a persistent connection to a service in the service group.<br> Minimum value =  0<br> Maximum value =  65535
+	* Maximum number of requests that can be sent on a persistent connection to the service group. 
+Note: Connection requests beyond this value are rejected.<br> Minimum value =  0<br> Maximum value =  65535
 	* </pre>
 	*/
 	public Long get_maxreq() throws Exception {
@@ -238,8 +243,8 @@ Note:	The NNTP service group is for cache redirection.<br> Possible values = HTT
 
 	/**
 	* <pre>
-	* Whether a virtual server (used in the NetScaler 9000 system's load balancing or content switching feature) routes a request to the virtual server (used in transparent cache redirection) on the same NetScaler 9000 system before sending it to the configured servers. The virtual server used for transparent cache redirection determines if the request is directed to the cache servers or configured servers.
-Note:	Do not specify this argument if a cache type is specified. This argument is disabled by default.<br> Default value: NO<br> Possible values = YES, NO
+	* Use the transparent cache redirection virtual server to forward the request to the cache server.
+Note: Do not set this parameter if you set the Cache Type.<br> Default value: NO<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public void set_cacheable(String cacheable) throws Exception{
@@ -248,8 +253,8 @@ Note:	Do not specify this argument if a cache type is specified. This argument i
 
 	/**
 	* <pre>
-	* Whether a virtual server (used in the NetScaler 9000 system's load balancing or content switching feature) routes a request to the virtual server (used in transparent cache redirection) on the same NetScaler 9000 system before sending it to the configured servers. The virtual server used for transparent cache redirection determines if the request is directed to the cache servers or configured servers.
-Note:	Do not specify this argument if a cache type is specified. This argument is disabled by default.<br> Default value: NO<br> Possible values = YES, NO
+	* Use the transparent cache redirection virtual server to forward the request to the cache server.
+Note: Do not set this parameter if you set the Cache Type.<br> Default value: NO<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public String get_cacheable() throws Exception {
@@ -258,7 +263,7 @@ Note:	Do not specify this argument if a cache type is specified. This argument i
 
 	/**
 	* <pre>
-	* Enables or disables insertion of the Client IP header for services in the service group.<br> Possible values = ENABLED, DISABLED
+	* Insert the Client IP header in requests forwarded to the service.<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_cip(String cip) throws Exception{
@@ -267,7 +272,7 @@ Note:	Do not specify this argument if a cache type is specified. This argument i
 
 	/**
 	* <pre>
-	* Enables or disables insertion of the Client IP header for services in the service group.<br> Possible values = ENABLED, DISABLED
+	* Insert the Client IP header in requests forwarded to the service.<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_cip() throws Exception {
@@ -276,7 +281,7 @@ Note:	Do not specify this argument if a cache type is specified. This argument i
 
 	/**
 	* <pre>
-	* The client IP header.  If client IP insertion is enabled and the client IP header is not specified, then the value set by the ###set ns param### command will be used as the Client IP header.<br> Minimum length =  1
+	* Name of the HTTP header whose value must be set to the IP address of the client. Used with the Client IP parameter. If client IP insertion is enabled, and the client IP header is not specified, the value of Client IP Header parameter or the value set by the set ns config command is used as client's IP header name.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_cipheader(String cipheader) throws Exception{
@@ -285,7 +290,7 @@ Note:	Do not specify this argument if a cache type is specified. This argument i
 
 	/**
 	* <pre>
-	* The client IP header.  If client IP insertion is enabled and the client IP header is not specified, then the value set by the ###set ns param### command will be used as the Client IP header.<br> Minimum length =  1
+	* Name of the HTTP header whose value must be set to the IP address of the client. Used with the Client IP parameter. If client IP insertion is enabled, and the client IP header is not specified, the value of Client IP Header parameter or the value set by the set ns config command is used as client's IP header name.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_cipheader() throws Exception {
@@ -294,8 +299,7 @@ Note:	Do not specify this argument if a cache type is specified. This argument i
 
 	/**
 	* <pre>
-	* Enables or disables use of client's IP Address as the source IP Address while connecting to the server.
-By default, the system uses a mapped IP address for its server connection. However, with this option, you can tell the NetScaler 9000 system to use the client's IP address when it communicates with the server.<br> Possible values = YES, NO
+	* Use client's IP address as the source IP address when initiating connection to the server. With the NO setting, which is the default, a mapped IP (MIP) address or subnet IP (SNIP) address is used as the source IP address to initiate server side connections.<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public void set_usip(String usip) throws Exception{
@@ -304,8 +308,7 @@ By default, the system uses a mapped IP address for its server connection. Howev
 
 	/**
 	* <pre>
-	* Enables or disables use of client's IP Address as the source IP Address while connecting to the server.
-By default, the system uses a mapped IP address for its server connection. However, with this option, you can tell the NetScaler 9000 system to use the client's IP address when it communicates with the server.<br> Possible values = YES, NO
+	* Use client's IP address as the source IP address when initiating connection to the server. With the NO setting, which is the default, a mapped IP (MIP) address or subnet IP (SNIP) address is used as the source IP address to initiate server side connections.<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public String get_usip() throws Exception {
@@ -350,7 +353,8 @@ By default, the system uses a mapped IP address for its server connection. Howev
 
 	/**
 	* <pre>
-	* When USIP is enabled, based on the setting of this variable proxy port or the client port will be used as the source port for the backend connection.<br> Possible values = YES, NO
+	* Use the proxy port as the source port when initiating connections with the server. With the NO setting, the client-side connection port is used as the source port for the server-side connection. 
+Note: This parameter is available only when the Use Source IP (USIP) parameter is set to YES.<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public void set_useproxyport(String useproxyport) throws Exception{
@@ -359,7 +363,8 @@ By default, the system uses a mapped IP address for its server connection. Howev
 
 	/**
 	* <pre>
-	* When USIP is enabled, based on the setting of this variable proxy port or the client port will be used as the source port for the backend connection.<br> Possible values = YES, NO
+	* Use the proxy port as the source port when initiating connections with the server. With the NO setting, the client-side connection port is used as the source port for the server-side connection. 
+Note: This parameter is available only when the Use Source IP (USIP) parameter is set to YES.<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public String get_useproxyport() throws Exception {
@@ -368,7 +373,9 @@ By default, the system uses a mapped IP address for its server connection. Howev
 
 	/**
 	* <pre>
-	* Health monitoring state of the all service group members.<br> Default value: YES<br> Possible values = YES, NO
+	* Monitor the health of this service.  Available settings function as follows:
+YES - Send probes to check the health of the service.
+NO - Do not send probes to check the health of the service. With the NO option, the appliance shows the service as UP at all times.<br> Default value: YES<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public void set_healthmonitor(String healthmonitor) throws Exception{
@@ -377,7 +384,9 @@ By default, the system uses a mapped IP address for its server connection. Howev
 
 	/**
 	* <pre>
-	* Health monitoring state of the all service group members.<br> Default value: YES<br> Possible values = YES, NO
+	* Monitor the health of this service.  Available settings function as follows:
+YES - Send probes to check the health of the service.
+NO - Do not send probes to check the health of the service. With the NO option, the appliance shows the service as UP at all times.<br> Default value: YES<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public String get_healthmonitor() throws Exception {
@@ -386,8 +395,7 @@ By default, the system uses a mapped IP address for its server connection. Howev
 
 	/**
 	* <pre>
-	* The state of SureConnect on this service group.
-Note:	This parameter is supported for legacy purposes only; it has no effect, and the only valid value is OFF.<br> Default value: OFF<br> Possible values = ON, OFF
+	* State of the SureConnect feature for the service group.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_sc(String sc) throws Exception{
@@ -396,8 +404,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* The state of SureConnect on this service group.
-Note:	This parameter is supported for legacy purposes only; it has no effect, and the only valid value is OFF.<br> Default value: OFF<br> Possible values = ON, OFF
+	* State of the SureConnect feature for the service group.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_sc() throws Exception {
@@ -406,7 +413,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* Whether surge protection needs to be enabled on this service group.<br> Default value: OFF<br> Possible values = ON, OFF
+	* Enable surge protection for the service group.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_sp(String sp) throws Exception{
@@ -415,7 +422,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* Whether surge protection needs to be enabled on this service group.<br> Default value: OFF<br> Possible values = ON, OFF
+	* Enable surge protection for the service group.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_sp() throws Exception {
@@ -424,7 +431,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* Use this parameter to enable mapping of RTSP sessionid.<br> Default value: OFF<br> Possible values = ON, OFF
+	* Enable RTSP session ID mapping for the service group.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public void set_rtspsessionidremap(String rtspsessionidremap) throws Exception{
@@ -433,7 +440,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* Use this parameter to enable mapping of RTSP sessionid.<br> Default value: OFF<br> Possible values = ON, OFF
+	* Enable RTSP session ID mapping for the service group.<br> Default value: OFF<br> Possible values = ON, OFF
 	* </pre>
 	*/
 	public String get_rtspsessionidremap() throws Exception {
@@ -442,7 +449,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* The idle time in seconds after which the client connection is terminated.<br> Minimum value =  0<br> Maximum value =  31536000
+	* Time, in seconds, after which to terminate an idle client connection.<br> Minimum value =  0<br> Maximum value =  31536000
 	* </pre>
 	*/
 	public void set_clttimeout(long clttimeout) throws Exception {
@@ -451,7 +458,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* The idle time in seconds after which the client connection is terminated.<br> Minimum value =  0<br> Maximum value =  31536000
+	* Time, in seconds, after which to terminate an idle client connection.<br> Minimum value =  0<br> Maximum value =  31536000
 	* </pre>
 	*/
 	public void set_clttimeout(Long clttimeout) throws Exception{
@@ -460,7 +467,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* The idle time in seconds after which the client connection is terminated.<br> Minimum value =  0<br> Maximum value =  31536000
+	* Time, in seconds, after which to terminate an idle client connection.<br> Minimum value =  0<br> Maximum value =  31536000
 	* </pre>
 	*/
 	public Long get_clttimeout() throws Exception {
@@ -469,7 +476,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* The idle time in seconds after which the server connection is terminated.<br> Minimum value =  0<br> Maximum value =  31536000
+	* Time, in seconds, after which to terminate an idle server connection.<br> Minimum value =  0<br> Maximum value =  31536000
 	* </pre>
 	*/
 	public void set_svrtimeout(long svrtimeout) throws Exception {
@@ -478,7 +485,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* The idle time in seconds after which the server connection is terminated.<br> Minimum value =  0<br> Maximum value =  31536000
+	* Time, in seconds, after which to terminate an idle server connection.<br> Minimum value =  0<br> Maximum value =  31536000
 	* </pre>
 	*/
 	public void set_svrtimeout(Long svrtimeout) throws Exception{
@@ -487,7 +494,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* The idle time in seconds after which the server connection is terminated.<br> Minimum value =  0<br> Maximum value =  31536000
+	* Time, in seconds, after which to terminate an idle server connection.<br> Minimum value =  0<br> Maximum value =  31536000
 	* </pre>
 	*/
 	public Long get_svrtimeout() throws Exception {
@@ -496,7 +503,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* The state of the Client Keep-Alive feature for the services in the service group.<br> Possible values = YES, NO
+	* Enable client keep-alive for the service group.<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public void set_cka(String cka) throws Exception{
@@ -505,7 +512,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* The state of the Client Keep-Alive feature for the services in the service group.<br> Possible values = YES, NO
+	* Enable client keep-alive for the service group.<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public String get_cka() throws Exception {
@@ -514,7 +521,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* The state of the TCP Buffering feature for the services in the service group.<br> Possible values = YES, NO
+	* Enable TCP buffering for the service group.<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public void set_tcpb(String tcpb) throws Exception{
@@ -523,7 +530,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* The state of the TCP Buffering feature for the services in the service group.<br> Possible values = YES, NO
+	* Enable TCP buffering for the service group.<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public String get_tcpb() throws Exception {
@@ -532,7 +539,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* The state of the HTTP Compression feature for the services in the service group.<br> Possible values = YES, NO
+	* Enable compression for the specified service.<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public void set_cmp(String cmp) throws Exception{
@@ -541,7 +548,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* The state of the HTTP Compression feature for the services in the service group.<br> Possible values = YES, NO
+	* Enable compression for the specified service.<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public String get_cmp() throws Exception {
@@ -550,7 +557,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* A positive integer that identifies the maximum bandwidth in kbps allowed for the services in the service group.<br> Minimum value =  0<br> Maximum value =  4294967287
+	* Maximum bandwidth, in Kbps, allocated for all the services in the service group.<br> Minimum value =  0<br> Maximum value =  4294967287
 	* </pre>
 	*/
 	public void set_maxbandwidth(long maxbandwidth) throws Exception {
@@ -559,7 +566,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* A positive integer that identifies the maximum bandwidth in kbps allowed for the services in the service group.<br> Minimum value =  0<br> Maximum value =  4294967287
+	* Maximum bandwidth, in Kbps, allocated for all the services in the service group.<br> Minimum value =  0<br> Maximum value =  4294967287
 	* </pre>
 	*/
 	public void set_maxbandwidth(Long maxbandwidth) throws Exception{
@@ -568,7 +575,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* A positive integer that identifies the maximum bandwidth in kbps allowed for the services in the service group.<br> Minimum value =  0<br> Maximum value =  4294967287
+	* Maximum bandwidth, in Kbps, allocated for all the services in the service group.<br> Minimum value =  0<br> Maximum value =  4294967287
 	* </pre>
 	*/
 	public Long get_maxbandwidth() throws Exception {
@@ -577,7 +584,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* The monitoring threshold.<br> Minimum value =  0<br> Maximum value =  65535
+	* Minimum sum of weights of the monitors that are bound to this service. Used to determine whether to mark a service as UP or DOWN.<br> Minimum value =  0<br> Maximum value =  65535
 	* </pre>
 	*/
 	public void set_monthreshold(long monthreshold) throws Exception {
@@ -586,7 +593,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* The monitoring threshold.<br> Minimum value =  0<br> Maximum value =  65535
+	* Minimum sum of weights of the monitors that are bound to this service. Used to determine whether to mark a service as UP or DOWN.<br> Minimum value =  0<br> Maximum value =  65535
 	* </pre>
 	*/
 	public void set_monthreshold(Long monthreshold) throws Exception{
@@ -595,7 +602,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* The monitoring threshold.<br> Minimum value =  0<br> Maximum value =  65535
+	* Minimum sum of weights of the monitors that are bound to this service. Used to determine whether to mark a service as UP or DOWN.<br> Minimum value =  0<br> Maximum value =  65535
 	* </pre>
 	*/
 	public Long get_monthreshold() throws Exception {
@@ -604,7 +611,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* The state of the service group after it is added.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Initial state of the service group.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_state(String state) throws Exception{
@@ -613,7 +620,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* The state of the service group after it is added.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Initial state of the service group.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_state() throws Exception {
@@ -622,7 +629,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* Perform delayed clean up of connections on this service group.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Perform delayed clean-up of connections to all services in the service group.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_downstateflush(String downstateflush) throws Exception{
@@ -631,7 +638,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* Perform delayed clean up of connections on this service group.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Perform delayed clean-up of connections to all services in the service group.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_downstateflush() throws Exception {
@@ -640,7 +647,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* The name of the TCP profile.<br> Minimum length =  1<br> Maximum length =  127
+	* Name of the TCP profile that contains TCP configuration settings for the service group.<br> Minimum length =  1<br> Maximum length =  127
 	* </pre>
 	*/
 	public void set_tcpprofilename(String tcpprofilename) throws Exception{
@@ -649,7 +656,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* The name of the TCP profile.<br> Minimum length =  1<br> Maximum length =  127
+	* Name of the TCP profile that contains TCP configuration settings for the service group.<br> Minimum length =  1<br> Maximum length =  127
 	* </pre>
 	*/
 	public String get_tcpprofilename() throws Exception {
@@ -658,7 +665,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* Name of the HTTP profile.<br> Minimum length =  1<br> Maximum length =  127
+	* Name of the HTTP profile that contains HTTP configuration settings for the service group.<br> Minimum length =  1<br> Maximum length =  127
 	* </pre>
 	*/
 	public void set_httpprofilename(String httpprofilename) throws Exception{
@@ -667,7 +674,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* Name of the HTTP profile.<br> Minimum length =  1<br> Maximum length =  127
+	* Name of the HTTP profile that contains HTTP configuration settings for the service group.<br> Minimum length =  1<br> Maximum length =  127
 	* </pre>
 	*/
 	public String get_httpprofilename() throws Exception {
@@ -676,7 +683,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* Comments associated with this servicegroup.
+	* Any information about the service group.
 	* </pre>
 	*/
 	public void set_comment(String comment) throws Exception{
@@ -685,7 +692,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* Comments associated with this servicegroup.
+	* Any information about the service group.
 	* </pre>
 	*/
 	public String get_comment() throws Exception {
@@ -694,7 +701,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* Enable logging appflow flow information.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Enable logging of AppFlow information for the specified service group.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_appflowlog(String appflowlog) throws Exception{
@@ -703,7 +710,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* Enable logging appflow flow information.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Enable logging of AppFlow information for the specified service group.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_appflowlog() throws Exception {
@@ -712,7 +719,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* The name of the network profile.<br> Minimum length =  1<br> Maximum length =  127
+	* Network profile for the service group.<br> Minimum length =  1<br> Maximum length =  127
 	* </pre>
 	*/
 	public void set_netprofile(String netprofile) throws Exception{
@@ -721,7 +728,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* The name of the network profile.<br> Minimum length =  1<br> Maximum length =  127
+	* Network profile for the service group.<br> Minimum length =  1<br> Maximum length =  127
 	* </pre>
 	*/
 	public String get_netprofile() throws Exception {
@@ -730,7 +737,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* Auto scale option for a servicegroup.<br> Default value: DISABLED<br> Possible values = 
+	* Auto scale option for a servicegroup.<br> Default value: DISABLED<br> Possible values = DISABLED, DNS, POLICY
 	* </pre>
 	*/
 	public void set_autoscale(String autoscale) throws Exception{
@@ -739,7 +746,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* Auto scale option for a servicegroup.<br> Default value: DISABLED<br> Possible values = 
+	* Auto scale option for a servicegroup.<br> Default value: DISABLED<br> Possible values = DISABLED, DNS, POLICY
 	* </pre>
 	*/
 	public String get_autoscale() throws Exception {
@@ -775,7 +782,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* The name of the server to be changed.<br> Minimum length =  1
+	* Name of the server to which to bind the service group.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_servername(String servername) throws Exception{
@@ -784,7 +791,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* The name of the server to be changed.<br> Minimum length =  1
+	* Name of the server to which to bind the service group.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_servername() throws Exception {
@@ -793,7 +800,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* The port number of the member to be changed.<br> Range 1 - 65535
+	* Server port number.<br> Range 1 - 65535
 	* </pre>
 	*/
 	public void set_port(int port) throws Exception {
@@ -802,7 +809,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* The port number of the member to be changed.<br> Range 1 - 65535
+	* Server port number.<br> Range 1 - 65535
 	* </pre>
 	*/
 	public void set_port(Integer port) throws Exception{
@@ -811,7 +818,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* The port number of the member to be changed.<br> Range 1 - 65535
+	* Server port number.<br> Range 1 - 65535
 	* </pre>
 	*/
 	public Integer get_port() throws Exception {
@@ -820,7 +827,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* when used along with monitor name, it specifies the weight of the monitor binding. When used along with servername & port pair, specifies the weight of this service.<br> Minimum value =  1<br> Maximum value =  100
+	* Weight to assign to the servers in the service group. Specifies the capacity of the servers relative to the other servers in the load balancing configuration. The higher the weight, the higher the percentage of requests sent to the service.<br> Minimum value =  1<br> Maximum value =  100
 	* </pre>
 	*/
 	public void set_weight(long weight) throws Exception {
@@ -829,7 +836,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* when used along with monitor name, it specifies the weight of the monitor binding. When used along with servername & port pair, specifies the weight of this service.<br> Minimum value =  1<br> Maximum value =  100
+	* Weight to assign to the servers in the service group. Specifies the capacity of the servers relative to the other servers in the load balancing configuration. The higher the weight, the higher the percentage of requests sent to the service.<br> Minimum value =  1<br> Maximum value =  100
 	* </pre>
 	*/
 	public void set_weight(Long weight) throws Exception{
@@ -838,7 +845,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* when used along with monitor name, it specifies the weight of the monitor binding. When used along with servername & port pair, specifies the weight of this service.<br> Minimum value =  1<br> Maximum value =  100
+	* Weight to assign to the servers in the service group. Specifies the capacity of the servers relative to the other servers in the load balancing configuration. The higher the weight, the higher the percentage of requests sent to the service.<br> Minimum value =  1<br> Maximum value =  100
 	* </pre>
 	*/
 	public Long get_weight() throws Exception {
@@ -847,7 +854,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* A positive integer to identify the service. Used when the persistency type is set to Custom Server ID.<br> Default value: "None"
+	* The identifier for this IP:Port pair. Used when the persistency type is set to Custom Server ID.<br> Default value: "None"
 	* </pre>
 	*/
 	public void set_customserverid(String customserverid) throws Exception{
@@ -856,7 +863,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* A positive integer to identify the service. Used when the persistency type is set to Custom Server ID.<br> Default value: "None"
+	* The identifier for this IP:Port pair. Used when the persistency type is set to Custom Server ID.<br> Default value: "None"
 	* </pre>
 	*/
 	public String get_customserverid() throws Exception {
@@ -865,7 +872,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* A positive integer to identify the service. Used when the persistency type is set to Custom Server ID.
+	* The  identifier for the service. This is used when the persistency type is set to Custom Server ID.
 	* </pre>
 	*/
 	public void set_serverid(long serverid) throws Exception {
@@ -874,7 +881,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* A positive integer to identify the service. Used when the persistency type is set to Custom Server ID.
+	* The  identifier for the service. This is used when the persistency type is set to Custom Server ID.
 	* </pre>
 	*/
 	public void set_serverid(Long serverid) throws Exception{
@@ -883,7 +890,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* A positive integer to identify the service. Used when the persistency type is set to Custom Server ID.
+	* The  identifier for the service. This is used when the persistency type is set to Custom Server ID.
 	* </pre>
 	*/
 	public Long get_serverid() throws Exception {
@@ -919,7 +926,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* Name of monitor bound to servicegroup, it is used in setting weight bound to monitor.<br> Minimum length =  1
+	* Name of the monitor bound to the service group. Used to assign a weight to the monitor.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_monitor_name_svc(String monitor_name_svc) throws Exception{
@@ -928,7 +935,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* Name of monitor bound to servicegroup, it is used in setting weight bound to monitor.<br> Minimum length =  1
+	* Name of the monitor bound to the service group. Used to assign a weight to the monitor.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_monitor_name_svc() throws Exception {
@@ -964,7 +971,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* The time allowed (in seconds) for a graceful shutdown. During this period, new connections or requests will continue to be sent to this service for clients who already have a persistent session on the system. Connections or requests from fresh or new clients who do not yet have a persistence sessions on the system will not be sent to the service. Instead, they will be load balanced among other available services. After the delay time expires, no new requests or connections will be sent to the service.
+	* Time, in seconds, allocated for a shutdown of the services in the service group. During this period, new requests are sent to the service only for clients who already have persistent sessions on the appliance. Requests from new clients are load balanced among other available services. After the delay time expires, no requests are sent to the service, and the service is marked as unavailable (OUT OF SERVICE).
 	* </pre>
 	*/
 	public void set_delay(long delay) throws Exception {
@@ -973,7 +980,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* The time allowed (in seconds) for a graceful shutdown. During this period, new connections or requests will continue to be sent to this service for clients who already have a persistent session on the system. Connections or requests from fresh or new clients who do not yet have a persistence sessions on the system will not be sent to the service. Instead, they will be load balanced among other available services. After the delay time expires, no new requests or connections will be sent to the service.
+	* Time, in seconds, allocated for a shutdown of the services in the service group. During this period, new requests are sent to the service only for clients who already have persistent sessions on the appliance. Requests from new clients are load balanced among other available services. After the delay time expires, no requests are sent to the service, and the service is marked as unavailable (OUT OF SERVICE).
 	* </pre>
 	*/
 	public void set_delay(Long delay) throws Exception{
@@ -982,7 +989,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* The time allowed (in seconds) for a graceful shutdown. During this period, new connections or requests will continue to be sent to this service for clients who already have a persistent session on the system. Connections or requests from fresh or new clients who do not yet have a persistence sessions on the system will not be sent to the service. Instead, they will be load balanced among other available services. After the delay time expires, no new requests or connections will be sent to the service.
+	* Time, in seconds, allocated for a shutdown of the services in the service group. During this period, new requests are sent to the service only for clients who already have persistent sessions on the appliance. Requests from new clients are load balanced among other available services. After the delay time expires, no requests are sent to the service, and the service is marked as unavailable (OUT OF SERVICE).
 	* </pre>
 	*/
 	public Long get_delay() throws Exception {
@@ -991,7 +998,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* Indicates graceful shutdown of the service. System will wait for all outstanding connections to this service to be closed before disabling the service.<br> Default value: NO<br> Possible values = YES, NO
+	* Wait for all existing connections to the service to terminate before shutting down the service.<br> Default value: NO<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public void set_graceful(String graceful) throws Exception{
@@ -1000,7 +1007,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* Indicates graceful shutdown of the service. System will wait for all outstanding connections to this service to be closed before disabling the service.<br> Default value: NO<br> Possible values = YES, NO
+	* Wait for all existing connections to the service to terminate before shutting down the service.<br> Default value: NO<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public String get_graceful() throws Exception {
@@ -1009,7 +1016,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* Include a summary of the members in a group too.
+	* Display the members of the listed service groups in addition to their settings. Can be specified when no service group name is provided in the command. In that case, the details displayed for each service group are identical to the details displayed when a service group name is provided, except that bound monitors are not displayed.
 	* </pre>
 	*/
 	public void set_includemembers(boolean includemembers) throws Exception {
@@ -1018,7 +1025,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* Include a summary of the members in a group too.
+	* Display the members of the listed service groups in addition to their settings. Can be specified when no service group name is provided in the command. In that case, the details displayed for each service group are identical to the details displayed when a service group name is provided, except that bound monitors are not displayed.
 	* </pre>
 	*/
 	public void set_includemembers(Boolean includemembers) throws Exception{
@@ -1027,7 +1034,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* Include a summary of the members in a group too.
+	* Display the members of the listed service groups in addition to their settings. Can be specified when no service group name is provided in the command. In that case, the details displayed for each service group are identical to the details displayed when a service group name is provided, except that bound monitors are not displayed.
 	* </pre>
 	*/
 	public Boolean get_includemembers() throws Exception {
@@ -1036,7 +1043,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* The new name of the service group.<br> Minimum length =  1
+	* New name for the service group.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_newname(String newname) throws Exception{
@@ -1045,7 +1052,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* The new name of the service group.<br> Minimum length =  1
+	* New name for the service group.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_newname() throws Exception {
@@ -1059,15 +1066,6 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 	*/
 	public Integer get_numofconnections() throws Exception {
 		return this.numofconnections;
-	}
-
-	/**
-	* <pre>
-	* .
-	* </pre>
-	*/
-	public Boolean get_serviceconftpye() throws Exception {
-		return this.serviceconftpye;
 	}
 
 	/**
@@ -1090,7 +1088,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* The state of the service.<br> Possible values = UP, DOWN, UNKNOWN, BUSY, OUT OF SERVICE, GOING OUT OF SERVICE, DOWN WHEN GOING OUT OF SERVICE, NS_EMPTY_STR
+	* The state of the service.<br> Possible values = UP, DOWN, UNKNOWN, BUSY, OUT OF SERVICE, GOING OUT OF SERVICE, DOWN WHEN GOING OUT OF SERVICE, NS_EMPTY_STR, Unknown, DISABLED
 	* </pre>
 	*/
 	public String get_svrstate() throws Exception {
@@ -1108,7 +1106,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 
 	/**
 	* <pre>
-	* The running state of the monitor on this service.<br> Possible values = UP, DOWN, UNKNOWN, BUSY, OUT OF SERVICE, GOING OUT OF SERVICE, DOWN WHEN GOING OUT OF SERVICE, NS_EMPTY_STR
+	* The running state of the monitor on this service.<br> Possible values = UP, DOWN, UNKNOWN, BUSY, OUT OF SERVICE, GOING OUT OF SERVICE, DOWN WHEN GOING OUT OF SERVICE, NS_EMPTY_STR, Unknown, DISABLED
 	* </pre>
 	*/
 	public String get_monitor_state() throws Exception {
@@ -1194,15 +1192,6 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 	*/
 	public Long get_statechangetimemsec() throws Exception {
 		return this.statechangetimemsec;
-	}
-
-	/**
-	* <pre>
-	* Time in milliseconds since the last state change.
-	* </pre>
-	*/
-	public Long get_timesincelaststatechange() throws Exception {
-		return this.timesincelaststatechange;
 	}
 
 	/**
@@ -1301,6 +1290,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 		addresource.servicegroupname = resource.servicegroupname;
 		addresource.servicetype = resource.servicetype;
 		addresource.cachetype = resource.cachetype;
+		addresource.td = resource.td;
 		addresource.maxclient = resource.maxclient;
 		addresource.maxreq = resource.maxreq;
 		addresource.cacheable = resource.cacheable;
@@ -1345,6 +1335,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 				addresources[i].servicegroupname = resources[i].servicegroupname;
 				addresources[i].servicetype = resources[i].servicetype;
 				addresources[i].cachetype = resources[i].cachetype;
+				addresources[i].td = resources[i].td;
 				addresources[i].maxclient = resources[i].maxclient;
 				addresources[i].maxreq = resources[i].maxreq;
 				addresources[i].cacheable = resources[i].cacheable;
@@ -1527,16 +1518,6 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 	* Use this API to unset the properties of servicegroup resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String servicegroupname, String args[]) throws Exception {
-		servicegroup unsetresource = new servicegroup();
-		unsetresource.servicegroupname = servicegroupname;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of servicegroup resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, servicegroup resource, String[] args) throws Exception{
 		servicegroup unsetresource = new servicegroup();
 		unsetresource.servicegroupname = resource.servicegroupname;
@@ -1546,34 +1527,6 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 		unsetresource.customserverid = resource.customserverid;
 		unsetresource.serverid = resource.serverid;
 		unsetresource.hashid = resource.hashid;
-		unsetresource.maxclient = resource.maxclient;
-		unsetresource.maxreq = resource.maxreq;
-		unsetresource.cacheable = resource.cacheable;
-		unsetresource.cip = resource.cip;
-		unsetresource.usip = resource.usip;
-		unsetresource.useproxyport = resource.useproxyport;
-		unsetresource.sc = resource.sc;
-		unsetresource.sp = resource.sp;
-		unsetresource.rtspsessionidremap = resource.rtspsessionidremap;
-		unsetresource.clttimeout = resource.clttimeout;
-		unsetresource.svrtimeout = resource.svrtimeout;
-		unsetresource.cka = resource.cka;
-		unsetresource.tcpb = resource.tcpb;
-		unsetresource.cmp = resource.cmp;
-		unsetresource.maxbandwidth = resource.maxbandwidth;
-		unsetresource.monthreshold = resource.monthreshold;
-		unsetresource.tcpprofilename = resource.tcpprofilename;
-		unsetresource.httpprofilename = resource.httpprofilename;
-		unsetresource.appflowlog = resource.appflowlog;
-		unsetresource.netprofile = resource.netprofile;
-		unsetresource.monitor_name_svc = resource.monitor_name_svc;
-		unsetresource.dup_weight = resource.dup_weight;
-		unsetresource.healthmonitor = resource.healthmonitor;
-		unsetresource.cipheader = resource.cipheader;
-		unsetresource.pathmonitor = resource.pathmonitor;
-		unsetresource.pathmonitorindv = resource.pathmonitorindv;
-		unsetresource.downstateflush = resource.downstateflush;
-		unsetresource.comment = resource.comment;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -1611,34 +1564,6 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 				unsetresources[i].customserverid = resources[i].customserverid;
 				unsetresources[i].serverid = resources[i].serverid;
 				unsetresources[i].hashid = resources[i].hashid;
-				unsetresources[i].maxclient = resources[i].maxclient;
-				unsetresources[i].maxreq = resources[i].maxreq;
-				unsetresources[i].cacheable = resources[i].cacheable;
-				unsetresources[i].cip = resources[i].cip;
-				unsetresources[i].usip = resources[i].usip;
-				unsetresources[i].useproxyport = resources[i].useproxyport;
-				unsetresources[i].sc = resources[i].sc;
-				unsetresources[i].sp = resources[i].sp;
-				unsetresources[i].rtspsessionidremap = resources[i].rtspsessionidremap;
-				unsetresources[i].clttimeout = resources[i].clttimeout;
-				unsetresources[i].svrtimeout = resources[i].svrtimeout;
-				unsetresources[i].cka = resources[i].cka;
-				unsetresources[i].tcpb = resources[i].tcpb;
-				unsetresources[i].cmp = resources[i].cmp;
-				unsetresources[i].maxbandwidth = resources[i].maxbandwidth;
-				unsetresources[i].monthreshold = resources[i].monthreshold;
-				unsetresources[i].tcpprofilename = resources[i].tcpprofilename;
-				unsetresources[i].httpprofilename = resources[i].httpprofilename;
-				unsetresources[i].appflowlog = resources[i].appflowlog;
-				unsetresources[i].netprofile = resources[i].netprofile;
-				unsetresources[i].monitor_name_svc = resources[i].monitor_name_svc;
-				unsetresources[i].dup_weight = resources[i].dup_weight;
-				unsetresources[i].healthmonitor = resources[i].healthmonitor;
-				unsetresources[i].cipheader = resources[i].cipheader;
-				unsetresources[i].pathmonitor = resources[i].pathmonitor;
-				unsetresources[i].pathmonitorindv = resources[i].pathmonitorindv;
-				unsetresources[i].downstateflush = resources[i].downstateflush;
-				unsetresources[i].comment = resources[i].comment;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}
@@ -1911,6 +1836,11 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 		public static final String YES = "YES";
 		public static final String NO = "NO";
 	}
+	public static class autoscaleEnum {
+		public static final String DISABLED = "DISABLED";
+		public static final String DNS = "DNS";
+		public static final String POLICY = "POLICY";
+	}
 	public static class stateEnum {
 		public static final String ENABLED = "ENABLED";
 		public static final String DISABLED = "DISABLED";
@@ -1948,6 +1878,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 		public static final String SSL = "SSL";
 		public static final String SSL_BRIDGE = "SSL_BRIDGE";
 		public static final String SSL_TCP = "SSL_TCP";
+		public static final String DTLS = "DTLS";
 		public static final String NNTP = "NNTP";
 		public static final String RPCSVR = "RPCSVR";
 		public static final String DNS = "DNS";
@@ -1965,6 +1896,7 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 		public static final String RDP = "RDP";
 		public static final String DIAMETER = "DIAMETER";
 		public static final String SSL_DIAMETER = "SSL_DIAMETER";
+		public static final String TFTP = "TFTP";
 	}
 	public static class ckaEnum {
 		public static final String YES = "YES";
@@ -1979,6 +1911,8 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 		public static final String GOING_OUT_OF_SERVICE = "GOING OUT OF SERVICE";
 		public static final String DOWN_WHEN_GOING_OUT_OF_SERVICE = "DOWN WHEN GOING OUT OF SERVICE";
 		public static final String NS_EMPTY_STR = "NS_EMPTY_STR";
+		public static final String Unknown = "Unknown";
+		public static final String DISABLED = "DISABLED";
 	}
 	public static class monitor_stateEnum {
 		public static final String UP = "UP";
@@ -1989,6 +1923,8 @@ Note:	This parameter is supported for legacy purposes only; it has no effect, an
 		public static final String GOING_OUT_OF_SERVICE = "GOING OUT OF SERVICE";
 		public static final String DOWN_WHEN_GOING_OUT_OF_SERVICE = "DOWN WHEN GOING OUT OF SERVICE";
 		public static final String NS_EMPTY_STR = "NS_EMPTY_STR";
+		public static final String Unknown = "Unknown";
+		public static final String DISABLED = "DISABLED";
 	}
 	public static class valueEnum {
 		public static final String Certkey_not_bound = "Certkey not bound";

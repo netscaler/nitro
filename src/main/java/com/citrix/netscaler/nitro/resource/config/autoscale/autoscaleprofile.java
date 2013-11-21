@@ -59,7 +59,7 @@ public class autoscaleprofile extends base_resource
 
 	/**
 	* <pre>
-	* The type of profile.<br> Possible values = 
+	* The type of profile.<br> Possible values = CLOUDSTACK
 	* </pre>
 	*/
 	public void set_type(String type) throws Exception{
@@ -68,7 +68,7 @@ public class autoscaleprofile extends base_resource
 
 	/**
 	* <pre>
-	* The type of profile.<br> Possible values = 
+	* The type of profile.<br> Possible values = CLOUDSTACK
 	* </pre>
 	*/
 	public String get_type() throws Exception {
@@ -389,4 +389,7 @@ public class autoscaleprofile extends base_resource
 		return 0;
 	}
 
+	public static class typeEnum {
+		public static final String CLOUDSTACK = "CLOUDSTACK";
+	}
 }

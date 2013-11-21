@@ -34,18 +34,19 @@ public class dnszone extends base_resource
 {
 	private String zonename;
 	private String proxymode;
+	private String dnssecoffload;
+	private String nsec;
 	private String[] keyname;
 	private String type;
 
 	//------- Read only Parameter ---------;
 
 	private Long flags;
-	private char[] nsecbitarray;
 	private Long __count;
 
 	/**
 	* <pre>
-	* The name of the zone being added.<br> Minimum length =  1
+	* Name of the zone to create.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_zonename(String zonename) throws Exception{
@@ -54,7 +55,7 @@ public class dnszone extends base_resource
 
 	/**
 	* <pre>
-	* The name of the zone being added.<br> Minimum length =  1
+	* Name of the zone to create.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_zonename() throws Exception {
@@ -63,7 +64,11 @@ public class dnszone extends base_resource
 
 	/**
 	* <pre>
-	* zone deployed in proxy mode.<br> Default value: ENABLED<br> Possible values = YES, NO
+	* Deploy the zone in proxy mode. Enable in the following scenarios:
+* The load balanced DNS servers are authoritative for the zone and all resource records that are part of the zone. 
+* The load balanced DNS servers are authoritative for the zone, but the NetScaler appliance owns a subset of the resource records that belong to the zone (partial zone ownership configuration). Typically seen in global server load balancing (GSLB) configurations, in which the appliance responds authoritatively to queries for GSLB domain names but forwards queries for other domain names in the zone to the load balanced servers.
+In either scenario, do not create the zone's Start of Authority (SOA) and name server (NS) resource records on the appliance. 
+Disable if the appliance is authoritative for the zone, but make sure that you have created the SOA and NS records on the appliance before you create the zone.<br> Default value: ENABLED<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public void set_proxymode(String proxymode) throws Exception{
@@ -72,7 +77,11 @@ public class dnszone extends base_resource
 
 	/**
 	* <pre>
-	* zone deployed in proxy mode.<br> Default value: ENABLED<br> Possible values = YES, NO
+	* Deploy the zone in proxy mode. Enable in the following scenarios:
+* The load balanced DNS servers are authoritative for the zone and all resource records that are part of the zone. 
+* The load balanced DNS servers are authoritative for the zone, but the NetScaler appliance owns a subset of the resource records that belong to the zone (partial zone ownership configuration). Typically seen in global server load balancing (GSLB) configurations, in which the appliance responds authoritatively to queries for GSLB domain names but forwards queries for other domain names in the zone to the load balanced servers.
+In either scenario, do not create the zone's Start of Authority (SOA) and name server (NS) resource records on the appliance. 
+Disable if the appliance is authoritative for the zone, but make sure that you have created the SOA and NS records on the appliance before you create the zone.<br> Default value: ENABLED<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public String get_proxymode() throws Exception {
@@ -81,7 +90,43 @@ public class dnszone extends base_resource
 
 	/**
 	* <pre>
-	* The name given to a public/private key pair.<br> Minimum length =  1
+	* Enable dnssec offload for this zone.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* </pre>
+	*/
+	public void set_dnssecoffload(String dnssecoffload) throws Exception{
+		this.dnssecoffload = dnssecoffload;
+	}
+
+	/**
+	* <pre>
+	* Enable dnssec offload for this zone.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* </pre>
+	*/
+	public String get_dnssecoffload() throws Exception {
+		return this.dnssecoffload;
+	}
+
+	/**
+	* <pre>
+	* Enable nsec generation for dnssec offload.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* </pre>
+	*/
+	public void set_nsec(String nsec) throws Exception{
+		this.nsec = nsec;
+	}
+
+	/**
+	* <pre>
+	* Enable nsec generation for dnssec offload.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* </pre>
+	*/
+	public String get_nsec() throws Exception {
+		return this.nsec;
+	}
+
+	/**
+	* <pre>
+	* Name of the public/private DNS key pair with which to sign the zone. You can sign a zone with up to four keys.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_keyname(String[] keyname) throws Exception{
@@ -90,7 +135,7 @@ public class dnszone extends base_resource
 
 	/**
 	* <pre>
-	* The name given to a public/private key pair.<br> Minimum length =  1
+	* Name of the public/private DNS key pair with which to sign the zone. You can sign a zone with up to four keys.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String[] get_keyname() throws Exception {
@@ -99,10 +144,10 @@ public class dnszone extends base_resource
 
 	/**
 	* <pre>
-	* Zone type. The type can take 3 values:
-ADNS -  If this is specified, all of the authoritative zones will be displayed.
-PROXY - If this is specified, all of the proxy zones will be displayed.
-ALL  -  If this is specified, all of the zones will be displayed.<br> Possible values = ALL, ADNS, PROXY
+	* Type of zone to display. Mutually exclusive with the DNS Zone (zoneName) parameter. Available settings function as follows:
+* ADNS - Display all the zones for which the NetScaler appliance is authoritative.
+* PROXY - Display all the zones for which the NetScaler appliance is functioning as a proxy server.
+* ALL - Display all the zones configured on the appliance.<br> Possible values = ALL, ADNS, PROXY
 	* </pre>
 	*/
 	public void set_type(String type) throws Exception{
@@ -111,10 +156,10 @@ ALL  -  If this is specified, all of the zones will be displayed.<br> Possible v
 
 	/**
 	* <pre>
-	* Zone type. The type can take 3 values:
-ADNS -  If this is specified, all of the authoritative zones will be displayed.
-PROXY - If this is specified, all of the proxy zones will be displayed.
-ALL  -  If this is specified, all of the zones will be displayed.<br> Possible values = ALL, ADNS, PROXY
+	* Type of zone to display. Mutually exclusive with the DNS Zone (zoneName) parameter. Available settings function as follows:
+* ADNS - Display all the zones for which the NetScaler appliance is authoritative.
+* PROXY - Display all the zones for which the NetScaler appliance is functioning as a proxy server.
+* ALL - Display all the zones configured on the appliance.<br> Possible values = ALL, ADNS, PROXY
 	* </pre>
 	*/
 	public String get_type() throws Exception {
@@ -128,15 +173,6 @@ ALL  -  If this is specified, all of the zones will be displayed.<br> Possible v
 	*/
 	public Long get_flags() throws Exception {
 		return this.flags;
-	}
-
-	/**
-	* <pre>
-	* Bit array representing the different record types configured for the domain name.
-	* </pre>
-	*/
-	public char[] get_nsecbitarray() throws Exception {
-		return this.nsecbitarray;
 	}
 
 	/**
@@ -180,6 +216,8 @@ ALL  -  If this is specified, all of the zones will be displayed.<br> Possible v
 		dnszone addresource = new dnszone();
 		addresource.zonename = resource.zonename;
 		addresource.proxymode = resource.proxymode;
+		addresource.dnssecoffload = resource.dnssecoffload;
+		addresource.nsec = resource.nsec;
 		return addresource.add_resource(client);
 	}
 
@@ -194,6 +232,8 @@ ALL  -  If this is specified, all of the zones will be displayed.<br> Possible v
 				addresources[i] = new dnszone();
 				addresources[i].zonename = resources[i].zonename;
 				addresources[i].proxymode = resources[i].proxymode;
+				addresources[i].dnssecoffload = resources[i].dnssecoffload;
+				addresources[i].nsec = resources[i].nsec;
 			}
 			result = add_bulk_request(client, addresources);
 		}
@@ -207,6 +247,8 @@ ALL  -  If this is specified, all of the zones will be displayed.<br> Possible v
 		dnszone updateresource = new dnszone();
 		updateresource.zonename = resource.zonename;
 		updateresource.proxymode = resource.proxymode;
+		updateresource.dnssecoffload = resource.dnssecoffload;
+		updateresource.nsec = resource.nsec;
 		return updateresource.update_resource(client);
 	}
 
@@ -221,6 +263,8 @@ ALL  -  If this is specified, all of the zones will be displayed.<br> Possible v
 				updateresources[i] = new dnszone();
 				updateresources[i].zonename = resources[i].zonename;
 				updateresources[i].proxymode = resources[i].proxymode;
+				updateresources[i].dnssecoffload = resources[i].dnssecoffload;
+				updateresources[i].nsec = resources[i].nsec;
 			}
 			result = update_bulk_request(client, updateresources);
 		}
@@ -231,20 +275,9 @@ ALL  -  If this is specified, all of the zones will be displayed.<br> Possible v
 	* Use this API to unset the properties of dnszone resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String zonename, String args[]) throws Exception {
-		dnszone unsetresource = new dnszone();
-		unsetresource.zonename = zonename;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of dnszone resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, dnszone resource, String[] args) throws Exception{
 		dnszone unsetresource = new dnszone();
 		unsetresource.zonename = resource.zonename;
-		unsetresource.proxymode = resource.proxymode;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -276,7 +309,6 @@ ALL  -  If this is specified, all of the zones will be displayed.<br> Possible v
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new dnszone();
 				unsetresources[i].zonename = resources[i].zonename;
-				unsetresources[i].proxymode = resources[i].proxymode;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}
@@ -329,6 +361,60 @@ ALL  -  If this is specified, all of the zones will be displayed.<br> Possible v
 				deleteresources[i].zonename = resources[i].zonename;
 			}
 			result = delete_bulk_request(client, deleteresources);
+		}
+		return result;
+	}
+
+	/**
+	* Use this API to sign dnszone.
+	*/
+	public static base_response sign(nitro_service client, dnszone resource) throws Exception {
+		dnszone signresource = new dnszone();
+		signresource.zonename = resource.zonename;
+		signresource.keyname = resource.keyname;
+		return signresource.perform_operation(client,"sign");
+	}
+
+	/**
+	* Use this API to sign dnszone resources.
+	*/
+	public static base_responses sign(nitro_service client, dnszone resources[]) throws Exception {
+		base_responses result = null;
+		if (resources != null && resources.length > 0) {
+			dnszone signresources[] = new dnszone[resources.length];
+			for (int i=0;i<resources.length;i++){
+				signresources[i] = new dnszone();
+				signresources[i].zonename = resources[i].zonename;
+				signresources[i].keyname = resources[i].keyname;
+			}
+			result = perform_operation_bulk_request(client, signresources,"sign");
+		}
+		return result;
+	}
+
+	/**
+	* Use this API to unsign dnszone.
+	*/
+	public static base_response unsign(nitro_service client, dnszone resource) throws Exception {
+		dnszone unsignresource = new dnszone();
+		unsignresource.zonename = resource.zonename;
+		unsignresource.keyname = resource.keyname;
+		return unsignresource.perform_operation(client,"unsign");
+	}
+
+	/**
+	* Use this API to unsign dnszone resources.
+	*/
+	public static base_responses unsign(nitro_service client, dnszone resources[]) throws Exception {
+		base_responses result = null;
+		if (resources != null && resources.length > 0) {
+			dnszone unsignresources[] = new dnszone[resources.length];
+			for (int i=0;i<resources.length;i++){
+				unsignresources[i] = new dnszone();
+				unsignresources[i].zonename = resources[i].zonename;
+				unsignresources[i].keyname = resources[i].keyname;
+			}
+			result = perform_operation_bulk_request(client, unsignresources,"unsign");
 		}
 		return result;
 	}
@@ -465,5 +551,13 @@ ALL  -  If this is specified, all of the zones will be displayed.<br> Possible v
 	public static class proxymodeEnum {
 		public static final String YES = "YES";
 		public static final String NO = "NO";
+	}
+	public static class nsecEnum {
+		public static final String ENABLED = "ENABLED";
+		public static final String DISABLED = "DISABLED";
+	}
+	public static class dnssecoffloadEnum {
+		public static final String ENABLED = "ENABLED";
+		public static final String DISABLED = "DISABLED";
 	}
 }

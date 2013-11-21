@@ -58,7 +58,7 @@ public class hanode_routemonitor_binding extends base_resource
 
 	/**
 	* <pre>
-	* A number that uniquely identifies the local node. The ID of the local node is always 0.<br> Minimum value =  0<br> Maximum value =  64
+	* Number that uniquely identifies the local node. The ID of the local node is always 0.<br> Minimum value =  0<br> Maximum value =  64
 	* </pre>
 	*/
 	public void set_id(long id) throws Exception {
@@ -67,7 +67,7 @@ public class hanode_routemonitor_binding extends base_resource
 
 	/**
 	* <pre>
-	* A number that uniquely identifies the local node. The ID of the local node is always 0.<br> Minimum value =  0<br> Maximum value =  64
+	* Number that uniquely identifies the local node. The ID of the local node is always 0.<br> Minimum value =  0<br> Maximum value =  64
 	* </pre>
 	*/
 	public void set_id(Long id) throws Exception{
@@ -76,7 +76,7 @@ public class hanode_routemonitor_binding extends base_resource
 
 	/**
 	* <pre>
-	* A number that uniquely identifies the local node. The ID of the local node is always 0.<br> Minimum value =  0<br> Maximum value =  64
+	* Number that uniquely identifies the local node. The ID of the local node is always 0.<br> Minimum value =  0<br> Maximum value =  64
 	* </pre>
 	*/
 	public Long get_id() throws Exception {

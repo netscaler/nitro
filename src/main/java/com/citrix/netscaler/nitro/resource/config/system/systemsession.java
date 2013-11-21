@@ -47,7 +47,7 @@ public class systemsession extends base_resource
 
 	/**
 	* <pre>
-	* The session id.<br> Minimum value =  1
+	* ID of the system session about which to display information.<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_sid(long sid) throws Exception {
@@ -56,7 +56,7 @@ public class systemsession extends base_resource
 
 	/**
 	* <pre>
-	* The session id.<br> Minimum value =  1
+	* ID of the system session about which to display information.<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_sid(Long sid) throws Exception{
@@ -65,7 +65,7 @@ public class systemsession extends base_resource
 
 	/**
 	* <pre>
-	* The session id.<br> Minimum value =  1
+	* ID of the system session about which to display information.<br> Minimum value =  1
 	* </pre>
 	*/
 	public Long get_sid() throws Exception {
@@ -74,7 +74,7 @@ public class systemsession extends base_resource
 
 	/**
 	* <pre>
-	* Specify this if you want to kill all sessions except self.
+	* Terminate all the system sessions except the current session.
 	* </pre>
 	*/
 	public void set_all(boolean all) throws Exception {
@@ -83,7 +83,7 @@ public class systemsession extends base_resource
 
 	/**
 	* <pre>
-	* Specify this if you want to kill all sessions except self.
+	* Terminate all the system sessions except the current session.
 	* </pre>
 	*/
 	public void set_all(Boolean all) throws Exception{
@@ -92,7 +92,7 @@ public class systemsession extends base_resource
 
 	/**
 	* <pre>
-	* Specify this if you want to kill all sessions except self.
+	* Terminate all the system sessions except the current session.
 	* </pre>
 	*/
 	public Boolean get_all() throws Exception {

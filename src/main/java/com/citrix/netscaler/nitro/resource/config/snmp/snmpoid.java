@@ -42,7 +42,7 @@ public class snmpoid extends base_resource
 
 	/**
 	* <pre>
-	* The type of entity whose SNMP OIDs you want the NetScaler appliance to display.<br> Possible values = VSERVER, SERVICE, SERVICEGROUP
+	* The type of entity whose SNMP OIDs you want to displayType of entity whose SNMP OIDs you want the NetScaler appliance to display.<br> Possible values = VSERVER, SERVICE, SERVICEGROUP
 	* </pre>
 	*/
 	public void set_entitytype(String entitytype) throws Exception{
@@ -51,7 +51,7 @@ public class snmpoid extends base_resource
 
 	/**
 	* <pre>
-	* The type of entity whose SNMP OIDs you want the NetScaler appliance to display.<br> Possible values = VSERVER, SERVICE, SERVICEGROUP
+	* The type of entity whose SNMP OIDs you want to displayType of entity whose SNMP OIDs you want the NetScaler appliance to display.<br> Possible values = VSERVER, SERVICE, SERVICEGROUP
 	* </pre>
 	*/
 	public String get_entitytype() throws Exception {
@@ -60,7 +60,7 @@ public class snmpoid extends base_resource
 
 	/**
 	* <pre>
-	* The name of the entity whose SNMP OID you want the NetScaler appliance to display.<br> Minimum length =  1
+	* Name of the entity whose SNMP OID you want the NetScaler appliance to display.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -69,7 +69,7 @@ public class snmpoid extends base_resource
 
 	/**
 	* <pre>
-	* The name of the entity whose SNMP OID you want the NetScaler appliance to display.<br> Minimum length =  1
+	* Name of the entity whose SNMP OID you want the NetScaler appliance to display.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {

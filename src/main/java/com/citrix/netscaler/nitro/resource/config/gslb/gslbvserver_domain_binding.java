@@ -45,7 +45,7 @@ public class gslbvserver_domain_binding extends base_resource
 
 	/**
 	* <pre>
-	* The backup IP addresss that has to be unbound from for the specified GSLB domain.
+	* The IP address of the backup service for the specified domain name. Used when all the services bound to the domain are down, or when the backup chain of virtual servers is down.
 	* </pre>
 	*/
 	public void set_backupipflag(boolean backupipflag) throws Exception {
@@ -54,7 +54,7 @@ public class gslbvserver_domain_binding extends base_resource
 
 	/**
 	* <pre>
-	* The backup IP addresss that has to be unbound from for the specified GSLB domain.
+	* The IP address of the backup service for the specified domain name. Used when all the services bound to the domain are down, or when the backup chain of virtual servers is down.
 	* </pre>
 	*/
 	public void set_backupipflag(Boolean backupipflag) throws Exception{
@@ -63,7 +63,7 @@ public class gslbvserver_domain_binding extends base_resource
 
 	/**
 	* <pre>
-	* The backup IP addresss that has to be unbound from for the specified GSLB domain.
+	* The IP address of the backup service for the specified domain name. Used when all the services bound to the domain are down, or when the backup chain of virtual servers is down.
 	* </pre>
 	*/
 	public Boolean get_backupipflag() throws Exception {
@@ -72,7 +72,7 @@ public class gslbvserver_domain_binding extends base_resource
 
 	/**
 	* <pre>
-	* The timeout (in minutes) for the GSLB site cookie.<br> Minimum value =  0<br> Maximum value =  1440
+	* Timeout, in minutes, for the GSLB site cookie.<br> Minimum value =  0<br> Maximum value =  1440
 	* </pre>
 	*/
 	public void set_cookietimeout(long cookietimeout) throws Exception {
@@ -81,7 +81,7 @@ public class gslbvserver_domain_binding extends base_resource
 
 	/**
 	* <pre>
-	* The timeout (in minutes) for the GSLB site cookie.<br> Minimum value =  0<br> Maximum value =  1440
+	* Timeout, in minutes, for the GSLB site cookie.<br> Minimum value =  0<br> Maximum value =  1440
 	* </pre>
 	*/
 	public void set_cookietimeout(Long cookietimeout) throws Exception{
@@ -90,7 +90,7 @@ public class gslbvserver_domain_binding extends base_resource
 
 	/**
 	* <pre>
-	* The timeout (in minutes) for the GSLB site cookie.<br> Minimum value =  0<br> Maximum value =  1440
+	* Timeout, in minutes, for the GSLB site cookie.<br> Minimum value =  0<br> Maximum value =  1440
 	* </pre>
 	*/
 	public Long get_cookietimeout() throws Exception {
@@ -99,7 +99,7 @@ public class gslbvserver_domain_binding extends base_resource
 
 	/**
 	* <pre>
-	* The backup IP for the given domain.<br> Minimum length =  1
+	* The IP address of the backup service for the specified domain name. Used when all the services bound to the domain are down, or when the backup chain of virtual servers is down.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_backupip(String backupip) throws Exception{
@@ -108,7 +108,7 @@ public class gslbvserver_domain_binding extends base_resource
 
 	/**
 	* <pre>
-	* The backup IP for the given domain.<br> Minimum length =  1
+	* The IP address of the backup service for the specified domain name. Used when all the services bound to the domain are down, or when the backup chain of virtual servers is down.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_backupip() throws Exception {
@@ -117,7 +117,7 @@ public class gslbvserver_domain_binding extends base_resource
 
 	/**
 	* <pre>
-	* The vserver for which the binding operation is to be done.<br> Minimum length =  1
+	* Name of the virtual server on which to perform the binding operation.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -126,7 +126,7 @@ public class gslbvserver_domain_binding extends base_resource
 
 	/**
 	* <pre>
-	* The vserver for which the binding operation is to be done.<br> Minimum length =  1
+	* Name of the virtual server on which to perform the binding operation.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -135,7 +135,7 @@ public class gslbvserver_domain_binding extends base_resource
 
 	/**
 	* <pre>
-	* The TTL for the given domain.<br> Minimum value =  1
+	* Time to live (TTL) for the domain.<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_ttl(long ttl) throws Exception {
@@ -144,7 +144,7 @@ public class gslbvserver_domain_binding extends base_resource
 
 	/**
 	* <pre>
-	* The TTL for the given domain.<br> Minimum value =  1
+	* Time to live (TTL) for the domain.<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_ttl(Long ttl) throws Exception{
@@ -153,7 +153,7 @@ public class gslbvserver_domain_binding extends base_resource
 
 	/**
 	* <pre>
-	* The TTL for the given domain.<br> Minimum value =  1
+	* Time to live (TTL) for the domain.<br> Minimum value =  1
 	* </pre>
 	*/
 	public Long get_ttl() throws Exception {
@@ -162,7 +162,7 @@ public class gslbvserver_domain_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the domain for which TTL and/or backupIP has to be changed.<br> Minimum length =  1
+	* Domain name for which to change the time to live (TTL) and/or backup service IP address.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_domainname(String domainname) throws Exception{
@@ -171,7 +171,7 @@ public class gslbvserver_domain_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the domain for which TTL and/or backupIP has to be changed.<br> Minimum length =  1
+	* Domain name for which to change the time to live (TTL) and/or backup service IP address.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_domainname() throws Exception {
@@ -180,7 +180,7 @@ public class gslbvserver_domain_binding extends base_resource
 
 	/**
 	* <pre>
-	* Modify the TTL of the internally created site domain.<br> Minimum value =  1
+	* TTL, in seconds, for all internally created site domains (created when a site prefix is configured on a GSLB service) that are associated with this virtual server.<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_sitedomainttl(long sitedomainttl) throws Exception {
@@ -189,7 +189,7 @@ public class gslbvserver_domain_binding extends base_resource
 
 	/**
 	* <pre>
-	* Modify the TTL of the internally created site domain.<br> Minimum value =  1
+	* TTL, in seconds, for all internally created site domains (created when a site prefix is configured on a GSLB service) that are associated with this virtual server.<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_sitedomainttl(Long sitedomainttl) throws Exception{
@@ -198,7 +198,7 @@ public class gslbvserver_domain_binding extends base_resource
 
 	/**
 	* <pre>
-	* Modify the TTL of the internally created site domain.<br> Minimum value =  1
+	* TTL, in seconds, for all internally created site domains (created when a site prefix is configured on a GSLB service) that are associated with this virtual server.<br> Minimum value =  1
 	* </pre>
 	*/
 	public Long get_sitedomainttl() throws Exception {
@@ -207,7 +207,7 @@ public class gslbvserver_domain_binding extends base_resource
 
 	/**
 	* <pre>
-	* Unset the configured cookie domain for this domain.
+	* The cookie domain for the GSLB site. Used when inserting the GSLB site cookie in the HTTP response.
 	* </pre>
 	*/
 	public void set_cookie_domainflag(boolean cookie_domainflag) throws Exception {
@@ -216,7 +216,7 @@ public class gslbvserver_domain_binding extends base_resource
 
 	/**
 	* <pre>
-	* Unset the configured cookie domain for this domain.
+	* The cookie domain for the GSLB site. Used when inserting the GSLB site cookie in the HTTP response.
 	* </pre>
 	*/
 	public void set_cookie_domainflag(Boolean cookie_domainflag) throws Exception{
@@ -225,7 +225,7 @@ public class gslbvserver_domain_binding extends base_resource
 
 	/**
 	* <pre>
-	* Unset the configured cookie domain for this domain.
+	* The cookie domain for the GSLB site. Used when inserting the GSLB site cookie in the HTTP response.
 	* </pre>
 	*/
 	public Boolean get_cookie_domainflag() throws Exception {
@@ -234,7 +234,7 @@ public class gslbvserver_domain_binding extends base_resource
 
 	/**
 	* <pre>
-	* The cookie domain for the GSLB domain. This will be used when inserting the GSLB site cookie in the HTTP response. By default, cookie domain will not be inserted.<br> Minimum length =  1
+	* The cookie domain for the GSLB site. Used when inserting the GSLB site cookie in the HTTP response.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_cookie_domain(String cookie_domain) throws Exception{
@@ -243,7 +243,7 @@ public class gslbvserver_domain_binding extends base_resource
 
 	/**
 	* <pre>
-	* The cookie domain for the GSLB domain. This will be used when inserting the GSLB site cookie in the HTTP response. By default, cookie domain will not be inserted.<br> Minimum length =  1
+	* The cookie domain for the GSLB site. Used when inserting the GSLB site cookie in the HTTP response.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_cookie_domain() throws Exception {

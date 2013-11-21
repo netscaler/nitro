@@ -38,7 +38,7 @@ public class aaauser_aaagroup_binding extends base_resource
 
 	/**
 	* <pre>
-	* The user name.<br> Minimum length =  1
+	* User account to which to bind the policy.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_username(String username) throws Exception{
@@ -47,7 +47,7 @@ public class aaauser_aaagroup_binding extends base_resource
 
 	/**
 	* <pre>
-	* The user name.<br> Minimum length =  1
+	* User account to which to bind the policy.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_username() throws Exception {

@@ -40,7 +40,7 @@ public class wisite_accessmethod_binding extends base_resource
 
 	/**
 	* <pre>
-	* Client's Ip Address.
+	* IPv4 or network address of the client for which you want to associate an access method.
 	* </pre>
 	*/
 	public void set_clientipaddress(String clientipaddress) throws Exception{
@@ -49,7 +49,7 @@ public class wisite_accessmethod_binding extends base_resource
 
 	/**
 	* <pre>
-	* Client's Ip Address.
+	* IPv4 or network address of the client for which you want to associate an access method.
 	* </pre>
 	*/
 	public String get_clientipaddress() throws Exception {
@@ -58,7 +58,7 @@ public class wisite_accessmethod_binding extends base_resource
 
 	/**
 	* <pre>
-	* client NetMask.
+	* Subnet mask associated with the IPv4 or network address specified by the Client IP Address parameter.
 	* </pre>
 	*/
 	public void set_clientnetmask(String clientnetmask) throws Exception{
@@ -67,7 +67,7 @@ public class wisite_accessmethod_binding extends base_resource
 
 	/**
 	* <pre>
-	* client NetMask.
+	* Subnet mask associated with the IPv4 or network address specified by the Client IP Address parameter.
 	* </pre>
 	*/
 	public String get_clientnetmask() throws Exception {
@@ -76,7 +76,8 @@ public class wisite_accessmethod_binding extends base_resource
 
 	/**
 	* <pre>
-	* secure access method to be applied for client ip range.<br> Possible values = Direct, Alternate, Translated, GatewayDirect, GatewayAlternate, GatewayTranslated
+	* Secure access method to be applied to the IPv4 or network address of the client specified by the Client IP Address parameter.
+            Depending on whether the Web Interface site is configured to use an HTTP or HTTPS virtual server or to use access gateway, you can send clients or access gateway the IP address, or the alternate address, of a XenApp or XenDesktop server. Or, you can send the IP address translated from a mapping entry, which defines mapping of an internal address and port to an external address and port.<br> Possible values = Direct, Alternate, Translated, GatewayDirect, GatewayAlternate, GatewayTranslated
 	* </pre>
 	*/
 	public void set_accessmethod(String accessmethod) throws Exception{
@@ -85,7 +86,8 @@ public class wisite_accessmethod_binding extends base_resource
 
 	/**
 	* <pre>
-	* secure access method to be applied for client ip range.<br> Possible values = Direct, Alternate, Translated, GatewayDirect, GatewayAlternate, GatewayTranslated
+	* Secure access method to be applied to the IPv4 or network address of the client specified by the Client IP Address parameter.
+            Depending on whether the Web Interface site is configured to use an HTTP or HTTPS virtual server or to use access gateway, you can send clients or access gateway the IP address, or the alternate address, of a XenApp or XenDesktop server. Or, you can send the IP address translated from a mapping entry, which defines mapping of an internal address and port to an external address and port.<br> Possible values = Direct, Alternate, Translated, GatewayDirect, GatewayAlternate, GatewayTranslated
 	* </pre>
 	*/
 	public String get_accessmethod() throws Exception {
@@ -94,7 +96,7 @@ public class wisite_accessmethod_binding extends base_resource
 
 	/**
 	* <pre>
-	* The path of Web Interface site.<br> Minimum length =  1<br> Maximum length =  250
+	* Path to the Web Interface site.<br> Minimum length =  1<br> Maximum length =  250
 	* </pre>
 	*/
 	public void set_sitepath(String sitepath) throws Exception{
@@ -103,7 +105,7 @@ public class wisite_accessmethod_binding extends base_resource
 
 	/**
 	* <pre>
-	* The path of Web Interface site.<br> Minimum length =  1<br> Maximum length =  250
+	* Path to the Web Interface site.<br> Minimum length =  1<br> Maximum length =  250
 	* </pre>
 	*/
 	public String get_sitepath() throws Exception {
@@ -296,6 +298,10 @@ public class wisite_accessmethod_binding extends base_resource
 		public static final String SSLRELAY = "SSLRELAY";
 	}
 	public static class loadbalanceEnum {
+		public static final String ON = "ON";
+		public static final String OFF = "OFF";
+	}
+	public static class recoveryfarmEnum {
 		public static final String ON = "ON";
 		public static final String OFF = "OFF";
 	}

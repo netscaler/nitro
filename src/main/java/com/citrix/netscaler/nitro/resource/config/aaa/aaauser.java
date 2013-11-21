@@ -39,7 +39,11 @@ public class aaauser extends base_resource
 
 	/**
 	* <pre>
-	* The name of the user.<br> Minimum length =  1
+	* Name for the user. Must begin with a letter, number, or the underscore character (_), and must contain only letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at (@), equals (=), colon (:), and underscore characters. Cannot be changed after the user is added.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or
+single quotation marks (for example, "my aaa user" or "my aaa user").<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_username(String username) throws Exception{
@@ -48,7 +52,11 @@ public class aaauser extends base_resource
 
 	/**
 	* <pre>
-	* The name of the user.<br> Minimum length =  1
+	* Name for the user. Must begin with a letter, number, or the underscore character (_), and must contain only letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at (@), equals (=), colon (:), and underscore characters. Cannot be changed after the user is added.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or
+single quotation marks (for example, "my aaa user" or "my aaa user").<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_username() throws Exception {
@@ -57,8 +65,8 @@ public class aaauser extends base_resource
 
 	/**
 	* <pre>
-	* Enter this keyword to create or change the user's password. The entered password is not displayed.
-If no password is given for a new user then the user will be authenticated externally.<br> Minimum length =  1
+	* Password with which the user logs on. Required for any user account that does not exist on an external authentication server. 
+If you are not using an external authentication server, all user accounts must have a password. If you are using an external authentication server, you must provide a password for local user accounts that do not exist on the authentication server.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_password(String password) throws Exception{
@@ -67,8 +75,8 @@ If no password is given for a new user then the user will be authenticated exter
 
 	/**
 	* <pre>
-	* Enter this keyword to create or change the user's password. The entered password is not displayed.
-If no password is given for a new user then the user will be authenticated externally.<br> Minimum length =  1
+	* Password with which the user logs on. Required for any user account that does not exist on an external authentication server. 
+If you are not using an external authentication server, all user accounts must have a password. If you are using an external authentication server, you must provide a password for local user accounts that do not exist on the authentication server.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_password() throws Exception {
@@ -77,7 +85,7 @@ If no password is given for a new user then the user will be authenticated exter
 
 	/**
 	* <pre>
-	* The loggedin flag. When this flag is turned on, the system displays the names of all logged-in users. If a user name is included, the system displays whether the user is logged in or not. .
+	* Show whether the user is logged in or not.
 	* </pre>
 	*/
 	public void set_loggedin(boolean loggedin) throws Exception {
@@ -86,7 +94,7 @@ If no password is given for a new user then the user will be authenticated exter
 
 	/**
 	* <pre>
-	* The loggedin flag. When this flag is turned on, the system displays the names of all logged-in users. If a user name is included, the system displays whether the user is logged in or not. .
+	* Show whether the user is logged in or not.
 	* </pre>
 	*/
 	public void set_loggedin(Boolean loggedin) throws Exception{
@@ -95,7 +103,7 @@ If no password is given for a new user then the user will be authenticated exter
 
 	/**
 	* <pre>
-	* The loggedin flag. When this flag is turned on, the system displays the names of all logged-in users. If a user name is included, the system displays whether the user is logged in or not. .
+	* Show whether the user is logged in or not.
 	* </pre>
 	*/
 	public Boolean get_loggedin() throws Exception {

@@ -29,6 +29,7 @@ class appfw_response extends base_response
 
 public class appfw_stats extends base_resource
 {
+	private String clearstats;
 	private Long appfirewalltotalviol;
 	private Long appfirewallviolrate;
 	private Long appfirewallshortavgresptime;
@@ -38,6 +39,7 @@ public class appfw_stats extends base_resource
 	private Long appfirewallreqbytes;
 	private Long appfirewallreqbytesrate;
 	private Long appfirewallresponses;
+	private Long appfirewallresponsesrate;
 	private Long appfirewallresbytes;
 	private Long appfirewallresbytesrate;
 	private Long appfirewallaborts;
@@ -96,7 +98,25 @@ public class appfw_stats extends base_resource
 
 	/**
 	* <pre>
-	* HTTP/HTTPS requests redirected by the Application Firewall to a different Web page or web server. (HTTP 302)
+	* Clear the statsistics / counters
+	* </pre>
+	*/
+	public void set_clearstats(String clearstats) throws Exception{
+		this.clearstats = clearstats;
+	}
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters.<br> Possible values = basic, full
+	* </pre>
+	*/
+	public String get_clearstats() throws Exception {
+		return this.clearstats;
+	}
+
+	/**
+	* <pre>
+	* Rate (/s) counter for appfirewallredirects
 	* </pre>
 	*/
 	public Long get_appfirewallredirectsrate() throws Exception {
@@ -105,7 +125,7 @@ public class appfw_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of Cookie Consistency security check violations seen by the Application Firewall.
+	* Rate (/s) counter for appfirewallviolcookie
 	* </pre>
 	*/
 	public Long get_appfirewallviolcookierate() throws Exception {
@@ -114,7 +134,7 @@ public class appfw_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of XML Message Validation security check violations seen by the Application Firewall.
+	* Rate (/s) counter for appfirewallviolmsgvalviolations
 	* </pre>
 	*/
 	public Long get_appfirewallviolmsgvalviolationsrate() throws Exception {
@@ -123,7 +143,7 @@ public class appfw_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of bytes transfered for requests
+	* Rate (/s) counter for appfirewallreqbytes
 	* </pre>
 	*/
 	public Long get_appfirewallreqbytesrate() throws Exception {
@@ -150,7 +170,7 @@ public class appfw_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of Buffer Overflow security check violations seen by the Application Firewall.
+	* Rate (/s) counter for appfirewallviolbufferoverflow
 	* </pre>
 	*/
 	public Long get_appfirewallviolbufferoverflowrate() throws Exception {
@@ -159,7 +179,7 @@ public class appfw_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of XML SQL Injection security check violations seen by the Application Firewall.
+	* Rate (/s) counter for appfirewallviolxmlsqlviolations
 	* </pre>
 	*/
 	public Long get_appfirewallviolxmlsqlviolationsrate() throws Exception {
@@ -168,7 +188,7 @@ public class appfw_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of HTML Cross-Site Scripting security check violations seen by the Application Firewall.
+	* Rate (/s) counter for appfirewallviolxss
 	* </pre>
 	*/
 	public Long get_appfirewallviolxssrate() throws Exception {
@@ -195,7 +215,7 @@ public class appfw_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of Safe Object security check violations seen by the Application Firewall.
+	* Rate (/s) counter for appfirewallviolsafeobject
 	* </pre>
 	*/
 	public Long get_appfirewallviolsafeobjectrate() throws Exception {
@@ -204,7 +224,16 @@ public class appfw_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of Cross Site Request Forgery form tag security check violations seen by the Application Firewall.
+	* Rate (/s) counter for appfirewallresponses
+	* </pre>
+	*/
+	public Long get_appfirewallresponsesrate() throws Exception {
+		return this.appfirewallresponsesrate;
+	}
+
+	/**
+	* <pre>
+	* Rate (/s) counter for appfirewallviolcsrftag
 	* </pre>
 	*/
 	public Long get_appfirewallviolcsrftagrate() throws Exception {
@@ -249,7 +278,7 @@ public class appfw_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of requests returning XML generic error from the backend server
+	* Rate (/s) counter for appfirewallviolxmlgenviolations
 	* </pre>
 	*/
 	public Long get_appfirewallviolxmlgenviolationsrate() throws Exception {
@@ -294,7 +323,7 @@ public class appfw_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of security check violations seen by the Application Firewall.
+	* Rate (/s) counter for appfirewalltotalviol
 	* </pre>
 	*/
 	public Long get_appfirewallviolrate() throws Exception {
@@ -303,7 +332,7 @@ public class appfw_stats extends base_resource
 
 	/**
 	* <pre>
-	* Incomplete HTTP/HTTPS requests aborted by the client before the Application Firewall could finish processing them.
+	* Rate (/s) counter for appfirewallaborts
 	* </pre>
 	*/
 	public Long get_appfirewallabortsrate() throws Exception {
@@ -312,7 +341,7 @@ public class appfw_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of requests returning soap:fault from the backend server
+	* Rate (/s) counter for appfirewallviolxmlsoapfaultviolations
 	* </pre>
 	*/
 	public Long get_appfirewallviolxmlsoapfaultviolationsrate() throws Exception {
@@ -321,7 +350,7 @@ public class appfw_stats extends base_resource
 
 	/**
 	* <pre>
-	* HTTP/HTTPS requests sent to your protected web servers via the Application Firewall.
+	* Rate (/s) counter for appfirewallrequests
 	* </pre>
 	*/
 	public Long get_appfirewallrequestsrate() throws Exception {
@@ -339,7 +368,7 @@ public class appfw_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of Signature violations seen by the Application Firewall.
+	* Rate (/s) counter for appfirewallviolsignature
 	* </pre>
 	*/
 	public Long get_appfirewallviolsignaturerate() throws Exception {
@@ -357,7 +386,7 @@ public class appfw_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of XML Cross-Site Scripting (XSS) security check violations seen by the Application Firewall.
+	* Rate (/s) counter for appfirewallviolxmlxssviolations
 	* </pre>
 	*/
 	public Long get_appfirewallviolxmlxssviolationsrate() throws Exception {
@@ -375,7 +404,7 @@ public class appfw_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of Field Consistency security check violations seen by the Application Firewall.
+	* Rate (/s) counter for appfirewallviolfieldconsistency
 	* </pre>
 	*/
 	public Long get_appfirewallviolfieldconsistencyrate() throws Exception {
@@ -384,7 +413,7 @@ public class appfw_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of Credit Card security check violations seen by the Application Firewall.
+	* Rate (/s) counter for appfirewallviolcreditcard
 	* </pre>
 	*/
 	public Long get_appfirewallviolcreditcardrate() throws Exception {
@@ -411,7 +440,7 @@ public class appfw_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of Web Services Interoperability (WS-I) security check violations seen by the Application Firewall.
+	* Rate (/s) counter for appfirewallviolwsiviolations
 	* </pre>
 	*/
 	public Long get_appfirewallviolwsiviolationsrate() throws Exception {
@@ -456,7 +485,7 @@ public class appfw_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of XML Format security check violations seen by the Application Firewall.
+	* Rate (/s) counter for appfirewallviolwellformednessviolations
 	* </pre>
 	*/
 	public Long get_appfirewallviolwellformednessviolationsrate() throws Exception {
@@ -465,7 +494,7 @@ public class appfw_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of Field Format security check violations seen by the Application Firewall.
+	* Rate (/s) counter for appfirewallviolfieldformat
 	* </pre>
 	*/
 	public Long get_appfirewallviolfieldformatrate() throws Exception {
@@ -492,7 +521,7 @@ public class appfw_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of XML Denial-of-Service security check violations seen by the Application Firewall.
+	* Rate (/s) counter for appfirewallviolxdosviolations
 	* </pre>
 	*/
 	public Long get_appfirewallviolxdosviolationsrate() throws Exception {
@@ -510,7 +539,7 @@ public class appfw_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of HTML SQL Injection security check violations seen by the Application Firewall.
+	* Rate (/s) counter for appfirewallviolsql
 	* </pre>
 	*/
 	public Long get_appfirewallviolsqlrate() throws Exception {
@@ -519,7 +548,7 @@ public class appfw_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of Start URL security check violations seen by the Application Firewall.
+	* Rate (/s) counter for appfirewallviolstarturl
 	* </pre>
 	*/
 	public Long get_appfirewallviolstarturlrate() throws Exception {
@@ -546,7 +575,7 @@ public class appfw_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of bytes transfered for responses
+	* Rate (/s) counter for appfirewallresbytes
 	* </pre>
 	*/
 	public Long get_appfirewallresbytesrate() throws Exception {
@@ -564,7 +593,7 @@ public class appfw_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of Referer Header security check violations seen by the Application Firewall.
+	* Rate (/s) counter for appfirewallviolrefererheader
 	* </pre>
 	*/
 	public Long get_appfirewallviolrefererheaderrate() throws Exception {
@@ -591,7 +620,7 @@ public class appfw_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of requests returning HTTP 4xx from the backend server
+	* Rate (/s) counter for appfirewallret4xx
 	* </pre>
 	*/
 	public Long get_appfirewallret4xxrate() throws Exception {
@@ -600,7 +629,7 @@ public class appfw_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of XML Attachment security check violations seen by the Application Firewall.
+	* Rate (/s) counter for appfirewallviolxmlattachmentviolations
 	* </pre>
 	*/
 	public Long get_appfirewallviolxmlattachmentviolationsrate() throws Exception {
@@ -609,7 +638,7 @@ public class appfw_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of requests returning HTTP 5xx from the backend server
+	* Rate (/s) counter for appfirewallret5xx
 	* </pre>
 	*/
 	public Long get_appfirewallret5xxrate() throws Exception {
@@ -618,7 +647,7 @@ public class appfw_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of Deny URL security check violations seen by the Application Firewall.
+	* Rate (/s) counter for appfirewallvioldenyurl
 	* </pre>
 	*/
 	public Long get_appfirewallvioldenyurlrate() throws Exception {
@@ -724,4 +753,8 @@ public class appfw_stats extends base_resource
 		return response[0];
 	}
 
+	public static class clearstatsEnum {
+		public static final String basic = "basic";
+		public static final String full = "full";
+	}
 }

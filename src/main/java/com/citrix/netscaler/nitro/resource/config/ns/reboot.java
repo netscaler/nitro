@@ -33,7 +33,8 @@ public class reboot extends base_resource
 
 	/**
 	* <pre>
-	* When specified on nCore systems, the command restarts the NetScaler without requiring a system reboot.  On Classic systems, this flag is ignored.
+	* Restarts the NetScaler software without rebooting the underlying operating system. The session terminates and you must log on to the appliance after it has restarted.
+Note: This argument is required only for nCore appliances. Classic appliances ignore this argument.
 	* </pre>
 	*/
 	public void set_warm(boolean warm) throws Exception {
@@ -42,7 +43,8 @@ public class reboot extends base_resource
 
 	/**
 	* <pre>
-	* When specified on nCore systems, the command restarts the NetScaler without requiring a system reboot.  On Classic systems, this flag is ignored.
+	* Restarts the NetScaler software without rebooting the underlying operating system. The session terminates and you must log on to the appliance after it has restarted.
+Note: This argument is required only for nCore appliances. Classic appliances ignore this argument.
 	* </pre>
 	*/
 	public void set_warm(Boolean warm) throws Exception{
@@ -51,7 +53,8 @@ public class reboot extends base_resource
 
 	/**
 	* <pre>
-	* When specified on nCore systems, the command restarts the NetScaler without requiring a system reboot.  On Classic systems, this flag is ignored.
+	* Restarts the NetScaler software without rebooting the underlying operating system. The session terminates and you must log on to the appliance after it has restarted.
+Note: This argument is required only for nCore appliances. Classic appliances ignore this argument.
 	* </pre>
 	*/
 	public Boolean get_warm() throws Exception {

@@ -61,7 +61,7 @@ public class gslbsite_gslbservice_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the site. If sitename is specified, all the services created under that site will be displayed.<br> Minimum length =  1
+	* Name of the GSLB site. If you specify a site name, details of all the site's constituent services are also displayed.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_sitename(String sitename) throws Exception{
@@ -70,7 +70,7 @@ public class gslbsite_gslbservice_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the site. If sitename is specified, all the services created under that site will be displayed.<br> Minimum length =  1
+	* Name of the GSLB site. If you specify a site name, details of all the site's constituent services are also displayed.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_sitename() throws Exception {
@@ -97,7 +97,7 @@ public class gslbsite_gslbservice_binding extends base_resource
 
 	/**
 	* <pre>
-	* State of the gslb service.<br> Possible values = UP, DOWN, UNKNOWN, BUSY, OUT OF SERVICE, GOING OUT OF SERVICE, DOWN WHEN GOING OUT OF SERVICE, NS_EMPTY_STR
+	* State of the gslb service.<br> Possible values = UP, DOWN, UNKNOWN, BUSY, OUT OF SERVICE, GOING OUT OF SERVICE, DOWN WHEN GOING OUT OF SERVICE, NS_EMPTY_STR, Unknown, DISABLED
 	* </pre>
 	*/
 	public String get_state() throws Exception {
@@ -106,7 +106,7 @@ public class gslbsite_gslbservice_binding extends base_resource
 
 	/**
 	* <pre>
-	* Service type.<br> Possible values = HTTP, FTP, TCP, UDP, SSL, SSL_BRIDGE, SSL_TCP, NNTP, DNS, DHCPRA, ANY, SIP_UDP, DNS_TCP, RTSP, PUSH, SSL_PUSH, RADIUS, RDP, MYSQL, MSSQL, DIAMETER, SSL_DIAMETER
+	* Service type.<br> Possible values = HTTP, FTP, TCP, UDP, SSL, SSL_BRIDGE, SSL_TCP, DTLS, NNTP, DNS, DHCPRA, ANY, SIP_UDP, DNS_TCP, RTSP, PUSH, SSL_PUSH, RADIUS, RDP, MYSQL, MSSQL, DIAMETER, SSL_DIAMETER, TFTP
 	* </pre>
 	*/
 	public String get_servicetype() throws Exception {
@@ -250,6 +250,8 @@ public class gslbsite_gslbservice_binding extends base_resource
 		public static final String GOING_OUT_OF_SERVICE = "GOING OUT OF SERVICE";
 		public static final String DOWN_WHEN_GOING_OUT_OF_SERVICE = "DOWN WHEN GOING OUT OF SERVICE";
 		public static final String NS_EMPTY_STR = "NS_EMPTY_STR";
+		public static final String Unknown = "Unknown";
+		public static final String DISABLED = "DISABLED";
 	}
 	public static class servicetypeEnum {
 		public static final String HTTP = "HTTP";
@@ -259,6 +261,7 @@ public class gslbsite_gslbservice_binding extends base_resource
 		public static final String SSL = "SSL";
 		public static final String SSL_BRIDGE = "SSL_BRIDGE";
 		public static final String SSL_TCP = "SSL_TCP";
+		public static final String DTLS = "DTLS";
 		public static final String NNTP = "NNTP";
 		public static final String DNS = "DNS";
 		public static final String DHCPRA = "DHCPRA";
@@ -274,6 +277,7 @@ public class gslbsite_gslbservice_binding extends base_resource
 		public static final String MSSQL = "MSSQL";
 		public static final String DIAMETER = "DIAMETER";
 		public static final String SSL_DIAMETER = "SSL_DIAMETER";
+		public static final String TFTP = "TFTP";
 	}
 
 }

@@ -47,7 +47,9 @@ public class filteraction extends base_resource
 
 	/**
 	* <pre>
-	* The name for the filter action.<br> Minimum length =  1
+	* Name for the filtering action. Must begin with a letter, number, or the underscore character (_). Other characters allowed, after the first character, are the hyphen (-), period (.) hash (#), space ( ), at sign (@), equals (=), and colon (:) characters. Choose a name that helps identify the type of action. The name of a filter action cannot be changed after it is created.
+
+CLI Users: If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my action" or 'my action').<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -56,7 +58,9 @@ public class filteraction extends base_resource
 
 	/**
 	* <pre>
-	* The name for the filter action.<br> Minimum length =  1
+	* Name for the filtering action. Must begin with a letter, number, or the underscore character (_). Other characters allowed, after the first character, are the hyphen (-), period (.) hash (#), space ( ), at sign (@), equals (=), and colon (:) characters. Choose a name that helps identify the type of action. The name of a filter action cannot be changed after it is created.
+
+CLI Users: If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my action" or 'my action').<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -65,7 +69,13 @@ public class filteraction extends base_resource
 
 	/**
 	* <pre>
-	* The name of the qualifier.<br> Possible values = reset, add, corrupt, forward, errorcode, drop
+	* Qualifier, which is the action to be performed. The qualifier cannot be changed after it is set. The available options function as follows:
+ADD - Adds the specified HTTP header.
+RESET - Terminates the connection, sending the appropriate termination notice to the user's browser.
+FORWARD - Redirects the request to the designated service. You must specify either a service name or a page, but not both.
+DROP - Silently deletes the request, without sending a response to the user's browser. 
+CORRUPT - Modifies the designated HTTP header to prevent it from performing the function it was intended to perform, then sends the request/response to the server/browser.
+ERRORCODE. Returns the designated HTTP error code to the user's browser (for example, 404, the standard HTTP code for a non-existent Web page).<br> Possible values = reset, add, corrupt, forward, errorcode, drop
 	* </pre>
 	*/
 	public void set_qual(String qual) throws Exception{
@@ -74,7 +84,13 @@ public class filteraction extends base_resource
 
 	/**
 	* <pre>
-	* The name of the qualifier.<br> Possible values = reset, add, corrupt, forward, errorcode, drop
+	* Qualifier, which is the action to be performed. The qualifier cannot be changed after it is set. The available options function as follows:
+ADD - Adds the specified HTTP header.
+RESET - Terminates the connection, sending the appropriate termination notice to the user's browser.
+FORWARD - Redirects the request to the designated service. You must specify either a service name or a page, but not both.
+DROP - Silently deletes the request, without sending a response to the user's browser. 
+CORRUPT - Modifies the designated HTTP header to prevent it from performing the function it was intended to perform, then sends the request/response to the server/browser.
+ERRORCODE. Returns the designated HTTP error code to the user's browser (for example, 404, the standard HTTP code for a non-existent Web page).<br> Possible values = reset, add, corrupt, forward, errorcode, drop
 	* </pre>
 	*/
 	public String get_qual() throws Exception {
@@ -83,7 +99,7 @@ public class filteraction extends base_resource
 
 	/**
 	* <pre>
-	* The service to which HTTP requests are forwarded. This parameter is required when the qualifier is FORWARD.<br> Minimum length =  1
+	* Service to which to forward HTTP requests. Required if the qualifier is FORWARD.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_servicename(String servicename) throws Exception{
@@ -92,7 +108,7 @@ public class filteraction extends base_resource
 
 	/**
 	* <pre>
-	* The service to which HTTP requests are forwarded. This parameter is required when the qualifier is FORWARD.<br> Minimum length =  1
+	* Service to which to forward HTTP requests. Required if the qualifier is FORWARD.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_servicename() throws Exception {
@@ -101,7 +117,7 @@ public class filteraction extends base_resource
 
 	/**
 	* <pre>
-	* The string containing the header_name and header_value. When the qualifier is ADD use this option as header_name:header_value. When the qualifier is Corrupt use this option to specify only the header_name.<br> Minimum length =  1
+	* String containing the header_name and header_value. If the qualifier is ADD, specify <header_name>:<header_value>. If the qualifier is CORRUPT, specify only the header_name.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_value(String value) throws Exception{
@@ -110,7 +126,7 @@ public class filteraction extends base_resource
 
 	/**
 	* <pre>
-	* The string containing the header_name and header_value. When the qualifier is ADD use this option as header_name:header_value. When the qualifier is Corrupt use this option to specify only the header_name.<br> Minimum length =  1
+	* String containing the header_name and header_value. If the qualifier is ADD, specify <header_name>:<header_value>. If the qualifier is CORRUPT, specify only the header_name.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_value() throws Exception {
@@ -119,7 +135,7 @@ public class filteraction extends base_resource
 
 	/**
 	* <pre>
-	* The response code to be returned for HTTP requests. Use this parameter when the qualifier is ERRORCODE.<br> Minimum value =  1
+	* Response code to be returned for HTTP requests (for use with the ERRORCODE qualifier).<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_respcode(long respcode) throws Exception {
@@ -128,7 +144,7 @@ public class filteraction extends base_resource
 
 	/**
 	* <pre>
-	* The response code to be returned for HTTP requests. Use this parameter when the qualifier is ERRORCODE.<br> Minimum value =  1
+	* Response code to be returned for HTTP requests (for use with the ERRORCODE qualifier).<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_respcode(Long respcode) throws Exception{
@@ -137,7 +153,7 @@ public class filteraction extends base_resource
 
 	/**
 	* <pre>
-	* The response code to be returned for HTTP requests. Use this parameter when the qualifier is ERRORCODE.<br> Minimum value =  1
+	* Response code to be returned for HTTP requests (for use with the ERRORCODE qualifier).<br> Minimum value =  1
 	* </pre>
 	*/
 	public Long get_respcode() throws Exception {
@@ -146,7 +162,7 @@ public class filteraction extends base_resource
 
 	/**
 	* <pre>
-	* The HTML page that will be returned for the HTTP requests. Use this parameter when the qualifier is ERRORCODE.<br> Minimum length =  1
+	* HTML page to return for HTTP requests (For use with the ERRORCODE qualifier).<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_page(String page) throws Exception{
@@ -155,7 +171,7 @@ public class filteraction extends base_resource
 
 	/**
 	* <pre>
-	* The HTML page that will be returned for the HTTP requests. Use this parameter when the qualifier is ERRORCODE.<br> Minimum length =  1
+	* HTML page to return for HTTP requests (For use with the ERRORCODE qualifier).<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_page() throws Exception {
@@ -336,20 +352,9 @@ public class filteraction extends base_resource
 	* Use this API to unset the properties of filteraction resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String name, String args[]) throws Exception {
-		filteraction unsetresource = new filteraction();
-		unsetresource.name = name;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of filteraction resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, filteraction resource, String[] args) throws Exception{
 		filteraction unsetresource = new filteraction();
 		unsetresource.name = resource.name;
-		unsetresource.page = resource.page;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -381,7 +386,6 @@ public class filteraction extends base_resource
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new filteraction();
 				unsetresources[i].name = resources[i].name;
-				unsetresources[i].page = resources[i].page;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}

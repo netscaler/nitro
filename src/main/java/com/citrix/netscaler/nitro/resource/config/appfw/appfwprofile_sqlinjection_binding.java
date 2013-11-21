@@ -79,7 +79,7 @@ public class appfwprofile_sqlinjection_binding extends base_resource
 
 	/**
 	* <pre>
-	* Application Firewall profile name.<br> Minimum length =  1
+	* Name of the profile to which to bind an exemption or rule.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -88,7 +88,7 @@ public class appfwprofile_sqlinjection_binding extends base_resource
 
 	/**
 	* <pre>
-	* Application Firewall profile name.<br> Minimum length =  1
+	* Name of the profile to which to bind an exemption or rule.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -151,7 +151,7 @@ public class appfwprofile_sqlinjection_binding extends base_resource
 
 	/**
 	* <pre>
-	* Comments associated with this profile.
+	* Any comments about the purpose of profile, or other useful information about the profile.
 	* </pre>
 	*/
 	public void set_comment(String comment) throws Exception{
@@ -160,7 +160,7 @@ public class appfwprofile_sqlinjection_binding extends base_resource
 
 	/**
 	* <pre>
-	* Comments associated with this profile.
+	* Any comments about the purpose of profile, or other useful information about the profile.
 	* </pre>
 	*/
 	public String get_comment() throws Exception {

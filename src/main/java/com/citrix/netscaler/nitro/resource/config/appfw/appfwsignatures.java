@@ -37,6 +37,9 @@ public class appfwsignatures extends base_resource
 	private String xslt;
 	private String comment;
 	private Boolean overwrite;
+	private Boolean merge;
+	private String sha1;
+	private Boolean mergedefault;
 
 	//------- Read only Parameter ---------;
 
@@ -44,8 +47,7 @@ public class appfwsignatures extends base_resource
 
 	/**
 	* <pre>
-	* Indicates name of signature object.
-<br> Minimum length =  1<br> Maximum length =  31
+	* Name of the signature object.<br> Minimum length =  1<br> Maximum length =  31
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -54,8 +56,7 @@ public class appfwsignatures extends base_resource
 
 	/**
 	* <pre>
-	* Indicates name of signature object.
-<br> Minimum length =  1<br> Maximum length =  31
+	* Name of the signature object.<br> Minimum length =  1<br> Maximum length =  31
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -64,22 +65,8 @@ public class appfwsignatures extends base_resource
 
 	/**
 	* <pre>
-	* Indicates the source of the signature file as a URL
-of the form
-
-    <protocol>://<host>[:<port>][/<path>]
-
-<protocol> is http or https.
-<host> is the DNS name or IP address of the http or https server.
-<port> is the port number of the server. If omitted, the
-default port for http or https will be used.
-<path> is the path of the file on the server.
-
-Import will fail if an https server requires client
-certificate authentication.
-
-
-.<br> Minimum length =  1<br> Maximum length =  2047
+	* URL (protocol, host, path, and file name) for the location at which to store the imported signatures object.
+NOTE: The import fails if the object to be imported is on an HTTPS server that requires client certificate authentication for access.<br> Minimum length =  1<br> Maximum length =  2047
 	* </pre>
 	*/
 	public void set_src(String src) throws Exception{
@@ -88,22 +75,8 @@ certificate authentication.
 
 	/**
 	* <pre>
-	* Indicates the source of the signature file as a URL
-of the form
-
-    <protocol>://<host>[:<port>][/<path>]
-
-<protocol> is http or https.
-<host> is the DNS name or IP address of the http or https server.
-<port> is the port number of the server. If omitted, the
-default port for http or https will be used.
-<path> is the path of the file on the server.
-
-Import will fail if an https server requires client
-certificate authentication.
-
-
-.<br> Minimum length =  1<br> Maximum length =  2047
+	* URL (protocol, host, path, and file name) for the location at which to store the imported signatures object.
+NOTE: The import fails if the object to be imported is on an HTTPS server that requires client certificate authentication for access.<br> Minimum length =  1<br> Maximum length =  2047
 	* </pre>
 	*/
 	public String get_src() throws Exception {
@@ -130,7 +103,7 @@ certificate authentication.
 
 	/**
 	* <pre>
-	* Comments.<br> Maximum length =  128
+	* Any comments to preserve information about the signatures object.<br> Maximum length =  128
 	* </pre>
 	*/
 	public void set_comment(String comment) throws Exception{
@@ -139,7 +112,7 @@ certificate authentication.
 
 	/**
 	* <pre>
-	* Comments.<br> Maximum length =  128
+	* Any comments to preserve information about the signatures object.<br> Maximum length =  128
 	* </pre>
 	*/
 	public String get_comment() throws Exception {
@@ -148,7 +121,7 @@ certificate authentication.
 
 	/**
 	* <pre>
-	* Overwrites the existing file.
+	* Overwrite any existing signatures object of the same name.
 	* </pre>
 	*/
 	public void set_overwrite(boolean overwrite) throws Exception {
@@ -157,7 +130,7 @@ certificate authentication.
 
 	/**
 	* <pre>
-	* Overwrites the existing file.
+	* Overwrite any existing signatures object of the same name.
 	* </pre>
 	*/
 	public void set_overwrite(Boolean overwrite) throws Exception{
@@ -166,11 +139,83 @@ certificate authentication.
 
 	/**
 	* <pre>
-	* Overwrites the existing file.
+	* Overwrite any existing signatures object of the same name.
 	* </pre>
 	*/
 	public Boolean get_overwrite() throws Exception {
 		return this.overwrite;
+	}
+
+	/**
+	* <pre>
+	* Merges the existing Signature with new signature rules.
+	* </pre>
+	*/
+	public void set_merge(boolean merge) throws Exception {
+		this.merge = new Boolean(merge);
+	}
+
+	/**
+	* <pre>
+	* Merges the existing Signature with new signature rules.
+	* </pre>
+	*/
+	public void set_merge(Boolean merge) throws Exception{
+		this.merge = merge;
+	}
+
+	/**
+	* <pre>
+	* Merges the existing Signature with new signature rules.
+	* </pre>
+	*/
+	public Boolean get_merge() throws Exception {
+		return this.merge;
+	}
+
+	/**
+	* <pre>
+	* File path for sha1 file to validate signature file.<br> Minimum length =  1<br> Maximum length =  2047
+	* </pre>
+	*/
+	public void set_sha1(String sha1) throws Exception{
+		this.sha1 = sha1;
+	}
+
+	/**
+	* <pre>
+	* File path for sha1 file to validate signature file.<br> Minimum length =  1<br> Maximum length =  2047
+	* </pre>
+	*/
+	public String get_sha1() throws Exception {
+		return this.sha1;
+	}
+
+	/**
+	* <pre>
+	* Merges signature file with default signature file.
+	* </pre>
+	*/
+	public void set_mergedefault(boolean mergedefault) throws Exception {
+		this.mergedefault = new Boolean(mergedefault);
+	}
+
+	/**
+	* <pre>
+	* Merges signature file with default signature file.
+	* </pre>
+	*/
+	public void set_mergedefault(Boolean mergedefault) throws Exception{
+		this.mergedefault = mergedefault;
+	}
+
+	/**
+	* <pre>
+	* Merges signature file with default signature file.
+	* </pre>
+	*/
+	public Boolean get_mergedefault() throws Exception {
+		return this.mergedefault;
 	}
 
 	/**
@@ -246,6 +291,8 @@ certificate authentication.
 		Importresource.xslt = resource.xslt;
 		Importresource.comment = resource.comment;
 		Importresource.overwrite = resource.overwrite;
+		Importresource.merge = resource.merge;
+		Importresource.sha1 = resource.sha1;
 		return Importresource.perform_operation(client,"Import");
 	}
 
@@ -255,6 +302,7 @@ certificate authentication.
 	public static base_response change(nitro_service client, appfwsignatures resource) throws Exception {
 		appfwsignatures updateresource = new appfwsignatures();
 		updateresource.name = resource.name;
+		updateresource.mergedefault = resource.mergedefault;
 		return updateresource.perform_operation(client,"update");
 	}
 

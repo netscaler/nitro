@@ -59,7 +59,7 @@ public class appfwlearningdata extends base_resource
 
 	/**
 	* <pre>
-	* Application Firewall profile name.
+	* Name of the profile.
 	* </pre>
 	*/
 	public void set_profilename(String profilename) throws Exception{
@@ -68,7 +68,7 @@ public class appfwlearningdata extends base_resource
 
 	/**
 	* <pre>
-	* Application Firewall profile name.
+	* Name of the profile.
 	* </pre>
 	*/
 	public String get_profilename() throws Exception {
@@ -414,7 +414,7 @@ public class appfwlearningdata extends base_resource
 
 	/**
 	* <pre>
-	* Security check.<br> Possible values = startURL, cookieConsistency, fieldConsistency, crossSiteScripting, SQLInjection, fieldFormat, CSRFtag, XMLDoSCheck, XMLWSICheck, XMLAttachmentCheck, TotalXMLRequests
+	* Name of the security check.<br> Possible values = startURL, cookieConsistency, fieldConsistency, crossSiteScripting, SQLInjection, fieldFormat, CSRFtag, XMLDoSCheck, XMLWSICheck, XMLAttachmentCheck, TotalXMLRequests
 	* </pre>
 	*/
 	public void set_securitycheck(String securitycheck) throws Exception{
@@ -423,7 +423,7 @@ public class appfwlearningdata extends base_resource
 
 	/**
 	* <pre>
-	* Security check.<br> Possible values = startURL, cookieConsistency, fieldConsistency, crossSiteScripting, SQLInjection, fieldFormat, CSRFtag, XMLDoSCheck, XMLWSICheck, XMLAttachmentCheck, TotalXMLRequests
+	* Name of the security check.<br> Possible values = startURL, cookieConsistency, fieldConsistency, crossSiteScripting, SQLInjection, fieldFormat, CSRFtag, XMLDoSCheck, XMLWSICheck, XMLAttachmentCheck, TotalXMLRequests
 	* </pre>
 	*/
 	public String get_securitycheck() throws Exception {
@@ -432,7 +432,7 @@ public class appfwlearningdata extends base_resource
 
 	/**
 	* <pre>
-	* Target filename for data to be exported.<br> Minimum length =  1<br> Maximum length =  2047
+	* Target filename for data to be exported.<br> Minimum length =  1<br> Maximum length =  127
 	* </pre>
 	*/
 	public void set_target(String target) throws Exception{
@@ -441,7 +441,7 @@ public class appfwlearningdata extends base_resource
 
 	/**
 	* <pre>
-	* Target filename for data to be exported.<br> Minimum length =  1<br> Maximum length =  2047
+	* Target filename for data to be exported.<br> Minimum length =  1<br> Maximum length =  127
 	* </pre>
 	*/
 	public String get_target() throws Exception {

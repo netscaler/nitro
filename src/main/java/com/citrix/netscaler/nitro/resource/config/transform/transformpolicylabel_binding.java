@@ -40,7 +40,10 @@ public class transformpolicylabel_binding extends base_resource
 
 	/**
 	* <pre>
-	* Name of the transform policy label.
+	* Name for the policy label. Must begin with a letter, number, or the underscore character (_), and must contain only letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at (@), equals (=), colon (:), and underscore characters. Can be changed after the URL Transformation policy label is added.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, my transform policylabel or my transform policylabel).
 	* </pre>
 	*/
 	public void set_labelname(String labelname) throws Exception{
@@ -49,7 +52,10 @@ public class transformpolicylabel_binding extends base_resource
 
 	/**
 	* <pre>
-	* Name of the transform policy label.
+	* Name for the policy label. Must begin with a letter, number, or the underscore character (_), and must contain only letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at (@), equals (=), colon (:), and underscore characters. Can be changed after the URL Transformation policy label is added.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, my transform policylabel or my transform policylabel).
 	* </pre>
 	*/
 	public String get_labelname() throws Exception {

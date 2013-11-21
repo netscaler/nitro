@@ -16,8 +16,8 @@
 
 package com.citrix.netscaler.nitro.resource.config.aaa;
 
-import com.citrix.netscaler.nitro.resource.config.aaa.aaaglobal_authenticationnegotiateaction_binding;
 import com.citrix.netscaler.nitro.resource.config.aaa.aaaglobal_aaapreauthenticationpolicy_binding;
+import com.citrix.netscaler.nitro.resource.config.aaa.aaaglobal_authenticationnegotiateaction_binding;
 import com.citrix.netscaler.nitro.resource.base.*;
 import com.citrix.netscaler.nitro.service.nitro_service;
 import com.citrix.netscaler.nitro.service.options;
@@ -34,8 +34,8 @@ class aaaglobal_binding_response extends base_response
 
 public class aaaglobal_binding extends base_resource
 {
-	private aaaglobal_authenticationnegotiateaction_binding	aaaglobal_authenticationnegotiateaction_binding[] = null;
 	private aaaglobal_aaapreauthenticationpolicy_binding	aaaglobal_aaapreauthenticationpolicy_binding[] = null;
+	private aaaglobal_authenticationnegotiateaction_binding	aaaglobal_authenticationnegotiateaction_binding[] = null;
 
 	/**
 	* <pre>

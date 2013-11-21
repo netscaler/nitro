@@ -42,7 +42,17 @@ public class auditmessages extends base_resource
 
 	/**
 	* <pre>
-	* The log level filter.<br> Possible values = ALL, EMERGENCY, ALERT, CRITICAL, ERROR, WARNING, NOTICE, INFORMATIONAL, DEBUG, NONE
+	* Audit log level filter, which specifies the types of events to display. 
+The following loglevels are valid:
+* ALL - All events.
+* EMERGENCY - Events that indicate an immediate crisis on the server.
+* ALERT - Events that might require action.
+* CRITICAL - Events that indicate an imminent server crisis.
+* ERROR - Events that indicate some type of error.
+* WARNING - Events that require action in the near future.
+* NOTICE - Events that the administrator should know about.
+* INFORMATIONAL - All but low-level events.
+* DEBUG - All events, in extreme detail.<br> Possible values = ALL, EMERGENCY, ALERT, CRITICAL, ERROR, WARNING, NOTICE, INFORMATIONAL, DEBUG
 	* </pre>
 	*/
 	public void set_loglevel(String[] loglevel) throws Exception{
@@ -51,7 +61,17 @@ public class auditmessages extends base_resource
 
 	/**
 	* <pre>
-	* The log level filter.<br> Possible values = ALL, EMERGENCY, ALERT, CRITICAL, ERROR, WARNING, NOTICE, INFORMATIONAL, DEBUG, NONE
+	* Audit log level filter, which specifies the types of events to display. 
+The following loglevels are valid:
+* ALL - All events.
+* EMERGENCY - Events that indicate an immediate crisis on the server.
+* ALERT - Events that might require action.
+* CRITICAL - Events that indicate an imminent server crisis.
+* ERROR - Events that indicate some type of error.
+* WARNING - Events that require action in the near future.
+* NOTICE - Events that the administrator should know about.
+* INFORMATIONAL - All but low-level events.
+* DEBUG - All events, in extreme detail.<br> Possible values = ALL, EMERGENCY, ALERT, CRITICAL, ERROR, WARNING, NOTICE, INFORMATIONAL, DEBUG
 	* </pre>
 	*/
 	public String[] get_loglevel() throws Exception {
@@ -60,7 +80,7 @@ public class auditmessages extends base_resource
 
 	/**
 	* <pre>
-	* The number of log messages to be printed.<br> Default value: 20<br> Minimum value =  1<br> Maximum value =  256
+	* Number of log messages to be displayed.<br> Default value: 20<br> Minimum value =  1<br> Maximum value =  256
 	* </pre>
 	*/
 	public void set_numofmesgs(long numofmesgs) throws Exception {
@@ -69,7 +89,7 @@ public class auditmessages extends base_resource
 
 	/**
 	* <pre>
-	* The number of log messages to be printed.<br> Default value: 20<br> Minimum value =  1<br> Maximum value =  256
+	* Number of log messages to be displayed.<br> Default value: 20<br> Minimum value =  1<br> Maximum value =  256
 	* </pre>
 	*/
 	public void set_numofmesgs(Long numofmesgs) throws Exception{
@@ -78,7 +98,7 @@ public class auditmessages extends base_resource
 
 	/**
 	* <pre>
-	* The number of log messages to be printed.<br> Default value: 20<br> Minimum value =  1<br> Maximum value =  256
+	* Number of log messages to be displayed.<br> Default value: 20<br> Minimum value =  1<br> Maximum value =  256
 	* </pre>
 	*/
 	public Long get_numofmesgs() throws Exception {
@@ -236,6 +256,5 @@ public class auditmessages extends base_resource
 		public static final String NOTICE = "NOTICE";
 		public static final String INFORMATIONAL = "INFORMATIONAL";
 		public static final String DEBUG = "DEBUG";
-		public static final String NONE = "NONE";
 	}
 }

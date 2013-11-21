@@ -54,7 +54,7 @@ public class aaasession extends base_resource
 
 	/**
 	* <pre>
-	* The user name.<br> Minimum length =  1
+	* Name of the AAA user.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_username(String username) throws Exception{
@@ -63,7 +63,7 @@ public class aaasession extends base_resource
 
 	/**
 	* <pre>
-	* The user name.<br> Minimum length =  1
+	* Name of the AAA user.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_username() throws Exception {
@@ -72,7 +72,7 @@ public class aaasession extends base_resource
 
 	/**
 	* <pre>
-	* The group name.<br> Minimum length =  1
+	* Name of the AAA group.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_groupname(String groupname) throws Exception{
@@ -81,7 +81,7 @@ public class aaasession extends base_resource
 
 	/**
 	* <pre>
-	* The group name.<br> Minimum length =  1
+	* Name of the AAA group.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_groupname() throws Exception {
@@ -90,7 +90,7 @@ public class aaasession extends base_resource
 
 	/**
 	* <pre>
-	* Intranet IP address.<br> Minimum length =  1
+	* IP address or the first address in the intranet IP range.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_iip(String iip) throws Exception{
@@ -99,7 +99,7 @@ public class aaasession extends base_resource
 
 	/**
 	* <pre>
-	* Intranet IP address.<br> Minimum length =  1
+	* IP address or the first address in the intranet IP range.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_iip() throws Exception {
@@ -108,7 +108,7 @@ public class aaasession extends base_resource
 
 	/**
 	* <pre>
-	* The netmask associated with the intranet IP address.<br> Minimum length =  1
+	* Subnet mask for the intranet IP range.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_netmask(String netmask) throws Exception{
@@ -117,7 +117,7 @@ public class aaasession extends base_resource
 
 	/**
 	* <pre>
-	* The netmask associated with the intranet IP address.<br> Minimum length =  1
+	* Subnet mask for the intranet IP range.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_netmask() throws Exception {
@@ -126,7 +126,7 @@ public class aaasession extends base_resource
 
 	/**
 	* <pre>
-	* Terminate the sessions of all users who are currently logged in.  .
+	* Terminate all active AAA-TM/VPN sessions.
 	* </pre>
 	*/
 	public void set_all(boolean all) throws Exception {
@@ -135,7 +135,7 @@ public class aaasession extends base_resource
 
 	/**
 	* <pre>
-	* Terminate the sessions of all users who are currently logged in.  .
+	* Terminate all active AAA-TM/VPN sessions.
 	* </pre>
 	*/
 	public void set_all(Boolean all) throws Exception{
@@ -144,7 +144,7 @@ public class aaasession extends base_resource
 
 	/**
 	* <pre>
-	* Terminate the sessions of all users who are currently logged in.  .
+	* Terminate all active AAA-TM/VPN sessions.
 	* </pre>
 	*/
 	public Boolean get_all() throws Exception {

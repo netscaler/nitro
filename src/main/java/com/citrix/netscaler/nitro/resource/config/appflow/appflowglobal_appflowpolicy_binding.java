@@ -90,7 +90,7 @@ public class appflowglobal_appflowpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Name of the label to invoke if the current policy rule evaluates to TRUE.
+	* Name of the label to invoke if the current policy evaluates to TRUE.
 	* </pre>
 	*/
 	public void set_labelname(String labelname) throws Exception{
@@ -99,7 +99,7 @@ public class appflowglobal_appflowpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Name of the label to invoke if the current policy rule evaluates to TRUE.
+	* Name of the label to invoke if the current policy evaluates to TRUE.
 	* </pre>
 	*/
 	public String get_labelname() throws Exception {
@@ -126,7 +126,7 @@ public class appflowglobal_appflowpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Invoke flag.
+	* Invoke policies bound to a virtual server or a user-defined policy label. After the invoked policies are evaluated, the flow returns to the policy with the next priority.
 	* </pre>
 	*/
 	public void set_invoke(boolean invoke) throws Exception {
@@ -135,7 +135,7 @@ public class appflowglobal_appflowpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Invoke flag.
+	* Invoke policies bound to a virtual server or a user-defined policy label. After the invoked policies are evaluated, the flow returns to the policy with the next priority.
 	* </pre>
 	*/
 	public void set_invoke(Boolean invoke) throws Exception{
@@ -144,7 +144,7 @@ public class appflowglobal_appflowpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Invoke flag.
+	* Invoke policies bound to a virtual server or a user-defined policy label. After the invoked policies are evaluated, the flow returns to the policy with the next priority.
 	* </pre>
 	*/
 	public Boolean get_invoke() throws Exception {
@@ -153,7 +153,7 @@ public class appflowglobal_appflowpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The bindpoint to which the policy is bound.<br> Possible values = REQ_OVERRIDE, REQ_DEFAULT, OVERRIDE, DEFAULT, OTHERTCP_REQ_OVERRIDE, OTHERTCP_REQ_DEFAULT, MSSQL_REQ_OVERRIDE, MSSQL_REQ_DEFAULT, MYSQL_REQ_OVERRIDE, MYSQL_REQ_DEFAULT
+	* Global bind point for which to show detailed information about the policies bound to the bind point.<br> Possible values = REQ_OVERRIDE, REQ_DEFAULT, OVERRIDE, DEFAULT, OTHERTCP_REQ_OVERRIDE, OTHERTCP_REQ_DEFAULT, MSSQL_REQ_OVERRIDE, MSSQL_REQ_DEFAULT, MYSQL_REQ_OVERRIDE, MYSQL_REQ_DEFAULT, ICA_REQ_OVERRIDE, ICA_REQ_DEFAULT, ORACLE_REQ_OVERRIDE, ORACLE_REQ_DEFAULT
 	* </pre>
 	*/
 	public void set_type(String type) throws Exception{
@@ -162,7 +162,7 @@ public class appflowglobal_appflowpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The bindpoint to which the policy is bound.<br> Possible values = REQ_OVERRIDE, REQ_DEFAULT, OVERRIDE, DEFAULT, OTHERTCP_REQ_OVERRIDE, OTHERTCP_REQ_DEFAULT, MSSQL_REQ_OVERRIDE, MSSQL_REQ_DEFAULT, MYSQL_REQ_OVERRIDE, MYSQL_REQ_DEFAULT
+	* Global bind point for which to show detailed information about the policies bound to the bind point.<br> Possible values = REQ_OVERRIDE, REQ_DEFAULT, OVERRIDE, DEFAULT, OTHERTCP_REQ_OVERRIDE, OTHERTCP_REQ_DEFAULT, MSSQL_REQ_OVERRIDE, MSSQL_REQ_DEFAULT, MYSQL_REQ_OVERRIDE, MYSQL_REQ_DEFAULT, ICA_REQ_OVERRIDE, ICA_REQ_DEFAULT, ORACLE_REQ_OVERRIDE, ORACLE_REQ_DEFAULT
 	* </pre>
 	*/
 	public String get_type() throws Exception {
@@ -171,7 +171,7 @@ public class appflowglobal_appflowpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Type of policy label invocation.<br> Possible values = vserver, policylabel
+	* Type of policy label to invoke. Specify vserver for a policy label associated with a virtual server, or policylabel for a user-defined policy label.<br> Possible values = vserver, policylabel
 	* </pre>
 	*/
 	public void set_labeltype(String labeltype) throws Exception{
@@ -180,7 +180,7 @@ public class appflowglobal_appflowpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Type of policy label invocation.<br> Possible values = vserver, policylabel
+	* Type of policy label to invoke. Specify vserver for a policy label associated with a virtual server, or policylabel for a user-defined policy label.<br> Possible values = vserver, policylabel
 	* </pre>
 	*/
 	public String get_labeltype() throws Exception {
@@ -383,6 +383,10 @@ public class appflowglobal_appflowpolicy_binding extends base_resource
 		public static final String MSSQL_REQ_DEFAULT = "MSSQL_REQ_DEFAULT";
 		public static final String MYSQL_REQ_OVERRIDE = "MYSQL_REQ_OVERRIDE";
 		public static final String MYSQL_REQ_DEFAULT = "MYSQL_REQ_DEFAULT";
+		public static final String ICA_REQ_OVERRIDE = "ICA_REQ_OVERRIDE";
+		public static final String ICA_REQ_DEFAULT = "ICA_REQ_DEFAULT";
+		public static final String ORACLE_REQ_OVERRIDE = "ORACLE_REQ_OVERRIDE";
+		public static final String ORACLE_REQ_DEFAULT = "ORACLE_REQ_DEFAULT";
 	}
 	public static class labeltypeEnum {
 		public static final String vserver = "vserver";

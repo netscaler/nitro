@@ -38,7 +38,9 @@ public class wipackage extends base_resource
 
 	/**
 	* <pre>
-	* The location from where to get the java runtime package. Java package can be downloaded from http://ftp.riken.jp/pub/FreeBSD/ports/amd64/packages-6-stable/java/openjdk6-b17_2.tbz or http://www.freebsdfoundation.org/cgi-bin/download?download=diablo-jdk-freebsd6.amd64.1.6.0.07.02.tbz.<br> Default value: "file://tmp/diablo-jdk-freebsd6.amd64.1.6.0.07.02.tbz"<br> Minimum length =  1<br> Maximum length =  255
+	* Complete path to the JRE tar file. 
+You can use the Diablo Latte JRE version 1.6.0-7 for 64-bit FreeBSD 6.x/amd64 platform available on the FreeBSD Foundation web site.
+Alternatively, you can use OpenJDK6 package for FreeBSD 6.x/amd63.The Java package can be downloaded from http://ftp.riken.jp/pub/FreeBSD/ports/amd64/packages-6-stable/java/openjdk6-b17_2.tbz or http://www.freebsdfoundation.org/cgi-bin/download?download=diablo-jdk-freebsd6.amd64.1.6.0.07.02.tbz.<br> Default value: "file://tmp/diablo-jdk-freebsd6.amd64.1.6.0.07.02.tbz"<br> Minimum length =  1<br> Maximum length =  255
 	* </pre>
 	*/
 	public void set_jre(String jre) throws Exception{
@@ -47,7 +49,9 @@ public class wipackage extends base_resource
 
 	/**
 	* <pre>
-	* The location from where to get the java runtime package. Java package can be downloaded from http://ftp.riken.jp/pub/FreeBSD/ports/amd64/packages-6-stable/java/openjdk6-b17_2.tbz or http://www.freebsdfoundation.org/cgi-bin/download?download=diablo-jdk-freebsd6.amd64.1.6.0.07.02.tbz.<br> Default value: "file://tmp/diablo-jdk-freebsd6.amd64.1.6.0.07.02.tbz"<br> Minimum length =  1<br> Maximum length =  255
+	* Complete path to the JRE tar file. 
+You can use the Diablo Latte JRE version 1.6.0-7 for 64-bit FreeBSD 6.x/amd64 platform available on the FreeBSD Foundation web site.
+Alternatively, you can use OpenJDK6 package for FreeBSD 6.x/amd63.The Java package can be downloaded from http://ftp.riken.jp/pub/FreeBSD/ports/amd64/packages-6-stable/java/openjdk6-b17_2.tbz or http://www.freebsdfoundation.org/cgi-bin/download?download=diablo-jdk-freebsd6.amd64.1.6.0.07.02.tbz.<br> Default value: "file://tmp/diablo-jdk-freebsd6.amd64.1.6.0.07.02.tbz"<br> Minimum length =  1<br> Maximum length =  255
 	* </pre>
 	*/
 	public String get_jre() throws Exception {
@@ -56,7 +60,7 @@ public class wipackage extends base_resource
 
 	/**
 	* <pre>
-	* The location from where to get the web interface package.<br> Default value: "http://citrix.com/downloads/nswi-1.5.tgz"<br> Minimum length =  1<br> Maximum length =  255
+	* Complete path to the Web Interface tar file for installing the Web Interface on the NetScaler appliance. This file includes Apache Tomcat Web server. The file name has the following format: nswi-<version number>.tgz (for example, nswi-1.5.tgz).<br> Default value: "http://citrix.com/downloads/nswi-1.7.tgz"<br> Minimum length =  1<br> Maximum length =  255
 	* </pre>
 	*/
 	public void set_wi(String wi) throws Exception{
@@ -65,7 +69,7 @@ public class wipackage extends base_resource
 
 	/**
 	* <pre>
-	* The location from where to get the web interface package.<br> Default value: "http://citrix.com/downloads/nswi-1.5.tgz"<br> Minimum length =  1<br> Maximum length =  255
+	* Complete path to the Web Interface tar file for installing the Web Interface on the NetScaler appliance. This file includes Apache Tomcat Web server. The file name has the following format: nswi-<version number>.tgz (for example, nswi-1.5.tgz).<br> Default value: "http://citrix.com/downloads/nswi-1.7.tgz"<br> Minimum length =  1<br> Maximum length =  255
 	* </pre>
 	*/
 	public String get_wi() throws Exception {
@@ -74,7 +78,7 @@ public class wipackage extends base_resource
 
 	/**
 	* <pre>
-	* Maximum number of WI sites that can be created; changes the amount of RAM reserved for WI usage; changing its value results in restart of Tomcat & invalidates any existing WI session.<br> Possible values = 3, 25, 50, 100, 200, 500
+	* Maximum number of Web Interface sites that can be created on the NetScaler appliance; changes the amount of RAM reserved for Web Interface usage; changing its value results in restart of Tomcat server and invalidates any existing Web Interface sessions.<br> Possible values = 3, 25, 50, 100, 200, 500
 	* </pre>
 	*/
 	public void set_maxsites(String maxsites) throws Exception{
@@ -83,7 +87,7 @@ public class wipackage extends base_resource
 
 	/**
 	* <pre>
-	* Maximum number of WI sites that can be created; changes the amount of RAM reserved for WI usage; changing its value results in restart of Tomcat & invalidates any existing WI session.<br> Possible values = 3, 25, 50, 100, 200, 500
+	* Maximum number of Web Interface sites that can be created on the NetScaler appliance; changes the amount of RAM reserved for Web Interface usage; changing its value results in restart of Tomcat server and invalidates any existing Web Interface sessions.<br> Possible values = 3, 25, 50, 100, 200, 500
 	* </pre>
 	*/
 	public String get_maxsites() throws Exception {

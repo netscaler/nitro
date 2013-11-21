@@ -33,15 +33,12 @@ class systemcollectionparam_response extends base_response
 public class systemcollectionparam extends base_resource
 {
 	private String communityname;
-	private String datapath;
-
-	//------- Read only Parameter ---------;
-
 	private String loglevel;
+	private String datapath;
 
 	/**
 	* <pre>
-	* .
+	* SNMPv1 community name for authentication.
 	* </pre>
 	*/
 	public void set_communityname(String communityname) throws Exception{
@@ -50,7 +47,7 @@ public class systemcollectionparam extends base_resource
 
 	/**
 	* <pre>
-	* .
+	* SNMPv1 community name for authentication.
 	* </pre>
 	*/
 	public String get_communityname() throws Exception {
@@ -59,7 +56,25 @@ public class systemcollectionparam extends base_resource
 
 	/**
 	* <pre>
-	* specify the data path.
+	* specify the log level. Possible values CRITICAL,WARNING,INFO,DEBUG1,DEBUG2.<br> Minimum length =  1
+	* </pre>
+	*/
+	public void set_loglevel(String loglevel) throws Exception{
+		this.loglevel = loglevel;
+	}
+
+	/**
+	* <pre>
+	* specify the log level. Possible values CRITICAL,WARNING,INFO,DEBUG1,DEBUG2.<br> Minimum length =  1
+	* </pre>
+	*/
+	public String get_loglevel() throws Exception {
+		return this.loglevel;
+	}
+
+	/**
+	* <pre>
+	* specify the data path to the database.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_datapath(String datapath) throws Exception{
@@ -68,20 +83,11 @@ public class systemcollectionparam extends base_resource
 
 	/**
 	* <pre>
-	* specify the data path.
+	* specify the data path to the database.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_datapath() throws Exception {
 		return this.datapath;
-	}
-
-	/**
-	* <pre>
-	* specify the log level. Possible values CRITICAL,WARNING,INFO,DEBUG1,DEBUG2.
-	* </pre>
-	*/
-	public String get_loglevel() throws Exception {
-		return this.loglevel;
 	}
 
 	/**
@@ -126,6 +132,7 @@ public class systemcollectionparam extends base_resource
 	public static base_response update(nitro_service client, systemcollectionparam resource) throws Exception {
 		systemcollectionparam updateresource = new systemcollectionparam();
 		updateresource.communityname = resource.communityname;
+		updateresource.loglevel = resource.loglevel;
 		updateresource.datapath = resource.datapath;
 		return updateresource.update_resource(client);
 	}
@@ -136,8 +143,6 @@ public class systemcollectionparam extends base_resource
 	*/
 	public static base_response unset(nitro_service client, systemcollectionparam resource, String[] args) throws Exception{
 		systemcollectionparam unsetresource = new systemcollectionparam();
-		unsetresource.communityname = resource.communityname;
-		unsetresource.datapath = resource.datapath;
 		return unsetresource.unset_resource(client,args);
 	}
 

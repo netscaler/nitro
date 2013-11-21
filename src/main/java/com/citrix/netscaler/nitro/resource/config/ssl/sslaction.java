@@ -65,7 +65,10 @@ public class sslaction extends base_resource
 
 	/**
 	* <pre>
-	* The name for the new SSL action.<br> Minimum length =  1
+	* Name for the SSL action. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Cannot be changed after the action is created.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my action" or 'my action').<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -74,7 +77,10 @@ public class sslaction extends base_resource
 
 	/**
 	* <pre>
-	* The name for the new SSL action.<br> Minimum length =  1
+	* Name for the SSL action. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Cannot be changed after the action is created.
+
+The following requirement applies only to the NetScaler CLI:
+If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my action" or 'my action').<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -83,9 +89,7 @@ public class sslaction extends base_resource
 
 	/**
 	* <pre>
-	* Set action to do client certificate authentication or no authentication.
-DOCLIENTAUTH: Perform client certificate authentication.
-NOCLIENTAUTH: No client certificate authentication.<br> Possible values = DOCLIENTAUTH, NOCLIENTAUTH
+	* Perform client certificate authentication.<br> Possible values = DOCLIENTAUTH, NOCLIENTAUTH
 	* </pre>
 	*/
 	public void set_clientauth(String clientauth) throws Exception{
@@ -94,9 +98,7 @@ NOCLIENTAUTH: No client certificate authentication.<br> Possible values = DOCLIE
 
 	/**
 	* <pre>
-	* Set action to do client certificate authentication or no authentication.
-DOCLIENTAUTH: Perform client certificate authentication.
-NOCLIENTAUTH: No client certificate authentication.<br> Possible values = DOCLIENTAUTH, NOCLIENTAUTH
+	* Perform client certificate authentication.<br> Possible values = DOCLIENTAUTH, NOCLIENTAUTH
 	* </pre>
 	*/
 	public String get_clientauth() throws Exception {
@@ -105,7 +107,7 @@ NOCLIENTAUTH: No client certificate authentication.<br> Possible values = DOCLIE
 
 	/**
 	* <pre>
-	* The state of insertion of the client certificate in the HTTP header when the request is sent to the web-server.<br> Possible values = ENABLED, DISABLED
+	* Insert the entire client certificate into the HTTP header of the request being sent to the web server. The certificate is inserted in ASCII (PEM) format.<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_clientcert(String clientcert) throws Exception{
@@ -114,7 +116,7 @@ NOCLIENTAUTH: No client certificate authentication.<br> Possible values = DOCLIE
 
 	/**
 	* <pre>
-	* The state of insertion of the client certificate in the HTTP header when the request is sent to the web-server.<br> Possible values = ENABLED, DISABLED
+	* Insert the entire client certificate into the HTTP header of the request being sent to the web server. The certificate is inserted in ASCII (PEM) format.<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_clientcert() throws Exception {
@@ -123,7 +125,7 @@ NOCLIENTAUTH: No client certificate authentication.<br> Possible values = DOCLIE
 
 	/**
 	* <pre>
-	* The tag name to be used while inserting the client certificate in the HTTP header.
+	* Name of the header into which to insert the client certificate.
 	* </pre>
 	*/
 	public void set_certheader(String certheader) throws Exception{
@@ -132,7 +134,7 @@ NOCLIENTAUTH: No client certificate authentication.<br> Possible values = DOCLIE
 
 	/**
 	* <pre>
-	* The tag name to be used while inserting the client certificate in the HTTP header.
+	* Name of the header into which to insert the client certificate.
 	* </pre>
 	*/
 	public String get_certheader() throws Exception {
@@ -141,7 +143,7 @@ NOCLIENTAUTH: No client certificate authentication.<br> Possible values = DOCLIE
 
 	/**
 	* <pre>
-	* The state of insertion of the client certificate's Serial Number in the HTTP header when the request is sent to the web-server.<br> Possible values = ENABLED, DISABLED
+	* Insert the entire client serial number into the HTTP header of the request being sent to the web server.<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_clientcertserialnumber(String clientcertserialnumber) throws Exception{
@@ -150,7 +152,7 @@ NOCLIENTAUTH: No client certificate authentication.<br> Possible values = DOCLIE
 
 	/**
 	* <pre>
-	* The state of insertion of the client certificate's Serial Number in the HTTP header when the request is sent to the web-server.<br> Possible values = ENABLED, DISABLED
+	* Insert the entire client serial number into the HTTP header of the request being sent to the web server.<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_clientcertserialnumber() throws Exception {
@@ -159,7 +161,7 @@ NOCLIENTAUTH: No client certificate authentication.<br> Possible values = DOCLIE
 
 	/**
 	* <pre>
-	* The tag name to be used while inserting the client certificate's Serial Number in the HTTP header.
+	* Name of the header into which to insert the client serial number.
 	* </pre>
 	*/
 	public void set_certserialheader(String certserialheader) throws Exception{
@@ -168,7 +170,7 @@ NOCLIENTAUTH: No client certificate authentication.<br> Possible values = DOCLIE
 
 	/**
 	* <pre>
-	* The tag name to be used while inserting the client certificate's Serial Number in the HTTP header.
+	* Name of the header into which to insert the client serial number.
 	* </pre>
 	*/
 	public String get_certserialheader() throws Exception {
@@ -177,7 +179,7 @@ NOCLIENTAUTH: No client certificate authentication.<br> Possible values = DOCLIE
 
 	/**
 	* <pre>
-	* The state of insertion of the client certificate's Subject Name in the HTTP header when the request is sent to the web-server.<br> Possible values = ENABLED, DISABLED
+	* Insert the client certificate subject, also known as the distinguished name (DN), into the HTTP header of the request being sent to the web server.<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_clientcertsubject(String clientcertsubject) throws Exception{
@@ -186,7 +188,7 @@ NOCLIENTAUTH: No client certificate authentication.<br> Possible values = DOCLIE
 
 	/**
 	* <pre>
-	* The state of insertion of the client certificate's Subject Name in the HTTP header when the request is sent to the web-server.<br> Possible values = ENABLED, DISABLED
+	* Insert the client certificate subject, also known as the distinguished name (DN), into the HTTP header of the request being sent to the web server.<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_clientcertsubject() throws Exception {
@@ -195,7 +197,7 @@ NOCLIENTAUTH: No client certificate authentication.<br> Possible values = DOCLIE
 
 	/**
 	* <pre>
-	* The tag name to be used while inserting the client certificate's Subject Name in the HTTP header.
+	* Name of the header into which to insert the client certificate subject.
 	* </pre>
 	*/
 	public void set_certsubjectheader(String certsubjectheader) throws Exception{
@@ -204,7 +206,7 @@ NOCLIENTAUTH: No client certificate authentication.<br> Possible values = DOCLIE
 
 	/**
 	* <pre>
-	* The tag name to be used while inserting the client certificate's Subject Name in the HTTP header.
+	* Name of the header into which to insert the client certificate subject.
 	* </pre>
 	*/
 	public String get_certsubjectheader() throws Exception {
@@ -213,7 +215,7 @@ NOCLIENTAUTH: No client certificate authentication.<br> Possible values = DOCLIE
 
 	/**
 	* <pre>
-	* The state of insertion of the client certificate's hash (signature) in the HTTP header when the request is sent to the web-server.<br> Possible values = ENABLED, DISABLED
+	* Insert the certificate signature (hash) into the HTTP header of the request being sent to the web server.<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_clientcerthash(String clientcerthash) throws Exception{
@@ -222,7 +224,7 @@ NOCLIENTAUTH: No client certificate authentication.<br> Possible values = DOCLIE
 
 	/**
 	* <pre>
-	* The state of insertion of the client certificate's hash (signature) in the HTTP header when the request is sent to the web-server.<br> Possible values = ENABLED, DISABLED
+	* Insert the certificate signature (hash) into the HTTP header of the request being sent to the web server.<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_clientcerthash() throws Exception {
@@ -231,7 +233,7 @@ NOCLIENTAUTH: No client certificate authentication.<br> Possible values = DOCLIE
 
 	/**
 	* <pre>
-	* The tag name to be used while inserting the client certificate's hash (signature) in the HTTP header.
+	* Name of the header into which to insert the client certificate signature (hash).
 	* </pre>
 	*/
 	public void set_certhashheader(String certhashheader) throws Exception{
@@ -240,7 +242,7 @@ NOCLIENTAUTH: No client certificate authentication.<br> Possible values = DOCLIE
 
 	/**
 	* <pre>
-	* The tag name to be used while inserting the client certificate's hash (signature) in the HTTP header.
+	* Name of the header into which to insert the client certificate signature (hash).
 	* </pre>
 	*/
 	public String get_certhashheader() throws Exception {
@@ -249,7 +251,7 @@ NOCLIENTAUTH: No client certificate authentication.<br> Possible values = DOCLIE
 
 	/**
 	* <pre>
-	* The state of insertion of the client certificate's Issuer Name in the HTTP header when the request is sent to the web-server.<br> Possible values = ENABLED, DISABLED
+	* Insert the certificate issuer details into the HTTP header of the request being sent to the web server.<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_clientcertissuer(String clientcertissuer) throws Exception{
@@ -258,7 +260,7 @@ NOCLIENTAUTH: No client certificate authentication.<br> Possible values = DOCLIE
 
 	/**
 	* <pre>
-	* The state of insertion of the client certificate's Issuer Name in the HTTP header when the request is sent to the web-server.<br> Possible values = ENABLED, DISABLED
+	* Insert the certificate issuer details into the HTTP header of the request being sent to the web server.<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_clientcertissuer() throws Exception {
@@ -267,7 +269,7 @@ NOCLIENTAUTH: No client certificate authentication.<br> Possible values = DOCLIE
 
 	/**
 	* <pre>
-	* The tag name to be used while inserting the certificate's Issuer Name in the HTTP header.
+	* Name of the header into which to insert the client certificate issuer details.
 	* </pre>
 	*/
 	public void set_certissuerheader(String certissuerheader) throws Exception{
@@ -276,7 +278,7 @@ NOCLIENTAUTH: No client certificate authentication.<br> Possible values = DOCLIE
 
 	/**
 	* <pre>
-	* The tag name to be used while inserting the certificate's Issuer Name in the HTTP header.
+	* Name of the header into which to insert the client certificate issuer details.
 	* </pre>
 	*/
 	public String get_certissuerheader() throws Exception {
@@ -285,7 +287,7 @@ NOCLIENTAUTH: No client certificate authentication.<br> Possible values = DOCLIE
 
 	/**
 	* <pre>
-	* The state of insertion of the Session-ID in the HTTP header when the request is sent to the web-server.<br> Possible values = ENABLED, DISABLED
+	* Insert the SSL session ID into the HTTP header of the request being sent to the web server. Every SSL connection that the client and the NetScaler share has a unique ID that identifies the specific connection.<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_sessionid(String sessionid) throws Exception{
@@ -294,7 +296,7 @@ NOCLIENTAUTH: No client certificate authentication.<br> Possible values = DOCLIE
 
 	/**
 	* <pre>
-	* The state of insertion of the Session-ID in the HTTP header when the request is sent to the web-server.<br> Possible values = ENABLED, DISABLED
+	* Insert the SSL session ID into the HTTP header of the request being sent to the web server. Every SSL connection that the client and the NetScaler share has a unique ID that identifies the specific connection.<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_sessionid() throws Exception {
@@ -303,7 +305,7 @@ NOCLIENTAUTH: No client certificate authentication.<br> Possible values = DOCLIE
 
 	/**
 	* <pre>
-	* The tag name to be used while inserting the Session-ID in the HTTP header.
+	* Name of the header into which to insert the Session ID.
 	* </pre>
 	*/
 	public void set_sessionidheader(String sessionidheader) throws Exception{
@@ -312,7 +314,7 @@ NOCLIENTAUTH: No client certificate authentication.<br> Possible values = DOCLIE
 
 	/**
 	* <pre>
-	* The tag name to be used while inserting the Session-ID in the HTTP header.
+	* Name of the header into which to insert the Session ID.
 	* </pre>
 	*/
 	public String get_sessionidheader() throws Exception {
@@ -321,7 +323,7 @@ NOCLIENTAUTH: No client certificate authentication.<br> Possible values = DOCLIE
 
 	/**
 	* <pre>
-	* The state of insertion of the cipher details in the HTTP header when the request is sent to the web-server.<br> Possible values = ENABLED, DISABLED
+	* Insert the cipher suite that the client and the NetScaler appliance negotiated for the SSL session into the HTTP header of the request being sent to the web server. The appliance inserts the cipher-suite name, SSL protocol, export or non-export string, and cipher strength bit, depending on the type of browser connecting to the SSL virtual server or service (for example, Cipher-Suite: RC4- MD5 SSLv3 Non-Export 128-bit).<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_cipher(String cipher) throws Exception{
@@ -330,7 +332,7 @@ NOCLIENTAUTH: No client certificate authentication.<br> Possible values = DOCLIE
 
 	/**
 	* <pre>
-	* The state of insertion of the cipher details in the HTTP header when the request is sent to the web-server.<br> Possible values = ENABLED, DISABLED
+	* Insert the cipher suite that the client and the NetScaler appliance negotiated for the SSL session into the HTTP header of the request being sent to the web server. The appliance inserts the cipher-suite name, SSL protocol, export or non-export string, and cipher strength bit, depending on the type of browser connecting to the SSL virtual server or service (for example, Cipher-Suite: RC4- MD5 SSLv3 Non-Export 128-bit).<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_cipher() throws Exception {
@@ -339,7 +341,7 @@ NOCLIENTAUTH: No client certificate authentication.<br> Possible values = DOCLIE
 
 	/**
 	* <pre>
-	* The tag name to be used while inserting the cipher details in the HTTP header.
+	* Name of the header into which to insert the name of the cipher suite.
 	* </pre>
 	*/
 	public void set_cipherheader(String cipherheader) throws Exception{
@@ -348,7 +350,7 @@ NOCLIENTAUTH: No client certificate authentication.<br> Possible values = DOCLIE
 
 	/**
 	* <pre>
-	* The tag name to be used while inserting the cipher details in the HTTP header.
+	* Name of the header into which to insert the name of the cipher suite.
 	* </pre>
 	*/
 	public String get_cipherheader() throws Exception {
@@ -357,7 +359,7 @@ NOCLIENTAUTH: No client certificate authentication.<br> Possible values = DOCLIE
 
 	/**
 	* <pre>
-	* The state of insertion of the client certificate's Not-Before date in the HTTP header when the request is sent to the web-server.<br> Possible values = ENABLED, DISABLED
+	* Insert the date from which the certificate is valid into the HTTP header of the request being sent to the web server. Every certificate is configured with the date and time from which it is valid.<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_clientcertnotbefore(String clientcertnotbefore) throws Exception{
@@ -366,7 +368,7 @@ NOCLIENTAUTH: No client certificate authentication.<br> Possible values = DOCLIE
 
 	/**
 	* <pre>
-	* The state of insertion of the client certificate's Not-Before date in the HTTP header when the request is sent to the web-server.<br> Possible values = ENABLED, DISABLED
+	* Insert the date from which the certificate is valid into the HTTP header of the request being sent to the web server. Every certificate is configured with the date and time from which it is valid.<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_clientcertnotbefore() throws Exception {
@@ -375,7 +377,7 @@ NOCLIENTAUTH: No client certificate authentication.<br> Possible values = DOCLIE
 
 	/**
 	* <pre>
-	* The tag name to be used while inserting the client certificate's Not-Before date in the HTTP header.
+	* Name of the header into which to insert the date and time from which the certificate is valid.
 	* </pre>
 	*/
 	public void set_certnotbeforeheader(String certnotbeforeheader) throws Exception{
@@ -384,7 +386,7 @@ NOCLIENTAUTH: No client certificate authentication.<br> Possible values = DOCLIE
 
 	/**
 	* <pre>
-	* The tag name to be used while inserting the client certificate's Not-Before date in the HTTP header.
+	* Name of the header into which to insert the date and time from which the certificate is valid.
 	* </pre>
 	*/
 	public String get_certnotbeforeheader() throws Exception {
@@ -393,7 +395,7 @@ NOCLIENTAUTH: No client certificate authentication.<br> Possible values = DOCLIE
 
 	/**
 	* <pre>
-	* The state of insertion of the client certificate's Not-After in the HTTP header when the request is sent to the web-server.<br> Possible values = ENABLED, DISABLED
+	* Insert the date of expiry of the certificate into the HTTP header of the request being sent to the web server. Every certificate is configured with the date and time at which the certificate expires.<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_clientcertnotafter(String clientcertnotafter) throws Exception{
@@ -402,7 +404,7 @@ NOCLIENTAUTH: No client certificate authentication.<br> Possible values = DOCLIE
 
 	/**
 	* <pre>
-	* The state of insertion of the client certificate's Not-After in the HTTP header when the request is sent to the web-server.<br> Possible values = ENABLED, DISABLED
+	* Insert the date of expiry of the certificate into the HTTP header of the request being sent to the web server. Every certificate is configured with the date and time at which the certificate expires.<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_clientcertnotafter() throws Exception {
@@ -411,7 +413,7 @@ NOCLIENTAUTH: No client certificate authentication.<br> Possible values = DOCLIE
 
 	/**
 	* <pre>
-	* The tag name to be used while inserting the client certificate's Not-After date in the HTTP header.
+	* Name of the header into which to insert the certificate's expiry date.
 	* </pre>
 	*/
 	public void set_certnotafterheader(String certnotafterheader) throws Exception{
@@ -420,7 +422,7 @@ NOCLIENTAUTH: No client certificate authentication.<br> Possible values = DOCLIE
 
 	/**
 	* <pre>
-	* The tag name to be used while inserting the client certificate's Not-After date in the HTTP header.
+	* Name of the header into which to insert the certificate's expiry date.
 	* </pre>
 	*/
 	public String get_certnotafterheader() throws Exception {
@@ -429,9 +431,7 @@ NOCLIENTAUTH: No client certificate authentication.<br> Possible values = DOCLIE
 
 	/**
 	* <pre>
-	* The  state  of  Outlook  Web-Access support. If the system is in front of an Outlook Web Access (OWA) server, a special header field, 'FRONT-END-HTTPS:  ON', needs to be inserted in the HTTP requests going to the OWA server.
-
-Note: This  parameter is required as the SSL requests (HTTPS) arrives at the back-end Exchange-2000 server on the configured HTTP port (80) instead of arriving at the front-end Exchange 2000 server.<br> Possible values = ENABLED, DISABLED
+	* If the appliance is in front of an Outlook Web Access (OWA) server, insert a special header field, FRONT-END-HTTPS: ON, into the HTTP requests going to the OWA server. This header communicates to the server that the transaction is HTTPS and not HTTP.<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_owasupport(String owasupport) throws Exception{
@@ -440,9 +440,7 @@ Note: This  parameter is required as the SSL requests (HTTPS) arrives at the bac
 
 	/**
 	* <pre>
-	* The  state  of  Outlook  Web-Access support. If the system is in front of an Outlook Web Access (OWA) server, a special header field, 'FRONT-END-HTTPS:  ON', needs to be inserted in the HTTP requests going to the OWA server.
-
-Note: This  parameter is required as the SSL requests (HTTPS) arrives at the back-end Exchange-2000 server on the configured HTTP port (80) instead of arriving at the front-end Exchange 2000 server.<br> Possible values = ENABLED, DISABLED
+	* If the appliance is in front of an Outlook Web Access (OWA) server, insert a special header field, FRONT-END-HTTPS: ON, into the HTTP requests going to the OWA server. This header communicates to the server that the transaction is HTTPS and not HTTP.<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_owasupport() throws Exception {

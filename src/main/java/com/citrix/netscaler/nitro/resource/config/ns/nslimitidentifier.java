@@ -43,7 +43,7 @@ public class nslimitidentifier extends base_resource
 
 	//------- Read only Parameter ---------;
 
-	private Long flags;
+	private String ngname;
 	private Long hits;
 	private Long drop;
 	private String[] rule;
@@ -56,7 +56,7 @@ public class nslimitidentifier extends base_resource
 
 	/**
 	* <pre>
-	* The name of rate limit identifier.
+	* Name for a rate limit identifier. Must begin with an ASCII letter or underscore (_) character, and must consist only of ASCII alphanumeric or underscore characters. Reserved words must not be used.
 	* </pre>
 	*/
 	public void set_limitidentifier(String limitidentifier) throws Exception{
@@ -65,7 +65,7 @@ public class nslimitidentifier extends base_resource
 
 	/**
 	* <pre>
-	* The name of rate limit identifier.
+	* Name for a rate limit identifier. Must begin with an ASCII letter or underscore (_) character, and must consist only of ASCII alphanumeric or underscore characters. Reserved words must not be used.
 	* </pre>
 	*/
 	public String get_limitidentifier() throws Exception {
@@ -74,7 +74,8 @@ public class nslimitidentifier extends base_resource
 
 	/**
 	* <pre>
-	* The maximum number of requests that are allowed in the given timeslice when requests are tracked per timeslice. When connections (-mode CONNECTION)are tracked its the total number of connections that would be let through.<br> Default value: 1<br> Minimum value =  1
+	* Maximum number of requests that are allowed in the given timeslice when requests (mode is set as REQUEST_RATE) are tracked per timeslice. 
+When connections (mode is set as CONNECTION) are tracked, it is the total number of connections that would be let through.<br> Default value: 1<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_threshold(long threshold) throws Exception {
@@ -83,7 +84,8 @@ public class nslimitidentifier extends base_resource
 
 	/**
 	* <pre>
-	* The maximum number of requests that are allowed in the given timeslice when requests are tracked per timeslice. When connections (-mode CONNECTION)are tracked its the total number of connections that would be let through.<br> Default value: 1<br> Minimum value =  1
+	* Maximum number of requests that are allowed in the given timeslice when requests (mode is set as REQUEST_RATE) are tracked per timeslice. 
+When connections (mode is set as CONNECTION) are tracked, it is the total number of connections that would be let through.<br> Default value: 1<br> Minimum value =  1
 	* </pre>
 	*/
 	public void set_threshold(Long threshold) throws Exception{
@@ -92,7 +94,8 @@ public class nslimitidentifier extends base_resource
 
 	/**
 	* <pre>
-	* The maximum number of requests that are allowed in the given timeslice when requests are tracked per timeslice. When connections (-mode CONNECTION)are tracked its the total number of connections that would be let through.<br> Default value: 1<br> Minimum value =  1
+	* Maximum number of requests that are allowed in the given timeslice when requests (mode is set as REQUEST_RATE) are tracked per timeslice. 
+When connections (mode is set as CONNECTION) are tracked, it is the total number of connections that would be let through.<br> Default value: 1<br> Minimum value =  1
 	* </pre>
 	*/
 	public Long get_threshold() throws Exception {
@@ -101,7 +104,7 @@ public class nslimitidentifier extends base_resource
 
 	/**
 	* <pre>
-	* Defines the time interval in msecs specified in multiples of 10 msec during which the requests are tracked to see if they cross the threshold. It is used only when the mode is REQUEST_RATE while tracking request rate and for defining the trap timeslice.<br> Default value: 1000<br> Minimum value =  10
+	* Time interval, in milliseconds, specified in multiples of 10, during which requests are tracked to check if they cross the threshold. This argument is needed only when the mode is set to REQUEST_RATE.<br> Default value: 1000<br> Minimum value =  10
 	* </pre>
 	*/
 	public void set_timeslice(long timeslice) throws Exception {
@@ -110,7 +113,7 @@ public class nslimitidentifier extends base_resource
 
 	/**
 	* <pre>
-	* Defines the time interval in msecs specified in multiples of 10 msec during which the requests are tracked to see if they cross the threshold. It is used only when the mode is REQUEST_RATE while tracking request rate and for defining the trap timeslice.<br> Default value: 1000<br> Minimum value =  10
+	* Time interval, in milliseconds, specified in multiples of 10, during which requests are tracked to check if they cross the threshold. This argument is needed only when the mode is set to REQUEST_RATE.<br> Default value: 1000<br> Minimum value =  10
 	* </pre>
 	*/
 	public void set_timeslice(Long timeslice) throws Exception{
@@ -119,7 +122,7 @@ public class nslimitidentifier extends base_resource
 
 	/**
 	* <pre>
-	* Defines the time interval in msecs specified in multiples of 10 msec during which the requests are tracked to see if they cross the threshold. It is used only when the mode is REQUEST_RATE while tracking request rate and for defining the trap timeslice.<br> Default value: 1000<br> Minimum value =  10
+	* Time interval, in milliseconds, specified in multiples of 10, during which requests are tracked to check if they cross the threshold. This argument is needed only when the mode is set to REQUEST_RATE.<br> Default value: 1000<br> Minimum value =  10
 	* </pre>
 	*/
 	public Long get_timeslice() throws Exception {
@@ -128,27 +131,26 @@ public class nslimitidentifier extends base_resource
 
 	/**
 	* <pre>
-	* Defines what is tracked - request rate, connections or none. Request rate is used to track requests/timeslice, connections will track active transactions. For DNS please use the mode as either NONE or REQUEST_RATE as CONNECTION is not supported.
-Eg:  1) add limitidentifier limit_req -mode request_rate
-        -limitType smooth -timeslice 1000 -Threshold 2000
-        -trapsInTimeSlice 200
-        will permit 20 requests in 10 ms and 2 Traps in 10 ms
-     2) set  limitidentifier limit_req -timeslice 1000
-        -Threshold 5000 -limitType smooTH
-        will permit 50 Requests in 10 ms
-     3) set limitidentifier limit_req -mode smooth -timeslice
-        2000 -Threshold 50
-        will permit 1  request  in  40 ms
-     4) set limitidentifier limit_req -timeslice 1000
-        -Threshold 5 -limitType smooth -trapsInTimeSlice 8
-        will permit 1 request in 200 ms and 1 Trap in 130 ms
-     5) set limitidentifier limit_req  -timeslice 1000
-        -Threshold 5000 -limitType BURSTY
-        will permit 5000 Requests in 1000 ms and 200 Traps in
-        1000 ms
+	* Defines the type of traffic to be tracked.
+* REQUEST_RATE - Tracks requests/timeslice.
+* CONNECTION - Tracks active transactions. 
 
-As you see in the above examples smooth mode is used when one wants the permitted number of requests in a given interval of time to be spread evenly across the timeslice while bursty is used when one is ok to let the permitted number of requests to exhaust the quota anytime within the timeslice.
-								.<br> Default value: PEMGMT_RLT_MODE_REQ_RATE<br> Possible values = CONNECTION, REQUEST_RATE, NONE
+Examples 
+
+1. To permit 20 requests in 10 ms and 2 traps in 10 ms:
+add limitidentifier limit_req -mode request_rate -limitType smooth -timeslice 1000 -Threshold 2000 -trapsInTimeSlice 200
+                      
+2. To permit 50 requests in 10 ms:
+set  limitidentifier limit_req -mode request_rate -timeslice 1000 -Threshold 5000 -limitType smooth
+                      
+3. To permit 1 request in 40 ms:
+set limitidentifier limit_req -mode request_rate -timeslice 2000 -Threshold 50 -limitType smooth
+
+4. To permit 1 request in 200 ms and 1 trap in 130 ms:
+set limitidentifier limit_req -mode request_rate -timeslice 1000 -Threshold 5 -limitType smooth -trapsInTimeSlice 8
+                      
+5. To permit 5000 requests in 1000 ms and 200 traps in 1000 ms:
+set limitidentifier limit_req  -mode request_rate -timeslice 1000 -Threshold 5000 -limitType BURSTY.<br> Default value: REQUEST_RATE<br> Possible values = CONNECTION, REQUEST_RATE, NONE
 	* </pre>
 	*/
 	public void set_mode(String mode) throws Exception{
@@ -157,27 +159,26 @@ As you see in the above examples smooth mode is used when one wants the permitte
 
 	/**
 	* <pre>
-	* Defines what is tracked - request rate, connections or none. Request rate is used to track requests/timeslice, connections will track active transactions. For DNS please use the mode as either NONE or REQUEST_RATE as CONNECTION is not supported.
-Eg:  1) add limitidentifier limit_req -mode request_rate
-        -limitType smooth -timeslice 1000 -Threshold 2000
-        -trapsInTimeSlice 200
-        will permit 20 requests in 10 ms and 2 Traps in 10 ms
-     2) set  limitidentifier limit_req -timeslice 1000
-        -Threshold 5000 -limitType smooTH
-        will permit 50 Requests in 10 ms
-     3) set limitidentifier limit_req -mode smooth -timeslice
-        2000 -Threshold 50
-        will permit 1  request  in  40 ms
-     4) set limitidentifier limit_req -timeslice 1000
-        -Threshold 5 -limitType smooth -trapsInTimeSlice 8
-        will permit 1 request in 200 ms and 1 Trap in 130 ms
-     5) set limitidentifier limit_req  -timeslice 1000
-        -Threshold 5000 -limitType BURSTY
-        will permit 5000 Requests in 1000 ms and 200 Traps in
-        1000 ms
+	* Defines the type of traffic to be tracked.
+* REQUEST_RATE - Tracks requests/timeslice.
+* CONNECTION - Tracks active transactions. 
 
-As you see in the above examples smooth mode is used when one wants the permitted number of requests in a given interval of time to be spread evenly across the timeslice while bursty is used when one is ok to let the permitted number of requests to exhaust the quota anytime within the timeslice.
-								.<br> Default value: PEMGMT_RLT_MODE_REQ_RATE<br> Possible values = CONNECTION, REQUEST_RATE, NONE
+Examples 
+
+1. To permit 20 requests in 10 ms and 2 traps in 10 ms:
+add limitidentifier limit_req -mode request_rate -limitType smooth -timeslice 1000 -Threshold 2000 -trapsInTimeSlice 200
+                      
+2. To permit 50 requests in 10 ms:
+set  limitidentifier limit_req -mode request_rate -timeslice 1000 -Threshold 5000 -limitType smooth
+                      
+3. To permit 1 request in 40 ms:
+set limitidentifier limit_req -mode request_rate -timeslice 2000 -Threshold 50 -limitType smooth
+
+4. To permit 1 request in 200 ms and 1 trap in 130 ms:
+set limitidentifier limit_req -mode request_rate -timeslice 1000 -Threshold 5 -limitType smooth -trapsInTimeSlice 8
+                      
+5. To permit 5000 requests in 1000 ms and 200 traps in 1000 ms:
+set limitidentifier limit_req  -mode request_rate -timeslice 1000 -Threshold 5000 -limitType BURSTY.<br> Default value: REQUEST_RATE<br> Possible values = CONNECTION, REQUEST_RATE, NONE
 	* </pre>
 	*/
 	public String get_mode() throws Exception {
@@ -186,7 +187,10 @@ As you see in the above examples smooth mode is used when one wants the permitte
 
 	/**
 	* <pre>
-	* Specifies if it is a smooth or bursty request type. If the smooth mode of operation is chosen requests are tracked at the rate of 10 ms. To be specified with -mode REQUEST_RATE .<br> Default value: PEMGMT_RLT_REQ_RATE_TYPE_BURSTY<br> Possible values = BURSTY, SMOOTH
+	* Smooth or bursty request type.
+* SMOOTH - When you want the permitted number of requests in a given interval of time to be spread evenly across the timeslice
+* BURSTY - When you want the permitted number of requests to exhaust the quota anytime within the timeslice.
+This argument is needed only when the mode is set to REQUEST_RATE.<br> Default value: BURSTY<br> Possible values = BURSTY, SMOOTH
 	* </pre>
 	*/
 	public void set_limittype(String limittype) throws Exception{
@@ -195,7 +199,10 @@ As you see in the above examples smooth mode is used when one wants the permitte
 
 	/**
 	* <pre>
-	* Specifies if it is a smooth or bursty request type. If the smooth mode of operation is chosen requests are tracked at the rate of 10 ms. To be specified with -mode REQUEST_RATE .<br> Default value: PEMGMT_RLT_REQ_RATE_TYPE_BURSTY<br> Possible values = BURSTY, SMOOTH
+	* Smooth or bursty request type.
+* SMOOTH - When you want the permitted number of requests in a given interval of time to be spread evenly across the timeslice
+* BURSTY - When you want the permitted number of requests to exhaust the quota anytime within the timeslice.
+This argument is needed only when the mode is set to REQUEST_RATE.<br> Default value: BURSTY<br> Possible values = BURSTY, SMOOTH
 	* </pre>
 	*/
 	public String get_limittype() throws Exception {
@@ -204,7 +211,7 @@ As you see in the above examples smooth mode is used when one wants the permitte
 
 	/**
 	* <pre>
-	* The name of rate limit selector.<br> Minimum length =  1
+	* Name of the rate limit selector. If this argument is NULL, rate limiting will be applied on all traffic received by the virtual server or the NetScaler (depending on whether the limit identifier is bound to a virtual server or globally) without any filtering.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_selectorname(String selectorname) throws Exception{
@@ -213,7 +220,7 @@ As you see in the above examples smooth mode is used when one wants the permitte
 
 	/**
 	* <pre>
-	* The name of rate limit selector.<br> Minimum length =  1
+	* Name of the rate limit selector. If this argument is NULL, rate limiting will be applied on all traffic received by the virtual server or the NetScaler (depending on whether the limit identifier is bound to a virtual server or globally) without any filtering.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_selectorname() throws Exception {
@@ -222,7 +229,7 @@ As you see in the above examples smooth mode is used when one wants the permitte
 
 	/**
 	* <pre>
-	* The maximum bandwidth permitted in kbps.<br> Minimum value =  0<br> Maximum value =  4294967287
+	* Maximum bandwidth permitted, in kbps.<br> Minimum value =  0<br> Maximum value =  4294967287
 	* </pre>
 	*/
 	public void set_maxbandwidth(long maxbandwidth) throws Exception {
@@ -231,7 +238,7 @@ As you see in the above examples smooth mode is used when one wants the permitte
 
 	/**
 	* <pre>
-	* The maximum bandwidth permitted in kbps.<br> Minimum value =  0<br> Maximum value =  4294967287
+	* Maximum bandwidth permitted, in kbps.<br> Minimum value =  0<br> Maximum value =  4294967287
 	* </pre>
 	*/
 	public void set_maxbandwidth(Long maxbandwidth) throws Exception{
@@ -240,7 +247,7 @@ As you see in the above examples smooth mode is used when one wants the permitte
 
 	/**
 	* <pre>
-	* The maximum bandwidth permitted in kbps.<br> Minimum value =  0<br> Maximum value =  4294967287
+	* Maximum bandwidth permitted, in kbps.<br> Minimum value =  0<br> Maximum value =  4294967287
 	* </pre>
 	*/
 	public Long get_maxbandwidth() throws Exception {
@@ -249,7 +256,7 @@ As you see in the above examples smooth mode is used when one wants the permitte
 
 	/**
 	* <pre>
-	* Number of traps that would be sent in the timeslice configured. A value of zero means that the traps are disabled.<br> Minimum value =  0<br> Maximum value =  65535
+	* Number of traps to be sent in the timeslice configured. A value of 0 indicates that traps are disabled.<br> Minimum value =  0<br> Maximum value =  65535
 	* </pre>
 	*/
 	public void set_trapsintimeslice(long trapsintimeslice) throws Exception {
@@ -258,7 +265,7 @@ As you see in the above examples smooth mode is used when one wants the permitte
 
 	/**
 	* <pre>
-	* Number of traps that would be sent in the timeslice configured. A value of zero means that the traps are disabled.<br> Minimum value =  0<br> Maximum value =  65535
+	* Number of traps to be sent in the timeslice configured. A value of 0 indicates that traps are disabled.<br> Minimum value =  0<br> Maximum value =  65535
 	* </pre>
 	*/
 	public void set_trapsintimeslice(Long trapsintimeslice) throws Exception{
@@ -267,7 +274,7 @@ As you see in the above examples smooth mode is used when one wants the permitte
 
 	/**
 	* <pre>
-	* Number of traps that would be sent in the timeslice configured. A value of zero means that the traps are disabled.<br> Minimum value =  0<br> Maximum value =  65535
+	* Number of traps to be sent in the timeslice configured. A value of 0 indicates that traps are disabled.<br> Minimum value =  0<br> Maximum value =  65535
 	* </pre>
 	*/
 	public Long get_trapsintimeslice() throws Exception {
@@ -276,11 +283,11 @@ As you see in the above examples smooth mode is used when one wants the permitte
 
 	/**
 	* <pre>
-	* This is used internally to identify ip addresses returned.
+	* Nodegroup name to which this identifier belongs to.
 	* </pre>
 	*/
-	public Long get_flags() throws Exception {
-		return this.flags;
+	public String get_ngname() throws Exception {
+		return this.ngname;
 	}
 
 	/**
@@ -521,26 +528,9 @@ As you see in the above examples smooth mode is used when one wants the permitte
 	* Use this API to unset the properties of nslimitidentifier resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String limitidentifier, String args[]) throws Exception {
-		nslimitidentifier unsetresource = new nslimitidentifier();
-		unsetresource.limitidentifier = limitidentifier;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of nslimitidentifier resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, nslimitidentifier resource, String[] args) throws Exception{
 		nslimitidentifier unsetresource = new nslimitidentifier();
 		unsetresource.limitidentifier = resource.limitidentifier;
-		unsetresource.selectorname = resource.selectorname;
-		unsetresource.threshold = resource.threshold;
-		unsetresource.timeslice = resource.timeslice;
-		unsetresource.mode = resource.mode;
-		unsetresource.limittype = resource.limittype;
-		unsetresource.maxbandwidth = resource.maxbandwidth;
-		unsetresource.trapsintimeslice = resource.trapsintimeslice;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -572,13 +562,6 @@ As you see in the above examples smooth mode is used when one wants the permitte
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new nslimitidentifier();
 				unsetresources[i].limitidentifier = resources[i].limitidentifier;
-				unsetresources[i].selectorname = resources[i].selectorname;
-				unsetresources[i].threshold = resources[i].threshold;
-				unsetresources[i].timeslice = resources[i].timeslice;
-				unsetresources[i].mode = resources[i].mode;
-				unsetresources[i].limittype = resources[i].limittype;
-				unsetresources[i].maxbandwidth = resources[i].maxbandwidth;
-				unsetresources[i].trapsintimeslice = resources[i].trapsintimeslice;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}

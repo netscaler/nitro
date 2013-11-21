@@ -35,13 +35,12 @@ public class dnsnsecrec extends base_resource
 	//------- Read only Parameter ---------;
 
 	private String nextnsec;
-	private char[] nsecbitarray;
 	private String[] nextrecs;
 	private Long __count;
 
 	/**
 	* <pre>
-	* The domain name whose info is to be displayed.<br> Minimum length =  1
+	* Name of the domain.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_hostname(String hostname) throws Exception{
@@ -50,7 +49,7 @@ public class dnsnsecrec extends base_resource
 
 	/**
 	* <pre>
-	* The domain name whose info is to be displayed.<br> Minimum length =  1
+	* Name of the domain.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_hostname() throws Exception {
@@ -59,10 +58,10 @@ public class dnsnsecrec extends base_resource
 
 	/**
 	* <pre>
-	* NSEC record type. The type can take 3 values:
-ADNS -  If this is specified, all of the authoritative NSEC records will be displayed.
-PROXY - If this is specified, all of the proxy NSEC records will be displayed.
-ALL  -  If this is specified, all of the NSEC records will be displayed.<br> Possible values = ALL, ADNS, PROXY
+	* Type of records to display. Available settings function as follows:
+* ADNS - Display all authoritative address records.
+* PROXY - Display all proxy address records.
+* ALL - Display all address records.<br> Possible values = ALL, ADNS, PROXY
 	* </pre>
 	*/
 	public void set_type(String type) throws Exception{
@@ -71,10 +70,10 @@ ALL  -  If this is specified, all of the NSEC records will be displayed.<br> Pos
 
 	/**
 	* <pre>
-	* NSEC record type. The type can take 3 values:
-ADNS -  If this is specified, all of the authoritative NSEC records will be displayed.
-PROXY - If this is specified, all of the proxy NSEC records will be displayed.
-ALL  -  If this is specified, all of the NSEC records will be displayed.<br> Possible values = ALL, ADNS, PROXY
+	* Type of records to display. Available settings function as follows:
+* ADNS - Display all authoritative address records.
+* PROXY - Display all proxy address records.
+* ALL - Display all address records.<br> Possible values = ALL, ADNS, PROXY
 	* </pre>
 	*/
 	public String get_type() throws Exception {
@@ -88,15 +87,6 @@ ALL  -  If this is specified, all of the NSEC records will be displayed.<br> Pos
 	*/
 	public String get_nextnsec() throws Exception {
 		return this.nextnsec;
-	}
-
-	/**
-	* <pre>
-	* Bit array representing the different record types configured for the domain name.
-	* </pre>
-	*/
-	public char[] get_nsecbitarray() throws Exception {
-		return this.nsecbitarray;
 	}
 
 	/**

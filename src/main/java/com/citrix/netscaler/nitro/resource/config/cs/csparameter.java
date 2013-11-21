@@ -36,7 +36,7 @@ public class csparameter extends base_resource
 
 	/**
 	* <pre>
-	* enable/disable state update.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Specifies whether the virtual server checks the attached load balancing server for state information.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_stateupdate(String stateupdate) throws Exception{
@@ -45,7 +45,7 @@ public class csparameter extends base_resource
 
 	/**
 	* <pre>
-	* enable/disable state update.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Specifies whether the virtual server checks the attached load balancing server for state information.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_stateupdate() throws Exception {
@@ -103,7 +103,6 @@ public class csparameter extends base_resource
 	*/
 	public static base_response unset(nitro_service client, csparameter resource, String[] args) throws Exception{
 		csparameter unsetresource = new csparameter();
-		unsetresource.stateupdate = resource.stateupdate;
 		return unsetresource.unset_resource(client,args);
 	}
 

@@ -88,7 +88,7 @@ public class sslpolicylabel_sslpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The SSL policy name.
+	* Name of the SSL policy to bind to the policy label.
 	* </pre>
 	*/
 	public void set_policyname(String policyname) throws Exception{
@@ -97,7 +97,7 @@ public class sslpolicylabel_sslpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The SSL policy name.
+	* Name of the SSL policy to bind to the policy label.
 	* </pre>
 	*/
 	public String get_policyname() throws Exception {
@@ -124,7 +124,7 @@ public class sslpolicylabel_sslpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Name of the SSL policy label.
+	* Name of the SSL policy label to which to bind policies.
 	* </pre>
 	*/
 	public void set_labelname(String labelname) throws Exception{
@@ -133,7 +133,7 @@ public class sslpolicylabel_sslpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Name of the SSL policy label.
+	* Name of the SSL policy label to which to bind policies.
 	* </pre>
 	*/
 	public String get_labelname() throws Exception {
@@ -160,7 +160,7 @@ public class sslpolicylabel_sslpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Invoke flag.
+	* Invoke policies bound to a policy label. After the invoked policies are evaluated, the flow returns to the policy with the next priority.
 	* </pre>
 	*/
 	public void set_invoke(boolean invoke) throws Exception {
@@ -169,7 +169,7 @@ public class sslpolicylabel_sslpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Invoke flag.
+	* Invoke policies bound to a policy label. After the invoked policies are evaluated, the flow returns to the policy with the next priority.
 	* </pre>
 	*/
 	public void set_invoke(Boolean invoke) throws Exception{
@@ -178,7 +178,7 @@ public class sslpolicylabel_sslpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Invoke flag.
+	* Invoke policies bound to a policy label. After the invoked policies are evaluated, the flow returns to the policy with the next priority.
 	* </pre>
 	*/
 	public Boolean get_invoke() throws Exception {

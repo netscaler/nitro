@@ -35,11 +35,11 @@ public class sslvserver_sslpolicy_binding extends base_resource
 	private String policyname;
 	private Long priority;
 	private Long polinherit;
-	private String vservername;
 	private String gotopriorityexpression;
 	private Boolean invoke;
 	private String labeltype;
 	private String labelname;
+	private String vservername;
 	private Long __count;
 
 	/**
@@ -108,16 +108,6 @@ public class sslvserver_sslpolicy_binding extends base_resource
 	/**
 	* <pre>
 	* Expression specifying the priority of the next policy which will get evaluated if the current policy rule evaluates to TRUE.
-	o	If gotoPriorityExpression is not present or if it is equal to END then the policy bank evaluation ends here
-	o	Else if the gotoPriorityExpression is equal to NEXT then the next policy in the priority order is evaluated.
-	o	Else gotoPriorityExpression is evaluated. The result of gotoPriorityExpression (which has to be a number) is processed as follows:
-		-	An UNDEF event is triggered if
-			.	gotoPriorityExpression cannot be evaluated
-			.	gotoPriorityExpression evaluates to number which is smaller than the maximum priority in the policy bank but is not same as any policy's priority
-			.	gotoPriorityExpression evaluates to a priority that is smaller than the current policy's priority
-		-	If the gotoPriorityExpression evaluates to the priority of the current policy then the next policy in the priority order is evaluated.
-		-	If the gotoPriorityExpression evaluates to the priority of a policy further ahead in the list then that policy will be evaluated next.
-		This field is applicable only to rewrite and responder policies.<br> Default value: "END"
 	* </pre>
 	*/
 	public void set_gotopriorityexpression(String gotopriorityexpression) throws Exception{
@@ -127,16 +117,6 @@ public class sslvserver_sslpolicy_binding extends base_resource
 	/**
 	* <pre>
 	* Expression specifying the priority of the next policy which will get evaluated if the current policy rule evaluates to TRUE.
-	o	If gotoPriorityExpression is not present or if it is equal to END then the policy bank evaluation ends here
-	o	Else if the gotoPriorityExpression is equal to NEXT then the next policy in the priority order is evaluated.
-	o	Else gotoPriorityExpression is evaluated. The result of gotoPriorityExpression (which has to be a number) is processed as follows:
-		-	An UNDEF event is triggered if
-			.	gotoPriorityExpression cannot be evaluated
-			.	gotoPriorityExpression evaluates to number which is smaller than the maximum priority in the policy bank but is not same as any policy's priority
-			.	gotoPriorityExpression evaluates to a priority that is smaller than the current policy's priority
-		-	If the gotoPriorityExpression evaluates to the priority of the current policy then the next policy in the priority order is evaluated.
-		-	If the gotoPriorityExpression evaluates to the priority of a policy further ahead in the list then that policy will be evaluated next.
-		This field is applicable only to rewrite and responder policies.<br> Default value: "END"
 	* </pre>
 	*/
 	public String get_gotopriorityexpression() throws Exception {
@@ -145,7 +125,7 @@ public class sslvserver_sslpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Invoke flag.
+	* Invoke flag. This attribute is relevant only for ADVANCED policies.
 	* </pre>
 	*/
 	public void set_invoke(boolean invoke) throws Exception {
@@ -154,7 +134,7 @@ public class sslvserver_sslpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Invoke flag.
+	* Invoke flag. This attribute is relevant only for ADVANCED policies.
 	* </pre>
 	*/
 	public void set_invoke(Boolean invoke) throws Exception{
@@ -163,7 +143,7 @@ public class sslvserver_sslpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Invoke flag.
+	* Invoke flag. This attribute is relevant only for ADVANCED policies.
 	* </pre>
 	*/
 	public Boolean get_invoke() throws Exception {
@@ -172,7 +152,7 @@ public class sslvserver_sslpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Type of SSL policy label invocation. Applicable to SSL, rewrite and cache policies.<br> Possible values = vserver, service, policylabel
+	* Type of policy label invocation.<br> Possible values = vserver, service, policylabel
 	* </pre>
 	*/
 	public void set_labeltype(String labeltype) throws Exception{
@@ -181,7 +161,7 @@ public class sslvserver_sslpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* Type of SSL policy label invocation. Applicable to SSL, rewrite and cache policies.<br> Possible values = vserver, service, policylabel
+	* Type of policy label invocation.<br> Possible values = vserver, service, policylabel
 	* </pre>
 	*/
 	public String get_labeltype() throws Exception {
@@ -190,7 +170,7 @@ public class sslvserver_sslpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the SSL virtual server to which the SSL policy needs to be bound.<br> Minimum length =  1
+	* Name of the SSL virtual server.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_vservername(String vservername) throws Exception{
@@ -199,7 +179,7 @@ public class sslvserver_sslpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the SSL virtual server to which the SSL policy needs to be bound.<br> Minimum length =  1
+	* Name of the SSL virtual server.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_vservername() throws Exception {

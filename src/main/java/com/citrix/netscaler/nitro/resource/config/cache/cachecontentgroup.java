@@ -65,6 +65,7 @@ public class cachecontentgroup extends base_resource
 	private String ignorereqcachinghdrs;
 	private Integer minhits;
 	private String alwaysevalpolicies;
+	private String persist;
 	private String pinned;
 	private String lazydnsresolve;
 	private String hitselector;
@@ -73,6 +74,7 @@ public class cachecontentgroup extends base_resource
 	private String query;
 	private String host;
 	private String selectorvalue;
+	private Boolean force;
 
 	//------- Read only Parameter ---------;
 
@@ -91,7 +93,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* The name of the content group to be created.<br> Minimum length =  1
+	* Name for the content group.  Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Cannot be changed after the content group is created.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -100,7 +102,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* The name of the content group to be created.<br> Minimum length =  1
+	* Name for the content group.  Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Cannot be changed after the content group is created.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -109,7 +111,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* Use this parameter for responses with response codes between 200 and 399. (Similar to -relExpiry but has lesser precedence.).<br> Minimum value =  0<br> Maximum value =  31536000
+	* Relative expiry time, in seconds, for expiring positive responses with response codes between 200 and 399. Cannot be used in combination with other Expiry attributes. Similar to -relExpiry but has lower precedence.<br> Minimum value =  0<br> Maximum value =  31536000
 	* </pre>
 	*/
 	public void set_weakposrelexpiry(long weakposrelexpiry) throws Exception {
@@ -118,7 +120,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* Use this parameter for responses with response codes between 200 and 399. (Similar to -relExpiry but has lesser precedence.).<br> Minimum value =  0<br> Maximum value =  31536000
+	* Relative expiry time, in seconds, for expiring positive responses with response codes between 200 and 399. Cannot be used in combination with other Expiry attributes. Similar to -relExpiry but has lower precedence.<br> Minimum value =  0<br> Maximum value =  31536000
 	* </pre>
 	*/
 	public void set_weakposrelexpiry(Long weakposrelexpiry) throws Exception{
@@ -127,7 +129,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* Use this parameter for responses with response codes between 200 and 399. (Similar to -relExpiry but has lesser precedence.).<br> Minimum value =  0<br> Maximum value =  31536000
+	* Relative expiry time, in seconds, for expiring positive responses with response codes between 200 and 399. Cannot be used in combination with other Expiry attributes. Similar to -relExpiry but has lower precedence.<br> Minimum value =  0<br> Maximum value =  31536000
 	* </pre>
 	*/
 	public Long get_weakposrelexpiry() throws Exception {
@@ -136,7 +138,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* The heuristic expiry time, in percent of the duration since the object was last modified.<br> Minimum value =  0<br> Maximum value =  100
+	* Heuristic expiry time, in percent of the duration, since the object was last modified.<br> Minimum value =  0<br> Maximum value =  100
 	* </pre>
 	*/
 	public void set_heurexpiryparam(long heurexpiryparam) throws Exception {
@@ -145,7 +147,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* The heuristic expiry time, in percent of the duration since the object was last modified.<br> Minimum value =  0<br> Maximum value =  100
+	* Heuristic expiry time, in percent of the duration, since the object was last modified.<br> Minimum value =  0<br> Maximum value =  100
 	* </pre>
 	*/
 	public void set_heurexpiryparam(Long heurexpiryparam) throws Exception{
@@ -154,7 +156,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* The heuristic expiry time, in percent of the duration since the object was last modified.<br> Minimum value =  0<br> Maximum value =  100
+	* Heuristic expiry time, in percent of the duration, since the object was last modified.<br> Minimum value =  0<br> Maximum value =  100
 	* </pre>
 	*/
 	public Long get_heurexpiryparam() throws Exception {
@@ -163,7 +165,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* The relative expiry time in seconds.<br> Minimum value =  0<br> Maximum value =  31536000
+	* Relative expiry time, in seconds, after which to expire an object cached in this content group.<br> Minimum value =  0<br> Maximum value =  31536000
 	* </pre>
 	*/
 	public void set_relexpiry(long relexpiry) throws Exception {
@@ -172,7 +174,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* The relative expiry time in seconds.<br> Minimum value =  0<br> Maximum value =  31536000
+	* Relative expiry time, in seconds, after which to expire an object cached in this content group.<br> Minimum value =  0<br> Maximum value =  31536000
 	* </pre>
 	*/
 	public void set_relexpiry(Long relexpiry) throws Exception{
@@ -181,7 +183,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* The relative expiry time in seconds.<br> Minimum value =  0<br> Maximum value =  31536000
+	* Relative expiry time, in seconds, after which to expire an object cached in this content group.<br> Minimum value =  0<br> Maximum value =  31536000
 	* </pre>
 	*/
 	public Long get_relexpiry() throws Exception {
@@ -190,7 +192,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* The relative expiry time in milliseconds.<br> Minimum value =  0<br> Maximum value =  86400000
+	* Relative expiry time, in milliseconds, after which to expire an object cached in this content group.<br> Minimum value =  0<br> Maximum value =  86400000
 	* </pre>
 	*/
 	public void set_relexpirymillisec(long relexpirymillisec) throws Exception {
@@ -199,7 +201,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* The relative expiry time in milliseconds.<br> Minimum value =  0<br> Maximum value =  86400000
+	* Relative expiry time, in milliseconds, after which to expire an object cached in this content group.<br> Minimum value =  0<br> Maximum value =  86400000
 	* </pre>
 	*/
 	public void set_relexpirymillisec(Long relexpirymillisec) throws Exception{
@@ -208,7 +210,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* The relative expiry time in milliseconds.<br> Minimum value =  0<br> Maximum value =  86400000
+	* Relative expiry time, in milliseconds, after which to expire an object cached in this content group.<br> Minimum value =  0<br> Maximum value =  86400000
 	* </pre>
 	*/
 	public Long get_relexpirymillisec() throws Exception {
@@ -217,7 +219,11 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* Up to 4 times a day (local time) when all objects in the content group must expire.
+	* Local time, up to 4 times a day, at which all objects in the content group must expire. 
+
+CLI Users:
+For example, to specify that the objects in the content group should expire by 11:00 PM, type the following command: add cache contentgroup <contentgroup name> -absexpiry 23:00 
+To specify that the objects in the content group should expire at 10:00 AM, 3 PM, 6 PM, and 11:00 PM, type: add cache contentgroup <contentgroup name> -absexpiry 10:00 15:00 18:00 23:00.
 	* </pre>
 	*/
 	public void set_absexpiry(String[] absexpiry) throws Exception{
@@ -226,7 +232,11 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* Up to 4 times a day (local time) when all objects in the content group must expire.
+	* Local time, up to 4 times a day, at which all objects in the content group must expire. 
+
+CLI Users:
+For example, to specify that the objects in the content group should expire by 11:00 PM, type the following command: add cache contentgroup <contentgroup name> -absexpiry 23:00 
+To specify that the objects in the content group should expire at 10:00 AM, 3 PM, 6 PM, and 11:00 PM, type: add cache contentgroup <contentgroup name> -absexpiry 10:00 15:00 18:00 23:00.
 	* </pre>
 	*/
 	public String[] get_absexpiry() throws Exception {
@@ -235,7 +245,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* Up to 4 times a day (GMT), when all objects in the content group must expire.
+	* Coordinated Universal Time (GMT), up to 4 times a day, when all objects in the content group must expire.
 	* </pre>
 	*/
 	public void set_absexpirygmt(String[] absexpirygmt) throws Exception{
@@ -244,7 +254,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* Up to 4 times a day (GMT), when all objects in the content group must expire.
+	* Coordinated Universal Time (GMT), up to 4 times a day, when all objects in the content group must expire.
 	* </pre>
 	*/
 	public String[] get_absexpirygmt() throws Exception {
@@ -253,7 +263,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* Use this parameter for all negative responses. This value will be used only if the expiry time cannot be determiend from any other source.<br> Minimum value =  0<br> Maximum value =  31536000
+	* Relative expiry time, in seconds, for expiring negative responses. This value is used only if the expiry time cannot be determined from any other source. It is applicable only to the following status codes: 307, 403, 404, and 410.<br> Minimum value =  0<br> Maximum value =  31536000
 	* </pre>
 	*/
 	public void set_weaknegrelexpiry(long weaknegrelexpiry) throws Exception {
@@ -262,7 +272,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* Use this parameter for all negative responses. This value will be used only if the expiry time cannot be determiend from any other source.<br> Minimum value =  0<br> Maximum value =  31536000
+	* Relative expiry time, in seconds, for expiring negative responses. This value is used only if the expiry time cannot be determined from any other source. It is applicable only to the following status codes: 307, 403, 404, and 410.<br> Minimum value =  0<br> Maximum value =  31536000
 	* </pre>
 	*/
 	public void set_weaknegrelexpiry(Long weaknegrelexpiry) throws Exception{
@@ -271,7 +281,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* Use this parameter for all negative responses. This value will be used only if the expiry time cannot be determiend from any other source.<br> Minimum value =  0<br> Maximum value =  31536000
+	* Relative expiry time, in seconds, for expiring negative responses. This value is used only if the expiry time cannot be determined from any other source. It is applicable only to the following status codes: 307, 403, 404, and 410.<br> Minimum value =  0<br> Maximum value =  31536000
 	* </pre>
 	*/
 	public Long get_weaknegrelexpiry() throws Exception {
@@ -280,7 +290,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* Use these parameters for parameterized hit evaluation of an object. Up to 128 parameters can be configured.<br> Minimum length =  1
+	* Parameters to use for parameterized hit evaluation of an object. Up to 128 parameters can be specified. Mutually exclusive with the Hit Selector parameter.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_hitparams(String[] hitparams) throws Exception{
@@ -289,7 +299,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* Use these parameters for parameterized hit evaluation of an object. Up to 128 parameters can be configured.<br> Minimum length =  1
+	* Parameters to use for parameterized hit evaluation of an object. Up to 128 parameters can be specified. Mutually exclusive with the Hit Selector parameter.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String[] get_hitparams() throws Exception {
@@ -298,7 +308,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* Use these parameters for parameterized invalidation of an object. Up to 8 parameters can be configured.<br> Minimum length =  1
+	* Parameters for parameterized invalidation of an object. You can specify up to 8 parameters. Mutually exclusive with invalSelector.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_invalparams(String[] invalparams) throws Exception{
@@ -307,7 +317,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* Use these parameters for parameterized invalidation of an object. Up to 8 parameters can be configured.<br> Minimum length =  1
+	* Parameters for parameterized invalidation of an object. You can specify up to 8 parameters. Mutually exclusive with invalSelector.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String[] get_invalparams() throws Exception {
@@ -316,8 +326,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* Use this parameter to specify whether to ignore case when comparing parameter values during parameterized hit evaluation.
- (Parameter value case is always ignored during parameterized invalidation.).<br> Possible values = YES, NO
+	* Ignore case when comparing parameter values during parameterized hit evaluation. (Parameter value case is ignored by default during parameterized invalidation.).<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public void set_ignoreparamvaluecase(String ignoreparamvaluecase) throws Exception{
@@ -326,8 +335,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* Use this parameter to specify whether to ignore case when comparing parameter values during parameterized hit evaluation.
- (Parameter value case is always ignored during parameterized invalidation.).<br> Possible values = YES, NO
+	* Ignore case when comparing parameter values during parameterized hit evaluation. (Parameter value case is ignored by default during parameterized invalidation.).<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public String get_ignoreparamvaluecase() throws Exception {
@@ -336,7 +344,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* Use this parameter to specify whether to look for parameters also in the cookie header.<br> Possible values = YES, NO
+	* Evaluate for parameters in the cookie header also.<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public void set_matchcookies(String matchcookies) throws Exception{
@@ -345,7 +353,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* Use this parameter to specify whether to look for parameters also in the cookie header.<br> Possible values = YES, NO
+	* Evaluate for parameters in the cookie header also.<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public String get_matchcookies() throws Exception {
@@ -354,7 +362,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* Use this parameter to specify whether the host header should be taken into account during parameterized invalidation.<br> Possible values = YES, NO
+	* Take the host header into account during parameterized invalidation.<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public void set_invalrestrictedtohost(String invalrestrictedtohost) throws Exception{
@@ -363,7 +371,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* Use this parameter to specify whether the host header should be taken into account during parameterized invalidation.<br> Possible values = YES, NO
+	* Take the host header into account during parameterized invalidation.<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public String get_invalrestrictedtohost() throws Exception {
@@ -372,7 +380,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* Use this parameter to specify whether to poll every time for the objects in this content group.<br> Default value: NO<br> Possible values = YES, NO
+	* Always poll for the objects in this content group. That is, retrieve the objects from the origin server whenever they are requested.<br> Default value: NO<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public void set_polleverytime(String polleverytime) throws Exception{
@@ -381,7 +389,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* Use this parameter to specify whether to poll every time for the objects in this content group.<br> Default value: NO<br> Possible values = YES, NO
+	* Always poll for the objects in this content group. That is, retrieve the objects from the origin server whenever they are requested.<br> Default value: NO<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public String get_polleverytime() throws Exception {
@@ -390,7 +398,8 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* Use this parameter to specify whether a request can force the system to reload a cached object from the origin. To guard against Denial of Service attacks, you should set this flag to YES. To get RFC-compliant behavior you should set it to NO.<br> Default value: YES<br> Possible values = YES, NO
+	* Ignore any request to reload a cached object from the origin server.
+To guard against Denial of Service attacks, set this parameter to YES. For RFC-compliant behavior, set it to NO.<br> Default value: YES<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public void set_ignorereloadreq(String ignorereloadreq) throws Exception{
@@ -399,7 +408,8 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* Use this parameter to specify whether a request can force the system to reload a cached object from the origin. To guard against Denial of Service attacks, you should set this flag to YES. To get RFC-compliant behavior you should set it to NO.<br> Default value: YES<br> Possible values = YES, NO
+	* Ignore any request to reload a cached object from the origin server.
+To guard against Denial of Service attacks, set this parameter to YES. For RFC-compliant behavior, set it to NO.<br> Default value: YES<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public String get_ignorereloadreq() throws Exception {
@@ -408,7 +418,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* Use this parameter to specify whether to remove cookies from a response.<br> Default value: YES<br> Possible values = YES, NO
+	* Remove cookies from responses.<br> Default value: YES<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public void set_removecookies(String removecookies) throws Exception{
@@ -417,7 +427,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* Use this parameter to specify whether to remove cookies from a response.<br> Default value: YES<br> Possible values = YES, NO
+	* Remove cookies from responses.<br> Default value: YES<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public String get_removecookies() throws Exception {
@@ -426,7 +436,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* Use this parameter to specify whether Integrated Cache should attempt to refresh an object immediately before it is about to go stale.<br> Default value: YES<br> Possible values = YES, NO
+	* Attempt to refresh objects that are about to go stale.<br> Default value: YES<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public void set_prefetch(String prefetch) throws Exception{
@@ -435,7 +445,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* Use this parameter to specify whether Integrated Cache should attempt to refresh an object immediately before it is about to go stale.<br> Default value: YES<br> Possible values = YES, NO
+	* Attempt to refresh objects that are about to go stale.<br> Default value: YES<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public String get_prefetch() throws Exception {
@@ -444,7 +454,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* The duration in seconds of the period during which prefetch should be attempted, immediately before the object's calculated expiry time.
+	* Time period, in seconds before an object's calculated expiry time, during which to attempt prefetch.<br> Minimum value =  0<br> Maximum value =  4294967294
 	* </pre>
 	*/
 	public void set_prefetchperiod(long prefetchperiod) throws Exception {
@@ -453,7 +463,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* The duration in seconds of the period during which prefetch should be attempted, immediately before the object's calculated expiry time.
+	* Time period, in seconds before an object's calculated expiry time, during which to attempt prefetch.<br> Minimum value =  0<br> Maximum value =  4294967294
 	* </pre>
 	*/
 	public void set_prefetchperiod(Long prefetchperiod) throws Exception{
@@ -462,7 +472,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* The duration in seconds of the period during which prefetch should be attempted, immediately before the object's calculated expiry time.
+	* Time period, in seconds before an object's calculated expiry time, during which to attempt prefetch.<br> Minimum value =  0<br> Maximum value =  4294967294
 	* </pre>
 	*/
 	public Long get_prefetchperiod() throws Exception {
@@ -471,7 +481,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* The duration in milliseconds of the period during which prefetch should be attempted, immediately before the object's calculated expiry time.
+	* Time period, in milliseconds before an object's calculated expiry time, during which to attempt prefetch.<br> Minimum value =  0<br> Maximum value =  4294967290
 	* </pre>
 	*/
 	public void set_prefetchperiodmillisec(long prefetchperiodmillisec) throws Exception {
@@ -480,7 +490,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* The duration in milliseconds of the period during which prefetch should be attempted, immediately before the object's calculated expiry time.
+	* Time period, in milliseconds before an object's calculated expiry time, during which to attempt prefetch.<br> Minimum value =  0<br> Maximum value =  4294967290
 	* </pre>
 	*/
 	public void set_prefetchperiodmillisec(Long prefetchperiodmillisec) throws Exception{
@@ -489,7 +499,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* The duration in milliseconds of the period during which prefetch should be attempted, immediately before the object's calculated expiry time.
+	* Time period, in milliseconds before an object's calculated expiry time, during which to attempt prefetch.<br> Minimum value =  0<br> Maximum value =  4294967290
 	* </pre>
 	*/
 	public Long get_prefetchperiodmillisec() throws Exception {
@@ -498,7 +508,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* The maximum number of outstanding prefetches on the contentgroup.
+	* Maximum number of outstanding prefetches that can be queued for the content group.<br> Minimum value =  0<br> Maximum value =  4294967294
 	* </pre>
 	*/
 	public void set_prefetchmaxpending(long prefetchmaxpending) throws Exception {
@@ -507,7 +517,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* The maximum number of outstanding prefetches on the contentgroup.
+	* Maximum number of outstanding prefetches that can be queued for the content group.<br> Minimum value =  0<br> Maximum value =  4294967294
 	* </pre>
 	*/
 	public void set_prefetchmaxpending(Long prefetchmaxpending) throws Exception{
@@ -516,7 +526,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* The maximum number of outstanding prefetches on the contentgroup.
+	* Maximum number of outstanding prefetches that can be queued for the content group.<br> Minimum value =  0<br> Maximum value =  4294967294
 	* </pre>
 	*/
 	public Long get_prefetchmaxpending() throws Exception {
@@ -525,7 +535,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* Use this parameter to specify whether Integrated Cache should do flash cache.<br> Default value: NO<br> Possible values = YES, NO
+	* Perform flash cache. Mutually exclusive with Poll Every Time (PET) on the same content group.<br> Default value: NO<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public void set_flashcache(String flashcache) throws Exception{
@@ -534,7 +544,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* Use this parameter to specify whether Integrated Cache should do flash cache.<br> Default value: NO<br> Possible values = YES, NO
+	* Perform flash cache. Mutually exclusive with Poll Every Time (PET) on the same content group.<br> Default value: NO<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public String get_flashcache() throws Exception {
@@ -543,7 +553,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* Use this parameter to specify whether Integrated Cache should expire the content immediately after receving the last body byte.<br> Default value: NO<br> Possible values = YES, NO
+	* Force expiration of the content immediately after the response is downloaded (upon receipt of the last byte of the response body). Applicable only to positive responses.<br> Default value: NO<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public void set_expireatlastbyte(String expireatlastbyte) throws Exception{
@@ -552,7 +562,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* Use this parameter to specify whether Integrated Cache should expire the content immediately after receving the last body byte.<br> Default value: NO<br> Possible values = YES, NO
+	* Force expiration of the content immediately after the response is downloaded (upon receipt of the last byte of the response body). Applicable only to positive responses.<br> Default value: NO<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public String get_expireatlastbyte() throws Exception {
@@ -561,7 +571,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* Use this parameter to specify whether Integrated Cache should insert a Via header.<br> Default value: YES<br> Possible values = YES, NO
+	* Insert a Via header into the response.<br> Default value: YES<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public void set_insertvia(String insertvia) throws Exception{
@@ -570,7 +580,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* Use this parameter to specify whether Integrated Cache should insert a Via header.<br> Default value: YES<br> Possible values = YES, NO
+	* Insert a Via header into the response.<br> Default value: YES<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public String get_insertvia() throws Exception {
@@ -579,7 +589,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* Use this parameter to specify whether Integrated Cache should insert an Age header.<br> Default value: YES<br> Possible values = YES, NO
+	* Insert an Age header into the response. An Age header contains information about the age of the object, in seconds, as calculated by the integrated cache.<br> Default value: YES<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public void set_insertage(String insertage) throws Exception{
@@ -588,7 +598,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* Use this parameter to specify whether Integrated Cache should insert an Age header.<br> Default value: YES<br> Possible values = YES, NO
+	* Insert an Age header into the response. An Age header contains information about the age of the object, in seconds, as calculated by the integrated cache.<br> Default value: YES<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public String get_insertage() throws Exception {
@@ -597,7 +607,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* Use this parameter to specify whether Integrated Cache should insert an ETag header.<br> Default value: YES<br> Possible values = YES, NO
+	* Insert an ETag header in the response. With ETag header insertion, the integrated cache does not serve full responses on repeat requests.<br> Default value: YES<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public void set_insertetag(String insertetag) throws Exception{
@@ -606,7 +616,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* Use this parameter to specify whether Integrated Cache should insert an ETag header.<br> Default value: YES<br> Possible values = YES, NO
+	* Insert an ETag header in the response. With ETag header insertion, the integrated cache does not serve full responses on repeat requests.<br> Default value: YES<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public String get_insertetag() throws Exception {
@@ -615,7 +625,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* Use this parameter to specify the Cache-Control header to be inserted.<br> Minimum length =  1
+	* Insert a Cache-Control header into the response.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_cachecontrol(String cachecontrol) throws Exception{
@@ -624,7 +634,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* Use this parameter to specify the Cache-Control header to be inserted.<br> Minimum length =  1
+	* Insert a Cache-Control header into the response.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_cachecontrol() throws Exception {
@@ -633,7 +643,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* If the client aborts when the downloaded response size is less than or equal to quick-abort-size, then Integrated Cache will stop downloading the response.<br> Default value: 4194303<br> Minimum value =  0<br> Maximum value =  4194303
+	* If the size of an object that is being downloaded is less than or equal to the quick abort value, and a client aborts during the download, the cache stops downloading the response. If the object is larger than the quick abort size, the cache continues to download the response.<br> Default value: 4194303<br> Minimum value =  0<br> Maximum value =  4194303
 	* </pre>
 	*/
 	public void set_quickabortsize(long quickabortsize) throws Exception {
@@ -642,7 +652,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* If the client aborts when the downloaded response size is less than or equal to quick-abort-size, then Integrated Cache will stop downloading the response.<br> Default value: 4194303<br> Minimum value =  0<br> Maximum value =  4194303
+	* If the size of an object that is being downloaded is less than or equal to the quick abort value, and a client aborts during the download, the cache stops downloading the response. If the object is larger than the quick abort size, the cache continues to download the response.<br> Default value: 4194303<br> Minimum value =  0<br> Maximum value =  4194303
 	* </pre>
 	*/
 	public void set_quickabortsize(Long quickabortsize) throws Exception{
@@ -651,7 +661,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* If the client aborts when the downloaded response size is less than or equal to quick-abort-size, then Integrated Cache will stop downloading the response.<br> Default value: 4194303<br> Minimum value =  0<br> Maximum value =  4194303
+	* If the size of an object that is being downloaded is less than or equal to the quick abort value, and a client aborts during the download, the cache stops downloading the response. If the object is larger than the quick abort size, the cache continues to download the response.<br> Default value: 4194303<br> Minimum value =  0<br> Maximum value =  4194303
 	* </pre>
 	*/
 	public Long get_quickabortsize() throws Exception {
@@ -660,7 +670,8 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* The minimum size of the response.<br> Minimum value =  0<br> Maximum value =  2097151
+	* Minimum size of a response that can be cached in this content group.
+ Default minimum response size is 0.<br> Minimum value =  0<br> Maximum value =  2097151
 	* </pre>
 	*/
 	public void set_minressize(long minressize) throws Exception {
@@ -669,7 +680,8 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* The minimum size of the response.<br> Minimum value =  0<br> Maximum value =  2097151
+	* Minimum size of a response that can be cached in this content group.
+ Default minimum response size is 0.<br> Minimum value =  0<br> Maximum value =  2097151
 	* </pre>
 	*/
 	public void set_minressize(Long minressize) throws Exception{
@@ -678,7 +690,8 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* The minimum size of the response.<br> Minimum value =  0<br> Maximum value =  2097151
+	* Minimum size of a response that can be cached in this content group.
+ Default minimum response size is 0.<br> Minimum value =  0<br> Maximum value =  2097151
 	* </pre>
 	*/
 	public Long get_minressize() throws Exception {
@@ -687,7 +700,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* The maximum size of the response.<br> Default value: 80<br> Minimum value =  0<br> Maximum value =  2097151
+	* Maximum size of a response that can be cached in this content group.<br> Default value: 80<br> Minimum value =  0<br> Maximum value =  2097151
 	* </pre>
 	*/
 	public void set_maxressize(long maxressize) throws Exception {
@@ -696,7 +709,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* The maximum size of the response.<br> Default value: 80<br> Minimum value =  0<br> Maximum value =  2097151
+	* Maximum size of a response that can be cached in this content group.<br> Default value: 80<br> Minimum value =  0<br> Maximum value =  2097151
 	* </pre>
 	*/
 	public void set_maxressize(Long maxressize) throws Exception{
@@ -705,7 +718,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* The maximum size of the response.<br> Default value: 80<br> Minimum value =  0<br> Maximum value =  2097151
+	* Maximum size of a response that can be cached in this content group.<br> Default value: 80<br> Minimum value =  0<br> Maximum value =  2097151
 	* </pre>
 	*/
 	public Long get_maxressize() throws Exception {
@@ -714,7 +727,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* The memory limit for the content group, in MB. The limit is not exact. At times, a group's memory utilization may overshoot the limit, only to stabilize later.<br> Default value: 65536
+	* Maximum amount of memory that the cache can use. The effective limit is based on the available memory of the NetScaler appliance.<br> Default value: 65536
 	* </pre>
 	*/
 	public void set_memlimit(long memlimit) throws Exception {
@@ -723,7 +736,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* The memory limit for the content group, in MB. The limit is not exact. At times, a group's memory utilization may overshoot the limit, only to stabilize later.<br> Default value: 65536
+	* Maximum amount of memory that the cache can use. The effective limit is based on the available memory of the NetScaler appliance.<br> Default value: 65536
 	* </pre>
 	*/
 	public void set_memlimit(Long memlimit) throws Exception{
@@ -732,7 +745,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* The memory limit for the content group, in MB. The limit is not exact. At times, a group's memory utilization may overshoot the limit, only to stabilize later.<br> Default value: 65536
+	* Maximum amount of memory that the cache can use. The effective limit is based on the available memory of the NetScaler appliance.<br> Default value: 65536
 	* </pre>
 	*/
 	public Long get_memlimit() throws Exception {
@@ -741,7 +754,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* Use this parameter to specify whether to ignore the Cache-control and Pragma headers in the incoming request.<br> Default value: YES<br> Possible values = YES, NO
+	* Ignore Cache-Control and Pragma headers in the incoming request.<br> Default value: YES<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public void set_ignorereqcachinghdrs(String ignorereqcachinghdrs) throws Exception{
@@ -750,7 +763,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* Use this parameter to specify whether to ignore the Cache-control and Pragma headers in the incoming request.<br> Default value: YES<br> Possible values = YES, NO
+	* Ignore Cache-Control and Pragma headers in the incoming request.<br> Default value: YES<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public String get_ignorereqcachinghdrs() throws Exception {
@@ -759,7 +772,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* Specify the minimum number of accesses for an object to be stored in Cache.
+	* Number of hits that qualifies a response for storage in this content group.
 	* </pre>
 	*/
 	public void set_minhits(int minhits) throws Exception {
@@ -768,7 +781,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* Specify the minimum number of accesses for an object to be stored in Cache.
+	* Number of hits that qualifies a response for storage in this content group.
 	* </pre>
 	*/
 	public void set_minhits(Integer minhits) throws Exception{
@@ -777,7 +790,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* Specify the minimum number of accesses for an object to be stored in Cache.
+	* Number of hits that qualifies a response for storage in this content group.
 	* </pre>
 	*/
 	public Integer get_minhits() throws Exception {
@@ -786,7 +799,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* Forces policy evaluation for each response arriving from origin.<br> Default value: NO<br> Possible values = YES, NO
+	* Force policy evaluation for each response arriving from the origin server. Cannot be set to YES if the Prefetch parameter is also set to YES.<br> Default value: NO<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public void set_alwaysevalpolicies(String alwaysevalpolicies) throws Exception{
@@ -795,7 +808,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* Forces policy evaluation for each response arriving from origin.<br> Default value: NO<br> Possible values = YES, NO
+	* Force policy evaluation for each response arriving from the origin server. Cannot be set to YES if the Prefetch parameter is also set to YES.<br> Default value: NO<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public String get_alwaysevalpolicies() throws Exception {
@@ -804,7 +817,25 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* Setting pinned to YES prevents IC from flushing objects from this contentgroup under memory pressure.<br> Default value: NO<br> Possible values = YES, NO
+	* Setting persist to YES causes IC to save objects in contentgroup to disk.<br> Default value: NO<br> Possible values = YES, NO
+	* </pre>
+	*/
+	public void set_persist(String persist) throws Exception{
+		this.persist = persist;
+	}
+
+	/**
+	* <pre>
+	* Setting persist to YES causes IC to save objects in contentgroup to disk.<br> Default value: NO<br> Possible values = YES, NO
+	* </pre>
+	*/
+	public String get_persist() throws Exception {
+		return this.persist;
+	}
+
+	/**
+	* <pre>
+	* Do not flush objects from this content group under memory pressure.<br> Default value: NO<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public void set_pinned(String pinned) throws Exception{
@@ -813,7 +844,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* Setting pinned to YES prevents IC from flushing objects from this contentgroup under memory pressure.<br> Default value: NO<br> Possible values = YES, NO
+	* Do not flush objects from this content group under memory pressure.<br> Default value: NO<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public String get_pinned() throws Exception {
@@ -822,7 +853,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* Setting this parameter to NO causes DNS resolution for every response. Setting this parameter to YES causes DNS resolution only when the destination IP in the request does not match the destination IP of the stored object.<br> Default value: YES<br> Possible values = YES, NO
+	* Perform DNS resolution for responses only if the destination IP address in the request does not match the destination IP address of the cached response.<br> Default value: YES<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public void set_lazydnsresolve(String lazydnsresolve) throws Exception{
@@ -831,7 +862,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* Setting this parameter to NO causes DNS resolution for every response. Setting this parameter to YES causes DNS resolution only when the destination IP in the request does not match the destination IP of the stored object.<br> Default value: YES<br> Possible values = YES, NO
+	* Perform DNS resolution for responses only if the destination IP address in the request does not match the destination IP address of the cached response.<br> Default value: YES<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public String get_lazydnsresolve() throws Exception {
@@ -840,7 +871,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* The selector used for hit selection.
+	* Selector for evaluating whether an object gets stored in a particular content group. A selector is an abstraction for a collection of PIXL expressions.
 	* </pre>
 	*/
 	public void set_hitselector(String hitselector) throws Exception{
@@ -849,7 +880,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* The selector used for hit selection.
+	* Selector for evaluating whether an object gets stored in a particular content group. A selector is an abstraction for a collection of PIXL expressions.
 	* </pre>
 	*/
 	public String get_hitselector() throws Exception {
@@ -858,7 +889,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* The selector used for invalidation.
+	* Selector for invalidating objects in the content group. A selector is an abstraction for a collection of PIXL expressions.
 	* </pre>
 	*/
 	public void set_invalselector(String invalselector) throws Exception{
@@ -867,7 +898,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* The selector used for invalidation.
+	* Selector for invalidating objects in the content group. A selector is an abstraction for a collection of PIXL expressions.
 	* </pre>
 	*/
 	public String get_invalselector() throws Exception {
@@ -876,7 +907,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* This parameter will specify the type of content group.<br> Default value: NSSVC_HTTP<br> Possible values = HTTP, MYSQL, MSSQL
+	* The type of the content group.<br> Default value: HTTP<br> Possible values = HTTP, MYSQL, MSSQL
 	* </pre>
 	*/
 	public void set_type(String type) throws Exception{
@@ -885,7 +916,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* This parameter will specify the type of content group.<br> Default value: NSSVC_HTTP<br> Possible values = HTTP, MYSQL, MSSQL
+	* The type of the content group.<br> Default value: HTTP<br> Possible values = HTTP, MYSQL, MSSQL
 	* </pre>
 	*/
 	public String get_type() throws Exception {
@@ -894,7 +925,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* If a query string is specified, then the selected objects in this group will be flushed using parameterized invalidation. Otherwise, all objects in the group will be flushed.<br> Minimum length =  1
+	* Query string specifying individual objects to flush from this group by using parameterized invalidation. If this parameter is not set, all objects are flushed from the group.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_query(String query) throws Exception{
@@ -903,7 +934,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* If a query string is specified, then the selected objects in this group will be flushed using parameterized invalidation. Otherwise, all objects in the group will be flushed.<br> Minimum length =  1
+	* Query string specifying individual objects to flush from this group by using parameterized invalidation. If this parameter is not set, all objects are flushed from the group.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_query() throws Exception {
@@ -912,7 +943,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* To be set only if parameterized invalidation is being done. Objects belonging only to the specified host will be flushed. The host argument can be provided if and only if -invalRestrictedToHost is set to YES for the given group.<br> Minimum length =  1
+	* Flush only objects that belong to the specified host. Do not use except with parameterized invalidation. Also, the Invalidation Restricted to Host parameter for the group must be set to YES.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_host(String host) throws Exception{
@@ -921,7 +952,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* To be set only if parameterized invalidation is being done. Objects belonging only to the specified host will be flushed. The host argument can be provided if and only if -invalRestrictedToHost is set to YES for the given group.<br> Minimum length =  1
+	* Flush only objects that belong to the specified host. Do not use except with parameterized invalidation. Also, the Invalidation Restricted to Host parameter for the group must be set to YES.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_host() throws Exception {
@@ -930,7 +961,7 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* The value of the selector to be used for flushing objects in the contentgroup.<br> Minimum length =  1
+	* Value of the selector to be used for flushing objects from the content group. Requires that an invalidation selector be configured for the content group.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_selectorvalue(String selectorvalue) throws Exception{
@@ -939,11 +970,38 @@ public class cachecontentgroup extends base_resource
 
 	/**
 	* <pre>
-	* The value of the selector to be used for flushing objects in the contentgroup.<br> Minimum length =  1
+	* Value of the selector to be used for flushing objects from the content group. Requires that an invalidation selector be configured for the content group.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_selectorvalue() throws Exception {
 		return this.selectorvalue;
+	}
+
+	/**
+	* <pre>
+	* Force all copies to be flushed including on disk.
+	* </pre>
+	*/
+	public void set_force(boolean force) throws Exception {
+		this.force = new Boolean(force);
+	}
+
+	/**
+	* <pre>
+	* Force all copies to be flushed including on disk.
+	* </pre>
+	*/
+	public void set_force(Boolean force) throws Exception{
+		this.force = force;
+	}
+
+	/**
+	* <pre>
+	* Force all copies to be flushed including on disk.
+	* </pre>
+	*/
+	public Boolean get_force() throws Exception {
+		return this.force;
 	}
 
 	/**
@@ -1117,6 +1175,7 @@ public class cachecontentgroup extends base_resource
 		addresource.ignorereqcachinghdrs = resource.ignorereqcachinghdrs;
 		addresource.minhits = resource.minhits;
 		addresource.alwaysevalpolicies = resource.alwaysevalpolicies;
+		addresource.persist = resource.persist;
 		addresource.pinned = resource.pinned;
 		addresource.lazydnsresolve = resource.lazydnsresolve;
 		addresource.hitselector = resource.hitselector;
@@ -1167,6 +1226,7 @@ public class cachecontentgroup extends base_resource
 				addresources[i].ignorereqcachinghdrs = resources[i].ignorereqcachinghdrs;
 				addresources[i].minhits = resources[i].minhits;
 				addresources[i].alwaysevalpolicies = resources[i].alwaysevalpolicies;
+				addresources[i].persist = resources[i].persist;
 				addresources[i].pinned = resources[i].pinned;
 				addresources[i].lazydnsresolve = resources[i].lazydnsresolve;
 				addresources[i].hitselector = resources[i].hitselector;
@@ -1266,6 +1326,7 @@ public class cachecontentgroup extends base_resource
 		updateresource.ignorereqcachinghdrs = resource.ignorereqcachinghdrs;
 		updateresource.minhits = resource.minhits;
 		updateresource.alwaysevalpolicies = resource.alwaysevalpolicies;
+		updateresource.persist = resource.persist;
 		updateresource.pinned = resource.pinned;
 		updateresource.lazydnsresolve = resource.lazydnsresolve;
 		updateresource.hitselector = resource.hitselector;
@@ -1315,6 +1376,7 @@ public class cachecontentgroup extends base_resource
 				updateresources[i].ignorereqcachinghdrs = resources[i].ignorereqcachinghdrs;
 				updateresources[i].minhits = resources[i].minhits;
 				updateresources[i].alwaysevalpolicies = resources[i].alwaysevalpolicies;
+				updateresources[i].persist = resources[i].persist;
 				updateresources[i].pinned = resources[i].pinned;
 				updateresources[i].lazydnsresolve = resources[i].lazydnsresolve;
 				updateresources[i].hitselector = resources[i].hitselector;
@@ -1329,55 +1391,9 @@ public class cachecontentgroup extends base_resource
 	* Use this API to unset the properties of cachecontentgroup resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String name, String args[]) throws Exception {
-		cachecontentgroup unsetresource = new cachecontentgroup();
-		unsetresource.name = name;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of cachecontentgroup resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, cachecontentgroup resource, String[] args) throws Exception{
 		cachecontentgroup unsetresource = new cachecontentgroup();
 		unsetresource.name = resource.name;
-		unsetresource.weakposrelexpiry = resource.weakposrelexpiry;
-		unsetresource.heurexpiryparam = resource.heurexpiryparam;
-		unsetresource.relexpiry = resource.relexpiry;
-		unsetresource.relexpirymillisec = resource.relexpirymillisec;
-		unsetresource.absexpiry = resource.absexpiry;
-		unsetresource.absexpirygmt = resource.absexpirygmt;
-		unsetresource.weaknegrelexpiry = resource.weaknegrelexpiry;
-		unsetresource.hitparams = resource.hitparams;
-		unsetresource.invalparams = resource.invalparams;
-		unsetresource.ignoreparamvaluecase = resource.ignoreparamvaluecase;
-		unsetresource.matchcookies = resource.matchcookies;
-		unsetresource.invalrestrictedtohost = resource.invalrestrictedtohost;
-		unsetresource.polleverytime = resource.polleverytime;
-		unsetresource.ignorereloadreq = resource.ignorereloadreq;
-		unsetresource.removecookies = resource.removecookies;
-		unsetresource.prefetch = resource.prefetch;
-		unsetresource.prefetchperiod = resource.prefetchperiod;
-		unsetresource.prefetchperiodmillisec = resource.prefetchperiodmillisec;
-		unsetresource.prefetchmaxpending = resource.prefetchmaxpending;
-		unsetresource.flashcache = resource.flashcache;
-		unsetresource.expireatlastbyte = resource.expireatlastbyte;
-		unsetresource.insertvia = resource.insertvia;
-		unsetresource.insertage = resource.insertage;
-		unsetresource.insertetag = resource.insertetag;
-		unsetresource.cachecontrol = resource.cachecontrol;
-		unsetresource.quickabortsize = resource.quickabortsize;
-		unsetresource.minressize = resource.minressize;
-		unsetresource.maxressize = resource.maxressize;
-		unsetresource.memlimit = resource.memlimit;
-		unsetresource.ignorereqcachinghdrs = resource.ignorereqcachinghdrs;
-		unsetresource.minhits = resource.minhits;
-		unsetresource.alwaysevalpolicies = resource.alwaysevalpolicies;
-		unsetresource.pinned = resource.pinned;
-		unsetresource.lazydnsresolve = resource.lazydnsresolve;
-		unsetresource.hitselector = resource.hitselector;
-		unsetresource.invalselector = resource.invalselector;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -1409,42 +1425,6 @@ public class cachecontentgroup extends base_resource
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new cachecontentgroup();
 				unsetresources[i].name = resources[i].name;
-				unsetresources[i].weakposrelexpiry = resources[i].weakposrelexpiry;
-				unsetresources[i].heurexpiryparam = resources[i].heurexpiryparam;
-				unsetresources[i].relexpiry = resources[i].relexpiry;
-				unsetresources[i].relexpirymillisec = resources[i].relexpirymillisec;
-				unsetresources[i].absexpiry = resources[i].absexpiry;
-				unsetresources[i].absexpirygmt = resources[i].absexpirygmt;
-				unsetresources[i].weaknegrelexpiry = resources[i].weaknegrelexpiry;
-				unsetresources[i].hitparams = resources[i].hitparams;
-				unsetresources[i].invalparams = resources[i].invalparams;
-				unsetresources[i].ignoreparamvaluecase = resources[i].ignoreparamvaluecase;
-				unsetresources[i].matchcookies = resources[i].matchcookies;
-				unsetresources[i].invalrestrictedtohost = resources[i].invalrestrictedtohost;
-				unsetresources[i].polleverytime = resources[i].polleverytime;
-				unsetresources[i].ignorereloadreq = resources[i].ignorereloadreq;
-				unsetresources[i].removecookies = resources[i].removecookies;
-				unsetresources[i].prefetch = resources[i].prefetch;
-				unsetresources[i].prefetchperiod = resources[i].prefetchperiod;
-				unsetresources[i].prefetchperiodmillisec = resources[i].prefetchperiodmillisec;
-				unsetresources[i].prefetchmaxpending = resources[i].prefetchmaxpending;
-				unsetresources[i].flashcache = resources[i].flashcache;
-				unsetresources[i].expireatlastbyte = resources[i].expireatlastbyte;
-				unsetresources[i].insertvia = resources[i].insertvia;
-				unsetresources[i].insertage = resources[i].insertage;
-				unsetresources[i].insertetag = resources[i].insertetag;
-				unsetresources[i].cachecontrol = resources[i].cachecontrol;
-				unsetresources[i].quickabortsize = resources[i].quickabortsize;
-				unsetresources[i].minressize = resources[i].minressize;
-				unsetresources[i].maxressize = resources[i].maxressize;
-				unsetresources[i].memlimit = resources[i].memlimit;
-				unsetresources[i].ignorereqcachinghdrs = resources[i].ignorereqcachinghdrs;
-				unsetresources[i].minhits = resources[i].minhits;
-				unsetresources[i].alwaysevalpolicies = resources[i].alwaysevalpolicies;
-				unsetresources[i].pinned = resources[i].pinned;
-				unsetresources[i].lazydnsresolve = resources[i].lazydnsresolve;
-				unsetresources[i].hitselector = resources[i].hitselector;
-				unsetresources[i].invalselector = resources[i].invalselector;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}
@@ -1485,6 +1465,7 @@ public class cachecontentgroup extends base_resource
 		flushresource.query = resource.query;
 		flushresource.host = resource.host;
 		flushresource.selectorvalue = resource.selectorvalue;
+		flushresource.force = resource.force;
 		return flushresource.perform_operation(client,"flush");
 	}
 
@@ -1501,8 +1482,34 @@ public class cachecontentgroup extends base_resource
 				flushresources[i].query = resources[i].query;
 				flushresources[i].host = resources[i].host;
 				flushresources[i].selectorvalue = resources[i].selectorvalue;
+				flushresources[i].force = resources[i].force;
 			}
 			result = perform_operation_bulk_request(client, flushresources,"flush");
+		}
+		return result;
+	}
+
+	/**
+	* Use this API to save cachecontentgroup.
+	*/
+	public static base_response save(nitro_service client, cachecontentgroup resource) throws Exception {
+		cachecontentgroup saveresource = new cachecontentgroup();
+		saveresource.name = resource.name;
+		return saveresource.perform_operation(client,"save");
+	}
+
+	/**
+	* Use this API to save cachecontentgroup resources.
+	*/
+	public static base_responses save(nitro_service client, cachecontentgroup resources[]) throws Exception {
+		base_responses result = null;
+		if (resources != null && resources.length > 0) {
+			cachecontentgroup saveresources[] = new cachecontentgroup[resources.length];
+			for (int i=0;i<resources.length;i++){
+				saveresources[i] = new cachecontentgroup();
+				saveresources[i].name = resources[i].name;
+			}
+			result = perform_operation_bulk_request(client, saveresources,"save");
 		}
 		return result;
 	}
@@ -1624,6 +1631,10 @@ public class cachecontentgroup extends base_resource
 		public static final String NO = "NO";
 	}
 	public static class alwaysevalpoliciesEnum {
+		public static final String YES = "YES";
+		public static final String NO = "NO";
+	}
+	public static class persistEnum {
 		public static final String YES = "YES";
 		public static final String NO = "NO";
 	}

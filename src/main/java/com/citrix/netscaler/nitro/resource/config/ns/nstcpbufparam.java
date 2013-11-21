@@ -37,7 +37,7 @@ public class nstcpbufparam extends base_resource
 
 	/**
 	* <pre>
-	* The size (in KBytes) of the TCP buffer per connection.<br> Default value: 64<br> Minimum value =  4<br> Maximum value =  20480
+	* TCP buffering size per connection, in kilobytes.<br> Default value: 64<br> Minimum value =  4<br> Maximum value =  20480
 	* </pre>
 	*/
 	public void set_size(long size) throws Exception {
@@ -46,7 +46,7 @@ public class nstcpbufparam extends base_resource
 
 	/**
 	* <pre>
-	* The size (in KBytes) of the TCP buffer per connection.<br> Default value: 64<br> Minimum value =  4<br> Maximum value =  20480
+	* TCP buffering size per connection, in kilobytes.<br> Default value: 64<br> Minimum value =  4<br> Maximum value =  20480
 	* </pre>
 	*/
 	public void set_size(Long size) throws Exception{
@@ -55,7 +55,7 @@ public class nstcpbufparam extends base_resource
 
 	/**
 	* <pre>
-	* The size (in KBytes) of the TCP buffer per connection.<br> Default value: 64<br> Minimum value =  4<br> Maximum value =  20480
+	* TCP buffering size per connection, in kilobytes.<br> Default value: 64<br> Minimum value =  4<br> Maximum value =  20480
 	* </pre>
 	*/
 	public Long get_size() throws Exception {
@@ -64,7 +64,7 @@ public class nstcpbufparam extends base_resource
 
 	/**
 	* <pre>
-	* The maximum memory that can be used for buffering, in megabytes.<br> Default value: 64
+	* Maximum memory, in megabytes, that can be used for buffering.<br> Default value: 64
 	* </pre>
 	*/
 	public void set_memlimit(long memlimit) throws Exception {
@@ -73,7 +73,7 @@ public class nstcpbufparam extends base_resource
 
 	/**
 	* <pre>
-	* The maximum memory that can be used for buffering, in megabytes.<br> Default value: 64
+	* Maximum memory, in megabytes, that can be used for buffering.<br> Default value: 64
 	* </pre>
 	*/
 	public void set_memlimit(Long memlimit) throws Exception{
@@ -82,7 +82,7 @@ public class nstcpbufparam extends base_resource
 
 	/**
 	* <pre>
-	* The maximum memory that can be used for buffering, in megabytes.<br> Default value: 64
+	* Maximum memory, in megabytes, that can be used for buffering.<br> Default value: 64
 	* </pre>
 	*/
 	public Long get_memlimit() throws Exception {
@@ -141,8 +141,6 @@ public class nstcpbufparam extends base_resource
 	*/
 	public static base_response unset(nitro_service client, nstcpbufparam resource, String[] args) throws Exception{
 		nstcpbufparam unsetresource = new nstcpbufparam();
-		unsetresource.size = resource.size;
-		unsetresource.memlimit = resource.memlimit;
 		return unsetresource.unset_resource(client,args);
 	}
 

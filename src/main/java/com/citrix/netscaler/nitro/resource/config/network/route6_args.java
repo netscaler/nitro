@@ -27,7 +27,7 @@ public class route6_args
 
 	/**
 	* <pre>
-	* The type of IPv6 routes to be to be displayed.<br> Possible values = CONNECTED, STATIC, DYNAMIC, OSPF, ISIS, RIP, BGP, ND-RA-ROUTE, FIB6
+	* The type of IPv6 routes to be to be displayed.<br> Possible values = CONNECTED, STATIC, DYNAMIC, OSPF, ISIS, BGP, RIP, ND-RA-ROUTE, FIB6
 	* </pre>
 	*/
 	public void set_routetype(String routetype) throws Exception{
@@ -36,7 +36,7 @@ public class route6_args
 
 	/**
 	* <pre>
-	* The type of IPv6 routes to be to be displayed.<br> Possible values = CONNECTED, STATIC, DYNAMIC, OSPF, ISIS, RIP, BGP, ND-RA-ROUTE, FIB6
+	* The type of IPv6 routes to be to be displayed.<br> Possible values = CONNECTED, STATIC, DYNAMIC, OSPF, ISIS, BGP, RIP, ND-RA-ROUTE, FIB6
 	* </pre>
 	*/
 	public String get_routetype() throws Exception {
@@ -76,8 +76,8 @@ public class route6_args
 		public static final String DYNAMIC = "DYNAMIC";
 		public static final String OSPF = "OSPF";
 		public static final String ISIS = "ISIS";
-		public static final String RIP = "RIP";
 		public static final String BGP = "BGP";
+		public static final String RIP = "RIP";
 		public static final String ND_RA_ROUTE = "ND-RA-ROUTE";
 		public static final String FIB6 = "FIB6";
 	}

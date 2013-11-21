@@ -38,7 +38,7 @@ public class policystringmap_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the string map, if no name is given then names of all string maps will be displayed.<br> Minimum length =  1
+	* Name of the string map to display. If a name is not provided, a list of all the configured string maps is shown.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -47,7 +47,7 @@ public class policystringmap_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the string map, if no name is given then names of all string maps will be displayed.<br> Minimum length =  1
+	* Name of the string map to display. If a name is not provided, a list of all the configured string maps is shown.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {

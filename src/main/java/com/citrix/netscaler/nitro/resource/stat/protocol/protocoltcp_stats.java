@@ -32,6 +32,7 @@ class protocoltcp_response extends base_response
 
 public class protocoltcp_stats extends base_resource
 {
+	private String clearstats;
 	private Long tcpactiveserverconn;
 	private Long tcpcurserverconnopening;
 	private Long tcpcurclientconnopening;
@@ -182,7 +183,25 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Connections that were timed out by the NetScaler because of not receiving the ACK packet after retransmitting the FIN packet four times.
+	* Clear the statsistics / counters
+	* </pre>
+	*/
+	public void set_clearstats(String clearstats) throws Exception{
+		this.clearstats = clearstats;
+	}
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters.<br> Possible values = basic, full
+	* </pre>
+	*/
+	public String get_clearstats() throws Exception {
+		return this.clearstats;
+	}
+
+	/**
+	* <pre>
+	* Rate (/s) counter for tcperrfingiveup
 	* </pre>
 	*/
 	public Long get_tcperrfingiveuprate() throws Exception {
@@ -218,7 +237,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Reset packets sent to a client or a server.
+	* Rate (/s) counter for tcperrsentrst
 	* </pre>
 	*/
 	public Long get_tcperrsentrstrate() throws Exception {
@@ -245,7 +264,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* SYN cookie packets rejected because they contain an incorrect sequence number.
+	* Rate (/s) counter for tcperrcookiepktseqreject
 	* </pre>
 	*/
 	public Long get_tcperrcookiepktseqrejectrate() throws Exception {
@@ -254,7 +273,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Reset packets received on a connection that is out of the current TCP window.
+	* Rate (/s) counter for tcperrrstoutofwindow
 	* </pre>
 	*/
 	public Long get_tcperrrstoutofwindowrate() throws Exception {
@@ -290,7 +309,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Packets retransmitted four times by the NetScaler.
+	* Rate (/s) counter for tcperrforthretransmissions
 	* </pre>
 	*/
 	public Long get_tcperrforthretransmissionsrate() throws Exception {
@@ -308,7 +327,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* FIN packets received from the server.
+	* Rate (/s) counter for tcptotsvrfin
 	* </pre>
 	*/
 	public Long get_tcpsvrfinrate() throws Exception {
@@ -317,7 +336,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Bytes of TCP data transmitted.
+	* Rate (/s) counter for tcptottxbytes
 	* </pre>
 	*/
 	public Long get_tcptxbytesrate() throws Exception {
@@ -335,7 +354,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Server connections initiated by the NetScaler since startup. This counter is reset when the NetScaler is restarted.
+	* Rate (/s) counter for tcptotserverconnopened
 	* </pre>
 	*/
 	public Long get_tcpserverconnopenedrate() throws Exception {
@@ -344,7 +363,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* SYN packets received on a connection that is in the SYN_RCVD state. A connection goes into the SYN_RCVD state after receiving a SYN packet.
+	* Rate (/s) counter for tcperrsyninsynrcvd
 	* </pre>
 	*/
 	public Long get_tcperrsyninsynrcvdrate() throws Exception {
@@ -353,7 +372,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Partial packet retransmits by a client or server due to congestion on the connection. This usually occurs because the window advertised by the NetScaler is not big enough to hold the full packet.
+	* Rate (/s) counter for tcperrpartialretrasmit
 	* </pre>
 	*/
 	public Long get_tcperrpartialretrasmitrate() throws Exception {
@@ -362,7 +381,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Active half-closed client connections that are flushed because the client has closed the connection and there has been no activity on the connection.
+	* Rate (/s) counter for tcptotzombieactivehalfclosecltconnflushed
 	* </pre>
 	*/
 	public Long get_tcpzombieactivehalfclosecltconnflushedrate() throws Exception {
@@ -380,7 +399,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Out of order TCP packets received from a server. 
+	* Rate (/s) counter for tcperrsvroutoforder
 	* </pre>
 	*/
 	public Long get_tcperrsvroutoforderrate() throws Exception {
@@ -389,7 +408,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Times the Zombie cleanup function is called. Every time a connection is flushed, it is marked for cleanup. The Zombie cleanup function clears all these connections at predefined intervals.
+	* Rate (/s) counter for pcbtotzombiecall
 	* </pre>
 	*/
 	public Long get_pcbzombiecallrate() throws Exception {
@@ -398,7 +417,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Packets retransmitted once by the NetScaler.
+	* Rate (/s) counter for tcperrfirstretransmissions
 	* </pre>
 	*/
 	public Long get_tcperrfirstretransmissionsrate() throws Exception {
@@ -425,7 +444,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Bytes of TCP data received.
+	* Rate (/s) counter for tcptotrxbytes
 	* </pre>
 	*/
 	public Long get_tcprxbytesrate() throws Exception {
@@ -443,7 +462,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Packets received that are out of the current advertised window.
+	* Rate (/s) counter for tcperroutofwindowpkts
 	* </pre>
 	*/
 	public Long get_tcperroutofwindowpktsrate() throws Exception {
@@ -452,7 +471,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Port allocations that have failed on a mapped IP address because the maximum limit of 65536 has been exceeded.
+	* Rate (/s) counter for tcperranyportfail
 	* </pre>
 	*/
 	public Long get_tcperranyportfailrate() throws Exception {
@@ -461,7 +480,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Probes from the NetScaler to a server. The NetScaler sends a SYN packet to the server to check its availability and expects a SYN_ACK packet from the server before a specified response timeout.
+	* Rate (/s) counter for tcptotsynprobe
 	* </pre>
 	*/
 	public Long get_tcpsynproberate() throws Exception {
@@ -470,7 +489,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Server connections that are flushed because there have been no client requests in the queue for some time.
+	* Rate (/s) counter for tcptotzombiesvrconnflushed
 	* </pre>
 	*/
 	public Long get_tcpzombiesvrconnflushedrate() throws Exception {
@@ -488,7 +507,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* SYN packets received on a connection that is in the ESTABLISHED state. A SYN packet is not expected on an ESTABLISHED connection.
+	* Rate (/s) counter for tcperrsyninest
 	* </pre>
 	*/
 	public Long get_tcperrsyninestrate() throws Exception {
@@ -506,7 +525,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Port allocations that have failed on a subnet IP address or vserver IP address because the maximum limit of 65536 has been exceeded.
+	* Rate (/s) counter for tcperripportfail
 	* </pre>
 	*/
 	public Long get_tcperripportfailrate() throws Exception {
@@ -515,7 +534,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* SYN cookie packets rejected because they contain an incorrect signature.
+	* Rate (/s) counter for tcperrcookiepktsigreject
 	* </pre>
 	*/
 	public Long get_tcperrcookiepktsigrejectrate() throws Exception {
@@ -533,7 +552,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Half-opened server connections that are flushed because the three-way handshakes are not complete.
+	* Rate (/s) counter for tcptotzombiehalfopensvrconnflushed
 	* </pre>
 	*/
 	public Long get_tcpzombiehalfopensvrconnflushedrate() throws Exception {
@@ -551,7 +570,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Connections closed on the NetScaler because the number of connections in the TIME_WAIT state has exceeded the default value of 7000.
+	* Rate (/s) counter for tcptotfinwaitclosed
 	* </pre>
 	*/
 	public Long get_tcpfinwaitclosedrate() throws Exception {
@@ -569,7 +588,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* SYN packets flushed on the NetScaler because of no response from the server for three or more seconds.
+	* Rate (/s) counter for tcptotsynflush
 	* </pre>
 	*/
 	public Long get_tcpsynflushrate() throws Exception {
@@ -578,7 +597,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of times TCP level client header insertion failure
+	* Rate (/s) counter for tcperrcipalloc
 	* </pre>
 	*/
 	public Long get_tcperrcipallocrate() throws Exception {
@@ -605,7 +624,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Incorrect ACK packets received on a connection that is in the SYN_SENT state. An incorrect ACK packet is the third packet in the three-way handshake that has an incorrect sequence number.
+	* Rate (/s) counter for tcperrsynsentbadack
 	* </pre>
 	*/
 	public Long get_tcperrsynsentbadackrate() throws Exception {
@@ -614,7 +633,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Bytes of data received on connections that are in the TIME_WAIT state. Data cannot be transferred on a connection that is in this state.
+	* Rate (/s) counter for tcpwaittodata
 	* </pre>
 	*/
 	public Long get_tcpwaittodatarate() throws Exception {
@@ -623,7 +642,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Packets retransmitted seven times by the NetScaler. If this fails, the NetScaler terminates the connection.
+	* Rate (/s) counter for tcperrseventhretransmissions
 	* </pre>
 	*/
 	public Long get_tcperrseventhretransmissionsrate() throws Exception {
@@ -632,7 +651,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* TCP packets retransmitted. The NetScaler attempts to retransmit the packet up to seven times, after which it resets the other half of the TCP connection.
+	* Rate (/s) counter for tcperrretransmit
 	* </pre>
 	*/
 	public Long get_tcperrretransmitrate() throws Exception {
@@ -641,7 +660,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Full packets retransmitted by the client or the server.
+	* Rate (/s) counter for tcperrfullretrasmit
 	* </pre>
 	*/
 	public Long get_tcperrfullretrasmitrate() throws Exception {
@@ -659,7 +678,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Packets retransmitted six times by the NetScaler.
+	* Rate (/s) counter for tcperrsixthretransmissions
 	* </pre>
 	*/
 	public Long get_tcperrsixthretransmissionsrate() throws Exception {
@@ -677,7 +696,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Packets retransmitted twice by the NetScaler.
+	* Rate (/s) counter for tcperrsecondretransmissions
 	* </pre>
 	*/
 	public Long get_tcperrsecondretransmissionsrate() throws Exception {
@@ -686,7 +705,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Passive half-closed client connections that are flushed because the NetScaler has closed the connection and there has been no activity on the connection.
+	* Rate (/s) counter for tcptotzombiepassivehalfclosecltconnflushed
 	* </pre>
 	*/
 	public Long get_tcpzombiepassivehalfclosecltconnflushedrate() throws Exception {
@@ -695,7 +714,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* FIN packets received from the clients.
+	* Rate (/s) counter for tcptotcltfin
 	* </pre>
 	*/
 	public Long get_tcpcltfinrate() throws Exception {
@@ -704,7 +723,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* SYN packets held on the NetScaler that are waiting for a server connection.
+	* Rate (/s) counter for tcptotsynheld
 	* </pre>
 	*/
 	public Long get_tcpsynheldrate() throws Exception {
@@ -713,7 +732,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Reset packets received on a connection that is not in the ESTABLISHED state.
+	* Rate (/s) counter for tcperrrstnonest
 	* </pre>
 	*/
 	public Long get_tcperrrstnonestrate() throws Exception {
@@ -749,7 +768,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Passive half-closed server connections that are flushed because the NetScaler has closed the connection and there has been no activity on the connection.
+	* Rate (/s) counter for tcptotzombiepassivehalfclosesrvconnflushed
 	* </pre>
 	*/
 	public Long get_tcpzombiepassivehalfclosesrvconnflushedrate() throws Exception {
@@ -776,7 +795,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Reset packets received on a connection that is in the TIME_WAIT state. Packets cannot be transferred on a connection in the TIME_WAIT state.
+	* Rate (/s) counter for tcperrrstintimewait
 	* </pre>
 	*/
 	public Long get_tcperrrstintimewaitrate() throws Exception {
@@ -830,7 +849,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* TCP packets on which the NetScaler performs a fast retransmission in response to three duplicate acknowledgements or a partial acknowledgement.  The NetScaler assumes that the packet is lost and retransmits the packet before its time-out.
+	* Rate (/s) counter for tcperrfastretransmissions
 	* </pre>
 	*/
 	public Long get_tcperrfastretransmissionsrate() throws Exception {
@@ -839,7 +858,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* TCP holes created on a client connection. When out of order packets are received from a client, a hole is created on the NetScaler for each group of missing packets.
+	* Rate (/s) counter for tcperrclthole
 	* </pre>
 	*/
 	public Long get_tcperrcltholerate() throws Exception {
@@ -857,7 +876,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* TCP packets received.
+	* Rate (/s) counter for tcptotrxpkts
 	* </pre>
 	*/
 	public Long get_tcprxpktsrate() throws Exception {
@@ -875,7 +894,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of stray or misrouted packets.
+	* Rate (/s) counter for tcperrstraypkt
 	* </pre>
 	*/
 	public Long get_tcperrstraypktrate() throws Exception {
@@ -884,7 +903,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* FIN packets resent to a server or a client.
+	* Rate (/s) counter for tcperrfinretry
 	* </pre>
 	*/
 	public Long get_tcperrfinretryrate() throws Exception {
@@ -911,7 +930,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Packets retransmitted three times by the NetScaler.
+	* Rate (/s) counter for tcperrthirdretransmissions
 	* </pre>
 	*/
 	public Long get_tcperrthirdretransmissionsrate() throws Exception {
@@ -956,7 +975,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Packets retransmitted by a client. This usually occurs because the acknowledgement from the NetScaler has not reached the client.
+	* Rate (/s) counter for tcperrcltretrasmit
 	* </pre>
 	*/
 	public Long get_tcperrcltretrasmitrate() throws Exception {
@@ -965,7 +984,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* SYN cookie packets rejected because the maximum segment size (MSS) specified in the packets is incorrect.
+	* Rate (/s) counter for tcperrcookiepktmssreject
 	* </pre>
 	*/
 	public Long get_tcperrcookiepktmssrejectrate() throws Exception {
@@ -974,7 +993,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Packets retransmitted by a server. This usually occurs because the acknowledgement from the NetScaler has not reached the server.
+	* Rate (/s) counter for tcperrsvrretrasmit
 	* </pre>
 	*/
 	public Long get_tcperrsvrretrasmitrate() throws Exception {
@@ -992,7 +1011,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Reset packets received from a client or a server.
+	* Rate (/s) counter for tcperrrst
 	* </pre>
 	*/
 	public Long get_tcperrrstrate() throws Exception {
@@ -1001,7 +1020,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Packets retransmitted five times by the NetScaler.
+	* Rate (/s) counter for tcperrfifthretransmissions
 	* </pre>
 	*/
 	public Long get_tcperrfifthretransmissionsrate() throws Exception {
@@ -1055,7 +1074,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* SYN packets resent to a server.
+	* Rate (/s) counter for tcperrsynretry
 	* </pre>
 	*/
 	public Long get_tcperrsynretryrate() throws Exception {
@@ -1091,7 +1110,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Connections that are not in a valid TCP state.
+	* Rate (/s) counter for tcperrbadstateconn
 	* </pre>
 	*/
 	public Long get_tcperrbadstateconnrate() throws Exception {
@@ -1100,7 +1119,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* SYN packets dropped because of network congestion.
+	* Rate (/s) counter for tcperrsyndroppedcongestion
 	* </pre>
 	*/
 	public Long get_tcperrsyndroppedcongestionrate() throws Exception {
@@ -1109,7 +1128,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* TCP holes created on a server connection. When out of order packets are received from a server, a hole is created on the NetScaler for each group of missing packets.
+	* Rate (/s) counter for tcperrsvrhole
 	* </pre>
 	*/
 	public Long get_tcperrsvrholerate() throws Exception {
@@ -1118,7 +1137,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Packets received following a connection termination request. This error is usually caused by a reordering of packets during transmission.
+	* Rate (/s) counter for tcperrdataafterfin
 	* </pre>
 	*/
 	public Long get_tcperrdataafterfinrate() throws Exception {
@@ -1127,7 +1146,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Out of order TCP packets received from a client.
+	* Rate (/s) counter for tcperrcltoutoforder
 	* </pre>
 	*/
 	public Long get_tcperrcltoutoforderrate() throws Exception {
@@ -1181,7 +1200,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of times NetScaler terminates a connection after retransmitting the packet seven times on that connection.Retrasnmission happens when recieving end doesn't acknowledges the packet.
+	* Rate (/s) counter for tcperrretransmitgiveup
 	* </pre>
 	*/
 	public Long get_tcperrretransmitgiveuprate() throws Exception {
@@ -1208,7 +1227,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* SYN packets received
+	* Rate (/s) counter for tcptotsyn
 	* </pre>
 	*/
 	public Long get_tcpsynrate() throws Exception {
@@ -1217,7 +1236,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Client connections opened by the NetScaler since startup (after three-way handshake). This counter is reset when the NetScaler is restarted.
+	* Rate (/s) counter for tcptotclientconnopened
 	* </pre>
 	*/
 	public Long get_tcpclientconnopenedrate() throws Exception {
@@ -1235,7 +1254,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* SYN packets (packets used to initiate a TCP connection) received on connections that are in the TIME_WAIT state. Packets cannot be transferred on a connection in this state.
+	* Rate (/s) counter for tcpwaittosyn
 	* </pre>
 	*/
 	public Long get_tcpwaittosynrate() throws Exception {
@@ -1271,7 +1290,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Active half-closed server connections that are flushed because the server has closed the connection and there has been no activity on the connection.
+	* Rate (/s) counter for tcptotzombieactivehalfclosesvrconnflushed
 	* </pre>
 	*/
 	public Long get_tcpzombieactivehalfclosesvrconnflushedrate() throws Exception {
@@ -1316,7 +1335,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Attempts to establish a connection on the NetScaler that timed out.
+	* Rate (/s) counter for tcperrsyngiveup
 	* </pre>
 	*/
 	public Long get_tcperrsyngiveuprate() throws Exception {
@@ -1325,7 +1344,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Packets received with a TCP checksum error.
+	* Rate (/s) counter for tcperrbadchecksum
 	* </pre>
 	*/
 	public Long get_tcperrbadchecksumrate() throws Exception {
@@ -1334,7 +1353,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* SYN cookie packets dropped because the sequence number specified in the packets is outside the current window.
+	* Rate (/s) counter for tcperrcookiepktseqdrop
 	* </pre>
 	*/
 	public Long get_tcperrcookiepktseqdroprate() throws Exception {
@@ -1460,7 +1479,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Reset packets dropped because the default threshold of 100 resets per 10 milliseconds has been exceeded. This is a configurable value using the set rateControl command.
+	* Rate (/s) counter for tcperrrstthreshold
 	* </pre>
 	*/
 	public Long get_tcperrrstthresholdrate() throws Exception {
@@ -1478,7 +1497,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Half-opened client connections that are flushed because the three-way handshakes are not complete.
+	* Rate (/s) counter for tcptotzombiehalfopencltconnflushed
 	* </pre>
 	*/
 	public Long get_tcpzombiehalfopencltconnflushedrate() throws Exception {
@@ -1487,7 +1506,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* Client connections that are flushed because the client has been idle for some time.
+	* Rate (/s) counter for tcptotzombiecltconnflushed
 	* </pre>
 	*/
 	public Long get_tcpzombiecltconnflushedrate() throws Exception {
@@ -1496,7 +1515,7 @@ public class protocoltcp_stats extends base_resource
 
 	/**
 	* <pre>
-	* TCP packets transmitted.
+	* Rate (/s) counter for tcptottxpkts
 	* </pre>
 	*/
 	public Long get_tcptxpktsrate() throws Exception {
@@ -1557,4 +1576,8 @@ public class protocoltcp_stats extends base_resource
 		return response[0];
 	}
 
+	public static class clearstatsEnum {
+		public static final String basic = "basic";
+		public static final String full = "full";
+	}
 }

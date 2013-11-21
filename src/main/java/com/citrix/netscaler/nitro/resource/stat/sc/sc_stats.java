@@ -29,9 +29,9 @@ class sc_response extends base_response
 
 public class sc_stats extends base_resource
 {
+	private String clearstats;
 	private Long sctotcondtriggered;
 	private Long sccondtriggeredrate;
-	private Long scthresholdfail;
 	private Long scpolicyurlhits;
 	private Long scpolicyurlhitsrate;
 	private Long scpopups;
@@ -53,6 +53,24 @@ public class sc_stats extends base_resource
 
 	/**
 	* <pre>
+	* Clear the statsistics / counters
+	* </pre>
+	*/
+	public void set_clearstats(String clearstats) throws Exception{
+		this.clearstats = clearstats;
+	}
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters.<br> Possible values = basic, full
+	* </pre>
+	*/
+	public String get_clearstats() throws Exception {
+		return this.clearstats;
+	}
+
+	/**
+	* <pre>
 	* Total number of in-memory java script  served which throws the pop-up window.
 	* </pre>
 	*/
@@ -62,7 +80,7 @@ public class sc_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of corrupted SureConnect cookies.
+	* Rate (/s) counter for scfaultycookies
 	* </pre>
 	*/
 	public Long get_scfaultycookiesrate() throws Exception {
@@ -71,16 +89,7 @@ public class sc_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of times SureConnect was not triggered because the thresholds conditions failed.
-	* </pre>
-	*/
-	public Long get_scthresholdfail() throws Exception {
-		return this.scthresholdfail;
-	}
-
-	/**
-	* <pre>
-	* Total number of reissued SureConnect requests.
+	* Rate (/s) counter for sctotreissuedrequests
 	* </pre>
 	*/
 	public Long get_screissuedrequestsrate() throws Exception {
@@ -107,7 +116,7 @@ public class sc_stats extends base_resource
 
 	/**
 	* <pre>
-	* Toal number of times that SureConnect statistics were reset.
+	* Rate (/s) counter for scresetstats
 	* </pre>
 	*/
 	public Long get_scresetstatsrate() throws Exception {
@@ -116,7 +125,7 @@ public class sc_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of in-memory java script  served which throws the pop-up window.
+	* Rate (/s) counter for scpopups
 	* </pre>
 	*/
 	public Long get_scpopupsrate() throws Exception {
@@ -134,7 +143,7 @@ public class sc_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of incoming requests that matched configured sureconnect policies.
+	* Rate (/s) counter for scpolicyurlhits
 	* </pre>
 	*/
 	public Long get_scpolicyurlhitsrate() throws Exception {
@@ -152,7 +161,7 @@ public class sc_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of times that SureConnect conditions were triggered.
+	* Rate (/s) counter for sctotcondtriggered
 	* </pre>
 	*/
 	public Long get_sccondtriggeredrate() throws Exception {
@@ -170,7 +179,7 @@ public class sc_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of requests that were  handled in a single SureConnect session.
+	* Rate (/s) counter for scsessionreqs
 	* </pre>
 	*/
 	public Long get_scsessionreqsrate() throws Exception {
@@ -215,7 +224,7 @@ public class sc_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of alternate content served which throws the pop-up window.
+	* Rate (/s) counter for scaltconturls
 	* </pre>
 	*/
 	public Long get_scaltconturlsrate() throws Exception {
@@ -224,7 +233,7 @@ public class sc_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of requests that came from all unsupported browsers.
+	* Rate (/s) counter for scunsupbrow
 	* </pre>
 	*/
 	public Long get_scunsupbrowrate() throws Exception {
@@ -233,7 +242,7 @@ public class sc_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of   HTTP POST requests that triggered SureConnect feature.
+	* Rate (/s) counter for scpostreqs
 	* </pre>
 	*/
 	public Long get_scpostreqsrate() throws Exception {
@@ -294,4 +303,8 @@ public class sc_stats extends base_resource
 		return response[0];
 	}
 
+	public static class clearstatsEnum {
+		public static final String basic = "basic";
+		public static final String full = "full";
+	}
 }

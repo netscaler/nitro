@@ -33,6 +33,7 @@ class dospolicy_response extends base_response
 public class dospolicy_stats extends base_resource
 {
 	private String name;
+	private String clearstats;
 	private Double doscurrentcltdetectrate;
 	private String dosphysicalserviceip;
 	private Integer dosphysicalserviceport;
@@ -48,14 +49,10 @@ public class dospolicy_stats extends base_resource
 	private Long dosjsbytessentrate;
 	private Long dostotnongetpostrequests;
 	private Long dosnongetpostrequestsrate;
-	private Long doscurrentjsrate;
-	private Long doscurrentjsraterate;
-	private Long doscurserverresprate;
-	private Long doscurserverrespraterate;
 
 	/**
 	* <pre>
-	* The name of the DoS protection policy whose statistics must be displayed. If a name is not provided, statistics of all the DoS protection policies available on the appliance are displayed.
+	* The name of the DoS protection policy whose statistics must be displayed. If a name is not provided, statistics of all the DoS protection policies are displayed.
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -64,7 +61,7 @@ public class dospolicy_stats extends base_resource
 
 	/**
 	* <pre>
-	* The name of the DoS protection policy whose statistics must be displayed. If a name is not provided, statistics of all the DoS protection policies available on the appliance are displayed.<br> Minimum length =  1
+	* The name of the DoS protection policy whose statistics must be displayed. If a name is not provided, statistics of all the DoS protection policies are displayed.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -73,20 +70,29 @@ public class dospolicy_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of times the DoS JavaScript was not sent because the set JavaScript rate was not met for this policy.
+	* Clear the statsistics / counters
 	* </pre>
 	*/
-	public Long get_dosjsrefusedrate() throws Exception {
-		return this.dosjsrefusedrate;
+	public void set_clearstats(String clearstats) throws Exception{
+		this.clearstats = clearstats;
 	}
 
 	/**
 	* <pre>
-	* Current rate at which JavaScript is being sent in response to client requests.
+	* Clear the statsistics / counters.<br> Possible values = basic, full
 	* </pre>
 	*/
-	public Long get_doscurrentjsraterate() throws Exception {
-		return this.doscurrentjsraterate;
+	public String get_clearstats() throws Exception {
+		return this.clearstats;
+	}
+
+	/**
+	* <pre>
+	* Rate (/s) counter for dostotjsrefused
+	* </pre>
+	*/
+	public Long get_dosjsrefusedrate() throws Exception {
+		return this.dosjsrefusedrate;
 	}
 
 	/**
@@ -100,7 +106,7 @@ public class dospolicy_stats extends base_resource
 
 	/**
 	* <pre>
-	* Number of non-GET and non-POST requests for which DOS JavaScript was sent.
+	* Rate (/s) counter for dostotnongetpostrequests
 	* </pre>
 	*/
 	public Long get_dosnongetpostrequestsrate() throws Exception {
@@ -109,20 +115,11 @@ public class dospolicy_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of DoS JavaScript transactions performed for this policy.
+	* Rate (/s) counter for dostotjssent
 	* </pre>
 	*/
 	public Long get_dosjssentrate() throws Exception {
 		return this.dosjssentrate;
-	}
-
-	/**
-	* <pre>
-	* Current rate at which the server to which this policy is bound is responding.
-	* </pre>
-	*/
-	public Long get_doscurserverrespraterate() throws Exception {
-		return this.doscurserverrespraterate;
 	}
 
 	/**
@@ -136,16 +133,7 @@ public class dospolicy_stats extends base_resource
 
 	/**
 	* <pre>
-	* Current rate at which JavaScript is being sent in response to client requests.
-	* </pre>
-	*/
-	public Long get_doscurrentjsrate() throws Exception {
-		return this.doscurrentjsrate;
-	}
-
-	/**
-	* <pre>
-	* Total number of DoS JavaScript bytes sent for this policy.
+	* Rate (/s) counter for dostotjsbytessent
 	* </pre>
 	*/
 	public Long get_dosjsbytessentrate() throws Exception {
@@ -181,7 +169,7 @@ public class dospolicy_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total number of valid DoS cookies received for this policy.
+	* Rate (/s) counter for dostotvalidclients
 	* </pre>
 	*/
 	public Long get_dosvalidclientsrate() throws Exception {
@@ -190,20 +178,11 @@ public class dospolicy_stats extends base_resource
 
 	/**
 	* <pre>
-	* Current queue size of the server to which this policy is bound.
+	* Rate (/s) counter for doscurrentqueuesize
 	* </pre>
 	*/
 	public Long get_doscurrentqueuesizerate() throws Exception {
 		return this.doscurrentqueuesizerate;
-	}
-
-	/**
-	* <pre>
-	* Current rate at which the server to which this policy is bound is responding.
-	* </pre>
-	*/
-	public Long get_doscurserverresprate() throws Exception {
-		return this.doscurserverresprate;
 	}
 
 	/**
@@ -304,4 +283,8 @@ public class dospolicy_stats extends base_resource
 		return response;
 	}
 
+	public static class clearstatsEnum {
+		public static final String basic = "basic";
+		public static final String full = "full";
+	}
 }

@@ -44,6 +44,7 @@ public class l2param extends base_resource
 	private String mbfinstlearning;
 	private String rstintfonhafo;
 	private String skipproxyingbsdtraffic;
+	private String returntoethernetsender;
 
 	/**
 	* <pre>
@@ -281,6 +282,24 @@ public class l2param extends base_resource
 
 	/**
 	* <pre>
+	*  Return to ethernet sender.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* </pre>
+	*/
+	public void set_returntoethernetsender(String returntoethernetsender) throws Exception{
+		this.returntoethernetsender = returntoethernetsender;
+	}
+
+	/**
+	* <pre>
+	*  Return to ethernet sender.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* </pre>
+	*/
+	public String get_returntoethernetsender() throws Exception {
+		return this.returntoethernetsender;
+	}
+
+	/**
+	* <pre>
 	* converts nitro response into object and returns the object array in case of get request.
 	* </pre>
 	*/
@@ -332,6 +351,7 @@ public class l2param extends base_resource
 		updateresource.mbfinstlearning = resource.mbfinstlearning;
 		updateresource.rstintfonhafo = resource.rstintfonhafo;
 		updateresource.skipproxyingbsdtraffic = resource.skipproxyingbsdtraffic;
+		updateresource.returntoethernetsender = resource.returntoethernetsender;
 		return updateresource.update_resource(client);
 	}
 
@@ -341,18 +361,6 @@ public class l2param extends base_resource
 	*/
 	public static base_response unset(nitro_service client, l2param resource, String[] args) throws Exception{
 		l2param unsetresource = new l2param();
-		unsetresource.mbfpeermacupdate = resource.mbfpeermacupdate;
-		unsetresource.maxbridgecollision = resource.maxbridgecollision;
-		unsetresource.bdggrpproxyarp = resource.bdggrpproxyarp;
-		unsetresource.bdgsetting = resource.bdgsetting;
-		unsetresource.garponvridintf = resource.garponvridintf;
-		unsetresource.macmodefwdmypkt = resource.macmodefwdmypkt;
-		unsetresource.usemymac = resource.usemymac;
-		unsetresource.proxyarp = resource.proxyarp;
-		unsetresource.garpreply = resource.garpreply;
-		unsetresource.mbfinstlearning = resource.mbfinstlearning;
-		unsetresource.rstintfonhafo = resource.rstintfonhafo;
-		unsetresource.skipproxyingbsdtraffic = resource.skipproxyingbsdtraffic;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -383,6 +391,10 @@ public class l2param extends base_resource
 		public static final String DISABLED = "DISABLED";
 	}
 	public static class bdgsettingEnum {
+		public static final String ENABLED = "ENABLED";
+		public static final String DISABLED = "DISABLED";
+	}
+	public static class returntoethernetsenderEnum {
 		public static final String ENABLED = "ENABLED";
 		public static final String DISABLED = "DISABLED";
 	}

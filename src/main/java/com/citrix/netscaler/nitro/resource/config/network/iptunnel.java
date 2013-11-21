@@ -47,11 +47,12 @@ public class iptunnel extends base_resource
 	private Long channel;
 	private String[] tunneltype;
 	private String ipsectunnelstatus;
+	private String pbrname;
 	private Long __count;
 
 	/**
 	* <pre>
-	* Name of the IP Tunnel. The name must not exceed 127 characters, and the leading character must be a number or letter. The following characters are also allowed: @ _ - . (period) : (colon) # and space ( ).<br> Minimum length =  1
+	* Name for the IP tunnel. Leading character must be a number or letter. Other characters allowed, after the first character, are @ _ - . (period) : (colon) # and space ( ).<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -60,7 +61,7 @@ public class iptunnel extends base_resource
 
 	/**
 	* <pre>
-	* Name of the IP Tunnel. The name must not exceed 127 characters, and the leading character must be a number or letter. The following characters are also allowed: @ _ - . (period) : (colon) # and space ( ).<br> Minimum length =  1
+	* Name for the IP tunnel. Leading character must be a number or letter. Other characters allowed, after the first character, are @ _ - . (period) : (colon) # and space ( ).<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -69,7 +70,7 @@ public class iptunnel extends base_resource
 
 	/**
 	* <pre>
-	* The remote IP address or subnet of the tunnel.<br> Minimum length =  1
+	* Public IPv4 address, of the remote device, used to set up the tunnel. For this parameter, you can alternativelyspecify a network address if you specify IPIP (IP over IP) for the Protocol parameter.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_remote(String remote) throws Exception{
@@ -78,7 +79,7 @@ public class iptunnel extends base_resource
 
 	/**
 	* <pre>
-	* The remote IP address or subnet of the tunnel.<br> Minimum length =  1
+	* Public IPv4 address, of the remote device, used to set up the tunnel. For this parameter, you can alternativelyspecify a network address if you specify IPIP (IP over IP) for the Protocol parameter.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_remote() throws Exception {
@@ -87,7 +88,7 @@ public class iptunnel extends base_resource
 
 	/**
 	* <pre>
-	* Subnet mask of the remote IP address of the tunnel. A public IPv4 address of the remote device used to set up the tunnel. For this parameter, you can also specify a network address if you specify IPIP (IP over IP) for the Protocol parameter.
+	* Subnet mask of the remote IP address of the tunnel.
 	* </pre>
 	*/
 	public void set_remotesubnetmask(String remotesubnetmask) throws Exception{
@@ -96,7 +97,7 @@ public class iptunnel extends base_resource
 
 	/**
 	* <pre>
-	* Subnet mask of the remote IP address of the tunnel. A public IPv4 address of the remote device used to set up the tunnel. For this parameter, you can also specify a network address if you specify IPIP (IP over IP) for the Protocol parameter.
+	* Subnet mask of the remote IP address of the tunnel.
 	* </pre>
 	*/
 	public String get_remotesubnetmask() throws Exception {
@@ -105,7 +106,7 @@ public class iptunnel extends base_resource
 
 	/**
 	* <pre>
-	* A NetScaler owned public IPv4 address, configured on the local NetScaler appliance and used to set up the tunnel. Possible values: Auto, MIP, SNIP, VIP. Default: Auto.
+	* Type ofNetScaler owned public IPv4 address, configured on the local NetScaler appliance and used to set up the tunnel.
 	* </pre>
 	*/
 	public void set_local(String local) throws Exception{
@@ -114,7 +115,7 @@ public class iptunnel extends base_resource
 
 	/**
 	* <pre>
-	* A NetScaler owned public IPv4 address, configured on the local NetScaler appliance and used to set up the tunnel. Possible values: Auto, MIP, SNIP, VIP. Default: Auto.
+	* Type ofNetScaler owned public IPv4 address, configured on the local NetScaler appliance and used to set up the tunnel.
 	* </pre>
 	*/
 	public String get_local() throws Exception {
@@ -123,7 +124,7 @@ public class iptunnel extends base_resource
 
 	/**
 	* <pre>
-	* The IP tunneling protocol.<br> Default value: TNL_IPIP<br> Possible values = IPIP, GRE
+	* The IP tunneling protocol.<br> Default value: IPIP<br> Possible values = IPIP, GRE, IPSEC
 	* </pre>
 	*/
 	public void set_protocol(String protocol) throws Exception{
@@ -132,7 +133,7 @@ public class iptunnel extends base_resource
 
 	/**
 	* <pre>
-	* The IP tunneling protocol.<br> Default value: TNL_IPIP<br> Possible values = IPIP, GRE
+	* The IP tunneling protocol.<br> Default value: IPIP<br> Possible values = IPIP, GRE, IPSEC
 	* </pre>
 	*/
 	public String get_protocol() throws Exception {
@@ -204,11 +205,20 @@ public class iptunnel extends base_resource
 
 	/**
 	* <pre>
-	* Whether the ipsec on this tunnel is up or down.<br> Possible values = DOWN, UP, PARTIAL-UP
+	* Whether the ipsec on this tunnel is up or down.<br> Possible values = DOWN, UP, PARTIAL-UP, UNKNOWN
 	* </pre>
 	*/
 	public String get_ipsectunnelstatus() throws Exception {
 		return this.ipsectunnelstatus;
+	}
+
+	/**
+	* <pre>
+	* Name for the PBR.
+	* </pre>
+	*/
+	public String get_pbrname() throws Exception {
+		return this.pbrname;
 	}
 
 	/**
@@ -457,6 +467,7 @@ public class iptunnel extends base_resource
 	public static class protocolEnum {
 		public static final String IPIP = "IPIP";
 		public static final String GRE = "GRE";
+		public static final String IPSEC = "IPSEC";
 	}
 	public static class tunneltypeEnum {
 		public static final String Configured = "Configured";
@@ -466,5 +477,6 @@ public class iptunnel extends base_resource
 		public static final String DOWN = "DOWN";
 		public static final String UP = "UP";
 		public static final String PARTIAL_UP = "PARTIAL-UP";
+		public static final String UNKNOWN = "UNKNOWN";
 	}
 }

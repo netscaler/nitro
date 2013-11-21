@@ -37,6 +37,7 @@ public class appflowparam extends base_resource
 	private Long flowrecordinterval;
 	private Long udppmtu;
 	private String httpurl;
+	private String aaausername;
 	private String httpcookie;
 	private String httpreferer;
 	private String httpmethod;
@@ -50,10 +51,11 @@ public class appflowparam extends base_resource
 	private String httplocation;
 	private String httpsetcookie;
 	private String httpsetcookie2;
+	private String connectionchaining;
 
 	/**
 	* <pre>
-	* IPFIX template refresh interval (in seconds).<br> Default value: 600<br> Minimum value =  60<br> Maximum value =  3600
+	* Refresh interval, in seconds, at which to export the template data. Because data transmission is in UDP, the templates must be resent at regular intervals.<br> Default value: 600<br> Minimum value =  60<br> Maximum value =  3600
 	* </pre>
 	*/
 	public void set_templaterefresh(long templaterefresh) throws Exception {
@@ -62,7 +64,7 @@ public class appflowparam extends base_resource
 
 	/**
 	* <pre>
-	* IPFIX template refresh interval (in seconds).<br> Default value: 600<br> Minimum value =  60<br> Maximum value =  3600
+	* Refresh interval, in seconds, at which to export the template data. Because data transmission is in UDP, the templates must be resent at regular intervals.<br> Default value: 600<br> Minimum value =  60<br> Maximum value =  3600
 	* </pre>
 	*/
 	public void set_templaterefresh(Long templaterefresh) throws Exception{
@@ -71,7 +73,7 @@ public class appflowparam extends base_resource
 
 	/**
 	* <pre>
-	* IPFIX template refresh interval (in seconds).<br> Default value: 600<br> Minimum value =  60<br> Maximum value =  3600
+	* Refresh interval, in seconds, at which to export the template data. Because data transmission is in UDP, the templates must be resent at regular intervals.<br> Default value: 600<br> Minimum value =  60<br> Maximum value =  3600
 	* </pre>
 	*/
 	public Long get_templaterefresh() throws Exception {
@@ -80,7 +82,7 @@ public class appflowparam extends base_resource
 
 	/**
 	* <pre>
-	* Appname refresh interval (in seconds).<br> Default value: 600<br> Minimum value =  60<br> Maximum value =  3600
+	* Interval, in seconds, at which to send Appnames to the configured collectors. Appname refers to the name of an entity (virtual server, service, or service group) in the NetScaler appliance.<br> Default value: 600<br> Minimum value =  60<br> Maximum value =  3600
 	* </pre>
 	*/
 	public void set_appnamerefresh(long appnamerefresh) throws Exception {
@@ -89,7 +91,7 @@ public class appflowparam extends base_resource
 
 	/**
 	* <pre>
-	* Appname refresh interval (in seconds).<br> Default value: 600<br> Minimum value =  60<br> Maximum value =  3600
+	* Interval, in seconds, at which to send Appnames to the configured collectors. Appname refers to the name of an entity (virtual server, service, or service group) in the NetScaler appliance.<br> Default value: 600<br> Minimum value =  60<br> Maximum value =  3600
 	* </pre>
 	*/
 	public void set_appnamerefresh(Long appnamerefresh) throws Exception{
@@ -98,7 +100,7 @@ public class appflowparam extends base_resource
 
 	/**
 	* <pre>
-	* Appname refresh interval (in seconds).<br> Default value: 600<br> Minimum value =  60<br> Maximum value =  3600
+	* Interval, in seconds, at which to send Appnames to the configured collectors. Appname refers to the name of an entity (virtual server, service, or service group) in the NetScaler appliance.<br> Default value: 600<br> Minimum value =  60<br> Maximum value =  3600
 	* </pre>
 	*/
 	public Long get_appnamerefresh() throws Exception {
@@ -107,7 +109,7 @@ public class appflowparam extends base_resource
 
 	/**
 	* <pre>
-	* IPFIX flow record export interval (in seconds).<br> Default value: 600<br> Minimum value =  60<br> Maximum value =  3600
+	* Interval, in seconds, at which to send flow records to the configured collectors.<br> Default value: 60<br> Minimum value =  60<br> Maximum value =  3600
 	* </pre>
 	*/
 	public void set_flowrecordinterval(long flowrecordinterval) throws Exception {
@@ -116,7 +118,7 @@ public class appflowparam extends base_resource
 
 	/**
 	* <pre>
-	* IPFIX flow record export interval (in seconds).<br> Default value: 600<br> Minimum value =  60<br> Maximum value =  3600
+	* Interval, in seconds, at which to send flow records to the configured collectors.<br> Default value: 60<br> Minimum value =  60<br> Maximum value =  3600
 	* </pre>
 	*/
 	public void set_flowrecordinterval(Long flowrecordinterval) throws Exception{
@@ -125,7 +127,7 @@ public class appflowparam extends base_resource
 
 	/**
 	* <pre>
-	* IPFIX flow record export interval (in seconds).<br> Default value: 600<br> Minimum value =  60<br> Maximum value =  3600
+	* Interval, in seconds, at which to send flow records to the configured collectors.<br> Default value: 60<br> Minimum value =  60<br> Maximum value =  3600
 	* </pre>
 	*/
 	public Long get_flowrecordinterval() throws Exception {
@@ -134,7 +136,7 @@ public class appflowparam extends base_resource
 
 	/**
 	* <pre>
-	* MTU to be used for IPFIX UDP packets.<br> Default value: 1472<br> Minimum value =  128<br> Maximum value =  1472
+	* MTU, in bytes, for IPFIX UDP packets.<br> Default value: 1472<br> Minimum value =  128<br> Maximum value =  1472
 	* </pre>
 	*/
 	public void set_udppmtu(long udppmtu) throws Exception {
@@ -143,7 +145,7 @@ public class appflowparam extends base_resource
 
 	/**
 	* <pre>
-	* MTU to be used for IPFIX UDP packets.<br> Default value: 1472<br> Minimum value =  128<br> Maximum value =  1472
+	* MTU, in bytes, for IPFIX UDP packets.<br> Default value: 1472<br> Minimum value =  128<br> Maximum value =  1472
 	* </pre>
 	*/
 	public void set_udppmtu(Long udppmtu) throws Exception{
@@ -152,7 +154,7 @@ public class appflowparam extends base_resource
 
 	/**
 	* <pre>
-	* MTU to be used for IPFIX UDP packets.<br> Default value: 1472<br> Minimum value =  128<br> Maximum value =  1472
+	* MTU, in bytes, for IPFIX UDP packets.<br> Default value: 1472<br> Minimum value =  128<br> Maximum value =  1472
 	* </pre>
 	*/
 	public Long get_udppmtu() throws Exception {
@@ -161,7 +163,7 @@ public class appflowparam extends base_resource
 
 	/**
 	* <pre>
-	* Enable AppFlow HTTP URL logging.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Include the http URL that the NetScaler appliance received from the client.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_httpurl(String httpurl) throws Exception{
@@ -170,7 +172,7 @@ public class appflowparam extends base_resource
 
 	/**
 	* <pre>
-	* Enable AppFlow HTTP URL logging.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Include the http URL that the NetScaler appliance received from the client.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_httpurl() throws Exception {
@@ -179,7 +181,25 @@ public class appflowparam extends base_resource
 
 	/**
 	* <pre>
-	* Enable AppFlow HTTP cookie logging.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Enable AppFlow AAA Username logging.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* </pre>
+	*/
+	public void set_aaausername(String aaausername) throws Exception{
+		this.aaausername = aaausername;
+	}
+
+	/**
+	* <pre>
+	* Enable AppFlow AAA Username logging.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* </pre>
+	*/
+	public String get_aaausername() throws Exception {
+		return this.aaausername;
+	}
+
+	/**
+	* <pre>
+	* Include the cookie that was in the HTTP request the appliance received from the client.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_httpcookie(String httpcookie) throws Exception{
@@ -188,7 +208,7 @@ public class appflowparam extends base_resource
 
 	/**
 	* <pre>
-	* Enable AppFlow HTTP cookie logging.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Include the cookie that was in the HTTP request the appliance received from the client.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_httpcookie() throws Exception {
@@ -197,7 +217,7 @@ public class appflowparam extends base_resource
 
 	/**
 	* <pre>
-	* Enable AppFlow HTTP referer logging.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Include the web page that was last visited by the client.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_httpreferer(String httpreferer) throws Exception{
@@ -206,7 +226,7 @@ public class appflowparam extends base_resource
 
 	/**
 	* <pre>
-	* Enable AppFlow HTTP referer logging.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Include the web page that was last visited by the client.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_httpreferer() throws Exception {
@@ -215,7 +235,7 @@ public class appflowparam extends base_resource
 
 	/**
 	* <pre>
-	* Enable AppFlow HTTP method logging.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Include the method that was specified in the HTTP request that the appliance received from the client.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_httpmethod(String httpmethod) throws Exception{
@@ -224,7 +244,7 @@ public class appflowparam extends base_resource
 
 	/**
 	* <pre>
-	* Enable AppFlow HTTP method logging.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Include the method that was specified in the HTTP request that the appliance received from the client.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_httpmethod() throws Exception {
@@ -233,7 +253,7 @@ public class appflowparam extends base_resource
 
 	/**
 	* <pre>
-	* Enable AppFlow HTTP host logging.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Include the host identified in the HTTP request that the appliance received from the client.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_httphost(String httphost) throws Exception{
@@ -242,7 +262,7 @@ public class appflowparam extends base_resource
 
 	/**
 	* <pre>
-	* Enable AppFlow HTTP host logging.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Include the host identified in the HTTP request that the appliance received from the client.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_httphost() throws Exception {
@@ -251,7 +271,7 @@ public class appflowparam extends base_resource
 
 	/**
 	* <pre>
-	* Enable AppFlow HTTP user-agent logging.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Include the client application through which the HTTP request was received by the NetScaler appliance.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_httpuseragent(String httpuseragent) throws Exception{
@@ -260,7 +280,7 @@ public class appflowparam extends base_resource
 
 	/**
 	* <pre>
-	* Enable AppFlow HTTP user-agent logging.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Include the client application through which the HTTP request was received by the NetScaler appliance.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_httpuseragent() throws Exception {
@@ -269,7 +289,7 @@ public class appflowparam extends base_resource
 
 	/**
 	* <pre>
-	* Control whether AppFlow records should be generated only for client-side traffic.<br> Default value: NO<br> Possible values = YES, NO
+	* Generate AppFlow records for only the traffic from the client.<br> Default value: NO<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public void set_clienttrafficonly(String clienttrafficonly) throws Exception{
@@ -278,7 +298,7 @@ public class appflowparam extends base_resource
 
 	/**
 	* <pre>
-	* Control whether AppFlow records should be generated only for client-side traffic.<br> Default value: NO<br> Possible values = YES, NO
+	* Generate AppFlow records for only the traffic from the client.<br> Default value: NO<br> Possible values = YES, NO
 	* </pre>
 	*/
 	public String get_clienttrafficonly() throws Exception {
@@ -287,7 +307,7 @@ public class appflowparam extends base_resource
 
 	/**
 	* <pre>
-	* Enable AppFlow HTTP Content-Type header logging.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Include the HTTP Content-Type header sent from the server to the client to determine the type of the content sent.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_httpcontenttype(String httpcontenttype) throws Exception{
@@ -296,7 +316,7 @@ public class appflowparam extends base_resource
 
 	/**
 	* <pre>
-	* Enable AppFlow HTTP Content-Type header logging.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Include the HTTP Content-Type header sent from the server to the client to determine the type of the content sent.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_httpcontenttype() throws Exception {
@@ -305,7 +325,7 @@ public class appflowparam extends base_resource
 
 	/**
 	* <pre>
-	* Enable AppFlow HTTP Authorization header logging.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Include the HTTP Authorization header information.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_httpauthorization(String httpauthorization) throws Exception{
@@ -314,7 +334,7 @@ public class appflowparam extends base_resource
 
 	/**
 	* <pre>
-	* Enable AppFlow HTTP Authorization header logging.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Include the HTTP Authorization header information.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_httpauthorization() throws Exception {
@@ -323,7 +343,7 @@ public class appflowparam extends base_resource
 
 	/**
 	* <pre>
-	* Enable AppFlow HTTP Via header logging.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Include the httpVia header which contains the IP address of proxy server through which the client accessed the server.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_httpvia(String httpvia) throws Exception{
@@ -332,7 +352,7 @@ public class appflowparam extends base_resource
 
 	/**
 	* <pre>
-	* Enable AppFlow HTTP Via header logging.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Include the httpVia header which contains the IP address of proxy server through which the client accessed the server.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_httpvia() throws Exception {
@@ -341,7 +361,7 @@ public class appflowparam extends base_resource
 
 	/**
 	* <pre>
-	* Enable AppFlow HTTP X-Forwarded-For header logging.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Include the httpXForwardedFor header, which contains the original IP Address of the client using a proxy server to access the server.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_httpxforwardedfor(String httpxforwardedfor) throws Exception{
@@ -350,7 +370,7 @@ public class appflowparam extends base_resource
 
 	/**
 	* <pre>
-	* Enable AppFlow HTTP X-Forwarded-For header logging.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Include the httpXForwardedFor header, which contains the original IP Address of the client using a proxy server to access the server.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_httpxforwardedfor() throws Exception {
@@ -359,7 +379,7 @@ public class appflowparam extends base_resource
 
 	/**
 	* <pre>
-	* Enable AppFlow HTTP Location header logging.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Include the HTTP location headers returned from the HTTP responses.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_httplocation(String httplocation) throws Exception{
@@ -368,7 +388,7 @@ public class appflowparam extends base_resource
 
 	/**
 	* <pre>
-	* Enable AppFlow HTTP Location header logging.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Include the HTTP location headers returned from the HTTP responses.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_httplocation() throws Exception {
@@ -377,7 +397,7 @@ public class appflowparam extends base_resource
 
 	/**
 	* <pre>
-	* Enable AppFlow HTTP Setcookie header logging.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Include the Set-cookie header sent from the server to the client in response to a HTTP request.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_httpsetcookie(String httpsetcookie) throws Exception{
@@ -386,7 +406,7 @@ public class appflowparam extends base_resource
 
 	/**
 	* <pre>
-	* Enable AppFlow HTTP Setcookie header logging.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Include the Set-cookie header sent from the server to the client in response to a HTTP request.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_httpsetcookie() throws Exception {
@@ -395,7 +415,7 @@ public class appflowparam extends base_resource
 
 	/**
 	* <pre>
-	* Enable AppFlow HTTP Setcookie2 header logging.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Include the Set-cookie header sent from the server to the client in response to a HTTP request.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_httpsetcookie2(String httpsetcookie2) throws Exception{
@@ -404,11 +424,29 @@ public class appflowparam extends base_resource
 
 	/**
 	* <pre>
-	* Enable AppFlow HTTP Setcookie2 header logging.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Include the Set-cookie header sent from the server to the client in response to a HTTP request.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_httpsetcookie2() throws Exception {
 		return this.httpsetcookie2;
+	}
+
+	/**
+	* <pre>
+	* Enable connection chaining so that the client server flows of a connection are linked. Also the connection chain ID is propagated across NetScalers, so that in a multi-hop environment the flows belonging to the same logical connection are linked. This id is also logged as part of appflow record.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* </pre>
+	*/
+	public void set_connectionchaining(String connectionchaining) throws Exception{
+		this.connectionchaining = connectionchaining;
+	}
+
+	/**
+	* <pre>
+	* Enable connection chaining so that the client server flows of a connection are linked. Also the connection chain ID is propagated across NetScalers, so that in a multi-hop environment the flows belonging to the same logical connection are linked. This id is also logged as part of appflow record.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* </pre>
+	*/
+	public String get_connectionchaining() throws Exception {
+		return this.connectionchaining;
 	}
 
 	/**
@@ -457,6 +495,7 @@ public class appflowparam extends base_resource
 		updateresource.flowrecordinterval = resource.flowrecordinterval;
 		updateresource.udppmtu = resource.udppmtu;
 		updateresource.httpurl = resource.httpurl;
+		updateresource.aaausername = resource.aaausername;
 		updateresource.httpcookie = resource.httpcookie;
 		updateresource.httpreferer = resource.httpreferer;
 		updateresource.httpmethod = resource.httpmethod;
@@ -470,6 +509,7 @@ public class appflowparam extends base_resource
 		updateresource.httplocation = resource.httplocation;
 		updateresource.httpsetcookie = resource.httpsetcookie;
 		updateresource.httpsetcookie2 = resource.httpsetcookie2;
+		updateresource.connectionchaining = resource.connectionchaining;
 		return updateresource.update_resource(client);
 	}
 
@@ -479,24 +519,6 @@ public class appflowparam extends base_resource
 	*/
 	public static base_response unset(nitro_service client, appflowparam resource, String[] args) throws Exception{
 		appflowparam unsetresource = new appflowparam();
-		unsetresource.templaterefresh = resource.templaterefresh;
-		unsetresource.appnamerefresh = resource.appnamerefresh;
-		unsetresource.flowrecordinterval = resource.flowrecordinterval;
-		unsetresource.udppmtu = resource.udppmtu;
-		unsetresource.httpurl = resource.httpurl;
-		unsetresource.httpcookie = resource.httpcookie;
-		unsetresource.httpreferer = resource.httpreferer;
-		unsetresource.httpmethod = resource.httpmethod;
-		unsetresource.httphost = resource.httphost;
-		unsetresource.httpuseragent = resource.httpuseragent;
-		unsetresource.clienttrafficonly = resource.clienttrafficonly;
-		unsetresource.httpcontenttype = resource.httpcontenttype;
-		unsetresource.httpauthorization = resource.httpauthorization;
-		unsetresource.httpvia = resource.httpvia;
-		unsetresource.httpxforwardedfor = resource.httpxforwardedfor;
-		unsetresource.httplocation = resource.httplocation;
-		unsetresource.httpsetcookie = resource.httpsetcookie;
-		unsetresource.httpsetcookie2 = resource.httpsetcookie2;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -538,6 +560,10 @@ public class appflowparam extends base_resource
 		public static final String ENABLED = "ENABLED";
 		public static final String DISABLED = "DISABLED";
 	}
+	public static class aaausernameEnum {
+		public static final String ENABLED = "ENABLED";
+		public static final String DISABLED = "DISABLED";
+	}
 	public static class clienttrafficonlyEnum {
 		public static final String YES = "YES";
 		public static final String NO = "NO";
@@ -551,6 +577,10 @@ public class appflowparam extends base_resource
 		public static final String DISABLED = "DISABLED";
 	}
 	public static class httplocationEnum {
+		public static final String ENABLED = "ENABLED";
+		public static final String DISABLED = "DISABLED";
+	}
+	public static class connectionchainingEnum {
 		public static final String ENABLED = "ENABLED";
 		public static final String DISABLED = "DISABLED";
 	}

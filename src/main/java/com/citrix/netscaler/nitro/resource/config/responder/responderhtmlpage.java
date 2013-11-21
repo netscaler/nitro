@@ -43,7 +43,8 @@ public class responderhtmlpage extends base_resource
 
 	/**
 	* <pre>
-	* .<br> Minimum length =  1<br> Maximum length =  2047
+	* Local path to and name of, or URL \(protocol, host, path, and file name\) for, the file in which to store the imported HTML page.
+NOTE: The import fails if the object to be imported is on an HTTPS server that requires client certificate authentication for access.<br> Minimum length =  1<br> Maximum length =  2047
 	* </pre>
 	*/
 	public void set_src(String src) throws Exception{
@@ -52,7 +53,8 @@ public class responderhtmlpage extends base_resource
 
 	/**
 	* <pre>
-	* .<br> Minimum length =  1<br> Maximum length =  2047
+	* Local path to and name of, or URL \(protocol, host, path, and file name\) for, the file in which to store the imported HTML page.
+NOTE: The import fails if the object to be imported is on an HTTPS server that requires client certificate authentication for access.<br> Minimum length =  1<br> Maximum length =  2047
 	* </pre>
 	*/
 	public String get_src() throws Exception {
@@ -61,7 +63,7 @@ public class responderhtmlpage extends base_resource
 
 	/**
 	* <pre>
-	* Indicates name of the html page to import/update.<br> Minimum length =  1<br> Maximum length =  31
+	* Name to assign to the HTML page object on the NetScaler appliance.<br> Minimum length =  1<br> Maximum length =  31
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -70,7 +72,7 @@ public class responderhtmlpage extends base_resource
 
 	/**
 	* <pre>
-	* Indicates name of the html page to import/update.<br> Minimum length =  1<br> Maximum length =  31
+	* Name to assign to the HTML page object on the NetScaler appliance.<br> Minimum length =  1<br> Maximum length =  31
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -79,7 +81,7 @@ public class responderhtmlpage extends base_resource
 
 	/**
 	* <pre>
-	* Comments.<br> Maximum length =  128
+	* Any comments to preserve information about the HTML page object.<br> Maximum length =  128
 	* </pre>
 	*/
 	public void set_comment(String comment) throws Exception{
@@ -88,7 +90,7 @@ public class responderhtmlpage extends base_resource
 
 	/**
 	* <pre>
-	* Comments.<br> Maximum length =  128
+	* Any comments to preserve information about the HTML page object.<br> Maximum length =  128
 	* </pre>
 	*/
 	public String get_comment() throws Exception {

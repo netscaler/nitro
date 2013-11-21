@@ -66,7 +66,7 @@ public class filterglobal_filterpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The state of the binding.<br> Possible values = ENABLED, DISABLED
+	* State of the binding.<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_state(String state) throws Exception{
@@ -75,7 +75,7 @@ public class filterglobal_filterpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The state of the binding.<br> Possible values = ENABLED, DISABLED
+	* State of the binding.<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_state() throws Exception {
@@ -84,7 +84,7 @@ public class filterglobal_filterpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of teh filter policy.
+	* The name of the filter policy.
 	* </pre>
 	*/
 	public void set_policyname(String policyname) throws Exception{
@@ -93,7 +93,7 @@ public class filterglobal_filterpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of teh filter policy.
+	* The name of the filter policy.
 	* </pre>
 	*/
 	public String get_policyname() throws Exception {

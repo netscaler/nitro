@@ -43,7 +43,7 @@ public class appflowpolicy_appflowglobal_binding extends base_resource
 
 	/**
 	* <pre>
-	* Name of an AppFlow policy.
+	* Name of the policy about which to display detailed information.
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -52,7 +52,7 @@ public class appflowpolicy_appflowglobal_binding extends base_resource
 
 	/**
 	* <pre>
-	* Name of an AppFlow policy.
+	* Name of the policy about which to display detailed information.
 	* </pre>
 	*/
 	public String get_name() throws Exception {

@@ -38,7 +38,7 @@ public class sslpolicylabel_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the SSL policy label.
+	* Name of the SSL policy label for which to show detailed information.
 	* </pre>
 	*/
 	public void set_labelname(String labelname) throws Exception{
@@ -47,7 +47,7 @@ public class sslpolicylabel_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the SSL policy label.
+	* Name of the SSL policy label for which to show detailed information.
 	* </pre>
 	*/
 	public String get_labelname() throws Exception {

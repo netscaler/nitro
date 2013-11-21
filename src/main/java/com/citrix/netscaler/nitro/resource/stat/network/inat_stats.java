@@ -33,6 +33,7 @@ class inat_response extends base_response
 public class inat_stats extends base_resource
 {
 	private String name;
+	private String clearstats;
 	private Long nat46tottcp46;
 	private Long nat46tcp46rate;
 	private Long nat46totudp46;
@@ -86,7 +87,25 @@ public class inat_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total UDP packets translated (V6->v4).
+	* Clear the statsistics / counters
+	* </pre>
+	*/
+	public void set_clearstats(String clearstats) throws Exception{
+		this.clearstats = clearstats;
+	}
+
+	/**
+	* <pre>
+	* Clear the statsistics / counters.<br> Possible values = basic, full
+	* </pre>
+	*/
+	public String get_clearstats() throws Exception {
+		return this.clearstats;
+	}
+
+	/**
+	* <pre>
+	* Rate (/s) counter for nat46totudp64
 	* </pre>
 	*/
 	public Long get_nat46udp64rate() throws Exception {
@@ -113,7 +132,7 @@ public class inat_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total ICMP packets translated (V6->v4).
+	* Rate (/s) counter for nat46toticmp64
 	* </pre>
 	*/
 	public Long get_nat46icmp64rate() throws Exception {
@@ -185,7 +204,7 @@ public class inat_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total IPV4 packets dropped.
+	* Rate (/s) counter for nat46totdrop46
 	* </pre>
 	*/
 	public Long get_nat46drop46rate() throws Exception {
@@ -194,7 +213,7 @@ public class inat_stats extends base_resource
 
 	/**
 	* <pre>
-	* IPV4 packets dropped.
+	* Rate (/s) counter for inatnat46drop46
 	* </pre>
 	*/
 	public Long get_inatnat46drop46rate() throws Exception {
@@ -203,7 +222,7 @@ public class inat_stats extends base_resource
 
 	/**
 	* <pre>
-	* TCP packets translated (V6->v4).
+	* Rate (/s) counter for inatnat46tcp64
 	* </pre>
 	*/
 	public Long get_inatnat46tcp64rate() throws Exception {
@@ -221,7 +240,7 @@ public class inat_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total IPV6 packets dropped.
+	* Rate (/s) counter for nat46totdrop64
 	* </pre>
 	*/
 	public Long get_nat46drop64rate() throws Exception {
@@ -230,7 +249,7 @@ public class inat_stats extends base_resource
 
 	/**
 	* <pre>
-	* TCP packets translated (V4->v6).
+	* Rate (/s) counter for inatnat46tcp46
 	* </pre>
 	*/
 	public Long get_inatnat46tcp46rate() throws Exception {
@@ -257,7 +276,7 @@ public class inat_stats extends base_resource
 
 	/**
 	* <pre>
-	* ICMP packets translated (V4->v6).
+	* Rate (/s) counter for inatnat46icmp46
 	* </pre>
 	*/
 	public Long get_inatnat46icmp46rate() throws Exception {
@@ -275,7 +294,7 @@ public class inat_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total TCP packets translated (V4->v6).
+	* Rate (/s) counter for nat46tottcp46
 	* </pre>
 	*/
 	public Long get_nat46tcp46rate() throws Exception {
@@ -284,7 +303,7 @@ public class inat_stats extends base_resource
 
 	/**
 	* <pre>
-	* IPV6 packets dropped.
+	* Rate (/s) counter for inatnat46drop64
 	* </pre>
 	*/
 	public Long get_inatnat46drop64rate() throws Exception {
@@ -293,7 +312,7 @@ public class inat_stats extends base_resource
 
 	/**
 	* <pre>
-	* UDP packets translated (V6->v4).
+	* Rate (/s) counter for inatnat46udp64
 	* </pre>
 	*/
 	public Long get_inatnat46udp64rate() throws Exception {
@@ -302,7 +321,7 @@ public class inat_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total ICMP packets translated (V4->v6).
+	* Rate (/s) counter for nat46toticmp46
 	* </pre>
 	*/
 	public Long get_nat46icmp46rate() throws Exception {
@@ -320,7 +339,7 @@ public class inat_stats extends base_resource
 
 	/**
 	* <pre>
-	* ICMP packets translated (V6->v4).
+	* Rate (/s) counter for inatnat46icmp64
 	* </pre>
 	*/
 	public Long get_inatnat46icmp64rate() throws Exception {
@@ -329,7 +348,7 @@ public class inat_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total TCP packets translated (V6->v4).
+	* Rate (/s) counter for nat46tottcp64
 	* </pre>
 	*/
 	public Long get_nat46tcp64rate() throws Exception {
@@ -347,7 +366,7 @@ public class inat_stats extends base_resource
 
 	/**
 	* <pre>
-	* Total UDP packets translated (V4->v6).
+	* Rate (/s) counter for nat46totudp46
 	* </pre>
 	*/
 	public Long get_nat46udp46rate() throws Exception {
@@ -365,7 +384,7 @@ public class inat_stats extends base_resource
 
 	/**
 	* <pre>
-	* UDP packets translated (V4->v6).
+	* Rate (/s) counter for inatnat46udp46
 	* </pre>
 	*/
 	public Long get_inatnat46udp46rate() throws Exception {
@@ -434,4 +453,8 @@ public class inat_stats extends base_resource
 		return response;
 	}
 
+	public static class clearstatsEnum {
+		public static final String basic = "basic";
+		public static final String full = "full";
+	}
 }

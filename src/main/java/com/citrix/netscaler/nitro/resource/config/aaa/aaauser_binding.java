@@ -18,13 +18,13 @@ package com.citrix.netscaler.nitro.resource.config.aaa;
 
 import com.citrix.netscaler.nitro.resource.config.aaa.aaauser_auditnslogpolicy_binding;
 import com.citrix.netscaler.nitro.resource.config.aaa.aaauser_vpnsessionpolicy_binding;
-import com.citrix.netscaler.nitro.resource.config.aaa.aaauser_intranetip_binding;
-import com.citrix.netscaler.nitro.resource.config.aaa.aaauser_vpntrafficpolicy_binding;
-import com.citrix.netscaler.nitro.resource.config.aaa.aaauser_vpnintranetapplication_binding;
 import com.citrix.netscaler.nitro.resource.config.aaa.aaauser_authorizationpolicy_binding;
+import com.citrix.netscaler.nitro.resource.config.aaa.aaauser_intranetip_binding;
 import com.citrix.netscaler.nitro.resource.config.aaa.aaauser_auditsyslogpolicy_binding;
 import com.citrix.netscaler.nitro.resource.config.aaa.aaauser_aaagroup_binding;
 import com.citrix.netscaler.nitro.resource.config.aaa.aaauser_vpnurl_binding;
+import com.citrix.netscaler.nitro.resource.config.aaa.aaauser_vpntrafficpolicy_binding;
+import com.citrix.netscaler.nitro.resource.config.aaa.aaauser_vpnintranetapplication_binding;
 import com.citrix.netscaler.nitro.resource.config.aaa.aaauser_tmsessionpolicy_binding;
 import com.citrix.netscaler.nitro.resource.base.*;
 import com.citrix.netscaler.nitro.service.nitro_service;
@@ -45,18 +45,18 @@ public class aaauser_binding extends base_resource
 	private String username;
 	private aaauser_auditnslogpolicy_binding	aaauser_auditnslogpolicy_binding[] = null;
 	private aaauser_vpnsessionpolicy_binding	aaauser_vpnsessionpolicy_binding[] = null;
-	private aaauser_intranetip_binding	aaauser_intranetip_binding[] = null;
-	private aaauser_vpntrafficpolicy_binding	aaauser_vpntrafficpolicy_binding[] = null;
-	private aaauser_vpnintranetapplication_binding	aaauser_vpnintranetapplication_binding[] = null;
 	private aaauser_authorizationpolicy_binding	aaauser_authorizationpolicy_binding[] = null;
+	private aaauser_intranetip_binding	aaauser_intranetip_binding[] = null;
 	private aaauser_auditsyslogpolicy_binding	aaauser_auditsyslogpolicy_binding[] = null;
 	private aaauser_aaagroup_binding	aaauser_aaagroup_binding[] = null;
 	private aaauser_vpnurl_binding	aaauser_vpnurl_binding[] = null;
+	private aaauser_vpntrafficpolicy_binding	aaauser_vpntrafficpolicy_binding[] = null;
+	private aaauser_vpnintranetapplication_binding	aaauser_vpnintranetapplication_binding[] = null;
 	private aaauser_tmsessionpolicy_binding	aaauser_tmsessionpolicy_binding[] = null;
 
 	/**
 	* <pre>
-	* The user name.<br> Minimum length =  1
+	* Name of the user who has the account.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_username(String username) throws Exception{
@@ -65,7 +65,7 @@ public class aaauser_binding extends base_resource
 
 	/**
 	* <pre>
-	* The user name.<br> Minimum length =  1
+	* Name of the user who has the account.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_username() throws Exception {

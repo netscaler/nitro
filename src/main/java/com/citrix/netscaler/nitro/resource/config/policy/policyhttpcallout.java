@@ -42,8 +42,11 @@ public class policyhttpcallout extends base_resource
 	private String urlstemexpr;
 	private String[] headers;
 	private String[] parameters;
+	private String bodyexpr;
 	private String fullreqexpr;
+	private String scheme;
 	private String resultexpr;
+	private Long cacheforsecs;
 
 	//------- Read only Parameter ---------;
 
@@ -56,7 +59,7 @@ public class policyhttpcallout extends base_resource
 
 	/**
 	* <pre>
-	* The name of the httpcallout. The name must not exceed 31 characters.<br> Minimum length =  1
+	* Name for the HTTP callout. Not case sensitive. Must begin with an ASCII letter or underscore (_) character, and must consist only of ASCII alphanumeric or underscore characters. Must not begin with 're' or 'xp' or be a word reserved for use as a default syntax expression qualifier prefix (such as HTTP) or enumeration value (such as ASCII). Must not be the name of an existing named expression, pattern set, dataset, stringmap, or HTTP callout.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -65,7 +68,7 @@ public class policyhttpcallout extends base_resource
 
 	/**
 	* <pre>
-	* The name of the httpcallout. The name must not exceed 31 characters.<br> Minimum length =  1
+	* Name for the HTTP callout. Not case sensitive. Must begin with an ASCII letter or underscore (_) character, and must consist only of ASCII alphanumeric or underscore characters. Must not begin with 're' or 'xp' or be a word reserved for use as a default syntax expression qualifier prefix (such as HTTP) or enumeration value (such as ASCII). Must not be the name of an existing named expression, pattern set, dataset, stringmap, or HTTP callout.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -74,7 +77,8 @@ public class policyhttpcallout extends base_resource
 
 	/**
 	* <pre>
-	* IPv4 or IPv6 address of the server to which the callout is sent, or a wildcard. Mutually exclusive with the -vserver argument.
+	* IP Address of the server (callout agent) to which the callout is sent. Can be an IPv4 or IPv6 address.
+Mutually exclusive with the Virtual Server parameter. Therefore, you cannot set the <IP Address, Port> and the Virtual Server in the same HTTP callout.
 	* </pre>
 	*/
 	public void set_ipaddress(String ipaddress) throws Exception{
@@ -83,7 +87,8 @@ public class policyhttpcallout extends base_resource
 
 	/**
 	* <pre>
-	* IPv4 or IPv6 address of the server to which the callout is sent, or a wildcard. Mutually exclusive with the -vserver argument.
+	* IP Address of the server (callout agent) to which the callout is sent. Can be an IPv4 or IPv6 address.
+Mutually exclusive with the Virtual Server parameter. Therefore, you cannot set the <IP Address, Port> and the Virtual Server in the same HTTP callout.
 	* </pre>
 	*/
 	public String get_ipaddress() throws Exception {
@@ -92,7 +97,7 @@ public class policyhttpcallout extends base_resource
 
 	/**
 	* <pre>
-	* If you specify an IP address, this is the port on the server to which the callout is sent, or a wildcard.<br> Range 1 - 65535
+	* Server port to which the HTTP callout agent is mapped. Mutually exclusive with the Virtual Server parameter. Therefore, you cannot set the <IP Address, Port> and the Virtual Server in the same HTTP callout.
 	* </pre>
 	*/
 	public void set_port(int port) throws Exception {
@@ -101,7 +106,7 @@ public class policyhttpcallout extends base_resource
 
 	/**
 	* <pre>
-	* If you specify an IP address, this is the port on the server to which the callout is sent, or a wildcard.<br> Range 1 - 65535
+	* Server port to which the HTTP callout agent is mapped. Mutually exclusive with the Virtual Server parameter. Therefore, you cannot set the <IP Address, Port> and the Virtual Server in the same HTTP callout.
 	* </pre>
 	*/
 	public void set_port(Integer port) throws Exception{
@@ -110,7 +115,7 @@ public class policyhttpcallout extends base_resource
 
 	/**
 	* <pre>
-	* If you specify an IP address, this is the port on the server to which the callout is sent, or a wildcard.<br> Range 1 - 65535
+	* Server port to which the HTTP callout agent is mapped. Mutually exclusive with the Virtual Server parameter. Therefore, you cannot set the <IP Address, Port> and the Virtual Server in the same HTTP callout.
 	* </pre>
 	*/
 	public Integer get_port() throws Exception {
@@ -119,8 +124,7 @@ public class policyhttpcallout extends base_resource
 
 	/**
 	* <pre>
-	* The name of a load balancing, content switching, or cache redirection virtual server with a service type of HTTP. This is where the callout is sent.
-        This option is mutually exclusive with IP address and port.<br> Minimum length =  1
+	* Name of the load balancing, content switching, or cache redirection virtual server (the callout agent) to which the HTTP callout is sent. The service type of the virtual server must be HTTP. Mutually exclusive with the IP address and port parameters. Therefore, you cannot set the <IP Address, Port> and the Virtual Server in the same HTTP callout.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_vserver(String vserver) throws Exception{
@@ -129,8 +133,7 @@ public class policyhttpcallout extends base_resource
 
 	/**
 	* <pre>
-	* The name of a load balancing, content switching, or cache redirection virtual server with a service type of HTTP. This is where the callout is sent.
-        This option is mutually exclusive with IP address and port.<br> Minimum length =  1
+	* Name of the load balancing, content switching, or cache redirection virtual server (the callout agent) to which the HTTP callout is sent. The service type of the virtual server must be HTTP. Mutually exclusive with the IP address and port parameters. Therefore, you cannot set the <IP Address, Port> and the Virtual Server in the same HTTP callout.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_vserver() throws Exception {
@@ -139,7 +142,12 @@ public class policyhttpcallout extends base_resource
 
 	/**
 	* <pre>
-	* Type of data that the target application returns in the response to the callout. .<br> Possible values = BOOL, NUM, TEXT
+	* Type of data that the target callout agent returns in response to the callout. 
+Available settings function as follows:
+* TEXT - Treat the returned value as a text string. 
+* NUM - Treat the returned value as a number.
+* BOOL - Treat the returned value as a Boolean value. 
+Note: You cannot change the return type after it is set.<br> Possible values = BOOL, NUM, TEXT
 	* </pre>
 	*/
 	public void set_returntype(String returntype) throws Exception{
@@ -148,7 +156,12 @@ public class policyhttpcallout extends base_resource
 
 	/**
 	* <pre>
-	* Type of data that the target application returns in the response to the callout. .<br> Possible values = BOOL, NUM, TEXT
+	* Type of data that the target callout agent returns in response to the callout. 
+Available settings function as follows:
+* TEXT - Treat the returned value as a text string. 
+* NUM - Treat the returned value as a number.
+* BOOL - Treat the returned value as a Boolean value. 
+Note: You cannot change the return type after it is set.<br> Possible values = BOOL, NUM, TEXT
 	* </pre>
 	*/
 	public String get_returntype() throws Exception {
@@ -157,7 +170,7 @@ public class policyhttpcallout extends base_resource
 
 	/**
 	* <pre>
-	* Method used in the HTTP request that this callout sends. Mutually exclusive with -fullReqExpr.<br> Possible values = GET, POST
+	* Method used in the HTTP request that this callout sends.  Mutually exclusive with the full HTTP request expression.<br> Possible values = GET, POST
 	* </pre>
 	*/
 	public void set_httpmethod(String httpmethod) throws Exception{
@@ -166,7 +179,7 @@ public class policyhttpcallout extends base_resource
 
 	/**
 	* <pre>
-	* Method used in the HTTP request that this callout sends. Mutually exclusive with -fullReqExpr.<br> Possible values = GET, POST
+	* Method used in the HTTP request that this callout sends.  Mutually exclusive with the full HTTP request expression.<br> Possible values = GET, POST
 	* </pre>
 	*/
 	public String get_httpmethod() throws Exception {
@@ -175,8 +188,7 @@ public class policyhttpcallout extends base_resource
 
 	/**
 	* <pre>
-	* Advanced text expression to configure the Host header. The expression can contain a literal value (10.101.10.11) or a derived value (for example, http.req.header. . .).
-        Mutually exclusive with -fullReqExpr.<br> Minimum length =  1
+	* Default Syntax string expression to configure the Host header. Can contain a literal value (for example, 10.101.10.11) or a derived value (for example, http.req.header("Host")). The literal value can be an IP address or a fully qualified domain name. Mutually exclusive with the full HTTP request expression.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_hostexpr(String hostexpr) throws Exception{
@@ -185,8 +197,7 @@ public class policyhttpcallout extends base_resource
 
 	/**
 	* <pre>
-	* Advanced text expression to configure the Host header. The expression can contain a literal value (10.101.10.11) or a derived value (for example, http.req.header. . .).
-        Mutually exclusive with -fullReqExpr.<br> Minimum length =  1
+	* Default Syntax string expression to configure the Host header. Can contain a literal value (for example, 10.101.10.11) or a derived value (for example, http.req.header("Host")). The literal value can be an IP address or a fully qualified domain name. Mutually exclusive with the full HTTP request expression.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_hostexpr() throws Exception {
@@ -195,8 +206,7 @@ public class policyhttpcallout extends base_resource
 
 	/**
 	* <pre>
-	* An advanced string expression for generating the URL stem. The expression can contain a literal string (for example, /mysite/index.html) or an expression that derives the value (for example, http.req.url).
-        Mutually exclusive with -fullReqExpr.<br> Minimum length =  1
+	* Default Syntax string expression for generating the URL stem. Can contain a literal string (for example, "/mysite/index.html") or an expression that derives the value (for example, http.req.url). Mutually exclusive with the full HTTP request expression.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_urlstemexpr(String urlstemexpr) throws Exception{
@@ -205,8 +215,7 @@ public class policyhttpcallout extends base_resource
 
 	/**
 	* <pre>
-	* An advanced string expression for generating the URL stem. The expression can contain a literal string (for example, /mysite/index.html) or an expression that derives the value (for example, http.req.url).
-        Mutually exclusive with -fullReqExpr.<br> Minimum length =  1
+	* Default Syntax string expression for generating the URL stem. Can contain a literal string (for example, "/mysite/index.html") or an expression that derives the value (for example, http.req.url). Mutually exclusive with the full HTTP request expression.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_urlstemexpr() throws Exception {
@@ -215,8 +224,7 @@ public class policyhttpcallout extends base_resource
 
 	/**
 	* <pre>
-	* Advanced text expression to insert HTTP headers and their values in the HTTP callout request. You must specify a value for every header. You specify the header name as a string and the header value as an advanced expression.
-         Mutually exclusive with -fullReqExpr.
+	* One or more headers to insert into the HTTP request. Each header is specified as "name(expr)", where expr is a default syntax expression that is evaluated at runtime to provide the value for the named header. You can configure a maximum of eight headers for an HTTP callout. Mutually exclusive with the full HTTP request expression.
 	* </pre>
 	*/
 	public void set_headers(String[] headers) throws Exception{
@@ -225,8 +233,7 @@ public class policyhttpcallout extends base_resource
 
 	/**
 	* <pre>
-	* Advanced text expression to insert HTTP headers and their values in the HTTP callout request. You must specify a value for every header. You specify the header name as a string and the header value as an advanced expression.
-         Mutually exclusive with -fullReqExpr.
+	* One or more headers to insert into the HTTP request. Each header is specified as "name(expr)", where expr is a default syntax expression that is evaluated at runtime to provide the value for the named header. You can configure a maximum of eight headers for an HTTP callout. Mutually exclusive with the full HTTP request expression.
 	* </pre>
 	*/
 	public String[] get_headers() throws Exception {
@@ -235,10 +242,7 @@ public class policyhttpcallout extends base_resource
 
 	/**
 	* <pre>
-	* Advanced expression to insert query parameters in the HTTP request that the callout sends.
-        You must specify a value for every parameter that you configure. If the callout request uses the GET method, these parameters are inserted in the URL. If the callout request uses the POST method, these parameters are inserted in the POST body.
-        You configure the query parameter name as a string, and the value as an advanced expression. The parameter values are URL encoded.
-        Mutually exclusive with -fullReqExpr.
+	* One or more query parameters to insert into the HTTP request URL (for a GET request) or into the request body (for a POST request). Each parameter is specified as "name(expr)", where expr is an default syntax expression that is evaluated at run time to provide the value for the named parameter (name=value). The parameter values are URL encoded. Mutually exclusive with the full HTTP request expression.
 	* </pre>
 	*/
 	public void set_parameters(String[] parameters) throws Exception{
@@ -247,10 +251,7 @@ public class policyhttpcallout extends base_resource
 
 	/**
 	* <pre>
-	* Advanced expression to insert query parameters in the HTTP request that the callout sends.
-        You must specify a value for every parameter that you configure. If the callout request uses the GET method, these parameters are inserted in the URL. If the callout request uses the POST method, these parameters are inserted in the POST body.
-        You configure the query parameter name as a string, and the value as an advanced expression. The parameter values are URL encoded.
-        Mutually exclusive with -fullReqExpr.
+	* One or more query parameters to insert into the HTTP request URL (for a GET request) or into the request body (for a POST request). Each parameter is specified as "name(expr)", where expr is an default syntax expression that is evaluated at run time to provide the value for the named parameter (name=value). The parameter values are URL encoded. Mutually exclusive with the full HTTP request expression.
 	* </pre>
 	*/
 	public String[] get_parameters() throws Exception {
@@ -259,10 +260,27 @@ public class policyhttpcallout extends base_resource
 
 	/**
 	* <pre>
-	* Exact HTTP request that the NetScaler is to send, as an advanced expression of up to 8191 characters.
-If you specify this parameter, you must omit the httpMethod, hostExpr, urlStemExpr, headers, and parameters arguments.
-The request expression is constrained by the feature where the callout is used. For example, an HTTP.RES expression cannot be used in a request-time policy bank or in a TCP content switching policy bank.
-The NetScaler does not check the validity of this request. You must manually validate the request.<br> Minimum length =  1
+	* An advanced string expression for generating the body of the request. The expression can contain a literal string or an expression that derives the value (for example, client.ip.src). Mutually exclusive with -fullReqExpr.<br> Minimum length =  1
+	* </pre>
+	*/
+	public void set_bodyexpr(String bodyexpr) throws Exception{
+		this.bodyexpr = bodyexpr;
+	}
+
+	/**
+	* <pre>
+	* An advanced string expression for generating the body of the request. The expression can contain a literal string or an expression that derives the value (for example, client.ip.src). Mutually exclusive with -fullReqExpr.<br> Minimum length =  1
+	* </pre>
+	*/
+	public String get_bodyexpr() throws Exception {
+		return this.bodyexpr;
+	}
+
+	/**
+	* <pre>
+	* Exact HTTP request, in the form of a default syntax expression, which the NetScaler appliance sends to the callout agent. If you set this parameter, you must not include HTTP method, host expression, URL stem expression, headers, or parameters.
+The request expression is constrained by the feature for which the callout is used. For example, an HTTP.RES expression cannot be used in a request-time policy bank or in a TCP content switching policy bank.
+The NetScaler appliance does not check the validity of this request. You must manually validate the request.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_fullreqexpr(String fullreqexpr) throws Exception{
@@ -271,10 +289,9 @@ The NetScaler does not check the validity of this request. You must manually val
 
 	/**
 	* <pre>
-	* Exact HTTP request that the NetScaler is to send, as an advanced expression of up to 8191 characters.
-If you specify this parameter, you must omit the httpMethod, hostExpr, urlStemExpr, headers, and parameters arguments.
-The request expression is constrained by the feature where the callout is used. For example, an HTTP.RES expression cannot be used in a request-time policy bank or in a TCP content switching policy bank.
-The NetScaler does not check the validity of this request. You must manually validate the request.<br> Minimum length =  1
+	* Exact HTTP request, in the form of a default syntax expression, which the NetScaler appliance sends to the callout agent. If you set this parameter, you must not include HTTP method, host expression, URL stem expression, headers, or parameters.
+The request expression is constrained by the feature for which the callout is used. For example, an HTTP.RES expression cannot be used in a request-time policy bank or in a TCP content switching policy bank.
+The NetScaler appliance does not check the validity of this request. You must manually validate the request.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_fullreqexpr() throws Exception {
@@ -283,9 +300,25 @@ The NetScaler does not check the validity of this request. You must manually val
 
 	/**
 	* <pre>
-	* Advanced expression that extracts HTTP.RES objects from the response to the HTTP callout. The maximum length is 8191.
-The operations in this expression must match the return type. For example, if you configure a return type of TEXT, the result expression must be a text-based expression. If the return type is NUM, the result expression (resultExpr) must return a numeric value, as in the following:
-http.res.body(10000).length.<br> Minimum length =  1
+	* Type of scheme for the callout server.<br> Possible values = http, https
+	* </pre>
+	*/
+	public void set_scheme(String scheme) throws Exception{
+		this.scheme = scheme;
+	}
+
+	/**
+	* <pre>
+	* Type of scheme for the callout server.<br> Possible values = http, https
+	* </pre>
+	*/
+	public String get_scheme() throws Exception {
+		return this.scheme;
+	}
+
+	/**
+	* <pre>
+	* Expression that extracts the callout results from the response sent by the HTTP callout agent. Must be a response based expression, that is, it must begin with HTTP.RES. The operations in this expression must match the return type. For example, if you configure a return type of TEXT, the result expression must be a text based expression. If the return type is NUM, the result expression (resultExpr) must return a numeric value, as in the following example: http.res.body(10000).length.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_resultexpr(String resultexpr) throws Exception{
@@ -294,13 +327,41 @@ http.res.body(10000).length.<br> Minimum length =  1
 
 	/**
 	* <pre>
-	* Advanced expression that extracts HTTP.RES objects from the response to the HTTP callout. The maximum length is 8191.
-The operations in this expression must match the return type. For example, if you configure a return type of TEXT, the result expression must be a text-based expression. If the return type is NUM, the result expression (resultExpr) must return a numeric value, as in the following:
-http.res.body(10000).length.<br> Minimum length =  1
+	* Expression that extracts the callout results from the response sent by the HTTP callout agent. Must be a response based expression, that is, it must begin with HTTP.RES. The operations in this expression must match the return type. For example, if you configure a return type of TEXT, the result expression must be a text based expression. If the return type is NUM, the result expression (resultExpr) must return a numeric value, as in the following example: http.res.body(10000).length.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_resultexpr() throws Exception {
 		return this.resultexpr;
+	}
+
+	/**
+	* <pre>
+	* Duration, in seconds, for which the callout response is cached. The cached responses are stored in an integrated caching content group named "calloutContentGroup". If no duration is configured, the callout responses will not be cached unless normal caching configuration is used to cache them. This parameter takes precedence over any normal caching configuration that would otherwise apply to these responses.
+	   Note that the calloutContentGroup definition may not be modified or removed nor may it be used with other cache policies.<br> Minimum value =  1<br> Maximum value =  31536000
+	* </pre>
+	*/
+	public void set_cacheforsecs(long cacheforsecs) throws Exception {
+		this.cacheforsecs = new Long(cacheforsecs);
+	}
+
+	/**
+	* <pre>
+	* Duration, in seconds, for which the callout response is cached. The cached responses are stored in an integrated caching content group named "calloutContentGroup". If no duration is configured, the callout responses will not be cached unless normal caching configuration is used to cache them. This parameter takes precedence over any normal caching configuration that would otherwise apply to these responses.
+	   Note that the calloutContentGroup definition may not be modified or removed nor may it be used with other cache policies.<br> Minimum value =  1<br> Maximum value =  31536000
+	* </pre>
+	*/
+	public void set_cacheforsecs(Long cacheforsecs) throws Exception{
+		this.cacheforsecs = cacheforsecs;
+	}
+
+	/**
+	* <pre>
+	* Duration, in seconds, for which the callout response is cached. The cached responses are stored in an integrated caching content group named "calloutContentGroup". If no duration is configured, the callout responses will not be cached unless normal caching configuration is used to cache them. This parameter takes precedence over any normal caching configuration that would otherwise apply to these responses.
+	   Note that the calloutContentGroup definition may not be modified or removed nor may it be used with other cache policies.<br> Minimum value =  1<br> Maximum value =  31536000
+	* </pre>
+	*/
+	public Long get_cacheforsecs() throws Exception {
+		return this.cacheforsecs;
 	}
 
 	/**
@@ -323,7 +384,7 @@ http.res.body(10000).length.<br> Minimum length =  1
 
 	/**
 	* <pre>
-	* The state of the service.<br> Possible values = UP, DOWN, UNKNOWN, BUSY, OUT OF SERVICE, GOING OUT OF SERVICE, DOWN WHEN GOING OUT OF SERVICE, NS_EMPTY_STR
+	* The state of the service.<br> Possible values = UP, DOWN, UNKNOWN, BUSY, OUT OF SERVICE, GOING OUT OF SERVICE, DOWN WHEN GOING OUT OF SERVICE, NS_EMPTY_STR, Unknown, DISABLED
 	* </pre>
 	*/
 	public String get_svrstate() throws Exception {
@@ -332,7 +393,7 @@ http.res.body(10000).length.<br> Minimum length =  1
 
 	/**
 	* <pre>
-	* Reason for last undef.<br> Possible values = Failed to add service, Vserver not found, Not a HTTP vserver, Generated callout request is invalid, Content-Length header not found in callout request, Not enough space to put Content-Length value, Config incomplete, Server is DOWN, Creating callout connection failed, No memory to generate callout request packets, No memory to create callout task, No memory to create callout async, Callout request expression undef, No callout response expression, Skipped callout response eval, Callout response pixl init undef, Callout response expression undef
+	* Reason for last undef.<br> Possible values = Failed to add service, Vserver not found, Not a HTTP or SSL vserver, Generated callout request is invalid, Content-Length header not found in callout request, Not enough space to put Content-Length value, Config incomplete, Server is DOWN, Creating callout connection failed, No memory to generate callout request packets, No memory to create callout task, No memory to create callout async, Callout request expression undef, No callout response expression, Skipped callout response eval, Callout response pixl init undef, Callout response expression undef
 	* </pre>
 	*/
 	public String get_undefreason() throws Exception {
@@ -472,8 +533,11 @@ http.res.body(10000).length.<br> Minimum length =  1
 		updateresource.urlstemexpr = resource.urlstemexpr;
 		updateresource.headers = resource.headers;
 		updateresource.parameters = resource.parameters;
+		updateresource.bodyexpr = resource.bodyexpr;
 		updateresource.fullreqexpr = resource.fullreqexpr;
+		updateresource.scheme = resource.scheme;
 		updateresource.resultexpr = resource.resultexpr;
+		updateresource.cacheforsecs = resource.cacheforsecs;
 		return updateresource.update_resource(client);
 	}
 
@@ -496,8 +560,11 @@ http.res.body(10000).length.<br> Minimum length =  1
 				updateresources[i].urlstemexpr = resources[i].urlstemexpr;
 				updateresources[i].headers = resources[i].headers;
 				updateresources[i].parameters = resources[i].parameters;
+				updateresources[i].bodyexpr = resources[i].bodyexpr;
 				updateresources[i].fullreqexpr = resources[i].fullreqexpr;
+				updateresources[i].scheme = resources[i].scheme;
 				updateresources[i].resultexpr = resources[i].resultexpr;
+				updateresources[i].cacheforsecs = resources[i].cacheforsecs;
 			}
 			result = update_bulk_request(client, updateresources);
 		}
@@ -508,29 +575,9 @@ http.res.body(10000).length.<br> Minimum length =  1
 	* Use this API to unset the properties of policyhttpcallout resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String name, String args[]) throws Exception {
-		policyhttpcallout unsetresource = new policyhttpcallout();
-		unsetresource.name = name;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of policyhttpcallout resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, policyhttpcallout resource, String[] args) throws Exception{
 		policyhttpcallout unsetresource = new policyhttpcallout();
 		unsetresource.name = resource.name;
-		unsetresource.ipaddress = resource.ipaddress;
-		unsetresource.port = resource.port;
-		unsetresource.vserver = resource.vserver;
-		unsetresource.httpmethod = resource.httpmethod;
-		unsetresource.hostexpr = resource.hostexpr;
-		unsetresource.urlstemexpr = resource.urlstemexpr;
-		unsetresource.headers = resource.headers;
-		unsetresource.parameters = resource.parameters;
-		unsetresource.fullreqexpr = resource.fullreqexpr;
-		unsetresource.resultexpr = resource.resultexpr;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -562,16 +609,6 @@ http.res.body(10000).length.<br> Minimum length =  1
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new policyhttpcallout();
 				unsetresources[i].name = resources[i].name;
-				unsetresources[i].ipaddress = resources[i].ipaddress;
-				unsetresources[i].port = resources[i].port;
-				unsetresources[i].vserver = resources[i].vserver;
-				unsetresources[i].httpmethod = resources[i].httpmethod;
-				unsetresources[i].hostexpr = resources[i].hostexpr;
-				unsetresources[i].urlstemexpr = resources[i].urlstemexpr;
-				unsetresources[i].headers = resources[i].headers;
-				unsetresources[i].parameters = resources[i].parameters;
-				unsetresources[i].fullreqexpr = resources[i].fullreqexpr;
-				unsetresources[i].resultexpr = resources[i].resultexpr;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}
@@ -699,6 +736,12 @@ http.res.body(10000).length.<br> Minimum length =  1
 		public static final String GOING_OUT_OF_SERVICE = "GOING OUT OF SERVICE";
 		public static final String DOWN_WHEN_GOING_OUT_OF_SERVICE = "DOWN WHEN GOING OUT OF SERVICE";
 		public static final String NS_EMPTY_STR = "NS_EMPTY_STR";
+		public static final String Unknown = "Unknown";
+		public static final String DISABLED = "DISABLED";
+	}
+	public static class schemeEnum {
+		public static final String http = "http";
+		public static final String https = "https";
 	}
 	public static class httpmethodEnum {
 		public static final String GET = "GET";
@@ -712,7 +755,7 @@ http.res.body(10000).length.<br> Minimum length =  1
 	public static class undefreasonEnum {
 		public static final String Failed_to_add_service = "Failed to add service";
 		public static final String Vserver_not_found = "Vserver not found";
-		public static final String Not_a_HTTP_vserver = "Not a HTTP vserver";
+		public static final String Not_a_HTTP_or_SSL_vserver = "Not a HTTP or SSL vserver";
 		public static final String Generated_callout_request_is_invalid = "Generated callout request is invalid";
 		public static final String Content_Length_header_not_found_in_callout_request = "Content-Length header not found in callout request";
 		public static final String Not_enough_space_to_put_Content_Length_value = "Not enough space to put Content-Length value";

@@ -57,7 +57,7 @@ public class hanode_partialfailureinterfaces_binding extends base_resource
 
 	/**
 	* <pre>
-	* Route Monitor.<br> Minimum length =  1
+	* A route that you want the NetScaler appliance to monitor in its internal routing table. You can specify an IPv4 address or network, or an IPv6 address or network prefix. If you specify an IPv4 network address or IPv6 network prefix, the appliance monitors any route that matches the network or prefix.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_routemonitor(String routemonitor) throws Exception{
@@ -66,7 +66,7 @@ public class hanode_partialfailureinterfaces_binding extends base_resource
 
 	/**
 	* <pre>
-	* Route Monitor.<br> Minimum length =  1
+	* A route that you want the NetScaler appliance to monitor in its internal routing table. You can specify an IPv4 address or network, or an IPv6 address or network prefix. If you specify an IPv4 network address or IPv6 network prefix, the appliance monitors any route that matches the network or prefix.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_routemonitor() throws Exception {
@@ -75,7 +75,7 @@ public class hanode_partialfailureinterfaces_binding extends base_resource
 
 	/**
 	* <pre>
-	* A number that uniquely identifies the local node. The ID of the local node is always 0.<br> Minimum value =  0<br> Maximum value =  64
+	* Number that uniquely identifies the local node. The ID of the local node is always 0.<br> Minimum value =  0<br> Maximum value =  64
 	* </pre>
 	*/
 	public void set_id(long id) throws Exception {
@@ -84,7 +84,7 @@ public class hanode_partialfailureinterfaces_binding extends base_resource
 
 	/**
 	* <pre>
-	* A number that uniquely identifies the local node. The ID of the local node is always 0.<br> Minimum value =  0<br> Maximum value =  64
+	* Number that uniquely identifies the local node. The ID of the local node is always 0.<br> Minimum value =  0<br> Maximum value =  64
 	* </pre>
 	*/
 	public void set_id(Long id) throws Exception{
@@ -93,7 +93,7 @@ public class hanode_partialfailureinterfaces_binding extends base_resource
 
 	/**
 	* <pre>
-	* A number that uniquely identifies the local node. The ID of the local node is always 0.<br> Minimum value =  0<br> Maximum value =  64
+	* Number that uniquely identifies the local node. The ID of the local node is always 0.<br> Minimum value =  0<br> Maximum value =  64
 	* </pre>
 	*/
 	public Long get_id() throws Exception {

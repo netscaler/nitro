@@ -37,7 +37,7 @@ public class nsrollbackcmd extends base_resource
 
 	/**
 	* <pre>
-	* Input file for generating rollback commands.
+	* File that contains the commands for which the rollback commands must be generated. Specify the full path of the file name.
 	* </pre>
 	*/
 	public void set_filename(String filename) throws Exception{
@@ -46,7 +46,7 @@ public class nsrollbackcmd extends base_resource
 
 	/**
 	* <pre>
-	* Input file for generating rollback commands.
+	* File that contains the commands for which the rollback commands must be generated. Specify the full path of the file name.
 	* </pre>
 	*/
 	public String get_filename() throws Exception {
@@ -55,7 +55,7 @@ public class nsrollbackcmd extends base_resource
 
 	/**
 	* <pre>
-	* The format in which result is desired.<br> Possible values = cli, xml
+	* Format in which the rollback commands must be generated.<br> Possible values = cli, xml
 	* </pre>
 	*/
 	public void set_outtype(String outtype) throws Exception{
@@ -64,7 +64,7 @@ public class nsrollbackcmd extends base_resource
 
 	/**
 	* <pre>
-	* The format in which result is desired.<br> Possible values = cli, xml
+	* Format in which the rollback commands must be generated.<br> Possible values = cli, xml
 	* </pre>
 	*/
 	public String get_outtype() throws Exception {

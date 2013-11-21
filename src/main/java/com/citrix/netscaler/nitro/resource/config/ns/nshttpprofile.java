@@ -50,6 +50,7 @@ public class nshttpprofile extends base_resource
 	private String clientiphdrexpr;
 	private Long maxreq;
 	private String persistentetag;
+	private String spdy;
 
 	//------- Read only Parameter ---------;
 
@@ -58,7 +59,9 @@ public class nshttpprofile extends base_resource
 
 	/**
 	* <pre>
-	* Name of the HTTP profile.<br> Minimum length =  1<br> Maximum length =  127
+	* Name for an HTTP profile. Must begin with a letter, number, or the underscore \(_\) character. Other characters allowed, after the first character, are the hyphen \(-\), period \(.\), hash \(\#\), space \( \), at \(@\), and equal \(=\) characters. The name of a HTTP profile cannot be changed after it is created.
+
+CLI Users: If the name includes one or more spaces, enclose the name in double or single quotation marks \(for example, "my http profile" or 'my http profile'\).<br> Minimum length =  1<br> Maximum length =  127
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -67,7 +70,9 @@ public class nshttpprofile extends base_resource
 
 	/**
 	* <pre>
-	* Name of the HTTP profile.<br> Minimum length =  1<br> Maximum length =  127
+	* Name for an HTTP profile. Must begin with a letter, number, or the underscore \(_\) character. Other characters allowed, after the first character, are the hyphen \(-\), period \(.\), hash \(\#\), space \( \), at \(@\), and equal \(=\) characters. The name of a HTTP profile cannot be changed after it is created.
+
+CLI Users: If the name includes one or more spaces, enclose the name in double or single quotation marks \(for example, "my http profile" or 'my http profile'\).<br> Minimum length =  1<br> Maximum length =  127
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -76,7 +81,7 @@ public class nshttpprofile extends base_resource
 
 	/**
 	* <pre>
-	* Enable/disable dropping of invalid HTTP requests/responses.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Drop invalid HTTP requests or responses.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_dropinvalreqs(String dropinvalreqs) throws Exception{
@@ -85,7 +90,7 @@ public class nshttpprofile extends base_resource
 
 	/**
 	* <pre>
-	* Enable/disable dropping of invalid HTTP requests/responses.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Drop invalid HTTP requests or responses.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_dropinvalreqs() throws Exception {
@@ -94,7 +99,7 @@ public class nshttpprofile extends base_resource
 
 	/**
 	* <pre>
-	* Enable/disable invalidating HTTP 0.9 requests.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Mark HTTP/0.9 requests as invalid.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_markhttp09inval(String markhttp09inval) throws Exception{
@@ -103,7 +108,7 @@ public class nshttpprofile extends base_resource
 
 	/**
 	* <pre>
-	* Enable/disable invalidating HTTP 0.9 requests.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Mark HTTP/0.9 requests as invalid.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_markhttp09inval() throws Exception {
@@ -112,7 +117,7 @@ public class nshttpprofile extends base_resource
 
 	/**
 	* <pre>
-	* Enable/disable invalidating CONNECT HTTP requests.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Mark CONNECT requests as invalid.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_markconnreqinval(String markconnreqinval) throws Exception{
@@ -121,7 +126,7 @@ public class nshttpprofile extends base_resource
 
 	/**
 	* <pre>
-	* Enable/disable invalidating CONNECT HTTP requests.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Mark CONNECT requests as invalid.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_markconnreqinval() throws Exception {
@@ -130,7 +135,7 @@ public class nshttpprofile extends base_resource
 
 	/**
 	* <pre>
-	* Enable/disable compression on PUSH packet.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Start data compression on receiving a TCP packet with PUSH flag set.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_cmponpush(String cmponpush) throws Exception{
@@ -139,7 +144,7 @@ public class nshttpprofile extends base_resource
 
 	/**
 	* <pre>
-	* Enable/disable compression on PUSH packet.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Start data compression on receiving a TCP packet with PUSH flag set.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_cmponpush() throws Exception {
@@ -148,7 +153,7 @@ public class nshttpprofile extends base_resource
 
 	/**
 	* <pre>
-	* Connection multiplexing.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Reuse server connections for requests from more than one client connections.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_conmultiplex(String conmultiplex) throws Exception{
@@ -157,7 +162,7 @@ public class nshttpprofile extends base_resource
 
 	/**
 	* <pre>
-	* Connection multiplexing.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Reuse server connections for requests from more than one client connections.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_conmultiplex() throws Exception {
@@ -166,7 +171,7 @@ public class nshttpprofile extends base_resource
 
 	/**
 	* <pre>
-	* Maximum connections in reusepool. If set to zero, limit will not be applied.<br> Minimum value =  0<br> Maximum value =  360000
+	* Maximum limit on the number of connections, from the NetScaler to a particular server that are kept in the reuse pool. This setting is helpful for optimal memory utilization and for reducing the idle connections to the server just after the peak time.<br> Minimum value =  0<br> Maximum value =  360000
 	* </pre>
 	*/
 	public void set_maxreusepool(long maxreusepool) throws Exception {
@@ -175,7 +180,7 @@ public class nshttpprofile extends base_resource
 
 	/**
 	* <pre>
-	* Maximum connections in reusepool. If set to zero, limit will not be applied.<br> Minimum value =  0<br> Maximum value =  360000
+	* Maximum limit on the number of connections, from the NetScaler to a particular server that are kept in the reuse pool. This setting is helpful for optimal memory utilization and for reducing the idle connections to the server just after the peak time.<br> Minimum value =  0<br> Maximum value =  360000
 	* </pre>
 	*/
 	public void set_maxreusepool(Long maxreusepool) throws Exception{
@@ -184,7 +189,7 @@ public class nshttpprofile extends base_resource
 
 	/**
 	* <pre>
-	* Maximum connections in reusepool. If set to zero, limit will not be applied.<br> Minimum value =  0<br> Maximum value =  360000
+	* Maximum limit on the number of connections, from the NetScaler to a particular server that are kept in the reuse pool. This setting is helpful for optimal memory utilization and for reducing the idle connections to the server just after the peak time.<br> Minimum value =  0<br> Maximum value =  360000
 	* </pre>
 	*/
 	public Long get_maxreusepool() throws Exception {
@@ -193,7 +198,7 @@ public class nshttpprofile extends base_resource
 
 	/**
 	* <pre>
-	* Drop extra CRLF after header is complete.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Drop any extra 'CR' and 'LF' characters present after the header.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_dropextracrlf(String dropextracrlf) throws Exception{
@@ -202,7 +207,7 @@ public class nshttpprofile extends base_resource
 
 	/**
 	* <pre>
-	* Drop extra CRLF after header is complete.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Drop any extra 'CR' and 'LF' characters present after the header.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_dropextracrlf() throws Exception {
@@ -211,7 +216,7 @@ public class nshttpprofile extends base_resource
 
 	/**
 	* <pre>
-	* Maximum time to wait between incomplete header packets (ms ticks).<br> Default value: 7000<br> Minimum value =  0<br> Maximum value =  4294967294LU
+	* Maximum time to wait, in milliseconds, between incomplete header packets. If the header packets take longer to arrive at NetScaler, the connection is silently dropped.<br> Default value: 7000<br> Minimum value =  0<br> Maximum value =  4294967294LU
 	* </pre>
 	*/
 	public void set_incomphdrdelay(long incomphdrdelay) throws Exception {
@@ -220,7 +225,7 @@ public class nshttpprofile extends base_resource
 
 	/**
 	* <pre>
-	* Maximum time to wait between incomplete header packets (ms ticks).<br> Default value: 7000<br> Minimum value =  0<br> Maximum value =  4294967294LU
+	* Maximum time to wait, in milliseconds, between incomplete header packets. If the header packets take longer to arrive at NetScaler, the connection is silently dropped.<br> Default value: 7000<br> Minimum value =  0<br> Maximum value =  4294967294LU
 	* </pre>
 	*/
 	public void set_incomphdrdelay(Long incomphdrdelay) throws Exception{
@@ -229,7 +234,7 @@ public class nshttpprofile extends base_resource
 
 	/**
 	* <pre>
-	* Maximum time to wait between incomplete header packets (ms ticks).<br> Default value: 7000<br> Minimum value =  0<br> Maximum value =  4294967294LU
+	* Maximum time to wait, in milliseconds, between incomplete header packets. If the header packets take longer to arrive at NetScaler, the connection is silently dropped.<br> Default value: 7000<br> Minimum value =  0<br> Maximum value =  4294967294LU
 	* </pre>
 	*/
 	public Long get_incomphdrdelay() throws Exception {
@@ -238,7 +243,7 @@ public class nshttpprofile extends base_resource
 
 	/**
 	* <pre>
-	* Enable or disable WebSocket connections.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* HTTP connection to be upgraded to a web socket connection. Once upgraded, NetScaler does not process Layer 7 traffic on this connection.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_websocket(String websocket) throws Exception{
@@ -247,7 +252,7 @@ public class nshttpprofile extends base_resource
 
 	/**
 	* <pre>
-	* Enable or disable WebSocket connections.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* HTTP connection to be upgraded to a web socket connection. Once upgraded, NetScaler does not process Layer 7 traffic on this connection.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_websocket() throws Exception {
@@ -256,7 +261,7 @@ public class nshttpprofile extends base_resource
 
 	/**
 	* <pre>
-	* The time (in seconds) within which the HTTP request must complete.<br> Minimum value =  0<br> Maximum value =  86400
+	* Time, in seconds, within which the HTTP request must complete. If the request does not complete within this time, the specified request timeout action is executed.<br> Minimum value =  0<br> Maximum value =  86400
 	* </pre>
 	*/
 	public void set_reqtimeout(long reqtimeout) throws Exception {
@@ -265,7 +270,7 @@ public class nshttpprofile extends base_resource
 
 	/**
 	* <pre>
-	* The time (in seconds) within which the HTTP request must complete.<br> Minimum value =  0<br> Maximum value =  86400
+	* Time, in seconds, within which the HTTP request must complete. If the request does not complete within this time, the specified request timeout action is executed.<br> Minimum value =  0<br> Maximum value =  86400
 	* </pre>
 	*/
 	public void set_reqtimeout(Long reqtimeout) throws Exception{
@@ -274,7 +279,7 @@ public class nshttpprofile extends base_resource
 
 	/**
 	* <pre>
-	* The time (in seconds) within which the HTTP request must complete.<br> Minimum value =  0<br> Maximum value =  86400
+	* Time, in seconds, within which the HTTP request must complete. If the request does not complete within this time, the specified request timeout action is executed.<br> Minimum value =  0<br> Maximum value =  86400
 	* </pre>
 	*/
 	public Long get_reqtimeout() throws Exception {
@@ -283,7 +288,7 @@ public class nshttpprofile extends base_resource
 
 	/**
 	* <pre>
-	* The configured request timeout changed to adapt to the flow conditions.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Adapts the configured request timeout based on flow conditions. The timeout is increased or decreased internally and applied on the flow.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_adpttimeout(String adpttimeout) throws Exception{
@@ -292,7 +297,7 @@ public class nshttpprofile extends base_resource
 
 	/**
 	* <pre>
-	* The configured request timeout changed to adapt to the flow conditions.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Adapts the configured request timeout based on flow conditions. The timeout is increased or decreased internally and applied on the flow.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_adpttimeout() throws Exception {
@@ -301,10 +306,10 @@ public class nshttpprofile extends base_resource
 
 	/**
 	* <pre>
-	* The responder action to respond to the client when timeout occurs. It can be either of RESET|DROP|Custom Responder Action. Connection is dropped silently if no action is set.
-RESET: Send RST to client when timeout occurs.
-DROP: Drop the connection when timeout occurs.
-Responder Action: Name of the responder action to trigger when timeout occurs, used to send custom message.
+	* Action to take when the HTTP request does not complete within the specified request timeout duration. You can configure the following actions:
+* RESET - Send RST (reset) to client when timeout occurs.
+* DROP - Drop silently when timeout occurs.
+* Custom responder action - Name of the responder action to trigger when timeout occurs, used to send custom message.
 	* </pre>
 	*/
 	public void set_reqtimeoutaction(String reqtimeoutaction) throws Exception{
@@ -313,10 +318,10 @@ Responder Action: Name of the responder action to trigger when timeout occurs, u
 
 	/**
 	* <pre>
-	* The responder action to respond to the client when timeout occurs. It can be either of RESET|DROP|Custom Responder Action. Connection is dropped silently if no action is set.
-RESET: Send RST to client when timeout occurs.
-DROP: Drop the connection when timeout occurs.
-Responder Action: Name of the responder action to trigger when timeout occurs, used to send custom message.
+	* Action to take when the HTTP request does not complete within the specified request timeout duration. You can configure the following actions:
+* RESET - Send RST (reset) to client when timeout occurs.
+* DROP - Drop silently when timeout occurs.
+* Custom responder action - Name of the responder action to trigger when timeout occurs, used to send custom message.
 	* </pre>
 	*/
 	public String get_reqtimeoutaction() throws Exception {
@@ -325,7 +330,7 @@ Responder Action: Name of the responder action to trigger when timeout occurs, u
 
 	/**
 	* <pre>
-	* Enable or disable dropping extra data from server.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Drop any extra data when server sends more data than the specified content-length.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_dropextradata(String dropextradata) throws Exception{
@@ -334,7 +339,7 @@ Responder Action: Name of the responder action to trigger when timeout occurs, u
 
 	/**
 	* <pre>
-	* Enable or disable dropping extra data from server.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Drop any extra data when server sends more data than the specified content-length.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_dropextradata() throws Exception {
@@ -343,7 +348,7 @@ Responder Action: Name of the responder action to trigger when timeout occurs, u
 
 	/**
 	* <pre>
-	* Enable or disable weblogging.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Enable or disable web logging.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_weblog(String weblog) throws Exception{
@@ -352,7 +357,7 @@ Responder Action: Name of the responder action to trigger when timeout occurs, u
 
 	/**
 	* <pre>
-	* Enable or disable weblogging.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Enable or disable web logging.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_weblog() throws Exception {
@@ -361,7 +366,7 @@ Responder Action: Name of the responder action to trigger when timeout occurs, u
 
 	/**
 	* <pre>
-	* Name of the header that contains real client IP.
+	* Name of the header that contains the real client IP address.
 	* </pre>
 	*/
 	public void set_clientiphdrexpr(String clientiphdrexpr) throws Exception{
@@ -370,7 +375,7 @@ Responder Action: Name of the responder action to trigger when timeout occurs, u
 
 	/**
 	* <pre>
-	* Name of the header that contains real client IP.
+	* Name of the header that contains the real client IP address.
 	* </pre>
 	*/
 	public String get_clientiphdrexpr() throws Exception {
@@ -420,6 +425,24 @@ Responder Action: Name of the responder action to trigger when timeout occurs, u
 	*/
 	public String get_persistentetag() throws Exception {
 		return this.persistentetag;
+	}
+
+	/**
+	* <pre>
+	* Allow SPDY over SSL vserver. SSL will advertise SPDY support during NPN Handshake.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* </pre>
+	*/
+	public void set_spdy(String spdy) throws Exception{
+		this.spdy = spdy;
+	}
+
+	/**
+	* <pre>
+	* Allow SPDY over SSL vserver. SSL will advertise SPDY support during NPN Handshake.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* </pre>
+	*/
+	public String get_spdy() throws Exception {
+		return this.spdy;
 	}
 
 	/**
@@ -488,6 +511,7 @@ Responder Action: Name of the responder action to trigger when timeout occurs, u
 		addresource.clientiphdrexpr = resource.clientiphdrexpr;
 		addresource.maxreq = resource.maxreq;
 		addresource.persistentetag = resource.persistentetag;
+		addresource.spdy = resource.spdy;
 		return addresource.add_resource(client);
 	}
 
@@ -518,6 +542,7 @@ Responder Action: Name of the responder action to trigger when timeout occurs, u
 				addresources[i].clientiphdrexpr = resources[i].clientiphdrexpr;
 				addresources[i].maxreq = resources[i].maxreq;
 				addresources[i].persistentetag = resources[i].persistentetag;
+				addresources[i].spdy = resources[i].spdy;
 			}
 			result = add_bulk_request(client, addresources);
 		}
@@ -597,6 +622,7 @@ Responder Action: Name of the responder action to trigger when timeout occurs, u
 		updateresource.clientiphdrexpr = resource.clientiphdrexpr;
 		updateresource.maxreq = resource.maxreq;
 		updateresource.persistentetag = resource.persistentetag;
+		updateresource.spdy = resource.spdy;
 		return updateresource.update_resource(client);
 	}
 
@@ -627,6 +653,7 @@ Responder Action: Name of the responder action to trigger when timeout occurs, u
 				updateresources[i].clientiphdrexpr = resources[i].clientiphdrexpr;
 				updateresources[i].maxreq = resources[i].maxreq;
 				updateresources[i].persistentetag = resources[i].persistentetag;
+				updateresources[i].spdy = resources[i].spdy;
 			}
 			result = update_bulk_request(client, updateresources);
 		}
@@ -637,36 +664,9 @@ Responder Action: Name of the responder action to trigger when timeout occurs, u
 	* Use this API to unset the properties of nshttpprofile resource.
 	* Properties that need to be unset are specified in args array.
 	*/
-	public static base_response unset(nitro_service client, String name, String args[]) throws Exception {
-		nshttpprofile unsetresource = new nshttpprofile();
-		unsetresource.name = name;
-		return unsetresource.unset_resource(client, args);
-	}
-
-	/**
-	* Use this API to unset the properties of nshttpprofile resource.
-	* Properties that need to be unset are specified in args array.
-	*/
 	public static base_response unset(nitro_service client, nshttpprofile resource, String[] args) throws Exception{
 		nshttpprofile unsetresource = new nshttpprofile();
 		unsetresource.name = resource.name;
-		unsetresource.dropinvalreqs = resource.dropinvalreqs;
-		unsetresource.markhttp09inval = resource.markhttp09inval;
-		unsetresource.markconnreqinval = resource.markconnreqinval;
-		unsetresource.cmponpush = resource.cmponpush;
-		unsetresource.conmultiplex = resource.conmultiplex;
-		unsetresource.maxreusepool = resource.maxreusepool;
-		unsetresource.dropextracrlf = resource.dropextracrlf;
-		unsetresource.incomphdrdelay = resource.incomphdrdelay;
-		unsetresource.websocket = resource.websocket;
-		unsetresource.dropextradata = resource.dropextradata;
-		unsetresource.clientiphdrexpr = resource.clientiphdrexpr;
-		unsetresource.reqtimeout = resource.reqtimeout;
-		unsetresource.adpttimeout = resource.adpttimeout;
-		unsetresource.reqtimeoutaction = resource.reqtimeoutaction;
-		unsetresource.weblog = resource.weblog;
-		unsetresource.maxreq = resource.maxreq;
-		unsetresource.persistentetag = resource.persistentetag;
 		return unsetresource.unset_resource(client,args);
 	}
 
@@ -698,23 +698,6 @@ Responder Action: Name of the responder action to trigger when timeout occurs, u
 			for (int i=0;i<resources.length;i++){
 				unsetresources[i] = new nshttpprofile();
 				unsetresources[i].name = resources[i].name;
-				unsetresources[i].dropinvalreqs = resources[i].dropinvalreqs;
-				unsetresources[i].markhttp09inval = resources[i].markhttp09inval;
-				unsetresources[i].markconnreqinval = resources[i].markconnreqinval;
-				unsetresources[i].cmponpush = resources[i].cmponpush;
-				unsetresources[i].conmultiplex = resources[i].conmultiplex;
-				unsetresources[i].maxreusepool = resources[i].maxreusepool;
-				unsetresources[i].dropextracrlf = resources[i].dropextracrlf;
-				unsetresources[i].incomphdrdelay = resources[i].incomphdrdelay;
-				unsetresources[i].websocket = resources[i].websocket;
-				unsetresources[i].dropextradata = resources[i].dropextradata;
-				unsetresources[i].clientiphdrexpr = resources[i].clientiphdrexpr;
-				unsetresources[i].reqtimeout = resources[i].reqtimeout;
-				unsetresources[i].adpttimeout = resources[i].adpttimeout;
-				unsetresources[i].reqtimeoutaction = resources[i].reqtimeoutaction;
-				unsetresources[i].weblog = resources[i].weblog;
-				unsetresources[i].maxreq = resources[i].maxreq;
-				unsetresources[i].persistentetag = resources[i].persistentetag;
 			}
 			result = unset_bulk_request(client, unsetresources,args);
 		}
@@ -846,6 +829,10 @@ Responder Action: Name of the responder action to trigger when timeout occurs, u
 		public static final String DISABLED = "DISABLED";
 	}
 	public static class markconnreqinvalEnum {
+		public static final String ENABLED = "ENABLED";
+		public static final String DISABLED = "DISABLED";
+	}
+	public static class spdyEnum {
 		public static final String ENABLED = "ENABLED";
 		public static final String DISABLED = "DISABLED";
 	}

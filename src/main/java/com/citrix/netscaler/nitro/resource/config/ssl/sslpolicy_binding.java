@@ -48,7 +48,7 @@ public class sslpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the SSL policy.<br> Minimum length =  1
+	* Name of the SSL policy for which to display detailed information.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -57,7 +57,7 @@ public class sslpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The name of the SSL policy.<br> Minimum length =  1
+	* Name of the SSL policy for which to display detailed information.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {

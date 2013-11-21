@@ -33,6 +33,7 @@ class nssimpleacl6_response extends base_response
 public class nssimpleacl6 extends base_resource
 {
 	private String aclname;
+	private Long td;
 	private String aclaction;
 	private String srcipv6;
 	private Integer destport;
@@ -47,7 +48,7 @@ public class nssimpleacl6 extends base_resource
 
 	/**
 	* <pre>
-	* Alphanumeric name of the ACL rule.<br> Minimum length =  1
+	* Name for the simple ACL6 rule. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Cannot be changed after the simple ACL6 rule is created.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_aclname(String aclname) throws Exception{
@@ -56,7 +57,7 @@ public class nssimpleacl6 extends base_resource
 
 	/**
 	* <pre>
-	* Alphanumeric name of the ACL rule.<br> Minimum length =  1
+	* Name for the simple ACL6 rule. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Cannot be changed after the simple ACL6 rule is created.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_aclname() throws Exception {
@@ -65,7 +66,34 @@ public class nssimpleacl6 extends base_resource
 
 	/**
 	* <pre>
-	* Action associated with the ACL rule.<br> Possible values = DENY
+	* Traffic Domain Id.<br> Minimum value =  0<br> Maximum value =  4094
+	* </pre>
+	*/
+	public void set_td(long td) throws Exception {
+		this.td = new Long(td);
+	}
+
+	/**
+	* <pre>
+	* Traffic Domain Id.<br> Minimum value =  0<br> Maximum value =  4094
+	* </pre>
+	*/
+	public void set_td(Long td) throws Exception{
+		this.td = td;
+	}
+
+	/**
+	* <pre>
+	* Traffic Domain Id.<br> Minimum value =  0<br> Maximum value =  4094
+	* </pre>
+	*/
+	public Long get_td() throws Exception {
+		return this.td;
+	}
+
+	/**
+	* <pre>
+	* Drop incoming IPv6 packets that match the simple ACL6 rule.<br> Possible values = DENY
 	* </pre>
 	*/
 	public void set_aclaction(String aclaction) throws Exception{
@@ -74,7 +102,7 @@ public class nssimpleacl6 extends base_resource
 
 	/**
 	* <pre>
-	* Action associated with the ACL rule.<br> Possible values = DENY
+	* Drop incoming IPv6 packets that match the simple ACL6 rule.<br> Possible values = DENY
 	* </pre>
 	*/
 	public String get_aclaction() throws Exception {
@@ -83,7 +111,7 @@ public class nssimpleacl6 extends base_resource
 
 	/**
 	* <pre>
-	* Source ip6 address for the ACL rule.
+	* IP address to match against the source IP address of an incoming IPv6 packet.
 	* </pre>
 	*/
 	public void set_srcipv6(String srcipv6) throws Exception{
@@ -92,7 +120,7 @@ public class nssimpleacl6 extends base_resource
 
 	/**
 	* <pre>
-	* Source ip6 address for the ACL rule.
+	* IP address to match against the source IP address of an incoming IPv6 packet.
 	* </pre>
 	*/
 	public String get_srcipv6() throws Exception {
@@ -101,7 +129,9 @@ public class nssimpleacl6 extends base_resource
 
 	/**
 	* <pre>
-	* Destination port for the ACL rule.
+	* Port number to match against the destination port number of an incoming IPv6 packet. 
+
+Omitting the port number creates an all-ports simple ACL6 rule, which matches any port. In that case, you cannot create another simple ACL6 rule specifying a specific port and the same source IPv6 address.
 	* </pre>
 	*/
 	public void set_destport(int destport) throws Exception {
@@ -110,7 +140,9 @@ public class nssimpleacl6 extends base_resource
 
 	/**
 	* <pre>
-	* Destination port for the ACL rule.
+	* Port number to match against the destination port number of an incoming IPv6 packet. 
+
+Omitting the port number creates an all-ports simple ACL6 rule, which matches any port. In that case, you cannot create another simple ACL6 rule specifying a specific port and the same source IPv6 address.
 	* </pre>
 	*/
 	public void set_destport(Integer destport) throws Exception{
@@ -119,7 +151,9 @@ public class nssimpleacl6 extends base_resource
 
 	/**
 	* <pre>
-	* Destination port for the ACL rule.
+	* Port number to match against the destination port number of an incoming IPv6 packet. 
+
+Omitting the port number creates an all-ports simple ACL6 rule, which matches any port. In that case, you cannot create another simple ACL6 rule specifying a specific port and the same source IPv6 address.
 	* </pre>
 	*/
 	public Integer get_destport() throws Exception {
@@ -128,7 +162,7 @@ public class nssimpleacl6 extends base_resource
 
 	/**
 	* <pre>
-	* Protocol associated with the ACL rule.<br> Possible values = TCP, UDP
+	* Protocol to match against the protocol of an incoming IPv6 packet. You must set this parameter if you set the Destination Port parameter.<br> Possible values = TCP, UDP
 	* </pre>
 	*/
 	public void set_protocol(String protocol) throws Exception{
@@ -137,7 +171,7 @@ public class nssimpleacl6 extends base_resource
 
 	/**
 	* <pre>
-	* Protocol associated with the ACL rule.<br> Possible values = TCP, UDP
+	* Protocol to match against the protocol of an incoming IPv6 packet. You must set this parameter if you set the Destination Port parameter.<br> Possible values = TCP, UDP
 	* </pre>
 	*/
 	public String get_protocol() throws Exception {
@@ -146,7 +180,7 @@ public class nssimpleacl6 extends base_resource
 
 	/**
 	* <pre>
-	* Time to expire this ACL rule(in seconds). Timer granularity is 4 seconds.<br> Minimum value =  4<br> Maximum value =  2147483647
+	* Number of seconds, in multiples of four, after which the simple ACL6 rule expires. If you do not want the simple ACL6 rule to expire, do not specify a TTL value.<br> Minimum value =  4<br> Maximum value =  2147483647
 	* </pre>
 	*/
 	public void set_ttl(long ttl) throws Exception {
@@ -155,7 +189,7 @@ public class nssimpleacl6 extends base_resource
 
 	/**
 	* <pre>
-	* Time to expire this ACL rule(in seconds). Timer granularity is 4 seconds.<br> Minimum value =  4<br> Maximum value =  2147483647
+	* Number of seconds, in multiples of four, after which the simple ACL6 rule expires. If you do not want the simple ACL6 rule to expire, do not specify a TTL value.<br> Minimum value =  4<br> Maximum value =  2147483647
 	* </pre>
 	*/
 	public void set_ttl(Long ttl) throws Exception{
@@ -164,7 +198,7 @@ public class nssimpleacl6 extends base_resource
 
 	/**
 	* <pre>
-	* Time to expire this ACL rule(in seconds). Timer granularity is 4 seconds.<br> Minimum value =  4<br> Maximum value =  2147483647
+	* Number of seconds, in multiples of four, after which the simple ACL6 rule expires. If you do not want the simple ACL6 rule to expire, do not specify a TTL value.<br> Minimum value =  4<br> Maximum value =  2147483647
 	* </pre>
 	*/
 	public Long get_ttl() throws Exception {
@@ -247,6 +281,7 @@ public class nssimpleacl6 extends base_resource
 	public static base_response add(nitro_service client, nssimpleacl6 resource) throws Exception {
 		nssimpleacl6 addresource = new nssimpleacl6();
 		addresource.aclname = resource.aclname;
+		addresource.td = resource.td;
 		addresource.aclaction = resource.aclaction;
 		addresource.srcipv6 = resource.srcipv6;
 		addresource.destport = resource.destport;
@@ -265,6 +300,7 @@ public class nssimpleacl6 extends base_resource
 			for (int i=0;i<resources.length;i++){
 				addresources[i] = new nssimpleacl6();
 				addresources[i].aclname = resources[i].aclname;
+				addresources[i].td = resources[i].td;
 				addresources[i].aclaction = resources[i].aclaction;
 				addresources[i].srcipv6 = resources[i].srcipv6;
 				addresources[i].destport = resources[i].destport;

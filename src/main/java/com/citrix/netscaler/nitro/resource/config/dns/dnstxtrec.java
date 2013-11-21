@@ -45,7 +45,7 @@ public class dnstxtrec extends base_resource
 
 	/**
 	* <pre>
-	* The owner domain name of the TXT record.<br> Minimum length =  1
+	* Name of the domain for the TXT record.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_domain(String domain) throws Exception{
@@ -54,7 +54,7 @@ public class dnstxtrec extends base_resource
 
 	/**
 	* <pre>
-	* The owner domain name of the TXT record.<br> Minimum length =  1
+	* Name of the domain for the TXT record.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_domain() throws Exception {
@@ -63,7 +63,7 @@ public class dnstxtrec extends base_resource
 
 	/**
 	* <pre>
-	* The text of the txt record. Maximum of 6 strings are allowed.<br> Maximum length =  255
+	* Information to store in the TXT resource record. Enclose the string in single or double quotation marks. A TXT resource record can contain up to six strings, each of which can contain up to 255 characters. If you want to add a string of more than 255 characters, evaluate whether splitting it into two or more smaller strings, subject to the six-string limit, works for you.<br> Maximum length =  255
 	* </pre>
 	*/
 	public void set_String(String[] String) throws Exception{
@@ -72,7 +72,7 @@ public class dnstxtrec extends base_resource
 
 	/**
 	* <pre>
-	* The text of the txt record. Maximum of 6 strings are allowed.<br> Maximum length =  255
+	* Information to store in the TXT resource record. Enclose the string in single or double quotation marks. A TXT resource record can contain up to six strings, each of which can contain up to 255 characters. If you want to add a string of more than 255 characters, evaluate whether splitting it into two or more smaller strings, subject to the six-string limit, works for you.<br> Maximum length =  255
 	* </pre>
 	*/
 	public String[] get_String() throws Exception {
@@ -81,7 +81,7 @@ public class dnstxtrec extends base_resource
 
 	/**
 	* <pre>
-	* Time to live, in seconds.<br> Default value: 3600<br> Minimum value =  0<br> Maximum value =  2147483647
+	* Time to Live (TTL), in seconds, for the record. TTL is the time for which the record must be cached by DNS proxies. The specified TTL is applied to all the resource records that are of the same record type and belong to the specified domain name. For example, if you add an address record, with a TTL of 36000, to the domain name example.com, the TTLs of all the address records of example.com are changed to 36000. If the TTL is not specified, the NetScaler appliance uses either the DNS zone's minimum TTL or, if the SOA record is not available on the appliance, the default value of 3600.<br> Default value: 3600<br> Minimum value =  0<br> Maximum value =  2147483647
 	* </pre>
 	*/
 	public void set_ttl(long ttl) throws Exception {
@@ -90,7 +90,7 @@ public class dnstxtrec extends base_resource
 
 	/**
 	* <pre>
-	* Time to live, in seconds.<br> Default value: 3600<br> Minimum value =  0<br> Maximum value =  2147483647
+	* Time to Live (TTL), in seconds, for the record. TTL is the time for which the record must be cached by DNS proxies. The specified TTL is applied to all the resource records that are of the same record type and belong to the specified domain name. For example, if you add an address record, with a TTL of 36000, to the domain name example.com, the TTLs of all the address records of example.com are changed to 36000. If the TTL is not specified, the NetScaler appliance uses either the DNS zone's minimum TTL or, if the SOA record is not available on the appliance, the default value of 3600.<br> Default value: 3600<br> Minimum value =  0<br> Maximum value =  2147483647
 	* </pre>
 	*/
 	public void set_ttl(Long ttl) throws Exception{
@@ -99,7 +99,7 @@ public class dnstxtrec extends base_resource
 
 	/**
 	* <pre>
-	* Time to live, in seconds.<br> Default value: 3600<br> Minimum value =  0<br> Maximum value =  2147483647
+	* Time to Live (TTL), in seconds, for the record. TTL is the time for which the record must be cached by DNS proxies. The specified TTL is applied to all the resource records that are of the same record type and belong to the specified domain name. For example, if you add an address record, with a TTL of 36000, to the domain name example.com, the TTLs of all the address records of example.com are changed to 36000. If the TTL is not specified, the NetScaler appliance uses either the DNS zone's minimum TTL or, if the SOA record is not available on the appliance, the default value of 3600.<br> Default value: 3600<br> Minimum value =  0<br> Maximum value =  2147483647
 	* </pre>
 	*/
 	public Long get_ttl() throws Exception {
@@ -108,7 +108,7 @@ public class dnstxtrec extends base_resource
 
 	/**
 	* <pre>
-	* The record identifier of the record to be removed.<br> Minimum value =  1<br> Maximum value =  65535
+	* Unique, internally generated record ID. View the details of the TXT record to obtain its record ID. Mutually exclusive with the string parameter.<br> Minimum value =  1<br> Maximum value =  65535
 	* </pre>
 	*/
 	public void set_recordid(long recordid) throws Exception {
@@ -117,7 +117,7 @@ public class dnstxtrec extends base_resource
 
 	/**
 	* <pre>
-	* The record identifier of the record to be removed.<br> Minimum value =  1<br> Maximum value =  65535
+	* Unique, internally generated record ID. View the details of the TXT record to obtain its record ID. Mutually exclusive with the string parameter.<br> Minimum value =  1<br> Maximum value =  65535
 	* </pre>
 	*/
 	public void set_recordid(Long recordid) throws Exception{
@@ -126,7 +126,7 @@ public class dnstxtrec extends base_resource
 
 	/**
 	* <pre>
-	* The record identifier of the record to be removed.<br> Minimum value =  1<br> Maximum value =  65535
+	* Unique, internally generated record ID. View the details of the TXT record to obtain its record ID. Mutually exclusive with the string parameter.<br> Minimum value =  1<br> Maximum value =  65535
 	* </pre>
 	*/
 	public Long get_recordid() throws Exception {
@@ -135,10 +135,10 @@ public class dnstxtrec extends base_resource
 
 	/**
 	* <pre>
-	* The TXT record type. The type can take 3 values:
-	ADNS -  If this is specified, all of the authoritative TXT records will be displayed.
-	PROXY - If this is specified, all of the proxy TXT records will be displayed.
-	ALL  -  If this is specified, all of the TXT records will be displayed.<br> Default value: NSDNS_AUTH_HOST<br> Possible values = ALL, ADNS, PROXY
+	* Type of records to display. Available settings function as follows:
+* ADNS - Display all authoritative address records.
+* PROXY - Display all proxy address records.
+* ALL - Display all address records.<br> Default value: ADNS<br> Possible values = ALL, ADNS, PROXY
 	* </pre>
 	*/
 	public void set_type(String type) throws Exception{
@@ -147,10 +147,10 @@ public class dnstxtrec extends base_resource
 
 	/**
 	* <pre>
-	* The TXT record type. The type can take 3 values:
-	ADNS -  If this is specified, all of the authoritative TXT records will be displayed.
-	PROXY - If this is specified, all of the proxy TXT records will be displayed.
-	ALL  -  If this is specified, all of the TXT records will be displayed.<br> Default value: NSDNS_AUTH_HOST<br> Possible values = ALL, ADNS, PROXY
+	* Type of records to display. Available settings function as follows:
+* ADNS - Display all authoritative address records.
+* PROXY - Display all proxy address records.
+* ALL - Display all address records.<br> Default value: ADNS<br> Possible values = ALL, ADNS, PROXY
 	* </pre>
 	*/
 	public String get_type() throws Exception {

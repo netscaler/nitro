@@ -40,7 +40,7 @@ public class systemparameter extends base_resource
 
 	/**
 	* <pre>
-	* specify whether RBA on response is enabled/disabled .<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Enable or disable Role-Based Authentication (RBA) on responses.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_rbaonresponse(String rbaonresponse) throws Exception{
@@ -49,7 +49,7 @@ public class systemparameter extends base_resource
 
 	/**
 	* <pre>
-	* specify whether RBA on response is enabled/disabled .<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
+	* Enable or disable Role-Based Authentication (RBA) on responses.<br> Default value: ENABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_rbaonresponse() throws Exception {
@@ -58,7 +58,15 @@ public class systemparameter extends base_resource
 
 	/**
 	* <pre>
-	* The global system CLI prompt.<br> Minimum length =  1
+	* String to display at the command-line prompt. Can consist of letters, numbers, hyphen (-), period (.), hash (#), space ( ), at (@), equal (=), colon (:), underscore (_), and the following variables: 
+* %u - Will be replaced by the user name.
+* %h - Will be replaced by the hostname of the NetScaler appliance.
+* %t - Will be replaced by the current time in 12-hour format.
+* %T - Will be replaced by the current time in 24-hour format.
+* %d - Will be replaced by the current date.
+* %s - Will be replaced by the state of the NetScaler appliance.
+
+Note: The 63-character limit for the length of the string does not apply to the characters that replace the variables.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_promptstring(String promptstring) throws Exception{
@@ -67,7 +75,15 @@ public class systemparameter extends base_resource
 
 	/**
 	* <pre>
-	* The global system CLI prompt.<br> Minimum length =  1
+	* String to display at the command-line prompt. Can consist of letters, numbers, hyphen (-), period (.), hash (#), space ( ), at (@), equal (=), colon (:), underscore (_), and the following variables: 
+* %u - Will be replaced by the user name.
+* %h - Will be replaced by the hostname of the NetScaler appliance.
+* %t - Will be replaced by the current time in 12-hour format.
+* %T - Will be replaced by the current time in 24-hour format.
+* %d - Will be replaced by the current date.
+* %s - Will be replaced by the state of the NetScaler appliance.
+
+Note: The 63-character limit for the length of the string does not apply to the characters that replace the variables.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_promptstring() throws Exception {
@@ -76,7 +92,7 @@ public class systemparameter extends base_resource
 
 	/**
 	* <pre>
-	* force flush if number of NATPCBs above this.<br> Default value: 2147483647<br> Minimum value =  1000
+	* Flush the system if the number of Network Address Translation Protocol Control Blocks (NATPCBs) exceeds this value.<br> Default value: 2147483647<br> Minimum value =  1000
 	* </pre>
 	*/
 	public void set_natpcbforceflushlimit(long natpcbforceflushlimit) throws Exception {
@@ -85,7 +101,7 @@ public class systemparameter extends base_resource
 
 	/**
 	* <pre>
-	* force flush if number of NATPCBs above this.<br> Default value: 2147483647<br> Minimum value =  1000
+	* Flush the system if the number of Network Address Translation Protocol Control Blocks (NATPCBs) exceeds this value.<br> Default value: 2147483647<br> Minimum value =  1000
 	* </pre>
 	*/
 	public void set_natpcbforceflushlimit(Long natpcbforceflushlimit) throws Exception{
@@ -94,7 +110,7 @@ public class systemparameter extends base_resource
 
 	/**
 	* <pre>
-	* force flush if number of NATPCBs above this.<br> Default value: 2147483647<br> Minimum value =  1000
+	* Flush the system if the number of Network Address Translation Protocol Control Blocks (NATPCBs) exceeds this value.<br> Default value: 2147483647<br> Minimum value =  1000
 	* </pre>
 	*/
 	public Long get_natpcbforceflushlimit() throws Exception {
@@ -103,7 +119,7 @@ public class systemparameter extends base_resource
 
 	/**
 	* <pre>
-	* Send RST to client and server connections when the natpcbs timeout. This avoids the buildup of idle TCP connections on the both the sides.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Send a reset signal to client and server connections when their NATPCBs time out. Avoids the buildup of idle TCP connections on both the sides.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public void set_natpcbrstontimeout(String natpcbrstontimeout) throws Exception{
@@ -112,7 +128,7 @@ public class systemparameter extends base_resource
 
 	/**
 	* <pre>
-	* Send RST to client and server connections when the natpcbs timeout. This avoids the buildup of idle TCP connections on the both the sides.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
+	* Send a reset signal to client and server connections when their NATPCBs time out. Avoids the buildup of idle TCP connections on both the sides.<br> Default value: DISABLED<br> Possible values = ENABLED, DISABLED
 	* </pre>
 	*/
 	public String get_natpcbrstontimeout() throws Exception {
@@ -201,11 +217,6 @@ public class systemparameter extends base_resource
 	*/
 	public static base_response unset(nitro_service client, systemparameter resource, String[] args) throws Exception{
 		systemparameter unsetresource = new systemparameter();
-		unsetresource.rbaonresponse = resource.rbaonresponse;
-		unsetresource.promptstring = resource.promptstring;
-		unsetresource.natpcbforceflushlimit = resource.natpcbforceflushlimit;
-		unsetresource.natpcbrstontimeout = resource.natpcbrstontimeout;
-		unsetresource.timeout = resource.timeout;
 		return unsetresource.unset_resource(client,args);
 	}
 

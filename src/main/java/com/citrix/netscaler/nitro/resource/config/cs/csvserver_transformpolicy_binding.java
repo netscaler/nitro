@@ -126,7 +126,7 @@ public class csvserver_transformpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The virtual server name (created with the add cs vserver or add cr vserver command) for which the content switching policy will be set.<br> Minimum length =  1
+	* Name of the content switching virtual server to which the content switching policy applies.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_name(String name) throws Exception{
@@ -135,7 +135,7 @@ public class csvserver_transformpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The virtual server name (created with the add cs vserver or add cr vserver command) for which the content switching policy will be set.<br> Minimum length =  1
+	* Name of the content switching virtual server to which the content switching policy applies.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_name() throws Exception {
@@ -144,7 +144,9 @@ public class csvserver_transformpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The virtual server name (created with the add lb vserver command) to which content will be switched.<br> Minimum length =  1
+	* Name of the Load Balancing virtual server to which the content is switched, if policy rule is evaluated to be TRUE.
+Example: bind cs vs cs1 -policyname pol1 -priority 101 -targetLBVserver lb1
+Note: Use this parameter only in case of Content Switching policy bind operations to a CS vserver.<br> Minimum length =  1
 	* </pre>
 	*/
 	public void set_targetlbvserver(String targetlbvserver) throws Exception{
@@ -153,7 +155,9 @@ public class csvserver_transformpolicy_binding extends base_resource
 
 	/**
 	* <pre>
-	* The virtual server name (created with the add lb vserver command) to which content will be switched.<br> Minimum length =  1
+	* Name of the Load Balancing virtual server to which the content is switched, if policy rule is evaluated to be TRUE.
+Example: bind cs vs cs1 -policyname pol1 -priority 101 -targetLBVserver lb1
+Note: Use this parameter only in case of Content Switching policy bind operations to a CS vserver.<br> Minimum length =  1
 	* </pre>
 	*/
 	public String get_targetlbvserver() throws Exception {
