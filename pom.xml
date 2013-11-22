@@ -4,7 +4,7 @@
   <artifactId>nitro</artifactId>
   <packaging>jar</packaging>
   <name>NetScaler NITRO API client</name>
-  <version>10.1-SNAPSHOT</version>
+  <version>10.1</version>
   <description>The Citrix® NetScaler® NITRO client for Java allows you to configure and monitor the NetScaler appliance programmatically in Java based applications. Source code taken from Build 121 of NetScaler release 10.1</description>
   <url>http://www.citrix.com/netscaler</url>
   <parent>
